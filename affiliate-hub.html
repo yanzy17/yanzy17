@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="theme-color" content="#0a0118" />
+<meta name="theme-color" content="#0f172a" />
 <meta name="description" content="Dashboard untuk track komisi, produk affiliate & target bulanan. Bisa diinstall sebagai aplikasi di HP." />
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
@@ -11,36 +11,34 @@
 <link rel="manifest" href="manifest.json" />
 <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png" />
 <link rel="apple-touch-icon" href="icon-192.png" />
-<title>Yanzy Affiliate Hub — Dashboard Affiliate & Produk Digital</title>
+<title>Yanzy Hub — Tracking Penjualan Affiliate & Produk Digital</title>
 <style>
 /* ========== RESET & ROOT ========== */
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 
 :root {
-  --bg-0: #0a0118;
-  --bg-1: #14082b;
-  --bg-2: #1c0f3b;
-  --primary: #a78bfa;
-  --primary-2: #ec4899;
-  --primary-3: #38bdf8;
+  --bg-0: #0f172a;          /* slate-900 — dark professional */
+  --bg-1: #1e293b;          /* slate-800 */
+  --bg-2: #334155;          /* slate-700 */
+  --primary: #6366f1;       /* indigo-500 */
+  --primary-hover: #4f46e5; /* indigo-600 */
+  --primary-soft: rgba(99,102,241,0.12);
+  --teal: #14b8a6;          /* teal-500 — affiliate */
+  --teal-soft: rgba(20,184,166,0.12);
+  --amber: #f59e0b;         /* amber-500 — produk digital */
+  --amber-soft: rgba(245,158,11,0.12);
   --green: #10b981;
-  --orange: #f59e0b;
   --red: #ef4444;
-  --text: #f8fafc;
-  --text-2: #cbd5e1;
-  --text-3: #94a3b8;
-  --text-4: #64748b;
-  --border: rgba(255,255,255,0.08);
-  --border-2: rgba(255,255,255,0.14);
-  --card: rgba(255,255,255,0.04);
-  --card-hover: rgba(255,255,255,0.07);
-  --gradient: linear-gradient(135deg, #a78bfa, #ec4899);
-  --gradient-2: linear-gradient(135deg, #38bdf8, #a78bfa);
-  --gradient-green: linear-gradient(135deg, #10b981, #34d399);
-  --gradient-orange: linear-gradient(135deg, #f59e0b, #f97316);
-  --gradient-text: linear-gradient(135deg, #c4b5fd, #f9a8d4, #93c5fd);
-  --shadow-glow: 0 10px 40px rgba(167, 139, 250, 0.25);
-  --radius: 16px;
+  --text: #f1f5f9;          /* slate-100 */
+  --text-2: #cbd5e1;        /* slate-300 */
+  --text-3: #94a3b8;        /* slate-400 */
+  --text-4: #64748b;        /* slate-500 */
+  --border: rgba(148,163,184,0.12);
+  --border-2: rgba(148,163,184,0.22);
+  --card: #1e293b;          /* slate-800 solid (no transparency) */
+  --card-hover: #273448;
+  --shadow: 0 1px 3px rgba(0,0,0,0.3), 0 1px 2px rgba(0,0,0,0.2);
+  --radius: 12px;
 }
 
 html { scroll-behavior: smooth; }
@@ -51,30 +49,9 @@ body {
   color: var(--text);
   line-height: 1.5;
   overflow-x: hidden;
-  position: relative;
   min-height: 100vh;
   padding-bottom: 80px;
-}
-
-body::before, body::after {
-  content: "";
-  position: fixed;
-  border-radius: 50%;
-  filter: blur(120px);
-  z-index: -1;
-  pointer-events: none;
-}
-body::before {
-  width: 500px; height: 500px;
-  background: radial-gradient(circle, #7c3aed 0%, transparent 70%);
-  top: -200px; left: -150px;
-  opacity: 0.45;
-}
-body::after {
-  width: 600px; height: 600px;
-  background: radial-gradient(circle, #ec4899 0%, transparent 70%);
-  top: 40%; right: -200px;
-  opacity: 0.3;
+  -webkit-font-smoothing: antialiased;
 }
 
 button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; }
@@ -82,82 +59,69 @@ input, textarea, select { font-family: inherit; }
 a { color: inherit; text-decoration: none; }
 
 .container { max-width: 1200px; margin: 0 auto; padding: 0 16px; }
-.gradient-text {
-  background: var(--gradient-text);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
 .hidden { display: none !important; }
 
 /* ========== HEADER ========== */
 .header {
   position: sticky; top: 0; z-index: 50;
-  background: rgba(10, 1, 24, 0.7);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  background: var(--bg-1);
   border-bottom: 1px solid var(--border);
 }
 .header-inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 14px 16px;
+  padding: 12px 16px;
   max-width: 1200px;
   margin: 0 auto;
 }
 .logo {
   display: flex;
   align-items: center;
-  gap: 9px;
-  font-weight: 800;
-  font-size: 1.05rem;
-  letter-spacing: -0.5px;
+  gap: 10px;
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: -0.2px;
+  color: var(--text);
 }
 .logo-icon {
-  width: 34px; height: 34px;
-  background: var(--gradient);
-  border-radius: 10px;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 1rem;
-  box-shadow: var(--shadow-glow);
-}
-.header-actions {
-  display: flex; gap: 8px; align-items: center;
-}
-.icon-btn {
-  width: 38px; height: 38px;
-  border-radius: 10px;
-  background: rgba(255,255,255,0.06);
-  border: 1px solid var(--border);
+  width: 32px; height: 32px;
+  background: var(--primary);
+  border-radius: 8px;
   display: flex; align-items: center; justify-content: center;
   font-size: 0.95rem;
-  transition: all 0.2s;
 }
-.icon-btn:hover { background: rgba(255,255,255,0.1); }
+.header-actions {
+  display: flex; gap: 6px; align-items: center;
+}
+.icon-btn {
+  width: 36px; height: 36px;
+  border-radius: 8px;
+  background: transparent;
+  border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.9rem;
+  color: var(--text-2);
+  transition: all 0.15s;
+}
+.icon-btn:hover { background: var(--bg-2); color: var(--text); }
 .install-btn {
   width: auto !important;
   padding: 0 12px;
   font-size: 0.78rem !important;
-  font-weight: 700;
-  background: var(--gradient) !important;
+  font-weight: 600;
+  background: var(--primary) !important;
   border: none !important;
   color: white !important;
   gap: 4px;
-  box-shadow: 0 4px 16px rgba(167, 139, 250, 0.35);
-  animation: pulse-glow 2s ease-in-out infinite;
 }
-.install-btn:hover { transform: translateY(-1px); }
-@keyframes pulse-glow {
-  0%, 100% { box-shadow: 0 4px 16px rgba(167, 139, 250, 0.35); }
-  50% { box-shadow: 0 6px 24px rgba(236, 72, 153, 0.55); }
-}
+.install-btn:hover { background: var(--primary-hover) !important; }
 
 /* Install banner for first-time users */
 .install-banner {
-  background: linear-gradient(135deg, rgba(167,139,250,0.15), rgba(236,72,153,0.1));
-  border: 1px solid rgba(167,139,250,0.3);
-  border-radius: 14px;
+  background: var(--card);
+  border: 1px solid var(--primary);
+  border-radius: var(--radius);
   padding: 14px;
   margin-bottom: 16px;
   display: flex;
@@ -165,11 +129,12 @@ a { color: inherit; text-decoration: none; }
   gap: 12px;
 }
 .install-banner-icon {
-  width: 40px; height: 40px;
-  background: var(--gradient);
-  border-radius: 10px;
+  width: 38px; height: 38px;
+  background: var(--primary-soft);
+  color: var(--primary);
+  border-radius: 8px;
   display: flex; align-items: center; justify-content: center;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   flex-shrink: 0;
 }
 .install-banner-text { flex: 1; min-width: 0; }
@@ -177,7 +142,7 @@ a { color: inherit; text-decoration: none; }
 .install-banner-text small { font-size: 0.75rem; color: var(--text-3); }
 .install-banner-actions { display: flex; gap: 6px; flex-shrink: 0; }
 .install-banner-close {
-  background: rgba(255,255,255,0.06);
+  background: transparent;
   border: 1px solid var(--border);
   width: 30px; height: 30px;
   border-radius: 8px;
@@ -187,11 +152,10 @@ a { color: inherit; text-decoration: none; }
 
 /* ========== TABS NAVIGATION ========== */
 .tabs-bar {
-  background: rgba(10, 1, 24, 0.85);
-  backdrop-filter: blur(20px);
+  background: var(--bg-1);
   border-bottom: 1px solid var(--border);
   position: sticky;
-  top: 65px;
+  top: 57px;
   z-index: 40;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
@@ -199,28 +163,28 @@ a { color: inherit; text-decoration: none; }
 .tabs-bar::-webkit-scrollbar { display: none; }
 .tabs {
   display: flex;
-  gap: 4px;
-  padding: 10px 16px;
+  gap: 2px;
+  padding: 8px 16px;
   max-width: 1200px;
   margin: 0 auto;
   white-space: nowrap;
 }
 .tab-btn {
-  padding: 9px 16px;
-  border-radius: 10px;
-  font-size: 0.85rem;
-  font-weight: 600;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-size: 0.84rem;
+  font-weight: 500;
   color: var(--text-3);
   background: transparent;
-  transition: all 0.2s;
+  transition: all 0.15s;
   display: flex; align-items: center; gap: 6px;
   flex-shrink: 0;
 }
-.tab-btn:hover { color: var(--text); background: rgba(255,255,255,0.05); }
+.tab-btn:hover { color: var(--text); }
 .tab-btn.active {
-  background: var(--gradient);
-  color: white;
-  box-shadow: 0 4px 16px rgba(167, 139, 250, 0.35);
+  background: var(--primary-soft);
+  color: var(--primary);
+  font-weight: 600;
 }
 
 /* ========== MAIN ========== */
@@ -261,132 +225,108 @@ main { padding: 24px 0; }
 .stat-card {
   background: var(--card);
   border: 1px solid var(--border);
-  border-radius: 14px;
+  border-radius: var(--radius);
   padding: 14px;
-  position: relative;
-  overflow: hidden;
 }
-.stat-card::before {
-  content: "";
-  position: absolute;
-  top: -30px; right: -30px;
-  width: 80px; height: 80px;
-  border-radius: 50%;
-  opacity: 0.15;
-  filter: blur(20px);
-}
-.stat-card.purple::before { background: var(--primary); }
-.stat-card.pink::before { background: var(--primary-2); }
-.stat-card.blue::before { background: var(--primary-3); }
-.stat-card.green::before { background: var(--green); }
 .stat-icon {
   width: 36px; height: 36px;
-  border-radius: 10px;
+  border-radius: 8px;
   display: flex; align-items: center; justify-content: center;
   font-size: 1.05rem;
   margin-bottom: 10px;
 }
-.stat-card.purple .stat-icon { background: rgba(167,139,250,0.18); color: var(--primary); }
-.stat-card.pink .stat-icon { background: rgba(236,72,153,0.18); color: var(--primary-2); }
-.stat-card.blue .stat-icon { background: rgba(56,189,248,0.18); color: var(--primary-3); }
-.stat-card.green .stat-icon { background: rgba(16,185,129,0.18); color: var(--green); }
+.stat-card.purple .stat-icon { background: var(--primary-soft); color: var(--primary); }
+.stat-card.pink .stat-icon { background: var(--teal-soft); color: var(--teal); }
+.stat-card.blue .stat-icon { background: var(--amber-soft); color: var(--amber); }
+.stat-card.green .stat-icon { background: rgba(16,185,129,0.12); color: var(--green); }
 .stat-label {
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   color: var(--text-3);
   margin-bottom: 4px;
   font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
 }
 .stat-value {
-  font-size: 1.25rem;
-  font-weight: 800;
-  letter-spacing: -0.5px;
-  line-height: 1.1;
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: -0.3px;
+  line-height: 1.2;
   word-break: break-all;
 }
-.stat-value.small { font-size: 1.1rem; }
+.stat-value.small { font-size: 1.05rem; }
 @media (min-width: 700px) {
-  .stat-value { font-size: 1.5rem; }
+  .stat-value { font-size: 1.4rem; }
 }
 
 /* ========== TARGET PROGRESS ========== */
 .target-card {
-  background: linear-gradient(135deg, rgba(167,139,250,0.1), rgba(236,72,153,0.05));
-  border: 1px solid rgba(167,139,250,0.25);
-  border-radius: 18px;
-  padding: 18px;
-  margin-bottom: 18px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--primary);
+  border-radius: var(--radius);
+  padding: 16px;
+  margin-bottom: 16px;
 }
 .target-head {
   display: flex; justify-content: space-between; align-items: flex-start;
-  margin-bottom: 14px;
+  margin-bottom: 12px;
   gap: 10px;
 }
-.target-head h3 { font-size: 1rem; font-weight: 700; margin-bottom: 4px; }
-.target-head small { font-size: 0.78rem; color: var(--text-3); }
+.target-head h3 { font-size: 0.95rem; font-weight: 600; margin-bottom: 2px; }
+.target-head small { font-size: 0.75rem; color: var(--text-3); }
 .target-edit {
-  background: rgba(255,255,255,0.06);
+  background: transparent;
   border: 1px solid var(--border);
-  padding: 6px 12px;
-  border-radius: 8px;
-  font-size: 0.78rem;
-  font-weight: 600;
+  padding: 5px 10px;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 500;
   flex-shrink: 0;
+  color: var(--text-2);
 }
-.target-edit:hover { background: rgba(255,255,255,0.1); }
+.target-edit:hover { background: var(--bg-2); }
 .target-amount {
-  display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap;
+  display: flex; align-items: baseline; gap: 6px; flex-wrap: wrap;
   margin-bottom: 10px;
 }
 .target-now {
-  font-size: 1.4rem;
-  font-weight: 800;
-  letter-spacing: -0.5px;
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: -0.3px;
+  color: var(--text);
 }
 .target-of {
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   color: var(--text-3);
 }
 .progress-bar {
-  background: rgba(255,255,255,0.08);
-  height: 10px;
-  border-radius: 20px;
+  background: var(--bg-2);
+  height: 6px;
+  border-radius: 4px;
   overflow: hidden;
-  position: relative;
 }
 .progress-fill {
   height: 100%;
-  background: var(--gradient);
-  border-radius: 20px;
-  transition: width 0.5s ease;
-  position: relative;
-  overflow: hidden;
-}
-.progress-fill::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-  animation: shimmer 2s linear infinite;
-}
-@keyframes shimmer {
-  from { transform: translateX(-100%); }
-  to { transform: translateX(100%); }
+  background: var(--primary);
+  border-radius: 4px;
+  transition: width 0.4s ease;
 }
 .progress-info {
   display: flex; justify-content: space-between;
   margin-top: 8px;
-  font-size: 0.78rem;
+  font-size: 0.75rem;
   color: var(--text-3);
 }
-.progress-percent { color: var(--text); font-weight: 700; }
+.progress-percent { color: var(--text); font-weight: 600; }
 
 /* ========== CARD CONTAINER ========== */
 .card {
   background: var(--card);
   border: 1px solid var(--border);
-  border-radius: 16px;
+  border-radius: var(--radius);
   padding: 16px;
-  margin-bottom: 14px;
+  margin-bottom: 12px;
 }
 .card-h {
   display: flex; align-items: center; justify-content: space-between;
@@ -394,72 +334,94 @@ main { padding: 24px 0; }
   gap: 10px;
 }
 .card-h h3 {
-  font-size: 0.95rem;
-  font-weight: 700;
+  font-size: 0.92rem;
+  font-weight: 600;
 }
 .see-all {
   font-size: 0.78rem;
   color: var(--primary);
-  font-weight: 600;
+  font-weight: 500;
+  cursor: pointer;
 }
+.see-all:hover { text-decoration: underline; }
 
 /* ========== RECENT TRANSACTIONS LIST ========== */
-.txn-list { display: flex; flex-direction: column; gap: 8px; }
+.txn-list { display: flex; flex-direction: column; gap: 6px; }
 .txn-item {
   display: flex; align-items: center; gap: 12px;
   padding: 10px 12px;
-  background: rgba(255,255,255,0.03);
+  background: var(--bg-1);
   border: 1px solid var(--border);
-  border-radius: 12px;
-  transition: all 0.2s;
+  border-radius: 8px;
+  transition: all 0.15s;
 }
-.txn-item:hover { background: rgba(255,255,255,0.05); border-color: var(--border-2); }
+.txn-item:hover { border-color: var(--border-2); }
 .txn-icon {
-  width: 38px; height: 38px;
-  border-radius: 10px;
+  width: 36px; height: 36px;
+  border-radius: 8px;
   display: flex; align-items: center; justify-content: center;
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   flex-shrink: 0;
-  color: white;
+  background: var(--bg-2);
 }
 .txn-info { flex: 1; min-width: 0; }
 .txn-name {
-  font-size: 0.88rem;
+  font-size: 0.86rem;
   font-weight: 600;
   margin-bottom: 2px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  color: var(--text);
 }
 .txn-meta {
-  font-size: 0.72rem;
+  font-size: 0.7rem;
   color: var(--text-3);
-  display: flex; gap: 6px; align-items: center;
+  display: flex; gap: 4px; align-items: center;
+  flex-wrap: wrap;
 }
+.txn-meta .sep { opacity: 0.4; }
 .txn-amount {
   text-align: right;
   flex-shrink: 0;
 }
 .txn-amount strong {
   display: block;
-  font-size: 0.92rem;
+  font-size: 0.88rem;
+  font-weight: 600;
   color: var(--green);
-  font-weight: 700;
 }
 .txn-amount small {
-  font-size: 0.7rem;
+  font-size: 0.68rem;
   color: var(--text-3);
 }
 .txn-action {
   background: transparent;
-  color: var(--text-3);
+  color: var(--text-4);
   width: 28px; height: 28px;
-  border-radius: 8px;
+  border-radius: 6px;
   display: flex; align-items: center; justify-content: center;
   font-size: 0.85rem;
   flex-shrink: 0;
 }
-.txn-action:hover { background: rgba(239,68,68,0.15); color: var(--red); }
+.txn-action:hover { background: var(--bg-2); color: var(--text-2); }
+
+/* Type badge & Status badge */
+.badge {
+  display: inline-block;
+  font-size: 0.65rem;
+  font-weight: 600;
+  padding: 1px 6px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+.badge-affiliate { background: var(--teal-soft); color: var(--teal); }
+.badge-digital { background: var(--amber-soft); color: var(--amber); }
+.badge-pending { background: rgba(245,158,11,0.15); color: var(--amber); }
+.badge-confirmed { background: rgba(99,102,241,0.15); color: var(--primary); }
+.badge-settled { background: rgba(16,185,129,0.15); color: var(--green); }
+.badge-cancelled { background: rgba(239,68,68,0.15); color: var(--red); }
 
 /* ========== EMPTY STATE ========== */
 .empty {
@@ -589,14 +551,14 @@ main { padding: 24px 0; }
 .form-group select,
 .form-group textarea {
   width: 100%;
-  padding: 11px 13px;
-  background: rgba(255,255,255,0.04);
-  border: 1.5px solid var(--border);
-  border-radius: 10px;
+  padding: 10px 12px;
+  background: var(--bg-0);
+  border: 1px solid var(--border-2);
+  border-radius: 8px;
   color: var(--text);
   font-size: 0.9rem;
   outline: none;
-  transition: all 0.2s;
+  transition: all 0.15s;
 }
 .form-group input::placeholder,
 .form-group textarea::placeholder { color: var(--text-4); }
@@ -604,8 +566,7 @@ main { padding: 24px 0; }
 .form-group select:focus,
 .form-group textarea:focus {
   border-color: var(--primary);
-  background: rgba(167, 139, 250, 0.05);
-  box-shadow: 0 0 0 3px rgba(167, 139, 250, 0.15);
+  box-shadow: 0 0 0 3px var(--primary-soft);
 }
 .form-group textarea { resize: vertical; min-height: 70px; }
 .form-group select {
@@ -622,43 +583,40 @@ main { padding: 24px 0; }
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  padding: 11px 20px;
-  border-radius: 10px;
-  font-weight: 700;
-  font-size: 0.88rem;
-  transition: all 0.2s;
+  gap: 6px;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  transition: all 0.15s;
   white-space: nowrap;
+  cursor: pointer;
 }
 .btn-primary {
-  background: var(--gradient);
+  background: var(--primary);
   color: white;
-  box-shadow: var(--shadow-glow);
 }
-.btn-primary:hover { transform: translateY(-1px); box-shadow: 0 12px 40px rgba(236, 72, 153, 0.35); }
+.btn-primary:hover { background: var(--primary-hover); }
 .btn-ghost {
-  background: rgba(255,255,255,0.05);
+  background: transparent;
   border: 1px solid var(--border-2);
   color: var(--text);
 }
-.btn-ghost:hover { background: rgba(255,255,255,0.08); }
+.btn-ghost:hover { background: var(--bg-2); }
 .btn-block { width: 100%; }
-.btn-sm { padding: 8px 14px; font-size: 0.8rem; }
+.btn-sm { padding: 7px 12px; font-size: 0.78rem; }
 
 /* ========== MODAL ========== */
 .modal-overlay {
   position: fixed; inset: 0;
-  background: rgba(10, 1, 24, 0.75);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  background: rgba(0,0,0,0.6);
   z-index: 100;
   display: flex;
   align-items: flex-end;
   justify-content: center;
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.3s;
-  padding: 0;
+  transition: opacity 0.2s;
 }
 .modal-overlay.open { opacity: 1; pointer-events: auto; }
 .modal {
@@ -668,58 +626,59 @@ main { padding: 24px 0; }
   width: 100%;
   max-width: 540px;
   max-height: 92vh;
-  border-radius: 22px 22px 0 0;
+  border-radius: 14px 14px 0 0;
   overflow-y: auto;
   position: relative;
   transform: translateY(100%);
-  transition: transform 0.35s cubic-bezier(0.32, 0.72, 0, 1);
+  transition: transform 0.25s ease;
 }
 .modal-overlay.open .modal { transform: translateY(0); }
 .modal-close {
   position: absolute; top: 12px; right: 12px;
-  background: rgba(255,255,255,0.06);
-  width: 34px; height: 34px;
+  background: var(--bg-2);
+  width: 32px; height: 32px;
   border-radius: 50%;
   font-size: 0.95rem;
   z-index: 5;
-  transition: all 0.2s;
+  color: var(--text-2);
 }
-.modal-close:hover { background: rgba(255,255,255,0.12); }
-.modal-body { padding: 24px 20px 26px; }
+.modal-close:hover { background: var(--bg-2); color: var(--text); }
+.modal-body { padding: 22px 18px 24px; }
 .modal-title {
-  font-size: 1.15rem;
-  font-weight: 800;
+  font-size: 1.1rem;
+  font-weight: 700;
   margin-bottom: 4px;
-  letter-spacing: -0.3px;
+  letter-spacing: -0.2px;
 }
 .modal-sub {
-  font-size: 0.82rem;
+  font-size: 0.8rem;
   color: var(--text-3);
-  margin-bottom: 18px;
+  margin-bottom: 16px;
 }
-
 @media (min-width: 700px) {
   .modal-overlay { align-items: center; padding: 20px; }
-  .modal { border-radius: 20px; border-bottom: 1px solid var(--border-2); }
+  .modal { border-radius: 14px; border-bottom: 1px solid var(--border-2); }
 }
 
 /* ========== CHIPS ========== */
 .chip-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
 .chip {
-  padding: 7px 12px;
-  background: rgba(255,255,255,0.05);
+  padding: 6px 12px;
+  background: var(--bg-1);
   border: 1px solid var(--border);
-  border-radius: 8px;
+  border-radius: 6px;
   font-size: 0.78rem;
-  font-weight: 600;
+  font-weight: 500;
   color: var(--text-2);
-  transition: all 0.2s;
+  transition: all 0.15s;
+  cursor: pointer;
 }
-.chip:hover { background: rgba(255,255,255,0.08); }
+.chip:hover { background: var(--bg-2); }
 .chip.active {
-  background: rgba(167, 139, 250, 0.15);
-  border-color: rgba(167, 139, 250, 0.5);
+  background: var(--primary-soft);
+  border-color: var(--primary);
   color: var(--primary);
+  font-weight: 600;
 }
 
 /* ========== TOOLS / UTILITIES ========== */
@@ -785,13 +744,14 @@ main { padding: 24px 0; }
 }
 .chart-bar {
   flex: 1;
-  background: var(--gradient);
-  border-radius: 6px 6px 0 0;
+  background: var(--primary);
+  border-radius: 4px 4px 0 0;
   min-height: 4px;
   position: relative;
-  transition: all 0.4s ease;
+  transition: opacity 0.15s ease;
+  opacity: 0.85;
 }
-.chart-bar:hover { transform: scaleY(1.05); transform-origin: bottom; }
+.chart-bar:hover { opacity: 1; }
 .chart-bar::after {
   content: attr(data-label);
   position: absolute;
@@ -826,13 +786,13 @@ main { padding: 24px 0; }
   border-radius: 10px;
 }
 .top-rank {
-  width: 24px; height: 24px;
-  background: var(--gradient);
+  width: 22px; height: 22px;
+  background: var(--primary-soft);
+  color: var(--primary);
   border-radius: 50%;
   display: flex; align-items: center; justify-content: center;
-  font-size: 0.72rem;
+  font-size: 0.7rem;
   font-weight: 700;
-  color: white;
   flex-shrink: 0;
 }
 .top-name { flex: 1; font-size: 0.88rem; font-weight: 600; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
@@ -841,19 +801,19 @@ main { padding: 24px 0; }
 /* ========== FAB ========== */
 .fab {
   position: fixed;
-  bottom: 22px;
-  right: 22px;
-  width: 56px; height: 56px;
+  bottom: 20px;
+  right: 20px;
+  width: 52px; height: 52px;
   border-radius: 50%;
-  background: var(--gradient);
+  background: var(--primary);
   color: white;
   font-size: 1.4rem;
   display: flex; align-items: center; justify-content: center;
   z-index: 30;
-  box-shadow: 0 10px 30px rgba(167, 139, 250, 0.4);
-  transition: all 0.25s;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+  transition: all 0.15s;
 }
-.fab:hover { transform: scale(1.08); box-shadow: 0 14px 40px rgba(236, 72, 153, 0.5); }
+.fab:hover { background: var(--primary-hover); }
 .fab:active { transform: scale(0.95); }
 
 /* ========== TOAST ========== */
@@ -908,6 +868,55 @@ main { padding: 24px 0; }
 
 /* Helper text */
 .helper { font-size: 0.75rem; color: var(--text-3); margin-top: 6px; line-height: 1.4; }
+
+/* Type selector cards */
+.type-option { cursor: pointer; }
+.type-option input[type="radio"] {
+  position: absolute; opacity: 0; pointer-events: none;
+}
+.type-card {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px;
+  background: var(--bg-0);
+  border: 1.5px solid var(--border-2);
+  border-radius: 8px;
+  transition: all 0.15s;
+}
+.type-option input:checked ~ .type-card {
+  border-color: var(--primary);
+  background: var(--primary-soft);
+}
+.type-icon {
+  width: 36px; height: 36px;
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+.type-card strong { display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 2px; }
+.type-card small { font-size: 0.7rem; color: var(--text-3); line-height: 1.3; }
+
+/* Status select in sale modal */
+.status-pills { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
+.status-pill {
+  padding: 8px 4px;
+  border: 1.5px solid var(--border);
+  border-radius: 6px;
+  background: var(--bg-0);
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.15s;
+  color: var(--text-3);
+}
+.status-pill:hover { border-color: var(--border-2); }
+.status-pill.active.pending   { border-color: var(--amber);   background: rgba(245,158,11,0.1);  color: var(--amber); }
+.status-pill.active.confirmed { border-color: var(--primary); background: var(--primary-soft);   color: var(--primary); }
+.status-pill.active.settled   { border-color: var(--green);   background: rgba(16,185,129,0.1); color: var(--green); }
+.status-pill.active.cancelled { border-color: var(--red);     background: rgba(239,68,68,0.1);  color: var(--red); }
 </style>
 </head>
 <body>
@@ -917,7 +926,7 @@ main { padding: 24px 0; }
   <div class="header-inner">
     <a href="#" class="logo">
       <span class="logo-icon">📊</span>
-      Yanzy <span class="gradient-text">Affiliate Hub</span>
+      Yanzy <span style="color: var(--text-3); font-weight: 500;">Hub</span>
     </a>
     <div class="header-actions">
       <button class="icon-btn install-btn hidden" id="installBtn" onclick="installApp()" title="Install Aplikasi">📲 Install</button>
@@ -1028,12 +1037,18 @@ main { padding: 24px 0; }
     <section class="tab-content" id="tab-produk">
       <div class="section-h">
         <div>
-          <h2>🛍️ Produk Affiliate</h2>
-          <p>Kelola produk yang kamu promosikan</p>
+          <h2>🛍️ Produk Saya</h2>
+          <p>Affiliate & produk digital yang Anda kelola</p>
         </div>
         <button class="btn btn-primary btn-sm" onclick="openProductModal()">+ Tambah</button>
       </div>
 
+      <!-- Search bar -->
+      <div class="form-group" style="margin-bottom: 10px;">
+        <input type="text" id="productSearch" placeholder="🔍 Cari produk..." />
+      </div>
+
+      <div class="filter-bar" id="typeFilter"></div>
       <div class="filter-bar" id="platformFilter">
         <button class="chip active" data-platform="all">Semua Platform</button>
       </div>
@@ -1042,7 +1057,7 @@ main { padding: 24px 0; }
       <div class="empty hidden" id="productEmpty">
         <div class="empty-icon">📦</div>
         <div class="empty-title">Belum ada produk</div>
-        <p>Tambah produk affiliate pertamamu untuk mulai tracking</p>
+        <p>Tambah produk pertamamu untuk mulai tracking</p>
       </div>
     </section>
 
@@ -1235,8 +1250,8 @@ Atau bisa juga screenshot via teks copy..." style="min-height: 180px; font-size:
     <section class="tab-content" id="tab-tools">
       <div class="section-h">
         <div>
-          <h2>🧰 Tools Affiliate</h2>
-          <p>Kalkulator & utilitas yang sering kamu butuhin</p>
+          <h2>🧰 Tools</h2>
+          <p>Kalkulator & utilitas yang sering dipakai</p>
         </div>
       </div>
 
@@ -1370,9 +1385,36 @@ Atau bisa juga screenshot via teks copy..." style="min-height: 180px; font-size:
     <button class="modal-close" onclick="closeModal('productModal')">✕</button>
     <div class="modal-body">
       <h2 class="modal-title" id="productModalTitle">Tambah Produk</h2>
-      <p class="modal-sub">Isi data produk affiliate kamu</p>
+      <p class="modal-sub">Pilih jenis produk dulu, lalu isi datanya</p>
 
       <input type="hidden" id="productId" />
+
+      <!-- Type Selector -->
+      <div class="form-group">
+        <label>Jenis Produk</label>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+          <label class="type-option" data-type="affiliate">
+            <input type="radio" name="productType" value="affiliate" checked />
+            <div class="type-card">
+              <div class="type-icon" style="background: var(--teal-soft); color: var(--teal);">🔗</div>
+              <div>
+                <strong>Affiliate</strong>
+                <small>Komisi dari Shopee, TikTok, dll</small>
+              </div>
+            </div>
+          </label>
+          <label class="type-option" data-type="digital">
+            <input type="radio" name="productType" value="digital" />
+            <div class="type-card">
+              <div class="type-icon" style="background: var(--amber-soft); color: var(--amber);">📦</div>
+              <div>
+                <strong>Produk Digital</strong>
+                <small>Jual sendiri (e-book, template, dll)</small>
+              </div>
+            </div>
+          </label>
+        </div>
+      </div>
 
       <div class="form-grid cols-2">
         <div class="form-group" style="grid-column: 1 / -1;">
@@ -1380,7 +1422,7 @@ Atau bisa juga screenshot via teks copy..." style="min-height: 180px; font-size:
           <input type="text" id="productName" placeholder="Serum Vitamin C ABC" />
         </div>
 
-        <div class="form-group">
+        <div class="form-group" id="platformGroup">
           <label>Platform</label>
           <select id="productPlatform">
             <option value="Shopee">Shopee</option>
@@ -1396,27 +1438,32 @@ Atau bisa juga screenshot via teks copy..." style="min-height: 180px; font-size:
 
         <div class="form-group">
           <label>Kategori (opsional)</label>
-          <input type="text" id="productKategori" placeholder="Skincare" />
+          <input type="text" id="productKategori" placeholder="Skincare / E-book / Template" />
         </div>
 
         <div class="form-group">
-          <label>Harga Jual (Rp)</label>
+          <label id="hargaLabel">Harga Jual (Rp)</label>
           <input type="number" id="productHarga" placeholder="100000" />
         </div>
 
-        <div class="form-group">
+        <div class="form-group" id="komisiGroup">
           <label>Komisi (%)</label>
           <input type="number" id="productKomisi" placeholder="10" step="0.1" />
         </div>
 
+        <div class="form-group hidden" id="modalGroup">
+          <label>Modal/HPP (Rp) <small style="color:var(--text-3); font-weight:400;">— opsional</small></label>
+          <input type="number" id="productModalHpp" placeholder="0" />
+        </div>
+
         <div class="form-group" style="grid-column: 1 / -1;">
-          <label>Link Affiliate</label>
+          <label id="linkLabel">Link Affiliate</label>
           <input type="url" id="productLink" placeholder="https://shp.ee/abc123" />
         </div>
 
         <div class="form-group" style="grid-column: 1 / -1;">
           <label>Catatan (opsional)</label>
-          <textarea id="productNote" placeholder="Tagline atau highlight produk..."></textarea>
+          <textarea id="productNote" placeholder="Tagline, deskripsi, atau cara delivery..."></textarea>
         </div>
       </div>
 
@@ -1430,14 +1477,28 @@ Atau bisa juga screenshot via teks copy..." style="min-height: 180px; font-size:
   <div class="modal" onclick="event.stopPropagation()">
     <button class="modal-close" onclick="closeModal('saleModal')">✕</button>
     <div class="modal-body">
-      <h2 class="modal-title">Catat Penjualan</h2>
-      <p class="modal-sub">Catat transaksi affiliate kamu</p>
+      <h2 class="modal-title" id="saleModalTitle">Catat Penjualan</h2>
+      <p class="modal-sub">Pilih produk & status transaksi</p>
+
+      <input type="hidden" id="saleId" />
 
       <div class="form-group">
         <label>Pilih Produk</label>
         <select id="saleProductId">
           <option value="">-- pilih produk --</option>
         </select>
+      </div>
+
+      <div class="form-group" id="saleStatusGroup">
+        <label>Status Transaksi</label>
+        <div class="status-pills" id="saleStatusPills">
+          <button type="button" class="status-pill pending" data-status="pending">⏳ Pending</button>
+          <button type="button" class="status-pill confirmed" data-status="confirmed">✓ Confirmed</button>
+          <button type="button" class="status-pill settled active" data-status="settled">💰 Settled</button>
+          <button type="button" class="status-pill cancelled" data-status="cancelled">✕ Cancel</button>
+        </div>
+        <input type="hidden" id="saleStatus" value="settled" />
+        <p class="helper" id="saleStatusHelp">💰 Komisi sudah masuk dompet — dihitung di total komisi.</p>
       </div>
 
       <div class="form-grid cols-2">
@@ -1453,11 +1514,11 @@ Atau bisa juga screenshot via teks copy..." style="min-height: 180px; font-size:
 
       <div class="form-group">
         <label>Catatan (opsional)</label>
-        <input type="text" id="saleNote" placeholder="Misal: dari postingan IG kemarin" />
+        <input type="text" id="saleNote" placeholder="Misal: nama customer, dari postingan IG, dll" />
       </div>
 
       <div class="result-box" id="salePreview" style="display:flex;">
-        <code><strong style="color:var(--text);">Komisi:</strong> <span id="salePreviewKomisi">Rp 0</span></code>
+        <code><strong style="color:var(--text);" id="salePreviewLabel">Komisi:</strong> <span id="salePreviewKomisi">Rp 0</span></code>
       </div>
 
       <button class="btn btn-primary btn-block" style="margin-top: 14px;" onclick="saveSale()">💾 Simpan Transaksi</button>
@@ -1516,6 +1577,34 @@ Atau bisa juga screenshot via teks copy..." style="min-height: 180px; font-size:
   </div>
 </div>
 
+<!-- ========== MODAL: WELCOME ========== -->
+<div class="modal-overlay" id="welcomeModal">
+  <div class="modal" onclick="event.stopPropagation()">
+    <div class="modal-body" style="text-align: center; padding-top: 30px;">
+      <div style="font-size: 3rem; margin-bottom: 6px;">👋</div>
+      <h2 class="modal-title">Selamat Datang di Yanzy Hub</h2>
+      <p class="modal-sub">Cara mulai pakai aplikasi:</p>
+
+      <div style="display: grid; gap: 10px; margin: 20px 0;">
+        <button class="btn btn-primary btn-block" onclick="startClean()" style="padding: 14px; flex-direction: column; align-items: flex-start; gap: 4px;">
+          <strong style="font-size: 0.95rem;">🚀 Mulai Bersih</strong>
+          <small style="font-weight: 400; opacity: 0.9;">Langsung tambah produk Anda — recommended</small>
+        </button>
+        <button class="btn btn-ghost btn-block" onclick="startWithDemo()" style="padding: 14px; flex-direction: column; align-items: flex-start; gap: 4px;">
+          <strong style="font-size: 0.95rem;">📦 Lihat Contoh Dulu</strong>
+          <small style="font-weight: 400; color: var(--text-3);">Muat data contoh untuk explore fitur</small>
+        </button>
+      </div>
+
+      <p class="helper" style="text-align: left;">
+        💡 <strong>Tips:</strong> Aplikasi ini support 2 jenis bisnis:
+        <br/>🔗 <strong>Affiliate</strong> — komisi dari Shopee/TikTok/dll
+        <br/>📦 <strong>Produk Digital</strong> — produk yang Anda jual sendiri (e-book, template, dll)
+      </p>
+    </div>
+  </div>
+</div>
+
 <div class="toast" id="toast"></div>
 
 <script>
@@ -1524,15 +1613,15 @@ Atau bisa juga screenshot via teks copy..." style="min-height: 180px; font-size:
    ======================================================== */
 const STORAGE_KEY = "yanzy_affiliate_v1";
 
-const PLATFORM_GRADIENT = {
-  "Shopee": "linear-gradient(135deg, #ee4d2d, #ff6b3d)",
-  "Tokopedia": "linear-gradient(135deg, #03ac0e, #06c714)",
-  "TikTok Shop": "linear-gradient(135deg, #000000, #ff0050)",
-  "Tiktok Affiliate": "linear-gradient(135deg, #25f4ee, #fe2c55)",
-  "Lazada": "linear-gradient(135deg, #0f146d, #1a47b8)",
-  "Bukalapak": "linear-gradient(135deg, #e31e52, #c01346)",
-  "Blibli": "linear-gradient(135deg, #0095da, #0077b3)",
-  "Lainnya": "linear-gradient(135deg, #6366f1, #8b5cf6)",
+const PLATFORM_COLORS = {
+  "Shopee":           "#ee4d2d",
+  "Tokopedia":        "#03ac0e",
+  "TikTok Shop":      "#fe2c55",
+  "Tiktok Affiliate": "#fe2c55",
+  "Lazada":           "#0f146d",
+  "Bukalapak":        "#e31e52",
+  "Blibli":           "#0095da",
+  "Lainnya":          "#64748b",
 };
 const PLATFORM_ICON = {
   "Shopee": "🛍️",
@@ -1552,7 +1641,15 @@ function loadState() {
     const raw = localStorage.getItem(STORAGE_KEY);
     if (!raw) return defaultState();
     const parsed = JSON.parse(raw);
-    return { ...defaultState(), ...parsed };
+    const merged = { ...defaultState(), ...parsed };
+    // Migration: tambah field baru ke data lama
+    merged.products.forEach(p => {
+      if (!p.type) p.type = "affiliate"; // default lama = affiliate
+    });
+    merged.sales.forEach(s => {
+      if (!s.status) s.status = "settled"; // default lama = settled (sudah dapat komisi)
+    });
+    return merged;
   } catch {
     return defaultState();
   }
@@ -1562,7 +1659,9 @@ function defaultState() {
   return {
     products: [],
     sales: [],
-    target: 0,  // target komisi bulanan
+    target: 0,
+    onboarded: false,
+    lastBackup: null,
   };
 }
 
@@ -1582,7 +1681,7 @@ const fmtShort = (n) => {
   return "Rp " + n.toLocaleString("id-ID");
 };
 const todayStr = () => new Date().toISOString().slice(0, 10);
-const monthOf = (dateStr) => dateStr.slice(0, 7); // YYYY-MM
+const monthOf = (dateStr) => dateStr.slice(0, 7);
 const isCurrentMonth = (dateStr) => monthOf(dateStr) === todayStr().slice(0, 7);
 const uid = () => Date.now().toString(36) + Math.random().toString(36).slice(2, 7);
 
@@ -1600,12 +1699,50 @@ function formatDate(dateStr) {
   return d.toLocaleDateString("id-ID", { day: "numeric", month: "short", year: "numeric" });
 }
 
-/* Compute commission for a sale */
+/* Status & type config */
+const STATUS_CONFIG = {
+  pending:   { label: "Pending",   icon: "⏳", color: "amber",     desc: "Order baru, belum dibayar" },
+  confirmed: { label: "Confirmed", icon: "✓",  color: "primary",   desc: "Sudah dibayar customer" },
+  settled:   { label: "Settled",   icon: "💰", color: "green",     desc: "Komisi/profit sudah masuk" },
+  cancelled: { label: "Cancelled", icon: "✕",  color: "red",       desc: "Dibatalkan/refund" },
+};
+
+const TYPE_CONFIG = {
+  affiliate: { label: "Affiliate", icon: "🔗", color: "teal",  desc: "Komisi dari platform (Shopee, TikTok, dll)" },
+  digital:   { label: "Produk Digital", icon: "📦", color: "amber", desc: "Produk yang Anda jual sendiri (e-book, template, dll)" },
+};
+
+/* Hitung pemasukan dari 1 sale.
+ * - Affiliate: komisi = harga × persen / 100 × qty (cuma yang status settled)
+ * - Digital: profit = (harga - modal) × qty (semua status kecuali cancelled)
+ */
 function calcCommission(sale) {
   const product = state.products.find(p => p.id === sale.productId);
   if (!product) return 0;
-  return (Number(product.harga) * Number(product.komisi) / 100) * Number(sale.qty);
+  if (sale.status === "cancelled") return 0;
+  const qty = Number(sale.qty) || 1;
+  if (product.type === "digital") {
+    const margin = Number(product.harga) - (Number(product.modal) || 0);
+    return margin * qty;
+  }
+  // Affiliate: hanya hitung kalau settled
+  if (sale.status !== "settled") return 0;
+  return (Number(product.harga) * Number(product.komisi) / 100) * qty;
 }
+
+/* Estimasi komisi (termasuk pending/confirmed) — buat info, gak masuk ke total */
+function estCommission(sale) {
+  const product = state.products.find(p => p.id === sale.productId);
+  if (!product) return 0;
+  if (sale.status === "cancelled") return 0;
+  const qty = Number(sale.qty) || 1;
+  if (product.type === "digital") {
+    const margin = Number(product.harga) - (Number(product.modal) || 0);
+    return margin * qty;
+  }
+  return (Number(product.harga) * Number(product.komisi) / 100) * qty;
+}
+
 function getProduct(id) {
   return state.products.find(p => p.id === id);
 }
@@ -1674,25 +1811,44 @@ function renderTxnItem(s) {
   const p = getProduct(s.productId);
   if (!p) return "";
   const komisi = calcCommission(s);
+  const est = estCommission(s);
+  const isDigital = p.type === "digital";
+  const status = s.status || "settled";
+  const statusCfg = STATUS_CONFIG[status] || STATUS_CONFIG.settled;
+  const platformBg = (PLATFORM_COLORS[p.platform] || PLATFORM_COLORS.Lainnya) + "33"; // soft bg
+  const platformColor = PLATFORM_COLORS[p.platform] || PLATFORM_COLORS.Lainnya;
+
+  // Untuk affiliate yang belum settled, tampilin estimate dengan warna abu
+  const showEst = !isDigital && status !== "settled" && status !== "cancelled";
+  const amountColor = status === "cancelled" ? "var(--text-4)" :
+                      showEst ? "var(--text-3)" : "var(--green)";
+  const amountValue = showEst ? est : komisi;
+  const amountLabel = isDigital ? "profit" :
+                      showEst ? `est (${statusCfg.label})` : "komisi";
+
   return `
     <div class="txn-item">
-      <div class="txn-icon" style="background: ${PLATFORM_GRADIENT[p.platform] || PLATFORM_GRADIENT.Lainnya}">
+      <div class="txn-icon" style="background: ${platformBg}; color: ${platformColor};">
         ${PLATFORM_ICON[p.platform] || "📦"}
       </div>
       <div class="txn-info">
         <div class="txn-name">${p.name}</div>
         <div class="txn-meta">
+          <span class="badge ${isDigital ? 'badge-digital' : 'badge-affiliate'}">${isDigital ? '📦' : '🔗'}</span>
+          <span class="sep">•</span>
           <span>${p.platform}</span>
-          <span>•</span>
+          <span class="sep">•</span>
           <span>${s.qty}x</span>
-          <span>•</span>
+          <span class="sep">•</span>
           <span>${formatDate(s.date)}</span>
+          ${!isDigital && status !== "settled" ? `<span class="sep">•</span><span class="badge badge-${status}">${statusCfg.icon} ${statusCfg.label}</span>` : ""}
         </div>
       </div>
       <div class="txn-amount">
-        <strong>+${fmtShort(komisi)}</strong>
-        <small>komisi</small>
+        <strong style="color: ${amountColor};">${status === "cancelled" ? "—" : "+" + fmtShort(amountValue)}</strong>
+        <small>${amountLabel}</small>
       </div>
+      <button class="txn-action" onclick="editSale('${s.id}')" title="Edit">✏️</button>
       <button class="txn-action" onclick="confirmDeleteSale('${s.id}')" title="Hapus">🗑️</button>
     </div>
   `;
@@ -1702,9 +1858,27 @@ function renderTxnItem(s) {
    PRODUCTS RENDER
    ======================================================== */
 let activePlatformFilter = "all";
+let activeTypeFilter = "all"; // all | affiliate | digital
+let productSearchQuery = "";
 
 function renderProducts() {
-  // Build platform filter chips
+  // Type filter chips
+  const typeFilterEl = document.getElementById("typeFilter");
+  if (typeFilterEl) {
+    typeFilterEl.innerHTML = `
+      <button class="chip ${activeTypeFilter === 'all' ? 'active' : ''}" data-type="all">Semua</button>
+      <button class="chip ${activeTypeFilter === 'affiliate' ? 'active' : ''}" data-type="affiliate">🔗 Affiliate</button>
+      <button class="chip ${activeTypeFilter === 'digital' ? 'active' : ''}" data-type="digital">📦 Digital</button>
+    `;
+    typeFilterEl.querySelectorAll(".chip").forEach(c => {
+      c.addEventListener("click", () => {
+        activeTypeFilter = c.dataset.type;
+        renderProducts();
+      });
+    });
+  }
+
+  // Platform filter chips
   const platforms = ["all", ...new Set(state.products.map(p => p.platform))];
   const filterEl = document.getElementById("platformFilter");
   filterEl.innerHTML = platforms.map(p => `
@@ -1720,8 +1894,14 @@ function renderProducts() {
   });
 
   let list = state.products;
-  if (activePlatformFilter !== "all") {
-    list = list.filter(p => p.platform === activePlatformFilter);
+  if (activeTypeFilter !== "all") list = list.filter(p => (p.type || "affiliate") === activeTypeFilter);
+  if (activePlatformFilter !== "all") list = list.filter(p => p.platform === activePlatformFilter);
+  if (productSearchQuery) {
+    const q = productSearchQuery.toLowerCase();
+    list = list.filter(p =>
+      p.name.toLowerCase().includes(q) ||
+      (p.kategori || "").toLowerCase().includes(q)
+    );
   }
 
   const grid = document.getElementById("productGrid");
@@ -1734,19 +1914,39 @@ function renderProducts() {
   }
   empty.classList.add("hidden");
 
+  if (list.length === 0) {
+    grid.innerHTML = `
+      <div class="empty" style="grid-column: 1 / -1;">
+        <div class="empty-icon">🔍</div>
+        <div class="empty-title">Tidak ada produk yang cocok</div>
+        <p>Coba ubah filter atau kata pencarian</p>
+      </div>
+    `;
+    return;
+  }
+
   grid.innerHTML = list.map(p => {
+    const isDigital = p.type === "digital";
     const sales = state.sales.filter(s => s.productId === p.id);
     const totalSold = sales.reduce((sum, s) => sum + Number(s.qty), 0);
-    const totalComm = sales.reduce((sum, s) => sum + calcCommission(s), 0);
+    const platformBg = (PLATFORM_COLORS[p.platform] || PLATFORM_COLORS.Lainnya) + "33";
+    const platformColor = PLATFORM_COLORS[p.platform] || PLATFORM_COLORS.Lainnya;
+    const secondLabel = isDigital ? "Profit/unit" : "Komisi";
+    const secondValue = isDigital
+      ? fmtShort(Number(p.harga) - (Number(p.modal) || 0))
+      : `${p.komisi || 0}%`;
     return `
       <div class="product-card">
         <div class="product-card-h">
-          <div class="product-icon" style="background: ${PLATFORM_GRADIENT[p.platform] || PLATFORM_GRADIENT.Lainnya}">
+          <div class="product-icon" style="background: ${platformBg}; color: ${platformColor};">
             ${PLATFORM_ICON[p.platform] || "📦"}
           </div>
           <div class="product-info">
             <div class="product-name">${p.name}</div>
-            <span class="product-platform">${p.platform}</span>
+            <div style="display:flex; gap:6px; flex-wrap:wrap; align-items:center;">
+              <span class="badge ${isDigital ? 'badge-digital' : 'badge-affiliate'}">${isDigital ? '📦 Digital' : '🔗 Affiliate'}</span>
+              <span class="product-platform">${p.platform}</span>
+            </div>
           </div>
         </div>
         <div class="product-stats">
@@ -1755,8 +1955,8 @@ function renderProducts() {
             <small>Harga</small>
           </div>
           <div class="product-stat">
-            <strong>${p.komisi}%</strong>
-            <small>Komisi</small>
+            <strong>${secondValue}</strong>
+            <small>${secondLabel}</small>
           </div>
           <div class="product-stat">
             <strong>${totalSold}</strong>
@@ -1781,16 +1981,54 @@ function openLink(id) {
 /* ========================================================
    PRODUCT MODAL
    ======================================================== */
-function openProductModal() {
+function setProductType(type) {
+  // Update radio
+  document.querySelectorAll('input[name="productType"]').forEach(r => {
+    r.checked = (r.value === type);
+  });
+  // Toggle UI fields based on type
+  const isDigital = type === "digital";
+  document.getElementById("komisiGroup").classList.toggle("hidden", isDigital);
+  document.getElementById("modalGroup").classList.toggle("hidden", !isDigital);
+  document.getElementById("hargaLabel").textContent = isDigital ? "Harga Jual (Rp)" : "Harga Produk (Rp)";
+  document.getElementById("linkLabel").textContent = isDigital ? "Link Produk / File (opsional)" : "Link Affiliate";
+  // Update platform options for digital products
+  const platSel = document.getElementById("productPlatform");
+  if (isDigital) {
+    platSel.innerHTML = `
+      <option value="Shopee">Shopee (toko sendiri)</option>
+      <option value="Tokopedia">Tokopedia (toko sendiri)</option>
+      <option value="WhatsApp">WhatsApp / DM</option>
+      <option value="Instagram">Instagram</option>
+      <option value="Website">Website Sendiri</option>
+      <option value="Lainnya">Lainnya</option>
+    `;
+  } else {
+    platSel.innerHTML = `
+      <option value="Shopee">Shopee</option>
+      <option value="Tokopedia">Tokopedia</option>
+      <option value="TikTok Shop">TikTok Shop</option>
+      <option value="Lazada">Lazada</option>
+      <option value="Tiktok Affiliate">TikTok Affiliate</option>
+      <option value="Bukalapak">Bukalapak</option>
+      <option value="Blibli">Blibli</option>
+      <option value="Lainnya">Lainnya</option>
+    `;
+  }
+}
+
+function openProductModal(prefillType) {
   document.getElementById("productModalTitle").textContent = "Tambah Produk";
   document.getElementById("productId").value = "";
   document.getElementById("productName").value = "";
-  document.getElementById("productPlatform").value = "Shopee";
   document.getElementById("productKategori").value = "";
   document.getElementById("productHarga").value = "";
   document.getElementById("productKomisi").value = "";
+  document.getElementById("productModalHpp").value = "";
   document.getElementById("productLink").value = "";
   document.getElementById("productNote").value = "";
+  setProductType(prefillType || "affiliate");
+  document.getElementById("productPlatform").value = prefillType === "digital" ? "WhatsApp" : "Shopee";
   openModal("productModal");
 }
 
@@ -1800,36 +2038,44 @@ function editProduct(id) {
   document.getElementById("productModalTitle").textContent = "Edit Produk";
   document.getElementById("productId").value = p.id;
   document.getElementById("productName").value = p.name;
-  document.getElementById("productPlatform").value = p.platform;
   document.getElementById("productKategori").value = p.kategori || "";
   document.getElementById("productHarga").value = p.harga;
-  document.getElementById("productKomisi").value = p.komisi;
+  document.getElementById("productKomisi").value = p.komisi || "";
+  document.getElementById("productModalHpp").value = p.modal || "";
   document.getElementById("productLink").value = p.link || "";
   document.getElementById("productNote").value = p.note || "";
+  setProductType(p.type || "affiliate");
+  setTimeout(() => {
+    document.getElementById("productPlatform").value = p.platform;
+  }, 10);
   openModal("productModal");
 }
 
 function saveProduct() {
   const id = document.getElementById("productId").value;
+  const type = document.querySelector('input[name="productType"]:checked')?.value || "affiliate";
   const name = document.getElementById("productName").value.trim();
   const platform = document.getElementById("productPlatform").value;
   const kategori = document.getElementById("productKategori").value.trim();
   const harga = Number(document.getElementById("productHarga").value);
-  const komisi = Number(document.getElementById("productKomisi").value);
+  const komisi = type === "affiliate" ? Number(document.getElementById("productKomisi").value) : 0;
+  const modal = type === "digital" ? Number(document.getElementById("productModalHpp").value) || 0 : 0;
   const link = document.getElementById("productLink").value.trim();
   const note = document.getElementById("productNote").value.trim();
 
   if (!name) return showToast("Nama produk wajib diisi");
   if (!harga || harga <= 0) return showToast("Harga harus lebih dari 0");
-  if (komisi < 0) return showToast("Komisi tidak valid");
+  if (type === "affiliate" && (komisi < 0 || isNaN(komisi))) return showToast("Komisi tidak valid");
+  if (type === "digital" && modal < 0) return showToast("Modal tidak valid");
+  if (type === "digital" && modal >= harga) return showToast("⚠️ Modal lebih besar/sama dengan harga jual — gak ada profit");
 
   if (id) {
     const p = getProduct(id);
-    Object.assign(p, { name, platform, kategori, harga, komisi, link, note });
+    Object.assign(p, { type, name, platform, kategori, harga, komisi, modal, link, note });
     showToast("✅ Produk berhasil diupdate");
   } else {
     state.products.push({
-      id: uid(), name, platform, kategori, harga, komisi, link, note,
+      id: uid(), type, name, platform, kategori, harga, komisi, modal, link, note,
       createdAt: Date.now(),
     });
     showToast("✅ Produk baru ditambahkan");
@@ -1906,15 +2152,15 @@ function renderSales() {
   });
 
   let html = `
-    <div class="card" style="background: linear-gradient(135deg, rgba(167,139,250,0.08), rgba(236,72,153,0.04)); border-color: rgba(167,139,250,0.2);">
+    <div class="card" style="border-left: 3px solid var(--primary);">
       <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
         <div>
-          <div style="font-size: 0.78rem; color: var(--text-3);">Total Komisi</div>
-          <div style="font-size: 1.4rem; font-weight: 800; color: var(--green);">${fmt(totalKomisi)}</div>
+          <div style="font-size: 0.72rem; color: var(--text-3); text-transform: uppercase; letter-spacing: 0.3px;">Total Pemasukan</div>
+          <div style="font-size: 1.4rem; font-weight: 700; color: var(--green);">${fmt(totalKomisi)}</div>
         </div>
         <div style="text-align:right;">
-          <div style="font-size: 0.78rem; color: var(--text-3);">${list.length} transaksi</div>
-          <div style="font-size: 0.95rem; font-weight: 700;">${totalQty} produk terjual</div>
+          <div style="font-size: 0.72rem; color: var(--text-3);">${list.length} transaksi</div>
+          <div style="font-size: 0.9rem; font-weight: 600;">${totalQty} produk terjual</div>
         </div>
       </div>
     </div>
@@ -1956,7 +2202,25 @@ function confirmDeleteSale(id) {
 /* ========================================================
    SALE MODAL
    ======================================================== */
-function openSaleModal() {
+function setSaleStatus(status) {
+  document.getElementById("saleStatus").value = status;
+  document.querySelectorAll("#saleStatusPills .status-pill").forEach(b => {
+    b.classList.toggle("active", b.dataset.status === status);
+  });
+  // Update help text
+  const help = document.getElementById("saleStatusHelp");
+  const cfg = STATUS_CONFIG[status];
+  help.textContent = cfg ? `${cfg.icon} ${cfg.desc}` : "";
+  updateSalePreview();
+}
+
+// Bind status pill clicks (delegated)
+document.addEventListener("click", (e) => {
+  const pill = e.target.closest("#saleStatusPills .status-pill");
+  if (pill) setSaleStatus(pill.dataset.status);
+});
+
+function openSaleModal(prefillProductId) {
   if (state.products.length === 0) {
     showToast("⚠️ Tambah produk dulu sebelum catat penjualan");
     setTimeout(() => switchTab("produk"), 800);
@@ -1965,57 +2229,122 @@ function openSaleModal() {
   // Populate product select
   const sel = document.getElementById("saleProductId");
   sel.innerHTML = '<option value="">-- pilih produk --</option>' +
-    state.products.map(p => `<option value="${p.id}">${p.name} (${p.platform})</option>`).join("");
+    state.products.map(p => `<option value="${p.id}">${(p.type === 'digital' ? '📦 ' : '🔗 ')}${p.name} (${p.platform})</option>`).join("");
 
+  document.getElementById("saleId").value = "";
+  document.getElementById("saleModalTitle").textContent = "Catat Penjualan";
+  document.getElementById("saleProductId").value = prefillProductId || "";
   document.getElementById("saleQty").value = 1;
   document.getElementById("saleDate").value = todayStr();
   document.getElementById("saleNote").value = "";
   document.getElementById("salePreviewKomisi").textContent = "Rp 0";
-
+  setSaleStatus("settled");
+  updateSaleStatusVisibility();
+  updateSalePreview();
   openModal("saleModal");
+}
+
+function editSale(id) {
+  const sale = state.sales.find(s => s.id === id);
+  if (!sale) return;
+
+  // Populate product select
+  const sel = document.getElementById("saleProductId");
+  sel.innerHTML = '<option value="">-- pilih produk --</option>' +
+    state.products.map(p => `<option value="${p.id}">${(p.type === 'digital' ? '📦 ' : '🔗 ')}${p.name} (${p.platform})</option>`).join("");
+
+  document.getElementById("saleId").value = sale.id;
+  document.getElementById("saleModalTitle").textContent = "Edit Penjualan";
+  document.getElementById("saleProductId").value = sale.productId;
+  document.getElementById("saleQty").value = sale.qty;
+  document.getElementById("saleDate").value = sale.date;
+  document.getElementById("saleNote").value = sale.note || "";
+  setSaleStatus(sale.status || "settled");
+  updateSaleStatusVisibility();
+  updateSalePreview();
+  openModal("saleModal");
+}
+
+// Hide status pills for digital products (gak ada konsep pending/settled)
+function updateSaleStatusVisibility() {
+  const productId = document.getElementById("saleProductId").value;
+  const p = getProduct(productId);
+  const isDigital = p && p.type === "digital";
+  document.getElementById("saleStatusGroup").style.display = isDigital ? "none" : "";
+  if (isDigital) {
+    setSaleStatus("settled"); // digital always "settled"
+  }
 }
 
 function updateSalePreview() {
   const productId = document.getElementById("saleProductId").value;
   const qty = Number(document.getElementById("saleQty").value) || 0;
+  const status = document.getElementById("saleStatus").value || "settled";
   const p = getProduct(productId);
+  const labelEl = document.getElementById("salePreviewLabel");
+  const valEl = document.getElementById("salePreviewKomisi");
   if (!p) {
-    document.getElementById("salePreviewKomisi").textContent = "Rp 0";
+    valEl.textContent = "Rp 0";
+    labelEl.textContent = "Komisi:";
     return;
   }
-  const komisi = (p.harga * p.komisi / 100) * qty;
-  document.getElementById("salePreviewKomisi").textContent = fmt(komisi);
+  if (p.type === "digital") {
+    const profit = (Number(p.harga) - (Number(p.modal) || 0)) * qty;
+    labelEl.textContent = "Profit:";
+    valEl.textContent = fmt(profit);
+  } else {
+    const komisi = (Number(p.harga) * Number(p.komisi) / 100) * qty;
+    labelEl.textContent = status === "settled" ? "Komisi:" :
+                          status === "cancelled" ? "Komisi (cancelled):" :
+                          `Estimasi (${STATUS_CONFIG[status].label}):`;
+    valEl.textContent = status === "cancelled" ? "Rp 0" : fmt(komisi);
+  }
 }
 
 document.addEventListener("change", (e) => {
-  if (e.target.id === "saleProductId" || e.target.id === "saleQty") updateSalePreview();
+  if (e.target.id === "saleProductId") {
+    updateSaleStatusVisibility();
+    updateSalePreview();
+  }
+  if (e.target.id === "saleQty") updateSalePreview();
 });
 document.addEventListener("input", (e) => {
   if (e.target.id === "saleQty") updateSalePreview();
 });
 
 function saveSale() {
+  const id = document.getElementById("saleId").value;
   const productId = document.getElementById("saleProductId").value;
   const qty = Number(document.getElementById("saleQty").value);
   const date = document.getElementById("saleDate").value;
   const note = document.getElementById("saleNote").value.trim();
+  const status = document.getElementById("saleStatus").value || "settled";
 
   if (!productId) return showToast("Pilih produk dulu");
   if (!qty || qty < 1) return showToast("Jumlah minimal 1");
   if (!date) return showToast("Tanggal wajib diisi");
 
-  state.sales.push({
-    id: uid(),
-    productId,
-    qty,
-    date,
-    note,
-    createdAt: Date.now(),
-  });
+  if (id) {
+    const sale = state.sales.find(s => s.id === id);
+    if (sale) {
+      Object.assign(sale, { productId, qty, date, note, status });
+      showToast("✅ Transaksi diupdate!");
+    }
+  } else {
+    state.sales.push({
+      id: uid(),
+      productId,
+      qty,
+      date,
+      note,
+      status,
+      createdAt: Date.now(),
+    });
+    showToast("✅ Transaksi berhasil dicatat!");
+  }
   saveState();
   closeModal("saleModal");
   renderAll();
-  showToast("✅ Transaksi berhasil dicatat!");
 }
 
 /* ========================================================
@@ -2309,34 +2638,59 @@ function renderAll() {
 }
 
 /* ========================================================
-   SEED DEMO DATA on first load
+   ONBOARDING — Welcome modal untuk first-time user
    ======================================================== */
-if (state.products.length === 0 && state.sales.length === 0) {
+function loadDemoData() {
   state.products = [
-    { id: uid(), name: "Serum Vitamin C 30ml", platform: "Shopee",      kategori: "Skincare", harga: 89000,  komisi: 12, link: "https://shopee.co.id/", note: "Best seller, banyak review bagus", createdAt: Date.now() },
-    { id: uid(), name: "Hair Oil Argan",       platform: "TikTok Shop", kategori: "Haircare", harga: 65000,  komisi: 15, link: "https://tiktok.com/shop", note: "Cocok rambut kering & rusak", createdAt: Date.now() },
-    { id: uid(), name: "Power Bank 20000mAh",  platform: "Tokopedia",   kategori: "Gadget",   harga: 199000, komisi: 8,  link: "https://tokopedia.com/", note: "", createdAt: Date.now() },
+    { id: uid(), type: "affiliate", name: "Serum Vitamin C 30ml", platform: "Shopee",     kategori: "Skincare", harga: 89000,  komisi: 12, modal: 0, link: "https://shopee.co.id/", note: "Contoh: produk affiliate", createdAt: Date.now() },
+    { id: uid(), type: "affiliate", name: "Hair Oil Argan",       platform: "TikTok Shop",kategori: "Haircare", harga: 65000,  komisi: 15, modal: 0, link: "https://tiktok.com/shop", note: "", createdAt: Date.now() },
+    { id: uid(), type: "digital",   name: "E-book Marketing 101", platform: "WhatsApp",   kategori: "E-book",   harga: 49000,  komisi: 0,  modal: 5000, link: "https://drive.google.com/", note: "Contoh: produk digital sendiri", createdAt: Date.now() },
   ];
-  // Some sample sales (last 5 days)
   const today = new Date();
   state.sales = [];
-  for (let i = 4; i >= 0; i--) {
+  const statuses = ["pending", "confirmed", "settled", "settled"];
+  for (let i = 6; i >= 0; i--) {
     const d = new Date(today);
     d.setDate(today.getDate() - i);
     const ds = d.toISOString().slice(0, 10);
     if (Math.random() > 0.3) {
+      const product = state.products[Math.floor(Math.random() * state.products.length)];
       state.sales.push({
         id: uid(),
-        productId: state.products[Math.floor(Math.random() * state.products.length)].id,
+        productId: product.id,
         qty: Math.ceil(Math.random() * 3),
         date: ds,
         note: "",
+        status: product.type === "digital" ? "settled" : statuses[Math.floor(Math.random() * statuses.length)],
         createdAt: Date.now() - i * 86400000,
       });
     }
   }
   state.target = 2000000;
+}
+
+function startClean() {
+  state = defaultState();
+  state.onboarded = true;
   saveState();
+  closeModal("welcomeModal");
+  renderAll();
+  showToast("✨ Mulai bersih — yuk tambah produk pertamamu!");
+  setTimeout(() => switchTab("produk"), 600);
+}
+
+function startWithDemo() {
+  loadDemoData();
+  state.onboarded = true;
+  saveState();
+  closeModal("welcomeModal");
+  renderAll();
+  showToast("📦 Data contoh dimuat — bisa hapus & ganti dengan data Anda");
+}
+
+// Trigger welcome modal kalau belum onboarded
+if (!state.onboarded && state.products.length === 0 && state.sales.length === 0) {
+  setTimeout(() => openModal("welcomeModal"), 300);
 }
 
 /* ========================================================
@@ -2566,7 +2920,7 @@ function renderBulkPreview() {
     okItems.forEach(x => {
       html += `
         <div class="txn-item" style="background: rgba(16,185,129,0.05);">
-          <div class="txn-icon" style="background: ${PLATFORM_GRADIENT[x.product.platform] || PLATFORM_GRADIENT.Lainnya}">
+          <div class="txn-icon" style="background: ${PLATFORM_COLORS[x.product.platform] || PLATFORM_COLORS.Lainnya}">
             ${PLATFORM_ICON[x.product.platform] || "📦"}
           </div>
           <div class="txn-info">
@@ -2780,7 +3134,7 @@ function renderSmartPreview() {
   smartParsedItems.forEach((x, idx) => {
     html += `
       <div class="txn-item" style="background: rgba(56,189,248,0.05);">
-        <div class="txn-icon" style="background: ${PLATFORM_GRADIENT[x.product.platform] || PLATFORM_GRADIENT.Lainnya}">
+        <div class="txn-icon" style="background: ${PLATFORM_COLORS[x.product.platform] || PLATFORM_COLORS.Lainnya}">
           ${PLATFORM_ICON[x.product.platform] || "📦"}
         </div>
         <div class="txn-info">
@@ -3016,7 +3370,73 @@ function handleQuickAction() {
 
 handleQuickAction();
 
-console.log("%c📊 Yanzy Affiliate Hub loaded", "color:#a78bfa;font-size:16px;font-weight:bold;");
+/* ========================================================
+   EVENT LISTENERS — Type radio, product search, FAB context
+   ======================================================== */
+// Type radio change handler
+document.addEventListener("change", (e) => {
+  if (e.target.name === "productType") {
+    setProductType(e.target.value);
+  }
+});
+
+// Product search input
+document.addEventListener("input", (e) => {
+  if (e.target.id === "productSearch") {
+    productSearchQuery = e.target.value.trim();
+    renderProducts();
+  }
+});
+
+// FAB context-aware: action depends on active tab
+function fabAction() {
+  const activeTab = document.querySelector(".tab-btn.active")?.dataset.tab || "dashboard";
+  if (activeTab === "produk") openProductModal();
+  else openSaleModal();
+}
+
+// Override FAB onclick
+const fabEl = document.getElementById("mainFab");
+if (fabEl) {
+  fabEl.onclick = fabAction;
+  // Update FAB title based on tab
+  document.querySelectorAll(".tab-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const tab = btn.dataset.tab;
+      fabEl.title = tab === "produk" ? "Tambah Produk" : "Catat Penjualan";
+    });
+  });
+}
+
+/* ========================================================
+   BACKUP REMINDER — pop-up tiap 7 hari
+   ======================================================== */
+function checkBackupReminder() {
+  if (!state.lastBackup) {
+    state.lastBackup = Date.now();
+    saveState();
+    return;
+  }
+  const daysSince = (Date.now() - state.lastBackup) / (1000 * 60 * 60 * 24);
+  if (daysSince >= 7 && state.sales.length > 0) {
+    setTimeout(() => {
+      if (confirm("💾 Sudah 7 hari belum backup data!\n\nData Anda tersimpan di browser — kalau cache dihapus, semuanya hilang.\n\nDownload backup sekarang?")) {
+        exportData();
+      }
+    }, 2000);
+  }
+}
+checkBackupReminder();
+
+// Update lastBackup saat exportData dipanggil
+const originalExport = exportData;
+exportData = function() {
+  originalExport();
+  state.lastBackup = Date.now();
+  saveState();
+};
+
+console.log("%cYanzy Hub loaded", "color:#6366f1;font-size:14px;font-weight:bold;");
 </script>
 </body>
 </html>
