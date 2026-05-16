@@ -4,7 +4,7 @@
 
 // === KONFIGURASI TOKO ===
 const STORE = {
-    waNumber: "6281234567890",          // ⚠️ GANTI dengan no WA admin (format: 62 + tanpa 0 di depan)
+    waNumber: "6281930563872",          // No WA admin YanzyStore
     storeName: "YanzyStore",
     adminFee: 1000,                      // Biaya admin per transaksi
 };
