@@ -1,0 +1,1235 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="theme-color" content="#0a0118" />
+<title>Yanzy AI Tools — Tools AI Praktis Buat Kamu yang Sering Bingung Bikin Konten</title>
+<style>
+/* ========== RESET & ROOT ========== */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+:root {
+  --bg-0: #0a0118;
+  --bg-1: #14082b;
+  --bg-2: #1c0f3b;
+  --primary: #a78bfa;
+  --primary-2: #ec4899;
+  --primary-3: #38bdf8;
+  --text: #f8fafc;
+  --text-2: #cbd5e1;
+  --text-3: #94a3b8;
+  --border: rgba(255,255,255,0.08);
+  --border-2: rgba(255,255,255,0.14);
+  --card: rgba(255,255,255,0.04);
+  --card-hover: rgba(255,255,255,0.07);
+  --gradient: linear-gradient(135deg, #a78bfa, #ec4899);
+  --gradient-2: linear-gradient(135deg, #38bdf8, #a78bfa);
+  --gradient-text: linear-gradient(135deg, #c4b5fd, #f9a8d4, #93c5fd);
+  --shadow-glow: 0 10px 40px rgba(167, 139, 250, 0.25);
+  --radius: 16px;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Inter", Roboto, sans-serif;
+  background: var(--bg-0);
+  color: var(--text);
+  line-height: 1.6;
+  overflow-x: hidden;
+  position: relative;
+  min-height: 100vh;
+}
+
+/* Aurora background blobs */
+body::before, body::after {
+  content: "";
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(120px);
+  z-index: -1;
+  pointer-events: none;
+}
+body::before {
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, #7c3aed 0%, transparent 70%);
+  top: -200px; left: -150px;
+  opacity: 0.5;
+}
+body::after {
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, #ec4899 0%, transparent 70%);
+  top: 30%; right: -200px;
+  opacity: 0.35;
+}
+
+img, svg { display: block; max-width: 100%; }
+button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+input, textarea, select { font-family: inherit; }
+a { color: inherit; text-decoration: none; }
+
+/* ========== UTILITIES ========== */
+.container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+.gradient-text {
+  background: var(--gradient-text);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.section-title {
+  font-size: clamp(1.7rem, 4vw, 2.4rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  text-align: center;
+  margin-bottom: 12px;
+  line-height: 1.15;
+}
+.section-sub {
+  text-align: center;
+  color: var(--text-2);
+  font-size: 0.98rem;
+  max-width: 600px;
+  margin: 0 auto 40px;
+}
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(167, 139, 250, 0.12);
+  border: 1px solid rgba(167, 139, 250, 0.3);
+  color: #c4b5fd;
+  padding: 6px 14px;
+  border-radius: 30px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  margin-bottom: 18px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 13px 26px;
+  border-radius: 30px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  transition: all 0.25s ease;
+  white-space: nowrap;
+}
+.btn-primary {
+  background: var(--gradient);
+  color: white;
+  box-shadow: var(--shadow-glow);
+}
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 14px 50px rgba(236, 72, 153, 0.4); }
+.btn-ghost {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid var(--border-2);
+  color: var(--text);
+}
+.btn-ghost:hover { background: rgba(255,255,255,0.08); }
+.btn-block { width: 100%; }
+.btn-lg { padding: 16px 32px; font-size: 1rem; }
+
+/* ========== NAVBAR ========== */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(10, 1, 24, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-weight: 800;
+  font-size: 1.1rem;
+  letter-spacing: -0.5px;
+}
+.logo-icon {
+  width: 32px;
+  height: 32px;
+  background: var(--gradient);
+  border-radius: 9px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  box-shadow: var(--shadow-glow);
+}
+.nav-links {
+  display: none;
+  gap: 28px;
+  font-size: 0.9rem;
+  color: var(--text-2);
+}
+.nav-links a { transition: color 0.2s; }
+.nav-links a:hover { color: var(--text); }
+.nav-cta {
+  padding: 9px 18px;
+  font-size: 0.85rem;
+}
+
+@media (min-width: 768px) {
+  .nav-links { display: flex; }
+}
+
+/* ========== HERO ========== */
+.hero {
+  padding: 60px 20px 40px;
+  text-align: center;
+  position: relative;
+}
+.hero h1 {
+  font-size: clamp(2rem, 6vw, 3.6rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  margin-bottom: 18px;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.hero p {
+  color: var(--text-2);
+  font-size: clamp(0.98rem, 2vw, 1.15rem);
+  max-width: 640px;
+  margin: 0 auto 32px;
+  line-height: 1.6;
+}
+.hero-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.hero-stats {
+  display: flex;
+  justify-content: center;
+  gap: 36px;
+  margin-top: 50px;
+  flex-wrap: wrap;
+}
+.hero-stat strong {
+  display: block;
+  font-size: 1.6rem;
+  font-weight: 800;
+  background: var(--gradient-text);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.hero-stat span {
+  font-size: 0.82rem;
+  color: var(--text-3);
+}
+
+/* ========== SECTION SHARED ========== */
+section { padding: 60px 0; position: relative; }
+
+/* ========== TOOLS ========== */
+.tools-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 14px;
+}
+.tool-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+  cursor: pointer;
+  transition: all 0.25s;
+  position: relative;
+  overflow: hidden;
+}
+.tool-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--gradient);
+  opacity: 0;
+  transition: opacity 0.25s;
+  border-radius: var(--radius);
+  z-index: -1;
+}
+.tool-card:hover {
+  background: var(--card-hover);
+  border-color: var(--border-2);
+  transform: translateY(-4px);
+}
+.tool-card.active {
+  border-color: rgba(167, 139, 250, 0.5);
+  background: rgba(167, 139, 250, 0.08);
+}
+.tool-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: var(--gradient);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  margin-bottom: 14px;
+  box-shadow: 0 6px 20px rgba(167, 139, 250, 0.25);
+}
+.tool-card h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+.tool-card p {
+  font-size: 0.84rem;
+  color: var(--text-3);
+  line-height: 1.5;
+}
+
+/* ========== GENERATOR ========== */
+.generator-section {
+  background: linear-gradient(180deg, transparent, rgba(167, 139, 250, 0.04));
+}
+.generator-card {
+  background: rgba(20, 8, 43, 0.6);
+  border: 1px solid var(--border-2);
+  border-radius: 22px;
+  padding: 28px;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  margin-top: 16px;
+}
+.generator-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+.generator-header .tool-icon {
+  width: 50px;
+  height: 50px;
+  margin: 0;
+  flex-shrink: 0;
+}
+.generator-header h3 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+.generator-header p {
+  font-size: 0.85rem;
+  color: var(--text-3);
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+  margin-bottom: 18px;
+}
+@media (min-width: 600px) {
+  .form-grid { grid-template-columns: 1fr 1fr; }
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.82rem;
+  font-weight: 600;
+  margin-bottom: 7px;
+  color: var(--text-2);
+}
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 12px 14px;
+  background: rgba(255,255,255,0.04);
+  border: 1.5px solid var(--border);
+  border-radius: 12px;
+  color: var(--text);
+  font-size: 0.92rem;
+  outline: none;
+  transition: all 0.2s;
+}
+.form-group input::placeholder,
+.form-group textarea::placeholder { color: var(--text-3); }
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: var(--primary);
+  background: rgba(167, 139, 250, 0.05);
+  box-shadow: 0 0 0 3px rgba(167, 139, 250, 0.15);
+}
+.form-group select {
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3e%3cpath fill='%23cbd5e1' d='M6 8L0 0h12z'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  padding-right: 36px;
+}
+.form-group select option { background: var(--bg-1); color: var(--text); }
+
+/* Output */
+.output {
+  margin-top: 22px;
+  padding: 22px;
+  background: rgba(0,0,0,0.3);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  min-height: 120px;
+}
+.output-empty {
+  text-align: center;
+  color: var(--text-3);
+  padding: 30px 12px;
+  font-size: 0.92rem;
+}
+.output-empty-icon { font-size: 2.4rem; margin-bottom: 8px; }
+
+.output-title {
+  font-weight: 700;
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.output-title .pill {
+  font-size: 0.7rem;
+  background: rgba(167, 139, 250, 0.2);
+  color: #c4b5fd;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-weight: 600;
+}
+
+.result-item {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 14px 16px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  transition: all 0.2s;
+}
+.result-item:hover {
+  background: rgba(255,255,255,0.07);
+  border-color: var(--border-2);
+}
+.result-num {
+  flex-shrink: 0;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--gradient);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: white;
+}
+.result-text {
+  flex: 1;
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: var(--text);
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+.result-label {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #c4b5fd;
+  margin-bottom: 6px;
+}
+.copy-btn {
+  flex-shrink: 0;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid var(--border);
+  padding: 5px 10px;
+  border-radius: 8px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--text-2);
+  transition: all 0.2s;
+}
+.copy-btn:hover {
+  background: rgba(167, 139, 250, 0.15);
+  color: white;
+  border-color: rgba(167, 139, 250, 0.4);
+}
+.copy-btn.copied {
+  background: rgba(34, 197, 94, 0.2);
+  color: #86efac;
+  border-color: rgba(34, 197, 94, 0.4);
+}
+
+.script-block {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 12px;
+}
+.script-block-title {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #c4b5fd;
+  margin-bottom: 8px;
+}
+
+/* ========== PRICING ========== */
+.pricing-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+@media (min-width: 768px) {
+  .pricing-grid { grid-template-columns: repeat(3, 1fr); }
+}
+.price-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 28px 24px;
+  position: relative;
+  transition: all 0.3s;
+}
+.price-card.featured {
+  border-color: rgba(167, 139, 250, 0.4);
+  background: linear-gradient(180deg, rgba(167, 139, 250, 0.08), rgba(236, 72, 153, 0.04));
+  transform: scale(1);
+}
+@media (min-width: 768px) {
+  .price-card.featured { transform: scale(1.04); }
+}
+.price-badge {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--gradient);
+  color: white;
+  padding: 5px 14px;
+  border-radius: 20px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+.price-name {
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+.price-tagline {
+  font-size: 0.85rem;
+  color: var(--text-3);
+  margin-bottom: 18px;
+}
+.price-amount {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  margin-bottom: 22px;
+}
+.price-amount strong {
+  font-size: 2.2rem;
+  font-weight: 800;
+  letter-spacing: -1px;
+}
+.price-amount span { color: var(--text-3); font-size: 0.85rem; }
+.price-features {
+  list-style: none;
+  margin-bottom: 22px;
+}
+.price-features li {
+  padding: 7px 0;
+  font-size: 0.88rem;
+  color: var(--text-2);
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+.price-features li::before {
+  content: "✓";
+  color: #a78bfa;
+  font-weight: 800;
+  flex-shrink: 0;
+}
+
+/* ========== FAQ ========== */
+.faq-list { max-width: 760px; margin: 0 auto; }
+.faq-item {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  margin-bottom: 10px;
+  overflow: hidden;
+  transition: all 0.2s;
+}
+.faq-item:hover { border-color: var(--border-2); }
+.faq-q {
+  width: 100%;
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-align: left;
+  gap: 12px;
+}
+.faq-icon {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: rgba(167, 139, 250, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  transition: transform 0.25s;
+}
+.faq-item.open .faq-icon { transform: rotate(45deg); }
+.faq-a {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+.faq-a-inner {
+  padding: 0 20px 18px;
+  color: var(--text-2);
+  font-size: 0.9rem;
+  line-height: 1.65;
+}
+
+/* ========== FOOTER ========== */
+.footer {
+  border-top: 1px solid var(--border);
+  padding: 36px 20px 28px;
+  text-align: center;
+  color: var(--text-3);
+  font-size: 0.85rem;
+}
+.footer-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+  color: var(--text);
+  font-weight: 700;
+}
+.footer-links {
+  display: flex;
+  gap: 22px;
+  justify-content: center;
+  margin: 16px 0 14px;
+  flex-wrap: wrap;
+  font-size: 0.85rem;
+}
+.footer-links a:hover { color: var(--text); }
+.footer-credit { font-size: 0.78rem; color: var(--text-3); }
+
+/* ========== TOAST ========== */
+.toast {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%) translateY(120px);
+  background: rgba(10, 1, 24, 0.95);
+  border: 1px solid var(--border-2);
+  color: var(--text);
+  padding: 12px 22px;
+  border-radius: 30px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  z-index: 200;
+  opacity: 0;
+  transition: all 0.3s;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+  backdrop-filter: blur(20px);
+}
+.toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* ========== ANIMATIONS ========== */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.fade-up { animation: fadeUp 0.4s ease both; }
+</style>
+</head>
+<body>
+
+<!-- ========== NAVBAR ========== -->
+<nav class="navbar">
+  <div class="nav-inner">
+    <a href="#" class="logo">
+      <span class="logo-icon">✨</span>
+      Yanzy <span class="gradient-text">AI Tools</span>
+    </a>
+    <div class="nav-links">
+      <a href="#tools">Tools</a>
+      <a href="#generator">Generator</a>
+      <a href="#pricing">Harga</a>
+      <a href="#faq">FAQ</a>
+    </div>
+    <a href="#generator" class="btn btn-primary nav-cta">Coba Gratis</a>
+  </div>
+</nav>
+
+<!-- ========== HERO ========== -->
+<header class="hero">
+  <div class="container">
+    <div class="badge">⚡ Powered by AI · 100% Indonesian</div>
+    <h1>Tools AI Praktis Buat Kamu yang Sering <span class="gradient-text">Bingung Bikin Konten</span></h1>
+    <p>Dari hook, caption, CTA, sampai prompt siap pakai — semua bisa dibuat dalam satu tempat. Cocok buat affiliate marketer, kreator, & online seller.</p>
+    <div class="hero-actions">
+      <a href="#generator" class="btn btn-primary btn-lg">Coba Generate Sekarang →</a>
+      <a href="#tools" class="btn btn-ghost btn-lg">Lihat Tools</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat"><strong>8+</strong><span>AI Tools</span></div>
+      <div class="hero-stat"><strong>10K+</strong><span>Konten Dibuat</span></div>
+      <div class="hero-stat"><strong>5★</strong><span>Rating User</span></div>
+    </div>
+  </div>
+</header>
+
+<!-- ========== TOOLS ========== -->
+<section id="tools">
+  <div class="container">
+    <h2 class="section-title">8 AI Tools <span class="gradient-text">Lengkap</span></h2>
+    <p class="section-sub">Pilih satu, isi formulirnya, langsung dapet hasil yang siap dipakai. Tanpa training, tanpa ribet.</p>
+    <div class="tools-grid" id="toolsGrid"></div>
+  </div>
+</section>
+
+<!-- ========== GENERATOR ========== -->
+<section id="generator" class="generator-section">
+  <div class="container">
+    <h2 class="section-title">Mulai <span class="gradient-text">Generate</span> Sekarang</h2>
+    <p class="section-sub">Pilih tool, isi data, klik tombol — hasilnya muncul dalam hitungan detik.</p>
+
+    <div class="generator-card">
+      <div class="generator-header">
+        <div class="tool-icon" id="genIcon">🎯</div>
+        <div>
+          <h3 id="genTitle">Hook Generator</h3>
+          <p id="genDesc">Bikin hook yang bikin orang berhenti scroll</p>
+        </div>
+      </div>
+
+      <div class="form-grid">
+        <div class="form-group">
+          <label>Jenis Konten / Tool</label>
+          <select id="toolType">
+            <option value="hook">🎯 Hook Generator</option>
+            <option value="caption">📝 Caption Generator</option>
+            <option value="cta">🔥 CTA Generator</option>
+            <option value="prompt">🤖 Prompt Generator</option>
+            <option value="ide">💡 Ide Konten Generator</option>
+            <option value="script">🎬 Script Video Generator</option>
+            <option value="copy">💰 Copywriting Produk</option>
+            <option value="bio">👤 Bio Profil Generator</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Niche / Industri</label>
+          <input type="text" id="niche" placeholder="Contoh: Skincare, Fashion, F&B" value="Skincare" />
+        </div>
+
+        <div class="form-group">
+          <label>Produk / Topik</label>
+          <input type="text" id="produk" placeholder="Contoh: Serum Vitamin C" value="Serum Vitamin C" />
+        </div>
+
+        <div class="form-group">
+          <label>Target Audiens</label>
+          <input type="text" id="audiens" placeholder="Contoh: Mahasiswa, Ibu rumah tangga" value="Wanita 20-35 tahun" />
+        </div>
+
+        <div class="form-group">
+          <label>Gaya Bahasa</label>
+          <select id="gaya">
+            <option value="santai">Santai & Friendly</option>
+            <option value="profesional">Profesional</option>
+            <option value="agresif">Agresif & Persuasif</option>
+            <option value="lucu">Lucu & Receh</option>
+            <option value="emosional">Emosional & Storytelling</option>
+            <option value="formal">Formal</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Platform Tujuan</label>
+          <select id="platform">
+            <option value="instagram">Instagram</option>
+            <option value="tiktok">TikTok</option>
+            <option value="threads">Threads</option>
+            <option value="facebook">Facebook</option>
+            <option value="shopee">Shopee / Marketplace</option>
+            <option value="whatsapp">WhatsApp Status</option>
+          </select>
+        </div>
+      </div>
+
+      <button class="btn btn-primary btn-block btn-lg" onclick="generate()">
+        ✨ Generate Sekarang
+      </button>
+
+      <div class="output" id="output">
+        <div class="output-empty">
+          <div class="output-empty-icon">🪄</div>
+          Hasil generate akan muncul di sini
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== PRICING ========== -->
+<section id="pricing">
+  <div class="container">
+    <h2 class="section-title">Pilih Paket yang <span class="gradient-text">Cocok</span></h2>
+    <p class="section-sub">Mulai gratis, upgrade kapan aja. Tanpa kontrak, bisa stop kapan mau.</p>
+
+    <div class="pricing-grid">
+      <div class="price-card">
+        <div class="price-name">Free</div>
+        <div class="price-tagline">Cocok buat kamu yang baru mulai</div>
+        <div class="price-amount"><strong>Rp 0</strong><span>/ selamanya</span></div>
+        <ul class="price-features">
+          <li>Akses 4 AI tools dasar</li>
+          <li>Maks 5 generate per hari</li>
+          <li>Output standar</li>
+          <li>Support komunitas</li>
+        </ul>
+        <a href="#generator" class="btn btn-ghost btn-block">Coba Gratis</a>
+      </div>
+
+      <div class="price-card featured">
+        <div class="price-badge">PALING POPULER</div>
+        <div class="price-name">Pro</div>
+        <div class="price-tagline">Buat kreator & seller serius</div>
+        <div class="price-amount"><strong>Rp 49rb</strong><span>/ bulan</span></div>
+        <ul class="price-features">
+          <li>Semua 8 AI tools premium</li>
+          <li>Generate unlimited</li>
+          <li>Output kualitas tinggi</li>
+          <li>Save history konten</li>
+          <li>Priority support 24/7</li>
+        </ul>
+        <a href="#generator" class="btn btn-primary btn-block">Mulai Pro</a>
+      </div>
+
+      <div class="price-card">
+        <div class="price-name">Lifetime</div>
+        <div class="price-tagline">Bayar sekali, akses selamanya</div>
+        <div class="price-amount"><strong>Rp 299rb</strong><span>/ sekali bayar</span></div>
+        <ul class="price-features">
+          <li>Semua fitur Pro</li>
+          <li>Update gratis selamanya</li>
+          <li>Custom prompt template</li>
+          <li>Akses tools baru duluan</li>
+          <li>Konsultasi 1-on-1</li>
+        </ul>
+        <a href="#generator" class="btn btn-ghost btn-block">Beli Lifetime</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== FAQ ========== -->
+<section id="faq">
+  <div class="container">
+    <h2 class="section-title">Pertanyaan yang <span class="gradient-text">Sering Ditanya</span></h2>
+    <p class="section-sub">Belum yakin? Mungkin jawabannya ada di bawah.</p>
+
+    <div class="faq-list" id="faqList"></div>
+  </div>
+</section>
+
+<!-- ========== FOOTER ========== -->
+<footer class="footer">
+  <div class="footer-logo">
+    <span class="logo-icon">✨</span>
+    Yanzy <span class="gradient-text">AI Tools</span>
+  </div>
+  <p>Tools AI praktis buat bikin konten promosi yang ngegas.</p>
+  <div class="footer-links">
+    <a href="#tools">Tools</a>
+    <a href="#generator">Generator</a>
+    <a href="#pricing">Harga</a>
+    <a href="#faq">FAQ</a>
+  </div>
+  <div class="footer-credit">© 2026 Yanzy AI Tools · Dibuat oleh @yanzy17</div>
+</footer>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* ========================================================
+   DATA
+   ======================================================== */
+const TOOLS = [
+  { id: "hook",    name: "Hook Generator",      desc: "Bikin hook 3 detik pertama yang nampar",                  icon: "🎯" },
+  { id: "caption", name: "Caption Generator",   desc: "Caption pendek, sedang, dan panjang siap upload",         icon: "📝" },
+  { id: "cta",     name: "CTA Generator",       desc: "Call to action yang bikin audiens langsung action",       icon: "🔥" },
+  { id: "prompt",  name: "Prompt Generator",    desc: "Prompt siap pakai untuk ChatGPT, Gemini, Claude",         icon: "🤖" },
+  { id: "ide",     name: "Ide Konten Generator",desc: "10 ide konten viral khusus niche kamu",                   icon: "💡" },
+  { id: "script",  name: "Script Video",         desc: "Naskah video TikTok/Reels lengkap (hook-body-CTA)",       icon: "🎬" },
+  { id: "copy",    name: "Copywriting Produk",   desc: "Copy jualan ala marketplace yang convert tinggi",         icon: "💰" },
+  { id: "bio",     name: "Bio Profil Generator", desc: "Bio Instagram/TikTok yang catchy & jelas posisi kamu",   icon: "👤" },
+];
+
+const FAQS = [
+  {
+    q: "Apakah tools ini cocok untuk pemula?",
+    a: "Banget cocok! Yanzy AI Tools dirancang untuk yang baru mulai jualan online dan masih bingung bikin kata-kata. Kamu cukup isi form (niche, produk, audiens), klik Generate, langsung dapet hasil yang tinggal copy-paste."
+  },
+  {
+    q: "Apakah bisa dipakai untuk affiliate?",
+    a: "Sangat bisa! Tools ini cocok buat affiliate marketer Shopee, TikTok Shop, dan platform lain. Kamu bisa generate hook scroll-stopper, caption persuasif, sampai CTA yang nge-trigger pembeli buat klik link affiliate kamu."
+  },
+  {
+    q: "Apakah hasilnya bisa langsung dipakai?",
+    a: "Iya, semua hasil sudah dalam format siap pakai. Tinggal klik tombol Salin, paste ke Instagram/TikTok/Threads/marketplace kamu. Kalau mau dipersonalisasi sedikit juga bisa, tinggal edit dikit aja."
+  },
+  {
+    q: "Apakah bisa dipakai lewat HP?",
+    a: "Iya 100% mobile-friendly. Tampilan otomatis menyesuaikan layar HP, jadi kamu bisa generate konten kapan aja, di mana aja — bahkan saat lagi nunggu antrian atau di kendaraan umum."
+  },
+];
+
+/* ========================================================
+   GENERATOR TEMPLATES
+   ======================================================== */
+function pick(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
+
+function genHooks({ niche, produk, audiens, gaya, platform }) {
+  const variations = [
+    [
+      `Stop scroll dulu! Buat ${audiens} yang masih ribet sama ${niche.toLowerCase()}, ini wajib kamu tau...`,
+      `Aku gak nyangka ${produk} bisa bikin ${audiens.toLowerCase()} ngerasain hasil cuma dalam 7 hari.`,
+      `POV: kamu nemu cara baru ${niche.toLowerCase()} yang gak bikin kantong bolong.`,
+      `1 kesalahan ${audiens.toLowerCase()} pas pilih ${produk.toLowerCase()} — dan cara cepat memperbaikinya.`,
+      `Kalau kamu masih pakai ${niche.toLowerCase()} cara lama, kamu wajib lihat ini sebelum nyesel.`,
+    ],
+    [
+      `${audiens} wajib tahu: ${produk} bisa jadi game changer kamu di 2026.`,
+      `Ini alasan kenapa ${produk.toLowerCase()} jadi rebutan ${audiens.toLowerCase()} bulan ini.`,
+      `Aku coba ${produk.toLowerCase()} selama 14 hari, dan ini hasilnya...`,
+      `Berhenti cari ${niche.toLowerCase()} yang murahan — ini yang beneran works.`,
+      `Rahasia ${audiens.toLowerCase()} yang glow-up dengan ${produk.toLowerCase()} (no gimmick).`,
+    ],
+  ];
+  return pick(variations);
+}
+
+function genCaptions({ niche, produk, audiens, gaya, platform }) {
+  const short = `${produk} buat ${audiens.toLowerCase()} yang pengen hasil maksimal tanpa ribet. Cek sekarang sebelum kehabisan! ✨`;
+  const medium = `Lagi cari ${produk.toLowerCase()} yang bener-bener works?\n\nBuat ${audiens.toLowerCase()} yang udah bosen sama ${niche.toLowerCase()} biasa-biasa aja, ini jawabannya.\n\nGak cuma murah, hasilnya juga kelihatan dalam waktu cepat. Klik link di bio buat info lengkapnya 👇`;
+  const long = `Halo ${audiens}! 👋\n\nKenalin, ${produk} — solusi ${niche.toLowerCase()} yang udah bantu ribuan orang dapet hasil nyata.\n\n✨ Kenapa ${produk} beda?\n• Formula premium tapi harga ramah dompet\n• Cocok buat pemula sampai expert\n• Hasil keliatan dalam hitungan minggu\n• Garansi balik modal kalau gak puas\n\nUdah banyak ${audiens.toLowerCase()} yang berhasil dengan ${produk.toLowerCase()} ini. Sekarang giliran kamu.\n\n💬 DM "INFO" buat dapet harga spesial hari ini\n🔗 Atau klik link di bio sekarang juga\n\n#${niche.replace(/\s/g,"")} #${produk.replace(/\s/g,"")} #${audiens.replace(/\s/g,"")}`;
+  return [
+    { label: "Caption Pendek", text: short },
+    { label: "Caption Sedang", text: medium },
+    { label: "Caption Panjang", text: long },
+  ];
+}
+
+function genCTAs({ produk, audiens, platform }) {
+  const platformAction = platform === "shopee" ? "Klik keranjang oranye" : platform === "whatsapp" ? "Chat admin sekarang" : "Klik link di bio";
+  return [
+    `${platformAction} sebelum stok ${produk.toLowerCase()} habis hari ini! 🔥`,
+    `DM "INFO" sekarang & dapet diskon khusus ${audiens.toLowerCase()} pertama hari ini.`,
+    `Tap link → Klaim ${produk} kamu sebelum harga normal balik lagi besok.`,
+    `Kalau kamu serius mau ${audiens.toLowerCase()} versi terbaik, klik tombol di bawah sekarang.`,
+    `Order ${produk.toLowerCase()} hari ini, garansi balik modal 100% kalau gak puas. Mulai dari sini 👇`,
+  ];
+}
+
+function genPrompts({ niche, produk, audiens, gaya, platform }) {
+  return [
+    `Bertindaklah sebagai copywriter ahli niche ${niche}.\n\nTugas:\nBuatkan 5 caption ${platform} untuk produk "${produk}" dengan target audiens "${audiens}". Gunakan gaya bahasa "${gaya}". Setiap caption harus mengandung:\n1. Hook yang kuat di kalimat pertama\n2. Manfaat utama produk (3 poin)\n3. Social proof / testimoni\n4. Call-to-action yang spesifik\n\nFormat: caption siap copy-paste, panjang 4-6 kalimat per caption, gunakan emoji secukupnya.`,
+    `Bertindaklah sebagai content strategist ${niche} berpengalaman 10 tahun.\n\nBuatkan 7 ide konten video ${platform} yang viral tentang "${produk}" untuk audiens "${audiens}". Setiap ide harus:\n- Mengikuti format hook + value + CTA\n- Punya angle/hook unik (jangan generik)\n- Menjelaskan kenapa konten ini akan banyak ditonton\n- Maksimal durasi 60 detik\n\nFormat output: nomor + judul + hook 3 detik pertama + breakdown isi.`,
+    `Kamu adalah marketer afiliasi top di Indonesia khusus niche ${niche}.\n\nTugas: Tulis 1 script video pendek (30-45 detik) untuk promosi "${produk}" di ${platform}, target audiens "${audiens}", gaya "${gaya}".\n\nStruktur:\n- Hook 3 detik pertama (provokatif tapi gak clickbait)\n- Body 20 detik (3 manfaat + bukti)\n- CTA jelas (apa yang harus dilakukan viewer)\n\nTambahkan: hashtag relevan + ide caption pendamping.`,
+  ];
+}
+
+function genIdeKonten({ niche, produk, audiens, platform }) {
+  return [
+    `5 kesalahan ${audiens.toLowerCase()} pas pilih ${niche.toLowerCase()} (no.3 paling umum)`,
+    `POV: pertama kali coba ${produk.toLowerCase()} — reaksi ${audiens.toLowerCase()} yang gak diduga`,
+    `Before/after pakai ${produk.toLowerCase()} 14 hari, hasilnya ngagetin`,
+    `${produk.toLowerCase()} murah vs mahal, mana yang beneran worth it?`,
+    `3 tips ${niche.toLowerCase()} yang gak diajarin influencer manapun`,
+    `Aku kasih ${produk.toLowerCase()} ke ${audiens.toLowerCase()} random, ini reaksinya`,
+    `Bandingin 3 brand ${niche.toLowerCase()} populer, pemenangnya bikin shock`,
+    `Day in my life pakai ${produk.toLowerCase()} (rutinitas ${audiens.toLowerCase()} ideal)`,
+    `Mitos ${niche.toLowerCase()} yang masih dipercaya ${audiens.toLowerCase()}, padahal bohong`,
+    `${produk.toLowerCase()} beneran works? Aku review jujur tanpa endorse`,
+  ];
+}
+
+function genScript({ niche, produk, audiens, gaya, platform }) {
+  return {
+    hook: `Stop dulu! Kalau kamu ${audiens.toLowerCase()} dan masih ribet sama ${niche.toLowerCase()}, video ini wajib kamu tonton sampai habis...`,
+    body: `Jadi gini, aku coba ${produk} selama 14 hari terakhir.\n\nAwalnya skeptis, karena udah pernah pake produk sejenis tapi hasilnya zonk.\n\nTapi ternyata ${produk.toLowerCase()} beda. Tiga hal yang bikin aku kaget:\n\n1. Hasilnya keliatan dari minggu pertama\n2. Cocok buat ${audiens.toLowerCase()} yang sibuk\n3. Harga jauh lebih masuk akal dibanding kompetitor\n\nDan yang bikin makin yakin — udah ratusan ${audiens.toLowerCase()} kasih review positif.`,
+    cta: `Kalau kamu mau coba juga, klik link di bio. Ada promo khusus 24 jam ke depan, jadi jangan kelamaan mikir. Save video ini biar gak lupa! 🔥`,
+    hashtags: `#${niche.replace(/\s/g,"").toLowerCase()} #${produk.replace(/\s/g,"").toLowerCase()} #${platform} #fyp #viral #review`,
+  };
+}
+
+function genCopywriting({ niche, produk, audiens, gaya, platform }) {
+  return [
+    { label: "Headline", text: `${produk} Premium — Solusi ${niche} Buat ${audiens} yang Pengen Hasil Maksimal Tanpa Ribet ✨` },
+    { label: "Sub-headline", text: `Diformulasikan khusus untuk ${audiens.toLowerCase()}, sudah dipercaya 10.000+ pelanggan di seluruh Indonesia.` },
+    { label: "Manfaat Utama", text: `✓ Hasil terlihat dalam 7-14 hari\n✓ Aman & cocok untuk ${audiens.toLowerCase()}\n✓ Bahan premium, harga ramah dompet\n✓ Mudah dipakai, gak perlu ribet\n✓ Garansi balik modal 100%` },
+    { label: "Social Proof", text: `"Aku udah coba berbagai ${niche.toLowerCase()}, tapi cuma ${produk} yang beneran kasih hasil. Recommended banget buat ${audiens.toLowerCase()} yang sibuk!" — Sari, ${audiens}` },
+    { label: "CTA Final", text: `🔥 PROMO HARI INI: Diskon 30% + Free Ongkir!\n\n💳 Klik tombol BELI di bawah\n📱 Atau DM "INFO ${produk.toUpperCase()}" untuk konsultasi gratis\n\n⚠️ Stok terbatas, harga normal mulai besok!` },
+  ];
+}
+
+function genBios({ niche, produk, audiens, gaya }) {
+  return [
+    { label: "Versi Profesional", text: `✨ ${niche} Specialist\n📍 Bantuin ${audiens.toLowerCase()} dapet hasil nyata\n🎁 Free tips tiap minggu\n👇 Order ${produk.toLowerCase()} di sini` },
+    { label: "Versi Santai", text: `Halo, aku spesialis ${niche.toLowerCase()} 👋\nFokus bantuin ${audiens.toLowerCase()} biar hidupnya lebih gampang ✨\nSemua info & order ada di link bawah ⬇️` },
+    { label: "Versi Hard Selling", text: `🔥 ${produk.toUpperCase()} READY!\n📦 Pengiriman seluruh Indonesia\n💯 Garansi 100% atau uang balik\n🎁 Hari ini diskon 30% — klik link 👇` },
+    { label: "Versi Storytelling", text: `Dulu aku ${audiens.toLowerCase()} biasa yang struggle sama ${niche.toLowerCase()}.\nSampai aku nemu ${produk.toLowerCase()} & hidup berubah.\nSekarang giliran kamu ✨ — info di bawah` },
+  ];
+}
+
+/* ========================================================
+   RENDER UI
+   ======================================================== */
+function renderTools() {
+  const grid = document.getElementById("toolsGrid");
+  grid.innerHTML = TOOLS.map(t => `
+    <div class="tool-card" data-tool="${t.id}" onclick="selectTool('${t.id}')">
+      <div class="tool-icon">${t.icon}</div>
+      <h3>${t.name}</h3>
+      <p>${t.desc}</p>
+    </div>
+  `).join("");
+}
+
+function renderFaq() {
+  const list = document.getElementById("faqList");
+  list.innerHTML = FAQS.map((f, i) => `
+    <div class="faq-item" data-idx="${i}">
+      <button class="faq-q" onclick="toggleFaq(${i})">
+        <span>${f.q}</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a"><div class="faq-a-inner">${f.a}</div></div>
+    </div>
+  `).join("");
+}
+
+function toggleFaq(idx) {
+  const item = document.querySelector(`.faq-item[data-idx="${idx}"]`);
+  const a = item.querySelector(".faq-a");
+  const open = item.classList.toggle("open");
+  a.style.maxHeight = open ? a.scrollHeight + "px" : "0";
+}
+
+function selectTool(id) {
+  document.getElementById("toolType").value = id;
+  document.querySelectorAll(".tool-card").forEach(c => {
+    c.classList.toggle("active", c.dataset.tool === id);
+  });
+  updateGeneratorHeader();
+  document.getElementById("generator").scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
+function updateGeneratorHeader() {
+  const id = document.getElementById("toolType").value;
+  const tool = TOOLS.find(t => t.id === id);
+  document.getElementById("genIcon").textContent = tool.icon;
+  document.getElementById("genTitle").textContent = tool.name;
+  document.getElementById("genDesc").textContent = tool.desc;
+  document.querySelectorAll(".tool-card").forEach(c => {
+    c.classList.toggle("active", c.dataset.tool === id);
+  });
+}
+
+document.getElementById("toolType").addEventListener("change", updateGeneratorHeader);
+
+/* ========================================================
+   GENERATE LOGIC
+   ======================================================== */
+function generate() {
+  const data = {
+    type:    document.getElementById("toolType").value,
+    niche:   document.getElementById("niche").value.trim() || "Bisnis",
+    produk:  document.getElementById("produk").value.trim() || "Produk Kamu",
+    audiens: document.getElementById("audiens").value.trim() || "Audiens kamu",
+    gaya:    document.getElementById("gaya").value,
+    platform:document.getElementById("platform").value,
+  };
+
+  const out = document.getElementById("output");
+  out.innerHTML = '<div class="output-empty"><div class="output-empty-icon">⚡</div>Sedang generate...</div>';
+
+  // Simulasi loading sebentar biar smooth
+  setTimeout(() => renderResult(data), 400);
+}
+
+function renderResult(data) {
+  const out = document.getElementById("output");
+  const tool = TOOLS.find(t => t.id === data.type);
+  let html = `<div class="output-title">${tool.icon} ${tool.name} <span class="pill">${data.platform.toUpperCase()}</span></div>`;
+
+  if (data.type === "hook") {
+    const hooks = genHooks(data);
+    html += hooks.map((h, i) => itemHTML(i + 1, h)).join("");
+  }
+  else if (data.type === "caption") {
+    const caps = genCaptions(data);
+    html += caps.map((c, i) => labeledHTML(i + 1, c.label, c.text)).join("");
+  }
+  else if (data.type === "cta") {
+    const ctas = genCTAs(data);
+    html += ctas.map((c, i) => itemHTML(i + 1, c)).join("");
+  }
+  else if (data.type === "prompt") {
+    const prompts = genPrompts(data);
+    html += prompts.map((p, i) => itemHTML(i + 1, p)).join("");
+  }
+  else if (data.type === "ide") {
+    const ide = genIdeKonten(data);
+    html += ide.map((i, idx) => itemHTML(idx + 1, i)).join("");
+  }
+  else if (data.type === "script") {
+    const s = genScript(data);
+    html += scriptBlock("HOOK (3 detik pertama)", s.hook);
+    html += scriptBlock("BODY (Isi Utama)", s.body);
+    html += scriptBlock("CTA (Penutup)", s.cta);
+    html += scriptBlock("HASHTAG", s.hashtags);
+  }
+  else if (data.type === "copy") {
+    const copy = genCopywriting(data);
+    html += copy.map((c, i) => labeledHTML(i + 1, c.label, c.text)).join("");
+  }
+  else if (data.type === "bio") {
+    const bios = genBios(data);
+    html += bios.map((b, i) => labeledHTML(i + 1, b.label, b.text)).join("");
+  }
+
+  out.innerHTML = html;
+  // animate items
+  out.querySelectorAll(".result-item, .script-block").forEach((el, i) => {
+    el.style.animationDelay = (i * 60) + "ms";
+    el.classList.add("fade-up");
+  });
+}
+
+function itemHTML(num, text) {
+  const safe = escapeHtml(text);
+  return `
+    <div class="result-item">
+      <div class="result-num">${num}</div>
+      <div class="result-text">${safe}</div>
+      <button class="copy-btn" onclick="copyText(this, \`${escapeBackticks(text)}\`)">Salin</button>
+    </div>
+  `;
+}
+
+function labeledHTML(num, label, text) {
+  const safe = escapeHtml(text);
+  return `
+    <div class="result-item">
+      <div class="result-num">${num}</div>
+      <div style="flex:1">
+        <span class="result-label">${label}</span>
+        <div class="result-text">${safe}</div>
+      </div>
+      <button class="copy-btn" onclick="copyText(this, \`${escapeBackticks(text)}\`)">Salin</button>
+    </div>
+  `;
+}
+
+function scriptBlock(title, text) {
+  const safe = escapeHtml(text);
+  return `
+    <div class="script-block">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+        <div class="script-block-title">${title}</div>
+        <button class="copy-btn" onclick="copyText(this, \`${escapeBackticks(text)}\`)">Salin</button>
+      </div>
+      <div class="result-text">${safe}</div>
+    </div>
+  `;
+}
+
+function escapeHtml(str) {
+  return String(str)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;");
+}
+function escapeBackticks(str) {
+  return String(str).replace(/\\/g, "\\\\").replace(/`/g, "\\`").replace(/\$/g, "\\$");
+}
+
+/* ========================================================
+   COPY + TOAST
+   ======================================================== */
+function copyText(btn, text) {
+  navigator.clipboard?.writeText(text).then(() => {
+    const original = btn.textContent;
+    btn.textContent = "✓ Tersalin";
+    btn.classList.add("copied");
+    showToast("✅ Berhasil disalin ke clipboard");
+    setTimeout(() => {
+      btn.textContent = original;
+      btn.classList.remove("copied");
+    }, 1800);
+  }).catch(() => showToast("❌ Gagal menyalin"));
+}
+
+let toastTimer;
+function showToast(msg) {
+  const t = document.getElementById("toast");
+  t.textContent = msg;
+  t.classList.add("show");
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.classList.remove("show"), 2000);
+}
+
+/* ========================================================
+   INIT
+   ======================================================== */
+renderTools();
+renderFaq();
+updateGeneratorHeader();
+
+console.log("%c✨ Yanzy AI Tools loaded", "color:#a78bfa;font-size:16px;font-weight:bold;");
+</script>
+</body>
+</html>
