@@ -1,0 +1,2142 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="theme-color" content="#0a0118" />
+<title>Yanzy Affiliate Hub — Dashboard Affiliate & Produk Digital</title>
+<style>
+/* ========== RESET & ROOT ========== */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+:root {
+  --bg-0: #0a0118;
+  --bg-1: #14082b;
+  --bg-2: #1c0f3b;
+  --primary: #a78bfa;
+  --primary-2: #ec4899;
+  --primary-3: #38bdf8;
+  --green: #10b981;
+  --orange: #f59e0b;
+  --red: #ef4444;
+  --text: #f8fafc;
+  --text-2: #cbd5e1;
+  --text-3: #94a3b8;
+  --text-4: #64748b;
+  --border: rgba(255,255,255,0.08);
+  --border-2: rgba(255,255,255,0.14);
+  --card: rgba(255,255,255,0.04);
+  --card-hover: rgba(255,255,255,0.07);
+  --gradient: linear-gradient(135deg, #a78bfa, #ec4899);
+  --gradient-2: linear-gradient(135deg, #38bdf8, #a78bfa);
+  --gradient-green: linear-gradient(135deg, #10b981, #34d399);
+  --gradient-orange: linear-gradient(135deg, #f59e0b, #f97316);
+  --gradient-text: linear-gradient(135deg, #c4b5fd, #f9a8d4, #93c5fd);
+  --shadow-glow: 0 10px 40px rgba(167, 139, 250, 0.25);
+  --radius: 16px;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Inter", Roboto, sans-serif;
+  background: var(--bg-0);
+  color: var(--text);
+  line-height: 1.5;
+  overflow-x: hidden;
+  position: relative;
+  min-height: 100vh;
+  padding-bottom: 80px;
+}
+
+body::before, body::after {
+  content: "";
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(120px);
+  z-index: -1;
+  pointer-events: none;
+}
+body::before {
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, #7c3aed 0%, transparent 70%);
+  top: -200px; left: -150px;
+  opacity: 0.45;
+}
+body::after {
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, #ec4899 0%, transparent 70%);
+  top: 40%; right: -200px;
+  opacity: 0.3;
+}
+
+button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+input, textarea, select { font-family: inherit; }
+a { color: inherit; text-decoration: none; }
+
+.container { max-width: 1200px; margin: 0 auto; padding: 0 16px; }
+.gradient-text {
+  background: var(--gradient-text);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.hidden { display: none !important; }
+
+/* ========== HEADER ========== */
+.header {
+  position: sticky; top: 0; z-index: 50;
+  background: rgba(10, 1, 24, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+}
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-weight: 800;
+  font-size: 1.05rem;
+  letter-spacing: -0.5px;
+}
+.logo-icon {
+  width: 34px; height: 34px;
+  background: var(--gradient);
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1rem;
+  box-shadow: var(--shadow-glow);
+}
+.header-actions {
+  display: flex; gap: 8px; align-items: center;
+}
+.icon-btn {
+  width: 38px; height: 38px;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.95rem;
+  transition: all 0.2s;
+}
+.icon-btn:hover { background: rgba(255,255,255,0.1); }
+
+/* ========== TABS NAVIGATION ========== */
+.tabs-bar {
+  background: rgba(10, 1, 24, 0.85);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 65px;
+  z-index: 40;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.tabs-bar::-webkit-scrollbar { display: none; }
+.tabs {
+  display: flex;
+  gap: 4px;
+  padding: 10px 16px;
+  max-width: 1200px;
+  margin: 0 auto;
+  white-space: nowrap;
+}
+.tab-btn {
+  padding: 9px 16px;
+  border-radius: 10px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-3);
+  background: transparent;
+  transition: all 0.2s;
+  display: flex; align-items: center; gap: 6px;
+  flex-shrink: 0;
+}
+.tab-btn:hover { color: var(--text); background: rgba(255,255,255,0.05); }
+.tab-btn.active {
+  background: var(--gradient);
+  color: white;
+  box-shadow: 0 4px 16px rgba(167, 139, 250, 0.35);
+}
+
+/* ========== MAIN ========== */
+main { padding: 24px 0; }
+.tab-content { display: none; }
+.tab-content.active { display: block; animation: fadeUp 0.3s ease; }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.section-h {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.section-h h2 {
+  font-size: 1.2rem;
+  font-weight: 800;
+  letter-spacing: -0.3px;
+}
+.section-h p {
+  font-size: 0.85rem; color: var(--text-3); margin-top: 2px;
+}
+
+/* ========== STAT CARDS ========== */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin-bottom: 18px;
+}
+@media (min-width: 700px) {
+  .stats-grid { grid-template-columns: repeat(4, 1fr); gap: 14px; }
+}
+.stat-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 14px;
+  position: relative;
+  overflow: hidden;
+}
+.stat-card::before {
+  content: "";
+  position: absolute;
+  top: -30px; right: -30px;
+  width: 80px; height: 80px;
+  border-radius: 50%;
+  opacity: 0.15;
+  filter: blur(20px);
+}
+.stat-card.purple::before { background: var(--primary); }
+.stat-card.pink::before { background: var(--primary-2); }
+.stat-card.blue::before { background: var(--primary-3); }
+.stat-card.green::before { background: var(--green); }
+.stat-icon {
+  width: 36px; height: 36px;
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.05rem;
+  margin-bottom: 10px;
+}
+.stat-card.purple .stat-icon { background: rgba(167,139,250,0.18); color: var(--primary); }
+.stat-card.pink .stat-icon { background: rgba(236,72,153,0.18); color: var(--primary-2); }
+.stat-card.blue .stat-icon { background: rgba(56,189,248,0.18); color: var(--primary-3); }
+.stat-card.green .stat-icon { background: rgba(16,185,129,0.18); color: var(--green); }
+.stat-label {
+  font-size: 0.75rem;
+  color: var(--text-3);
+  margin-bottom: 4px;
+  font-weight: 500;
+}
+.stat-value {
+  font-size: 1.25rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  line-height: 1.1;
+  word-break: break-all;
+}
+.stat-value.small { font-size: 1.1rem; }
+@media (min-width: 700px) {
+  .stat-value { font-size: 1.5rem; }
+}
+
+/* ========== TARGET PROGRESS ========== */
+.target-card {
+  background: linear-gradient(135deg, rgba(167,139,250,0.1), rgba(236,72,153,0.05));
+  border: 1px solid rgba(167,139,250,0.25);
+  border-radius: 18px;
+  padding: 18px;
+  margin-bottom: 18px;
+}
+.target-head {
+  display: flex; justify-content: space-between; align-items: flex-start;
+  margin-bottom: 14px;
+  gap: 10px;
+}
+.target-head h3 { font-size: 1rem; font-weight: 700; margin-bottom: 4px; }
+.target-head small { font-size: 0.78rem; color: var(--text-3); }
+.target-edit {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid var(--border);
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+.target-edit:hover { background: rgba(255,255,255,0.1); }
+.target-amount {
+  display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+.target-now {
+  font-size: 1.4rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+.target-of {
+  font-size: 0.85rem;
+  color: var(--text-3);
+}
+.progress-bar {
+  background: rgba(255,255,255,0.08);
+  height: 10px;
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+}
+.progress-fill {
+  height: 100%;
+  background: var(--gradient);
+  border-radius: 20px;
+  transition: width 0.5s ease;
+  position: relative;
+  overflow: hidden;
+}
+.progress-fill::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+  animation: shimmer 2s linear infinite;
+}
+@keyframes shimmer {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(100%); }
+}
+.progress-info {
+  display: flex; justify-content: space-between;
+  margin-top: 8px;
+  font-size: 0.78rem;
+  color: var(--text-3);
+}
+.progress-percent { color: var(--text); font-weight: 700; }
+
+/* ========== CARD CONTAINER ========== */
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 16px;
+  margin-bottom: 14px;
+}
+.card-h {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 12px;
+  gap: 10px;
+}
+.card-h h3 {
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+.see-all {
+  font-size: 0.78rem;
+  color: var(--primary);
+  font-weight: 600;
+}
+
+/* ========== RECENT TRANSACTIONS LIST ========== */
+.txn-list { display: flex; flex-direction: column; gap: 8px; }
+.txn-item {
+  display: flex; align-items: center; gap: 12px;
+  padding: 10px 12px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  transition: all 0.2s;
+}
+.txn-item:hover { background: rgba(255,255,255,0.05); border-color: var(--border-2); }
+.txn-icon {
+  width: 38px; height: 38px;
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+  color: white;
+}
+.txn-info { flex: 1; min-width: 0; }
+.txn-name {
+  font-size: 0.88rem;
+  font-weight: 600;
+  margin-bottom: 2px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.txn-meta {
+  font-size: 0.72rem;
+  color: var(--text-3);
+  display: flex; gap: 6px; align-items: center;
+}
+.txn-amount {
+  text-align: right;
+  flex-shrink: 0;
+}
+.txn-amount strong {
+  display: block;
+  font-size: 0.92rem;
+  color: var(--green);
+  font-weight: 700;
+}
+.txn-amount small {
+  font-size: 0.7rem;
+  color: var(--text-3);
+}
+.txn-action {
+  background: transparent;
+  color: var(--text-3);
+  width: 28px; height: 28px;
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.85rem;
+  flex-shrink: 0;
+}
+.txn-action:hover { background: rgba(239,68,68,0.15); color: var(--red); }
+
+/* ========== EMPTY STATE ========== */
+.empty {
+  text-align: center;
+  padding: 40px 20px;
+  color: var(--text-3);
+}
+.empty-icon { font-size: 3rem; margin-bottom: 10px; opacity: 0.5; }
+.empty-title { font-weight: 600; color: var(--text-2); margin-bottom: 4px; }
+.empty p { font-size: 0.85rem; }
+
+/* ========== PRODUCT GRID ========== */
+.product-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+@media (min-width: 600px) {
+  .product-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 900px) {
+  .product-grid { grid-template-columns: repeat(3, 1fr); }
+}
+.product-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 14px;
+  transition: all 0.25s;
+  position: relative;
+}
+.product-card:hover {
+  background: var(--card-hover);
+  border-color: var(--border-2);
+  transform: translateY(-2px);
+}
+.product-card-h {
+  display: flex; align-items: flex-start; gap: 10px;
+  margin-bottom: 10px;
+}
+.product-icon {
+  width: 44px; height: 44px;
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.3rem;
+  flex-shrink: 0;
+  color: white;
+}
+.product-info { flex: 1; min-width: 0; }
+.product-name {
+  font-size: 0.92rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+  word-wrap: break-word;
+}
+.product-platform {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 6px;
+  background: rgba(255,255,255,0.08);
+  color: var(--text-2);
+}
+.product-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  padding: 10px;
+  background: rgba(0,0,0,0.2);
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+.product-stat {
+  text-align: center;
+}
+.product-stat strong {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.2;
+}
+.product-stat small {
+  font-size: 0.65rem;
+  color: var(--text-3);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.product-actions {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+}
+.product-actions button {
+  padding: 8px;
+  border-radius: 8px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid var(--border);
+  color: var(--text-2);
+  transition: all 0.2s;
+  display: flex; align-items: center; justify-content: center; gap: 4px;
+}
+.product-actions button:hover { background: rgba(255,255,255,0.1); color: var(--text); }
+.product-actions button.danger:hover { background: rgba(239,68,68,0.15); color: var(--red); border-color: rgba(239,68,68,0.3); }
+
+/* ========== FORM ========== */
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+@media (min-width: 600px) {
+  .form-grid.cols-2 { grid-template-columns: 1fr 1fr; }
+}
+.form-group label {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: var(--text-2);
+}
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 11px 13px;
+  background: rgba(255,255,255,0.04);
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  color: var(--text);
+  font-size: 0.9rem;
+  outline: none;
+  transition: all 0.2s;
+}
+.form-group input::placeholder,
+.form-group textarea::placeholder { color: var(--text-4); }
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: var(--primary);
+  background: rgba(167, 139, 250, 0.05);
+  box-shadow: 0 0 0 3px rgba(167, 139, 250, 0.15);
+}
+.form-group textarea { resize: vertical; min-height: 70px; }
+.form-group select {
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3e%3cpath fill='%23cbd5e1' d='M6 8L0 0h12z'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  padding-right: 36px;
+}
+.form-group select option { background: var(--bg-1); color: var(--text); }
+
+/* ========== BUTTONS ========== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 11px 20px;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 0.88rem;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+.btn-primary {
+  background: var(--gradient);
+  color: white;
+  box-shadow: var(--shadow-glow);
+}
+.btn-primary:hover { transform: translateY(-1px); box-shadow: 0 12px 40px rgba(236, 72, 153, 0.35); }
+.btn-ghost {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid var(--border-2);
+  color: var(--text);
+}
+.btn-ghost:hover { background: rgba(255,255,255,0.08); }
+.btn-block { width: 100%; }
+.btn-sm { padding: 8px 14px; font-size: 0.8rem; }
+
+/* ========== MODAL ========== */
+.modal-overlay {
+  position: fixed; inset: 0;
+  background: rgba(10, 1, 24, 0.75);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 100;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+  padding: 0;
+}
+.modal-overlay.open { opacity: 1; pointer-events: auto; }
+.modal {
+  background: var(--bg-1);
+  border: 1px solid var(--border-2);
+  border-bottom: none;
+  width: 100%;
+  max-width: 540px;
+  max-height: 92vh;
+  border-radius: 22px 22px 0 0;
+  overflow-y: auto;
+  position: relative;
+  transform: translateY(100%);
+  transition: transform 0.35s cubic-bezier(0.32, 0.72, 0, 1);
+}
+.modal-overlay.open .modal { transform: translateY(0); }
+.modal-close {
+  position: absolute; top: 12px; right: 12px;
+  background: rgba(255,255,255,0.06);
+  width: 34px; height: 34px;
+  border-radius: 50%;
+  font-size: 0.95rem;
+  z-index: 5;
+  transition: all 0.2s;
+}
+.modal-close:hover { background: rgba(255,255,255,0.12); }
+.modal-body { padding: 24px 20px 26px; }
+.modal-title {
+  font-size: 1.15rem;
+  font-weight: 800;
+  margin-bottom: 4px;
+  letter-spacing: -0.3px;
+}
+.modal-sub {
+  font-size: 0.82rem;
+  color: var(--text-3);
+  margin-bottom: 18px;
+}
+
+@media (min-width: 700px) {
+  .modal-overlay { align-items: center; padding: 20px; }
+  .modal { border-radius: 20px; border-bottom: 1px solid var(--border-2); }
+}
+
+/* ========== CHIPS ========== */
+.chip-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+.chip {
+  padding: 7px 12px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-2);
+  transition: all 0.2s;
+}
+.chip:hover { background: rgba(255,255,255,0.08); }
+.chip.active {
+  background: rgba(167, 139, 250, 0.15);
+  border-color: rgba(167, 139, 250, 0.5);
+  color: var(--primary);
+}
+
+/* ========== TOOLS / UTILITIES ========== */
+.tool-block {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 16px;
+  margin-bottom: 14px;
+}
+.tool-head {
+  display: flex; align-items: center; gap: 12px;
+  margin-bottom: 14px;
+}
+.tool-head .stat-icon { margin: 0; }
+.tool-head h3 { font-size: 0.98rem; font-weight: 700; margin-bottom: 2px; }
+.tool-head p { font-size: 0.78rem; color: var(--text-3); }
+
+.result-box {
+  background: rgba(0,0,0,0.3);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 12px 14px;
+  margin-top: 10px;
+  font-size: 0.85rem;
+  word-break: break-all;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+.result-box code {
+  font-family: "SF Mono", Menlo, monospace;
+  color: #c4b5fd;
+  flex: 1;
+}
+.copy-btn {
+  flex-shrink: 0;
+  background: rgba(167, 139, 250, 0.15);
+  border: 1px solid rgba(167, 139, 250, 0.35);
+  padding: 5px 12px;
+  border-radius: 8px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--primary);
+  transition: all 0.2s;
+}
+.copy-btn:hover { background: rgba(167, 139, 250, 0.25); }
+.copy-btn.copied {
+  background: rgba(34, 197, 94, 0.2);
+  color: #86efac;
+  border-color: rgba(34, 197, 94, 0.4);
+}
+
+/* Chart - simple bar chart */
+.chart {
+  display: flex;
+  align-items: flex-end;
+  gap: 6px;
+  height: 140px;
+  padding: 10px 4px 26px;
+  position: relative;
+}
+.chart-bar {
+  flex: 1;
+  background: var(--gradient);
+  border-radius: 6px 6px 0 0;
+  min-height: 4px;
+  position: relative;
+  transition: all 0.4s ease;
+}
+.chart-bar:hover { transform: scaleY(1.05); transform-origin: bottom; }
+.chart-bar::after {
+  content: attr(data-label);
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.65rem;
+  color: var(--text-3);
+  white-space: nowrap;
+}
+.chart-bar::before {
+  content: attr(data-value);
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.65rem;
+  color: var(--text-2);
+  font-weight: 600;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.chart-bar:hover::before { opacity: 1; }
+
+/* Top list */
+.top-list { display: flex; flex-direction: column; gap: 8px; }
+.top-item {
+  display: flex; align-items: center; gap: 10px;
+  padding: 8px 10px;
+  background: rgba(255,255,255,0.03);
+  border-radius: 10px;
+}
+.top-rank {
+  width: 24px; height: 24px;
+  background: var(--gradient);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: white;
+  flex-shrink: 0;
+}
+.top-name { flex: 1; font-size: 0.88rem; font-weight: 600; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.top-value { font-size: 0.82rem; color: var(--green); font-weight: 700; }
+
+/* ========== FAB ========== */
+.fab {
+  position: fixed;
+  bottom: 22px;
+  right: 22px;
+  width: 56px; height: 56px;
+  border-radius: 50%;
+  background: var(--gradient);
+  color: white;
+  font-size: 1.4rem;
+  display: flex; align-items: center; justify-content: center;
+  z-index: 30;
+  box-shadow: 0 10px 30px rgba(167, 139, 250, 0.4);
+  transition: all 0.25s;
+}
+.fab:hover { transform: scale(1.08); box-shadow: 0 14px 40px rgba(236, 72, 153, 0.5); }
+.fab:active { transform: scale(0.95); }
+
+/* ========== TOAST ========== */
+.toast {
+  position: fixed;
+  bottom: 90px;
+  left: 50%;
+  transform: translateX(-50%) translateY(120px);
+  background: rgba(10, 1, 24, 0.95);
+  border: 1px solid var(--border-2);
+  color: var(--text);
+  padding: 12px 22px;
+  border-radius: 30px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  z-index: 200;
+  opacity: 0;
+  transition: all 0.3s;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+  backdrop-filter: blur(20px);
+  max-width: 90%;
+  text-align: center;
+}
+.toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* Filter chips for sales history */
+.filter-bar {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin-bottom: 12px;
+  padding-bottom: 4px;
+}
+.filter-bar::-webkit-scrollbar { display: none; }
+
+/* Confirm dialog buttons */
+.confirm-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-top: 16px;
+}
+.btn-danger {
+  background: var(--red);
+  color: white;
+}
+.btn-danger:hover { background: #dc2626; }
+
+/* Helper text */
+.helper { font-size: 0.75rem; color: var(--text-3); margin-top: 6px; line-height: 1.4; }
+</style>
+</head>
+<body>
+
+<!-- ========== HEADER ========== -->
+<header class="header">
+  <div class="header-inner">
+    <a href="#" class="logo">
+      <span class="logo-icon">📊</span>
+      Yanzy <span class="gradient-text">Affiliate Hub</span>
+    </a>
+    <div class="header-actions">
+      <button class="icon-btn" onclick="exportData()" title="Export Data">⬇️</button>
+      <button class="icon-btn" onclick="openImport()" title="Import Data">⬆️</button>
+    </div>
+  </div>
+</header>
+
+<!-- ========== TABS NAVIGATION ========== -->
+<nav class="tabs-bar">
+  <div class="tabs">
+    <button class="tab-btn active" data-tab="dashboard">📊 Dashboard</button>
+    <button class="tab-btn" data-tab="produk">🛍️ Produk</button>
+    <button class="tab-btn" data-tab="sales">💰 Penjualan</button>
+    <button class="tab-btn" data-tab="stats">📈 Statistik</button>
+    <button class="tab-btn" data-tab="tools">🧰 Tools</button>
+  </div>
+</nav>
+
+<!-- ========== MAIN ========== -->
+<main>
+  <div class="container">
+
+    <!-- ========== DASHBOARD TAB ========== -->
+    <section class="tab-content active" id="tab-dashboard">
+
+      <!-- Target Card -->
+      <div class="target-card">
+        <div class="target-head">
+          <div>
+            <h3>🎯 Target Komisi Bulan Ini</h3>
+            <small id="targetMonth">—</small>
+          </div>
+          <button class="target-edit" onclick="openTargetModal()">Edit Target</button>
+        </div>
+        <div class="target-amount">
+          <span class="target-now" id="targetNow">Rp 0</span>
+          <span class="target-of">dari <strong id="targetGoal">Rp 0</strong></span>
+        </div>
+        <div class="progress-bar">
+          <div class="progress-fill" id="targetProgress" style="width: 0%"></div>
+        </div>
+        <div class="progress-info">
+          <span><span class="progress-percent" id="targetPercent">0%</span> tercapai</span>
+          <span id="targetRemaining">Sisa: Rp 0</span>
+        </div>
+      </div>
+
+      <!-- Stat Cards -->
+      <div class="stats-grid">
+        <div class="stat-card purple">
+          <div class="stat-icon">💰</div>
+          <div class="stat-label">Komisi Bulan Ini</div>
+          <div class="stat-value" id="statKomisiBulan">Rp 0</div>
+        </div>
+        <div class="stat-card pink">
+          <div class="stat-icon">🛒</div>
+          <div class="stat-label">Penjualan Bulan Ini</div>
+          <div class="stat-value" id="statPenjualanBulan">0</div>
+        </div>
+        <div class="stat-card blue">
+          <div class="stat-icon">📦</div>
+          <div class="stat-label">Total Produk</div>
+          <div class="stat-value" id="statProduk">0</div>
+        </div>
+        <div class="stat-card green">
+          <div class="stat-icon">💎</div>
+          <div class="stat-label">Komisi All-Time</div>
+          <div class="stat-value small" id="statKomisiTotal">Rp 0</div>
+        </div>
+      </div>
+
+      <!-- Recent transactions -->
+      <div class="card">
+        <div class="card-h">
+          <h3>📋 Transaksi Terbaru</h3>
+          <a class="see-all" onclick="switchTab('sales')">Lihat Semua →</a>
+        </div>
+        <div id="recentTxn" class="txn-list"></div>
+      </div>
+
+      <!-- Quick Actions -->
+      <div class="card">
+        <div class="card-h"><h3>⚡ Aksi Cepat</h3></div>
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px;">
+          <button class="btn btn-primary" onclick="openSaleModal()">+ Catat Penjualan</button>
+          <button class="btn btn-ghost" onclick="openProductModal()">+ Tambah Produk</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== PRODUK TAB ========== -->
+    <section class="tab-content" id="tab-produk">
+      <div class="section-h">
+        <div>
+          <h2>🛍️ Produk Affiliate</h2>
+          <p>Kelola produk yang kamu promosikan</p>
+        </div>
+        <button class="btn btn-primary btn-sm" onclick="openProductModal()">+ Tambah</button>
+      </div>
+
+      <div class="filter-bar" id="platformFilter">
+        <button class="chip active" data-platform="all">Semua Platform</button>
+      </div>
+
+      <div class="product-grid" id="productGrid"></div>
+      <div class="empty hidden" id="productEmpty">
+        <div class="empty-icon">📦</div>
+        <div class="empty-title">Belum ada produk</div>
+        <p>Tambah produk affiliate pertamamu untuk mulai tracking</p>
+      </div>
+    </section>
+
+    <!-- ========== SALES TAB ========== -->
+    <section class="tab-content" id="tab-sales">
+      <div class="section-h">
+        <div>
+          <h2>💰 Riwayat Penjualan</h2>
+          <p>Semua transaksi yang sudah kamu catat</p>
+        </div>
+        <button class="btn btn-primary btn-sm" onclick="openSaleModal()">+ Catat Sale</button>
+      </div>
+
+      <div class="filter-bar" id="monthFilter"></div>
+
+      <div id="salesList"></div>
+      <div class="empty hidden" id="salesEmpty">
+        <div class="empty-icon">💸</div>
+        <div class="empty-title">Belum ada penjualan</div>
+        <p>Catat penjualan pertama untuk mulai tracking komisi</p>
+      </div>
+    </section>
+
+    <!-- ========== STATS TAB ========== -->
+    <section class="tab-content" id="tab-stats">
+      <div class="section-h">
+        <div>
+          <h2>📈 Statistik & Insight</h2>
+          <p>Lihat performa & temukan produk paling cuan</p>
+        </div>
+      </div>
+
+      <!-- Komisi 7 hari -->
+      <div class="card">
+        <div class="card-h"><h3>📊 Komisi 7 Hari Terakhir</h3></div>
+        <div class="chart" id="chart7d"></div>
+      </div>
+
+      <!-- Top produk -->
+      <div class="card">
+        <div class="card-h"><h3>🏆 Top 5 Produk Cuan</h3></div>
+        <div id="topProduk" class="top-list"></div>
+      </div>
+
+      <!-- Top platform -->
+      <div class="card">
+        <div class="card-h"><h3>🌐 Performa per Platform</h3></div>
+        <div id="topPlatform" class="top-list"></div>
+      </div>
+    </section>
+
+    <!-- ========== TOOLS TAB ========== -->
+    <section class="tab-content" id="tab-tools">
+      <div class="section-h">
+        <div>
+          <h2>🧰 Tools Affiliate</h2>
+          <p>Kalkulator & utilitas yang sering kamu butuhin</p>
+        </div>
+      </div>
+
+      <!-- Kalkulator komisi -->
+      <div class="tool-block">
+        <div class="tool-head">
+          <div class="stat-icon" style="background:rgba(167,139,250,0.18); color:var(--primary);">🧮</div>
+          <div>
+            <h3>Kalkulator Komisi</h3>
+            <p>Hitung komisi dari harga produk + persen</p>
+          </div>
+        </div>
+        <div class="form-grid cols-2">
+          <div class="form-group">
+            <label>Harga Produk (Rp)</label>
+            <input type="number" id="calcHarga" placeholder="100000" />
+          </div>
+          <div class="form-group">
+            <label>Persen Komisi (%)</label>
+            <input type="number" id="calcPersen" placeholder="10" />
+          </div>
+          <div class="form-group">
+            <label>Jumlah Terjual</label>
+            <input type="number" id="calcQty" placeholder="1" value="1" />
+          </div>
+          <div class="form-group">
+            <label>&nbsp;</label>
+            <button class="btn btn-primary btn-block" onclick="hitungKomisi()">Hitung Komisi</button>
+          </div>
+        </div>
+        <div class="result-box hidden" id="calcResult">
+          <code id="calcOutput">—</code>
+        </div>
+      </div>
+
+      <!-- UTM Builder -->
+      <div class="tool-block">
+        <div class="tool-head">
+          <div class="stat-icon" style="background:rgba(56,189,248,0.18); color:var(--primary-3);">🔗</div>
+          <div>
+            <h3>UTM Link Builder</h3>
+            <p>Bikin link affiliate dengan tracking parameter</p>
+          </div>
+        </div>
+        <div class="form-grid">
+          <div class="form-group">
+            <label>URL Asli</label>
+            <input type="url" id="utmUrl" placeholder="https://shopee.co.id/produk-keren" />
+          </div>
+        </div>
+        <div class="form-grid cols-2">
+          <div class="form-group">
+            <label>Source (utm_source)</label>
+            <input type="text" id="utmSource" placeholder="instagram" value="instagram" />
+          </div>
+          <div class="form-group">
+            <label>Medium (utm_medium)</label>
+            <input type="text" id="utmMedium" placeholder="bio" value="bio" />
+          </div>
+          <div class="form-group">
+            <label>Campaign (utm_campaign)</label>
+            <input type="text" id="utmCampaign" placeholder="promo-juni" />
+          </div>
+          <div class="form-group">
+            <label>&nbsp;</label>
+            <button class="btn btn-primary btn-block" onclick="buildUTM()">Generate Link</button>
+          </div>
+        </div>
+        <div class="result-box hidden" id="utmResult">
+          <code id="utmOutput">—</code>
+          <button class="copy-btn" onclick="copyText(document.getElementById('utmOutput').textContent, this)">Salin</button>
+        </div>
+        <p class="helper">💡 Tracking parameter membantu kamu tau dari platform mana traffic-nya datang</p>
+      </div>
+
+      <!-- Caption generator -->
+      <div class="tool-block">
+        <div class="tool-head">
+          <div class="stat-icon" style="background:rgba(236,72,153,0.18); color:var(--primary-2);">💬</div>
+          <div>
+            <h3>Generate Caption Promosi</h3>
+            <p>Caption siap pakai untuk produk affiliate kamu</p>
+          </div>
+        </div>
+        <div class="form-grid cols-2">
+          <div class="form-group">
+            <label>Pilih Produk</label>
+            <select id="capProduk">
+              <option value="">-- pilih produk --</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Gaya Bahasa</label>
+            <select id="capGaya">
+              <option value="santai">Santai & Friendly</option>
+              <option value="hard-sell">Hard Selling</option>
+              <option value="storytelling">Storytelling</option>
+              <option value="urgency">Urgency / FOMO</option>
+            </select>
+          </div>
+        </div>
+        <button class="btn btn-primary btn-block" onclick="genCaption()">✨ Generate Caption</button>
+        <div class="result-box hidden" id="capResult" style="flex-direction:column; align-items:flex-start;">
+          <code id="capOutput" style="white-space: pre-wrap;">—</code>
+          <button class="copy-btn" style="margin-top: 10px;" onclick="copyText(document.getElementById('capOutput').textContent, this)">Salin Caption</button>
+        </div>
+      </div>
+
+      <!-- Reset data -->
+      <div class="tool-block">
+        <div class="tool-head">
+          <div class="stat-icon" style="background:rgba(239,68,68,0.18); color:var(--red);">⚠️</div>
+          <div>
+            <h3>Reset Data</h3>
+            <p>Hapus semua data (produk + transaksi). Tindakan ini permanen!</p>
+          </div>
+        </div>
+        <button class="btn btn-ghost btn-block" onclick="confirmReset()">🗑️ Hapus Semua Data</button>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<!-- FAB -->
+<button class="fab" onclick="openSaleModal()" title="Catat Penjualan">+</button>
+
+<!-- ========== MODAL: PRODUK ========== -->
+<div class="modal-overlay" id="productModal" onclick="closeModalOverlay(event, 'productModal')">
+  <div class="modal" onclick="event.stopPropagation()">
+    <button class="modal-close" onclick="closeModal('productModal')">✕</button>
+    <div class="modal-body">
+      <h2 class="modal-title" id="productModalTitle">Tambah Produk</h2>
+      <p class="modal-sub">Isi data produk affiliate kamu</p>
+
+      <input type="hidden" id="productId" />
+
+      <div class="form-grid cols-2">
+        <div class="form-group" style="grid-column: 1 / -1;">
+          <label>Nama Produk</label>
+          <input type="text" id="productName" placeholder="Serum Vitamin C ABC" />
+        </div>
+
+        <div class="form-group">
+          <label>Platform</label>
+          <select id="productPlatform">
+            <option value="Shopee">Shopee</option>
+            <option value="Tokopedia">Tokopedia</option>
+            <option value="TikTok Shop">TikTok Shop</option>
+            <option value="Lazada">Lazada</option>
+            <option value="Tiktok Affiliate">TikTok Affiliate</option>
+            <option value="Bukalapak">Bukalapak</option>
+            <option value="Blibli">Blibli</option>
+            <option value="Lainnya">Lainnya</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Kategori (opsional)</label>
+          <input type="text" id="productKategori" placeholder="Skincare" />
+        </div>
+
+        <div class="form-group">
+          <label>Harga Jual (Rp)</label>
+          <input type="number" id="productHarga" placeholder="100000" />
+        </div>
+
+        <div class="form-group">
+          <label>Komisi (%)</label>
+          <input type="number" id="productKomisi" placeholder="10" step="0.1" />
+        </div>
+
+        <div class="form-group" style="grid-column: 1 / -1;">
+          <label>Link Affiliate</label>
+          <input type="url" id="productLink" placeholder="https://shp.ee/abc123" />
+        </div>
+
+        <div class="form-group" style="grid-column: 1 / -1;">
+          <label>Catatan (opsional)</label>
+          <textarea id="productNote" placeholder="Tagline atau highlight produk..."></textarea>
+        </div>
+      </div>
+
+      <button class="btn btn-primary btn-block" onclick="saveProduct()">💾 Simpan Produk</button>
+    </div>
+  </div>
+</div>
+
+<!-- ========== MODAL: SALE ========== -->
+<div class="modal-overlay" id="saleModal" onclick="closeModalOverlay(event, 'saleModal')">
+  <div class="modal" onclick="event.stopPropagation()">
+    <button class="modal-close" onclick="closeModal('saleModal')">✕</button>
+    <div class="modal-body">
+      <h2 class="modal-title">Catat Penjualan</h2>
+      <p class="modal-sub">Catat transaksi affiliate kamu</p>
+
+      <div class="form-group">
+        <label>Pilih Produk</label>
+        <select id="saleProductId">
+          <option value="">-- pilih produk --</option>
+        </select>
+      </div>
+
+      <div class="form-grid cols-2">
+        <div class="form-group">
+          <label>Jumlah Terjual</label>
+          <input type="number" id="saleQty" placeholder="1" value="1" min="1" />
+        </div>
+        <div class="form-group">
+          <label>Tanggal</label>
+          <input type="date" id="saleDate" />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Catatan (opsional)</label>
+        <input type="text" id="saleNote" placeholder="Misal: dari postingan IG kemarin" />
+      </div>
+
+      <div class="result-box" id="salePreview" style="display:flex;">
+        <code><strong style="color:var(--text);">Komisi:</strong> <span id="salePreviewKomisi">Rp 0</span></code>
+      </div>
+
+      <button class="btn btn-primary btn-block" style="margin-top: 14px;" onclick="saveSale()">💾 Simpan Transaksi</button>
+    </div>
+  </div>
+</div>
+
+<!-- ========== MODAL: TARGET ========== -->
+<div class="modal-overlay" id="targetModal" onclick="closeModalOverlay(event, 'targetModal')">
+  <div class="modal" onclick="event.stopPropagation()">
+    <button class="modal-close" onclick="closeModal('targetModal')">✕</button>
+    <div class="modal-body">
+      <h2 class="modal-title">Atur Target Komisi</h2>
+      <p class="modal-sub">Set goal kamu bulan ini</p>
+
+      <div class="form-group">
+        <label>Target Komisi Bulanan (Rp)</label>
+        <input type="number" id="targetInput" placeholder="5000000" />
+        <p class="helper">💡 Tetapkan target yang realistis tapi menantang. Bisa diubah kapan aja.</p>
+      </div>
+
+      <button class="btn btn-primary btn-block" onclick="saveTarget()">💾 Simpan Target</button>
+    </div>
+  </div>
+</div>
+
+<!-- ========== MODAL: CONFIRM ========== -->
+<div class="modal-overlay" id="confirmModal" onclick="closeModalOverlay(event, 'confirmModal')">
+  <div class="modal" onclick="event.stopPropagation()" style="max-width: 400px;">
+    <div class="modal-body" style="text-align: center; padding: 28px 24px;">
+      <div style="font-size: 3rem; margin-bottom: 10px;" id="confirmIcon">⚠️</div>
+      <h2 class="modal-title" id="confirmTitle">Yakin?</h2>
+      <p class="modal-sub" id="confirmMsg">Tindakan ini tidak bisa dibatalkan.</p>
+      <div class="confirm-actions">
+        <button class="btn btn-ghost" onclick="closeModal('confirmModal')">Batal</button>
+        <button class="btn btn-danger" id="confirmOk">Hapus</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ========== MODAL: IMPORT ========== -->
+<div class="modal-overlay" id="importModal" onclick="closeModalOverlay(event, 'importModal')">
+  <div class="modal" onclick="event.stopPropagation()">
+    <button class="modal-close" onclick="closeModal('importModal')">✕</button>
+    <div class="modal-body">
+      <h2 class="modal-title">Import Data</h2>
+      <p class="modal-sub">Paste isi file backup JSON kamu di sini</p>
+
+      <div class="form-group">
+        <textarea id="importText" placeholder='{"products":[...],"sales":[...]}' style="min-height: 160px; font-family: monospace; font-size: 0.78rem;"></textarea>
+      </div>
+      <button class="btn btn-primary btn-block" onclick="doImport()">📥 Import Data</button>
+      <p class="helper">⚠️ Ini akan menimpa semua data yang ada sekarang</p>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* ========================================================
+   STORAGE
+   ======================================================== */
+const STORAGE_KEY = "yanzy_affiliate_v1";
+
+const PLATFORM_GRADIENT = {
+  "Shopee": "linear-gradient(135deg, #ee4d2d, #ff6b3d)",
+  "Tokopedia": "linear-gradient(135deg, #03ac0e, #06c714)",
+  "TikTok Shop": "linear-gradient(135deg, #000000, #ff0050)",
+  "Tiktok Affiliate": "linear-gradient(135deg, #25f4ee, #fe2c55)",
+  "Lazada": "linear-gradient(135deg, #0f146d, #1a47b8)",
+  "Bukalapak": "linear-gradient(135deg, #e31e52, #c01346)",
+  "Blibli": "linear-gradient(135deg, #0095da, #0077b3)",
+  "Lainnya": "linear-gradient(135deg, #6366f1, #8b5cf6)",
+};
+const PLATFORM_ICON = {
+  "Shopee": "🛍️",
+  "Tokopedia": "🟢",
+  "TikTok Shop": "🎵",
+  "Tiktok Affiliate": "🎵",
+  "Lazada": "🔷",
+  "Bukalapak": "🔴",
+  "Blibli": "🔵",
+  "Lainnya": "📦",
+};
+
+let state = loadState();
+
+function loadState() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (!raw) return defaultState();
+    const parsed = JSON.parse(raw);
+    return { ...defaultState(), ...parsed };
+  } catch {
+    return defaultState();
+  }
+}
+
+function defaultState() {
+  return {
+    products: [],
+    sales: [],
+    target: 0,  // target komisi bulanan
+  };
+}
+
+function saveState() {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+}
+
+/* ========================================================
+   HELPERS
+   ======================================================== */
+const fmt = (n) => "Rp " + (Number(n) || 0).toLocaleString("id-ID");
+const fmtShort = (n) => {
+  n = Number(n) || 0;
+  if (n >= 1e9) return "Rp " + (n / 1e9).toFixed(1).replace(/\.0$/,"") + "M";
+  if (n >= 1e6) return "Rp " + (n / 1e6).toFixed(1).replace(/\.0$/,"") + "jt";
+  if (n >= 1e3) return "Rp " + (n / 1e3).toFixed(0) + "rb";
+  return "Rp " + n.toLocaleString("id-ID");
+};
+const todayStr = () => new Date().toISOString().slice(0, 10);
+const monthOf = (dateStr) => dateStr.slice(0, 7); // YYYY-MM
+const isCurrentMonth = (dateStr) => monthOf(dateStr) === todayStr().slice(0, 7);
+const uid = () => Date.now().toString(36) + Math.random().toString(36).slice(2, 7);
+
+const MONTH_NAMES = ["Januari","Februari","Maret","April","Mei","Juni","Juli","Agustus","September","Oktober","November","Desember"];
+function formatMonth(yyyymm) {
+  const [y, m] = yyyymm.split("-");
+  return MONTH_NAMES[parseInt(m) - 1] + " " + y;
+}
+function formatDate(dateStr) {
+  const d = new Date(dateStr);
+  const today = new Date();
+  const yest = new Date(); yest.setDate(today.getDate() - 1);
+  if (dateStr === todayStr()) return "Hari ini";
+  if (d.toISOString().slice(0,10) === yest.toISOString().slice(0,10)) return "Kemarin";
+  return d.toLocaleDateString("id-ID", { day: "numeric", month: "short", year: "numeric" });
+}
+
+/* Compute commission for a sale */
+function calcCommission(sale) {
+  const product = state.products.find(p => p.id === sale.productId);
+  if (!product) return 0;
+  return (Number(product.harga) * Number(product.komisi) / 100) * Number(sale.qty);
+}
+function getProduct(id) {
+  return state.products.find(p => p.id === id);
+}
+
+/* ========================================================
+   TABS NAVIGATION
+   ======================================================== */
+document.querySelectorAll(".tab-btn").forEach(btn => {
+  btn.addEventListener("click", () => switchTab(btn.dataset.tab));
+});
+
+function switchTab(name) {
+  document.querySelectorAll(".tab-btn").forEach(b => b.classList.toggle("active", b.dataset.tab === name));
+  document.querySelectorAll(".tab-content").forEach(c => c.classList.toggle("active", c.id === "tab-" + name));
+  // Re-render specific tabs
+  if (name === "produk") renderProducts();
+  if (name === "sales") renderSales();
+  if (name === "stats") renderStats();
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+/* ========================================================
+   DASHBOARD RENDER
+   ======================================================== */
+function renderDashboard() {
+  const now = new Date();
+  document.getElementById("targetMonth").textContent = MONTH_NAMES[now.getMonth()] + " " + now.getFullYear();
+
+  const monthSales = state.sales.filter(s => isCurrentMonth(s.date));
+  const monthCommission = monthSales.reduce((sum, s) => sum + calcCommission(s), 0);
+  const totalQty = monthSales.reduce((sum, s) => sum + Number(s.qty), 0);
+  const totalCommission = state.sales.reduce((sum, s) => sum + calcCommission(s), 0);
+
+  document.getElementById("statKomisiBulan").textContent = fmtShort(monthCommission);
+  document.getElementById("statPenjualanBulan").textContent = totalQty + " sale";
+  document.getElementById("statProduk").textContent = state.products.length;
+  document.getElementById("statKomisiTotal").textContent = fmtShort(totalCommission);
+
+  // Target
+  const target = state.target;
+  document.getElementById("targetNow").textContent = fmt(monthCommission);
+  document.getElementById("targetGoal").textContent = fmt(target);
+  const pct = target > 0 ? Math.min(100, (monthCommission / target) * 100) : 0;
+  document.getElementById("targetProgress").style.width = pct + "%";
+  document.getElementById("targetPercent").textContent = pct.toFixed(0) + "%";
+  const sisa = Math.max(0, target - monthCommission);
+  document.getElementById("targetRemaining").textContent = "Sisa: " + fmt(sisa);
+
+  // Recent transactions (5)
+  const recent = [...state.sales].sort((a, b) => b.date.localeCompare(a.date) || b.id.localeCompare(a.id)).slice(0, 5);
+  const recentEl = document.getElementById("recentTxn");
+  if (recent.length === 0) {
+    recentEl.innerHTML = `
+      <div class="empty">
+        <div class="empty-icon">📭</div>
+        <div class="empty-title">Belum ada transaksi</div>
+        <p>Catat penjualan pertamamu untuk mulai</p>
+      </div>
+    `;
+  } else {
+    recentEl.innerHTML = recent.map(s => renderTxnItem(s)).join("");
+  }
+}
+
+function renderTxnItem(s) {
+  const p = getProduct(s.productId);
+  if (!p) return "";
+  const komisi = calcCommission(s);
+  return `
+    <div class="txn-item">
+      <div class="txn-icon" style="background: ${PLATFORM_GRADIENT[p.platform] || PLATFORM_GRADIENT.Lainnya}">
+        ${PLATFORM_ICON[p.platform] || "📦"}
+      </div>
+      <div class="txn-info">
+        <div class="txn-name">${p.name}</div>
+        <div class="txn-meta">
+          <span>${p.platform}</span>
+          <span>•</span>
+          <span>${s.qty}x</span>
+          <span>•</span>
+          <span>${formatDate(s.date)}</span>
+        </div>
+      </div>
+      <div class="txn-amount">
+        <strong>+${fmtShort(komisi)}</strong>
+        <small>komisi</small>
+      </div>
+      <button class="txn-action" onclick="confirmDeleteSale('${s.id}')" title="Hapus">🗑️</button>
+    </div>
+  `;
+}
+
+/* ========================================================
+   PRODUCTS RENDER
+   ======================================================== */
+let activePlatformFilter = "all";
+
+function renderProducts() {
+  // Build platform filter chips
+  const platforms = ["all", ...new Set(state.products.map(p => p.platform))];
+  const filterEl = document.getElementById("platformFilter");
+  filterEl.innerHTML = platforms.map(p => `
+    <button class="chip ${p === activePlatformFilter ? 'active' : ''}" data-platform="${p}">
+      ${p === "all" ? "Semua Platform" : (PLATFORM_ICON[p] || "📦") + " " + p}
+    </button>
+  `).join("");
+  filterEl.querySelectorAll(".chip").forEach(c => {
+    c.addEventListener("click", () => {
+      activePlatformFilter = c.dataset.platform;
+      renderProducts();
+    });
+  });
+
+  let list = state.products;
+  if (activePlatformFilter !== "all") {
+    list = list.filter(p => p.platform === activePlatformFilter);
+  }
+
+  const grid = document.getElementById("productGrid");
+  const empty = document.getElementById("productEmpty");
+
+  if (state.products.length === 0) {
+    grid.innerHTML = "";
+    empty.classList.remove("hidden");
+    return;
+  }
+  empty.classList.add("hidden");
+
+  grid.innerHTML = list.map(p => {
+    const sales = state.sales.filter(s => s.productId === p.id);
+    const totalSold = sales.reduce((sum, s) => sum + Number(s.qty), 0);
+    const totalComm = sales.reduce((sum, s) => sum + calcCommission(s), 0);
+    return `
+      <div class="product-card">
+        <div class="product-card-h">
+          <div class="product-icon" style="background: ${PLATFORM_GRADIENT[p.platform] || PLATFORM_GRADIENT.Lainnya}">
+            ${PLATFORM_ICON[p.platform] || "📦"}
+          </div>
+          <div class="product-info">
+            <div class="product-name">${p.name}</div>
+            <span class="product-platform">${p.platform}</span>
+          </div>
+        </div>
+        <div class="product-stats">
+          <div class="product-stat">
+            <strong>${fmtShort(p.harga)}</strong>
+            <small>Harga</small>
+          </div>
+          <div class="product-stat">
+            <strong>${p.komisi}%</strong>
+            <small>Komisi</small>
+          </div>
+          <div class="product-stat">
+            <strong>${totalSold}</strong>
+            <small>Terjual</small>
+          </div>
+        </div>
+        <div class="product-actions">
+          ${p.link ? `<button onclick="openLink('${p.id}')">🔗 Buka</button>` : `<button disabled style="opacity:0.4">🔗 No Link</button>`}
+          <button onclick="editProduct('${p.id}')">✏️ Edit</button>
+          <button class="danger" onclick="confirmDeleteProduct('${p.id}')">🗑️</button>
+        </div>
+      </div>
+    `;
+  }).join("");
+}
+
+function openLink(id) {
+  const p = getProduct(id);
+  if (p && p.link) window.open(p.link, "_blank");
+}
+
+/* ========================================================
+   PRODUCT MODAL
+   ======================================================== */
+function openProductModal() {
+  document.getElementById("productModalTitle").textContent = "Tambah Produk";
+  document.getElementById("productId").value = "";
+  document.getElementById("productName").value = "";
+  document.getElementById("productPlatform").value = "Shopee";
+  document.getElementById("productKategori").value = "";
+  document.getElementById("productHarga").value = "";
+  document.getElementById("productKomisi").value = "";
+  document.getElementById("productLink").value = "";
+  document.getElementById("productNote").value = "";
+  openModal("productModal");
+}
+
+function editProduct(id) {
+  const p = getProduct(id);
+  if (!p) return;
+  document.getElementById("productModalTitle").textContent = "Edit Produk";
+  document.getElementById("productId").value = p.id;
+  document.getElementById("productName").value = p.name;
+  document.getElementById("productPlatform").value = p.platform;
+  document.getElementById("productKategori").value = p.kategori || "";
+  document.getElementById("productHarga").value = p.harga;
+  document.getElementById("productKomisi").value = p.komisi;
+  document.getElementById("productLink").value = p.link || "";
+  document.getElementById("productNote").value = p.note || "";
+  openModal("productModal");
+}
+
+function saveProduct() {
+  const id = document.getElementById("productId").value;
+  const name = document.getElementById("productName").value.trim();
+  const platform = document.getElementById("productPlatform").value;
+  const kategori = document.getElementById("productKategori").value.trim();
+  const harga = Number(document.getElementById("productHarga").value);
+  const komisi = Number(document.getElementById("productKomisi").value);
+  const link = document.getElementById("productLink").value.trim();
+  const note = document.getElementById("productNote").value.trim();
+
+  if (!name) return showToast("Nama produk wajib diisi");
+  if (!harga || harga <= 0) return showToast("Harga harus lebih dari 0");
+  if (komisi < 0) return showToast("Komisi tidak valid");
+
+  if (id) {
+    const p = getProduct(id);
+    Object.assign(p, { name, platform, kategori, harga, komisi, link, note });
+    showToast("✅ Produk berhasil diupdate");
+  } else {
+    state.products.push({
+      id: uid(), name, platform, kategori, harga, komisi, link, note,
+      createdAt: Date.now(),
+    });
+    showToast("✅ Produk baru ditambahkan");
+  }
+
+  saveState();
+  closeModal("productModal");
+  renderAll();
+}
+
+function confirmDeleteProduct(id) {
+  const p = getProduct(id);
+  if (!p) return;
+  const salesCount = state.sales.filter(s => s.productId === id).length;
+  showConfirm(
+    "Hapus produk?",
+    `"${p.name}" akan dihapus permanen.${salesCount > 0 ? ` ${salesCount} transaksi terkait juga akan ikut terhapus.` : ""}`,
+    () => {
+      state.products = state.products.filter(x => x.id !== id);
+      state.sales = state.sales.filter(x => x.productId !== id);
+      saveState();
+      renderAll();
+      showToast("🗑️ Produk dihapus");
+    }
+  );
+}
+
+/* ========================================================
+   SALES RENDER
+   ======================================================== */
+let activeMonthFilter = "all";
+
+function renderSales() {
+  // Month filter
+  const months = [...new Set(state.sales.map(s => monthOf(s.date)))].sort().reverse();
+  const filterEl = document.getElementById("monthFilter");
+  filterEl.innerHTML = `
+    <button class="chip ${activeMonthFilter === 'all' ? 'active' : ''}" data-m="all">Semua Bulan</button>
+    ${months.map(m => `
+      <button class="chip ${activeMonthFilter === m ? 'active' : ''}" data-m="${m}">${formatMonth(m)}</button>
+    `).join("")}
+  `;
+  filterEl.querySelectorAll(".chip").forEach(c => {
+    c.addEventListener("click", () => {
+      activeMonthFilter = c.dataset.m;
+      renderSales();
+    });
+  });
+
+  let list = [...state.sales].sort((a, b) => b.date.localeCompare(a.date) || b.id.localeCompare(a.id));
+  if (activeMonthFilter !== "all") {
+    list = list.filter(s => monthOf(s.date) === activeMonthFilter);
+  }
+
+  const wrap = document.getElementById("salesList");
+  const empty = document.getElementById("salesEmpty");
+
+  if (list.length === 0) {
+    wrap.innerHTML = "";
+    empty.classList.remove("hidden");
+    return;
+  }
+  empty.classList.add("hidden");
+
+  // Summary card on top
+  const totalKomisi = list.reduce((sum, s) => sum + calcCommission(s), 0);
+  const totalQty = list.reduce((sum, s) => sum + Number(s.qty), 0);
+
+  // Group by date
+  const grouped = {};
+  list.forEach(s => {
+    if (!grouped[s.date]) grouped[s.date] = [];
+    grouped[s.date].push(s);
+  });
+
+  let html = `
+    <div class="card" style="background: linear-gradient(135deg, rgba(167,139,250,0.08), rgba(236,72,153,0.04)); border-color: rgba(167,139,250,0.2);">
+      <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+        <div>
+          <div style="font-size: 0.78rem; color: var(--text-3);">Total Komisi</div>
+          <div style="font-size: 1.4rem; font-weight: 800; color: var(--green);">${fmt(totalKomisi)}</div>
+        </div>
+        <div style="text-align:right;">
+          <div style="font-size: 0.78rem; color: var(--text-3);">${list.length} transaksi</div>
+          <div style="font-size: 0.95rem; font-weight: 700;">${totalQty} produk terjual</div>
+        </div>
+      </div>
+    </div>
+  `;
+
+  Object.keys(grouped).sort().reverse().forEach(date => {
+    html += `
+      <div class="card">
+        <div class="card-h">
+          <h3>${formatDate(date)}</h3>
+          <span style="font-size: 0.72rem; color: var(--text-3);">${grouped[date].length} transaksi</span>
+        </div>
+        <div class="txn-list">
+          ${grouped[date].map(s => renderTxnItem(s)).join("")}
+        </div>
+      </div>
+    `;
+  });
+
+  wrap.innerHTML = html;
+}
+
+function confirmDeleteSale(id) {
+  const sale = state.sales.find(s => s.id === id);
+  if (!sale) return;
+  const p = getProduct(sale.productId);
+  showConfirm(
+    "Hapus transaksi?",
+    `Transaksi ${p ? p.name : ""} (${sale.qty}x) akan dihapus.`,
+    () => {
+      state.sales = state.sales.filter(s => s.id !== id);
+      saveState();
+      renderAll();
+      showToast("🗑️ Transaksi dihapus");
+    }
+  );
+}
+
+/* ========================================================
+   SALE MODAL
+   ======================================================== */
+function openSaleModal() {
+  if (state.products.length === 0) {
+    showToast("⚠️ Tambah produk dulu sebelum catat penjualan");
+    setTimeout(() => switchTab("produk"), 800);
+    return;
+  }
+  // Populate product select
+  const sel = document.getElementById("saleProductId");
+  sel.innerHTML = '<option value="">-- pilih produk --</option>' +
+    state.products.map(p => `<option value="${p.id}">${p.name} (${p.platform})</option>`).join("");
+
+  document.getElementById("saleQty").value = 1;
+  document.getElementById("saleDate").value = todayStr();
+  document.getElementById("saleNote").value = "";
+  document.getElementById("salePreviewKomisi").textContent = "Rp 0";
+
+  openModal("saleModal");
+}
+
+function updateSalePreview() {
+  const productId = document.getElementById("saleProductId").value;
+  const qty = Number(document.getElementById("saleQty").value) || 0;
+  const p = getProduct(productId);
+  if (!p) {
+    document.getElementById("salePreviewKomisi").textContent = "Rp 0";
+    return;
+  }
+  const komisi = (p.harga * p.komisi / 100) * qty;
+  document.getElementById("salePreviewKomisi").textContent = fmt(komisi);
+}
+
+document.addEventListener("change", (e) => {
+  if (e.target.id === "saleProductId" || e.target.id === "saleQty") updateSalePreview();
+});
+document.addEventListener("input", (e) => {
+  if (e.target.id === "saleQty") updateSalePreview();
+});
+
+function saveSale() {
+  const productId = document.getElementById("saleProductId").value;
+  const qty = Number(document.getElementById("saleQty").value);
+  const date = document.getElementById("saleDate").value;
+  const note = document.getElementById("saleNote").value.trim();
+
+  if (!productId) return showToast("Pilih produk dulu");
+  if (!qty || qty < 1) return showToast("Jumlah minimal 1");
+  if (!date) return showToast("Tanggal wajib diisi");
+
+  state.sales.push({
+    id: uid(),
+    productId,
+    qty,
+    date,
+    note,
+    createdAt: Date.now(),
+  });
+  saveState();
+  closeModal("saleModal");
+  renderAll();
+  showToast("✅ Transaksi berhasil dicatat!");
+}
+
+/* ========================================================
+   TARGET
+   ======================================================== */
+function openTargetModal() {
+  document.getElementById("targetInput").value = state.target || "";
+  openModal("targetModal");
+}
+function saveTarget() {
+  const val = Number(document.getElementById("targetInput").value);
+  if (val < 0) return showToast("Target tidak valid");
+  state.target = val;
+  saveState();
+  closeModal("targetModal");
+  renderDashboard();
+  showToast("🎯 Target berhasil disimpan!");
+}
+
+/* ========================================================
+   STATS
+   ======================================================== */
+function renderStats() {
+  // 7 days chart
+  const chartEl = document.getElementById("chart7d");
+  const days = [];
+  const today = new Date();
+  for (let i = 6; i >= 0; i--) {
+    const d = new Date(today);
+    d.setDate(today.getDate() - i);
+    const dStr = d.toISOString().slice(0, 10);
+    const dayKomisi = state.sales
+      .filter(s => s.date === dStr)
+      .reduce((sum, s) => sum + calcCommission(s), 0);
+    days.push({
+      label: d.toLocaleDateString("id-ID", { weekday: "short" }).slice(0, 3),
+      value: dayKomisi,
+    });
+  }
+  const maxVal = Math.max(...days.map(d => d.value), 1);
+  chartEl.innerHTML = days.map(d => `
+    <div class="chart-bar" data-label="${d.label}" data-value="${fmtShort(d.value)}"
+      style="height: ${(d.value / maxVal) * 100}%"></div>
+  `).join("");
+
+  // Top products
+  const productCommissions = {};
+  state.sales.forEach(s => {
+    if (!productCommissions[s.productId]) productCommissions[s.productId] = 0;
+    productCommissions[s.productId] += calcCommission(s);
+  });
+  const topProd = Object.entries(productCommissions)
+    .map(([id, val]) => ({ product: getProduct(id), value: val }))
+    .filter(x => x.product)
+    .sort((a, b) => b.value - a.value)
+    .slice(0, 5);
+
+  const topProdEl = document.getElementById("topProduk");
+  if (topProd.length === 0) {
+    topProdEl.innerHTML = `<div class="empty"><div class="empty-icon">🏆</div><p>Belum ada data</p></div>`;
+  } else {
+    topProdEl.innerHTML = topProd.map((x, i) => `
+      <div class="top-item">
+        <div class="top-rank">${i + 1}</div>
+        <div class="top-name">${x.product.name}</div>
+        <div class="top-value">${fmtShort(x.value)}</div>
+      </div>
+    `).join("");
+  }
+
+  // Top platforms
+  const platformCommissions = {};
+  state.sales.forEach(s => {
+    const p = getProduct(s.productId);
+    if (!p) return;
+    if (!platformCommissions[p.platform]) platformCommissions[p.platform] = 0;
+    platformCommissions[p.platform] += calcCommission(s);
+  });
+  const topPlat = Object.entries(platformCommissions)
+    .sort((a, b) => b[1] - a[1])
+    .slice(0, 5);
+
+  const topPlatEl = document.getElementById("topPlatform");
+  if (topPlat.length === 0) {
+    topPlatEl.innerHTML = `<div class="empty"><div class="empty-icon">🌐</div><p>Belum ada data</p></div>`;
+  } else {
+    topPlatEl.innerHTML = topPlat.map(([plat, val], i) => `
+      <div class="top-item">
+        <div class="top-rank">${i + 1}</div>
+        <div class="top-name">${PLATFORM_ICON[plat] || "📦"} ${plat}</div>
+        <div class="top-value">${fmtShort(val)}</div>
+      </div>
+    `).join("");
+  }
+}
+
+/* ========================================================
+   TOOLS
+   ======================================================== */
+function hitungKomisi() {
+  const harga = Number(document.getElementById("calcHarga").value) || 0;
+  const persen = Number(document.getElementById("calcPersen").value) || 0;
+  const qty = Number(document.getElementById("calcQty").value) || 1;
+  if (harga <= 0 || persen <= 0) return showToast("Isi harga & persen dulu");
+  const komisiPerUnit = harga * persen / 100;
+  const total = komisiPerUnit * qty;
+  document.getElementById("calcResult").classList.remove("hidden");
+  document.getElementById("calcOutput").innerHTML = `
+    <div style="margin-bottom: 6px;"><small style="color: var(--text-3);">Komisi per unit:</small> <strong style="color: var(--text);">${fmt(komisiPerUnit)}</strong></div>
+    <div><small style="color: var(--text-3);">Total komisi (${qty}x):</small> <strong style="color: var(--green); font-size: 1.05rem;">${fmt(total)}</strong></div>
+  `;
+}
+
+function buildUTM() {
+  const url = document.getElementById("utmUrl").value.trim();
+  const source = document.getElementById("utmSource").value.trim();
+  const medium = document.getElementById("utmMedium").value.trim();
+  const campaign = document.getElementById("utmCampaign").value.trim();
+
+  if (!url) return showToast("Isi URL dulu");
+
+  const params = new URLSearchParams();
+  if (source) params.set("utm_source", source);
+  if (medium) params.set("utm_medium", medium);
+  if (campaign) params.set("utm_campaign", campaign);
+
+  const sep = url.includes("?") ? "&" : "?";
+  const result = params.toString() ? url + sep + params.toString() : url;
+
+  document.getElementById("utmResult").classList.remove("hidden");
+  document.getElementById("utmOutput").textContent = result;
+}
+
+function genCaption() {
+  const productId = document.getElementById("capProduk").value;
+  const gaya = document.getElementById("capGaya").value;
+  if (!productId) return showToast("Pilih produk dulu");
+  const p = getProduct(productId);
+  if (!p) return;
+
+  const templates = {
+    santai: [
+      `Guys, ada produk yang akhirnya bikin aku tenang banget pake nya 😍\n\n${p.name} dari ${p.platform} ini beneran worth it banget. Kualitasnya gak ngebohongin harga.\n\n${p.note ? p.note + "\n\n" : ""}Cek di link bawah ya, mumpung lagi promo! 👇\n${p.link || "[link affiliate kamu]"}\n\n#${p.platform.replace(/\s/g,"")} #affiliate #recommended`,
+    ],
+    "hard-sell": [
+      `🔥 PROMO TERBATAS! 🔥\n\n${p.name}\n💰 Cuma ${fmt(p.harga)}\n✅ Stok terbatas\n✅ Pengiriman cepat\n✅ Garansi original\n\n👉 GASKEUN BORONG SEBELUM HABIS!\n${p.link || "[link affiliate kamu]"}\n\n#PROMO #${p.platform.replace(/\s/g,"")} #LIMITED`,
+    ],
+    storytelling: [
+      `Dulu aku gak percaya sama hype nya...\n\nTapi setelah coba ${p.name}, aku langsung paham kenapa banyak orang nge-rekomen ini.\n\n${p.note ? p.note + "\n\n" : ""}Sekarang udah jadi favorit aku. Kalau kamu lagi cari yang sejenis, ini layak banget dicoba.\n\nLink di bawah ya 👇\n${p.link || "[link affiliate kamu]"}\n\n#review #${p.platform.replace(/\s/g,"")} #recommendation`,
+    ],
+    urgency: [
+      `⏰ JANGAN SAMPAI KEHABISAN!\n\n${p.name} cuma ${fmt(p.harga)} di ${p.platform}!\n\nStok udah mulai menipis & promo bisa berakhir kapan aja.\n\n👉 KLIK SEKARANG sebelum nyesel:\n${p.link || "[link affiliate kamu]"}\n\nDM "READY" kalau mau dipandu cara order. Buruan! 🔥\n\n#flashsale #buruan #${p.platform.replace(/\s/g,"")}`,
+    ],
+  };
+
+  const text = (templates[gaya] || templates.santai)[0];
+  document.getElementById("capResult").classList.remove("hidden");
+  document.getElementById("capOutput").textContent = text;
+}
+
+function refreshCapProductSelect() {
+  const sel = document.getElementById("capProduk");
+  if (!sel) return;
+  sel.innerHTML = '<option value="">-- pilih produk --</option>' +
+    state.products.map(p => `<option value="${p.id}">${p.name} (${p.platform})</option>`).join("");
+}
+
+/* ========================================================
+   IMPORT / EXPORT
+   ======================================================== */
+function exportData() {
+  const data = JSON.stringify(state, null, 2);
+  const blob = new Blob([data], { type: "application/json" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = `yanzy-affiliate-backup-${todayStr()}.json`;
+  a.click();
+  URL.revokeObjectURL(url);
+  showToast("📥 Backup berhasil didownload!");
+}
+
+function openImport() {
+  document.getElementById("importText").value = "";
+  openModal("importModal");
+}
+
+function doImport() {
+  const txt = document.getElementById("importText").value.trim();
+  if (!txt) return showToast("Paste data backup dulu");
+  try {
+    const data = JSON.parse(txt);
+    if (!data.products || !Array.isArray(data.products)) throw new Error("Format tidak valid");
+    if (!data.sales || !Array.isArray(data.sales)) throw new Error("Format tidak valid");
+    state = { ...defaultState(), ...data };
+    saveState();
+    closeModal("importModal");
+    renderAll();
+    showToast("✅ Data berhasil diimport!");
+  } catch (e) {
+    showToast("❌ Format JSON tidak valid");
+  }
+}
+
+function confirmReset() {
+  showConfirm(
+    "Hapus SEMUA data?",
+    "Semua produk, transaksi, dan target akan terhapus permanen. Sebaiknya export backup dulu.",
+    () => {
+      state = defaultState();
+      saveState();
+      renderAll();
+      showToast("🗑️ Semua data direset");
+    }
+  );
+}
+
+/* ========================================================
+   MODAL HELPERS
+   ======================================================== */
+function openModal(id) {
+  document.getElementById(id).classList.add("open");
+  document.body.style.overflow = "hidden";
+}
+function closeModal(id) {
+  document.getElementById(id).classList.remove("open");
+  document.body.style.overflow = "";
+}
+function closeModalOverlay(e, id) {
+  if (e.target.id === id) closeModal(id);
+}
+
+function showConfirm(title, msg, onOk) {
+  document.getElementById("confirmTitle").textContent = title;
+  document.getElementById("confirmMsg").textContent = msg;
+  const okBtn = document.getElementById("confirmOk");
+  const newOk = okBtn.cloneNode(true);
+  okBtn.parentNode.replaceChild(newOk, okBtn);
+  newOk.addEventListener("click", () => {
+    closeModal("confirmModal");
+    onOk();
+  });
+  openModal("confirmModal");
+}
+
+/* ========================================================
+   COPY / TOAST
+   ======================================================== */
+function copyText(text, btn) {
+  navigator.clipboard.writeText(text).then(() => {
+    if (btn) {
+      const orig = btn.textContent;
+      btn.textContent = "✓ Tersalin";
+      btn.classList.add("copied");
+      setTimeout(() => { btn.textContent = orig; btn.classList.remove("copied"); }, 1600);
+    }
+    showToast("📋 Berhasil disalin");
+  }).catch(() => {
+    showToast("❌ Gagal menyalin");
+  });
+}
+
+let toastTimer;
+function showToast(msg) {
+  const t = document.getElementById("toast");
+  t.textContent = msg;
+  t.classList.add("show");
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.classList.remove("show"), 2400);
+}
+
+/* ========================================================
+   ESC KEY
+   ======================================================== */
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") {
+    document.querySelectorAll(".modal-overlay.open").forEach(m => m.classList.remove("open"));
+    document.body.style.overflow = "";
+  }
+});
+
+/* ========================================================
+   RENDER ALL
+   ======================================================== */
+function renderAll() {
+  renderDashboard();
+  renderProducts();
+  renderSales();
+  renderStats();
+  refreshCapProductSelect();
+}
+
+/* ========================================================
+   SEED DEMO DATA on first load
+   ======================================================== */
+if (state.products.length === 0 && state.sales.length === 0) {
+  state.products = [
+    { id: uid(), name: "Serum Vitamin C 30ml", platform: "Shopee",      kategori: "Skincare", harga: 89000,  komisi: 12, link: "https://shopee.co.id/", note: "Best seller, banyak review bagus", createdAt: Date.now() },
+    { id: uid(), name: "Hair Oil Argan",       platform: "TikTok Shop", kategori: "Haircare", harga: 65000,  komisi: 15, link: "https://tiktok.com/shop", note: "Cocok rambut kering & rusak", createdAt: Date.now() },
+    { id: uid(), name: "Power Bank 20000mAh",  platform: "Tokopedia",   kategori: "Gadget",   harga: 199000, komisi: 8,  link: "https://tokopedia.com/", note: "", createdAt: Date.now() },
+  ];
+  // Some sample sales (last 5 days)
+  const today = new Date();
+  state.sales = [];
+  for (let i = 4; i >= 0; i--) {
+    const d = new Date(today);
+    d.setDate(today.getDate() - i);
+    const ds = d.toISOString().slice(0, 10);
+    if (Math.random() > 0.3) {
+      state.sales.push({
+        id: uid(),
+        productId: state.products[Math.floor(Math.random() * state.products.length)].id,
+        qty: Math.ceil(Math.random() * 3),
+        date: ds,
+        note: "",
+        createdAt: Date.now() - i * 86400000,
+      });
+    }
+  }
+  state.target = 2000000;
+  saveState();
+}
+
+/* ========================================================
+   INIT
+   ======================================================== */
+renderAll();
+
+console.log("%c📊 Yanzy Affiliate Hub loaded", "color:#a78bfa;font-size:16px;font-weight:bold;");
+</script>
+</body>
+</html>
