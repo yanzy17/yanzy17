@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YanzyShop - Belanja Hemat & Cepat</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- ===== HEADER ===== -->
+    <header class="header">
+        <div class="header-top">
+            <h1 class="logo">🛍️ YanzyShop</h1>
+            <button class="cart-btn" onclick="toggleCart()">
+                🛒 <span class="cart-count" id="cartCount">0</span>
+            </button>
+        </div>
+        <div class="search-box">
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Cari produk..."
+                oninput="renderProducts()"
+            />
+            <button onclick="renderProducts()">🔍</button>
+        </div>
+    </header>
+
+    <!-- ===== KATEGORI ===== -->
+    <nav class="categories" id="categories">
+        <button class="cat-btn active" data-cat="all">Semua</button>
+        <button class="cat-btn" data-cat="Fashion">👕 Fashion</button>
+        <button class="cat-btn" data-cat="Elektronik">📱 Elektronik</button>
+        <button class="cat-btn" data-cat="Makanan">🍔 Makanan</button>
+        <button class="cat-btn" data-cat="Buku">📚 Buku</button>
+        <button class="cat-btn" data-cat="Olahraga">⚽ Olahraga</button>
+    </nav>
+
+    <!-- ===== BANNER PROMO ===== -->
+    <section class="banner">
+        <div>
+            <h2>Diskon Hingga 50%! 🔥</h2>
+            <p>Promo spesial untuk pembeli baru</p>
+        </div>
+    </section>
+
+    <!-- ===== DAFTAR PRODUK ===== -->
+    <main class="container">
+        <h2 class="section-title">Produk Terlaris</h2>
+        <div id="productGrid" class="product-grid">
+            <!-- Produk diisi otomatis oleh JavaScript -->
+        </div>
+        <p id="emptyState" class="empty-state hidden">😔 Produk tidak ditemukan</p>
+    </main>
+
+    <!-- ===== KERANJANG (SIDEBAR) ===== -->
+    <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+    <aside class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3>🛒 Keranjang Saya</h3>
+            <button class="close-btn" onclick="toggleCart()">✕</button>
+        </div>
+        <div id="cartItems" class="cart-items">
+            <p class="empty-cart">Keranjang masih kosong 🛒</p>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total:</span>
+                <strong id="cartTotal">Rp 0</strong>
+            </div>
+            <button class="checkout-btn" onclick="checkout()">Checkout 💳</button>
+        </div>
+    </aside>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <p>&copy; 2026 YanzyShop. Dibuat oleh @yanzy17 🚀</p>
+    </footer>
+
+    <!-- ===== TOAST NOTIFIKASI ===== -->
+    <div id="toast" class="toast"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
