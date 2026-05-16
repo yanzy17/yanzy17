@@ -674,6 +674,148 @@ section { padding: 60px 0; position: relative; }
   transform: translateX(-50%) translateY(0);
 }
 
+/* ========== WELCOME POPUP ========== */
+.welcome-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 1, 24, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  z-index: 300;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s;
+}
+.welcome-overlay.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.welcome-modal {
+  background: linear-gradient(180deg, #1c0f3b, #14082b);
+  border: 1px solid rgba(167, 139, 250, 0.3);
+  border-radius: 24px;
+  padding: 36px 28px 28px;
+  max-width: 440px;
+  width: 100%;
+  text-align: center;
+  position: relative;
+  transform: scale(0.85) translateY(20px);
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 0 30px 80px rgba(167, 139, 250, 0.25), 0 0 0 1px rgba(255,255,255,0.05) inset;
+  overflow: hidden;
+}
+.welcome-overlay.show .welcome-modal { transform: scale(1) translateY(0); }
+
+.welcome-modal::before {
+  content: "";
+  position: absolute;
+  top: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 300px;
+  height: 200px;
+  background: radial-gradient(ellipse, rgba(236, 72, 153, 0.4), transparent 70%);
+  filter: blur(40px);
+  pointer-events: none;
+}
+
+.welcome-content { position: relative; z-index: 1; }
+
+.welcome-icon {
+  width: 72px;
+  height: 72px;
+  margin: 0 auto 18px;
+  background: var(--gradient);
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.2rem;
+  box-shadow: 0 12px 40px rgba(167, 139, 250, 0.5);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+.welcome-badge {
+  display: inline-block;
+  background: rgba(167, 139, 250, 0.15);
+  border: 1px solid rgba(167, 139, 250, 0.4);
+  color: #c4b5fd;
+  padding: 5px 14px;
+  border-radius: 30px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  margin-bottom: 14px;
+}
+
+.welcome-modal h2 {
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  margin-bottom: 10px;
+  line-height: 1.25;
+}
+
+.welcome-modal > .welcome-content > p {
+  color: var(--text-2);
+  font-size: 0.92rem;
+  margin-bottom: 22px;
+  line-height: 1.6;
+}
+
+.welcome-features {
+  text-align: left;
+  background: rgba(0,0,0,0.25);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 14px 16px;
+  margin-bottom: 22px;
+}
+
+.welcome-features li {
+  list-style: none;
+  font-size: 0.86rem;
+  color: var(--text-2);
+  padding: 5px 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.welcome-features li::before {
+  content: "✨";
+  font-size: 0.9rem;
+}
+
+.welcome-actions {
+  display: flex;
+  gap: 8px;
+  flex-direction: column;
+}
+
+.welcome-help {
+  font-size: 0.78rem;
+  color: var(--text-3);
+  margin-top: 14px;
+  line-height: 1.55;
+}
+
+.welcome-help a {
+  color: #c4b5fd;
+  font-weight: 600;
+  border-bottom: 1px dashed rgba(167, 139, 250, 0.4);
+}
+
 /* ========== ANIMATIONS ========== */
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(12px); }
@@ -835,6 +977,37 @@ section { padding: 60px 0; position: relative; }
   </div>
   <div class="footer-credit">© 2026 Yanzy AI Tools · Dibuat oleh @yanzy17</div>
 </footer>
+
+<!-- ========== WELCOME POPUP ========== -->
+<div class="welcome-overlay" id="welcomePopup">
+  <div class="welcome-modal">
+    <div class="welcome-content">
+      <div class="welcome-icon">🎉</div>
+      <div class="welcome-badge">AKSES PREMIUM AKTIF</div>
+      <h2>Selamat Datang di <span class="gradient-text">Yanzy AI Tools!</span></h2>
+      <p>Terima kasih sudah jadi member 💜 Akses kamu sudah aktif & bisa dipakai <strong>selamanya tanpa batas</strong>.</p>
+
+      <ul class="welcome-features">
+        <li>Akses penuh ke 8 AI tools premium</li>
+        <li>Generate sebanyak yang kamu mau</li>
+        <li>Hasil siap copy-paste ke semua platform</li>
+        <li>Bisa diakses kapan aja, di mana aja</li>
+      </ul>
+
+      <div class="welcome-actions">
+        <button class="btn btn-primary btn-block btn-lg" onclick="closeWelcome()">
+          Mulai Generate Sekarang →
+        </button>
+      </div>
+
+      <p class="welcome-help">
+        💬 Ada kendala? Chat admin di
+        <a href="https://wa.me/6281930563872" target="_blank">WhatsApp</a>
+        — kami siap bantu 24/7.
+      </p>
+    </div>
+  </div>
+</div>
 
 <div class="toast" id="toast"></div>
 
@@ -1169,11 +1342,47 @@ function showToast(msg) {
 }
 
 /* ========================================================
+   WELCOME POPUP
+   ======================================================== */
+function closeWelcome() {
+  const popup = document.getElementById("welcomePopup");
+  popup.classList.remove("show");
+  document.body.style.overflow = "";
+  // Tandai sudah lihat — biar gak muncul lagi
+  localStorage.setItem("yanzy_welcomed", "1");
+}
+
+function showWelcomeIfFirstVisit() {
+  // Cek apakah user udah pernah lihat popup
+  if (localStorage.getItem("yanzy_welcomed") === "1") return;
+
+  // Tampilkan popup setelah 600ms biar smooth
+  setTimeout(() => {
+    document.getElementById("welcomePopup").classList.add("show");
+    document.body.style.overflow = "hidden";
+  }, 600);
+}
+
+// Tutup popup saat tekan ESC
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") {
+    const popup = document.getElementById("welcomePopup");
+    if (popup.classList.contains("show")) closeWelcome();
+  }
+});
+
+// Tutup popup saat klik area gelap (luar modal)
+document.getElementById("welcomePopup").addEventListener("click", (e) => {
+  if (e.target.id === "welcomePopup") closeWelcome();
+});
+
+/* ========================================================
    INIT
    ======================================================== */
 renderTools();
 renderFaq();
 updateGeneratorHeader();
+showWelcomeIfFirstVisit();
 
 console.log("%c✨ Yanzy AI Tools loaded", "color:#a78bfa;font-size:16px;font-weight:bold;");
 </script>
