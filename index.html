@@ -3,82 +3,197 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>YanzyShop - Belanja Hemat & Cepat</title>
+    <meta name="theme-color" content="#0f172a">
+    <title>YanzyStore - Premium Digital Service</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <!-- ===== HEADER ===== -->
     <header class="header">
-        <div class="header-top">
-            <h1 class="logo">🛍️ YanzyShop</h1>
-            <button class="cart-btn" onclick="toggleCart()">
-                🛒 <span class="cart-count" id="cartCount">0</span>
+        <div class="header-inner">
+            <a href="#" class="logo">
+                <span class="logo-icon">⚡</span>
+                <span>Yanzy<span class="logo-accent">Store</span></span>
+            </a>
+            <button class="cart-btn" onclick="toggleCart()" aria-label="Keranjang">
+                <span>🛒</span>
+                <span class="cart-count" id="cartCount">0</span>
             </button>
-        </div>
-        <div class="search-box">
-            <input
-                type="text"
-                id="searchInput"
-                placeholder="Cari produk..."
-                oninput="renderProducts()"
-            />
-            <button onclick="renderProducts()">🔍</button>
         </div>
     </header>
 
-    <!-- ===== KATEGORI ===== -->
-    <nav class="categories" id="categories">
-        <button class="cat-btn active" data-cat="all">Semua</button>
-        <button class="cat-btn" data-cat="Fashion">👕 Fashion</button>
-        <button class="cat-btn" data-cat="Elektronik">📱 Elektronik</button>
-        <button class="cat-btn" data-cat="Makanan">🍔 Makanan</button>
-        <button class="cat-btn" data-cat="Buku">📚 Buku</button>
-        <button class="cat-btn" data-cat="Olahraga">⚽ Olahraga</button>
-    </nav>
-
-    <!-- ===== BANNER PROMO ===== -->
-    <section class="banner">
-        <div>
-            <h2>Diskon Hingga 50%! 🔥</h2>
-            <p>Promo spesial untuk pembeli baru</p>
+    <!-- ===== HERO ===== -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="badge">⚡ Aktivasi Cepat 1-5 Menit</div>
+            <h1>Premium App<br><span class="gradient-text">Harga Hemat</span></h1>
+            <p>CapCut Pro, Canva Pro, Netflix, Spotify & 20+ aplikasi premium lainnya — garansi penuh!</p>
+            <div class="hero-stats">
+                <div class="stat">
+                    <strong>10K+</strong>
+                    <span>Pelanggan</span>
+                </div>
+                <div class="stat">
+                    <strong>4.9★</strong>
+                    <span>Rating</span>
+                </div>
+                <div class="stat">
+                    <strong>24/7</strong>
+                    <span>Support</span>
+                </div>
+            </div>
         </div>
     </section>
 
+    <!-- ===== SEARCH & KATEGORI ===== -->
+    <div class="filter-section">
+        <div class="search-box">
+            <span class="search-icon">🔍</span>
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Cari produk premium..."
+                oninput="renderProducts()"
+            />
+        </div>
+
+        <nav class="categories" id="categories">
+            <button class="cat-btn active" data-cat="all">✨ Semua</button>
+            <button class="cat-btn" data-cat="Streaming">📺 Streaming</button>
+            <button class="cat-btn" data-cat="Editing">🎬 Editing</button>
+            <button class="cat-btn" data-cat="Musik">🎵 Musik</button>
+            <button class="cat-btn" data-cat="Produktivitas">💼 Produktivitas</button>
+            <button class="cat-btn" data-cat="AI">🤖 AI</button>
+        </nav>
+    </div>
+
     <!-- ===== DAFTAR PRODUK ===== -->
     <main class="container">
-        <h2 class="section-title">Produk Terlaris</h2>
-        <div id="productGrid" class="product-grid">
-            <!-- Produk diisi otomatis oleh JavaScript -->
+        <div class="section-header">
+            <h2 class="section-title">🔥 Produk Tersedia</h2>
+            <span class="section-sub" id="productCount">0 produk</span>
         </div>
+
+        <div id="productGrid" class="product-grid"></div>
         <p id="emptyState" class="empty-state hidden">😔 Produk tidak ditemukan</p>
     </main>
 
-    <!-- ===== KERANJANG (SIDEBAR) ===== -->
-    <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
-    <aside class="cart-sidebar" id="cartSidebar">
-        <div class="cart-header">
-            <h3>🛒 Keranjang Saya</h3>
-            <button class="close-btn" onclick="toggleCart()">✕</button>
+    <!-- ===== JAMINAN ===== -->
+    <section class="features">
+        <div class="feature">
+            <div class="feature-icon">⚡</div>
+            <h3>Aktivasi Cepat</h3>
+            <p>1-5 menit setelah bayar</p>
         </div>
-        <div id="cartItems" class="cart-items">
-            <p class="empty-cart">Keranjang masih kosong 🛒</p>
+        <div class="feature">
+            <div class="feature-icon">🛡️</div>
+            <h3>Garansi Penuh</h3>
+            <p>Replace gratis selama masa aktif</p>
         </div>
-        <div class="cart-footer">
-            <div class="cart-total">
-                <span>Total:</span>
-                <strong id="cartTotal">Rp 0</strong>
-            </div>
-            <button class="checkout-btn" onclick="checkout()">Checkout 💳</button>
+        <div class="feature">
+            <div class="feature-icon">💬</div>
+            <h3>Support 24/7</h3>
+            <p>Admin standby kapan aja</p>
         </div>
-    </aside>
+        <div class="feature">
+            <div class="feature-icon">💸</div>
+            <h3>Harga Termurah</h3>
+            <p>Promo & cashback tiap minggu</p>
+        </div>
+    </section>
 
     <!-- ===== FOOTER ===== -->
     <footer class="footer">
-        <p>&copy; 2026 YanzyShop. Dibuat oleh @yanzy17 🚀</p>
+        <p><strong>YanzyStore</strong> — Premium Digital Service</p>
+        <p class="footer-sub">© 2026 Dibuat oleh @yanzy17</p>
     </footer>
 
-    <!-- ===== TOAST NOTIFIKASI ===== -->
+    <!-- ===== MODAL DETAIL PRODUK ===== -->
+    <div class="modal-overlay" id="productModal" onclick="closeProductModal(event)">
+        <div class="modal" onclick="event.stopPropagation()">
+            <button class="modal-close" onclick="closeProductModal()">✕</button>
+            <div class="modal-body" id="modalBody"></div>
+        </div>
+    </div>
+
+    <!-- ===== KERANJANG SIDEBAR ===== -->
+    <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+    <aside class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3>🛒 Keranjang</h3>
+            <button class="close-btn" onclick="toggleCart()">✕</button>
+        </div>
+        <div id="cartItems" class="cart-items">
+            <div class="empty-cart">
+                <div class="empty-cart-icon">🛒</div>
+                <p>Keranjang masih kosong</p>
+                <small>Pilih produk premium dulu yuk!</small>
+            </div>
+        </div>
+        <div class="cart-footer" id="cartFooter">
+            <div class="cart-total">
+                <span>Total</span>
+                <strong id="cartTotal">Rp 0</strong>
+            </div>
+            <button class="checkout-btn" onclick="openCheckout()">
+                Lanjut Bayar →
+            </button>
+        </div>
+    </aside>
+
+    <!-- ===== MODAL CHECKOUT ===== -->
+    <div class="modal-overlay" id="checkoutModal" onclick="closeCheckout(event)">
+        <div class="modal" onclick="event.stopPropagation()">
+            <button class="modal-close" onclick="closeCheckout()">✕</button>
+            <div class="modal-body">
+                <h2 class="modal-title">💳 Checkout</h2>
+
+                <!-- Form data -->
+                <div class="form-group">
+                    <label>Nama Lengkap</label>
+                    <input type="text" id="custName" placeholder="Nama kamu" />
+                </div>
+                <div class="form-group">
+                    <label>No. WhatsApp</label>
+                    <input type="tel" id="custWa" placeholder="08xxxxxxxxxx" />
+                </div>
+                <div class="form-group">
+                    <label>Email (untuk akun)</label>
+                    <input type="email" id="custEmail" placeholder="email@contoh.com" />
+                </div>
+
+                <!-- Metode pembayaran -->
+                <h3 class="checkout-subtitle">Metode Pembayaran</h3>
+                <div class="payment-methods" id="paymentMethods"></div>
+
+                <!-- Ringkasan -->
+                <div class="order-summary">
+                    <div class="summary-row">
+                        <span>Subtotal</span>
+                        <span id="sumSubtotal">Rp 0</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Biaya Admin</span>
+                        <span id="sumFee">Rp 0</span>
+                    </div>
+                    <div class="summary-row total">
+                        <span>Total Bayar</span>
+                        <strong id="sumTotal">Rp 0</strong>
+                    </div>
+                </div>
+
+                <button class="checkout-btn primary-btn" onclick="processOrder()">
+                    Pesan via WhatsApp 📱
+                </button>
+                <p class="checkout-note">
+                    Setelah klik, kamu akan diarahkan ke WhatsApp admin untuk konfirmasi & pembayaran
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== TOAST ===== -->
     <div id="toast" class="toast"></div>
 
     <script src="script.js"></script>
