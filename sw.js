@@ -1,7 +1,7 @@
 /* Yanzy Affiliate Hub - Service Worker
  * Cache-first strategy supaya app bisa jalan offline
  */
-const CACHE_NAME = "yanzy-hub-v1";
+const CACHE_NAME = "yanzy-hub-v2";
 const ASSETS = [
   "./",
   "./affiliate-hub.html",

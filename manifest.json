@@ -23,5 +23,35 @@
       "type": "image/png",
       "purpose": "any maskable"
     }
+  ],
+  "shortcuts": [
+    {
+      "name": "Catat Penjualan",
+      "short_name": "+ Sale",
+      "description": "Langsung catat transaksi affiliate",
+      "url": "./affiliate-hub.html?action=quick-sale",
+      "icons": [{ "src": "icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Tambah Produk",
+      "short_name": "+ Produk",
+      "description": "Tambah produk affiliate baru",
+      "url": "./affiliate-hub.html?action=quick-product",
+      "icons": [{ "src": "icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Import Cepat",
+      "short_name": "Import",
+      "description": "Bulk input penjualan",
+      "url": "./affiliate-hub.html?action=import",
+      "icons": [{ "src": "icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Statistik",
+      "short_name": "Stats",
+      "description": "Lihat performa & target",
+      "url": "./affiliate-hub.html?action=stats",
+      "icons": [{ "src": "icon-192.png", "sizes": "192x192" }]
+    }
   ]
 }

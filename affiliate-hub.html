@@ -934,6 +934,7 @@ main { padding: 24px 0; }
     <button class="tab-btn" data-tab="produk">🛍️ Produk</button>
     <button class="tab-btn" data-tab="sales">💰 Penjualan</button>
     <button class="tab-btn" data-tab="stats">📈 Statistik</button>
+    <button class="tab-btn" data-tab="import">⚡ Import</button>
     <button class="tab-btn" data-tab="tools">🧰 Tools</button>
   </div>
 </nav>
@@ -1093,6 +1094,143 @@ main { padding: 24px 0; }
       </div>
     </section>
 
+    <!-- ========== IMPORT TAB ========== -->
+    <section class="tab-content" id="tab-import">
+      <div class="section-h">
+        <div>
+          <h2>⚡ Import Cepat</h2>
+          <p>Catat banyak penjualan sekaligus, gak satu-satu lagi</p>
+        </div>
+      </div>
+
+      <!-- Mode Selector -->
+      <div class="filter-bar" id="importModeFilter">
+        <button class="chip active" data-mode="bulk">📝 Bulk Input</button>
+        <button class="chip" data-mode="smart">🤖 Smart Paste</button>
+        <button class="chip" data-mode="reminder">⏰ Reminder</button>
+      </div>
+
+      <!-- ===== BULK INPUT MODE ===== -->
+      <div class="tool-block" id="modeBulk">
+        <div class="tool-head">
+          <div class="stat-icon" style="background:rgba(167,139,250,0.18); color:var(--primary);">📝</div>
+          <div>
+            <h3>Bulk Input — Format Tabel</h3>
+            <p>Paste/ketik daftar transaksi, satu baris per transaksi</p>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Format: <code style="font-size:0.78rem; color:var(--primary);">Nama Produk | Qty | Tanggal (opsional)</code></label>
+          <textarea id="bulkInput" placeholder="Lipstik Wardah | 3 | 2026-05-16
+Power Bank | 1
+Hair Oil Argan | 2 | kemarin
+Serum Vitamin C | 5 | hari ini" style="min-height: 180px; font-family: 'SF Mono', Menlo, monospace; font-size: 0.85rem;"></textarea>
+          <p class="helper">💡 Tips: Tanggal boleh ditulis "hari ini", "kemarin", atau format YYYY-MM-DD. Kalau dikosongin = hari ini. Pemisah bisa pakai <code>|</code>, <code>,</code>, atau tab.</p>
+        </div>
+
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px; margin-bottom:14px;">
+          <button class="btn btn-ghost" onclick="loadBulkExample()">📋 Lihat Contoh</button>
+          <button class="btn btn-ghost" onclick="document.getElementById('bulkInput').value=''">🗑️ Bersihkan</button>
+        </div>
+
+        <button class="btn btn-primary btn-block" onclick="parseBulkPreview()">👁️ Preview & Validasi</button>
+
+        <!-- Preview hasil -->
+        <div id="bulkPreview" class="hidden" style="margin-top: 16px;">
+          <div class="card" style="background: rgba(16,185,129,0.05); border-color: rgba(16,185,129,0.2);">
+            <div class="card-h">
+              <h3>📋 Preview Hasil</h3>
+              <span id="bulkPreviewCount" style="font-size: 0.78rem; color: var(--green); font-weight: 700;">—</span>
+            </div>
+            <div id="bulkPreviewList"></div>
+            <button class="btn btn-primary btn-block" style="margin-top: 14px;" onclick="confirmBulkImport()">✅ Import Semua</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== SMART PASTE MODE ===== -->
+      <div class="tool-block hidden" id="modeSmart">
+        <div class="tool-head">
+          <div class="stat-icon" style="background:rgba(56,189,248,0.18); color:var(--primary-3);">🤖</div>
+          <div>
+            <h3>Smart Paste dari Shopee</h3>
+            <p>Copy text dari Shopee Affiliate, biar AI yang baca</p>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Paste apapun dari Shopee Affiliate (Order Detail / Earnings):</label>
+          <textarea id="smartInput" placeholder="Contoh paste dari Shopee Affiliate:
+
+Lipstik Wardah Color Sense
+Order ID: 240516ABCD123
+Quantity: 3
+Komisi: Rp 19.500
+Date: 16 May 2026
+
+Atau bisa juga screenshot via teks copy..." style="min-height: 180px; font-size: 0.85rem;"></textarea>
+          <p class="helper">💡 Smart Paste otomatis cari nama produk yang cocok dari produk Anda + ekstrak qty & tanggal. Cocok kalau Anda copy detail dari email Shopee atau dashboard.</p>
+        </div>
+
+        <button class="btn btn-primary btn-block" onclick="parseSmartPaste()">🔍 Analisa & Preview</button>
+
+        <div id="smartPreview" class="hidden" style="margin-top: 16px;">
+          <div class="card" style="background: rgba(56,189,248,0.05); border-color: rgba(56,189,248,0.2);">
+            <div class="card-h">
+              <h3>🤖 Hasil Deteksi</h3>
+              <span id="smartPreviewCount" style="font-size: 0.78rem; color: var(--primary-3); font-weight: 700;">—</span>
+            </div>
+            <div id="smartPreviewList"></div>
+            <button class="btn btn-primary btn-block" style="margin-top: 14px;" onclick="confirmSmartImport()">✅ Import yang Cocok</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== REMINDER MODE ===== -->
+      <div class="tool-block hidden" id="modeReminder">
+        <div class="tool-head">
+          <div class="stat-icon" style="background:rgba(245,158,11,0.18); color:var(--orange);">⏰</div>
+          <div>
+            <h3>Reminder Harian</h3>
+            <p>Notifikasi biar gak lupa catat penjualan tiap hari</p>
+          </div>
+        </div>
+
+        <div id="reminderStatus" class="card" style="background: rgba(245,158,11,0.06); border-color: rgba(245,158,11,0.25); margin-bottom: 14px;">
+          <div style="display:flex; align-items:center; gap:12px;">
+            <div style="font-size: 2rem;" id="reminderIcon">🔕</div>
+            <div style="flex:1;">
+              <div style="font-weight: 700; font-size: 0.95rem;" id="reminderTitle">Reminder belum aktif</div>
+              <div style="font-size: 0.78rem; color: var(--text-3);" id="reminderDesc">Aktifkan biar dapat notifikasi setiap jam yang Anda atur</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Jam Reminder (24-jam format)</label>
+          <input type="time" id="reminderTime" value="21:00" />
+          <p class="helper">💡 Rekomendasi: 21:00 (malam) — saat Anda sudah selesai posting & cek hasil hari itu</p>
+        </div>
+
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px;">
+          <button class="btn btn-primary" onclick="enableReminder()" id="enableReminderBtn">🔔 Aktifkan</button>
+          <button class="btn btn-ghost" onclick="disableReminder()" id="disableReminderBtn">🔕 Matikan</button>
+        </div>
+
+        <div class="card" style="margin-top: 14px;">
+          <div class="card-h"><h3>💡 Cara Kerja Reminder</h3></div>
+          <div style="font-size: 0.85rem; color: var(--text-2); line-height: 1.7;">
+            <p style="margin-bottom: 8px;"><strong style="color:var(--text);">1.</strong> Aktifkan reminder & beri izin notifikasi</p>
+            <p style="margin-bottom: 8px;"><strong style="color:var(--text);">2.</strong> Aplikasi cek setiap menit, kalau sudah waktunya & belum ada transaksi hari itu → kirim notif</p>
+            <p style="margin-bottom: 8px;"><strong style="color:var(--text);">3.</strong> Tap notif → langsung buka aplikasi</p>
+            <p style="margin-bottom: 0;"><strong style="color:var(--orange);">⚠️</strong> Notif cuma jalan kalau aplikasi pernah dibuka hari itu (limitasi browser/PWA). Lebih reliable kalau install jadi PWA.</p>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
     <!-- ========== TOOLS TAB ========== -->
     <section class="tab-content" id="tab-tools">
       <div class="section-h">
@@ -1224,7 +1362,7 @@ main { padding: 24px 0; }
 </main>
 
 <!-- FAB -->
-<button class="fab" onclick="openSaleModal()" title="Catat Penjualan">+</button>
+<button class="fab" id="mainFab" onclick="openSaleModal()" title="Catat Penjualan">+</button>
 
 <!-- ========== MODAL: PRODUK ========== -->
 <div class="modal-overlay" id="productModal" onclick="closeModalOverlay(event, 'productModal')">
@@ -2280,6 +2418,603 @@ window.addEventListener("appinstalled", () => {
 if (window.matchMedia("(display-mode: standalone)").matches || window.navigator.standalone) {
   document.getElementById("installBtn")?.classList.add("hidden");
 }
+
+/* ========================================================
+   IMPORT TAB - MODE SWITCHER
+   ======================================================== */
+document.querySelectorAll("#importModeFilter .chip").forEach(c => {
+  c.addEventListener("click", () => {
+    const mode = c.dataset.mode;
+    document.querySelectorAll("#importModeFilter .chip").forEach(x => x.classList.toggle("active", x.dataset.mode === mode));
+    document.getElementById("modeBulk").classList.toggle("hidden", mode !== "bulk");
+    document.getElementById("modeSmart").classList.toggle("hidden", mode !== "smart");
+    document.getElementById("modeReminder").classList.toggle("hidden", mode !== "reminder");
+    if (mode === "reminder") refreshReminderUI();
+  });
+});
+
+/* ========================================================
+   BULK INPUT
+   ======================================================== */
+function loadBulkExample() {
+  const examples = state.products.slice(0, 3);
+  if (examples.length === 0) {
+    showToast("⚠️ Tambah produk dulu untuk lihat contoh");
+    return;
+  }
+  const today = todayStr();
+  const yest = new Date(); yest.setDate(yest.getDate() - 1);
+  const yestStr = yest.toISOString().slice(0, 10);
+  const text = examples.map((p, i) => {
+    const qty = i + 1;
+    const date = i === 0 ? "hari ini" : i === 1 ? "kemarin" : yestStr;
+    return `${p.name} | ${qty} | ${date}`;
+  }).join("\n");
+  document.getElementById("bulkInput").value = text;
+  showToast("📋 Contoh dimuat — sesuaikan dengan data Anda");
+}
+
+function parseDateInput(input) {
+  if (!input) return todayStr();
+  const s = input.trim().toLowerCase();
+  if (s === "hari ini" || s === "today" || s === "td") return todayStr();
+  if (s === "kemarin" || s === "yesterday" || s === "kmrn") {
+    const d = new Date(); d.setDate(d.getDate() - 1);
+    return d.toISOString().slice(0, 10);
+  }
+  // Format YYYY-MM-DD
+  if (/^\d{4}-\d{2}-\d{2}$/.test(s)) return s;
+  // Format DD/MM/YYYY atau DD-MM-YYYY
+  const m = s.match(/^(\d{1,2})[\/\-](\d{1,2})[\/\-](\d{4})$/);
+  if (m) return `${m[3]}-${m[2].padStart(2,"0")}-${m[1].padStart(2,"0")}`;
+  // Coba parse umum
+  const d = new Date(s);
+  if (!isNaN(d.getTime())) return d.toISOString().slice(0, 10);
+  return null;
+}
+
+function findProduct(query) {
+  if (!query) return null;
+  const q = query.trim().toLowerCase();
+  // Exact match
+  let p = state.products.find(x => x.name.toLowerCase() === q);
+  if (p) return p;
+  // Starts with
+  p = state.products.find(x => x.name.toLowerCase().startsWith(q));
+  if (p) return p;
+  // Contains
+  p = state.products.find(x => x.name.toLowerCase().includes(q));
+  if (p) return p;
+  // Word match (kata pertama produk)
+  p = state.products.find(x => {
+    const productWords = x.name.toLowerCase().split(/\s+/);
+    const queryWords = q.split(/\s+/);
+    return queryWords.every(qw => productWords.some(pw => pw.includes(qw) || qw.includes(pw)));
+  });
+  return p || null;
+}
+
+let bulkParsedItems = [];
+
+function parseBulkPreview() {
+  const raw = document.getElementById("bulkInput").value.trim();
+  if (!raw) {
+    showToast("⚠️ Isi data dulu");
+    return;
+  }
+  if (state.products.length === 0) {
+    showToast("⚠️ Tambah produk dulu sebelum import");
+    return;
+  }
+
+  const lines = raw.split("\n").map(l => l.trim()).filter(l => l && !l.startsWith("#"));
+  bulkParsedItems = [];
+
+  lines.forEach((line, idx) => {
+    // Split by | , atau tab
+    const parts = line.split(/[|,\t]/).map(p => p.trim()).filter(Boolean);
+    if (parts.length < 2) {
+      bulkParsedItems.push({ ok: false, line, error: "Format kurang lengkap (minimal: nama | qty)" });
+      return;
+    }
+
+    const [namePart, qtyPart, datePart] = parts;
+    const product = findProduct(namePart);
+    const qty = parseInt(qtyPart);
+    const date = parseDateInput(datePart);
+
+    if (!product) {
+      bulkParsedItems.push({ ok: false, line, error: `Produk "${namePart}" tidak ditemukan`, suggest: namePart });
+      return;
+    }
+    if (!qty || qty < 1) {
+      bulkParsedItems.push({ ok: false, line, error: "Qty tidak valid" });
+      return;
+    }
+    if (!date) {
+      bulkParsedItems.push({ ok: false, line, error: "Format tanggal salah" });
+      return;
+    }
+    const komisi = (product.harga * product.komisi / 100) * qty;
+    bulkParsedItems.push({
+      ok: true, product, qty, date, komisi, line
+    });
+  });
+
+  renderBulkPreview();
+}
+
+function renderBulkPreview() {
+  const okItems = bulkParsedItems.filter(x => x.ok);
+  const errItems = bulkParsedItems.filter(x => !x.ok);
+  const totalKomisi = okItems.reduce((s, x) => s + x.komisi, 0);
+
+  document.getElementById("bulkPreview").classList.remove("hidden");
+  document.getElementById("bulkPreviewCount").textContent = `${okItems.length} valid${errItems.length > 0 ? ` • ${errItems.length} error` : ""}`;
+
+  const list = document.getElementById("bulkPreviewList");
+  let html = "";
+
+  if (okItems.length > 0) {
+    html += `
+      <div style="background: rgba(16,185,129,0.08); border: 1px solid rgba(16,185,129,0.2); border-radius: 10px; padding: 12px; margin-bottom: 12px;">
+        <div style="font-size: 0.78rem; color: var(--text-3); margin-bottom: 4px;">Total komisi yang akan tercatat:</div>
+        <div style="font-size: 1.3rem; font-weight: 800; color: var(--green);">${fmt(totalKomisi)}</div>
+      </div>
+    `;
+    html += '<div class="txn-list">';
+    okItems.forEach(x => {
+      html += `
+        <div class="txn-item" style="background: rgba(16,185,129,0.05);">
+          <div class="txn-icon" style="background: ${PLATFORM_GRADIENT[x.product.platform] || PLATFORM_GRADIENT.Lainnya}">
+            ${PLATFORM_ICON[x.product.platform] || "📦"}
+          </div>
+          <div class="txn-info">
+            <div class="txn-name">${x.product.name}</div>
+            <div class="txn-meta">
+              <span>${x.qty}x</span>
+              <span>•</span>
+              <span>${formatDate(x.date)}</span>
+            </div>
+          </div>
+          <div class="txn-amount">
+            <strong>+${fmtShort(x.komisi)}</strong>
+            <small>komisi</small>
+          </div>
+        </div>
+      `;
+    });
+    html += '</div>';
+  }
+
+  if (errItems.length > 0) {
+    html += `<div style="margin-top: 14px; padding: 12px; background: rgba(239,68,68,0.08); border: 1px solid rgba(239,68,68,0.25); border-radius: 10px;">`;
+    html += `<div style="font-size: 0.85rem; font-weight: 700; color: var(--red); margin-bottom: 8px;">⚠️ ${errItems.length} baris gagal:</div>`;
+    errItems.forEach(x => {
+      html += `<div style="font-size: 0.78rem; color: var(--text-3); padding: 4px 0; border-top: 1px solid rgba(239,68,68,0.15);">
+        <code style="color: var(--text-2);">${x.line}</code><br/>
+        <span style="color: var(--red);">→ ${x.error}</span>
+      </div>`;
+    });
+    html += `</div>`;
+  }
+
+  list.innerHTML = html;
+}
+
+function confirmBulkImport() {
+  const okItems = bulkParsedItems.filter(x => x.ok);
+  if (okItems.length === 0) {
+    showToast("⚠️ Tidak ada baris valid untuk diimport");
+    return;
+  }
+  showConfirm(
+    `Import ${okItems.length} transaksi?`,
+    `Total komisi: ${fmt(okItems.reduce((s,x) => s + x.komisi, 0))}`,
+    () => {
+      okItems.forEach(x => {
+        state.sales.push({
+          id: uid(),
+          productId: x.product.id,
+          qty: x.qty,
+          date: x.date,
+          note: "Import bulk",
+          createdAt: Date.now(),
+        });
+      });
+      saveState();
+      document.getElementById("bulkInput").value = "";
+      document.getElementById("bulkPreview").classList.add("hidden");
+      bulkParsedItems = [];
+      renderAll();
+      showToast(`✅ ${okItems.length} transaksi berhasil diimport!`);
+      switchTab("dashboard");
+    }
+  );
+  document.getElementById("confirmIcon").textContent = "✅";
+  document.getElementById("confirmOk").textContent = "Import Sekarang";
+  document.getElementById("confirmOk").classList.remove("btn-danger");
+  document.getElementById("confirmOk").classList.add("btn-primary");
+}
+
+/* ========================================================
+   SMART PASTE - Auto-detect dari Shopee Affiliate
+   ======================================================== */
+let smartParsedItems = [];
+
+function parseSmartPaste() {
+  const raw = document.getElementById("smartInput").value.trim();
+  if (!raw) {
+    showToast("⚠️ Paste teks dari Shopee dulu");
+    return;
+  }
+  if (state.products.length === 0) {
+    showToast("⚠️ Tambah produk dulu");
+    return;
+  }
+
+  smartParsedItems = [];
+
+  // Strategi: split jadi blok per produk (pisah berdasarkan baris kosong atau heading)
+  // Cari nama produk yang cocok di setiap blok, ekstrak qty & tanggal
+  const blocks = raw.split(/\n\s*\n+|^[-=]{3,}/m).filter(b => b.trim());
+
+  blocks.forEach(block => {
+    const matched = extractFromBlock(block);
+    if (matched) smartParsedItems.push(matched);
+  });
+
+  // Fallback: kalau cuma 1 blok besar, coba parse line-by-line untuk tiap produk
+  if (smartParsedItems.length === 0) {
+    state.products.forEach(p => {
+      const regex = new RegExp(escapeRegex(p.name), "i");
+      if (regex.test(raw)) {
+        const qty = extractQty(raw, p.name) || 1;
+        const date = extractDate(raw) || todayStr();
+        smartParsedItems.push({
+          product: p,
+          qty,
+          date,
+          komisi: (p.harga * p.komisi / 100) * qty,
+          source: "fallback"
+        });
+      }
+    });
+  }
+
+  renderSmartPreview();
+}
+
+function escapeRegex(s) {
+  return s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
+function extractFromBlock(block) {
+  // Cari produk yang match
+  const product = state.products.find(p => {
+    const re = new RegExp(escapeRegex(p.name), "i");
+    return re.test(block);
+  });
+  if (!product) return null;
+
+  const qty = extractQty(block, product.name) || 1;
+  const date = extractDate(block) || todayStr();
+
+  return {
+    product,
+    qty,
+    date,
+    komisi: (product.harga * product.komisi / 100) * qty,
+    source: "block"
+  };
+}
+
+function extractQty(text, productName) {
+  // Cari pola: "qty: 3", "quantity: 3", "x3", "3 pcs", "3pcs"
+  const patterns = [
+    /(?:qty|quantity|jumlah|qtty)[:\s]+(\d+)/i,
+    /x\s*(\d+)/i,
+    /(\d+)\s*(?:pcs|pc|unit|item|piece)/i,
+    /(\d+)\s*x\s/i,
+  ];
+  for (const re of patterns) {
+    const m = text.match(re);
+    if (m) {
+      const n = parseInt(m[1]);
+      if (n >= 1 && n <= 999) return n;
+    }
+  }
+  return null;
+}
+
+function extractDate(text) {
+  // ISO format
+  const isoM = text.match(/(\d{4}-\d{2}-\d{2})/);
+  if (isoM) return isoM[1];
+
+  // DD MMM YYYY (May, Mei, etc)
+  const monthNames = "(?:jan|feb|mar|apr|mei|may|jun|jul|aug|agu|sep|okt|oct|nov|des|dec)";
+  const m = text.match(new RegExp(`(\\d{1,2})\\s+${monthNames}[a-z]*\\s+(\\d{4})`, "i"));
+  if (m) {
+    const monthMap = { jan:1, feb:2, mar:3, apr:4, mei:5, may:5, jun:6, jul:7, aug:8, agu:8, sep:9, okt:10, oct:10, nov:11, des:12, dec:12 };
+    const monthStr = m[0].match(new RegExp(monthNames, "i"))[0].toLowerCase().slice(0,3);
+    const month = monthMap[monthStr];
+    if (month) return `${m[2]}-${String(month).padStart(2,"0")}-${m[1].padStart(2,"0")}`;
+  }
+
+  // DD/MM/YYYY
+  const m2 = text.match(/(\d{1,2})[\/\-](\d{1,2})[\/\-](\d{4})/);
+  if (m2) return `${m2[3]}-${m2[2].padStart(2,"0")}-${m2[1].padStart(2,"0")}`;
+
+  return null;
+}
+
+function renderSmartPreview() {
+  const wrap = document.getElementById("smartPreview");
+  const list = document.getElementById("smartPreviewList");
+
+  wrap.classList.remove("hidden");
+
+  if (smartParsedItems.length === 0) {
+    document.getElementById("smartPreviewCount").textContent = "0 ditemukan";
+    list.innerHTML = `
+      <div class="empty">
+        <div class="empty-icon">🤖</div>
+        <div class="empty-title">Tidak ditemukan produk yang cocok</div>
+        <p>Pastikan teks yang dipaste mengandung nama produk yang persis sama dengan produk yang sudah Anda tambahkan</p>
+      </div>
+    `;
+    return;
+  }
+
+  document.getElementById("smartPreviewCount").textContent = `${smartParsedItems.length} terdeteksi`;
+  const totalKomisi = smartParsedItems.reduce((s,x) => s + x.komisi, 0);
+
+  let html = `
+    <div style="background: rgba(56,189,248,0.08); border: 1px solid rgba(56,189,248,0.2); border-radius: 10px; padding: 12px; margin-bottom: 12px;">
+      <div style="font-size: 0.78rem; color: var(--text-3); margin-bottom: 4px;">Total komisi terdeteksi:</div>
+      <div style="font-size: 1.3rem; font-weight: 800; color: var(--primary-3);">${fmt(totalKomisi)}</div>
+    </div>
+    <div class="txn-list">
+  `;
+  smartParsedItems.forEach((x, idx) => {
+    html += `
+      <div class="txn-item" style="background: rgba(56,189,248,0.05);">
+        <div class="txn-icon" style="background: ${PLATFORM_GRADIENT[x.product.platform] || PLATFORM_GRADIENT.Lainnya}">
+          ${PLATFORM_ICON[x.product.platform] || "📦"}
+        </div>
+        <div class="txn-info">
+          <div class="txn-name">${x.product.name}</div>
+          <div class="txn-meta">
+            <span>${x.qty}x</span><span>•</span>
+            <span>${formatDate(x.date)}</span><span>•</span>
+            <span style="color: var(--primary-3);">deteksi otomatis</span>
+          </div>
+        </div>
+        <div class="txn-amount">
+          <strong>+${fmtShort(x.komisi)}</strong>
+          <small>komisi</small>
+        </div>
+      </div>
+    `;
+  });
+  html += "</div>";
+
+  list.innerHTML = html;
+}
+
+function confirmSmartImport() {
+  if (smartParsedItems.length === 0) return;
+  showConfirm(
+    `Import ${smartParsedItems.length} transaksi?`,
+    `Total komisi: ${fmt(smartParsedItems.reduce((s,x) => s + x.komisi, 0))}`,
+    () => {
+      smartParsedItems.forEach(x => {
+        state.sales.push({
+          id: uid(),
+          productId: x.product.id,
+          qty: x.qty,
+          date: x.date,
+          note: "Smart import",
+          createdAt: Date.now(),
+        });
+      });
+      saveState();
+      document.getElementById("smartInput").value = "";
+      document.getElementById("smartPreview").classList.add("hidden");
+      smartParsedItems = [];
+      renderAll();
+      showToast(`✅ ${smartParsedItems.length || "Beberapa"} transaksi berhasil diimport!`);
+      switchTab("dashboard");
+    }
+  );
+  document.getElementById("confirmIcon").textContent = "🤖";
+  document.getElementById("confirmOk").textContent = "Import Sekarang";
+  document.getElementById("confirmOk").classList.remove("btn-danger");
+  document.getElementById("confirmOk").classList.add("btn-primary");
+}
+
+/* ========================================================
+   REMINDER HARIAN
+   ======================================================== */
+const REMINDER_KEY = "yanzy_reminder";
+
+function getReminderConfig() {
+  try {
+    return JSON.parse(localStorage.getItem(REMINDER_KEY) || "null");
+  } catch { return null; }
+}
+
+function setReminderConfig(cfg) {
+  if (cfg) localStorage.setItem(REMINDER_KEY, JSON.stringify(cfg));
+  else localStorage.removeItem(REMINDER_KEY);
+}
+
+function refreshReminderUI() {
+  const cfg = getReminderConfig();
+  const icon = document.getElementById("reminderIcon");
+  const title = document.getElementById("reminderTitle");
+  const desc = document.getElementById("reminderDesc");
+  const card = document.getElementById("reminderStatus");
+  const enableBtn = document.getElementById("enableReminderBtn");
+  const disableBtn = document.getElementById("disableReminderBtn");
+
+  if (cfg && cfg.enabled) {
+    icon.textContent = "🔔";
+    title.textContent = `Aktif — Reminder jam ${cfg.time}`;
+    desc.textContent = `Anda akan dapat notifikasi tiap hari kalau belum catat penjualan`;
+    card.style.background = "rgba(16,185,129,0.08)";
+    card.style.borderColor = "rgba(16,185,129,0.3)";
+    document.getElementById("reminderTime").value = cfg.time;
+    enableBtn.textContent = "🔄 Update Jam";
+    disableBtn.disabled = false;
+    disableBtn.style.opacity = "1";
+  } else {
+    icon.textContent = "🔕";
+    title.textContent = "Reminder belum aktif";
+    desc.textContent = "Aktifkan biar dapat notifikasi setiap jam yang Anda atur";
+    card.style.background = "rgba(245,158,11,0.06)";
+    card.style.borderColor = "rgba(245,158,11,0.25)";
+    enableBtn.textContent = "🔔 Aktifkan";
+    disableBtn.disabled = true;
+    disableBtn.style.opacity = "0.5";
+  }
+}
+
+async function enableReminder() {
+  const time = document.getElementById("reminderTime").value;
+  if (!time) {
+    showToast("⚠️ Pilih jam dulu");
+    return;
+  }
+
+  // Minta izin notifikasi
+  if (!("Notification" in window)) {
+    showToast("⚠️ Browser tidak support notifikasi");
+    return;
+  }
+
+  if (Notification.permission === "default") {
+    const result = await Notification.requestPermission();
+    if (result !== "granted") {
+      showToast("⚠️ Anda menolak notifikasi. Reminder gak bisa aktif.");
+      return;
+    }
+  }
+
+  if (Notification.permission === "denied") {
+    showToast("⚠️ Notifikasi diblokir. Aktifkan di setting browser dulu.");
+    return;
+  }
+
+  setReminderConfig({ enabled: true, time, lastShown: null });
+  refreshReminderUI();
+  showToast(`🔔 Reminder aktif jam ${time}!`);
+
+  // Test notif sekarang
+  setTimeout(() => {
+    new Notification("🎉 Reminder Aktif!", {
+      body: `Anda akan diingatkan setiap jam ${time} untuk catat penjualan`,
+      icon: "icon-192.png",
+      badge: "icon-192.png",
+    });
+  }, 500);
+
+  startReminderChecker();
+}
+
+function disableReminder() {
+  setReminderConfig(null);
+  refreshReminderUI();
+  showToast("🔕 Reminder dimatikan");
+}
+
+let reminderInterval = null;
+function startReminderChecker() {
+  if (reminderInterval) clearInterval(reminderInterval);
+  // Cek setiap menit
+  reminderInterval = setInterval(checkReminderTrigger, 60 * 1000);
+  checkReminderTrigger(); // Cek sekarang juga
+}
+
+function checkReminderTrigger() {
+  const cfg = getReminderConfig();
+  if (!cfg || !cfg.enabled) return;
+  if (Notification.permission !== "granted") return;
+
+  const now = new Date();
+  const [h, m] = cfg.time.split(":").map(Number);
+  const targetMin = h * 60 + m;
+  const nowMin = now.getHours() * 60 + now.getMinutes();
+  const today = todayStr();
+
+  // Trigger kalau sudah lewat jam target & belum dishow hari ini
+  if (nowMin >= targetMin && cfg.lastShown !== today) {
+    // Cek apakah hari ini sudah ada transaksi
+    const todaySales = state.sales.filter(s => s.date === today);
+
+    let title, body;
+    if (todaySales.length === 0) {
+      title = "💰 Lupa catat penjualan hari ini?";
+      body = "Cek dashboard Shopee Affiliate Anda & catat di Yanzy Hub!";
+    } else {
+      title = "📊 Update progress hari ini";
+      const todayKomisi = todaySales.reduce((s, x) => s + calcCommission(x), 0);
+      body = `Hari ini sudah ${todaySales.length} sale, komisi ${fmtShort(todayKomisi)}. Cek lagi Shopee, mungkin ada lagi!`;
+    }
+
+    new Notification(title, {
+      body,
+      icon: "icon-192.png",
+      badge: "icon-192.png",
+      tag: "yanzy-daily-reminder",
+      requireInteraction: false,
+    });
+
+    cfg.lastShown = today;
+    setReminderConfig(cfg);
+  }
+}
+
+// Auto-start checker kalau reminder enabled
+const reminderCfg = getReminderConfig();
+if (reminderCfg && reminderCfg.enabled) {
+  startReminderChecker();
+}
+
+/* ========================================================
+   QUICK ADD - Handle URL Parameters dari Home Screen Shortcuts
+   ======================================================== */
+function handleQuickAction() {
+  const params = new URLSearchParams(window.location.search);
+  const action = params.get("action");
+  if (!action) return;
+
+  // Hapus parameter dari URL biar gak terus-terusan trigger saat refresh
+  if (history.replaceState) {
+    const cleanUrl = window.location.pathname;
+    history.replaceState(null, "", cleanUrl);
+  }
+
+  setTimeout(() => {
+    switch (action) {
+      case "quick-sale":
+        openSaleModal();
+        break;
+      case "quick-product":
+        openProductModal();
+        break;
+      case "import":
+        switchTab("import");
+        break;
+      case "stats":
+        switchTab("stats");
+        break;
+    }
+  }, 100);
+}
+
+handleQuickAction();
 
 console.log("%c📊 Yanzy Affiliate Hub loaded", "color:#a78bfa;font-size:16px;font-weight:bold;");
 </script>
