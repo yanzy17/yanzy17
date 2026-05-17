@@ -3,521 +3,721 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="theme-color" content="#f3e7d3" />
-<title>Lynk.id Assets — @esenef17</title>
+<meta name="theme-color" content="#0e0e0e" />
+<title>Yanzy Store — Brand Assets</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Patrick+Hand&family=Shadows+Into+Light&family=Kalam:wght@400;700&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Playfair+Display:ital,wght@0,400;0,600;0,800;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,500;0,700;1,400&family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+  * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
   body {
     font-family: "Inter", -apple-system, sans-serif;
-    background: #f3e7d3;
-    color: #3a2a1a;
-    padding: 24px 16px 60px;
+    background: #0e0e0e;
+    color: #f5f5f5;
+    padding: 20px 14px 60px;
     min-height: 100vh;
   }
   .wrap { max-width: 720px; margin: 0 auto; }
-  h1 {
-    font-family: "Caveat", cursive;
-    font-size: 2.6rem;
+  .header {
     text-align: center;
-    color: #6b4423;
-    margin-bottom: 4px;
+    margin-bottom: 32px;
+    padding: 18px 0;
+    border-top: 1px solid #2a2a2a;
+    border-bottom: 1px solid #2a2a2a;
   }
-  .sub {
-    text-align: center;
-    font-family: "Shadows Into Light", cursive;
-    color: #6b5740;
-    font-size: 1.1rem;
-    margin-bottom: 30px;
-  }
-  .card {
-    background: #fff;
-    border-radius: 22px;
-    padding: 18px;
-    margin-bottom: 22px;
-    box-shadow: 0 8px 28px rgba(58, 42, 26, 0.1);
-    border: 1.5px solid rgba(107, 68, 35, 0.1);
-  }
-  .card h2 {
-    font-family: "Caveat", cursive;
-    font-size: 1.9rem;
-    color: #3a2a1a;
-    margin-bottom: 4px;
-  }
-  .card p.meta {
-    font-family: "Patrick Hand", cursive;
-    font-size: 0.95rem;
+  .header .label {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+    letter-spacing: 3px;
     color: #9c8a72;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .header h1 {
+    font-family: "DM Serif Display", serif;
+    font-size: 2.2rem;
+    font-weight: 400;
+    color: #fff;
+    line-height: 1.05;
+    letter-spacing: -0.5px;
+  }
+  .header p {
+    font-size: 13px;
+    color: #888;
+    margin-top: 8px;
+  }
+
+  .variant {
+    margin-bottom: 48px;
+  }
+  .variant-head {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    margin-bottom: 14px;
+    padding: 0 4px;
+  }
+  .variant-head .num {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+    color: #d4a574;
+    font-weight: 700;
+    letter-spacing: 2px;
+  }
+  .variant-head h2 {
+    font-family: "Bricolage Grotesque", sans-serif;
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: #fff;
+    letter-spacing: -0.5px;
+  }
+  .variant-head .tag {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10px;
+    color: #888;
+    margin-left: auto;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+  }
+
+  .preview-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
     margin-bottom: 14px;
   }
+
   .preview-box {
-    background:
-      radial-gradient(circle at 30% 20%, #ede0c8, transparent 60%),
-      #f3e7d3;
-    border-radius: 16px;
+    background: #1a1a1a;
+    border: 1px solid #2a2a2a;
+    border-radius: 14px;
     padding: 14px;
-    text-align: center;
-    margin-bottom: 14px;
     overflow: hidden;
+    position: relative;
+  }
+  .preview-box .label-mini {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10px;
+    color: #666;
+    margin-bottom: 10px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
   }
   .preview-box svg {
-    max-width: 100%;
+    width: 100%;
     height: auto;
     display: block;
     margin: 0 auto;
-    border-radius: 10px;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+    border-radius: 8px;
+    box-shadow: 0 8px 28px rgba(0,0,0,0.4);
   }
-  .preview-box.round svg {
+  .preview-box.profile svg {
+    max-width: 220px;
     border-radius: 50%;
-    max-width: 280px;
     aspect-ratio: 1/1;
   }
+
   .actions {
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
   }
   .btn {
-    flex: 1;
-    min-width: 130px;
-    padding: 14px 16px;
-    border-radius: 14px;
-    font-weight: 700;
-    font-size: 0.92rem;
+    padding: 12px 14px;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 0.85rem;
     border: none;
     cursor: pointer;
-    transition: all 0.2s;
+    transition: all 0.15s;
     font-family: inherit;
+    letter-spacing: 0.3px;
   }
   .btn-primary {
-    background: linear-gradient(135deg, #6b4423, #3a2a1a);
-    color: #faf2e3;
-    box-shadow: 0 4px 14px rgba(58, 42, 26, 0.25);
+    background: #f5f5f5;
+    color: #0e0e0e;
   }
-  .btn-primary:hover { transform: translateY(-2px); }
-  .btn-secondary {
-    background: #faf2e3;
-    color: #6b4423;
-    border: 1.5px solid #d4a574;
+  .btn-primary:hover { background: #fff; }
+  .btn-primary:active { transform: scale(0.97); }
+  .btn-ghost {
+    background: transparent;
+    color: #ccc;
+    border: 1px solid #333;
   }
-  .btn:active { transform: scale(0.97); }
+  .btn-ghost:hover { border-color: #555; color: #fff; }
+
   .toast {
     position: fixed;
     bottom: 24px;
     left: 50%;
     transform: translateX(-50%) translateY(120px);
-    background: #3a2a1a;
-    color: #faf2e3;
+    background: #f5f5f5;
+    color: #0e0e0e;
     padding: 12px 22px;
-    border-radius: 30px;
-    font-family: "Patrick Hand", cursive;
-    font-size: 0.95rem;
+    border-radius: 999px;
+    font-size: 0.9rem;
+    font-weight: 600;
     z-index: 200;
     opacity: 0;
     transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
-    box-shadow: 0 12px 36px rgba(58, 42, 26, 0.3);
+    box-shadow: 0 12px 36px rgba(0,0,0,0.4);
   }
   .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
-  .info {
-    background: #fffaf0;
-    border: 1.5px dashed rgba(107, 68, 35, 0.3);
-    border-radius: 16px;
-    padding: 16px 18px;
-    margin-bottom: 22px;
-    font-family: "Patrick Hand", cursive;
-    font-size: 1rem;
-    line-height: 1.6;
-    color: #6b5740;
-    position: relative;
-  }
-  .info::before {
-    content: "📌";
-    position: absolute;
-    top: -12px;
-    left: 16px;
-    font-size: 22px;
-    background: #fffaf0;
-    padding: 0 6px;
-  }
-  .info strong { color: #3a2a1a; }
-  .info ol { margin: 8px 0 0 22px; padding: 0; }
-  .info li { margin-bottom: 4px; }
-  .variant-tabs {
-    display: flex;
-    gap: 8px;
-    margin-bottom: 12px;
-    flex-wrap: wrap;
-  }
-  .variant-tab {
-    background: #f3e7d3;
-    border: 1.5px solid rgba(107, 68, 35, 0.18);
+
+  .info-block {
+    background: #1a1a1a;
+    border: 1px solid #2a2a2a;
     border-radius: 12px;
-    padding: 8px 14px;
-    font-family: "Patrick Hand", cursive;
-    font-size: 0.9rem;
-    color: #6b5740;
-    cursor: pointer;
-    transition: all 0.2s;
+    padding: 16px 18px;
+    margin-bottom: 24px;
+    font-size: 13px;
+    line-height: 1.6;
+    color: #ccc;
   }
-  .variant-tab.active {
-    background: #3a2a1a;
-    color: #faf2e3;
-    border-color: #3a2a1a;
+  .info-block strong { color: #d4a574; }
+  .info-block ol { margin: 8px 0 0 18px; }
+  .info-block li { margin-bottom: 4px; }
+
+  @media (min-width: 600px) {
+    .preview-grid {
+      grid-template-columns: 220px 1fr;
+      gap: 14px;
+    }
+    .preview-box.profile {
+      grid-column: 1;
+    }
+    .preview-box.banner {
+      grid-column: 2;
+    }
   }
 </style>
 </head>
 <body>
 <div class="wrap">
 
-  <h1>Lynk.id Assets ✨</h1>
-  <p class="sub">~ versi scrapbook handwritten ~</p>
+  <div class="header">
+    <div class="label">— BRAND ASSETS · 2025 —</div>
+    <h1>Yanzy Store</h1>
+    <p>5 variant · Pilih yang paling cocok</p>
+  </div>
 
-  <div class="info">
-    <strong>📱 Cara pakai:</strong>
+  <div class="info-block">
+    <strong>📥 Cara pakai</strong>
     <ol>
-      <li>Klik <strong>"Download PNG"</strong> di bawah masing-masing gambar</li>
-      <li>File otomatis tersimpan di galeri / folder Download HP</li>
-      <li>Buka <strong>lynk.id</strong> → Edit Profile → Upload</li>
+      <li>Scroll &amp; pilih variant yang paling cocok dengan vibe kamu</li>
+      <li>Klik <strong>Download PNG</strong> di profile + banner-nya</li>
+      <li>Upload ke Lynk.id (Edit Profile → Change Photo)</li>
     </ol>
   </div>
 
-  <!-- ===================== PROFILE PICTURE ===================== -->
-  <div class="card">
-    <h2>1. Profile Picture</h2>
-    <p class="meta">1000 × 1000 px · tampil bulat di Lynk.id ✨</p>
+  <!-- ================================================================ -->
+  <!-- VARIANT 1 — EDITORIAL CREAM                                       -->
+  <!-- ================================================================ -->
+  <div class="variant">
+    <div class="variant-head">
+      <span class="num">01</span>
+      <h2>Editorial Cream</h2>
+      <span class="tag">premium · serif · refined</span>
+    </div>
 
-    <div class="preview-box round">
-      <svg id="svgProfile" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" width="1000" height="1000">
-        <defs>
-          <radialGradient id="bgPP" cx="35%" cy="30%" r="80%">
-            <stop offset="0%" stop-color="#fff5e0"/>
-            <stop offset="50%" stop-color="#f3e7d3"/>
-            <stop offset="100%" stop-color="#e8d4b0"/>
-          </radialGradient>
-          <linearGradient id="rosePP" x1="0%" y1="0%" x2="0%" y2="100%">
-            <stop offset="0%" stop-color="#f8b59c"/>
-            <stop offset="100%" stop-color="#e89b7c"/>
-          </linearGradient>
-          <linearGradient id="darkPP" x1="0%" y1="0%" x2="0%" y2="100%">
-            <stop offset="0%" stop-color="#6b4423"/>
-            <stop offset="100%" stop-color="#3a2a1a"/>
-          </linearGradient>
-          <pattern id="dotsPP" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
-            <circle cx="20" cy="20" r="1.8" fill="#6b4423" opacity="0.12"/>
-          </pattern>
-        </defs>
+    <div class="preview-grid">
+      <div class="preview-box profile">
+        <div class="label-mini">PROFILE · 1000×1000</div>
+        <svg id="v1p" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" width="1000" height="1000">
+          <rect width="1000" height="1000" fill="#f5efe6"/>
+          <!-- subtle grain texture -->
+          <rect width="1000" height="1000" fill="url(#grain1)" opacity="0.4"/>
+          <defs>
+            <pattern id="grain1" x="0" y="0" width="60" height="60" patternUnits="userSpaceOnUse">
+              <circle cx="30" cy="30" r="0.6" fill="#0e0e0e" opacity="0.15"/>
+            </pattern>
+          </defs>
+          <!-- thin border -->
+          <rect x="40" y="40" width="920" height="920" fill="none" stroke="#0e0e0e" stroke-width="2" opacity="0.85"/>
+          <!-- top label -->
+          <text x="500" y="170" text-anchor="middle" font-family="Inter" font-size="22" letter-spacing="14" fill="#0e0e0e" font-weight="500">EST · 2024</text>
+          <!-- divider line -->
+          <line x1="380" y1="200" x2="620" y2="200" stroke="#0e0e0e" stroke-width="1.5"/>
+          <!-- main letterform -->
+          <text x="500" y="610" text-anchor="middle" font-family="DM Serif Display, serif" font-size="520" fill="#0e0e0e" font-weight="400">Y</text>
+          <!-- gold dot accent -->
+          <circle cx="685" cy="360" r="11" fill="#c9a35e"/>
+          <!-- bottom -->
+          <line x1="380" y1="780" x2="620" y2="780" stroke="#0e0e0e" stroke-width="1.5"/>
+          <text x="500" y="830" text-anchor="middle" font-family="DM Serif Display, serif" font-size="44" fill="#0e0e0e" font-style="italic">Yanzy Store</text>
+          <text x="500" y="880" text-anchor="middle" font-family="Inter" font-size="16" letter-spacing="6" fill="#5a5246" font-weight="500">DIGITAL · GOODS</text>
+        </svg>
+      </div>
 
-        <!-- Paper background -->
-        <rect width="1000" height="1000" fill="url(#bgPP)"/>
-        <rect width="1000" height="1000" fill="url(#dotsPP)"/>
+      <div class="preview-box banner">
+        <div class="label-mini">BANNER · 1200×628</div>
+        <svg id="v1b" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 628" width="1200" height="628">
+          <rect width="1200" height="628" fill="#f5efe6"/>
+          <defs>
+            <pattern id="grainB1" x="0" y="0" width="60" height="60" patternUnits="userSpaceOnUse">
+              <circle cx="30" cy="30" r="0.6" fill="#0e0e0e" opacity="0.12"/>
+            </pattern>
+          </defs>
+          <rect width="1200" height="628" fill="url(#grainB1)"/>
+          <!-- frame -->
+          <rect x="40" y="40" width="1120" height="548" fill="none" stroke="#0e0e0e" stroke-width="1.5"/>
+          <!-- top eyebrow -->
+          <text x="80" y="100" font-family="Inter" font-size="13" letter-spacing="4" fill="#0e0e0e" font-weight="600">— DIGITAL STORE / 2024</text>
+          <!-- gold accent dot -->
+          <circle cx="1100" cy="100" r="8" fill="#c9a35e"/>
+          <!-- main heading -->
+          <text x="80" y="240" font-family="DM Serif Display, serif" font-size="88" fill="#0e0e0e" font-weight="400">Produk Digital</text>
+          <text x="80" y="330" font-family="DM Serif Display, serif" font-size="100" fill="#0e0e0e" font-weight="400" font-style="italic">Yanzy Store</text>
+          <!-- gold underline accent -->
+          <rect x="80" y="350" width="100" height="3" fill="#c9a35e"/>
+          <!-- divider -->
+          <line x1="80" y1="410" x2="1120" y2="410" stroke="#0e0e0e" stroke-width="1"/>
+          <!-- 3 columns -->
+          <g font-family="Inter" fill="#0e0e0e">
+            <text x="80" y="450" font-size="11" letter-spacing="3" font-weight="600">— 01</text>
+            <text x="80" y="490" font-size="22" font-weight="700">Tools AI</text>
+            <text x="80" y="520" font-size="14" fill="#5a5246" font-weight="400">Leonardo, ChatGPT, Midjourney</text>
 
-        <!-- Big highlighter rose stroke behind text -->
-        <path d="M 180 460 Q 200 420, 280 430 L 720 425 Q 820 430, 810 480 Q 800 530, 720 530 L 280 540 Q 200 545, 180 500 Z"
-              fill="url(#rosePP)" opacity="0.45"/>
+            <text x="450" y="450" font-size="11" letter-spacing="3" font-weight="600">— 02</text>
+            <text x="450" y="490" font-size="22" font-weight="700">E-Book</text>
+            <text x="450" y="520" font-size="14" fill="#5a5246" font-weight="400">250+ Hook Threads viral</text>
 
-        <!-- "Hi!" handwritten huge -->
-        <g transform="translate(0, 20)">
-          <text x="500" y="490" text-anchor="middle"
-                font-family="Caveat, cursive" font-size="280" font-weight="700"
-                fill="url(#darkPP)" style="letter-spacing: -8px;">
-            Hi!
-          </text>
-        </g>
-
-        <!-- Smiley face replacing dot of "i" / floating top right -->
-        <g transform="translate(620, 320)">
-          <circle cx="0" cy="0" r="38" fill="#fcd86a" stroke="#3a2a1a" stroke-width="4"/>
-          <circle cx="-12" cy="-6" r="3.5" fill="#3a2a1a"/>
-          <circle cx="12" cy="-6" r="3.5" fill="#3a2a1a"/>
-          <path d="M -14 8 Q 0 22, 14 8" stroke="#3a2a1a" stroke-width="4" fill="none" stroke-linecap="round"/>
-          <!-- blush -->
-          <circle cx="-18" cy="6" r="5" fill="#e89b7c" opacity="0.7"/>
-          <circle cx="18" cy="6" r="5" fill="#e89b7c" opacity="0.7"/>
-        </g>
-
-        <!-- "aku Esenef" handwritten cursive below -->
-        <text x="500" y="640" text-anchor="middle"
-              font-family="Shadows Into Light, cursive" font-size="86" font-weight="400"
-              fill="#3a2a1a">
-          aku Esenef ♡
-        </text>
-
-        <!-- Wavy underline -->
-        <path d="M 280 680 Q 340 670, 400 680 T 520 680 T 640 680 T 720 680" stroke="#e89b7c" stroke-width="6" fill="none" stroke-linecap="round" opacity="0.85"/>
-
-        <!-- Sub-tag -->
-        <text x="500" y="760" text-anchor="middle"
-              font-family="Patrick Hand, cursive" font-size="46"
-              fill="#6b5740" font-weight="400">
-          ✦ digital store ✦
-        </text>
-
-        <!-- Handle bottom -->
-        <text x="500" y="830" text-anchor="middle"
-              font-family="Inter" font-size="34" font-weight="700"
-              fill="#3a2a1a" letter-spacing="2">
-          @ESENEF17
-        </text>
-
-        <!-- DOODLES SCATTERED -->
-        <!-- top left star sparkle -->
-        <g transform="translate(180, 200)" stroke="#3a2a1a" stroke-width="3.5" fill="none" stroke-linecap="round">
-          <line x1="0" y1="-22" x2="0" y2="22"/>
-          <line x1="-22" y1="0" x2="22" y2="0"/>
-          <line x1="-15" y1="-15" x2="15" y2="15"/>
-          <line x1="-15" y1="15" x2="15" y2="-15"/>
-        </g>
-
-        <!-- Top right squiggle -->
-        <path d="M 760 180 Q 790 160, 820 180 T 880 180" stroke="#3a2a1a" stroke-width="4" fill="none" stroke-linecap="round"/>
-
-        <!-- Heart top center -->
-        <path d="M 460 200 C 460 184, 440 180, 432 196 C 424 180, 404 184, 404 200 C 404 220, 432 244, 432 244 C 432 244, 460 220, 460 200 Z"
-              fill="#e89b7c" stroke="#3a2a1a" stroke-width="3"/>
-
-        <!-- Bottom left sparkle -->
-        <g transform="translate(170, 870)" fill="#c9a35e">
-          <path d="M 0 -25 L 6 -6 L 25 0 L 6 6 L 0 25 L -6 6 L -25 0 L -6 -6 Z"/>
-        </g>
-
-        <!-- Bottom right curly arrow -->
-        <g stroke="#3a2a1a" stroke-width="3.5" fill="none" stroke-linecap="round">
-          <path d="M 800 850 Q 830 820, 860 840 Q 880 855, 870 875"/>
-          <path d="M 870 875 L 858 868 M 870 875 L 880 866"/>
-        </g>
-
-        <!-- Mini hearts scattered -->
-        <g fill="#e89b7c">
-          <path d="M 240 580 C 240 572, 230 570, 226 578 C 222 570, 212 572, 212 580 C 212 592, 226 604, 226 604 C 226 604, 240 592, 240 580 Z"/>
-          <path d="M 800 600 C 800 594, 793 593, 790 598 C 787 593, 780 594, 780 600 C 780 608, 790 616, 790 616 C 790 616, 800 608, 800 600 Z"/>
-        </g>
-
-        <!-- Plus signs -->
-        <g stroke="#6b4423" stroke-width="3.5" stroke-linecap="round">
-          <line x1="120" y1="380" x2="120" y2="402"/>
-          <line x1="109" y1="391" x2="131" y2="391"/>
-          <line x1="880" y1="400" x2="880" y2="422"/>
-          <line x1="869" y1="411" x2="891" y2="411"/>
-        </g>
-
-        <!-- Tilde squiggles -->
-        <path d="M 850 720 Q 865 710, 880 720 T 910 720" stroke="#c9a35e" stroke-width="4" fill="none" stroke-linecap="round"/>
-      </svg>
+            <text x="820" y="450" font-size="11" letter-spacing="3" font-weight="600">— 03</text>
+            <text x="820" y="490" font-size="22" font-weight="700">Premium Apps</text>
+            <text x="820" y="520" font-size="14" fill="#5a5246" font-weight="400">Canva, CapCut, Netflix &amp; 20+</text>
+          </g>
+          <!-- bottom URL -->
+          <line x1="80" y1="555" x2="1120" y2="555" stroke="#0e0e0e" stroke-width="1"/>
+          <text x="80" y="580" font-family="JetBrains Mono, monospace" font-size="13" fill="#0e0e0e" letter-spacing="1.5">→ lynk.id/esenef17</text>
+          <text x="1120" y="580" text-anchor="end" font-family="JetBrains Mono, monospace" font-size="13" fill="#5a5246" letter-spacing="1.5">YS · ISSUE 01</text>
+        </svg>
+      </div>
     </div>
 
     <div class="actions">
-      <button class="btn btn-primary" onclick="downloadPNG('svgProfile', 'esenef17-profile.png', 1000, 1000)">⬇ Download PNG</button>
-      <button class="btn btn-secondary" onclick="downloadSVG('svgProfile', 'esenef17-profile.svg')">⬇ Download SVG</button>
+      <button class="btn btn-primary" onclick="downloadPNG('v1p','yanzy-01-editorial-profile.png',1000,1000)">↓ Profile PNG</button>
+      <button class="btn btn-primary" onclick="downloadPNG('v1b','yanzy-01-editorial-banner.png',1200,628)">↓ Banner PNG</button>
     </div>
   </div>
 
-  <!-- ===================== BANNER 1200x628 ===================== -->
-  <div class="card">
-    <h2>2. Banner / Cover</h2>
-    <p class="meta">1200 × 628 px · scrapbook polaroid style 📷</p>
+  <!-- ================================================================ -->
+  <!-- VARIANT 2 — MIDNIGHT GOLD                                         -->
+  <!-- ================================================================ -->
+  <div class="variant">
+    <div class="variant-head">
+      <span class="num">02</span>
+      <h2>Midnight Gold</h2>
+      <span class="tag">luxury · dark · premium</span>
+    </div>
 
-    <div class="preview-box">
-      <svg id="svgBanner" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 628" width="1200" height="628">
-        <defs>
-          <radialGradient id="bgBN2" cx="20%" cy="20%" r="100%">
-            <stop offset="0%" stop-color="#fff8e8"/>
-            <stop offset="60%" stop-color="#f3e7d3"/>
-            <stop offset="100%" stop-color="#e8d4b0"/>
-          </radialGradient>
-          <linearGradient id="rose2" x1="0%" y1="0%" x2="0%" y2="100%">
-            <stop offset="0%" stop-color="#f8b59c"/>
-            <stop offset="100%" stop-color="#e89b7c"/>
-          </linearGradient>
-          <linearGradient id="dark2" x1="0%" y1="0%" x2="0%" y2="100%">
-            <stop offset="0%" stop-color="#6b4423"/>
-            <stop offset="100%" stop-color="#3a2a1a"/>
-          </linearGradient>
-          <pattern id="dotsBN" x="0" y="0" width="32" height="32" patternUnits="userSpaceOnUse">
-            <circle cx="16" cy="16" r="1.5" fill="#6b4423" opacity="0.1"/>
-          </pattern>
-          <filter id="paperShadow" x="-20%" y="-20%" width="140%" height="140%">
-            <feGaussianBlur in="SourceAlpha" stdDeviation="4"/>
-            <feOffset dx="2" dy="6" result="offsetblur"/>
-            <feComponentTransfer><feFuncA type="linear" slope="0.25"/></feComponentTransfer>
-            <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
-          </filter>
-        </defs>
+    <div class="preview-grid">
+      <div class="preview-box profile">
+        <div class="label-mini">PROFILE · 1000×1000</div>
+        <svg id="v2p" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" width="1000" height="1000">
+          <defs>
+            <radialGradient id="bgV2P" cx="35%" cy="30%" r="80%">
+              <stop offset="0%" stop-color="#1f1f1f"/>
+              <stop offset="100%" stop-color="#0a0a0a"/>
+            </radialGradient>
+            <linearGradient id="goldV2" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#f4d68a"/>
+              <stop offset="50%" stop-color="#d4a574"/>
+              <stop offset="100%" stop-color="#a37b4f"/>
+            </linearGradient>
+          </defs>
+          <rect width="1000" height="1000" fill="url(#bgV2P)"/>
+          <!-- thin gold ring -->
+          <circle cx="500" cy="500" r="430" fill="none" stroke="url(#goldV2)" stroke-width="1.5" opacity="0.55"/>
+          <circle cx="500" cy="500" r="410" fill="none" stroke="url(#goldV2)" stroke-width="0.8" opacity="0.3"/>
+          <!-- monogram YS -->
+          <g font-family="Playfair Display, serif" font-weight="400">
+            <text x="380" y="600" text-anchor="middle" font-size="420" fill="url(#goldV2)">Y</text>
+            <text x="610" y="600" text-anchor="middle" font-size="420" fill="url(#goldV2)" opacity="0.85">S</text>
+          </g>
+          <!-- top label -->
+          <text x="500" y="180" text-anchor="middle" font-family="Inter" font-size="20" letter-spacing="16" fill="url(#goldV2)" font-weight="500">MAISON</text>
+          <!-- bottom -->
+          <line x1="380" y1="780" x2="620" y2="780" stroke="url(#goldV2)" stroke-width="1" opacity="0.6"/>
+          <text x="500" y="830" text-anchor="middle" font-family="Playfair Display, serif" font-style="italic" font-size="36" fill="#f5e6c8">Yanzy Store</text>
+          <text x="500" y="875" text-anchor="middle" font-family="Inter" font-size="14" letter-spacing="6" fill="#a89370" font-weight="400">DIGITAL · GOODS · 2024</text>
+        </svg>
+      </div>
 
-        <!-- Paper background -->
-        <rect width="1200" height="628" fill="url(#bgBN2)"/>
-        <rect width="1200" height="628" fill="url(#dotsBN)"/>
+      <div class="preview-box banner">
+        <div class="label-mini">BANNER · 1200×628</div>
+        <svg id="v2b" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 628" width="1200" height="628">
+          <defs>
+            <linearGradient id="bgV2B" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#1f1f1f"/>
+              <stop offset="60%" stop-color="#0e0e0e"/>
+              <stop offset="100%" stop-color="#000"/>
+            </linearGradient>
+            <linearGradient id="goldV2B" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#f4d68a"/>
+              <stop offset="100%" stop-color="#a37b4f"/>
+            </linearGradient>
+            <radialGradient id="glowV2B" cx="70%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#d4a574" stop-opacity="0.18"/>
+              <stop offset="100%" stop-color="#d4a574" stop-opacity="0"/>
+            </radialGradient>
+          </defs>
+          <rect width="1200" height="628" fill="url(#bgV2B)"/>
+          <rect width="1200" height="628" fill="url(#glowV2B)"/>
+          <!-- gold thin frame -->
+          <rect x="32" y="32" width="1136" height="564" fill="none" stroke="url(#goldV2B)" stroke-width="1" opacity="0.4"/>
+          <!-- top crest -->
+          <g transform="translate(80, 90)">
+            <line x1="0" y1="0" x2="60" y2="0" stroke="url(#goldV2B)" stroke-width="1"/>
+            <text x="80" y="6" font-family="Inter" font-size="11" letter-spacing="5" fill="url(#goldV2B)" font-weight="600">EST · MMXXIV</text>
+            <line x1="240" y1="0" x2="280" y2="0" stroke="url(#goldV2B)" stroke-width="1"/>
+          </g>
+          <!-- main heading -->
+          <text x="80" y="240" font-family="Playfair Display, serif" font-size="76" fill="#f5e6c8" font-weight="400">Produk Digital</text>
+          <text x="80" y="330" font-family="Playfair Display, serif" font-size="92" fill="url(#goldV2B)" font-style="italic" font-weight="400">Yanzy Store</text>
+          <!-- decorative line -->
+          <g transform="translate(80, 365)">
+            <line x1="0" y1="0" x2="40" y2="0" stroke="url(#goldV2B)" stroke-width="1.5"/>
+            <circle cx="55" cy="0" r="3" fill="url(#goldV2B)"/>
+            <line x1="70" y1="0" x2="110" y2="0" stroke="url(#goldV2B)" stroke-width="1.5"/>
+          </g>
+          <text x="80" y="410" font-family="Cormorant Garamond, serif" font-size="22" fill="#d4a574" font-style="italic" font-weight="300">A curated collection of premium digital goods</text>
+          <!-- product list right -->
+          <g transform="translate(820, 200)" font-family="Inter" fill="#f5e6c8">
+            <text x="0" y="0" font-size="11" letter-spacing="4" fill="url(#goldV2B)" font-weight="600">— COLLECTION</text>
+            <line x1="0" y1="20" x2="280" y2="20" stroke="url(#goldV2B)" stroke-width="0.5" opacity="0.5"/>
 
-        <!-- ============ LEFT TEXT BLOCK ============ -->
+            <text x="0" y="58" font-family="Playfair Display, serif" font-size="22" font-weight="400">Tools AI</text>
+            <text x="280" y="58" text-anchor="end" font-family="JetBrains Mono, monospace" font-size="12" fill="#a89370">— 01</text>
+            <line x1="0" y1="76" x2="280" y2="76" stroke="url(#goldV2B)" stroke-width="0.5" opacity="0.3"/>
 
-        <!-- Sticky note "since 2024" rotated -->
-        <g transform="translate(60, 70) rotate(-6)">
-          <rect width="180" height="56" rx="4" fill="#fcd86a" filter="url(#paperShadow)"/>
-          <text x="90" y="36" text-anchor="middle" font-family="Patrick Hand, cursive" font-size="22" fill="#3a2a1a">
-            ✨ premium store
-          </text>
-        </g>
+            <text x="0" y="114" font-family="Playfair Display, serif" font-size="22" font-weight="400">E-Book</text>
+            <text x="280" y="114" text-anchor="end" font-family="JetBrains Mono, monospace" font-size="12" fill="#a89370">— 02</text>
+            <line x1="0" y1="132" x2="280" y2="132" stroke="url(#goldV2B)" stroke-width="0.5" opacity="0.3"/>
 
-        <!-- Highlighter behind "Hai," -->
-        <rect x="50" y="172" width="180" height="32" fill="url(#rose2)" opacity="0.4" rx="3" transform="rotate(-1 140 188)"/>
-
-        <!-- Headline "Hai," -->
-        <text x="60" y="210" font-family="Caveat, cursive" font-size="100" font-weight="700" fill="#3a2a1a">Hai,</text>
-
-        <!-- Headline "aku Esenef!" -->
-        <text x="60" y="305" font-family="Caveat, cursive" font-size="110" font-weight="700" fill="url(#dark2)">
-          aku Esenef!
-        </text>
-
-        <!-- Wavy hand-drawn underline -->
-        <path d="M 70 322 Q 130 312, 200 322 T 340 322 T 480 322 T 580 322" stroke="#e89b7c" stroke-width="7" fill="none" stroke-linecap="round" opacity="0.9"/>
-
-        <!-- Subtitle line 1 -->
-        <text x="60" y="375" font-family="Shadows Into Light, cursive" font-size="34" fill="#6b5740" font-weight="400">
-          toko digital favoritmu 🌿
-        </text>
-
-        <!-- Subtitle line 2 -->
-        <text x="60" y="415" font-family="Patrick Hand, cursive" font-size="24" fill="#6b5740">
-          aplikasi pro · AI tools · ebook konten
-        </text>
-
-        <!-- Badge - hemat -->
-        <g transform="translate(60, 460) rotate(-3)">
-          <rect width="190" height="58" rx="4" fill="#7a8c5c" filter="url(#paperShadow)"/>
-          <text x="95" y="38" text-anchor="middle" font-family="Patrick Hand, cursive" font-size="22" font-weight="700" fill="#fff">
-            ⚡ hemat sampai 80%
-          </text>
-        </g>
-
-        <!-- Speech bubble pointing down/right -->
-        <g transform="translate(280, 480)">
-          <path d="M 0 0 Q -4 -16, 14 -16 L 240 -16 Q 258 -16, 258 0 L 258 28 Q 258 44, 240 44 L 60 44 L 40 60 L 44 44 L 14 44 Q -4 44, 0 28 Z"
-                fill="#fff" stroke="#3a2a1a" stroke-width="3"/>
-          <text x="129" y="22" text-anchor="middle" font-family="Patrick Hand, cursive" font-size="22" fill="#3a2a1a">
-            klik yg kamu mau ↓
-          </text>
-        </g>
-
-        <!-- CTA URL underline -->
-        <g transform="translate(60, 580)">
-          <text x="0" y="0" font-family="Kalam, cursive" font-size="28" font-weight="700" fill="#3a2a1a">
-            👉 lynk.id/esenef17
-          </text>
-          <path d="M 30 14 Q 130 8, 230 14 T 380 14" stroke="#e89b7c" stroke-width="5" fill="none" stroke-linecap="round" opacity="0.8"/>
-        </g>
-
-        <!-- ============ RIGHT: POLAROID STACK ============ -->
-
-        <!-- Polaroid 1 - back: Canva -->
-        <g transform="translate(680, 90) rotate(-9)" filter="url(#paperShadow)">
-          <rect width="180" height="220" fill="#fff"/>
-          <rect x="12" y="12" width="156" height="156" fill="#7ab0a8"/>
-          <text x="90" y="115" text-anchor="middle" font-family="Inter" font-size="80" font-weight="900" fill="#fff" opacity="0.95">C</text>
-          <text x="90" y="200" text-anchor="middle" font-family="Patrick Hand, cursive" font-size="22" fill="#3a2a1a">Canva Pro</text>
-          <!-- washi tape top -->
-          <rect x="60" y="-8" width="80" height="20" fill="#fcd86a" opacity="0.85" transform="rotate(2 100 0)"/>
-        </g>
-
-        <!-- Polaroid 2 - leonardo featured -->
-        <g transform="translate(870, 60) rotate(5)" filter="url(#paperShadow)">
-          <rect width="200" height="240" fill="#fff"/>
-          <rect x="14" y="14" width="172" height="172" fill="#3a2a1a"/>
-          <!-- AI mark -->
-          <circle cx="100" cy="100" r="46" fill="#d4a574"/>
-          <text x="100" y="118" text-anchor="middle" font-family="Inter" font-size="40" font-weight="900" fill="#3a2a1a">AI</text>
-          <text x="100" y="218" text-anchor="middle" font-family="Patrick Hand, cursive" font-size="22" fill="#3a2a1a">Leonardo AI</text>
-          <!-- washi tape -->
-          <rect x="-10" y="40" width="60" height="18" fill="#e89b7c" opacity="0.85" transform="rotate(-90 20 49)"/>
-        </g>
-
-        <!-- Polaroid 3 - ebook -->
-        <g transform="translate(700, 350) rotate(6)" filter="url(#paperShadow)">
-          <rect width="170" height="210" fill="#fff"/>
-          <rect x="12" y="12" width="146" height="146" fill="#e89b7c"/>
-          <text x="85" y="118" text-anchor="middle" font-family="Inter" font-size="64">📖</text>
-          <text x="85" y="190" text-anchor="middle" font-family="Patrick Hand, cursive" font-size="20" fill="#3a2a1a">Ebook Threads</text>
-          <!-- washi tape -->
-          <rect x="60" y="-8" width="60" height="18" fill="#7a8c5c" opacity="0.85" transform="rotate(-3 90 1)"/>
-        </g>
-
-        <!-- Polaroid 4 - 20+ apps -->
-        <g transform="translate(900, 380) rotate(-7)" filter="url(#paperShadow)">
-          <rect width="180" height="210" fill="#fff"/>
-          <rect x="12" y="12" width="156" height="156" fill="#c9a35e"/>
-          <text x="90" y="100" text-anchor="middle" font-family="Inter" font-size="56">⚡</text>
-          <text x="90" y="142" text-anchor="middle" font-family="Inter" font-size="22" font-weight="800" fill="#3a2a1a">+20</text>
-          <text x="90" y="190" text-anchor="middle" font-family="Patrick Hand, cursive" font-size="18" fill="#3a2a1a">Premium Apps</text>
-          <!-- washi tape -->
-          <rect x="50" y="-8" width="80" height="18" fill="#7ab0a8" opacity="0.85" transform="rotate(4 90 1)"/>
-        </g>
-
-        <!-- ============ DOODLES SCATTERED ============ -->
-
-        <!-- big star top right -->
-        <g transform="translate(1100, 70)" fill="#e89b7c">
-          <path d="M 0 -28 L 7 -7 L 28 0 L 7 7 L 0 28 L -7 7 L -28 0 L -7 -7 Z"/>
-        </g>
-
-        <!-- sparkle plus near canva -->
-        <g transform="translate(660, 60)" stroke="#3a2a1a" stroke-width="3" stroke-linecap="round">
-          <line x1="0" y1="-12" x2="0" y2="12"/>
-          <line x1="-12" y1="0" x2="12" y2="0"/>
-        </g>
-
-        <!-- heart between polaroids -->
-        <path d="M 875 340 C 875 332, 866 330, 862 340 C 858 330, 849 332, 849 340 C 849 354, 862 366, 862 366 C 862 366, 875 354, 875 340 Z"
-              fill="#e89b7c" stroke="#3a2a1a" stroke-width="2.5"/>
-
-        <!-- swirl arrow text-to-polaroid -->
-        <g stroke="#3a2a1a" stroke-width="3.5" fill="none" stroke-linecap="round">
-          <path d="M 540 320 Q 600 300, 660 280 Q 690 270, 700 290"/>
-          <path d="M 700 290 L 686 282 M 700 290 L 692 304"/>
-        </g>
-
-        <!-- bottom left sparkle -->
-        <g transform="translate(390, 580)" stroke="#c9a35e" stroke-width="3.5" fill="none" stroke-linecap="round">
-          <line x1="0" y1="-14" x2="0" y2="14"/>
-          <line x1="-14" y1="0" x2="14" y2="0"/>
-          <line x1="-10" y1="-10" x2="10" y2="10"/>
-          <line x1="-10" y1="10" x2="10" y2="-10"/>
-        </g>
-
-        <!-- mini hearts -->
-        <g fill="#e89b7c">
-          <path d="M 460 130 C 460 122, 451 120, 447 130 C 443 120, 434 122, 434 130 C 434 144, 447 156, 447 156 C 447 156, 460 144, 460 130 Z"/>
-          <path d="M 1140 380 C 1140 372, 1131 370, 1127 380 C 1123 370, 1114 372, 1114 380 C 1114 394, 1127 406, 1127 406 C 1127 406, 1140 394, 1140 380 Z"/>
-        </g>
-
-        <!-- squiggle bottom right -->
-        <path d="M 1010 600 Q 1030 590, 1050 600 T 1090 600 T 1130 600" stroke="#3a2a1a" stroke-width="3" fill="none" stroke-linecap="round"/>
-
-        <!-- tape strip top center -->
-        <rect x="540" y="0" width="80" height="22" fill="#fcd86a" opacity="0.85" transform="rotate(-3 580 11)"/>
-
-        <!-- circle deco bottom right -->
-        <circle cx="1130" cy="540" r="20" fill="none" stroke="#6b4423" stroke-width="3" stroke-dasharray="4,5" opacity="0.5"/>
-
-        <!-- "yay!" handwritten -->
-        <text x="1080" y="200" font-family="Shadows Into Light, cursive" font-size="38" fill="#e89b7c" transform="rotate(15 1080 200)">yay!</text>
-
-      </svg>
+            <text x="0" y="170" font-family="Playfair Display, serif" font-size="22" font-weight="400">Premium Apps</text>
+            <text x="280" y="170" text-anchor="end" font-family="JetBrains Mono, monospace" font-size="12" fill="#a89370">— 03</text>
+            <line x1="0" y1="188" x2="280" y2="188" stroke="url(#goldV2B)" stroke-width="0.5" opacity="0.3"/>
+          </g>
+          <!-- bottom -->
+          <line x1="80" y1="540" x2="1120" y2="540" stroke="url(#goldV2B)" stroke-width="0.5" opacity="0.5"/>
+          <text x="80" y="575" font-family="JetBrains Mono, monospace" font-size="12" fill="url(#goldV2B)" letter-spacing="1.5">LYNK.ID/ESENEF17</text>
+          <text x="1120" y="575" text-anchor="end" font-family="Playfair Display, serif" font-style="italic" font-size="14" fill="#a89370">since 2024</text>
+        </svg>
+      </div>
     </div>
 
     <div class="actions">
-      <button class="btn btn-primary" onclick="downloadPNG('svgBanner', 'esenef17-banner.png', 1200, 628)">⬇ Download PNG</button>
-      <button class="btn btn-secondary" onclick="downloadSVG('svgBanner', 'esenef17-banner.svg')">⬇ Download SVG</button>
+      <button class="btn btn-primary" onclick="downloadPNG('v2p','yanzy-02-midnight-profile.png',1000,1000)">↓ Profile PNG</button>
+      <button class="btn btn-primary" onclick="downloadPNG('v2b','yanzy-02-midnight-banner.png',1200,628)">↓ Banner PNG</button>
     </div>
   </div>
 
-  <div class="info">
-    <strong>💡 Tips Upload:</strong>
+  <!-- ================================================================ -->
+  <!-- VARIANT 3 — TECH GRADIENT                                         -->
+  <!-- ================================================================ -->
+  <div class="variant">
+    <div class="variant-head">
+      <span class="num">03</span>
+      <h2>Tech Gradient</h2>
+      <span class="tag">modern · futuristic · AI</span>
+    </div>
+
+    <div class="preview-grid">
+      <div class="preview-box profile">
+        <div class="label-mini">PROFILE · 1000×1000</div>
+        <svg id="v3p" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" width="1000" height="1000">
+          <defs>
+            <radialGradient id="meshA" cx="20%" cy="20%" r="60%">
+              <stop offset="0%" stop-color="#ff5e9c"/>
+              <stop offset="100%" stop-color="#ff5e9c" stop-opacity="0"/>
+            </radialGradient>
+            <radialGradient id="meshB" cx="80%" cy="30%" r="60%">
+              <stop offset="0%" stop-color="#ffae5c"/>
+              <stop offset="100%" stop-color="#ffae5c" stop-opacity="0"/>
+            </radialGradient>
+            <radialGradient id="meshC" cx="60%" cy="80%" r="65%">
+              <stop offset="0%" stop-color="#3aaeff"/>
+              <stop offset="100%" stop-color="#3aaeff" stop-opacity="0"/>
+            </radialGradient>
+            <radialGradient id="meshD" cx="20%" cy="80%" r="55%">
+              <stop offset="0%" stop-color="#a45eff"/>
+              <stop offset="100%" stop-color="#a45eff" stop-opacity="0"/>
+            </radialGradient>
+          </defs>
+          <rect width="1000" height="1000" fill="#1a0d2e"/>
+          <rect width="1000" height="1000" fill="url(#meshA)"/>
+          <rect width="1000" height="1000" fill="url(#meshB)"/>
+          <rect width="1000" height="1000" fill="url(#meshC)"/>
+          <rect width="1000" height="1000" fill="url(#meshD)"/>
+          <!-- noise overlay -->
+          <rect width="1000" height="1000" fill="#000" opacity="0.15"/>
+          <!-- grid lines -->
+          <g stroke="#fff" stroke-width="0.5" opacity="0.08">
+            <line x1="0" y1="500" x2="1000" y2="500"/>
+            <line x1="500" y1="0" x2="500" y2="1000"/>
+          </g>
+          <!-- top label -->
+          <text x="500" y="170" text-anchor="middle" font-family="Space Grotesk" font-size="20" letter-spacing="14" fill="#fff" font-weight="500" opacity="0.9">DIGITAL · STORE</text>
+          <!-- main Y -->
+          <text x="500" y="660" text-anchor="middle" font-family="Bricolage Grotesque, sans-serif" font-size="540" fill="#fff" font-weight="800" letter-spacing="-15">Y</text>
+          <!-- bottom -->
+          <text x="500" y="830" text-anchor="middle" font-family="Space Grotesk" font-size="42" fill="#fff" font-weight="700" letter-spacing="2">YANZY STORE</text>
+          <text x="500" y="880" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="14" fill="#fff" letter-spacing="3" opacity="0.7">// AI · EBOOK · APPS</text>
+        </svg>
+      </div>
+
+      <div class="preview-box banner">
+        <div class="label-mini">BANNER · 1200×628</div>
+        <svg id="v3b" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 628" width="1200" height="628">
+          <defs>
+            <radialGradient id="meshBA" cx="15%" cy="20%" r="55%">
+              <stop offset="0%" stop-color="#ff5e9c"/>
+              <stop offset="100%" stop-color="#ff5e9c" stop-opacity="0"/>
+            </radialGradient>
+            <radialGradient id="meshBB" cx="85%" cy="25%" r="55%">
+              <stop offset="0%" stop-color="#ffae5c"/>
+              <stop offset="100%" stop-color="#ffae5c" stop-opacity="0"/>
+            </radialGradient>
+            <radialGradient id="meshBC" cx="70%" cy="85%" r="55%">
+              <stop offset="0%" stop-color="#3aaeff"/>
+              <stop offset="100%" stop-color="#3aaeff" stop-opacity="0"/>
+            </radialGradient>
+            <radialGradient id="meshBD" cx="15%" cy="85%" r="55%">
+              <stop offset="0%" stop-color="#a45eff"/>
+              <stop offset="100%" stop-color="#a45eff" stop-opacity="0"/>
+            </radialGradient>
+          </defs>
+          <rect width="1200" height="628" fill="#1a0d2e"/>
+          <rect width="1200" height="628" fill="url(#meshBA)"/>
+          <rect width="1200" height="628" fill="url(#meshBB)"/>
+          <rect width="1200" height="628" fill="url(#meshBC)"/>
+          <rect width="1200" height="628" fill="url(#meshBD)"/>
+          <rect width="1200" height="628" fill="#000" opacity="0.12"/>
+          <!-- top bar -->
+          <g transform="translate(60, 70)">
+            <text x="0" y="0" font-family="JetBrains Mono, monospace" font-size="12" letter-spacing="3" fill="#fff" font-weight="600" opacity="0.85">[ digital · store · v.2024 ]</text>
+            <text x="1080" y="0" text-anchor="end" font-family="JetBrains Mono, monospace" font-size="12" letter-spacing="3" fill="#fff" font-weight="600" opacity="0.85">// 01</text>
+          </g>
+          <!-- main heading -->
+          <text x="60" y="220" font-family="Bricolage Grotesque, sans-serif" font-size="80" font-weight="800" fill="#fff" letter-spacing="-3">PRODUK DIGITAL</text>
+          <text x="60" y="320" font-family="Bricolage Grotesque, sans-serif" font-size="120" font-weight="800" fill="#fff" letter-spacing="-5">YANZY STORE</text>
+          <!-- pill tags -->
+          <g transform="translate(60, 380)" font-family="Space Grotesk" font-weight="600">
+            <g transform="translate(0, 0)">
+              <rect width="170" height="44" rx="22" fill="#fff" opacity="0.95"/>
+              <text x="85" y="29" text-anchor="middle" font-size="15" fill="#1a0d2e">⚡ Tools AI</text>
+            </g>
+            <g transform="translate(180, 0)">
+              <rect width="160" height="44" rx="22" fill="#fff" opacity="0.95"/>
+              <text x="80" y="29" text-anchor="middle" font-size="15" fill="#1a0d2e">📖 E-Book</text>
+            </g>
+            <g transform="translate(350, 0)">
+              <rect width="220" height="44" rx="22" fill="#fff" opacity="0.95"/>
+              <text x="110" y="29" text-anchor="middle" font-size="15" fill="#1a0d2e">✨ Apk Pro/Premium</text>
+            </g>
+          </g>
+          <!-- subtext -->
+          <text x="60" y="490" font-family="Space Grotesk" font-size="22" fill="#fff" font-weight="500" opacity="0.95">Hemat sampai 80% · Aktivasi 5 menit · Garansi resmi</text>
+          <!-- bottom URL big -->
+          <g transform="translate(60, 555)">
+            <text x="0" y="0" font-family="JetBrains Mono, monospace" font-size="20" font-weight="700" fill="#fff" letter-spacing="2">→ LYNK.ID/ESENEF17</text>
+          </g>
+          <text x="1140" y="555" text-anchor="end" font-family="JetBrains Mono, monospace" font-size="12" fill="#fff" opacity="0.6" letter-spacing="2">[ tap any link ↑ ]</text>
+        </svg>
+      </div>
+    </div>
+
+    <div class="actions">
+      <button class="btn btn-primary" onclick="downloadPNG('v3p','yanzy-03-tech-profile.png',1000,1000)">↓ Profile PNG</button>
+      <button class="btn btn-primary" onclick="downloadPNG('v3b','yanzy-03-tech-banner.png',1200,628)">↓ Banner PNG</button>
+    </div>
+  </div>
+
+  <!-- ================================================================ -->
+  <!-- VARIANT 4 — SOFT BOTANICAL                                        -->
+  <!-- ================================================================ -->
+  <div class="variant">
+    <div class="variant-head">
+      <span class="num">04</span>
+      <h2>Soft Botanical</h2>
+      <span class="tag">organic · sage · sophisticated</span>
+    </div>
+
+    <div class="preview-grid">
+      <div class="preview-box profile">
+        <div class="label-mini">PROFILE · 1000×1000</div>
+        <svg id="v4p" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" width="1000" height="1000">
+          <defs>
+            <radialGradient id="bgV4P" cx="50%" cy="40%" r="70%">
+              <stop offset="0%" stop-color="#a8b89a"/>
+              <stop offset="100%" stop-color="#7a8c5c"/>
+            </radialGradient>
+          </defs>
+          <rect width="1000" height="1000" fill="url(#bgV4P)"/>
+          <!-- subtle leaves doodle decoration -->
+          <g opacity="0.18" fill="none" stroke="#3d4a2c" stroke-width="2.5" stroke-linecap="round">
+            <path d="M 130 200 Q 160 180, 200 200 Q 220 220, 200 250 Q 180 270, 160 250 Q 140 230, 130 200 Z"/>
+            <path d="M 165 225 L 165 200"/>
+            <path d="M 800 750 Q 830 730, 870 750 Q 890 770, 870 800 Q 850 820, 830 800 Q 810 780, 800 750 Z"/>
+            <path d="M 835 775 L 835 750"/>
+          </g>
+          <!-- thin curved frame -->
+          <path d="M 100 500 Q 100 100, 500 100 Q 900 100, 900 500 Q 900 900, 500 900 Q 100 900, 100 500 Z" fill="none" stroke="#faf6ed" stroke-width="2" opacity="0.5"/>
+          <!-- top label -->
+          <text x="500" y="200" text-anchor="middle" font-family="Inter" font-size="18" letter-spacing="14" fill="#faf6ed" font-weight="500">— STUDIO —</text>
+          <!-- main Y serif -->
+          <text x="500" y="630" text-anchor="middle" font-family="Cormorant Garamond, serif" font-weight="500" font-size="500" fill="#faf6ed">Y</text>
+          <!-- divider dot -->
+          <circle cx="500" cy="730" r="5" fill="#faf6ed"/>
+          <!-- name -->
+          <text x="500" y="800" text-anchor="middle" font-family="Cormorant Garamond, serif" font-style="italic" font-size="50" fill="#faf6ed" font-weight="400">Yanzy Store</text>
+          <text x="500" y="850" text-anchor="middle" font-family="Inter" font-size="14" letter-spacing="6" fill="#faf6ed" opacity="0.85" font-weight="400">DIGITAL · GOODS · CO.</text>
+        </svg>
+      </div>
+
+      <div class="preview-box banner">
+        <div class="label-mini">BANNER · 1200×628</div>
+        <svg id="v4b" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 628" width="1200" height="628">
+          <defs>
+            <linearGradient id="bgV4B" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#faf6ed"/>
+              <stop offset="100%" stop-color="#f1ecdf"/>
+            </linearGradient>
+            <linearGradient id="sageV4B" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#9caa7a"/>
+              <stop offset="100%" stop-color="#7a8c5c"/>
+            </linearGradient>
+          </defs>
+          <rect width="1200" height="628" fill="url(#bgV4B)"/>
+          <!-- right sage block -->
+          <rect x="700" y="0" width="500" height="628" fill="url(#sageV4B)"/>
+          <!-- decorative leaf doodle right -->
+          <g opacity="0.25" fill="none" stroke="#faf6ed" stroke-width="2" stroke-linecap="round">
+            <path d="M 1050 460 Q 1080 440, 1120 460 Q 1140 480, 1120 510 Q 1100 530, 1080 510 Q 1060 490, 1050 460 Z"/>
+            <line x1="1085" y1="485" x2="1085" y2="460"/>
+            <path d="M 950 90 Q 980 70, 1020 90 Q 1040 110, 1020 140 Q 1000 160, 980 140 Q 960 120, 950 90 Z"/>
+            <line x1="985" y1="115" x2="985" y2="90"/>
+          </g>
+          <!-- left text block -->
+          <text x="80" y="100" font-family="Inter" font-size="13" letter-spacing="5" fill="#7a8c5c" font-weight="600">— DIGITAL · STUDIO</text>
+          <line x1="80" y1="120" x2="200" y2="120" stroke="#7a8c5c" stroke-width="1"/>
+          <!-- main heading -->
+          <text x="80" y="220" font-family="Cormorant Garamond, serif" font-size="74" fill="#2a3318" font-weight="500">Produk Digital</text>
+          <text x="80" y="310" font-family="Cormorant Garamond, serif" font-size="92" fill="#2a3318" font-style="italic" font-weight="500">Yanzy Store</text>
+          <!-- subtitle -->
+          <text x="80" y="360" font-family="Inter" font-size="16" fill="#5a5246" font-weight="400" font-style="italic">a curated digital boutique · since 2024</text>
+          <!-- product list -->
+          <g transform="translate(80, 410)" font-family="Cormorant Garamond, serif" fill="#2a3318">
+            <text x="0" y="0" font-size="22" font-weight="500">— Tools AI</text>
+            <text x="0" y="40" font-size="22" font-weight="500">— E-Book</text>
+            <text x="0" y="80" font-size="22" font-weight="500">— Apk Pro/Premium</text>
+          </g>
+          <!-- bottom URL -->
+          <text x="80" y="580" font-family="Inter" font-size="13" letter-spacing="3" fill="#5a5246" font-weight="500">↗ LYNK.ID/ESENEF17</text>
+
+          <!-- right block: typography logo -->
+          <g transform="translate(950, 314)">
+            <text x="0" y="0" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="200" font-weight="500" fill="#faf6ed">Y</text>
+            <line x1="-60" y1="50" x2="60" y2="50" stroke="#faf6ed" stroke-width="1"/>
+            <text x="0" y="100" text-anchor="middle" font-family="Cormorant Garamond, serif" font-style="italic" font-size="30" fill="#faf6ed">Yanzy Store</text>
+            <text x="0" y="135" text-anchor="middle" font-family="Inter" font-size="11" letter-spacing="6" fill="#faf6ed" opacity="0.85">EST · MMXXIV</text>
+          </g>
+        </svg>
+      </div>
+    </div>
+
+    <div class="actions">
+      <button class="btn btn-primary" onclick="downloadPNG('v4p','yanzy-04-botanical-profile.png',1000,1000)">↓ Profile PNG</button>
+      <button class="btn btn-primary" onclick="downloadPNG('v4b','yanzy-04-botanical-banner.png',1200,628)">↓ Banner PNG</button>
+    </div>
+  </div>
+
+  <!-- ================================================================ -->
+  <!-- VARIANT 5 — BOLD MONOCHROME                                       -->
+  <!-- ================================================================ -->
+  <div class="variant">
+    <div class="variant-head">
+      <span class="num">05</span>
+      <h2>Bold Monochrome</h2>
+      <span class="tag">brutalist · contrast · statement</span>
+    </div>
+
+    <div class="preview-grid">
+      <div class="preview-box profile">
+        <div class="label-mini">PROFILE · 1000×1000</div>
+        <svg id="v5p" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" width="1000" height="1000">
+          <rect width="1000" height="1000" fill="#fafafa"/>
+          <!-- big bold Y, off-center -->
+          <text x="180" y="850" font-family="Bricolage Grotesque, sans-serif" font-size="900" font-weight="800" fill="#0e0e0e" letter-spacing="-30">Y</text>
+          <!-- red accent dot -->
+          <circle cx="800" cy="200" r="40" fill="#ff3b30"/>
+          <!-- vertical right text -->
+          <g transform="translate(920, 500) rotate(-90)">
+            <text x="0" y="0" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="20" letter-spacing="6" fill="#0e0e0e" font-weight="700">YANZY · STORE · 2024</text>
+          </g>
+          <!-- top-left meta -->
+          <text x="80" y="100" font-family="JetBrains Mono, monospace" font-size="16" font-weight="700" fill="#0e0e0e">[ DIGITAL/01 ]</text>
+          <!-- bottom-right tagline -->
+          <text x="920" y="950" text-anchor="end" font-family="JetBrains Mono, monospace" font-size="14" font-weight="700" fill="#0e0e0e">@ESENEF17 →</text>
+        </svg>
+      </div>
+
+      <div class="preview-box banner">
+        <div class="label-mini">BANNER · 1200×628</div>
+        <svg id="v5b" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 628" width="1200" height="628">
+          <rect width="1200" height="628" fill="#fafafa"/>
+          <!-- left big block black -->
+          <rect x="0" y="0" width="500" height="628" fill="#0e0e0e"/>
+          <!-- red accent block -->
+          <rect x="500" y="0" width="80" height="628" fill="#ff3b30"/>
+          <!-- left content (white on black) -->
+          <text x="40" y="80" font-family="JetBrains Mono, monospace" font-size="14" letter-spacing="2" fill="#fafafa" font-weight="700">// CATALOGUE 2024</text>
+          <text x="40" y="220" font-family="Bricolage Grotesque, sans-serif" font-size="100" font-weight="800" fill="#fafafa" letter-spacing="-4">PRODUK</text>
+          <text x="40" y="320" font-family="Bricolage Grotesque, sans-serif" font-size="100" font-weight="800" fill="#fafafa" letter-spacing="-4">DIGITAL</text>
+          <line x1="40" y1="350" x2="200" y2="350" stroke="#ff3b30" stroke-width="4"/>
+          <text x="40" y="400" font-family="Inter" font-size="22" font-weight="500" fill="#fafafa">For creators &amp; hustlers.</text>
+          <text x="40" y="585" font-family="JetBrains Mono, monospace" font-size="12" letter-spacing="2" fill="#fafafa" font-weight="700">→ LYNK.ID/ESENEF17</text>
+          <!-- right content (black on white) -->
+          <g transform="translate(620, 80)">
+            <text x="0" y="0" font-family="JetBrains Mono, monospace" font-size="14" letter-spacing="2" fill="#0e0e0e" font-weight="700">// 03 PRODUCTS</text>
+            <text x="0" y="120" font-family="Bricolage Grotesque, sans-serif" font-size="92" font-weight="800" fill="#0e0e0e" letter-spacing="-3">YANZY</text>
+            <text x="0" y="200" font-family="Bricolage Grotesque, sans-serif" font-size="92" font-weight="800" fill="#0e0e0e" letter-spacing="-3">STORE.</text>
+            <line x1="0" y1="240" x2="500" y2="240" stroke="#0e0e0e" stroke-width="1.5"/>
+
+            <g transform="translate(0, 280)" font-family="Inter" fill="#0e0e0e">
+              <text x="0" y="0" font-size="14" font-weight="700">01</text>
+              <text x="80" y="0" font-size="22" font-weight="700">Tools AI</text>
+              <line x1="0" y1="20" x2="500" y2="20" stroke="#0e0e0e" stroke-width="0.5" opacity="0.3"/>
+
+              <text x="0" y="60" font-size="14" font-weight="700">02</text>
+              <text x="80" y="60" font-size="22" font-weight="700">E-Book</text>
+              <line x1="0" y1="80" x2="500" y2="80" stroke="#0e0e0e" stroke-width="0.5" opacity="0.3"/>
+
+              <text x="0" y="120" font-size="14" font-weight="700">03</text>
+              <text x="80" y="120" font-size="22" font-weight="700">Apk Pro/Premium</text>
+              <line x1="0" y1="140" x2="500" y2="140" stroke="#0e0e0e" stroke-width="0.5" opacity="0.3"/>
+            </g>
+
+            <text x="500" y="475" text-anchor="end" font-family="JetBrains Mono, monospace" font-size="12" letter-spacing="2" fill="#0e0e0e" font-weight="700">[ EST 2024 ]</text>
+          </g>
+        </svg>
+      </div>
+    </div>
+
+    <div class="actions">
+      <button class="btn btn-primary" onclick="downloadPNG('v5p','yanzy-05-bold-profile.png',1000,1000)">↓ Profile PNG</button>
+      <button class="btn btn-primary" onclick="downloadPNG('v5b','yanzy-05-bold-banner.png',1200,628)">↓ Banner PNG</button>
+    </div>
+  </div>
+
+  <div class="info-block">
+    <strong>💡 Cara pilih variant yang tepat:</strong>
     <ol>
-      <li><strong>Profile pic:</strong> Upload via "Edit Profile" → "Change Photo" — Lynk.id auto-crop bulat</li>
-      <li><strong>Banner:</strong> Pakai sebagai cover Threads/IG, link preview WA, atau header story Highlights</li>
-      <li><strong>Pro tip:</strong> Tunggu 5 detik setelah halaman ke-load sebelum download (biar font Google Fonts ke-render dulu)</li>
+      <li><strong>01 Editorial</strong> — kalau target market kamu professional / creator dewasa</li>
+      <li><strong>02 Midnight Gold</strong> — kalau positioning premium / luxury digital store</li>
+      <li><strong>03 Tech Gradient</strong> — kalau fokus utama jualan AI tools &amp; targeting Gen-Z</li>
+      <li><strong>04 Soft Botanical</strong> — kalau aesthetic-aware audience, soft selling vibe</li>
+      <li><strong>05 Bold Monochrome</strong> — kalau mau bikin profil paling stand-out di Lynk.id</li>
     </ol>
   </div>
 
@@ -533,18 +733,6 @@ function showToast(msg) {
   setTimeout(() => t.classList.remove('show'), 2400);
 }
 
-function downloadSVG(svgId, filename) {
-  const svg = document.getElementById(svgId);
-  const serializer = new XMLSerializer();
-  let source = serializer.serializeToString(svg);
-  if (!source.match(/^<svg[^>]+xmlns="http:\/\/www\.w3\.org\/2000\/svg"/)) {
-    source = source.replace(/^<svg/, '<svg xmlns="http://www.w3.org/2000/svg"');
-  }
-  const blob = new Blob([source], { type: 'image/svg+xml;charset=utf-8' });
-  triggerDownload(blob, filename);
-  showToast('✓ ' + filename + ' tersimpan');
-}
-
 function downloadPNG(svgId, filename, width, height) {
   const svg = document.getElementById(svgId);
   const serializer = new XMLSerializer();
@@ -554,8 +742,7 @@ function downloadPNG(svgId, filename, width, height) {
   }
 
   const fontCSS = `<style>
-    @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&amp;family=Patrick+Hand&amp;family=Shadows+Into+Light&amp;family=Kalam:wght@400;700&amp;family=Inter:wght@400;500;600;700;800;900&amp;display=swap');
-    text { font-family: 'Inter', sans-serif; }
+    @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&amp;family=Playfair+Display:ital,wght@0,400;0,600;0,800;1,400&amp;family=Cormorant+Garamond:ital,wght@0,300;0,500;0,700;1,400&amp;family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&amp;family=Space+Grotesk:wght@400;500;600;700&amp;family=Inter:wght@300;400;500;600;700;800;900&amp;family=JetBrains+Mono:wght@400;700&amp;display=swap');
   </style>`;
   source = source.replace(/<svg([^>]*)>/, '<svg$1>' + fontCSS);
 
@@ -569,16 +756,18 @@ function downloadPNG(svgId, filename, width, height) {
     canvas.width = width;
     canvas.height = height;
     const ctx = canvas.getContext('2d');
+    ctx.fillStyle = '#fff';
+    ctx.fillRect(0, 0, width, height);
     ctx.drawImage(img, 0, 0, width, height);
     URL.revokeObjectURL(url);
 
     canvas.toBlob(function(pngBlob) {
       triggerDownload(pngBlob, filename);
-      showToast('✓ ' + filename + ' tersimpan');
+      showToast('✓ ' + filename);
     }, 'image/png', 1.0);
   };
   img.onerror = function() {
-    showToast('Gagal convert. Coba download SVG saja.');
+    showToast('Gagal convert. Refresh halaman & coba lagi.');
   };
   img.src = url;
 }
