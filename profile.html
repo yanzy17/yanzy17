@@ -1,0 +1,1082 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="theme-color" content="#f3e7d3" />
+<meta name="description" content="Hai, aku Esenef — Digital Creator, Affiliate Marketer & Founder YanzyStore. Cek semua link & produk premium aku di sini." />
+<title>@esenef17 — Digital Creator & Affiliate Hustler</title>
+
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png" />
+<link rel="apple-touch-icon" href="icon-192.png" />
+
+<!-- Fonts: Patrick Hand (handwritten), Caveat (script), Inter (body) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Patrick+Hand&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+/* =====================================================
+   YANZY · LINK-IN-BIO PROFILE
+   Inspired by warm-cream creator aesthetic
+   ===================================================== */
+*, *::before, *::after {
+  margin: 0; padding: 0; box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+:root {
+  --cream: #f3e7d3;
+  --cream-2: #ede0c8;
+  --cream-soft: #faf2e3;
+  --paper: #ffffff;
+  --ink: #3a2a1a;
+  --ink-soft: #6b5740;
+  --ink-mute: #9c8a72;
+  --accent: #6b4423;     /* dark coffee */
+  --accent-2: #b08968;   /* caramel */
+  --accent-3: #d4a574;   /* warm tan */
+  --pink: #f3c5a5;       /* peach */
+  --rose: #e89b7c;       /* terracotta */
+  --leaf: #7a8c5c;       /* sage */
+  --gold: #c9a35e;
+  --shadow-sm: 0 2px 12px rgba(58, 42, 26, 0.06);
+  --shadow-md: 0 8px 28px rgba(58, 42, 26, 0.1);
+  --shadow-lg: 0 16px 48px rgba(58, 42, 26, 0.14);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background: var(--cream);
+  color: var(--ink);
+  line-height: 1.6;
+  overflow-x: hidden;
+  min-height: 100vh;
+  position: relative;
+  padding-bottom: 40px;
+}
+
+/* Soft paper-grain noise overlay */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/><feColorMatrix values='0 0 0 0 0.23 0 0 0 0 0.17 0 0 0 0 0.10 0 0 0 0.04 0'/></filter><rect width='200' height='200' filter='url(%23n)'/></svg>");
+  opacity: 0.6;
+  z-index: 0;
+}
+
+a { color: inherit; text-decoration: none; }
+img, svg { max-width: 100%; display: block; }
+button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+
+.wrap {
+  position: relative;
+  z-index: 1;
+  max-width: 460px;
+  margin: 0 auto;
+  padding: 28px 22px 60px;
+}
+
+/* ============= TOP BAR (avatar, handle, socials) ============= */
+.top {
+  text-align: center;
+  margin-bottom: 18px;
+  position: relative;
+}
+
+.avatar {
+  width: 110px; height: 110px;
+  margin: 0 auto 12px;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 30% 25%, #ffd9a8, transparent 60%),
+    linear-gradient(135deg, #6b4423, #b08968 70%, #d4a574);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Caveat", cursive;
+  font-size: 3.4rem;
+  font-weight: 700;
+  color: #fff8e8;
+  box-shadow: var(--shadow-md), inset 0 0 0 4px rgba(255,255,255,0.6);
+  position: relative;
+}
+
+.avatar::after {
+  content: "";
+  position: absolute;
+  inset: -6px;
+  border: 2px dashed rgba(107, 68, 35, 0.35);
+  border-radius: 50%;
+  animation: spin 30s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.handle {
+  font-family: "Patrick Hand", cursive;
+  font-size: 1.45rem;
+  color: var(--ink);
+  margin-bottom: 8px;
+  letter-spacing: 0.3px;
+}
+
+.handle .verified {
+  display: inline-block;
+  width: 18px; height: 18px;
+  background: var(--leaf);
+  color: white;
+  border-radius: 50%;
+  font-size: 0.7rem;
+  font-family: "Inter", sans-serif;
+  font-weight: 800;
+  margin-left: 4px;
+  vertical-align: middle;
+  line-height: 18px;
+}
+
+.socials {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.social {
+  width: 42px; height: 42px;
+  border-radius: 50%;
+  background: var(--paper);
+  border: 1.5px solid rgba(58, 42, 26, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  color: var(--ink);
+  transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: var(--shadow-sm);
+}
+
+.social:hover {
+  transform: translateY(-3px) rotate(-4deg);
+  background: var(--ink);
+  color: var(--cream-soft);
+  border-color: var(--ink);
+}
+
+.social svg { width: 20px; height: 20px; }
+
+/* ============= HERO — handwritten greeting ============= */
+.hero {
+  text-align: center;
+  margin: 26px 0 24px;
+  position: relative;
+}
+
+.hero-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: "Patrick Hand", cursive;
+  font-size: 1.05rem;
+  color: var(--ink-soft);
+  margin-bottom: 4px;
+}
+
+.hero-tag .wave {
+  display: inline-block;
+  animation: wave 2.4s ease-in-out infinite;
+  transform-origin: 70% 70%;
+  font-size: 1.2rem;
+}
+
+@keyframes wave {
+  0%, 60%, 100% { transform: rotate(0deg); }
+  10%, 30% { transform: rotate(20deg); }
+  20% { transform: rotate(-12deg); }
+  40% { transform: rotate(10deg); }
+  50% { transform: rotate(-6deg); }
+}
+
+.hero h1 {
+  font-family: "Caveat", cursive;
+  font-size: clamp(2.8rem, 11vw, 3.6rem);
+  font-weight: 700;
+  line-height: 1.05;
+  color: var(--ink);
+  letter-spacing: -0.5px;
+  margin-bottom: 14px;
+}
+
+.hero h1 .accent {
+  color: var(--accent);
+  position: relative;
+  display: inline-block;
+}
+
+.hero h1 .accent::after {
+  content: "";
+  position: absolute;
+  bottom: 4px;
+  left: -2%;
+  width: 104%;
+  height: 8px;
+  background: var(--rose);
+  opacity: 0.55;
+  border-radius: 8px;
+  z-index: -1;
+}
+
+.hero-pill {
+  display: inline-block;
+  background: var(--ink);
+  color: var(--cream-soft);
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 0.78rem;
+  padding: 7px 16px;
+  border-radius: 30px;
+  letter-spacing: 0.3px;
+  margin-bottom: 16px;
+  box-shadow: var(--shadow-sm);
+}
+
+.hero-pill .heart {
+  display: inline-block;
+  margin-left: 4px;
+  animation: pulse 1.8s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.18); }
+}
+
+.hero-bio {
+  font-family: "Inter", sans-serif;
+  font-size: 0.96rem;
+  color: var(--ink-soft);
+  max-width: 360px;
+  margin: 0 auto;
+  line-height: 1.65;
+}
+
+/* Decorative sparkles & hearts */
+.spark {
+  position: absolute;
+  font-size: 1.2rem;
+  opacity: 0.7;
+  pointer-events: none;
+  animation: float 3.6s ease-in-out infinite;
+}
+.spark.s1 { top: -8px; left: 12%; animation-delay: 0s; }
+.spark.s2 { top: 50%; right: 6%; animation-delay: 0.8s; font-size: 0.95rem; }
+.spark.s3 { bottom: -6px; left: 14%; animation-delay: 1.6s; font-size: 1rem; }
+.spark.s4 { top: 30%; left: -2%; animation-delay: 2.2s; }
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.7; }
+  50% { transform: translateY(-8px) rotate(15deg); opacity: 1; }
+}
+
+/* ============= STORY BUBBLE ============= */
+.story {
+  background: var(--paper);
+  border: 1.5px solid rgba(58, 42, 26, 0.08);
+  border-radius: 20px;
+  padding: 18px 20px;
+  margin-bottom: 20px;
+  box-shadow: var(--shadow-sm);
+  position: relative;
+}
+
+.story::before {
+  content: "";
+  position: absolute;
+  top: -8px;
+  left: 28px;
+  width: 16px; height: 16px;
+  background: var(--paper);
+  border-top: 1.5px solid rgba(58, 42, 26, 0.08);
+  border-left: 1.5px solid rgba(58, 42, 26, 0.08);
+  transform: rotate(45deg);
+}
+
+.story p {
+  font-size: 0.92rem;
+  color: var(--ink-soft);
+  line-height: 1.7;
+}
+
+.story p strong {
+  color: var(--ink);
+  background: linear-gradient(180deg, transparent 60%, var(--pink) 60%);
+  padding: 0 2px;
+}
+
+/* ============= "WHAT I DO" BULLET LIST ============= */
+.do-list {
+  background: linear-gradient(135deg, rgba(212, 165, 116, 0.12), rgba(232, 155, 124, 0.08));
+  border: 1.5px dashed rgba(107, 68, 35, 0.22);
+  border-radius: 22px;
+  padding: 22px 22px 18px;
+  margin-bottom: 22px;
+  position: relative;
+}
+
+.do-title {
+  font-family: "Caveat", cursive;
+  font-size: 1.7rem;
+  color: var(--ink);
+  margin-bottom: 4px;
+  line-height: 1.1;
+}
+
+.do-title .underline {
+  border-bottom: 3px solid var(--accent-2);
+  padding-bottom: 1px;
+}
+
+.do-sub {
+  font-family: "Patrick Hand", cursive;
+  font-size: 1rem;
+  color: var(--ink-soft);
+  margin-bottom: 14px;
+}
+
+.do-list ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.do-list li {
+  display: flex;
+  gap: 10px;
+  font-size: 0.92rem;
+  color: var(--ink);
+  line-height: 1.5;
+}
+
+.do-list li .bullet {
+  flex-shrink: 0;
+  font-size: 1rem;
+  margin-top: 1px;
+  color: var(--rose);
+}
+
+/* ============= QUOTE / DOODLE BUBBLE ============= */
+.quote {
+  position: relative;
+  margin: 24px 6px 26px;
+  padding: 22px 28px;
+  font-family: "Patrick Hand", cursive;
+  font-size: 1.02rem;
+  line-height: 1.6;
+  color: var(--ink);
+  text-align: left;
+}
+
+.quote svg.outline {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.quote-arrow {
+  position: absolute;
+  right: -12px;
+  bottom: -22px;
+  font-size: 1.6rem;
+  transform: rotate(-15deg);
+}
+
+/* ============= CTA HEADLINE ============= */
+.cta-head {
+  text-align: center;
+  margin: 18px 0 14px;
+  position: relative;
+}
+
+.cta-head .wiggle {
+  font-family: "Caveat", cursive;
+  font-size: 1.4rem;
+  color: var(--ink-soft);
+  display: inline-block;
+}
+
+.cta-head h2 {
+  display: inline-block;
+  background: var(--ink);
+  color: var(--cream-soft);
+  font-family: "Patrick Hand", cursive;
+  font-size: 1.55rem;
+  padding: 10px 22px;
+  border-radius: 14px;
+  margin-top: 4px;
+  box-shadow: var(--shadow-md);
+  position: relative;
+  letter-spacing: 0.5px;
+}
+
+.cta-head h2::after {
+  content: "👇";
+  position: absolute;
+  right: -28px;
+  top: 50%;
+  transform: translateY(-50%) rotate(-12deg);
+  font-size: 1.5rem;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+  animation: bounce 1.4s ease-in-out infinite;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(-50%) rotate(-12deg); }
+  50% { transform: translateY(-30%) rotate(-12deg); }
+}
+
+/* ============= FEATURED LINK (HERO PRODUCT) ============= */
+.featured {
+  background: linear-gradient(135deg, #6b4423 0%, #3a2a1a 100%);
+  color: var(--cream-soft);
+  border-radius: 22px;
+  padding: 22px 22px 20px;
+  margin-bottom: 14px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  display: block;
+  transition: all 0.3s ease;
+}
+
+.featured::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  right: -30%;
+  width: 80%; height: 200%;
+  background: radial-gradient(ellipse, rgba(212, 165, 116, 0.35), transparent 70%);
+  pointer-events: none;
+}
+
+.featured:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 20px 60px rgba(58, 42, 26, 0.25);
+}
+
+.featured-tag {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  background: var(--rose);
+  color: white;
+  font-family: "Inter", sans-serif;
+  font-size: 0.65rem;
+  font-weight: 800;
+  padding: 4px 10px;
+  border-radius: 20px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  z-index: 2;
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(232, 155, 124, 0.6); }
+  50% { box-shadow: 0 0 0 8px rgba(232, 155, 124, 0); }
+}
+
+.featured-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  position: relative;
+  z-index: 1;
+}
+
+.featured-icon {
+  width: 56px; height: 56px;
+  background: rgba(255,248,232,0.12);
+  border: 1.5px solid rgba(255,248,232,0.25);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  flex-shrink: 0;
+}
+
+.featured-info { flex: 1; min-width: 0; }
+.featured-info h3 {
+  font-family: "Inter", sans-serif;
+  font-size: 1.08rem;
+  font-weight: 800;
+  margin-bottom: 3px;
+  letter-spacing: -0.2px;
+}
+.featured-info p {
+  font-size: 0.82rem;
+  color: rgba(255, 248, 232, 0.78);
+  line-height: 1.4;
+}
+
+.featured-arrow {
+  font-size: 1.4rem;
+  flex-shrink: 0;
+  transition: transform 0.3s;
+}
+
+.featured:hover .featured-arrow { transform: translateX(4px); }
+
+.featured-stats {
+  display: flex;
+  gap: 14px;
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(255,248,232,0.15);
+  position: relative;
+  z-index: 1;
+}
+
+.featured-stat {
+  font-size: 0.72rem;
+  color: rgba(255,248,232,0.7);
+}
+.featured-stat strong {
+  display: block;
+  font-size: 0.95rem;
+  color: var(--cream-soft);
+  font-weight: 700;
+}
+
+/* ============= STANDARD LINK CARDS ============= */
+.links {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.link {
+  background: var(--paper);
+  border: 1.5px solid rgba(58, 42, 26, 0.08);
+  border-radius: 18px;
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  transition: all 0.25s ease;
+  box-shadow: var(--shadow-sm);
+  position: relative;
+  overflow: hidden;
+}
+
+.link::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 4px;
+  background: var(--accent-2);
+  opacity: 0;
+  transition: opacity 0.25s;
+}
+
+.link:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  border-color: rgba(107, 68, 35, 0.2);
+}
+
+.link:hover::before { opacity: 1; }
+
+.link-icon {
+  width: 46px; height: 46px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  flex-shrink: 0;
+  color: white;
+}
+
+.link-icon.brown { background: linear-gradient(135deg, #6b4423, #8b5a30); }
+.link-icon.tan { background: linear-gradient(135deg, #b08968, #d4a574); }
+.link-icon.peach { background: linear-gradient(135deg, #e89b7c, #f3c5a5); }
+.link-icon.sage { background: linear-gradient(135deg, #7a8c5c, #9caa7a); }
+.link-icon.gold { background: linear-gradient(135deg, #c9a35e, #e8c885); }
+.link-icon.rose { background: linear-gradient(135deg, #c97064, #e89b7c); }
+
+.link-info { flex: 1; min-width: 0; }
+.link-info h4 {
+  font-family: "Inter", sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 2px;
+  letter-spacing: -0.1px;
+}
+.link-info p {
+  font-size: 0.78rem;
+  color: var(--ink-mute);
+  line-height: 1.4;
+}
+
+.link-meta {
+  flex-shrink: 0;
+  text-align: right;
+  margin-right: 4px;
+}
+
+.link-meta .badge {
+  display: inline-block;
+  background: var(--cream-2);
+  color: var(--accent);
+  font-family: "Inter", sans-serif;
+  font-size: 0.65rem;
+  font-weight: 800;
+  padding: 3px 8px;
+  border-radius: 20px;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+}
+
+.link-meta .badge.hot {
+  background: var(--rose);
+  color: white;
+}
+
+.link-meta .badge.new {
+  background: var(--leaf);
+  color: white;
+}
+
+.link-arrow {
+  color: var(--ink-mute);
+  font-size: 1.1rem;
+  flex-shrink: 0;
+  transition: transform 0.25s, color 0.25s;
+}
+
+.link:hover .link-arrow {
+  color: var(--accent);
+  transform: translateX(3px);
+}
+
+/* ============= MINI STATS ROW ============= */
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin: 26px 0 18px;
+}
+
+.stat-mini {
+  background: var(--paper);
+  border: 1.5px solid rgba(58, 42, 26, 0.08);
+  border-radius: 14px;
+  padding: 12px 8px;
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+}
+
+.stat-mini strong {
+  display: block;
+  font-family: "Caveat", cursive;
+  font-size: 1.6rem;
+  color: var(--accent);
+  line-height: 1;
+}
+
+.stat-mini span {
+  font-family: "Patrick Hand", cursive;
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+}
+
+/* ============= TESTIMONIAL CARD ============= */
+.testimonial {
+  background: linear-gradient(135deg, var(--cream-soft), var(--cream-2));
+  border: 1.5px solid rgba(107, 68, 35, 0.12);
+  border-radius: 20px;
+  padding: 18px 20px;
+  margin-bottom: 22px;
+  position: relative;
+}
+
+.testimonial::before {
+  content: "❝";
+  position: absolute;
+  top: -2px;
+  left: 16px;
+  font-size: 3rem;
+  font-family: "Caveat", cursive;
+  color: var(--accent-2);
+  line-height: 1;
+  opacity: 0.4;
+}
+
+.testimonial p {
+  font-family: "Patrick Hand", cursive;
+  font-size: 0.98rem;
+  line-height: 1.6;
+  color: var(--ink);
+  margin-bottom: 8px;
+  padding-left: 22px;
+}
+
+.testimonial-author {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-left: 22px;
+  font-size: 0.78rem;
+  color: var(--ink-soft);
+}
+
+.testimonial-author .stars {
+  color: var(--gold);
+  letter-spacing: 1px;
+}
+
+/* ============= CLOSING ============= */
+.closing {
+  text-align: center;
+  margin-top: 30px;
+  padding: 22px 16px;
+  border-top: 1.5px dashed rgba(107, 68, 35, 0.2);
+}
+
+.closing-tag {
+  font-family: "Caveat", cursive;
+  font-size: 1.5rem;
+  color: var(--ink);
+  margin-bottom: 4px;
+}
+
+.closing-text {
+  font-family: "Patrick Hand", cursive;
+  font-size: 0.98rem;
+  color: var(--ink-soft);
+  max-width: 320px;
+  margin: 0 auto 12px;
+  line-height: 1.5;
+}
+
+.closing-heart {
+  display: inline-block;
+  font-size: 1.3rem;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+.made-with {
+  margin-top: 22px;
+  font-family: "Patrick Hand", cursive;
+  font-size: 0.85rem;
+  color: var(--ink-mute);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.made-with .logo-mini {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+/* ============= TOAST ============= */
+.toast {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%) translateY(120px);
+  background: var(--ink);
+  color: var(--cream-soft);
+  padding: 12px 22px;
+  border-radius: 30px;
+  font-family: "Patrick Hand", cursive;
+  font-size: 0.95rem;
+  z-index: 200;
+  opacity: 0;
+  transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 0 12px 36px rgba(58, 42, 26, 0.3);
+}
+.toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* ============= ENTRANCE ANIMATIONS ============= */
+.fade-up {
+  opacity: 0;
+  transform: translateY(14px);
+  animation: fadeUp 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+@keyframes fadeUp {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.delay-1 { animation-delay: 0.05s; }
+.delay-2 { animation-delay: 0.12s; }
+.delay-3 { animation-delay: 0.20s; }
+.delay-4 { animation-delay: 0.28s; }
+.delay-5 { animation-delay: 0.36s; }
+.delay-6 { animation-delay: 0.44s; }
+.delay-7 { animation-delay: 0.52s; }
+.delay-8 { animation-delay: 0.60s; }
+
+/* ============= RESPONSIVE ============= */
+@media (min-width: 700px) {
+  .wrap { max-width: 520px; }
+  .hero h1 { font-size: 4rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <!-- ===================== TOP: AVATAR & SOCIALS ===================== -->
+  <section class="top fade-up">
+    <div class="avatar" aria-label="Esenef avatar">E</div>
+    <div class="handle">@esenef17 <span class="verified" title="Verified Creator">✓</span></div>
+
+    <nav class="socials" aria-label="Social media">
+      <a href="https://lynk.id/esenef17" target="_blank" rel="noopener" class="social" title="Lynk.id">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.07 0l3.54-3.54a5 5 0 0 0-7.07-7.07l-1.06 1.06"/><path d="M14 11a5 5 0 0 0-7.07 0L3.39 14.54a5 5 0 0 0 7.07 7.07l1.06-1.06"/></svg>
+      </a>
+      <a href="https://www.threads.net/@esenef17" target="_blank" rel="noopener" class="social" title="Threads">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.186 24h-.007c-3.581-.024-6.334-1.205-8.184-3.509C2.35 18.44 1.5 15.586 1.472 12.01v-.017c.03-3.579.879-6.43 2.525-8.482C5.845 1.205 8.6.024 12.18 0h.014c2.746.02 5.043.725 6.826 2.098 1.677 1.29 2.858 3.13 3.509 5.467l-2.04.569c-1.104-3.96-3.898-5.984-8.304-6.015-2.91.022-5.11.936-6.54 2.717C4.307 6.504 3.616 8.914 3.589 12c.027 3.086.718 5.496 2.057 7.164 1.43 1.78 3.631 2.695 6.54 2.717 2.623-.02 4.358-.631 5.8-2.045 1.647-1.613 1.618-3.593 1.09-4.798-.31-.71-.873-1.3-1.634-1.75-.192 1.352-.622 2.446-1.284 3.272-.886 1.102-2.14 1.704-3.73 1.79-1.202.065-2.361-.218-3.259-.801-1.063-.689-1.685-1.74-1.752-2.964-.065-1.19.408-2.285 1.33-3.082.88-.76 2.119-1.207 3.583-1.291 1.79-.103 3.469-.103 5.024 0-.149-.949-.474-1.751-.967-2.378-.685-.81-1.751-1.232-3.146-1.232-.014 0-.029 0-.043.001-1.137.012-2.187.339-3.05.95l-1.183-1.766c1.246-.84 2.747-1.276 4.355-1.291 4.208 0 6.715 2.567 6.965 7.07.143.06.283.123.42.189 1.943.92 3.31 2.24 3.999 3.798.86 1.946.943 5.066-1.7 7.722C16.798 22.987 14.717 23.972 12.186 24zm.41-12.16c-1.183.066-1.945.343-2.42.62-.535.312-.81.717-.78 1.142.058 1.064 1.234 1.546 2.378 1.482 1.063-.06 2.499-.474 2.741-3.476-.661-.063-1.314-.092-1.917-.092"/></svg>
+      </a>
+      <a href="https://instagram.com/esenef17" target="_blank" rel="noopener" class="social" title="Instagram">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+      </a>
+      <a href="https://tiktok.com/@esenef17" target="_blank" rel="noopener" class="social" title="TikTok">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5.8 20.1a6.34 6.34 0 0 0 10.86-4.43V8.92a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1.84-.35z"/></svg>
+      </a>
+      <a href="https://wa.me/6281930563872" target="_blank" rel="noopener" class="social" title="WhatsApp">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413"/></svg>
+      </a>
+    </nav>
+  </section>
+
+  <!-- ===================== HERO HEADLINE ===================== -->
+  <section class="hero fade-up delay-1">
+    <span class="spark s1">✨</span>
+    <span class="spark s2">♡</span>
+    <span class="spark s3">✦</span>
+    <span class="spark s4">✿</span>
+
+    <div class="hero-tag"><span class="wave">👋</span> Hai kamu!</div>
+    <h1>Aku <span class="accent">Esenef</span></h1>
+    <div class="hero-pill">Digital Creator &amp; Affiliate Hustler <span class="heart">♡</span></div>
+    <p class="hero-bio">
+      Bantu kamu cuan dari rumah lewat <strong>aplikasi premium murah</strong>, <strong>tools AI</strong>, dan <strong>strategi affiliate</strong> yang udah aku praktekin sendiri.
+    </p>
+  </section>
+
+  <!-- ===================== STORY BUBBLE ===================== -->
+  <section class="story fade-up delay-2">
+    <p>
+      Dulu aku bingung gimana cara ngasilin duit dari HP doang. Sekarang aku <strong>full-time digital hustler</strong> — punya store sendiri, jualan ebook, dan bantu ribuan orang dapet aplikasi premium dengan harga termurah. <em>Yes, you can do this too! 🌱</em>
+    </p>
+  </section>
+
+  <!-- ===================== "WHAT I DO" LIST ===================== -->
+  <section class="do-list fade-up delay-3">
+    <h3 class="do-title">Yang aku lakuin <span class="underline">tiap hari…</span></h3>
+    <p class="do-sub">spoiler: semuanya bisa kamu pelajari juga 👇</p>
+    <ul>
+      <li><span class="bullet">♥</span> Jualan <strong>premium app</strong> (CapCut, Canva, Netflix, Spotify) ke ribuan customer.</li>
+      <li><span class="bullet">♥</span> Bikin <strong>konten Threads</strong> yang FYP &amp; ngajarin formula hooknya.</li>
+      <li><span class="bullet">♥</span> Promosiin produk affiliate &amp; track komisinya tiap bulan.</li>
+      <li><span class="bullet">♥</span> Bikin <strong>tools AI gratis</strong> buat bantu creator pemula yang masih bingung nulis caption.</li>
+      <li><span class="bullet">♥</span> Yang paling penting: <strong>cuan dari rumah</strong> sambil ngerjain hal yang aku suka.</li>
+    </ul>
+  </section>
+
+  <!-- ===================== HANDWRITTEN QUOTE BUBBLE ===================== -->
+  <div class="quote fade-up delay-4">
+    <svg class="outline" viewBox="0 0 400 110" preserveAspectRatio="none">
+      <path d="M14 28 Q8 14 28 10 L370 8 Q394 8 392 32 L392 80 Q392 102 372 100 L80 102 Q26 104 24 90 L14 28 Z"
+            fill="none" stroke="#6b4423" stroke-width="1.6" stroke-linecap="round" stroke-dasharray="0"/>
+    </svg>
+    <span style="position:relative; z-index:1;">
+      “Kamu nggak perlu jadi sempurna buat mulai. Cukup mulai, terus konsisten — sisanya ikut jalan.” 🌻
+    </span>
+    <span class="quote-arrow">↘</span>
+  </div>
+
+  <!-- ===================== CTA HEADLINE ===================== -->
+  <div class="cta-head fade-up delay-5">
+    <div class="wiggle">✦ Jadi, kalau udah mampir ke sini… ✦</div>
+    <h2>WAJIB CEK INI YA!</h2>
+  </div>
+
+  <!-- ===================== FEATURED PRODUCT (HERO LINK) ===================== -->
+  <a href="index.html" class="featured fade-up delay-5">
+    <span class="featured-tag">★ Terlaris</span>
+    <div class="featured-row">
+      <div class="featured-icon">⚡</div>
+      <div class="featured-info">
+        <h3>YanzyStore — Premium App Murah</h3>
+        <p>CapCut Pro, Canva, Netflix, Spotify &amp; 20+ apps. Aktivasi 1-5 menit!</p>
+      </div>
+      <div class="featured-arrow">→</div>
+    </div>
+    <div class="featured-stats">
+      <div class="featured-stat"><strong>10K+</strong>Pelanggan</div>
+      <div class="featured-stat"><strong>4.9★</strong>Rating</div>
+      <div class="featured-stat"><strong>24/7</strong>Support</div>
+    </div>
+  </a>
+
+  <!-- ===================== STANDARD LINKS ===================== -->
+  <div class="links">
+
+    <a href="ebook-hook-threads.html" class="link fade-up delay-6" target="_blank" rel="noopener">
+      <div class="link-icon brown">📖</div>
+      <div class="link-info">
+        <h4>250 Template Hook Threads</h4>
+        <p>Ebook copy-paste biar utas kamu FYP &amp; rame interaksi</p>
+      </div>
+      <div class="link-meta"><span class="badge hot">Hot</span></div>
+      <span class="link-arrow">›</span>
+    </a>
+
+    <a href="ai-tools.html" class="link fade-up delay-6" target="_blank" rel="noopener">
+      <div class="link-icon peach">✨</div>
+      <div class="link-info">
+        <h4>Yanzy AI Tools</h4>
+        <p>8 generator AI: hook, caption, CTA, script — siap pakai</p>
+      </div>
+      <div class="link-meta"><span class="badge new">New</span></div>
+      <span class="link-arrow">›</span>
+    </a>
+
+    <a href="affiliate-hub.html" class="link fade-up delay-7" target="_blank" rel="noopener">
+      <div class="link-icon sage">📊</div>
+      <div class="link-info">
+        <h4>Affiliate Hub Dashboard</h4>
+        <p>Track komisi &amp; produk affiliate kamu — bisa di-install di HP</p>
+      </div>
+      <span class="link-arrow">›</span>
+    </a>
+
+    <a href="https://wa.me/6281930563872?text=Halo%20kak%20Yanzy%2C%20mau%20order%20%2F%20konsultasi%20nih..." class="link fade-up delay-7" target="_blank" rel="noopener">
+      <div class="link-icon tan">💬</div>
+      <div class="link-info">
+        <h4>Chat Admin via WhatsApp</h4>
+        <p>Konsultasi gratis, order langsung, atau kerjasama bisnis</p>
+      </div>
+      <span class="link-arrow">›</span>
+    </a>
+
+    <a href="https://www.threads.net/@esenef17" class="link fade-up delay-8" target="_blank" rel="noopener">
+      <div class="link-icon rose">🧵</div>
+      <div class="link-info">
+        <h4>Follow di Threads</h4>
+        <p>Daily tips Threads, hook viral, &amp; behind-the-scene cuan</p>
+      </div>
+      <span class="link-arrow">›</span>
+    </a>
+
+    <a href="https://instagram.com/esenef17" class="link fade-up delay-8" target="_blank" rel="noopener">
+      <div class="link-icon gold">📸</div>
+      <div class="link-info">
+        <h4>Follow di Instagram</h4>
+        <p>Daily aesthetic, mini tutorial &amp; quote receh harian</p>
+      </div>
+      <span class="link-arrow">›</span>
+    </a>
+
+  </div>
+
+  <!-- ===================== MINI STATS ===================== -->
+  <div class="stats-row fade-up delay-8">
+    <div class="stat-mini"><strong>10K+</strong><span>Pelanggan</span></div>
+    <div class="stat-mini"><strong>250+</strong><span>Hook Template</span></div>
+    <div class="stat-mini"><strong>8</strong><span>AI Tools</span></div>
+  </div>
+
+  <!-- ===================== TESTIMONIAL ===================== -->
+  <div class="testimonial fade-up delay-8">
+    <p>“Hooknya gampang banget dipraktekin. Threads aku tembus 30K views dalam 1 minggu. Mantap kak Yanzy!”</p>
+    <div class="testimonial-author">
+      <span class="stars">★★★★★</span>
+      <span>— @rina_creator (verified buyer)</span>
+    </div>
+  </div>
+
+  <!-- ===================== CLOSING ===================== -->
+  <div class="closing fade-up delay-8">
+    <div class="closing-tag">Thanks udah mampir ke sini ya!</div>
+    <p class="closing-text">
+      Setiap klik &amp; pembelian dari kamu adalah dukungan buat aku terus bikin karya yang berguna 🌿
+    </p>
+    <span class="closing-heart">♡</span>
+
+    <div class="made-with">
+      <span>made with ♡ by</span>
+      <a href="#" class="logo-mini" onclick="copyHandle(); return false;">@esenef17</a>
+    </div>
+  </div>
+
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+  // Toast helper
+  let toastTimer;
+  function showToast(msg) {
+    const toast = document.getElementById('toast');
+    toast.textContent = msg;
+    toast.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => toast.classList.remove('show'), 2200);
+  }
+
+  function copyHandle() {
+    navigator.clipboard?.writeText('@esenef17').catch(() => {});
+    showToast('✓ Handle disalin: @esenef17');
+  }
+
+  // Click ripple feedback
+  document.querySelectorAll('.link, .featured').forEach(el => {
+    el.addEventListener('click', () => {
+      el.style.transform = 'scale(0.98)';
+      setTimeout(() => { el.style.transform = ''; }, 150);
+    });
+  });
+
+  // Random wiggle on sparkles
+  document.querySelectorAll('.spark').forEach((s, i) => {
+    s.style.animationDelay = (i * 0.4) + 's';
+  });
+
+  console.log('%c♡ Welcome to @esenef17 profile', 'color:#6b4423; font-family:Caveat; font-size:18px;');
+</script>
+
+</body>
+</html>
