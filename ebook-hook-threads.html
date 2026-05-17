@@ -58,10 +58,11 @@
 html { scroll-behavior: smooth; }
 
 body {
-    font-family: "Playfair Display", "Georgia", "Times New Roman", serif;
+    font-family: "Inter", -apple-system, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
     background: var(--bg);
     color: var(--text);
     line-height: 1.7;
+    font-size: 16px;
     -webkit-font-smoothing: antialiased;
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
@@ -262,53 +263,58 @@ img { max-width: 100%; }
 
 /* ===== Content typography ===== */
 .lead {
-    font-size: 1.1rem;
-    color: var(--text-mute);
-    margin-bottom: 18px;
-    font-style: italic;
+    font-size: 1.15rem;
+    color: var(--text);
+    margin-bottom: 20px;
+    line-height: 1.7;
 }
 
 .page p {
-    margin-bottom: 14px;
+    margin-bottom: 16px;
     color: var(--text);
+    font-size: 1rem;
+    line-height: 1.75;
 }
 
 .page h3 {
     font-family: "Inter", -apple-system, "Segoe UI", sans-serif;
     color: var(--gold);
-    font-size: 1.05rem;
-    letter-spacing: 0.05em;
-    margin: 28px 0 10px;
+    font-size: 1.1rem;
+    letter-spacing: 0.03em;
+    margin: 32px 0 12px;
     text-transform: uppercase;
     font-weight: 700;
 }
 
-.page ul, .page ol { padding-left: 22px; margin-bottom: 16px; }
-.page li { margin-bottom: 6px; color: var(--text-mute); }
+.page ul, .page ol { padding-left: 22px; margin-bottom: 18px; }
+.page li { margin-bottom: 8px; color: var(--text); line-height: 1.7; }
 
 /* ===== TOC list ===== */
 .toc-list { list-style: none; padding: 0; }
 .toc-list li {
     display: flex;
     align-items: baseline;
-    padding: 12px 0;
+    padding: 16px 0;
     border-bottom: 1px dashed var(--line);
     font-family: "Inter", -apple-system, "Segoe UI", sans-serif;
+    font-size: 1rem;
 }
 .toc-list .num {
     color: var(--gold);
     font-weight: 700;
-    margin-right: 14px;
-    min-width: 32px;
+    margin-right: 16px;
+    min-width: 36px;
+    font-size: 1.05rem;
 }
 .toc-list .label {
     flex: 1;
     color: var(--text);
+    font-weight: 500;
 }
 .toc-list .pg {
-    color: var(--text-dim);
-    font-size: 0.85rem;
-    letter-spacing: 0.1em;
+    color: var(--text-mute);
+    font-size: 0.9rem;
+    letter-spacing: 0.05em;
 }
 .toc-list a { display: contents; }
 .toc-list a:hover .label { color: var(--gold); }
@@ -322,9 +328,9 @@ img { max-width: 100%; }
     background: var(--bg-2);
     border: 1px solid var(--line);
     border-left: 3px solid var(--gold);
-    padding: 18px 22px;
-    margin: 10px 0;
-    border-radius: 4px;
+    padding: 20px 26px;
+    margin: 12px 0;
+    border-radius: 6px;
     counter-increment: hook;
     position: relative;
     font-family: "Inter", -apple-system, "Segoe UI", sans-serif;
@@ -339,32 +345,33 @@ img { max-width: 100%; }
 .hook::before {
     content: "#" counter(hook);
     position: absolute;
-    top: 14px;
-    right: 18px;
-    font-size: 0.7rem;
+    top: 16px;
+    right: 20px;
+    font-size: 0.72rem;
     color: var(--gold);
-    letter-spacing: 0.15em;
+    letter-spacing: 0.1em;
     font-weight: 700;
-    background: rgba(212, 175, 122, 0.08);
-    padding: 2px 8px;
+    background: rgba(212, 175, 122, 0.1);
+    padding: 3px 10px;
     border-radius: 4px;
 }
 
 .hook p {
     color: var(--text);
     margin: 0;
-    font-size: 1rem;
-    line-height: 1.55;
-    padding-right: 50px;
+    font-size: 1.05rem;
+    line-height: 1.65;
+    padding-right: 56px;
+    font-weight: 400;
 }
 
 .hook .tip {
     display: block;
-    margin-top: 8px;
-    color: var(--text-dim);
-    font-size: 0.78rem;
-    font-style: italic;
-    padding-right: 50px;
+    margin-top: 10px;
+    color: var(--text-mute);
+    font-size: 0.85rem;
+    padding-right: 56px;
+    line-height: 1.6;
 }
 
 /* ===== Tip / quote box ===== */
@@ -386,7 +393,7 @@ img { max-width: 100%; }
     margin-bottom: 10px;
 }
 
-.box p { font-size: 0.95rem; color: var(--text-mute); }
+.box p { font-size: 1rem; color: var(--text); line-height: 1.7; }
 
 /* ===== Stats ===== */
 .stats {
@@ -436,7 +443,7 @@ img { max-width: 100%; }
     margin-bottom: 16px;
     line-height: 1.1;
 }
-.closing p { max-width: 540px; margin: 0 auto 14px; color: var(--text-mute); }
+.closing p { max-width: 580px; margin: 0 auto 16px; color: var(--text); font-size: 1.05rem; line-height: 1.7; }
 .signature {
     margin-top: 40px;
     padding-top: 24px;
@@ -510,7 +517,8 @@ img { max-width: 100%; }
     html, body {
         background: white !important;
         color: #1a1a1a !important;
-        font-size: 11pt;
+        font-size: 11.5pt;
+        line-height: 1.6;
     }
 
     .toc-nav,
