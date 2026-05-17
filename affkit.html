@@ -1,0 +1,1412 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="theme-color" content="#0b0a14" />
+<title>AffKit by Yanzy — Tools AI Buat Affiliator Pemula</title>
+<meta name="description" content="Generator hook, caption, script reels, CTA, dan prompt foto produk untuk affiliator Shopee, TikTok Shop, dan Tokopedia. Gratis selamanya." />
+<style>
+/* ============ RESET & ROOT ============ */
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+:root {
+  --bg: #0b0a14;
+  --bg-2: #15132a;
+  --bg-3: #1d1a3a;
+  --line: rgba(255,255,255,0.08);
+  --line-2: rgba(255,255,255,0.16);
+  --text: #f8fafc;
+  --text-2: #cbd5e1;
+  --text-3: #94a3b8;
+  --primary: #fb923c;       /* affiliator vibe = orange */
+  --primary-2: #f43f5e;
+  --primary-3: #fbbf24;
+  --gradient: linear-gradient(135deg, #fb923c 0%, #f43f5e 100%);
+  --gradient-text: linear-gradient(135deg, #fdba74, #fda4af, #fcd34d);
+  --green: #34d399;
+  --shadow: 0 12px 40px rgba(244, 63, 94, 0.18);
+  --radius: 16px;
+  --radius-lg: 22px;
+}
+html { scroll-behavior:smooth; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Inter", Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+}
+body::before, body::after {
+  content:""; position:fixed; border-radius:50%; filter:blur(120px);
+  z-index:-1; pointer-events:none;
+}
+body::before {
+  width:520px; height:520px;
+  background: radial-gradient(circle, #fb923c 0%, transparent 70%);
+  top:-180px; left:-150px; opacity:.35;
+}
+body::after {
+  width:600px; height:600px;
+  background: radial-gradient(circle, #f43f5e 0%, transparent 70%);
+  top:35%; right:-200px; opacity:.28;
+}
+button { font-family:inherit; cursor:pointer; border:none; background:none; color:inherit; }
+input, textarea, select { font-family:inherit; }
+a { color:inherit; text-decoration:none; }
+
+/* ============ UTILS ============ */
+.container { max-width:1180px; margin:0 auto; padding:0 20px; }
+.gradient-text {
+  background: var(--gradient-text);
+  -webkit-background-clip:text; background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+.badge {
+  display:inline-flex; align-items:center; gap:6px;
+  background: rgba(251,146,60,0.14);
+  border:1px solid rgba(251,146,60,0.32);
+  color:#fdba74;
+  padding:6px 14px; border-radius:30px;
+  font-size:.78rem; font-weight:600;
+}
+.btn {
+  display:inline-flex; align-items:center; justify-content:center; gap:8px;
+  padding:12px 22px; border-radius:30px;
+  font-weight:700; font-size:.92rem;
+  transition:all .25s ease; white-space:nowrap;
+}
+.btn-primary { background: var(--gradient); color:white; box-shadow: var(--shadow); }
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 16px 50px rgba(244,63,94,.35); }
+.btn-ghost { background: rgba(255,255,255,.05); border:1px solid var(--line-2); color:var(--text); }
+.btn-ghost:hover { background: rgba(255,255,255,.09); }
+.btn-block { width:100%; }
+.btn-lg { padding:15px 28px; font-size:.98rem; }
+
+/* ============ NAVBAR ============ */
+.navbar {
+  position:sticky; top:0; z-index:50;
+  background: rgba(11,10,20,.72);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-bottom: 1px solid var(--line);
+}
+.nav-inner {
+  display:flex; align-items:center; justify-content:space-between;
+  padding:14px 20px; max-width:1180px; margin:0 auto;
+}
+.logo {
+  display:flex; align-items:center; gap:10px;
+  font-weight:800; font-size:1.08rem; letter-spacing:-.5px;
+}
+.logo-icon {
+  width:34px; height:34px;
+  background: var(--gradient);
+  border-radius:10px;
+  display:flex; align-items:center; justify-content:center;
+  font-size:1.05rem; box-shadow: var(--shadow);
+}
+.nav-actions { display:flex; gap:8px; align-items:center; }
+.nav-icon-btn {
+  width:38px; height:38px;
+  border-radius:10px;
+  background: rgba(255,255,255,.05);
+  border:1px solid var(--line-2);
+  display:flex; align-items:center; justify-content:center;
+  font-size:1.05rem;
+  transition: all .2s;
+}
+.nav-icon-btn:hover { background: rgba(255,255,255,.1); }
+
+/* ============ HERO ============ */
+.hero { padding: 56px 20px 40px; text-align:center; }
+.hero h1 {
+  font-size: clamp(2rem, 5.6vw, 3.5rem);
+  font-weight:800; letter-spacing:-.03em; line-height:1.1;
+  margin: 16px auto 18px; max-width: 880px;
+}
+.hero .lead {
+  color: var(--text-2);
+  font-size: clamp(1rem, 2vw, 1.12rem);
+  max-width: 640px; margin: 0 auto 28px;
+}
+.hero-actions {
+  display:flex; gap:10px; justify-content:center; flex-wrap:wrap;
+}
+.hero-stats {
+  display:flex; justify-content:center; gap:30px;
+  margin-top:42px; flex-wrap:wrap;
+}
+.hero-stat strong {
+  display:block; font-size:1.55rem; font-weight:800;
+  background: var(--gradient-text);
+  -webkit-background-clip:text; background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+.hero-stat span { font-size:.8rem; color: var(--text-3); }
+
+/* ============ SECTION ============ */
+section { padding: 56px 0; }
+.section-title {
+  font-size: clamp(1.6rem, 4vw, 2.3rem);
+  font-weight:800; letter-spacing:-.02em; text-align:center;
+  margin-bottom:10px; line-height:1.15;
+}
+.section-sub {
+  text-align:center; color: var(--text-2);
+  font-size: .98rem; max-width:600px; margin:0 auto 36px;
+}
+
+/* ============ TOOLS GRID ============ */
+.tools-grid {
+  display:grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 14px;
+}
+.tool-card {
+  background: rgba(255,255,255,.04);
+  border:1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 20px;
+  cursor:pointer;
+  transition: all .25s;
+  position:relative; overflow:hidden;
+}
+.tool-card:hover {
+  background: rgba(255,255,255,.07);
+  border-color: var(--line-2);
+  transform: translateY(-3px);
+}
+.tool-card.active {
+  border-color: rgba(251,146,60,.5);
+  background: rgba(251,146,60,.07);
+  box-shadow: 0 8px 30px rgba(251,146,60,.18);
+}
+.tool-icon-sm {
+  width:42px; height:42px; border-radius:11px;
+  background: var(--gradient);
+  display:flex; align-items:center; justify-content:center;
+  font-size:1.25rem; margin-bottom:14px;
+}
+.tool-card h3 { font-size:.98rem; font-weight:700; margin-bottom:6px; }
+.tool-card p { font-size:.82rem; color:var(--text-3); line-height:1.5; }
+
+/* ============ GENERATOR ============ */
+.gen-section { background: linear-gradient(180deg, transparent, rgba(251,146,60,.04)); }
+.gen-card {
+  background: rgba(21,19,42,.6);
+  border:1px solid var(--line-2);
+  border-radius: var(--radius-lg);
+  padding: 26px;
+  backdrop-filter: blur(20px);
+}
+.gen-header {
+  display:flex; align-items:center; gap:14px;
+  margin-bottom: 22px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid var(--line);
+}
+.gen-icon {
+  width:52px; height:52px; border-radius:14px;
+  background: var(--gradient);
+  display:flex; align-items:center; justify-content:center;
+  font-size:1.5rem; flex-shrink:0;
+}
+.gen-header h3 { font-size:1.15rem; font-weight:700; margin-bottom:3px; }
+.gen-header p { font-size:.86rem; color:var(--text-3); }
+
+.form-grid {
+  display:grid; grid-template-columns: 1fr; gap:14px;
+  margin-bottom: 18px;
+}
+@media (min-width:600px) {
+  .form-grid { grid-template-columns: 1fr 1fr; }
+}
+.form-group label {
+  display:block; font-size:.8rem; font-weight:600;
+  margin-bottom:7px; color: var(--text-2);
+}
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width:100%; padding:12px 14px;
+  background: rgba(255,255,255,.04);
+  border:1.5px solid var(--line);
+  border-radius:12px;
+  color: var(--text);
+  font-size:.92rem; outline:none;
+  transition: all .2s;
+}
+.form-group textarea { min-height:80px; resize:vertical; }
+.form-group input::placeholder, .form-group textarea::placeholder { color: var(--text-3); }
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+  border-color: var(--primary);
+  background: rgba(251,146,60,.05);
+  box-shadow: 0 0 0 3px rgba(251,146,60,.15);
+}
+.form-group select {
+  appearance:none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3e%3cpath fill='%23cbd5e1' d='M6 8L0 0h12z'/%3e%3c/svg%3e");
+  background-repeat:no-repeat; background-position: right 14px center;
+  padding-right:36px;
+}
+.form-group select option { background: var(--bg-2); color: var(--text); }
+.form-full { grid-column: 1 / -1; }
+
+.action-row {
+  display:flex; gap:10px; flex-wrap:wrap;
+  margin-bottom: 6px;
+}
+.action-row .btn-primary { flex: 1 1 auto; min-width:200px; }
+
+.ai-toggle {
+  display:flex; align-items:center; gap:10px;
+  padding:10px 14px;
+  background: rgba(255,255,255,.03);
+  border:1px solid var(--line);
+  border-radius:12px;
+  font-size:.82rem; color: var(--text-2);
+  margin-bottom:14px;
+  flex-wrap:wrap;
+}
+.ai-toggle .dot {
+  width:8px; height:8px; border-radius:50%;
+  background: var(--text-3);
+  flex-shrink:0;
+}
+.ai-toggle.active .dot { background: var(--green); box-shadow: 0 0 8px var(--green); }
+.ai-toggle small { color: var(--text-3); font-size:.78rem; }
+
+/* ============ OUTPUT ============ */
+.output {
+  margin-top: 22px; padding: 22px;
+  background: rgba(0,0,0,.3);
+  border:1px solid var(--line);
+  border-radius:16px; min-height:130px;
+}
+.output-empty {
+  text-align:center; color: var(--text-3);
+  padding: 30px 12px; font-size: .92rem;
+}
+.output-empty-icon { font-size: 2.4rem; margin-bottom:8px; }
+
+.output-title {
+  font-weight:700; margin-bottom:14px;
+  display:flex; align-items:center; gap:10px;
+  flex-wrap:wrap;
+}
+.pill {
+  font-size:.7rem;
+  background: rgba(251,146,60,.18);
+  color:#fdba74;
+  padding:3px 10px; border-radius:20px;
+  font-weight:600;
+}
+.pill.green { background: rgba(52,211,153,.18); color: var(--green); }
+
+.result-item {
+  background: rgba(255,255,255,.04);
+  border:1px solid var(--line);
+  border-radius:12px;
+  padding:14px 16px;
+  margin-bottom:10px;
+  display:flex; gap:12px;
+  transition: all .2s;
+}
+.result-item:hover {
+  background: rgba(255,255,255,.07);
+  border-color: var(--line-2);
+}
+.result-num {
+  flex-shrink:0; width:26px; height:26px; border-radius:50%;
+  background: var(--gradient);
+  display:flex; align-items:center; justify-content:center;
+  font-size:.78rem; font-weight:700; color:white;
+}
+.result-text {
+  flex:1; font-size:.92rem; line-height:1.6;
+  color: var(--text);
+  white-space: pre-wrap; word-break: break-word;
+}
+.result-label {
+  display:block; font-size:.7rem; font-weight:700;
+  text-transform:uppercase; letter-spacing:.5px;
+  color: #fdba74; margin-bottom:6px;
+}
+.copy-btn {
+  flex-shrink:0;
+  background: rgba(255,255,255,.06);
+  border:1px solid var(--line);
+  padding:5px 10px; border-radius:8px;
+  font-size:.72rem; font-weight:600;
+  color: var(--text-2); transition: all .2s;
+  align-self:flex-start;
+}
+.copy-btn:hover {
+  background: rgba(251,146,60,.18);
+  color:white; border-color: rgba(251,146,60,.42);
+}
+.copy-btn.copied {
+  background: rgba(52,211,153,.18);
+  color: var(--green);
+  border-color: rgba(52,211,153,.45);
+}
+
+.script-block {
+  background: rgba(255,255,255,.04);
+  border:1px solid var(--line);
+  border-radius:12px;
+  padding:14px 16px; margin-bottom:10px;
+  position:relative;
+}
+.script-block-title {
+  font-size:.72rem; font-weight:700;
+  text-transform:uppercase; letter-spacing:.5px;
+  color: #fdba74; margin-bottom:6px;
+}
+.script-block .copy-btn { position:absolute; top:14px; right:14px; }
+
+/* loading skeleton */
+.loader {
+  display:flex; gap:8px; justify-content:center; padding: 24px 0;
+}
+.loader span {
+  width:10px; height:10px; border-radius:50%;
+  background: var(--primary);
+  animation: bounce 1.4s ease-in-out infinite both;
+}
+.loader span:nth-child(2) { animation-delay: .15s; }
+.loader span:nth-child(3) { animation-delay: .3s; }
+@keyframes bounce {
+  0%, 80%, 100% { transform: scale(0.5); opacity: .5; }
+  40% { transform: scale(1); opacity: 1; }
+}
+
+/* ============ HISTORY ============ */
+.history-list { display:flex; flex-direction:column; gap:8px; }
+.history-item {
+  background: rgba(255,255,255,.03);
+  border:1px solid var(--line);
+  border-radius:12px;
+  padding: 14px 16px;
+  cursor:pointer;
+  transition: all .2s;
+  display:flex; align-items:center; gap:12px;
+}
+.history-item:hover {
+  background: rgba(255,255,255,.06);
+  border-color: var(--line-2);
+}
+.history-item .h-icon {
+  width:36px; height:36px; border-radius:10px;
+  background: rgba(251,146,60,.15);
+  display:flex; align-items:center; justify-content:center;
+  font-size:1.05rem; flex-shrink:0;
+}
+.history-item .h-info { flex:1; min-width:0; }
+.history-item .h-title { font-size:.9rem; font-weight:600; margin-bottom:2px; }
+.history-item .h-meta { font-size:.74rem; color: var(--text-3); }
+.history-empty { text-align:center; color: var(--text-3); padding: 30px 12px; }
+
+/* ============ FAQ ============ */
+.faq-list { max-width: 760px; margin: 0 auto; }
+.faq-item {
+  background: rgba(255,255,255,.03);
+  border:1px solid var(--line);
+  border-radius:14px;
+  margin-bottom:10px; overflow:hidden;
+}
+.faq-q {
+  width:100%; padding: 16px 20px;
+  display:flex; align-items:center; justify-content:space-between;
+  font-size:.95rem; font-weight:600;
+  text-align:left; gap:12px;
+}
+.faq-icon {
+  flex-shrink:0; width:24px; height:24px; border-radius:50%;
+  background: rgba(251,146,60,.18);
+  display:flex; align-items:center; justify-content:center;
+  font-size:.85rem; transition: transform .25s;
+}
+.faq-item.open .faq-icon { transform: rotate(45deg); }
+.faq-a { max-height:0; overflow:hidden; transition: max-height .3s ease; }
+.faq-a-inner {
+  padding: 0 20px 18px; color: var(--text-2);
+  font-size: .9rem; line-height:1.65;
+}
+
+/* ============ MODAL (Settings) ============ */
+.modal-overlay {
+  position:fixed; inset:0;
+  background: rgba(11,10,20,.84);
+  backdrop-filter: blur(8px);
+  z-index:200;
+  display:flex; align-items:center; justify-content:center;
+  padding: 20px;
+  opacity:0; pointer-events:none;
+  transition: opacity .25s;
+}
+.modal-overlay.show { opacity:1; pointer-events:auto; }
+.modal {
+  background: linear-gradient(180deg, var(--bg-3), var(--bg-2));
+  border:1px solid rgba(251,146,60,.3);
+  border-radius: 22px;
+  padding: 26px;
+  max-width: 460px; width: 100%;
+  position: relative;
+  transform: scale(.92) translateY(10px);
+  transition: transform .3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.modal-overlay.show .modal { transform: scale(1) translateY(0); }
+.modal-close {
+  position:absolute; top:14px; right:14px;
+  width:32px; height:32px; border-radius:8px;
+  background: rgba(255,255,255,.06);
+  display:flex; align-items:center; justify-content:center;
+  font-size:1rem;
+}
+.modal h2 { font-size:1.2rem; font-weight:800; margin-bottom:6px; }
+.modal-desc { color:var(--text-2); font-size:.88rem; margin-bottom:18px; line-height:1.55; }
+.modal-help {
+  background: rgba(251,146,60,.08);
+  border:1px solid rgba(251,146,60,.22);
+  border-radius:12px;
+  padding:12px 14px;
+  font-size:.82rem; color: var(--text-2);
+  line-height:1.55;
+  margin-top:10px;
+}
+.modal-help a {
+  color: #fdba74; font-weight:600;
+  border-bottom:1px dashed rgba(251,146,60,.4);
+}
+
+/* ============ FOOTER ============ */
+.footer {
+  border-top:1px solid var(--line);
+  padding: 36px 20px 28px;
+  text-align:center; color: var(--text-3);
+  font-size: .85rem;
+}
+.footer-logo {
+  display:inline-flex; align-items:center; gap:8px;
+  margin-bottom:10px; color: var(--text); font-weight:700;
+}
+.footer-links {
+  display:flex; gap:22px; justify-content:center;
+  margin: 14px 0; flex-wrap:wrap; font-size:.85rem;
+}
+.footer-links a:hover { color: var(--text); }
+
+/* ============ TOAST ============ */
+.toast {
+  position:fixed; bottom:30px; left:50%;
+  transform: translateX(-50%) translateY(120px);
+  background: rgba(11,10,20,.95);
+  border:1px solid var(--line-2);
+  color: var(--text);
+  padding: 12px 22px;
+  border-radius:30px;
+  font-size: .88rem; font-weight:600;
+  z-index:300; opacity:0;
+  transition: all .3s;
+  box-shadow: 0 10px 40px rgba(0,0,0,.5);
+}
+.toast.show { opacity:1; transform: translateX(-50%) translateY(0); }
+
+/* ============ SCROLLBAR ============ */
+::-webkit-scrollbar { width:8px; height:8px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(255,255,255,.1); border-radius:4px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,.18); }
+
+/* anim */
+@keyframes fadeUp { from { opacity:0; transform:translateY(10px); } to { opacity:1; transform: translateY(0); } }
+.fade-up { animation: fadeUp .4s ease both; }
+</style>
+</head>
+<body>
+
+<!-- ========= NAVBAR ========= -->
+<nav class="navbar">
+  <div class="nav-inner">
+    <a href="#" class="logo">
+      <span class="logo-icon">⚡</span>
+      <span>AffKit <span class="gradient-text">by Yanzy</span></span>
+    </a>
+    <div class="nav-actions">
+      <button class="nav-icon-btn" id="historyBtn" aria-label="Riwayat" title="Riwayat">📋</button>
+      <button class="nav-icon-btn" id="settingsBtn" aria-label="Pengaturan AI" title="Pengaturan AI">⚙️</button>
+    </div>
+  </div>
+</nav>
+
+<!-- ========= HERO ========= -->
+<header class="hero">
+  <div class="container">
+    <span class="badge">⚡ 100% Gratis · Tanpa Daftar</span>
+    <h1>Tools AI Buat <span class="gradient-text">Affiliator Pemula</span><br />Biar Gak Bingung Bikin Konten</h1>
+    <p class="lead">Generator hook, caption, script reels, CTA, sampai prompt foto produk — khusus buat affiliator <strong>Shopee, TikTok Shop, & Tokopedia</strong>. Tinggal isi form, klik generate, hasilnya tinggal copy-paste.</p>
+    <div class="hero-actions">
+      <a href="#generator" class="btn btn-primary btn-lg">Mulai Generate →</a>
+      <a href="#tools" class="btn btn-ghost btn-lg">Lihat Semua Tools</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat"><strong>8</strong><span>Tools Affiliate</span></div>
+      <div class="hero-stat"><strong>Free</strong><span>Tanpa Daftar</span></div>
+      <div class="hero-stat"><strong>2026</strong><span>Update Terbaru</span></div>
+    </div>
+  </div>
+</header>
+
+<!-- ========= TOOLS ========= -->
+<section id="tools">
+  <div class="container">
+    <h2 class="section-title">8 Tools <span class="gradient-text">Khusus Affiliator</span></h2>
+    <p class="section-sub">Klik salah satu tool, langsung scroll ke generator-nya. Semua bisa dipakai gratis.</p>
+    <div class="tools-grid" id="toolsGrid"></div>
+  </div>
+</section>
+
+<!-- ========= GENERATOR ========= -->
+<section id="generator" class="gen-section">
+  <div class="container">
+    <h2 class="section-title">Mulai <span class="gradient-text">Generate</span></h2>
+    <p class="section-sub">Pilih tool, isi data, klik generate. Hasilnya muncul dalam hitungan detik.</p>
+
+    <div class="gen-card">
+      <div class="gen-header">
+        <div class="gen-icon" id="genIcon">🪝</div>
+        <div>
+          <h3 id="genTitle">Hook Reels Generator</h3>
+          <p id="genDesc">Bikin hook 3 detik pertama yang nampar scroll</p>
+        </div>
+      </div>
+
+      <!-- AI status -->
+      <div class="ai-toggle" id="aiStatus">
+        <span class="dot"></span>
+        <strong id="aiStatusLabel">Mode Template (offline)</strong>
+        <small id="aiStatusHint">- Hasil cepat, tanpa internet. Mau hasil lebih variatif? Klik ikon ⚙️ di atas untuk konek Gemini AI gratis.</small>
+      </div>
+
+      <div class="form-grid">
+        <div class="form-group">
+          <label>Pilih Tool</label>
+          <select id="toolType">
+            <option value="hook">🪝 Hook Reels Generator</option>
+            <option value="caption">📝 Caption + Hashtag</option>
+            <option value="script">🎬 Script Reels 30 Detik</option>
+            <option value="cta">🎯 CTA Affiliate</option>
+            <option value="title">🏷️ Judul Listing Shopee/Tokped</option>
+            <option value="prompt">📸 Prompt Foto Produk</option>
+            <option value="reply">💬 Reply Komen Calon Pembeli</option>
+            <option value="bio">👤 Bio Affiliator</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Platform Tujuan</label>
+          <select id="platform">
+            <option value="tiktok">TikTok Shop</option>
+            <option value="shopee">Shopee Affiliate</option>
+            <option value="tokopedia">Tokopedia</option>
+            <option value="instagram">Instagram Reels</option>
+            <option value="threads">Threads</option>
+            <option value="facebook">Facebook</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Niche / Kategori Produk</label>
+          <input type="text" id="niche" placeholder="Contoh: Skincare, Fashion, Gadget, F&B" value="Skincare" />
+        </div>
+
+        <div class="form-group">
+          <label>Nama Produk</label>
+          <input type="text" id="produk" placeholder="Contoh: Serum Vitamin C XYZ" value="Cream Pemutih Wajah" />
+        </div>
+
+        <div class="form-group">
+          <label>Target Audiens</label>
+          <input type="text" id="audiens" placeholder="Contoh: Wanita 20-35, Mahasiswa" value="Wanita 20-35 tahun" />
+        </div>
+
+        <div class="form-group">
+          <label>Gaya Bahasa</label>
+          <select id="gaya">
+            <option value="santai">Santai & Friendly</option>
+            <option value="agresif">Agresif & Persuasif</option>
+            <option value="lucu">Lucu & Receh</option>
+            <option value="emosional">Emosional & Storytelling</option>
+            <option value="profesional">Profesional</option>
+          </select>
+        </div>
+
+        <div class="form-group form-full">
+          <label>Keunggulan / Manfaat Produk <small style="color:var(--text-3)">(opsional, biar hasil lebih akurat)</small></label>
+          <textarea id="benefit" placeholder="Contoh: Memutihkan dalam 7 hari, BPOM, harga 50rb-an, garansi uang kembali"></textarea>
+        </div>
+      </div>
+
+      <div class="action-row">
+        <button class="btn btn-primary btn-lg" onclick="generate()" id="generateBtn">
+          ✨ Generate Sekarang
+        </button>
+        <button class="btn btn-ghost btn-lg" onclick="resetForm()">↻ Reset</button>
+      </div>
+
+      <div class="output" id="output">
+        <div class="output-empty">
+          <div class="output-empty-icon">🪄</div>
+          Hasil generate akan muncul di sini
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========= FAQ ========= -->
+<section id="faq">
+  <div class="container">
+    <h2 class="section-title">Pertanyaan <span class="gradient-text">yang Sering Ditanya</span></h2>
+    <p class="section-sub">Belum yakin? Jawabannya mungkin ada di sini.</p>
+    <div class="faq-list" id="faqList"></div>
+  </div>
+</section>
+
+<!-- ========= FOOTER ========= -->
+<footer class="footer">
+  <div class="footer-logo">
+    <span class="logo-icon">⚡</span>
+    AffKit <span class="gradient-text">by Yanzy</span>
+  </div>
+  <p>Tools AI gratis buat affiliator pemula Indonesia.</p>
+  <div class="footer-links">
+    <a href="#tools">Tools</a>
+    <a href="#generator">Generator</a>
+    <a href="#faq">FAQ</a>
+    <a href="https://wa.me/6281930563872" target="_blank">Hubungi Admin</a>
+  </div>
+  <div>© 2026 AffKit by @yanzy17</div>
+</footer>
+
+<!-- ========= MODAL: SETTINGS ========= -->
+<div class="modal-overlay" id="settingsModal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeSettings()">✕</button>
+    <h2>⚙️ Pengaturan AI</h2>
+    <p class="modal-desc">Tempel API Key Gemini supaya hasil generate lebih natural & variatif. Tanpa API key juga bisa kok — pakai mode template offline.</p>
+
+    <div class="form-group">
+      <label>Gemini API Key</label>
+      <input type="password" id="apiKeyInput" placeholder="AIzaSy..." autocomplete="off" />
+    </div>
+
+    <div class="action-row" style="margin-top:14px;">
+      <button class="btn btn-primary btn-block" onclick="saveSettings()">💾 Simpan</button>
+    </div>
+
+    <button class="btn btn-ghost btn-block" style="margin-top:8px;" onclick="clearSettings()">Hapus API Key</button>
+
+    <div class="modal-help">
+      <strong>Cara dapat API Key gratis (5 menit):</strong><br />
+      1. Buka <a href="https://aistudio.google.com/app/apikey" target="_blank">aistudio.google.com</a><br />
+      2. Login pakai Google → klik <strong>"Create API Key"</strong><br />
+      3. Copy key-nya, paste di sini.<br /><br />
+      Tenang, API key disimpan <strong>cuma di HP/laptop kamu</strong> (LocalStorage), gak dikirim ke server kami. 🔒
+    </div>
+  </div>
+</div>
+
+<!-- ========= MODAL: HISTORY ========= -->
+<div class="modal-overlay" id="historyModal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeHistory()">✕</button>
+    <h2>📋 Riwayat Generate</h2>
+    <p class="modal-desc">10 generate terakhir kamu, tersimpan otomatis di browser ini.</p>
+    <div class="history-list" id="historyList"></div>
+    <button class="btn btn-ghost btn-block" style="margin-top:14px;" onclick="clearHistory()">🗑️ Hapus Semua</button>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* ============================================================
+   AFFKIT - JS Logic
+   ============================================================ */
+
+const TOOLS = [
+  { id: "hook",    name: "Hook Reels",            desc: "Hook 3 detik pertama yang nampar scroll",          icon: "🪝" },
+  { id: "caption", name: "Caption + Hashtag",     desc: "Caption affiliate lengkap dengan hashtag viral",   icon: "📝" },
+  { id: "script",  name: "Script Reels 30s",      desc: "Naskah video Hook → Body → CTA siap shoot",        icon: "🎬" },
+  { id: "cta",     name: "CTA Affiliate",         desc: "Closing yang bikin orang langsung klik link",      icon: "🎯" },
+  { id: "title",   name: "Judul Listing",         desc: "Judul produk SEO-friendly Shopee/Tokped",          icon: "🏷️" },
+  { id: "prompt",  name: "Prompt Foto Produk",    desc: "Prompt AI image untuk foto produk natural",         icon: "📸" },
+  { id: "reply",   name: "Reply Komen",           desc: "Template balas komen calon pembeli (low effort)",  icon: "💬" },
+  { id: "bio",     name: "Bio Affiliator",        desc: "Bio IG/TikTok yang catchy & jelas posisi kamu",    icon: "👤" },
+];
+
+const FAQS = [
+  {
+    q: "Tools ini benar-benar gratis?",
+    a: "Iya, 100% gratis selamanya. Kamu bisa pakai tanpa daftar atau bayar. Kalau mau hasil lebih natural, kamu bisa konek API key Gemini gratis (5 menit setup, tinggal copy paste)."
+  },
+  {
+    q: "Apa beda mode Template vs Mode AI Gemini?",
+    a: "Mode Template: hasil dari rumus pre-built, cepat, gak butuh internet, tapi variasinya terbatas. Mode AI Gemini: hasil di-generate AI Google secara real-time, jauh lebih natural & relevan, tapi butuh API key (gratis dari aistudio.google.com)."
+  },
+  {
+    q: "API key saya aman?",
+    a: "Aman. API key disimpan cuma di browser HP/laptop kamu pakai LocalStorage. Kami sama sekali gak kirim atau simpan API key kamu di server. Kalau kamu hapus cookie/cache, key-nya juga ikut terhapus."
+  },
+  {
+    q: "Bisa dipakai untuk Shopee Affiliate, TikTok Shop, Tokped?",
+    a: "Bisa semua! Pilih platform tujuan di form, hasilnya otomatis menyesuaikan. Misal kamu pilih TikTok Shop, hasilnya lebih casual & video-friendly. Kalau pilih Shopee, lebih copywriting style."
+  },
+  {
+    q: "Hasilnya bisa langsung dipakai?",
+    a: "Iya, semua hasil format ready-to-use. Tinggal klik tombol 'Salin', paste ke caption TikTok/IG/Shopee. Saran: edit dikit biar lebih personal sesuai gaya kamu, biar gak terlalu generic."
+  },
+  {
+    q: "Riwayat generate tersimpan di mana?",
+    a: "Tersimpan otomatis di browser kamu (10 terakhir). Klik ikon 📋 di pojok kanan atas untuk melihatnya. Riwayat hilang kalau kamu hapus cache/cookie atau ganti device."
+  },
+];
+
+/* ============================================================
+   STATE
+   ============================================================ */
+let currentTool = "hook";
+let apiKey = localStorage.getItem("affkit_api_key") || "";
+let history = JSON.parse(localStorage.getItem("affkit_history") || "[]");
+
+const toolMeta = {
+  hook:    { name: "Hook Reels Generator",        desc: "Bikin hook 3 detik pertama yang nampar scroll",      icon: "🪝" },
+  caption: { name: "Caption + Hashtag Generator", desc: "Caption affiliate lengkap dengan hashtag viral",     icon: "📝" },
+  script:  { name: "Script Reels 30 Detik",       desc: "Storyboard Hook → Body → CTA siap shoot",            icon: "🎬" },
+  cta:     { name: "CTA Affiliate Generator",     desc: "Closing yang bikin orang langsung klik link",        icon: "🎯" },
+  title:   { name: "Judul Listing Generator",     desc: "Judul produk SEO-friendly Shopee/Tokped",            icon: "🏷️" },
+  prompt:  { name: "Prompt Foto Produk",          desc: "Prompt AI image untuk foto produk natural",           icon: "📸" },
+  reply:   { name: "Reply Komen Calon Pembeli",   desc: "Template balas komen yang convert ke chat",          icon: "💬" },
+  bio:     { name: "Bio Affiliator Generator",    desc: "Bio IG/TikTok yang catchy & profesional",            icon: "👤" },
+};
+
+/* ============================================================
+   INIT
+   ============================================================ */
+function init() {
+  renderTools();
+  renderFAQs();
+  updateAIStatus();
+  document.getElementById("toolType").addEventListener("change", onToolChange);
+  document.getElementById("settingsBtn").addEventListener("click", openSettings);
+  document.getElementById("historyBtn").addEventListener("click", openHistory);
+
+  // close modal on overlay click
+  document.querySelectorAll(".modal-overlay").forEach(o => {
+    o.addEventListener("click", e => { if (e.target === o) o.classList.remove("show"); });
+  });
+
+  document.getElementById("apiKeyInput").value = apiKey;
+}
+
+function renderTools() {
+  const grid = document.getElementById("toolsGrid");
+  grid.innerHTML = TOOLS.map(t => `
+    <div class="tool-card ${t.id === currentTool ? 'active' : ''}" data-id="${t.id}" onclick="selectTool('${t.id}')">
+      <div class="tool-icon-sm">${t.icon}</div>
+      <h3>${t.name}</h3>
+      <p>${t.desc}</p>
+    </div>
+  `).join("");
+}
+
+function renderFAQs() {
+  document.getElementById("faqList").innerHTML = FAQS.map((f, i) => `
+    <div class="faq-item" id="faq-${i}">
+      <button class="faq-q" onclick="toggleFAQ(${i})">
+        <span>${f.q}</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a"><div class="faq-a-inner">${f.a}</div></div>
+    </div>
+  `).join("");
+}
+
+function toggleFAQ(i) {
+  const item = document.getElementById(`faq-${i}`);
+  const a = item.querySelector(".faq-a");
+  if (item.classList.contains("open")) {
+    item.classList.remove("open");
+    a.style.maxHeight = "0";
+  } else {
+    item.classList.add("open");
+    a.style.maxHeight = a.scrollHeight + "px";
+  }
+}
+
+function selectTool(id) {
+  currentTool = id;
+  document.getElementById("toolType").value = id;
+  document.querySelectorAll(".tool-card").forEach(c => c.classList.toggle("active", c.dataset.id === id));
+  applyToolMeta(id);
+  document.getElementById("generator").scrollIntoView({ behavior: "smooth" });
+}
+
+function onToolChange(e) {
+  currentTool = e.target.value;
+  document.querySelectorAll(".tool-card").forEach(c => c.classList.toggle("active", c.dataset.id === currentTool));
+  applyToolMeta(currentTool);
+}
+
+function applyToolMeta(id) {
+  const m = toolMeta[id];
+  document.getElementById("genIcon").textContent = m.icon;
+  document.getElementById("genTitle").textContent = m.name;
+  document.getElementById("genDesc").textContent = m.desc;
+}
+
+function updateAIStatus() {
+  const el = document.getElementById("aiStatus");
+  const label = document.getElementById("aiStatusLabel");
+  const hint = document.getElementById("aiStatusHint");
+  if (apiKey) {
+    el.classList.add("active");
+    label.textContent = "Mode AI Gemini (online)";
+    hint.textContent = "- Hasil di-generate AI Google secara real-time. Jauh lebih natural & variatif.";
+  } else {
+    el.classList.remove("active");
+    label.textContent = "Mode Template (offline)";
+    hint.textContent = "- Hasil cepat, tanpa internet. Mau hasil lebih variatif? Klik ikon ⚙️ di atas untuk konek Gemini AI gratis.";
+  }
+}
+
+/* ============================================================
+   SETTINGS
+   ============================================================ */
+function openSettings() { document.getElementById("settingsModal").classList.add("show"); }
+function closeSettings() { document.getElementById("settingsModal").classList.remove("show"); }
+function saveSettings() {
+  const val = document.getElementById("apiKeyInput").value.trim();
+  apiKey = val;
+  if (val) localStorage.setItem("affkit_api_key", val);
+  else localStorage.removeItem("affkit_api_key");
+  updateAIStatus();
+  closeSettings();
+  toast(val ? "✅ API Key tersimpan! Mode AI aktif." : "API Key dihapus, kembali ke mode template.");
+}
+function clearSettings() {
+  document.getElementById("apiKeyInput").value = "";
+  apiKey = "";
+  localStorage.removeItem("affkit_api_key");
+  updateAIStatus();
+  toast("API Key dihapus");
+}
+
+/* ============================================================
+   HISTORY
+   ============================================================ */
+function openHistory() {
+  renderHistory();
+  document.getElementById("historyModal").classList.add("show");
+}
+function closeHistory() { document.getElementById("historyModal").classList.remove("show"); }
+function renderHistory() {
+  const list = document.getElementById("historyList");
+  if (!history.length) {
+    list.innerHTML = `<div class="history-empty">Belum ada riwayat generate.<br />Yuk mulai bikin konten dulu! 🚀</div>`;
+    return;
+  }
+  list.innerHTML = history.map((h, i) => `
+    <div class="history-item" onclick="restoreHistory(${i})">
+      <div class="h-icon">${toolMeta[h.tool]?.icon || "✨"}</div>
+      <div class="h-info">
+        <div class="h-title">${h.produk} — ${toolMeta[h.tool]?.name || h.tool}</div>
+        <div class="h-meta">${new Date(h.ts).toLocaleString("id-ID")}</div>
+      </div>
+    </div>
+  `).join("");
+}
+function restoreHistory(i) {
+  const h = history[i];
+  selectTool(h.tool);
+  document.getElementById("niche").value = h.niche;
+  document.getElementById("produk").value = h.produk;
+  document.getElementById("audiens").value = h.audiens;
+  document.getElementById("gaya").value = h.gaya;
+  document.getElementById("platform").value = h.platform;
+  document.getElementById("benefit").value = h.benefit || "";
+  closeHistory();
+  renderResult(h.result, h.tool);
+  document.getElementById("output").scrollIntoView({ behavior: "smooth", block: "center" });
+}
+function pushHistory(input, result) {
+  history.unshift({ ...input, result, ts: Date.now() });
+  if (history.length > 10) history = history.slice(0, 10);
+  localStorage.setItem("affkit_history", JSON.stringify(history));
+}
+function clearHistory() {
+  if (!confirm("Yakin hapus semua riwayat?")) return;
+  history = [];
+  localStorage.removeItem("affkit_history");
+  renderHistory();
+  toast("Riwayat dihapus");
+}
+
+/* ============================================================
+   RESET FORM
+   ============================================================ */
+function resetForm() {
+  document.getElementById("niche").value = "";
+  document.getElementById("produk").value = "";
+  document.getElementById("audiens").value = "";
+  document.getElementById("benefit").value = "";
+  document.getElementById("output").innerHTML = `
+    <div class="output-empty">
+      <div class="output-empty-icon">🪄</div>
+      Hasil generate akan muncul di sini
+    </div>
+  `;
+}
+
+/* ============================================================
+   GENERATE - main
+   ============================================================ */
+async function generate() {
+  const input = {
+    tool: currentTool,
+    niche: document.getElementById("niche").value.trim() || "produk",
+    produk: document.getElementById("produk").value.trim() || "produk kamu",
+    audiens: document.getElementById("audiens").value.trim() || "semua orang",
+    gaya: document.getElementById("gaya").value,
+    platform: document.getElementById("platform").value,
+    benefit: document.getElementById("benefit").value.trim(),
+  };
+
+  if (!input.produk || input.produk === "produk kamu") {
+    toast("⚠️ Isi nama produknya dulu ya!");
+    return;
+  }
+
+  const btn = document.getElementById("generateBtn");
+  btn.disabled = true;
+  btn.textContent = "⏳ Generating...";
+
+  showLoader();
+
+  try {
+    let result;
+    if (apiKey) {
+      result = await generateWithGemini(input);
+    } else {
+      // small delay biar gak terlalu instant (UX)
+      await new Promise(r => setTimeout(r, 500));
+      result = generateTemplate(input);
+    }
+    renderResult(result, input.tool);
+    pushHistory(input, result);
+  } catch (err) {
+    console.error(err);
+    document.getElementById("output").innerHTML = `
+      <div class="output-empty">
+        <div class="output-empty-icon">⚠️</div>
+        <strong>Gagal generate dengan AI.</strong><br />
+        ${err.message || "Coba lagi atau cek API key kamu."}<br />
+        <small style="display:block; margin-top:8px;">Tip: kamu bisa hapus API key di ⚙️ untuk pakai mode template offline.</small>
+      </div>
+    `;
+  } finally {
+    btn.disabled = false;
+    btn.textContent = "✨ Generate Sekarang";
+  }
+}
+
+function showLoader() {
+  document.getElementById("output").innerHTML = `
+    <div class="loader"><span></span><span></span><span></span></div>
+    <div style="text-align:center; color: var(--text-3); font-size:.85rem;">
+      ${apiKey ? "AI lagi mikir..." : "Generating..."}
+    </div>
+  `;
+}
+
+/* ============================================================
+   GEMINI API
+   ============================================================ */
+async function generateWithGemini(input) {
+  const prompt = buildAIPrompt(input);
+  const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${encodeURIComponent(apiKey)}`;
+
+  const res = await fetch(url, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      contents: [{ parts: [{ text: prompt }] }],
+      generationConfig: { temperature: 0.9, maxOutputTokens: 1500 }
+    })
+  });
+
+  if (!res.ok) {
+    const errText = await res.text();
+    throw new Error(`API error: ${res.status} - ${errText.slice(0, 100)}`);
+  }
+  const data = await res.json();
+  const text = data?.candidates?.[0]?.content?.parts?.[0]?.text;
+  if (!text) throw new Error("Hasil kosong dari AI");
+
+  return parseAIResponse(text, input.tool);
+}
+
+function buildAIPrompt(input) {
+  const { tool, niche, produk, audiens, gaya, platform, benefit } = input;
+  const benefitLine = benefit ? `\nKeunggulan/manfaat produk: ${benefit}` : "";
+
+  const base = `Kamu adalah expert content creator & affiliator marketing Indonesia yang sangat berpengalaman di TikTok Shop, Shopee, dan Tokopedia. Bahasa: Indonesia santai sesuai gaya yang diminta.
+
+Niche: ${niche}
+Produk: ${produk}
+Target audiens: ${audiens}
+Platform: ${platform}
+Gaya bahasa: ${gaya}${benefitLine}
+
+`;
+
+  const prompts = {
+    hook: base + `Buat 8 HOOK 3 detik pertama untuk video reels affiliate yang bikin orang berhenti scroll. Hook harus pendek (max 15 kata), nampar, bikin penasaran, atau bikin orang relate. JANGAN pakai nomor atau bullet, langsung pisahkan setiap hook dengan baris kosong (\\n\\n). Output cuma hook-nya aja, tanpa intro/penutup.`,
+
+    caption: base + `Buat 3 versi caption affiliate untuk ${platform}, dengan format JSON valid (tanpa markdown):
+{"short":"caption pendek 1-2 baris (max 180 char)","medium":"caption sedang 3-5 baris dengan emoji","long":"caption panjang dengan struktur: hook-problem-solusi-benefit-CTA-hashtag relevan (8-10 hashtag)"}
+Output cuma JSON-nya, tanpa penjelasan.`,
+
+    script: base + `Buat script video reels affiliate 30 detik dengan format JSON valid (tanpa markdown):
+{"hook":"3 detik pertama yang nampar (text on screen + voice over)","body":"15-20 detik bagian inti, jelaskan masalah audiens dan solusi dari produk, sertakan benefit konkret","cta":"5-7 detik penutup yang push ke klik link affiliate","caption":"caption singkat untuk dipasang di video"}
+Output cuma JSON-nya.`,
+
+    cta: base + `Buat 6 variasi CTA (Call To Action) untuk video/post affiliate yang push audiens klik link. CTA harus singkat (max 20 kata), powerful, dan personal. Pisahkan setiap CTA dengan \\n\\n. Output cuma CTA-nya, tanpa intro/penutup.`,
+
+    title: base + `Buat 5 variasi JUDUL LISTING produk untuk Shopee/Tokopedia yang SEO-friendly dan eye-catching. Judul harus mengandung kata kunci pencarian, manfaat utama, dan ciri unik. Max 60 karakter per judul. Pisahkan dengan \\n\\n. Output cuma judulnya.`,
+
+    prompt: base + `Buat 3 variasi PROMPT AI image generator (untuk Nano Banana / Gemini / Midjourney) untuk foto produk ${produk} yang natural dan tidak terlihat AI. Format setiap prompt:
+- Variasi 1: Tangan wanita memegang produk (background tirai abu polos)
+- Variasi 2: Produk di atas meja kayu dengan natural light
+- Variasi 3: Flat lay produk dengan elemen pendukung minimalis
+
+Tiap prompt harus dalam bahasa Inggris, lengkap, dan siap copy-paste. Pisahkan tiap prompt dengan "---". Output cuma prompt-nya.`,
+
+    reply: base + `Buat 6 template REPLY KOMEN untuk affiliator yang nge-handle berbagai jenis komen calon pembeli. Skenario komen:
+1. "Real?"
+2. "Harga?"
+3. "Aman gak buat kulit sensitif?" (sesuaikan kalau niche bukan skincare)
+4. "Ada COD?"
+5. "Awet berapa lama?"
+6. "Beli di mana?"
+
+Reply harus ramah, push ke klik link/DM, max 30 kata. Format: "[KOMEN]" -> "[REPLY]". Pisahkan dengan \\n\\n.`,
+
+    bio: base + `Buat 3 variasi BIO Instagram/TikTok untuk affiliator di niche ${niche}. Bio harus catchy, jelas posisi (affiliator/reviewer), ada CTA ke link, max 150 karakter. Pakai emoji secukupnya. Pisahkan dengan \\n\\n.`,
+  };
+
+  return prompts[tool] || prompts.hook;
+}
+
+function parseAIResponse(text, tool) {
+  text = text.trim();
+  // remove markdown code fences
+  text = text.replace(/```json\s*/gi, "").replace(/```\s*/g, "").trim();
+
+  if (tool === "caption" || tool === "script") {
+    try {
+      // extract JSON safely
+      const m = text.match(/\{[\s\S]*\}/);
+      if (m) return JSON.parse(m[0]);
+    } catch (e) {
+      console.warn("JSON parse failed:", e);
+    }
+    // fallback: return as plain
+    return { _raw: text };
+  }
+
+  if (tool === "prompt") {
+    return text.split(/---+/).map(s => s.trim()).filter(Boolean);
+  }
+
+  // default: split by double newline
+  return text.split(/\n\n+/).map(s => s.trim()).filter(Boolean);
+}
+
+/* ============================================================
+   TEMPLATE GENERATORS (offline fallback)
+   ============================================================ */
+function pick(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
+function shuffle(arr) { return [...arr].sort(() => Math.random() - 0.5); }
+
+function generateTemplate(input) {
+  const { tool } = input;
+  switch (tool) {
+    case "hook":    return tplHook(input);
+    case "caption": return tplCaption(input);
+    case "script":  return tplScript(input);
+    case "cta":     return tplCTA(input);
+    case "title":   return tplTitle(input);
+    case "prompt":  return tplPrompt(input);
+    case "reply":   return tplReply(input);
+    case "bio":     return tplBio(input);
+    default:        return tplHook(input);
+  }
+}
+
+function tplHook({ niche, produk, audiens, gaya }) {
+  const pool = [
+    `Stop scroll dulu! ${audiens} yang masih ribet sama ${niche.toLowerCase()}, ini wajib kamu tau...`,
+    `Aku gak nyangka ${produk} bisa bikin hasilnya cepet banget cuma 7 hari.`,
+    `POV: kamu nemu cara ${niche.toLowerCase()} yang gak bikin kantong bolong.`,
+    `1 kesalahan ${audiens.toLowerCase()} pas pilih ${produk.toLowerCase()} — dan cara cepat memperbaikinya.`,
+    `Kalau kamu masih pakai ${niche.toLowerCase()} cara lama, wajib lihat ini sebelum nyesel.`,
+    `${audiens} wajib tahu: ${produk} bisa jadi game changer kamu di 2026.`,
+    `Ini alasan ${produk.toLowerCase()} jadi rebutan ${audiens.toLowerCase()} bulan ini.`,
+    `Aku coba ${produk.toLowerCase()} 14 hari, dan ini hasilnya...`,
+    `Berhenti cari ${niche.toLowerCase()} murahan — ini yang beneran works.`,
+    `Rahasia ${audiens.toLowerCase()} yang glow-up dengan ${produk.toLowerCase()}.`,
+    `Yang nyesel pakai ${produk.toLowerCase()} cuma 1 hal: kenapa gak dari dulu?`,
+    `Aku skeptis sama ${produk.toLowerCase()} sampai akhirnya nyoba sendiri...`,
+  ];
+  return shuffle(pool).slice(0, 8);
+}
+
+function tplCaption({ niche, produk, audiens, platform, benefit }) {
+  const benefitText = benefit ? `\n\n✅ ${benefit.split(",").join("\n✅ ")}` : "";
+  const tag = (s) => "#" + s.replace(/\s+/g, "").toLowerCase();
+  return {
+    short: `${produk} buat ${audiens.toLowerCase()} yang pengen hasil maksimal tanpa ribet. Cek link di bio sekarang! ✨`,
+    medium: `Lagi cari ${produk.toLowerCase()} yang bener-bener works?\n\nBuat ${audiens.toLowerCase()} yang udah bosen sama ${niche.toLowerCase()} biasa-biasa aja, ini jawabannya. Klik link di bio buat info lengkapnya 👇`,
+    long: `Halo ${audiens}! 👋\n\nKenalin, ${produk} — solusi ${niche.toLowerCase()} yang udah bantu ribuan orang.${benefitText}\n\n💬 DM "INFO" buat harga spesial hari ini\n🔗 Atau klik link di bio sekarang\n\n${tag(niche)} ${tag(produk)} ${tag(audiens)} #${platform} #affiliate #review #recommended`,
+  };
+}
+
+function tplScript({ niche, produk, audiens, benefit }) {
+  return {
+    hook: `[0-3 detik]\nText on screen: "STOP! ${audiens} wajib lihat ini..."\nVoice over: "Kamu masih pakai ${niche.toLowerCase()} biasa? Coba lihat dulu ini sebelum nyesel."`,
+    body: `[3-22 detik]\nVoice over:\n"Aku tadinya skeptis sama ${produk.toLowerCase()}. Tapi setelah aku coba 7 hari, hasilnya beneran beda.\n${benefit ? "Kelebihannya: " + benefit + "." : "Teksturnya enak, gampang dipakai, dan hasilnya keliatan."}\nGak heran kalau banyak yang udah re-order."`,
+    cta: `[22-30 detik]\nText on screen: "Klik kuning di bawah 👇"\nVoice over: "Buat ${audiens.toLowerCase()} yang penasaran, link aku selipkan di keranjang kuning. Stok terbatas, jangan sampai kehabisan ya!"`,
+    caption: `${produk} buat ${audiens.toLowerCase()} yang serius mau hasil. Klik keranjang kuning! 🛒✨`,
+  };
+}
+
+function tplCTA({ produk, audiens, platform }) {
+  const platformAction = {
+    tiktok: "Klik keranjang kuning",
+    shopee: "Klik link di bio",
+    tokopedia: "Klik link di bio",
+    instagram: "Klik link di bio",
+    threads: "Klik link di bio",
+    facebook: "Klik link di komentar",
+  }[platform] || "Klik link";
+
+  return shuffle([
+    `${platformAction} sekarang sebelum stok ${produk.toLowerCase()} habis lagi 🔥`,
+    `Buat ${audiens.toLowerCase()}, ${platformAction} ya, ada promo khusus hari ini!`,
+    `Yang beneran serius mau hasil, ${platformAction.toLowerCase()} di bawah 👇`,
+    `${platformAction} biar gak kehabisan kayak kemarin (sumpah real banget yang nyesel)`,
+    `Cek harga ${produk.toLowerCase()} di ${platformAction.toLowerCase()} — dijamin lebih murah dari toko sebelah!`,
+    `${platformAction} now atau gigit jari pas stok kosong 😅`,
+  ]).slice(0, 6);
+}
+
+function tplTitle({ produk, niche, benefit }) {
+  const benefits = benefit ? benefit.split(",").map(s => s.trim()) : ["Original", "Premium"];
+  const benefitTags = benefits.slice(0, 2).join(" ");
+  return [
+    `${produk} ${benefitTags} | BPOM Original | ${niche} Premium`,
+    `${produk} - ${niche} Best Seller 2026 | ${benefits[0] || "Original"} | Promo`,
+    `${produk} Original ${niche} | ${benefitTags} | Garansi 100%`,
+    `[NEW] ${produk} | ${niche} ${benefits[0] || "Premium"} | Cocok Semua Jenis`,
+    `${produk} ${benefits[0] || "Premium"} | Diskon ${niche} | Stok Terbatas`,
+  ];
+}
+
+function tplPrompt({ produk, niche }) {
+  return [
+    `A woman's hand gracefully holding the exact ${niche.toLowerCase()} product (${produk}) from the reference image. The product packaging, label, text, logo, color, and design must remain 100% identical and unchanged. Background: plain pleated curtain in muted grey, soft vertical folds, slightly out of focus, no decoration. Casual indoor photo shot on iPhone, soft natural indoor lighting from the side, slightly cool tone, candid amateur snapshot, raw unedited look, mild natural grain, NOT studio, NOT glossy. 3:4 portrait, photorealistic, authentic real-world feel.`,
+
+    `${produk} placed on a light oak wooden table near a window, natural morning daylight from the side casting soft shadows, minimal aesthetic styling, slightly out of focus background. Shot on iPhone, photorealistic lifestyle photography, 4:5 portrait, candid mood, no decoration, NOT studio. Product label and design must remain 100% identical to reference image, no modifications.`,
+
+    `Top-down flat lay of ${produk} on a clean off-white linen background, surrounded by minimal supporting elements (one small dried flower, a folded soft cloth). Soft diffused daylight, photorealistic, shot on iPhone, 1:1 square format, magazine-aesthetic but casual feel, product label fully visible and unchanged, color and design 100% identical to reference.`,
+  ];
+}
+
+function tplReply({ niche, produk }) {
+  return shuffle([
+    `"Real?" → Real banget kak! Aku udah pakai ${produk.toLowerCase()} sebulan, hasilnya beneran. Cek review di feed ya 💛`,
+    `"Harga?" → Harga aku tulis di pinned comment kak, cek ya! Atau klik keranjang kuning langsung 🛒`,
+    `"Aman gak?" → Aman banget kak, ${produk.toLowerCase()} udah BPOM. Buat detail bahan-bahannya cek pinned ya 💚`,
+    `"Ada COD?" → Bisa COD kak, tinggal pilih COD pas checkout di link kuning ya 📦`,
+    `"Awet berapa lama?" → ${produk} aku awet 1-2 bulan tergantung pemakaian kak, worth it banget!`,
+    `"Beli di mana?" → Klik keranjang kuning yaa kak, langsung kebawa ke link asli aku 💛`,
+  ]);
+}
+
+function tplBio({ niche, produk, audiens }) {
+  return [
+    `✨ Affiliator ${niche} Indonesia\n💛 Review jujur produk ${niche.toLowerCase()}\n🔗 Cek rekomendasi aku di bawah ↓`,
+    `${niche} Reviewer | ${audiens.toLowerCase()} 🤍\nBantuin kamu pilih produk ${niche.toLowerCase()} yang beneran works\n👇 Link toko favorit aku`,
+    `Hi! Aku rekomendasi ${niche.toLowerCase()} untuk ${audiens.toLowerCase()} 💛\nEvery click supports me 🙏\n👇 Cek koleksi link aku`,
+  ];
+}
+
+/* ============================================================
+   RENDER RESULT
+   ============================================================ */
+function renderResult(result, tool) {
+  const out = document.getElementById("output");
+  let html = "";
+
+  if (tool === "caption") {
+    if (result._raw) {
+      html = renderRaw(result._raw);
+    } else {
+      html = `
+        <div class="output-title fade-up">📝 Caption Affiliate <span class="pill ${apiKey ? 'green' : ''}">${apiKey ? 'AI Gemini' : 'Template'}</span></div>
+        ${captionBlock("Caption Pendek", result.short)}
+        ${captionBlock("Caption Sedang", result.medium)}
+        ${captionBlock("Caption Panjang", result.long)}
+      `;
+    }
+  } else if (tool === "script") {
+    if (result._raw) {
+      html = renderRaw(result._raw);
+    } else {
+      html = `
+        <div class="output-title fade-up">🎬 Script Reels 30 Detik <span class="pill ${apiKey ? 'green' : ''}">${apiKey ? 'AI Gemini' : 'Template'}</span></div>
+        ${scriptBlock("🪝 HOOK", result.hook)}
+        ${scriptBlock("📖 BODY", result.body)}
+        ${scriptBlock("🎯 CTA", result.cta)}
+        ${result.caption ? scriptBlock("📝 Caption Video", result.caption) : ""}
+      `;
+    }
+  } else {
+    // Array of strings
+    const items = Array.isArray(result) ? result : [String(result)];
+    const titleMap = {
+      hook: "🪝 Hook Reels",
+      cta: "🎯 CTA Affiliate",
+      title: "🏷️ Judul Listing",
+      prompt: "📸 Prompt Foto Produk",
+      reply: "💬 Reply Komen",
+      bio: "👤 Bio Affiliator",
+    };
+    html = `
+      <div class="output-title fade-up">${titleMap[tool] || "Hasil"} <span class="pill ${apiKey ? 'green' : ''}">${apiKey ? 'AI Gemini' : 'Template'}</span></div>
+      ${items.map((it, i) => resultItem(i + 1, it)).join("")}
+    `;
+  }
+
+  out.innerHTML = html;
+}
+
+function escapeHtml(s) {
+  return String(s)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
+
+function resultItem(num, text) {
+  const safe = escapeHtml(text);
+  const enc = encodeURIComponent(text);
+  return `
+    <div class="result-item fade-up">
+      <div class="result-num">${num}</div>
+      <div class="result-text">${safe}</div>
+      <button class="copy-btn" onclick="copyText(this, decodeURIComponent('${enc}'))">📋 Salin</button>
+    </div>
+  `;
+}
+
+function captionBlock(label, text) {
+  const safe = escapeHtml(text);
+  const enc = encodeURIComponent(text);
+  return `
+    <div class="result-item fade-up">
+      <div class="result-text">
+        <span class="result-label">${label}</span>
+        ${safe}
+      </div>
+      <button class="copy-btn" onclick="copyText(this, decodeURIComponent('${enc}'))">📋 Salin</button>
+    </div>
+  `;
+}
+
+function scriptBlock(title, text) {
+  const safe = escapeHtml(text);
+  const enc = encodeURIComponent(text);
+  return `
+    <div class="script-block fade-up">
+      <div class="script-block-title">${title}</div>
+      <button class="copy-btn" onclick="copyText(this, decodeURIComponent('${enc}'))">📋</button>
+      <div style="white-space: pre-wrap; font-size:.92rem; line-height:1.6;">${safe}</div>
+    </div>
+  `;
+}
+
+function renderRaw(text) {
+  const safe = escapeHtml(text);
+  const enc = encodeURIComponent(text);
+  return `
+    <div class="output-title fade-up">Hasil <span class="pill green">AI Gemini</span></div>
+    <div class="result-item fade-up">
+      <div class="result-text">${safe}</div>
+      <button class="copy-btn" onclick="copyText(this, decodeURIComponent('${enc}'))">📋 Salin</button>
+    </div>
+  `;
+}
+
+/* ============================================================
+   COPY & TOAST
+   ============================================================ */
+function copyText(btn, text) {
+  if (navigator.clipboard?.writeText) {
+    navigator.clipboard.writeText(text).then(() => onCopied(btn)).catch(() => fallbackCopy(text, btn));
+  } else {
+    fallbackCopy(text, btn);
+  }
+}
+function fallbackCopy(text, btn) {
+  const ta = document.createElement("textarea");
+  ta.value = text;
+  ta.style.position = "fixed";
+  ta.style.opacity = "0";
+  document.body.appendChild(ta);
+  ta.select();
+  try { document.execCommand("copy"); onCopied(btn); }
+  catch(e) { toast("⚠️ Gagal menyalin"); }
+  document.body.removeChild(ta);
+}
+function onCopied(btn) {
+  btn.classList.add("copied");
+  const original = btn.innerHTML;
+  btn.innerHTML = "✓ Tersalin";
+  toast("✅ Berhasil disalin!");
+  setTimeout(() => {
+    btn.classList.remove("copied");
+    btn.innerHTML = original;
+  }, 2000);
+}
+function toast(msg) {
+  const t = document.getElementById("toast");
+  t.textContent = msg;
+  t.classList.add("show");
+  setTimeout(() => t.classList.remove("show"), 2500);
+}
+
+/* ============================================================
+   START
+   ============================================================ */
+init();
+</script>
+</body>
+</html>
