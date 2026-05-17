@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="theme-color" content="#f3e7d3" />
+<title>Lynk.id Assets Generator — @esenef17</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Patrick+Hand&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: "Inter", -apple-system, sans-serif;
+    background: #f3e7d3;
+    color: #3a2a1a;
+    padding: 24px 16px 60px;
+    min-height: 100vh;
+  }
+  .wrap { max-width: 720px; margin: 0 auto; }
+  h1 {
+    font-family: "Caveat", cursive;
+    font-size: 2.4rem;
+    text-align: center;
+    color: #6b4423;
+    margin-bottom: 6px;
+  }
+  .sub {
+    text-align: center;
+    font-family: "Patrick Hand", cursive;
+    color: #6b5740;
+    font-size: 1.05rem;
+    margin-bottom: 30px;
+  }
+  .card {
+    background: #fff;
+    border-radius: 20px;
+    padding: 18px;
+    margin-bottom: 22px;
+    box-shadow: 0 6px 24px rgba(58, 42, 26, 0.08);
+    border: 1.5px solid rgba(107, 68, 35, 0.1);
+  }
+  .card h2 {
+    font-family: "Caveat", cursive;
+    font-size: 1.7rem;
+    color: #3a2a1a;
+    margin-bottom: 4px;
+  }
+  .card p.meta {
+    font-size: 0.85rem;
+    color: #9c8a72;
+    margin-bottom: 14px;
+  }
+  .preview-box {
+    background: #ede0c8;
+    border-radius: 14px;
+    padding: 14px;
+    text-align: center;
+    margin-bottom: 14px;
+    overflow: hidden;
+  }
+  .preview-box svg {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.1);
+  }
+  .preview-box.round svg { border-radius: 50%; max-width: 280px; }
+  .actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .btn {
+    flex: 1;
+    min-width: 130px;
+    padding: 13px 16px;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 0.92rem;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: inherit;
+  }
+  .btn-primary {
+    background: linear-gradient(135deg, #6b4423, #3a2a1a);
+    color: #faf2e3;
+    box-shadow: 0 4px 14px rgba(58, 42, 26, 0.25);
+  }
+  .btn-primary:hover { transform: translateY(-2px); }
+  .btn-secondary {
+    background: #faf2e3;
+    color: #6b4423;
+    border: 1.5px solid #d4a574;
+  }
+  .btn:active { transform: scale(0.97); }
+  .toast {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%) translateY(120px);
+    background: #3a2a1a;
+    color: #faf2e3;
+    padding: 12px 22px;
+    border-radius: 30px;
+    font-family: "Patrick Hand", cursive;
+    font-size: 0.95rem;
+    z-index: 200;
+    opacity: 0;
+    transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+    box-shadow: 0 12px 36px rgba(58, 42, 26, 0.3);
+  }
+  .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+  .info {
+    background: linear-gradient(135deg, rgba(212, 165, 116, 0.18), rgba(232, 155, 124, 0.1));
+    border: 1.5px dashed rgba(107, 68, 35, 0.25);
+    border-radius: 14px;
+    padding: 14px 16px;
+    margin-bottom: 22px;
+    font-size: 0.9rem;
+    line-height: 1.55;
+    color: #6b5740;
+  }
+  .info strong { color: #3a2a1a; }
+  .info ol { margin: 8px 0 0 20px; }
+  .info li { margin-bottom: 4px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <h1>Lynk.id Assets ✨</h1>
+  <p class="sub">Profile picture & banner siap pakai buat @esenef17</p>
+
+  <div class="info">
+    <strong>📱 Cara pakai:</strong>
+    <ol>
+      <li>Klik tombol <strong>"Download PNG"</strong> di bawah masing-masing gambar</li>
+      <li>File otomatis ke-save di galeri / folder Download HP kamu</li>
+      <li>Buka <strong>lynk.id</strong> → Edit Profile → Upload</li>
+    </ol>
+  </div>
+
+  <!-- ===================== PROFILE PICTURE ===================== -->
+  <div class="card">
+    <h2>1. Profile Picture</h2>
+    <p class="meta">Ukuran: 1000 × 1000 px · Format: PNG · Akan tampil bulat di Lynk.id</p>
+
+    <div class="preview-box round">
+      <svg id="svgProfile" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" width="1000" height="1000">
+        <defs>
+          <linearGradient id="bgPP" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#f3e7d3"/>
+            <stop offset="50%" stop-color="#e8d4b0"/>
+            <stop offset="100%" stop-color="#d4a574"/>
+          </linearGradient>
+          <linearGradient id="textPP" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#6b4423"/>
+            <stop offset="100%" stop-color="#3a2a1a"/>
+          </linearGradient>
+          <radialGradient id="glowPP" cx="35%" cy="30%" r="50%">
+            <stop offset="0%" stop-color="#ffd9a8" stop-opacity="0.7"/>
+            <stop offset="100%" stop-color="#ffd9a8" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+
+        <!-- Background -->
+        <rect width="1000" height="1000" fill="url(#bgPP)"/>
+        <circle cx="350" cy="300" r="450" fill="url(#glowPP)"/>
+
+        <!-- Decorative dashed circle -->
+        <circle cx="500" cy="500" r="430" fill="none" stroke="#6b4423" stroke-width="3" stroke-dasharray="12,12" opacity="0.25"/>
+
+        <!-- Sparkles around -->
+        <g fill="#6b4423" opacity="0.55">
+          <text x="180" y="240" font-family="Inter" font-size="48" font-weight="800">✦</text>
+          <text x="780" y="280" font-family="Inter" font-size="42" font-weight="800">✦</text>
+          <text x="220" y="780" font-family="Inter" font-size="38" font-weight="800">✿</text>
+          <text x="800" y="740" font-family="Inter" font-size="50" font-weight="800">✨</text>
+          <text x="120" y="540" font-family="Inter" font-size="36" font-weight="800">♡</text>
+          <text x="850" y="510" font-family="Inter" font-size="36" font-weight="800">♡</text>
+        </g>
+
+        <!-- Center letter "E" with overlay -->
+        <text x="500" y="600" text-anchor="middle"
+              font-family="Caveat, cursive" font-size="600" font-weight="700"
+              fill="url(#textPP)">E</text>
+
+        <!-- Underline accent -->
+        <path d="M 320 720 Q 500 760, 680 720" stroke="#e89b7c" stroke-width="14" fill="none" stroke-linecap="round" opacity="0.85"/>
+
+        <!-- Brand mark bottom -->
+        <text x="500" y="880" text-anchor="middle"
+              font-family="Patrick Hand, cursive" font-size="56" fill="#3a2a1a" font-weight="600">
+          @esenef17
+        </text>
+
+        <!-- Heart -->
+        <text x="500" y="930" text-anchor="middle"
+              font-family="Inter" font-size="32" fill="#e89b7c">♡ Premium Store ♡</text>
+      </svg>
+    </div>
+
+    <div class="actions">
+      <button class="btn btn-primary" onclick="downloadPNG('svgProfile', 'esenef17-profile.png', 1000, 1000)">⬇ Download PNG</button>
+      <button class="btn btn-secondary" onclick="downloadSVG('svgProfile', 'esenef17-profile.svg')">⬇ Download SVG</button>
+    </div>
+  </div>
+
+  <!-- ===================== BANNER 1200x628 ===================== -->
+  <div class="card">
+    <h2>2. Banner / Cover</h2>
+    <p class="meta">Ukuran: 1200 × 628 px · Format: PNG · Buat header / link preview</p>
+
+    <div class="preview-box">
+      <svg id="svgBanner" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 628" width="1200" height="628">
+        <defs>
+          <linearGradient id="bgBN" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#faf2e3"/>
+            <stop offset="60%" stop-color="#f3e7d3"/>
+            <stop offset="100%" stop-color="#ede0c8"/>
+          </linearGradient>
+          <linearGradient id="darkBN" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#6b4423"/>
+            <stop offset="100%" stop-color="#3a2a1a"/>
+          </linearGradient>
+          <linearGradient id="roseBN" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#e89b7c"/>
+            <stop offset="100%" stop-color="#c97064"/>
+          </linearGradient>
+          <linearGradient id="goldBN" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#e8c885"/>
+            <stop offset="100%" stop-color="#c9a35e"/>
+          </linearGradient>
+          <linearGradient id="sageBN" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#9caa7a"/>
+            <stop offset="100%" stop-color="#7a8c5c"/>
+          </linearGradient>
+          <linearGradient id="tealBN" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#7ab0a8"/>
+            <stop offset="100%" stop-color="#4a8b80"/>
+          </linearGradient>
+          <radialGradient id="glowBN" cx="20%" cy="20%" r="60%">
+            <stop offset="0%" stop-color="#ffd9a8" stop-opacity="0.55"/>
+            <stop offset="100%" stop-color="#ffd9a8" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+
+        <!-- Background -->
+        <rect width="1200" height="628" fill="url(#bgBN)"/>
+        <ellipse cx="200" cy="100" rx="500" ry="300" fill="url(#glowBN)"/>
+
+        <!-- Soft texture dots top-right -->
+        <g fill="#6b4423" opacity="0.08">
+          <circle cx="1080" cy="80" r="4"/>
+          <circle cx="1110" cy="120" r="4"/>
+          <circle cx="1140" cy="80" r="4"/>
+          <circle cx="1080" cy="160" r="4"/>
+          <circle cx="1140" cy="160" r="4"/>
+          <circle cx="1110" cy="40" r="4"/>
+        </g>
+
+        <!-- Sparkles -->
+        <g fill="#6b4423" opacity="0.5">
+          <text x="60" y="100" font-family="Inter" font-size="40" font-weight="800">✦</text>
+          <text x="540" y="80" font-family="Inter" font-size="28" font-weight="800">✨</text>
+          <text x="80" y="540" font-family="Inter" font-size="32" font-weight="800">✿</text>
+          <text x="500" y="580" font-family="Inter" font-size="26" font-weight="800">♡</text>
+        </g>
+
+        <!-- ============ LEFT SIDE: TEXT ============ -->
+        <!-- Tag pill -->
+        <g>
+          <rect x="60" y="140" width="240" height="44" rx="22" fill="url(#darkBN)"/>
+          <text x="180" y="170" text-anchor="middle" font-family="Inter" font-size="16" font-weight="700" fill="#faf2e3" letter-spacing="1.5">
+            ✨ DIGITAL STORE
+          </text>
+        </g>
+
+        <!-- Main heading "Premium" -->
+        <text x="60" y="260" font-family="Caveat, cursive" font-size="92" font-weight="700" fill="#3a2a1a">Premium</text>
+
+        <!-- "Store" with rose underline -->
+        <g>
+          <rect x="56" y="318" width="280" height="14" rx="7" fill="#e89b7c" opacity="0.6"/>
+          <text x="60" y="340" font-family="Caveat, cursive" font-size="92" font-weight="700" fill="url(#darkBN)">Store ✨</text>
+        </g>
+
+        <!-- Subtitle -->
+        <text x="60" y="395" font-family="Inter" font-size="22" font-weight="600" fill="#6b5740">
+          Apps Premium · AI Tools · Ebook Konten
+        </text>
+
+        <!-- Features list -->
+        <g font-family="Inter" font-size="18" fill="#6b5740" font-weight="500">
+          <text x="60" y="438">⚡  Aktivasi cepat 5–30 menit</text>
+          <text x="60" y="468">🛡️  Garansi resmi · 100% no banned</text>
+          <text x="60" y="498">💸  Hemat hingga 80% dari harga asli</text>
+        </g>
+
+        <!-- Handle bottom -->
+        <g>
+          <rect x="56" y="540" width="220" height="42" rx="21" fill="#3a2a1a"/>
+          <text x="166" y="569" text-anchor="middle" font-family="Patrick Hand, cursive" font-size="22" fill="#faf2e3" font-weight="600">
+            👉 lynk.id/esenef17
+          </text>
+        </g>
+
+        <!-- ============ RIGHT SIDE: PRODUCT ICONS ============ -->
+        <!-- Big circle with stack of product cards -->
+
+        <!-- Card 1: Canva (back) -->
+        <g transform="translate(720, 110) rotate(-8)">
+          <rect width="200" height="240" rx="22" fill="url(#tealBN)" filter="url(#shadow1)"/>
+          <rect x="0" y="0" width="200" height="240" rx="22" fill="none" stroke="#fff" stroke-width="3" opacity="0.4"/>
+          <circle cx="100" cy="92" r="38" fill="#faf2e3" opacity="0.95"/>
+          <text x="100" y="106" text-anchor="middle" font-family="Inter" font-size="36" font-weight="900" fill="#4a8b80">C</text>
+          <text x="100" y="170" text-anchor="middle" font-family="Inter" font-size="22" font-weight="800" fill="#faf2e3">Canva</text>
+          <text x="100" y="195" text-anchor="middle" font-family="Inter" font-size="14" font-weight="700" fill="#faf2e3" opacity="0.85">PRO</text>
+          <text x="100" y="220" text-anchor="middle" font-family="Patrick Hand, cursive" font-size="14" fill="#faf2e3" opacity="0.85">1 tahun</text>
+        </g>
+
+        <!-- Card 2: Leonardo AI (middle, prominent) -->
+        <g transform="translate(890, 80) rotate(4)">
+          <rect width="220" height="270" rx="24" fill="url(#darkBN)"/>
+          <rect x="0" y="0" width="220" height="270" rx="24" fill="none" stroke="#d4a574" stroke-width="3" opacity="0.6"/>
+          <!-- AI icon -->
+          <circle cx="110" cy="100" r="44" fill="#d4a574"/>
+          <text x="110" y="118" text-anchor="middle" font-family="Inter" font-size="38" font-weight="900" fill="#3a2a1a">AI</text>
+          <text x="110" y="190" text-anchor="middle" font-family="Inter" font-size="22" font-weight="800" fill="#faf2e3">Leonardo</text>
+          <text x="110" y="215" text-anchor="middle" font-family="Inter" font-size="13" font-weight="700" fill="#d4a574">PREMIUM</text>
+          <text x="110" y="245" text-anchor="middle" font-family="Patrick Hand, cursive" font-size="14" fill="#faf2e3" opacity="0.8">unlimited</text>
+        </g>
+
+        <!-- Card 3: Ebook (front, small) -->
+        <g transform="translate(820, 360) rotate(-4)">
+          <rect width="180" height="210" rx="20" fill="url(#roseBN)"/>
+          <rect x="0" y="0" width="180" height="210" rx="20" fill="none" stroke="#fff" stroke-width="3" opacity="0.4"/>
+          <text x="90" y="98" text-anchor="middle" font-family="Inter" font-size="48">📖</text>
+          <text x="90" y="148" text-anchor="middle" font-family="Inter" font-size="20" font-weight="800" fill="#faf2e3">Ebook</text>
+          <text x="90" y="172" text-anchor="middle" font-family="Inter" font-size="16" font-weight="700" fill="#faf2e3">Hook Threads</text>
+          <text x="90" y="195" text-anchor="middle" font-family="Patrick Hand, cursive" font-size="14" fill="#faf2e3" opacity="0.9">250+ template</text>
+        </g>
+
+        <!-- Card 4: Other apps badge -->
+        <g transform="translate(1000, 380) rotate(8)">
+          <rect width="160" height="180" rx="20" fill="url(#goldBN)"/>
+          <rect x="0" y="0" width="160" height="180" rx="20" fill="none" stroke="#fff" stroke-width="3" opacity="0.4"/>
+          <text x="80" y="80" text-anchor="middle" font-family="Inter" font-size="40">⚡</text>
+          <text x="80" y="120" text-anchor="middle" font-family="Inter" font-size="18" font-weight="800" fill="#3a2a1a">+20 Apps</text>
+          <text x="80" y="148" text-anchor="middle" font-family="Patrick Hand, cursive" font-size="14" fill="#3a2a1a">Netflix · Spotify</text>
+          <text x="80" y="166" text-anchor="middle" font-family="Patrick Hand, cursive" font-size="14" fill="#3a2a1a">CapCut · ChatGPT</text>
+        </g>
+
+        <!-- Floating star top right -->
+        <text x="700" y="80" font-family="Inter" font-size="36" fill="#e89b7c" opacity="0.9" font-weight="900">✨</text>
+        <text x="1130" y="600" font-family="Inter" font-size="32" fill="#6b4423" opacity="0.7" font-weight="900">✦</text>
+
+        <!-- Doodle arrow from text to cards -->
+        <path d="M 540 280 Q 620 250, 700 270" stroke="#6b4423" stroke-width="3" fill="none" stroke-linecap="round" stroke-dasharray="2,8" opacity="0.5"/>
+
+      </svg>
+    </div>
+
+    <div class="actions">
+      <button class="btn btn-primary" onclick="downloadPNG('svgBanner', 'esenef17-banner.png', 1200, 628)">⬇ Download PNG</button>
+      <button class="btn btn-secondary" onclick="downloadSVG('svgBanner', 'esenef17-banner.svg')">⬇ Download SVG</button>
+    </div>
+  </div>
+
+  <div class="info">
+    <strong>💡 Tips Upload ke Lynk.id:</strong>
+    <ol>
+      <li><strong>Profile picture:</strong> Upload via menu "Edit Profile" → "Change Photo" — Lynk.id otomatis crop jadi bulat</li>
+      <li><strong>Banner:</strong> Pakai sebagai cover/header (kalau Lynk.id support) atau pakai sebagai gambar promosi di IG/Threads bio link preview</li>
+      <li><strong>Tip ekstra:</strong> File PNG aku optimasi pakai font web — kalau hasil agak beda, refresh halaman ini sambil online biar Google Fonts ke-load dulu</li>
+    </ol>
+  </div>
+
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2400);
+}
+
+function downloadSVG(svgId, filename) {
+  const svg = document.getElementById(svgId);
+  const serializer = new XMLSerializer();
+  let source = serializer.serializeToString(svg);
+  if (!source.match(/^<svg[^>]+xmlns="http:\/\/www\.w3\.org\/2000\/svg"/)) {
+    source = source.replace(/^<svg/, '<svg xmlns="http://www.w3.org/2000/svg"');
+  }
+  const blob = new Blob([source], { type: 'image/svg+xml;charset=utf-8' });
+  triggerDownload(blob, filename);
+  showToast('✓ ' + filename + ' tersimpan');
+}
+
+function downloadPNG(svgId, filename, width, height) {
+  const svg = document.getElementById(svgId);
+  const serializer = new XMLSerializer();
+  let source = serializer.serializeToString(svg);
+  if (!source.match(/^<svg[^>]+xmlns="http:\/\/www\.w3\.org\/2000\/svg"/)) {
+    source = source.replace(/^<svg/, '<svg xmlns="http://www.w3.org/2000/svg"');
+  }
+
+  // Embed font @import in SVG via <style> for canvas rendering
+  const fontCSS = `<style>
+    @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&amp;family=Patrick+Hand&amp;family=Inter:wght@400;500;600;700;800;900&amp;display=swap');
+    text { font-family: 'Inter', sans-serif; }
+  </style>`;
+  source = source.replace(/<svg([^>]*)>/, '<svg$1>' + fontCSS);
+
+  const blob = new Blob([source], { type: 'image/svg+xml;charset=utf-8' });
+  const url = URL.createObjectURL(blob);
+
+  const img = new Image();
+  img.crossOrigin = "anonymous";
+  img.onload = function () {
+    const canvas = document.createElement('canvas');
+    canvas.width = width;
+    canvas.height = height;
+    const ctx = canvas.getContext('2d');
+    ctx.drawImage(img, 0, 0, width, height);
+    URL.revokeObjectURL(url);
+
+    canvas.toBlob(function(pngBlob) {
+      triggerDownload(pngBlob, filename);
+      showToast('✓ ' + filename + ' tersimpan');
+    }, 'image/png', 1.0);
+  };
+  img.onerror = function() {
+    showToast('Gagal convert. Coba download SVG saja.');
+  };
+  img.src = url;
+}
+
+function triggerDownload(blob, filename) {
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = filename;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+}
+</script>
+
+</body>
+</html>
