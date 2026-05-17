@@ -1,0 +1,1159 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>200+ Template Hook Utas Threads — Siap Pakai</title>
+<meta name="description" content="Ebook 200+ template hook untuk utas Threads. Copy, paste, FYP. By @yanzy17" />
+
+<!-- Embedded fonts agar PDF konsisten di semua device -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&display=swap" rel="stylesheet">
+
+<style>
+/* =============================================
+   EBOOK — 200+ TEMPLATE HOOK UTAS THREADS
+   ============================================= */
+
+/* === PDF page setup === */
+@page {
+    size: A4;
+    margin: 18mm 16mm 22mm 16mm;
+    @bottom-center {
+        content: "200+ Template Hook Utas Threads — by @yanzy17";
+        font-family: "Inter", sans-serif;
+        font-size: 9pt;
+        color: #888;
+    }
+    @bottom-right {
+        content: counter(page) " / " counter(pages);
+        font-family: "Inter", sans-serif;
+        font-size: 9pt;
+        color: #888;
+    }
+}
+@page :first {
+    margin: 0;
+    @bottom-center { content: ""; }
+    @bottom-right { content: ""; }
+}
+
+:root {
+    --bg: #0a0a0f;
+    --bg-2: #14141f;
+    --bg-3: #1c1c2a;
+    --gold: #d4af7a;
+    --gold-soft: #c9a878;
+    --gold-light: #e8d4a8;
+    --text: #f5f1e8;
+    --text-mute: #b8b3a5;
+    --text-dim: #8a8578;
+    --line: rgba(212, 175, 122, 0.18);
+    --accent: #ff6b6b;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+    font-family: "Playfair Display", "Georgia", "Times New Roman", serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+}
+
+a { color: var(--gold); text-decoration: none; }
+a:hover { color: var(--gold-light); }
+
+img { max-width: 100%; }
+
+/* ===== Layout / Pages ===== */
+.page {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 80px 56px;
+    border-bottom: 1px solid var(--line);
+    position: relative;
+}
+
+.page-num {
+    position: absolute;
+    bottom: 24px;
+    right: 56px;
+    font-size: 0.78rem;
+    color: var(--text-dim);
+    letter-spacing: 0.2em;
+}
+
+/* ===== Sticky TOC nav ===== */
+.toc-nav {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: rgba(10, 10, 15, 0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--line);
+    padding: 12px 20px;
+    display: flex;
+    gap: 14px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+.toc-nav::-webkit-scrollbar { display: none; }
+.toc-nav a {
+    flex-shrink: 0;
+    font-family: "Inter", -apple-system, "Segoe UI", sans-serif;
+    font-size: 0.78rem;
+    color: var(--text-mute);
+    padding: 6px 14px;
+    border: 1px solid var(--line);
+    border-radius: 30px;
+    transition: all 0.2s;
+    white-space: nowrap;
+}
+.toc-nav a:hover {
+    color: var(--gold);
+    border-color: var(--gold);
+    background: rgba(212, 175, 122, 0.08);
+}
+
+/* ===== COVER ===== */
+.cover {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background:
+        radial-gradient(circle at 20% 20%, rgba(212, 175, 122, 0.18), transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(212, 175, 122, 0.12), transparent 50%),
+        var(--bg);
+    padding: 60px 32px;
+    border: none;
+    position: relative;
+    overflow: hidden;
+}
+
+.cover::before {
+    content: "";
+    position: absolute;
+    inset: 24px;
+    border: 1px solid var(--line);
+    pointer-events: none;
+}
+
+.cover-tag {
+    font-family: "Inter", -apple-system, "Segoe UI", sans-serif;
+    color: var(--gold);
+    letter-spacing: 0.45em;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    margin-bottom: 32px;
+    padding: 8px 18px;
+    border: 1px solid var(--gold);
+    border-radius: 30px;
+}
+
+.cover h1 {
+    font-size: clamp(2.4rem, 9vw, 4.6rem);
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: -2px;
+    margin-bottom: 8px;
+    background: linear-gradient(180deg, #fff 0%, var(--gold) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.cover .num {
+    font-size: clamp(5rem, 22vw, 12rem);
+    font-weight: 900;
+    background: linear-gradient(180deg, var(--gold-light), var(--gold) 60%, #8a6f4a);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    line-height: 0.9;
+    margin: 12px 0;
+    letter-spacing: -6px;
+    text-shadow: 0 0 60px rgba(212, 175, 122, 0.3);
+}
+
+.cover h2 {
+    font-size: clamp(1.4rem, 5vw, 2rem);
+    color: var(--text);
+    font-weight: 700;
+    letter-spacing: 4px;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+}
+
+.cover .sub {
+    color: var(--gold);
+    letter-spacing: 0.4em;
+    font-size: 0.85rem;
+    margin: 16px 0 32px;
+    font-family: "Inter", -apple-system, "Segoe UI", sans-serif;
+}
+
+.cover-cta {
+    margin-top: 32px;
+    color: var(--text-mute);
+    font-size: 0.82rem;
+    font-family: "Inter", -apple-system, "Segoe UI", sans-serif;
+    letter-spacing: 0.3em;
+}
+.cover-cta strong { color: var(--gold); display: block; margin-top: 6px; }
+
+.cover-features {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 32px;
+    font-family: "Inter", -apple-system, "Segoe UI", sans-serif;
+    font-size: 0.78rem;
+}
+.cover-features span {
+    color: var(--gold);
+    border: 1px solid var(--line);
+    padding: 6px 14px;
+    border-radius: 30px;
+    background: rgba(212, 175, 122, 0.04);
+}
+
+/* ===== Section headings ===== */
+.section-tag {
+    color: var(--gold);
+    letter-spacing: 0.3em;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    font-family: "Inter", -apple-system, "Segoe UI", sans-serif;
+}
+
+.page h2.title {
+    font-size: clamp(1.8rem, 5vw, 2.6rem);
+    font-weight: 900;
+    line-height: 1.1;
+    letter-spacing: -1px;
+    margin-bottom: 20px;
+}
+
+.page h2.title span {
+    color: var(--gold);
+    font-style: italic;
+    font-weight: 400;
+}
+
+.divider {
+    width: 60px;
+    height: 2px;
+    background: var(--gold);
+    margin: 24px 0;
+    border: none;
+}
+
+/* ===== Content typography ===== */
+.lead {
+    font-size: 1.1rem;
+    color: var(--text-mute);
+    margin-bottom: 18px;
+    font-style: italic;
+}
+
+.page p {
+    margin-bottom: 14px;
+    color: var(--text);
+}
+
+.page h3 {
+    font-family: "Inter", -apple-system, "Segoe UI", sans-serif;
+    color: var(--gold);
+    font-size: 1.05rem;
+    letter-spacing: 0.05em;
+    margin: 28px 0 10px;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.page ul, .page ol { padding-left: 22px; margin-bottom: 16px; }
+.page li { margin-bottom: 6px; color: var(--text-mute); }
+
+/* ===== TOC list ===== */
+.toc-list { list-style: none; padding: 0; }
+.toc-list li {
+    display: flex;
+    align-items: baseline;
+    padding: 12px 0;
+    border-bottom: 1px dashed var(--line);
+    font-family: "Inter", -apple-system, "Segoe UI", sans-serif;
+}
+.toc-list .num {
+    color: var(--gold);
+    font-weight: 700;
+    margin-right: 14px;
+    min-width: 32px;
+}
+.toc-list .label {
+    flex: 1;
+    color: var(--text);
+}
+.toc-list .pg {
+    color: var(--text-dim);
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+}
+.toc-list a { display: contents; }
+.toc-list a:hover .label { color: var(--gold); }
+
+/* ===== Hook list ===== */
+.hook-grid {
+    counter-reset: hook;
+}
+
+.hook {
+    background: var(--bg-2);
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--gold);
+    padding: 18px 22px;
+    margin: 10px 0;
+    border-radius: 4px;
+    counter-increment: hook;
+    position: relative;
+    font-family: "Inter", -apple-system, "Segoe UI", sans-serif;
+    transition: all 0.2s;
+}
+
+.hook:hover {
+    background: var(--bg-3);
+    border-left-width: 5px;
+}
+
+.hook::before {
+    content: "#" counter(hook);
+    position: absolute;
+    top: 14px;
+    right: 18px;
+    font-size: 0.7rem;
+    color: var(--gold);
+    letter-spacing: 0.15em;
+    font-weight: 700;
+    background: rgba(212, 175, 122, 0.08);
+    padding: 2px 8px;
+    border-radius: 4px;
+}
+
+.hook p {
+    color: var(--text);
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.55;
+    padding-right: 50px;
+}
+
+.hook .tip {
+    display: block;
+    margin-top: 8px;
+    color: var(--text-dim);
+    font-size: 0.78rem;
+    font-style: italic;
+    padding-right: 50px;
+}
+
+/* ===== Tip / quote box ===== */
+.box {
+    background: linear-gradient(135deg, rgba(212, 175, 122, 0.08), rgba(212, 175, 122, 0.02));
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 22px 24px;
+    margin: 22px 0;
+}
+
+.box-title {
+    color: var(--gold);
+    font-family: "Inter", -apple-system, "Segoe UI", sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    font-size: 0.78rem;
+    margin-bottom: 10px;
+}
+
+.box p { font-size: 0.95rem; color: var(--text-mute); }
+
+/* ===== Stats ===== */
+.stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin: 28px 0;
+}
+
+.stat-card {
+    text-align: center;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 18px 12px;
+    background: var(--bg-2);
+}
+.stat-card strong {
+    display: block;
+    font-size: 1.6rem;
+    color: var(--gold);
+    font-weight: 900;
+    font-family: "Inter", -apple-system, "Segoe UI", sans-serif;
+}
+.stat-card span {
+    font-size: 0.72rem;
+    color: var(--text-dim);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-family: "Inter", -apple-system, "Segoe UI", sans-serif;
+}
+
+/* ===== Closing ===== */
+.closing {
+    text-align: center;
+    background:
+        radial-gradient(circle at center, rgba(212, 175, 122, 0.12), transparent 60%),
+        var(--bg);
+    padding: 100px 32px;
+    border: none;
+}
+.closing h2 {
+    font-size: clamp(2rem, 6vw, 3rem);
+    background: linear-gradient(180deg, #fff, var(--gold));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 16px;
+    line-height: 1.1;
+}
+.closing p { max-width: 540px; margin: 0 auto 14px; color: var(--text-mute); }
+.signature {
+    margin-top: 40px;
+    padding-top: 24px;
+    border-top: 1px solid var(--line);
+    color: var(--gold);
+    font-style: italic;
+    letter-spacing: 0.2em;
+    font-family: "Inter", -apple-system, "Segoe UI", sans-serif;
+    font-size: 0.85rem;
+}
+
+/* ===== Download bar (sticky button) ===== */
+.download-bar {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 100;
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+}
+
+.download-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+    color: #1a1a1a;
+    padding: 14px 24px;
+    border-radius: 50px;
+    border: none;
+    font-family: "Inter", sans-serif;
+    font-weight: 700;
+    font-size: 0.9rem;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    box-shadow: 0 8px 24px rgba(212, 175, 122, 0.4);
+    transition: all 0.2s;
+}
+
+.download-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 32px rgba(212, 175, 122, 0.5);
+}
+
+.download-btn svg { width: 18px; height: 18px; }
+
+.download-hint {
+    font-family: "Inter", sans-serif;
+    font-size: 0.7rem;
+    color: var(--text-dim);
+    text-align: right;
+    background: rgba(10, 10, 15, 0.9);
+    padding: 6px 12px;
+    border-radius: 20px;
+    border: 1px solid var(--line);
+}
+
+/* ===== Mobile ===== */
+@media (max-width: 640px) {
+    .page { padding: 56px 22px; }
+    .page-num { right: 22px; bottom: 16px; }
+    .stats { grid-template-columns: 1fr 1fr; }
+    .hook { padding: 14px 16px; }
+    .hook::before { right: 12px; top: 10px; }
+    .hook p, .hook .tip { padding-right: 36px; }
+}
+
+/* ===== Print / PDF — Optimized untuk export ke PDF ===== */
+@media print {
+    html, body {
+        background: white !important;
+        color: #1a1a1a !important;
+        font-size: 11pt;
+    }
+
+    .toc-nav,
+    .download-bar,
+    .no-print { display: none !important; }
+
+    .page {
+        max-width: 100%;
+        padding: 0;
+        margin: 0;
+        border: none;
+        page-break-after: always;
+        break-after: page;
+        background: white !important;
+    }
+
+    .page:last-child { page-break-after: auto; }
+    .page-num { display: none; }
+
+    /* Cover tetap dark — tampil mewah di PDF */
+    .cover, .closing {
+        background: #0a0a0f !important;
+        color: var(--text) !important;
+        min-height: 297mm;
+        padding: 40mm 20mm !important;
+        page-break-after: always;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+    }
+    .cover::before { display: block !important; }
+    .cover h2, .cover .sub { color: var(--gold) !important; }
+    .cover .cover-cta { color: var(--text-mute) !important; }
+    .cover-features span {
+        color: var(--gold) !important;
+        background: rgba(212, 175, 122, 0.08) !important;
+    }
+    .closing { color: var(--text) !important; }
+    .closing p { color: var(--text-mute) !important; }
+    .closing .signature { color: var(--gold) !important; }
+
+    /* Konten isi — tampil clean putih */
+    .section-tag { color: #b8860b !important; }
+    .page h2.title { color: #1a1a1a !important; }
+    .page h2.title span { color: #b8860b !important; }
+    .page h3 { color: #b8860b !important; }
+    .page p, .lead { color: #333 !important; }
+    .page li { color: #444 !important; }
+    .divider { background: #b8860b !important; }
+
+    /* Hook cards — versi cetak rapi */
+    .hook {
+        background: #faf7f0 !important;
+        border: 1px solid #e8d4a8 !important;
+        border-left: 3px solid #b8860b !important;
+        page-break-inside: avoid;
+        break-inside: avoid;
+        margin: 8px 0 !important;
+    }
+    .hook p, .hook .tip { color: #1a1a1a !important; }
+    .hook::before {
+        color: #b8860b !important;
+        background: rgba(184, 134, 11, 0.1) !important;
+    }
+
+    /* Box & stats */
+    .box {
+        background: #faf7f0 !important;
+        border-color: #e8d4a8 !important;
+        page-break-inside: avoid;
+        break-inside: avoid;
+    }
+    .box-title { color: #b8860b !important; }
+    .box p { color: #333 !important; }
+
+    .stat-card {
+        background: #faf7f0 !important;
+        border-color: #e8d4a8 !important;
+        page-break-inside: avoid;
+    }
+    .stat-card strong { color: #b8860b !important; }
+    .stat-card span { color: #888 !important; }
+
+    /* TOC */
+    .toc-list .num { color: #b8860b !important; }
+    .toc-list .label { color: #1a1a1a !important; }
+    .toc-list .pg { color: #888 !important; }
+    .toc-list li { border-color: #ddd !important; }
+
+    /* Heading tetap nyatu sama paragraph berikutnya */
+    h1, h2, h3 {
+        page-break-after: avoid;
+        break-after: avoid;
+        page-break-inside: avoid;
+    }
+
+    a { color: inherit; text-decoration: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- Floating Download to PDF button -->
+<div class="download-bar no-print">
+    <span class="download-hint">💡 Save as PDF for offline reading</span>
+    <button class="download-btn" onclick="window.print()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+            <polyline points="7 10 12 15 17 10"/>
+            <line x1="12" y1="15" x2="12" y2="3"/>
+        </svg>
+        Download as PDF
+    </button>
+</div>
+
+<!-- Sticky navigation -->
+<nav class="toc-nav">
+    <a href="#cover">Cover</a>
+    <a href="#intro">Pengantar</a>
+    <a href="#cara-pakai">Cara Pakai</a>
+    <a href="#anatomi">Anatomi Hook</a>
+    <a href="#bab1">1. Pancingan</a>
+    <a href="#bab2">2. Storytelling</a>
+    <a href="#bab3">3. Selling</a>
+    <a href="#bab4">4. Edukasi</a>
+    <a href="#bab5">5. Random</a>
+    <a href="#bab6">6. Bonus 50+</a>
+    <a href="#penutup">Penutup</a>
+</nav>
+
+<!-- ============================================
+     COVER
+     ============================================ -->
+<section class="page cover" id="cover">
+    <div class="cover-tag">Ebook Premium</div>
+    <h1>200+ TEMPLATE</h1>
+    <div class="num">HOOK</div>
+    <h2>UTAS THREADS</h2>
+    <div class="sub">— SIAP PAKAI —</div>
+
+    <div class="cover-features">
+        <span>Copy &amp; Paste</span>
+        <span>250 Hook Total</span>
+        <span>6 Kategori</span>
+        <span>Bonus 50+</span>
+    </div>
+
+    <div class="cover-cta">
+        Karya by
+        <strong>@yanzy17</strong>
+    </div>
+</section>
+
+<!-- ============================================
+     PENGANTAR
+     ============================================ -->
+<section class="page" id="intro">
+    <div class="section-tag">— Kata Pengantar —</div>
+    <h2 class="title">Hai, salam<br><span>kreator Threads.</span></h2>
+    <hr class="divider" />
+
+    <p class="lead">
+        Bingung mau mulai utas dari mana? Views sepi, susah dapet komentar, atau orang langsung scroll lewat? Tenang, kamu nggak sendirian.
+    </p>
+
+    <p>
+        Ebook ini berisi <strong>250 template hook Threads</strong> yang udah aku kurasi dari ratusan utas yang FYP & ramai interaksi. Tinggal copy, paste, sesuaikan dengan topik kamu, dan posting.
+    </p>
+
+    <p>
+        Aku tulis ebook ini bukan karena teori doang — tapi karena pola-pola ini <em>benar-benar bekerja</em>. Beberapa utasku sendiri tembus 100K+ views, ribuan interaksi, dan konsisten FYP hampir tiap hari pakai pola yang sama yang ada di sini.
+    </p>
+
+    <div class="box">
+        <div class="box-title">⚡ 3 detik pertama menentukan</div>
+        <p>
+            Di Threads, orang scroll cepat. Kalau hook kamu nggak bikin mereka berhenti dalam 3 detik pertama, utas kamu mati. Hook yang kuat = views yang mengalir.
+        </p>
+    </div>
+
+    <div class="stats">
+        <div class="stat-card">
+            <strong>250</strong>
+            <span>Hook Template</span>
+        </div>
+        <div class="stat-card">
+            <strong>6</strong>
+            <span>Kategori</span>
+        </div>
+        <div class="stat-card">
+            <strong>∞</strong>
+            <span>Update Lifetime</span>
+        </div>
+    </div>
+
+    <div class="page-num">001</div>
+</section>
+
+<!-- ============================================
+     CARA PAKAI
+     ============================================ -->
+<section class="page" id="cara-pakai">
+    <div class="section-tag">— Cara Pakai Ebook —</div>
+    <h2 class="title">Pakai dengan <span>3 langkah.</span></h2>
+    <hr class="divider" />
+
+    <h3>1. Pilih Hook Sesuai Niche</h3>
+    <p>Lihat 6 kategori yang tersedia. Cocokkan dengan topik konten kamu. Misalnya kamu jualan produk → pakai kategori <strong>Selling Trigger</strong>. Kalau pengen viral cepat → pakai <strong>Hook Pancingan</strong>.</p>
+
+    <h3>2. Sesuaikan dengan Topik Kamu</h3>
+    <p>Tiap template ada bagian <em>"[topik]"</em> atau <em>"[X]"</em> yang harus kamu ganti. Contoh: <em>"3 hal yang aku sesali soal [topik]"</em> → <em>"3 hal yang aku sesali soal jadi mahasiswa"</em>.</p>
+
+    <h3>3. Lanjutkan Body Utas</h3>
+    <p>Hook cuma pintu masuk. Setelah orang berhenti scroll, kamu harus kasih <strong>isi</strong>. Pakai pola: <em>cerita pendek → poin demi poin → tutup dengan ajakan diskusi.</em></p>
+
+    <div class="box">
+        <div class="box-title">📌 Tips Penting</div>
+        <p>
+            Jangan pakai 1 hook terus-menerus. Audience Threads pinter — mereka cepat bosan kalau ngerasa kamu repeat pola. Combine 3-4 kategori biar feed kamu tetap fresh tiap minggu.
+        </p>
+    </div>
+
+    <div class="page-num">002</div>
+</section>
+
+<!-- ============================================
+     ANATOMI HOOK
+     ============================================ -->
+<section class="page" id="anatomi">
+    <div class="section-tag">— Anatomi Hook —</div>
+    <h2 class="title">Kenapa hook ini <span>bekerja?</span></h2>
+    <hr class="divider" />
+
+    <p class="lead">Setiap hook yang FYP punya 3 elemen: <strong>Curiosity, Conflict, Clarity</strong>.</p>
+
+    <h3>🎯 Curiosity — Bikin Penasaran</h3>
+    <p>Hook harus ngasih <em>"informasi setengah"</em>. Kasih clue, tapi jangan kasih jawaban. Otak manusia nggak suka kalimat menggantung — itu yang bikin mereka mau klik.</p>
+
+    <h3>⚔ Conflict — Tunjukkan Pertentangan</h3>
+    <p>Hook yang kuat sering bertentangan sama opini umum. Contoh: "Berhenti rajin nabung kalau gajimu masih UMR." Kontroversial = banyak komentar.</p>
+
+    <h3>💎 Clarity — Jelas, Singkat, Spesifik</h3>
+    <p>Hindari kalimat ribet. Threads suka yang to-the-point. Maksimal 1-2 kalimat. Pakai angka spesifik — angka bikin hook keliatan kredibel.</p>
+
+    <div class="box">
+        <div class="box-title">✨ Formula Andalan</div>
+        <p>
+            <strong>[Angka]</strong> + <strong>[Hal Spesifik]</strong> + <strong>[Janji / Konflik]</strong>
+            <br>Contoh: "5 kebiasaan kecil yang ngubah hidupku di umur 22."
+        </p>
+    </div>
+
+    <div class="page-num">003</div>
+</section>
+
+<!-- ============================================
+     DAFTAR ISI
+     ============================================ -->
+<section class="page" id="toc">
+    <div class="section-tag">— Daftar Isi —</div>
+    <h2 class="title">Apa aja <span>yang kamu dapat?</span></h2>
+    <hr class="divider" />
+
+    <ul class="toc-list">
+        <li><a href="#bab1"><span class="num">01</span><span class="label">Hook Pancingan (Clickbait Halal)</span><span class="pg">40 hook</span></a></li>
+        <li><a href="#bab2"><span class="num">02</span><span class="label">Hook Storytelling Ringan</span><span class="pg">40 hook</span></a></li>
+        <li><a href="#bab3"><span class="num">03</span><span class="label">Hook Selling Trigger</span><span class="pg">40 hook</span></a></li>
+        <li><a href="#bab4"><span class="num">04</span><span class="label">Hook Edukasi Ringan</span><span class="pg">40 hook</span></a></li>
+        <li><a href="#bab5"><span class="num">05</span><span class="label">Hook Random / Relate</span><span class="pg">40 hook</span></a></li>
+        <li><a href="#bab6"><span class="num">06</span><span class="label">Bonus — 50+ Hook Tambahan</span><span class="pg">50 hook</span></a></li>
+        <li><a href="#penutup"><span class="num">07</span><span class="label">Penutup &amp; Penutupan</span><span class="pg">—</span></a></li>
+    </ul>
+
+    <div class="page-num">004</div>
+</section>
+
+<!-- ============================================
+     BAB 1 — PANCINGAN
+     ============================================ -->
+<section class="page" id="bab1">
+    <div class="section-tag">— Bab 01 —</div>
+    <h2 class="title">Hook <span>Pancingan</span><br>(Clickbait Halal)</h2>
+    <hr class="divider" />
+    <p class="lead">Tipe hook yang bikin orang <strong>wajib</strong> berhenti scroll. Pancing rasa penasaran tanpa bohong. 40 template siap pakai.</p>
+
+    <div class="hook-grid">
+        <div class="hook"><p>Aku baru sadar 1 hal soal [topik] dan ini bikin overthinking sampai jam 3 pagi.</p></div>
+        <div class="hook"><p>Kalau kamu masih [kebiasaan], baca utas ini sebelum kamu nyesel.</p></div>
+        <div class="hook"><p>Ada 1 hal yang nggak pernah ada yang bahas soal [topik]. Hari ini aku bongkar semua.</p></div>
+        <div class="hook"><p>Aku bayar [Rp X] cuma buat tau hal ini. Sekarang gratis untuk kamu.</p></div>
+        <div class="hook"><p>Kalau kamu umur 20-an dan masih [kondisi], utas ini buat kamu.</p></div>
+        <div class="hook"><p>Plot twist: ternyata [hal yang dipercayai] itu salah selama ini.</p></div>
+        <div class="hook"><p>Ini utas yang kamu butuhin tapi nggak pernah kamu tau kamu butuhin.</p></div>
+        <div class="hook"><p>3 hal yang aku sesali pernah lakuin di umur 20. Jangan ulangin.</p></div>
+        <div class="hook"><p>Aku nemu rahasia [topik] dari orang yang udah jalanin selama 10 tahun. Ini intinya.</p></div>
+        <div class="hook"><p>Stop scroll. Utas ini bakal bikin kamu mikir ulang soal [topik].</p></div>
+        <div class="hook"><p>Hampir semua orang salah paham soal [topik]. Aku jelasin pelan-pelan.</p></div>
+        <div class="hook"><p>1 kalimat dari [orang/buku] ini yang ngubah cara aku hidup.</p></div>
+        <div class="hook"><p>Kenyataan pahit soal [topik] yang nggak akan dikasih tau orang tua kamu.</p></div>
+        <div class="hook"><p>Aku coba [hal] selama 30 hari. Hasilnya nggak terduga.</p></div>
+        <div class="hook"><p>Kamu pasti nggak nyangka kalau [fakta] itu sebenernya [twist].</p></div>
+        <div class="hook"><p>Hal paling mahal yang pernah aku pelajari soal [topik] — gratis di utas ini.</p></div>
+        <div class="hook"><p>Ada alasan kenapa orang sukses jarang ngomongin [topik]. Ini alasannya.</p></div>
+        <div class="hook"><p>Kalau kamu bisa balikin waktu, kamu pasti ngelakuin [hal] dari awal. Aku juga.</p></div>
+        <div class="hook"><p>Ini kebenaran yang paling nggak nyaman soal [topik]. Tapi kamu harus dengar.</p></div>
+        <div class="hook"><p>Berapa banyak dari kamu yang masih percaya kalau [mitos]? Saatnya bangun.</p></div>
+        <div class="hook"><p>Ada 5 detik yang ngubah hidupku. Dan itu nggak ada di buku self-help manapun.</p></div>
+        <div class="hook"><p>Kamu nggak akan baca utas ini sampai habis. Tapi kalau iya — siap-siap kaget.</p></div>
+        <div class="hook"><p>Ini alasan kenapa kamu masih [kondisi negatif] padahal udah usaha keras.</p></div>
+        <div class="hook"><p>Aku diem-diem ngerjain ini selama 6 bulan. Sekarang aku siap cerita.</p></div>
+        <div class="hook"><p>Kalau aku tau ini dari umur 17, hidupku pasti beda 180 derajat.</p></div>
+        <div class="hook"><p>3 kata yang ngubah cara aku liat [topik] selamanya.</p></div>
+        <div class="hook"><p>Orang-orang sukses punya 1 kebiasaan aneh ini. Aku praktekin sebulan, hasilnya gila.</p></div>
+        <div class="hook"><p>Bookmark utas ini. Kamu bakal balik lagi cepat atau lambat.</p></div>
+        <div class="hook"><p>Aku hampir nyerah. Sampai aku nemuin 1 hal ini soal [topik].</p></div>
+        <div class="hook"><p>Hari ini aku akan ngomongin sesuatu yang biasanya aku simpan sendirian.</p></div>
+        <div class="hook"><p>Kalau utas ini ramai, aku lanjut bikin part 2. Kalau enggak, aku simpan rahasianya.</p></div>
+        <div class="hook"><p>Ini bukan utas motivasi. Ini utas yang bakal bikin kamu marah, lalu sadar.</p></div>
+        <div class="hook"><p>Banyak orang nanya gimana caranya [topik]. Hari ini aku jawab tuntas.</p></div>
+        <div class="hook"><p>Pernah ngerasa [perasaan]? Berarti utas ini buat kamu.</p></div>
+        <div class="hook"><p>Aku bikin kesalahan paling bodoh soal [topik]. Belajar dari kesalahanku, jangan ulang.</p></div>
+        <div class="hook"><p>Ada hal yang nggak akan kamu temuin di Google soal [topik]. Aku tulis di sini.</p></div>
+        <div class="hook"><p>Setelah 5 tahun jalanin [hal], aku sadar 1 kebenaran besar yang nggak ada yang bahas.</p></div>
+        <div class="hook"><p>Mau tau kenapa kamu selalu kalah dari orang lain di [bidang]? Jawabannya menyakitkan.</p></div>
+        <div class="hook"><p>Kalau kamu sering [kondisi], baca pelan-pelan. Ini buat kamu.</p></div>
+        <div class="hook"><p>Aku nggak peduli kamu setuju atau enggak. Tapi ini fakta soal [topik].</p></div>
+    </div>
+
+    <div class="page-num">005</div>
+</section>
+
+<!-- ============================================
+     BAB 2 — STORYTELLING
+     ============================================ -->
+<section class="page" id="bab2">
+    <div class="section-tag">— Bab 02 —</div>
+    <h2 class="title">Hook <span>Storytelling</span><br>Ringan</h2>
+    <hr class="divider" />
+    <p class="lead">Cerita pendek yang nyantol di hati. Audience Threads suka pengalaman pribadi — bukan teori. 40 template untuk kamu yang suka nulis cerita.</p>
+
+    <div class="hook-grid">
+        <div class="hook"><p>Tahun 2020, aku [kondisi awal yang lemah]. Tahun ini, aku [pencapaian]. Ini perjalanannya.</p></div>
+        <div class="hook"><p>Aku duduk di kafe pinggir jalan, dan satu obrolan dengan stranger ngubah hidup aku.</p></div>
+        <div class="hook"><p>Pagi itu hujan deras. Aku baru sadar satu hal yang selama ini aku abaikan.</p></div>
+        <div class="hook"><p>Pernah ada masa di mana aku [kondisi sulit]. Ini cara aku keluar.</p></div>
+        <div class="hook"><p>Ibuku pernah ngomong satu kalimat. Sampai sekarang aku belum bisa lupa.</p></div>
+        <div class="hook"><p>Aku ditolak [X] kali sebelum akhirnya [pencapaian]. Ini pelajarannya.</p></div>
+        <div class="hook"><p>Tiga bulan lalu aku nangis di kamar mandi. Hari ini aku ketawa nulis utas ini.</p></div>
+        <div class="hook"><p>Ada kejadian kecil tahun lalu yang sampai sekarang aku syukuri.</p></div>
+        <div class="hook"><p>Aku pernah kerja di [tempat] selama [waktu]. Ini yang aku pelajari soal hidup.</p></div>
+        <div class="hook"><p>Hari pertama aku [aktivitas], aku gagal total. Tapi aku nggak nyerah.</p></div>
+        <div class="hook"><p>Cerita seorang teman yang mengubah cara aku liat [topik].</p></div>
+        <div class="hook"><p>Aku pernah punya boss yang ngomong: "[kalimat]". Sampai sekarang aku ingat.</p></div>
+        <div class="hook"><p>Tadi pagi aku kebangun jam 4. Dan otakku ngebisikin sesuatu yang harus aku tulis.</p></div>
+        <div class="hook"><p>Aku ketemu seseorang di kereta. Dia ngomong 1 hal. Hidupku berubah.</p></div>
+        <div class="hook"><p>Ada satu malam di mana aku hampir nyerah. Tapi aku ingat satu hal.</p></div>
+        <div class="hook"><p>Waktu kecil aku selalu mikir [pikiran]. Sekarang aku tau itu salah.</p></div>
+        <div class="hook"><p>Bapakku nggak pernah ngomong "I love you" seumur hidupnya. Tapi ini caranya nunjukkin.</p></div>
+        <div class="hook"><p>Pertama kali aku [pengalaman], aku ngerasa malu. Sekarang aku bangga.</p></div>
+        <div class="hook"><p>Ada satu pertanyaan dari adek kecilku yang bikin aku speechless.</p></div>
+        <div class="hook"><p>Aku resign dari kerja impianku. Banyak orang tanya kenapa. Ini jawabannya.</p></div>
+        <div class="hook"><p>Saat semua orang bilang "kamu salah jalan", aku tetap jalan terus. Hasilnya — di sini.</p></div>
+        <div class="hook"><p>Pernah satu hari dompetku tinggal Rp 5.000. Itu titik balik hidupku.</p></div>
+        <div class="hook"><p>Sahabat aku tiba-tiba ngilang. 3 tahun kemudian dia muncul dengan satu pesan.</p></div>
+        <div class="hook"><p>Aku pernah nulis surat ke diri aku sendiri 5 tahun lalu. Hari ini aku baca lagi.</p></div>
+        <div class="hook"><p>Hari ke-30 aku [tantangan]. Ini yang berubah dari diri aku.</p></div>
+        <div class="hook"><p>Aku sempat takut ngambil keputusan ini. Sekarang aku bersyukur ngambilnya.</p></div>
+        <div class="hook"><p>Cerita 5 menit yang bakal bikin kamu mikir ulang soal [topik].</p></div>
+        <div class="hook"><p>Ada seorang nenek di pasar yang ngomong 1 hal sederhana. Tapi dalam banget.</p></div>
+        <div class="hook"><p>Aku nggak punya privilege apa-apa. Tapi aku punya 1 hal yang ngubah hidupku.</p></div>
+        <div class="hook"><p>Tahun terberat hidupku ngajarin aku 7 hal yang nggak ada di sekolah.</p></div>
+        <div class="hook"><p>Pernah kena gaslight sampai aku ragu sama diri sendiri. Ini cara aku sembuh.</p></div>
+        <div class="hook"><p>Aku jatuh cinta sama hal yang dulu aku benci. Ini gimana ceritanya.</p></div>
+        <div class="hook"><p>Sebelum aku mulai [aktivitas sekarang], aku [pekerjaan lama]. Ini lompatannya.</p></div>
+        <div class="hook"><p>Pertanyaan paling jujur yang pernah aku jawab: "Kamu bahagia nggak?"</p></div>
+        <div class="hook"><p>Kakek aku ninggalin warisan. Bukan uang — tapi 1 nasihat ini.</p></div>
+        <div class="hook"><p>Aku pernah pinjam uang ke teman. Dia balas dengan sesuatu yang bikin aku nangis.</p></div>
+        <div class="hook"><p>Hari pernikahan aku bukan hari paling bahagia. Hari ini aku ceritain alasannya.</p></div>
+        <div class="hook"><p>Ada satu malam aku nggak bisa tidur. Aku ambil pena, dan ini yang aku tulis.</p></div>
+        <div class="hook"><p>Aku belajar 1 hal dari kucingku. Dan itu serius bukan candaan.</p></div>
+        <div class="hook"><p>5 tahun lalu aku patah hati. Hari ini aku berterima kasih sama orang itu.</p></div>
+    </div>
+
+    <div class="page-num">006</div>
+</section>
+
+<!-- ============================================
+     BAB 3 — SELLING TRIGGER
+     ============================================ -->
+<section class="page" id="bab3">
+    <div class="section-tag">— Bab 03 —</div>
+    <h2 class="title">Hook <span>Selling</span><br>Trigger</h2>
+    <hr class="divider" />
+    <p class="lead">Buat kamu yang jualan produk fisik, digital, jasa, atau affiliate. 40 hook yang nggak terlihat seperti jualan — tapi konversinya tinggi.</p>
+
+    <div class="hook-grid">
+        <div class="hook"><p>Aku habis [Rp X] cuma buat nyari [solusi]. Akhirnya nemu yang ini.</p></div>
+        <div class="hook"><p>Kalau kamu lagi cari [produk/jasa], stop dulu. Baca utas ini sebelum bayar.</p></div>
+        <div class="hook"><p>Aku nggak nyangka [produk] semurah ini bisa kasih hasil sebagus ini.</p></div>
+        <div class="hook"><p>3 alasan kenapa aku akhirnya milih [produk] dibanding kompetitornya.</p></div>
+        <div class="hook"><p>Pakai [produk] selama 30 hari. Ini reviewnya — jujur tanpa endorsement.</p></div>
+        <div class="hook"><p>Klien aku berhasil dapat [hasil] cuma dalam [waktu]. Begini caranya.</p></div>
+        <div class="hook"><p>Ada 1 produk yang aku rekomenin ke semua teman dekat. Sekarang aku rekomenin ke kamu.</p></div>
+        <div class="hook"><p>Aku coba 5 [produk sejenis]. Cuma 1 yang beneran works. Ini yang itu.</p></div>
+        <div class="hook"><p>[Hasil keren] tanpa [hambatan umum]. Ini caranya — beneran works.</p></div>
+        <div class="hook"><p>Banyak yang DM tanya: "kamu pakai apa?" Kali ini aku jawab terbuka.</p></div>
+        <div class="hook"><p>Investasi terbaik yang pernah aku ambil di tahun ini cuma Rp [X].</p></div>
+        <div class="hook"><p>Aku nggak akan rekomenin kalau emang nggak works. Ini cerita lengkapnya.</p></div>
+        <div class="hook"><p>Sebelum pakai [produk]: [kondisi]. Sesudah: [kondisi baru]. Beda banget.</p></div>
+        <div class="hook"><p>Cara hemat [Rp X] per bulan dengan 1 trik sederhana.</p></div>
+        <div class="hook"><p>Aku stop pakai [produk mahal]. Ganti ke ini. Hasilnya malah lebih bagus.</p></div>
+        <div class="hook"><p>Ada produk lokal yang nggak banyak yang tau, tapi kualitasnya luar biasa.</p></div>
+        <div class="hook"><p>Kalau aku boleh ulang, aku bakal beli [produk] dari awal — bukan yang lain.</p></div>
+        <div class="hook"><p>Buat [target audience], ini 1 produk yang harus kamu coba minimal sekali.</p></div>
+        <div class="hook"><p>Aku skeptis dulu sama [produk]. 2 minggu pakai, aku berubah pikiran total.</p></div>
+        <div class="hook"><p>Daripada beli [hal mahal], mendingan kamu invest di [produk lebih murah & efektif].</p></div>
+        <div class="hook"><p>Aku ngehasilin [Rp X] dari [aktivitas] cuma pakai 1 alat ini.</p></div>
+        <div class="hook"><p>Banyak orang nyari [hasil]. Padahal jawabannya udah ada di [produk] ini.</p></div>
+        <div class="hook"><p>Diskon [X%] yang nggak banyak yang tau. Aku share di sini.</p></div>
+        <div class="hook"><p>Ini [produk] yang aku pakai sehari-hari. Spoiler: simple banget.</p></div>
+        <div class="hook"><p>Sebelum kamu beli [produk mahal], coba ini dulu. Hemat banyak.</p></div>
+        <div class="hook"><p>Aku habiskan [waktu] buat riset [produk]. Ini yang akhirnya aku pilih.</p></div>
+        <div class="hook"><p>1 produk, 3 manfaat. Worth banget. Ini reviewnya.</p></div>
+        <div class="hook"><p>[Selebriti/tokoh] pakai produk ini. Tapi alasan aku rekomenin lain.</p></div>
+        <div class="hook"><p>Belanja online tanpa nyesel? Pakai checklist ini sebelum klik bayar.</p></div>
+        <div class="hook"><p>Kalau kamu freelancer, 1 tools ini wajib ada di komputer kamu.</p></div>
+        <div class="hook"><p>Aku jualan [produk] ke [X] orang dalam seminggu. Ini bukan promo — ini cerita.</p></div>
+        <div class="hook"><p>Cara dapet [hasil] tanpa harus jual murah-murahan. Aku praktekin sendiri.</p></div>
+        <div class="hook"><p>Pelanggan aku DM dan ngomong: "[testimoni]". Aku langsung speechless.</p></div>
+        <div class="hook"><p>Buat kamu yang baru mulai [aktivitas], ini 3 modal awal yang harus disiapin.</p></div>
+        <div class="hook"><p>Aku nggak suka jualan keras. Tapi produk ini layak banget kamu lirik.</p></div>
+        <div class="hook"><p>Bedanya [produk A] vs [produk B] yang nggak banyak yang bahas.</p></div>
+        <div class="hook"><p>Setelah pakai [produk] 6 bulan, aku siap kasih review jujur — tanpa filter.</p></div>
+        <div class="hook"><p>Buat yang masih ragu beli [produk], aku jelasin pro &amp; cons-nya di sini.</p></div>
+        <div class="hook"><p>3 hal yang harus kamu tau sebelum beli [produk] di [tahun ini].</p></div>
+        <div class="hook"><p>Ini cara aku ngehasilin [Rp X] dari [skill] tanpa modal besar.</p></div>
+    </div>
+
+    <div class="page-num">007</div>
+</section>
+
+<!-- ============================================
+     BAB 4 — EDUKASI
+     ============================================ -->
+<section class="page" id="bab4">
+    <div class="section-tag">— Bab 04 —</div>
+    <h2 class="title">Hook <span>Edukasi</span><br>Ringan</h2>
+    <hr class="divider" />
+    <p class="lead">Sharing knowledge tanpa terkesan menggurui. Cocok buat personal branding & bangun otoritas di niche kamu. 40 template.</p>
+
+    <div class="hook-grid">
+        <div class="hook"><p>5 hal yang aku pelajari dari [topik] dalam 30 hari terakhir.</p></div>
+        <div class="hook"><p>Kalau kamu mau jago [skill], ini 3 prinsip dasar yang nggak banyak yang ajarin.</p></div>
+        <div class="hook"><p>Apa itu [istilah]? Aku jelasin pakai bahasa SD biar gampang dimengerti.</p></div>
+        <div class="hook"><p>3 kesalahan paling umum yang dilakukan orang saat [aktivitas].</p></div>
+        <div class="hook"><p>Cara baca [hal kompleks] dalam 5 menit. Bookmark utas ini.</p></div>
+        <div class="hook"><p>Aku rangkum buku [judul] dalam 7 poin. Yang ke-5 paling ngena.</p></div>
+        <div class="hook"><p>5 prinsip [topik] yang nggak diajarin di sekolah, tapi penting buat hidup.</p></div>
+        <div class="hook"><p>Step-by-step cara [aktivitas] buat pemula. Lengkap sampai jadi.</p></div>
+        <div class="hook"><p>Mitos vs Fakta: [topik] yang masih sering disalahpahami.</p></div>
+        <div class="hook"><p>Aku belajar [topik] 1 tahun. Ini intinya yang mau aku share.</p></div>
+        <div class="hook"><p>3 tools gratis yang bikin kerjaan kamu 10x lebih cepat.</p></div>
+        <div class="hook"><p>Cheat sheet [topik] — print, tempel, dan amalkan.</p></div>
+        <div class="hook"><p>Aku ringkas [topik kompleks] jadi 5 kalimat. Begini bunyinya.</p></div>
+        <div class="hook"><p>Pelajaran [topik] yang aku harap aku pelajari saat masih [umur].</p></div>
+        <div class="hook"><p>Buat yang baru mulai [topik], ini roadmap 30 hari pertama.</p></div>
+        <div class="hook"><p>3 framework yang aku pakai tiap kali [aktivitas]. Auto rapi.</p></div>
+        <div class="hook"><p>Cara mikir orang sukses di [bidang] — beda banget sama orang biasa.</p></div>
+        <div class="hook"><p>Ini perbedaan besar antara [konsep A] dan [konsep B] yang sering ketuker.</p></div>
+        <div class="hook"><p>Aku bandingin 3 metode [topik]. Ini yang menang telak.</p></div>
+        <div class="hook"><p>Glossary singkat istilah [niche] yang wajib kamu paham.</p></div>
+        <div class="hook"><p>5 buku yang ngubah cara aku liat [topik] selamanya.</p></div>
+        <div class="hook"><p>Cara membaca [data/grafik/kontrak] tanpa pusing — versi simpel.</p></div>
+        <div class="hook"><p>3 channel YouTube terbaik buat belajar [topik]. Gratis semua.</p></div>
+        <div class="hook"><p>Aku rangkum diskusi [waktu lama] jam jadi 1 utas. Ini yang penting.</p></div>
+        <div class="hook"><p>Mind map [topik] yang aku pakai sehari-hari. Langsung praktek.</p></div>
+        <div class="hook"><p>Kenapa kamu masih [hal salah]? Ini akar masalahnya.</p></div>
+        <div class="hook"><p>3 kebiasaan kecil yang ningkatin [skill] kamu lebih cepet.</p></div>
+        <div class="hook"><p>Skill paling underrated tahun ini menurut aku.</p></div>
+        <div class="hook"><p>Cara bikin [hal] tanpa modal besar. Step demi step.</p></div>
+        <div class="hook"><p>Aku tanya 10 expert [topik] 1 pertanyaan ini. Jawaban mereka mirip semua.</p></div>
+        <div class="hook"><p>Resource gratis terbaik buat belajar [topik] — versi 2025.</p></div>
+        <div class="hook"><p>3 prompt AI yang ngehemat waktu kerja aku 5 jam per minggu.</p></div>
+        <div class="hook"><p>Tips [topik] dari mentor aku yang harganya jutaan rupiah. Aku share gratis.</p></div>
+        <div class="hook"><p>Apa yang aku harap aku tau saat baru mulai [aktivitas].</p></div>
+        <div class="hook"><p>Ini perbedaan antara orang yang [hasil bagus] dan [hasil biasa].</p></div>
+        <div class="hook"><p>Pertanyaan ini bisa ngubah arah hidup kamu. Jawab dengan jujur.</p></div>
+        <div class="hook"><p>Cara nentuin [keputusan] tanpa nyesel di kemudian hari.</p></div>
+        <div class="hook"><p>3 trik [topik] yang underrated tapi efektif banget.</p></div>
+        <div class="hook"><p>Ini blueprint sederhana buat mulai [aktivitas] dari 0.</p></div>
+        <div class="hook"><p>Aku spend [Rp X] buat kursus [topik]. Ini intisarinya — dirangkum tuntas.</p></div>
+    </div>
+
+    <div class="page-num">008</div>
+</section>
+
+<!-- ============================================
+     BAB 5 — RANDOM RELATE
+     ============================================ -->
+<section class="page" id="bab5">
+    <div class="section-tag">— Bab 05 —</div>
+    <h2 class="title">Hook <span>Random</span><br>/ Relate</h2>
+    <hr class="divider" />
+    <p class="lead">Tipe hook yang nyentuh keseharian — ringan tapi nempel. Cocok buat bikin akun kamu terasa "manusia" dan deket sama audience. 40 template.</p>
+
+    <div class="hook-grid">
+        <div class="hook"><p>Cuma di Indonesia: [hal random unik yang relate].</p></div>
+        <div class="hook"><p>Tipe-tipe orang [aktivitas]. Coba tebak kamu yang mana.</p></div>
+        <div class="hook"><p>Yang aneh, padahal kerjaan gampang, tapi pas dikerjain malah nunda.</p></div>
+        <div class="hook"><p>Pernah ngerasa [perasaan] tanpa alasan jelas? Aku juga.</p></div>
+        <div class="hook"><p>Kebiasaan random aku yang banyak yang nggak relate, tapi yang relate auto BFF.</p></div>
+        <div class="hook"><p>Hal yang dulu aku pikir cuma aku yang ngalamin. Ternyata banyak yang sama.</p></div>
+        <div class="hook"><p>Ada momen kecil di hari ini yang bikin aku ketawa sendiri. Pengen share.</p></div>
+        <div class="hook"><p>Kalau hidup punya tombol pause, aku akan pause di momen ini.</p></div>
+        <div class="hook"><p>Pertanyaan random: kamu lebih suka [opsi A] atau [opsi B]?</p></div>
+        <div class="hook"><p>Hal yang aku notice cuma sebagai [profesi/identitas]: [observasi].</p></div>
+        <div class="hook"><p>Aku ngerasa kita semua butuh denger ini hari ini.</p></div>
+        <div class="hook"><p>Plot twist hidup hari ini: [hal random].</p></div>
+        <div class="hook"><p>Aku sadar 1 hal sebelum tidur tadi malam. Pengen share.</p></div>
+        <div class="hook"><p>Hal kecil yang bikin hari aku jadi lebih baik: [list].</p></div>
+        <div class="hook"><p>Yang relate auto follow. Yang nggak — gapapa juga.</p></div>
+        <div class="hook"><p>Kamu yang masih [umur/kondisi], coba jawab: [pertanyaan ringan].</p></div>
+        <div class="hook"><p>Aku punya 1 kebiasaan aneh. Mungkin kamu juga punya.</p></div>
+        <div class="hook"><p>Ada satu hal yang bikin aku jatuh cinta sama [hal sederhana].</p></div>
+        <div class="hook"><p>Mood tahun ini: [satu kalimat random tapi dalam].</p></div>
+        <div class="hook"><p>Aku belajar 1 hal aneh dari [pengalaman random].</p></div>
+        <div class="hook"><p>Ini list hal-hal kecil yang bikin aku grateful hari ini.</p></div>
+        <div class="hook"><p>Pernah kepikiran nggak: kenapa [pertanyaan filosofis ringan]?</p></div>
+        <div class="hook"><p>Kalau aku punya kekuatan super, aku mau bisa [hal random].</p></div>
+        <div class="hook"><p>3 hal yang bikin aku sadar aku udah dewasa.</p></div>
+        <div class="hook"><p>Hal yang bikin aku ketawa sampai sakit perut minggu ini.</p></div>
+        <div class="hook"><p>Yang gen Z ngerti: [referensi pop culture].</p></div>
+        <div class="hook"><p>Aku punya teori soal [hal sehari-hari]. Coba dengar dulu sebelum nge-judge.</p></div>
+        <div class="hook"><p>Kalau hari ini lelah, ini reminder buat kamu.</p></div>
+        <div class="hook"><p>Hal yang aku pelajari dari [tempat random]: [pelajaran].</p></div>
+        <div class="hook"><p>Realisasi pagi ini yang bikin aku diem 10 menit.</p></div>
+        <div class="hook"><p>Cuma kamu yang [aktivitas spesifik] yang ngerti perasaan ini.</p></div>
+        <div class="hook"><p>Aku notice satu pola di hidup aku. Mungkin kamu juga.</p></div>
+        <div class="hook"><p>Kalau kamu [umur], ini hal yang harus kamu denger sekarang.</p></div>
+        <div class="hook"><p>Hal random yang bikin aku ngerasa hidup hari ini.</p></div>
+        <div class="hook"><p>Aku iseng ngitung [hal]. Hasilnya bikin kaget.</p></div>
+        <div class="hook"><p>Pertanyaan random buat kamu yang lagi baca utas ini.</p></div>
+        <div class="hook"><p>Yang relate gabung di komentar. Yang nggak relate — kasih emoji aja.</p></div>
+        <div class="hook"><p>Aku punya rahasia kecil yang nggak banyak yang tau. Hari ini aku bocorin.</p></div>
+        <div class="hook"><p>Hari aneh hari ini: [kejadian random tapi lucu].</p></div>
+        <div class="hook"><p>Kalau ada award buat hal paling random, aku menang dengan [kebiasaan].</p></div>
+    </div>
+
+    <div class="page-num">009</div>
+</section>
+
+<!-- ============================================
+     BAB 6 — BONUS 50+
+     ============================================ -->
+<section class="page" id="bab6">
+    <div class="section-tag">— Bab 06 (Bonus) —</div>
+    <h2 class="title">Bonus <span>50+</span> Hook<br>Tambahan</h2>
+    <hr class="divider" />
+    <p class="lead">Bonus hook lintas kategori. Cocok buat eksperimen, A/B testing, dan ngeluarin sisi kreatif kamu. Mix &amp; match sesuka hati.</p>
+
+    <div class="hook-grid">
+        <div class="hook"><p>Plot twist: [hal yang nggak terduga].</p></div>
+        <div class="hook"><p>Kalau kamu baca utas ini sampai habis, aku kasih bonus di akhir.</p></div>
+        <div class="hook"><p>Aku ngerjain [aktivitas] selama [waktu]. Ini learnings yang bikin aku berubah.</p></div>
+        <div class="hook"><p>Hal yang aku pelajari dari [lawan/pesaing/orang yang dibenci]: [pelajaran].</p></div>
+        <div class="hook"><p>Ini cara aku [skill] tanpa pernah ikut kursus mahal.</p></div>
+        <div class="hook"><p>Pertanyaan kontroversial: [pertanyaan tajam].</p></div>
+        <div class="hook"><p>Banyak yang setuju sama aku soal ini. Kamu termasuk yang mana?</p></div>
+        <div class="hook"><p>Kebiasaan kecil yang aku ubah, dan dampaknya gede ke hidup.</p></div>
+        <div class="hook"><p>Aku tanya ChatGPT [pertanyaan]. Jawabannya bikin aku speechless.</p></div>
+        <div class="hook"><p>Ini hal yang aku butuhin dengar di umur [X].</p></div>
+        <div class="hook"><p>Cara hemat waktu dengan 1 trik sederhana ini.</p></div>
+        <div class="hook"><p>Kalau aku jadi kamu, aku akan [saran]. Jangan tunda lagi.</p></div>
+        <div class="hook"><p>Aku ngeliat tren ini lagi naik. Siapin diri dari sekarang.</p></div>
+        <div class="hook"><p>Ada 2 tipe orang [topik]. Kamu yang mana?</p></div>
+        <div class="hook"><p>Kalimat dari [tokoh] ini bikin aku duduk diem 5 menit.</p></div>
+        <div class="hook"><p>Aku ulang lagi: [pernyataan tegas]. Banyak yang masih nggak ngerti.</p></div>
+        <div class="hook"><p>Hari ini aku akan kontroversial. Maaf nggak maaf.</p></div>
+        <div class="hook"><p>Ini ritual pagi aku yang ngubah produktivitas 2x lipat.</p></div>
+        <div class="hook"><p>Aku resign. Ini alasan jujur — bukan yang aku tulis di surat resign.</p></div>
+        <div class="hook"><p>Cara aku tau seseorang [karakteristik] dari 1 hal kecil ini.</p></div>
+        <div class="hook"><p>3 sinyal kalau hubungan kamu mulai [kondisi]. Jangan abaikan.</p></div>
+        <div class="hook"><p>Aku bandingin diri aku 1 tahun lalu vs sekarang. Bedanya gila.</p></div>
+        <div class="hook"><p>Ini caranya kamu bisa [hasil] tanpa burnout.</p></div>
+        <div class="hook"><p>Kebenaran soal [topik] yang bikin banyak orang nggak nyaman.</p></div>
+        <div class="hook"><p>Aku coba [aktivitas trending]. Ini hasilnya — jujur.</p></div>
+        <div class="hook"><p>Daftar yang aku akan tinggalin di tahun ini. Kamu juga?</p></div>
+        <div class="hook"><p>5 alasan [hal yang nggak populer] sebenernya keren.</p></div>
+        <div class="hook"><p>Ada satu kalimat yang aku ulang tiap pagi. Ini kalimatnya.</p></div>
+        <div class="hook"><p>Aku iseng ngehitung pengeluaran [hal]. Hasilnya bikin kaget.</p></div>
+        <div class="hook"><p>Cara dapet [hasil keren] tanpa [hambatan klasik].</p></div>
+        <div class="hook"><p>Kebiasaan orang sukses yang sering keliatan "boring" tapi powerful.</p></div>
+        <div class="hook"><p>Ini reality check buat kamu yang masih [kondisi].</p></div>
+        <div class="hook"><p>Aku praktekin [tips trending] selama 1 bulan. Hasilnya: nggak seindah yang dijual.</p></div>
+        <div class="hook"><p>3 buku yang harus dibaca sebelum umur 25. Versi aku.</p></div>
+        <div class="hook"><p>Konflik internal yang aku alamin minggu ini. Mungkin kamu juga ngalamin.</p></div>
+        <div class="hook"><p>Ini privilege yang nggak banyak orang sadari mereka punya.</p></div>
+        <div class="hook"><p>Kalimat orang lain yang sampai sekarang masih kepikiran.</p></div>
+        <div class="hook"><p>Aku stop [kebiasaan] selama 7 hari. Begini efeknya.</p></div>
+        <div class="hook"><p>Hal yang dulu aku judge keras, sekarang aku malah lakuin sendiri.</p></div>
+        <div class="hook"><p>Buat [target spesifik], baca pelan-pelan utas ini sampai habis.</p></div>
+        <div class="hook"><p>Aku salah selama bertahun-tahun soal [topik]. Sekarang aku ngerti.</p></div>
+        <div class="hook"><p>Pertanyaan jebakan yang bikin aku mikir berhari-hari.</p></div>
+        <div class="hook"><p>Yang nggak ada yang ngomongin: [observasi unik].</p></div>
+        <div class="hook"><p>Tahun depan aku punya target [X]. Ini cara aku ngebreakdownnya.</p></div>
+        <div class="hook"><p>Aku ngerubah [hal] di rutinitas. Hasilnya nggak terduga.</p></div>
+        <div class="hook"><p>Ini playlist yang nemenin aku [aktivitas]. Cocok buat [mood].</p></div>
+        <div class="hook"><p>Kalau kamu tipe [karakter], utas ini wajib kamu simpan.</p></div>
+        <div class="hook"><p>Ini cara aku bilang "tidak" tanpa ngerasa bersalah.</p></div>
+        <div class="hook"><p>Tips kecil dari [profesi] yang berlaku buat semua orang.</p></div>
+        <div class="hook"><p>Aku tanya diri sendiri 1 pertanyaan ini tiap minggu. Game changer.</p></div>
+        <div class="hook"><p>Buat yang baru mulai [hal], pesan dari aku yang udah jalanin 5 tahun.</p></div>
+        <div class="hook"><p>Aku siap-siap di-cancel pas posting utas ini. Tapi worth it.</p></div>
+    </div>
+
+    <div class="page-num">010</div>
+</section>
+
+<!-- ============================================
+     PENUTUP
+     ============================================ -->
+<section class="page closing" id="penutup">
+    <div class="section-tag">— Penutup —</div>
+    <h2>Selamat<br>berkarya, kreator.</h2>
+    <p>
+        Kamu udah pegang 250 senjata buat ngehook audience kamu di Threads. Tapi ingat — hook cuma pintu masuk. <strong>Konten kamu yang harus tetap berisi.</strong>
+    </p>
+    <p>
+        Konsisten 30 hari, ganti pola tiap minggu, dan jangan takut eksperimen. Threads itu platform yang masih muda — siapa cepat dia dapet share suara.
+    </p>
+
+    <div class="box" style="text-align:left; margin-top:32px;">
+        <div class="box-title">📌 Reminder</div>
+        <p>Hook hebat + konten kosong = followers buang. Hook biasa + konten dalam = followers loyal. Pilih yang kedua.</p>
+    </div>
+
+    <div class="signature">
+        Salam hangat,<br>
+        <strong style="color:var(--gold-light); letter-spacing: 0.1em;">@yanzy17</strong>
+    </div>
+</section>
+
+</body>
+</html>
