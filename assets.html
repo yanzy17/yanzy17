@@ -4,10 +4,10 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="theme-color" content="#f3e7d3" />
-<title>Lynk.id Assets Generator — @esenef17</title>
+<title>Lynk.id Assets — @esenef17</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Patrick+Hand&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Patrick+Hand&family=Shadows+Into+Light&family=Kalam:wght@400;700&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
@@ -20,40 +20,43 @@
   .wrap { max-width: 720px; margin: 0 auto; }
   h1 {
     font-family: "Caveat", cursive;
-    font-size: 2.4rem;
+    font-size: 2.6rem;
     text-align: center;
     color: #6b4423;
-    margin-bottom: 6px;
+    margin-bottom: 4px;
   }
   .sub {
     text-align: center;
-    font-family: "Patrick Hand", cursive;
+    font-family: "Shadows Into Light", cursive;
     color: #6b5740;
-    font-size: 1.05rem;
+    font-size: 1.1rem;
     margin-bottom: 30px;
   }
   .card {
     background: #fff;
-    border-radius: 20px;
+    border-radius: 22px;
     padding: 18px;
     margin-bottom: 22px;
-    box-shadow: 0 6px 24px rgba(58, 42, 26, 0.08);
+    box-shadow: 0 8px 28px rgba(58, 42, 26, 0.1);
     border: 1.5px solid rgba(107, 68, 35, 0.1);
   }
   .card h2 {
     font-family: "Caveat", cursive;
-    font-size: 1.7rem;
+    font-size: 1.9rem;
     color: #3a2a1a;
     margin-bottom: 4px;
   }
   .card p.meta {
-    font-size: 0.85rem;
+    font-family: "Patrick Hand", cursive;
+    font-size: 0.95rem;
     color: #9c8a72;
     margin-bottom: 14px;
   }
   .preview-box {
-    background: #ede0c8;
-    border-radius: 14px;
+    background:
+      radial-gradient(circle at 30% 20%, #ede0c8, transparent 60%),
+      #f3e7d3;
+    border-radius: 16px;
     padding: 14px;
     text-align: center;
     margin-bottom: 14px;
@@ -65,9 +68,13 @@
     display: block;
     margin: 0 auto;
     border-radius: 10px;
-    box-shadow: 0 4px 14px rgba(0,0,0,0.1);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.12);
   }
-  .preview-box.round svg { border-radius: 50%; max-width: 280px; }
+  .preview-box.round svg {
+    border-radius: 50%;
+    max-width: 280px;
+    aspect-ratio: 1/1;
+  }
   .actions {
     display: flex;
     gap: 10px;
@@ -76,8 +83,8 @@
   .btn {
     flex: 1;
     min-width: 130px;
-    padding: 13px 16px;
-    border-radius: 12px;
+    padding: 14px 16px;
+    border-radius: 14px;
     font-weight: 700;
     font-size: 0.92rem;
     border: none;
@@ -115,31 +122,64 @@
   }
   .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
   .info {
-    background: linear-gradient(135deg, rgba(212, 165, 116, 0.18), rgba(232, 155, 124, 0.1));
-    border: 1.5px dashed rgba(107, 68, 35, 0.25);
-    border-radius: 14px;
-    padding: 14px 16px;
+    background: #fffaf0;
+    border: 1.5px dashed rgba(107, 68, 35, 0.3);
+    border-radius: 16px;
+    padding: 16px 18px;
     margin-bottom: 22px;
-    font-size: 0.9rem;
-    line-height: 1.55;
+    font-family: "Patrick Hand", cursive;
+    font-size: 1rem;
+    line-height: 1.6;
     color: #6b5740;
+    position: relative;
+  }
+  .info::before {
+    content: "📌";
+    position: absolute;
+    top: -12px;
+    left: 16px;
+    font-size: 22px;
+    background: #fffaf0;
+    padding: 0 6px;
   }
   .info strong { color: #3a2a1a; }
-  .info ol { margin: 8px 0 0 20px; }
+  .info ol { margin: 8px 0 0 22px; padding: 0; }
   .info li { margin-bottom: 4px; }
+  .variant-tabs {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+  }
+  .variant-tab {
+    background: #f3e7d3;
+    border: 1.5px solid rgba(107, 68, 35, 0.18);
+    border-radius: 12px;
+    padding: 8px 14px;
+    font-family: "Patrick Hand", cursive;
+    font-size: 0.9rem;
+    color: #6b5740;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .variant-tab.active {
+    background: #3a2a1a;
+    color: #faf2e3;
+    border-color: #3a2a1a;
+  }
 </style>
 </head>
 <body>
 <div class="wrap">
 
   <h1>Lynk.id Assets ✨</h1>
-  <p class="sub">Profile picture & banner siap pakai buat @esenef17</p>
+  <p class="sub">~ versi scrapbook handwritten ~</p>
 
   <div class="info">
     <strong>📱 Cara pakai:</strong>
     <ol>
-      <li>Klik tombol <strong>"Download PNG"</strong> di bawah masing-masing gambar</li>
-      <li>File otomatis ke-save di galeri / folder Download HP kamu</li>
+      <li>Klik <strong>"Download PNG"</strong> di bawah masing-masing gambar</li>
+      <li>File otomatis tersimpan di galeri / folder Download HP</li>
       <li>Buka <strong>lynk.id</strong> → Edit Profile → Upload</li>
     </ol>
   </div>
@@ -147,60 +187,124 @@
   <!-- ===================== PROFILE PICTURE ===================== -->
   <div class="card">
     <h2>1. Profile Picture</h2>
-    <p class="meta">Ukuran: 1000 × 1000 px · Format: PNG · Akan tampil bulat di Lynk.id</p>
+    <p class="meta">1000 × 1000 px · tampil bulat di Lynk.id ✨</p>
 
     <div class="preview-box round">
       <svg id="svgProfile" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" width="1000" height="1000">
         <defs>
-          <linearGradient id="bgPP" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#f3e7d3"/>
-            <stop offset="50%" stop-color="#e8d4b0"/>
-            <stop offset="100%" stop-color="#d4a574"/>
+          <radialGradient id="bgPP" cx="35%" cy="30%" r="80%">
+            <stop offset="0%" stop-color="#fff5e0"/>
+            <stop offset="50%" stop-color="#f3e7d3"/>
+            <stop offset="100%" stop-color="#e8d4b0"/>
+          </radialGradient>
+          <linearGradient id="rosePP" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#f8b59c"/>
+            <stop offset="100%" stop-color="#e89b7c"/>
           </linearGradient>
-          <linearGradient id="textPP" x1="0%" y1="0%" x2="0%" y2="100%">
+          <linearGradient id="darkPP" x1="0%" y1="0%" x2="0%" y2="100%">
             <stop offset="0%" stop-color="#6b4423"/>
             <stop offset="100%" stop-color="#3a2a1a"/>
           </linearGradient>
-          <radialGradient id="glowPP" cx="35%" cy="30%" r="50%">
-            <stop offset="0%" stop-color="#ffd9a8" stop-opacity="0.7"/>
-            <stop offset="100%" stop-color="#ffd9a8" stop-opacity="0"/>
-          </radialGradient>
+          <pattern id="dotsPP" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+            <circle cx="20" cy="20" r="1.8" fill="#6b4423" opacity="0.12"/>
+          </pattern>
         </defs>
 
-        <!-- Background -->
+        <!-- Paper background -->
         <rect width="1000" height="1000" fill="url(#bgPP)"/>
-        <circle cx="350" cy="300" r="450" fill="url(#glowPP)"/>
+        <rect width="1000" height="1000" fill="url(#dotsPP)"/>
 
-        <!-- Decorative dashed circle -->
-        <circle cx="500" cy="500" r="430" fill="none" stroke="#6b4423" stroke-width="3" stroke-dasharray="12,12" opacity="0.25"/>
+        <!-- Big highlighter rose stroke behind text -->
+        <path d="M 180 460 Q 200 420, 280 430 L 720 425 Q 820 430, 810 480 Q 800 530, 720 530 L 280 540 Q 200 545, 180 500 Z"
+              fill="url(#rosePP)" opacity="0.45"/>
 
-        <!-- Sparkles around -->
-        <g fill="#6b4423" opacity="0.55">
-          <text x="180" y="240" font-family="Inter" font-size="48" font-weight="800">✦</text>
-          <text x="780" y="280" font-family="Inter" font-size="42" font-weight="800">✦</text>
-          <text x="220" y="780" font-family="Inter" font-size="38" font-weight="800">✿</text>
-          <text x="800" y="740" font-family="Inter" font-size="50" font-weight="800">✨</text>
-          <text x="120" y="540" font-family="Inter" font-size="36" font-weight="800">♡</text>
-          <text x="850" y="510" font-family="Inter" font-size="36" font-weight="800">♡</text>
+        <!-- "Hi!" handwritten huge -->
+        <g transform="translate(0, 20)">
+          <text x="500" y="490" text-anchor="middle"
+                font-family="Caveat, cursive" font-size="280" font-weight="700"
+                fill="url(#darkPP)" style="letter-spacing: -8px;">
+            Hi!
+          </text>
         </g>
 
-        <!-- Center letter "E" with overlay -->
-        <text x="500" y="600" text-anchor="middle"
-              font-family="Caveat, cursive" font-size="600" font-weight="700"
-              fill="url(#textPP)">E</text>
+        <!-- Smiley face replacing dot of "i" / floating top right -->
+        <g transform="translate(620, 320)">
+          <circle cx="0" cy="0" r="38" fill="#fcd86a" stroke="#3a2a1a" stroke-width="4"/>
+          <circle cx="-12" cy="-6" r="3.5" fill="#3a2a1a"/>
+          <circle cx="12" cy="-6" r="3.5" fill="#3a2a1a"/>
+          <path d="M -14 8 Q 0 22, 14 8" stroke="#3a2a1a" stroke-width="4" fill="none" stroke-linecap="round"/>
+          <!-- blush -->
+          <circle cx="-18" cy="6" r="5" fill="#e89b7c" opacity="0.7"/>
+          <circle cx="18" cy="6" r="5" fill="#e89b7c" opacity="0.7"/>
+        </g>
 
-        <!-- Underline accent -->
-        <path d="M 320 720 Q 500 760, 680 720" stroke="#e89b7c" stroke-width="14" fill="none" stroke-linecap="round" opacity="0.85"/>
-
-        <!-- Brand mark bottom -->
-        <text x="500" y="880" text-anchor="middle"
-              font-family="Patrick Hand, cursive" font-size="56" fill="#3a2a1a" font-weight="600">
-          @esenef17
+        <!-- "aku Esenef" handwritten cursive below -->
+        <text x="500" y="640" text-anchor="middle"
+              font-family="Shadows Into Light, cursive" font-size="86" font-weight="400"
+              fill="#3a2a1a">
+          aku Esenef ♡
         </text>
 
-        <!-- Heart -->
-        <text x="500" y="930" text-anchor="middle"
-              font-family="Inter" font-size="32" fill="#e89b7c">♡ Premium Store ♡</text>
+        <!-- Wavy underline -->
+        <path d="M 280 680 Q 340 670, 400 680 T 520 680 T 640 680 T 720 680" stroke="#e89b7c" stroke-width="6" fill="none" stroke-linecap="round" opacity="0.85"/>
+
+        <!-- Sub-tag -->
+        <text x="500" y="760" text-anchor="middle"
+              font-family="Patrick Hand, cursive" font-size="46"
+              fill="#6b5740" font-weight="400">
+          ✦ digital store ✦
+        </text>
+
+        <!-- Handle bottom -->
+        <text x="500" y="830" text-anchor="middle"
+              font-family="Inter" font-size="34" font-weight="700"
+              fill="#3a2a1a" letter-spacing="2">
+          @ESENEF17
+        </text>
+
+        <!-- DOODLES SCATTERED -->
+        <!-- top left star sparkle -->
+        <g transform="translate(180, 200)" stroke="#3a2a1a" stroke-width="3.5" fill="none" stroke-linecap="round">
+          <line x1="0" y1="-22" x2="0" y2="22"/>
+          <line x1="-22" y1="0" x2="22" y2="0"/>
+          <line x1="-15" y1="-15" x2="15" y2="15"/>
+          <line x1="-15" y1="15" x2="15" y2="-15"/>
+        </g>
+
+        <!-- Top right squiggle -->
+        <path d="M 760 180 Q 790 160, 820 180 T 880 180" stroke="#3a2a1a" stroke-width="4" fill="none" stroke-linecap="round"/>
+
+        <!-- Heart top center -->
+        <path d="M 460 200 C 460 184, 440 180, 432 196 C 424 180, 404 184, 404 200 C 404 220, 432 244, 432 244 C 432 244, 460 220, 460 200 Z"
+              fill="#e89b7c" stroke="#3a2a1a" stroke-width="3"/>
+
+        <!-- Bottom left sparkle -->
+        <g transform="translate(170, 870)" fill="#c9a35e">
+          <path d="M 0 -25 L 6 -6 L 25 0 L 6 6 L 0 25 L -6 6 L -25 0 L -6 -6 Z"/>
+        </g>
+
+        <!-- Bottom right curly arrow -->
+        <g stroke="#3a2a1a" stroke-width="3.5" fill="none" stroke-linecap="round">
+          <path d="M 800 850 Q 830 820, 860 840 Q 880 855, 870 875"/>
+          <path d="M 870 875 L 858 868 M 870 875 L 880 866"/>
+        </g>
+
+        <!-- Mini hearts scattered -->
+        <g fill="#e89b7c">
+          <path d="M 240 580 C 240 572, 230 570, 226 578 C 222 570, 212 572, 212 580 C 212 592, 226 604, 226 604 C 226 604, 240 592, 240 580 Z"/>
+          <path d="M 800 600 C 800 594, 793 593, 790 598 C 787 593, 780 594, 780 600 C 780 608, 790 616, 790 616 C 790 616, 800 608, 800 600 Z"/>
+        </g>
+
+        <!-- Plus signs -->
+        <g stroke="#6b4423" stroke-width="3.5" stroke-linecap="round">
+          <line x1="120" y1="380" x2="120" y2="402"/>
+          <line x1="109" y1="391" x2="131" y2="391"/>
+          <line x1="880" y1="400" x2="880" y2="422"/>
+          <line x1="869" y1="411" x2="891" y2="411"/>
+        </g>
+
+        <!-- Tilde squiggles -->
+        <path d="M 850 720 Q 865 710, 880 720 T 910 720" stroke="#c9a35e" stroke-width="4" fill="none" stroke-linecap="round"/>
       </svg>
     </div>
 
@@ -213,154 +317,191 @@
   <!-- ===================== BANNER 1200x628 ===================== -->
   <div class="card">
     <h2>2. Banner / Cover</h2>
-    <p class="meta">Ukuran: 1200 × 628 px · Format: PNG · Buat header / link preview</p>
+    <p class="meta">1200 × 628 px · scrapbook polaroid style 📷</p>
 
     <div class="preview-box">
       <svg id="svgBanner" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 628" width="1200" height="628">
         <defs>
-          <linearGradient id="bgBN" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#faf2e3"/>
+          <radialGradient id="bgBN2" cx="20%" cy="20%" r="100%">
+            <stop offset="0%" stop-color="#fff8e8"/>
             <stop offset="60%" stop-color="#f3e7d3"/>
-            <stop offset="100%" stop-color="#ede0c8"/>
+            <stop offset="100%" stop-color="#e8d4b0"/>
+          </radialGradient>
+          <linearGradient id="rose2" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#f8b59c"/>
+            <stop offset="100%" stop-color="#e89b7c"/>
           </linearGradient>
-          <linearGradient id="darkBN" x1="0%" y1="0%" x2="100%" y2="100%">
+          <linearGradient id="dark2" x1="0%" y1="0%" x2="0%" y2="100%">
             <stop offset="0%" stop-color="#6b4423"/>
             <stop offset="100%" stop-color="#3a2a1a"/>
           </linearGradient>
-          <linearGradient id="roseBN" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#e89b7c"/>
-            <stop offset="100%" stop-color="#c97064"/>
-          </linearGradient>
-          <linearGradient id="goldBN" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#e8c885"/>
-            <stop offset="100%" stop-color="#c9a35e"/>
-          </linearGradient>
-          <linearGradient id="sageBN" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#9caa7a"/>
-            <stop offset="100%" stop-color="#7a8c5c"/>
-          </linearGradient>
-          <linearGradient id="tealBN" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#7ab0a8"/>
-            <stop offset="100%" stop-color="#4a8b80"/>
-          </linearGradient>
-          <radialGradient id="glowBN" cx="20%" cy="20%" r="60%">
-            <stop offset="0%" stop-color="#ffd9a8" stop-opacity="0.55"/>
-            <stop offset="100%" stop-color="#ffd9a8" stop-opacity="0"/>
-          </radialGradient>
+          <pattern id="dotsBN" x="0" y="0" width="32" height="32" patternUnits="userSpaceOnUse">
+            <circle cx="16" cy="16" r="1.5" fill="#6b4423" opacity="0.1"/>
+          </pattern>
+          <filter id="paperShadow" x="-20%" y="-20%" width="140%" height="140%">
+            <feGaussianBlur in="SourceAlpha" stdDeviation="4"/>
+            <feOffset dx="2" dy="6" result="offsetblur"/>
+            <feComponentTransfer><feFuncA type="linear" slope="0.25"/></feComponentTransfer>
+            <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
         </defs>
 
-        <!-- Background -->
-        <rect width="1200" height="628" fill="url(#bgBN)"/>
-        <ellipse cx="200" cy="100" rx="500" ry="300" fill="url(#glowBN)"/>
+        <!-- Paper background -->
+        <rect width="1200" height="628" fill="url(#bgBN2)"/>
+        <rect width="1200" height="628" fill="url(#dotsBN)"/>
 
-        <!-- Soft texture dots top-right -->
-        <g fill="#6b4423" opacity="0.08">
-          <circle cx="1080" cy="80" r="4"/>
-          <circle cx="1110" cy="120" r="4"/>
-          <circle cx="1140" cy="80" r="4"/>
-          <circle cx="1080" cy="160" r="4"/>
-          <circle cx="1140" cy="160" r="4"/>
-          <circle cx="1110" cy="40" r="4"/>
-        </g>
+        <!-- ============ LEFT TEXT BLOCK ============ -->
 
-        <!-- Sparkles -->
-        <g fill="#6b4423" opacity="0.5">
-          <text x="60" y="100" font-family="Inter" font-size="40" font-weight="800">✦</text>
-          <text x="540" y="80" font-family="Inter" font-size="28" font-weight="800">✨</text>
-          <text x="80" y="540" font-family="Inter" font-size="32" font-weight="800">✿</text>
-          <text x="500" y="580" font-family="Inter" font-size="26" font-weight="800">♡</text>
-        </g>
-
-        <!-- ============ LEFT SIDE: TEXT ============ -->
-        <!-- Tag pill -->
-        <g>
-          <rect x="60" y="140" width="240" height="44" rx="22" fill="url(#darkBN)"/>
-          <text x="180" y="170" text-anchor="middle" font-family="Inter" font-size="16" font-weight="700" fill="#faf2e3" letter-spacing="1.5">
-            ✨ DIGITAL STORE
+        <!-- Sticky note "since 2024" rotated -->
+        <g transform="translate(60, 70) rotate(-6)">
+          <rect width="180" height="56" rx="4" fill="#fcd86a" filter="url(#paperShadow)"/>
+          <text x="90" y="36" text-anchor="middle" font-family="Patrick Hand, cursive" font-size="22" fill="#3a2a1a">
+            ✨ premium store
           </text>
         </g>
 
-        <!-- Main heading "Premium" -->
-        <text x="60" y="260" font-family="Caveat, cursive" font-size="92" font-weight="700" fill="#3a2a1a">Premium</text>
+        <!-- Highlighter behind "Hai," -->
+        <rect x="50" y="172" width="180" height="32" fill="url(#rose2)" opacity="0.4" rx="3" transform="rotate(-1 140 188)"/>
 
-        <!-- "Store" with rose underline -->
-        <g>
-          <rect x="56" y="318" width="280" height="14" rx="7" fill="#e89b7c" opacity="0.6"/>
-          <text x="60" y="340" font-family="Caveat, cursive" font-size="92" font-weight="700" fill="url(#darkBN)">Store ✨</text>
-        </g>
+        <!-- Headline "Hai," -->
+        <text x="60" y="210" font-family="Caveat, cursive" font-size="100" font-weight="700" fill="#3a2a1a">Hai,</text>
 
-        <!-- Subtitle -->
-        <text x="60" y="395" font-family="Inter" font-size="22" font-weight="600" fill="#6b5740">
-          Apps Premium · AI Tools · Ebook Konten
+        <!-- Headline "aku Esenef!" -->
+        <text x="60" y="305" font-family="Caveat, cursive" font-size="110" font-weight="700" fill="url(#dark2)">
+          aku Esenef!
         </text>
 
-        <!-- Features list -->
-        <g font-family="Inter" font-size="18" fill="#6b5740" font-weight="500">
-          <text x="60" y="438">⚡  Aktivasi cepat 5–30 menit</text>
-          <text x="60" y="468">🛡️  Garansi resmi · 100% no banned</text>
-          <text x="60" y="498">💸  Hemat hingga 80% dari harga asli</text>
-        </g>
+        <!-- Wavy hand-drawn underline -->
+        <path d="M 70 322 Q 130 312, 200 322 T 340 322 T 480 322 T 580 322" stroke="#e89b7c" stroke-width="7" fill="none" stroke-linecap="round" opacity="0.9"/>
 
-        <!-- Handle bottom -->
-        <g>
-          <rect x="56" y="540" width="220" height="42" rx="21" fill="#3a2a1a"/>
-          <text x="166" y="569" text-anchor="middle" font-family="Patrick Hand, cursive" font-size="22" fill="#faf2e3" font-weight="600">
-            👉 lynk.id/esenef17
+        <!-- Subtitle line 1 -->
+        <text x="60" y="375" font-family="Shadows Into Light, cursive" font-size="34" fill="#6b5740" font-weight="400">
+          toko digital favoritmu 🌿
+        </text>
+
+        <!-- Subtitle line 2 -->
+        <text x="60" y="415" font-family="Patrick Hand, cursive" font-size="24" fill="#6b5740">
+          aplikasi pro · AI tools · ebook konten
+        </text>
+
+        <!-- Badge - hemat -->
+        <g transform="translate(60, 460) rotate(-3)">
+          <rect width="190" height="58" rx="4" fill="#7a8c5c" filter="url(#paperShadow)"/>
+          <text x="95" y="38" text-anchor="middle" font-family="Patrick Hand, cursive" font-size="22" font-weight="700" fill="#fff">
+            ⚡ hemat sampai 80%
           </text>
         </g>
 
-        <!-- ============ RIGHT SIDE: PRODUCT ICONS ============ -->
-        <!-- Big circle with stack of product cards -->
-
-        <!-- Card 1: Canva (back) -->
-        <g transform="translate(720, 110) rotate(-8)">
-          <rect width="200" height="240" rx="22" fill="url(#tealBN)" filter="url(#shadow1)"/>
-          <rect x="0" y="0" width="200" height="240" rx="22" fill="none" stroke="#fff" stroke-width="3" opacity="0.4"/>
-          <circle cx="100" cy="92" r="38" fill="#faf2e3" opacity="0.95"/>
-          <text x="100" y="106" text-anchor="middle" font-family="Inter" font-size="36" font-weight="900" fill="#4a8b80">C</text>
-          <text x="100" y="170" text-anchor="middle" font-family="Inter" font-size="22" font-weight="800" fill="#faf2e3">Canva</text>
-          <text x="100" y="195" text-anchor="middle" font-family="Inter" font-size="14" font-weight="700" fill="#faf2e3" opacity="0.85">PRO</text>
-          <text x="100" y="220" text-anchor="middle" font-family="Patrick Hand, cursive" font-size="14" fill="#faf2e3" opacity="0.85">1 tahun</text>
+        <!-- Speech bubble pointing down/right -->
+        <g transform="translate(280, 480)">
+          <path d="M 0 0 Q -4 -16, 14 -16 L 240 -16 Q 258 -16, 258 0 L 258 28 Q 258 44, 240 44 L 60 44 L 40 60 L 44 44 L 14 44 Q -4 44, 0 28 Z"
+                fill="#fff" stroke="#3a2a1a" stroke-width="3"/>
+          <text x="129" y="22" text-anchor="middle" font-family="Patrick Hand, cursive" font-size="22" fill="#3a2a1a">
+            klik yg kamu mau ↓
+          </text>
         </g>
 
-        <!-- Card 2: Leonardo AI (middle, prominent) -->
-        <g transform="translate(890, 80) rotate(4)">
-          <rect width="220" height="270" rx="24" fill="url(#darkBN)"/>
-          <rect x="0" y="0" width="220" height="270" rx="24" fill="none" stroke="#d4a574" stroke-width="3" opacity="0.6"/>
-          <!-- AI icon -->
-          <circle cx="110" cy="100" r="44" fill="#d4a574"/>
-          <text x="110" y="118" text-anchor="middle" font-family="Inter" font-size="38" font-weight="900" fill="#3a2a1a">AI</text>
-          <text x="110" y="190" text-anchor="middle" font-family="Inter" font-size="22" font-weight="800" fill="#faf2e3">Leonardo</text>
-          <text x="110" y="215" text-anchor="middle" font-family="Inter" font-size="13" font-weight="700" fill="#d4a574">PREMIUM</text>
-          <text x="110" y="245" text-anchor="middle" font-family="Patrick Hand, cursive" font-size="14" fill="#faf2e3" opacity="0.8">unlimited</text>
+        <!-- CTA URL underline -->
+        <g transform="translate(60, 580)">
+          <text x="0" y="0" font-family="Kalam, cursive" font-size="28" font-weight="700" fill="#3a2a1a">
+            👉 lynk.id/esenef17
+          </text>
+          <path d="M 30 14 Q 130 8, 230 14 T 380 14" stroke="#e89b7c" stroke-width="5" fill="none" stroke-linecap="round" opacity="0.8"/>
         </g>
 
-        <!-- Card 3: Ebook (front, small) -->
-        <g transform="translate(820, 360) rotate(-4)">
-          <rect width="180" height="210" rx="20" fill="url(#roseBN)"/>
-          <rect x="0" y="0" width="180" height="210" rx="20" fill="none" stroke="#fff" stroke-width="3" opacity="0.4"/>
-          <text x="90" y="98" text-anchor="middle" font-family="Inter" font-size="48">📖</text>
-          <text x="90" y="148" text-anchor="middle" font-family="Inter" font-size="20" font-weight="800" fill="#faf2e3">Ebook</text>
-          <text x="90" y="172" text-anchor="middle" font-family="Inter" font-size="16" font-weight="700" fill="#faf2e3">Hook Threads</text>
-          <text x="90" y="195" text-anchor="middle" font-family="Patrick Hand, cursive" font-size="14" fill="#faf2e3" opacity="0.9">250+ template</text>
+        <!-- ============ RIGHT: POLAROID STACK ============ -->
+
+        <!-- Polaroid 1 - back: Canva -->
+        <g transform="translate(680, 90) rotate(-9)" filter="url(#paperShadow)">
+          <rect width="180" height="220" fill="#fff"/>
+          <rect x="12" y="12" width="156" height="156" fill="#7ab0a8"/>
+          <text x="90" y="115" text-anchor="middle" font-family="Inter" font-size="80" font-weight="900" fill="#fff" opacity="0.95">C</text>
+          <text x="90" y="200" text-anchor="middle" font-family="Patrick Hand, cursive" font-size="22" fill="#3a2a1a">Canva Pro</text>
+          <!-- washi tape top -->
+          <rect x="60" y="-8" width="80" height="20" fill="#fcd86a" opacity="0.85" transform="rotate(2 100 0)"/>
         </g>
 
-        <!-- Card 4: Other apps badge -->
-        <g transform="translate(1000, 380) rotate(8)">
-          <rect width="160" height="180" rx="20" fill="url(#goldBN)"/>
-          <rect x="0" y="0" width="160" height="180" rx="20" fill="none" stroke="#fff" stroke-width="3" opacity="0.4"/>
-          <text x="80" y="80" text-anchor="middle" font-family="Inter" font-size="40">⚡</text>
-          <text x="80" y="120" text-anchor="middle" font-family="Inter" font-size="18" font-weight="800" fill="#3a2a1a">+20 Apps</text>
-          <text x="80" y="148" text-anchor="middle" font-family="Patrick Hand, cursive" font-size="14" fill="#3a2a1a">Netflix · Spotify</text>
-          <text x="80" y="166" text-anchor="middle" font-family="Patrick Hand, cursive" font-size="14" fill="#3a2a1a">CapCut · ChatGPT</text>
+        <!-- Polaroid 2 - leonardo featured -->
+        <g transform="translate(870, 60) rotate(5)" filter="url(#paperShadow)">
+          <rect width="200" height="240" fill="#fff"/>
+          <rect x="14" y="14" width="172" height="172" fill="#3a2a1a"/>
+          <!-- AI mark -->
+          <circle cx="100" cy="100" r="46" fill="#d4a574"/>
+          <text x="100" y="118" text-anchor="middle" font-family="Inter" font-size="40" font-weight="900" fill="#3a2a1a">AI</text>
+          <text x="100" y="218" text-anchor="middle" font-family="Patrick Hand, cursive" font-size="22" fill="#3a2a1a">Leonardo AI</text>
+          <!-- washi tape -->
+          <rect x="-10" y="40" width="60" height="18" fill="#e89b7c" opacity="0.85" transform="rotate(-90 20 49)"/>
         </g>
 
-        <!-- Floating star top right -->
-        <text x="700" y="80" font-family="Inter" font-size="36" fill="#e89b7c" opacity="0.9" font-weight="900">✨</text>
-        <text x="1130" y="600" font-family="Inter" font-size="32" fill="#6b4423" opacity="0.7" font-weight="900">✦</text>
+        <!-- Polaroid 3 - ebook -->
+        <g transform="translate(700, 350) rotate(6)" filter="url(#paperShadow)">
+          <rect width="170" height="210" fill="#fff"/>
+          <rect x="12" y="12" width="146" height="146" fill="#e89b7c"/>
+          <text x="85" y="118" text-anchor="middle" font-family="Inter" font-size="64">📖</text>
+          <text x="85" y="190" text-anchor="middle" font-family="Patrick Hand, cursive" font-size="20" fill="#3a2a1a">Ebook Threads</text>
+          <!-- washi tape -->
+          <rect x="60" y="-8" width="60" height="18" fill="#7a8c5c" opacity="0.85" transform="rotate(-3 90 1)"/>
+        </g>
 
-        <!-- Doodle arrow from text to cards -->
-        <path d="M 540 280 Q 620 250, 700 270" stroke="#6b4423" stroke-width="3" fill="none" stroke-linecap="round" stroke-dasharray="2,8" opacity="0.5"/>
+        <!-- Polaroid 4 - 20+ apps -->
+        <g transform="translate(900, 380) rotate(-7)" filter="url(#paperShadow)">
+          <rect width="180" height="210" fill="#fff"/>
+          <rect x="12" y="12" width="156" height="156" fill="#c9a35e"/>
+          <text x="90" y="100" text-anchor="middle" font-family="Inter" font-size="56">⚡</text>
+          <text x="90" y="142" text-anchor="middle" font-family="Inter" font-size="22" font-weight="800" fill="#3a2a1a">+20</text>
+          <text x="90" y="190" text-anchor="middle" font-family="Patrick Hand, cursive" font-size="18" fill="#3a2a1a">Premium Apps</text>
+          <!-- washi tape -->
+          <rect x="50" y="-8" width="80" height="18" fill="#7ab0a8" opacity="0.85" transform="rotate(4 90 1)"/>
+        </g>
+
+        <!-- ============ DOODLES SCATTERED ============ -->
+
+        <!-- big star top right -->
+        <g transform="translate(1100, 70)" fill="#e89b7c">
+          <path d="M 0 -28 L 7 -7 L 28 0 L 7 7 L 0 28 L -7 7 L -28 0 L -7 -7 Z"/>
+        </g>
+
+        <!-- sparkle plus near canva -->
+        <g transform="translate(660, 60)" stroke="#3a2a1a" stroke-width="3" stroke-linecap="round">
+          <line x1="0" y1="-12" x2="0" y2="12"/>
+          <line x1="-12" y1="0" x2="12" y2="0"/>
+        </g>
+
+        <!-- heart between polaroids -->
+        <path d="M 875 340 C 875 332, 866 330, 862 340 C 858 330, 849 332, 849 340 C 849 354, 862 366, 862 366 C 862 366, 875 354, 875 340 Z"
+              fill="#e89b7c" stroke="#3a2a1a" stroke-width="2.5"/>
+
+        <!-- swirl arrow text-to-polaroid -->
+        <g stroke="#3a2a1a" stroke-width="3.5" fill="none" stroke-linecap="round">
+          <path d="M 540 320 Q 600 300, 660 280 Q 690 270, 700 290"/>
+          <path d="M 700 290 L 686 282 M 700 290 L 692 304"/>
+        </g>
+
+        <!-- bottom left sparkle -->
+        <g transform="translate(390, 580)" stroke="#c9a35e" stroke-width="3.5" fill="none" stroke-linecap="round">
+          <line x1="0" y1="-14" x2="0" y2="14"/>
+          <line x1="-14" y1="0" x2="14" y2="0"/>
+          <line x1="-10" y1="-10" x2="10" y2="10"/>
+          <line x1="-10" y1="10" x2="10" y2="-10"/>
+        </g>
+
+        <!-- mini hearts -->
+        <g fill="#e89b7c">
+          <path d="M 460 130 C 460 122, 451 120, 447 130 C 443 120, 434 122, 434 130 C 434 144, 447 156, 447 156 C 447 156, 460 144, 460 130 Z"/>
+          <path d="M 1140 380 C 1140 372, 1131 370, 1127 380 C 1123 370, 1114 372, 1114 380 C 1114 394, 1127 406, 1127 406 C 1127 406, 1140 394, 1140 380 Z"/>
+        </g>
+
+        <!-- squiggle bottom right -->
+        <path d="M 1010 600 Q 1030 590, 1050 600 T 1090 600 T 1130 600" stroke="#3a2a1a" stroke-width="3" fill="none" stroke-linecap="round"/>
+
+        <!-- tape strip top center -->
+        <rect x="540" y="0" width="80" height="22" fill="#fcd86a" opacity="0.85" transform="rotate(-3 580 11)"/>
+
+        <!-- circle deco bottom right -->
+        <circle cx="1130" cy="540" r="20" fill="none" stroke="#6b4423" stroke-width="3" stroke-dasharray="4,5" opacity="0.5"/>
+
+        <!-- "yay!" handwritten -->
+        <text x="1080" y="200" font-family="Shadows Into Light, cursive" font-size="38" fill="#e89b7c" transform="rotate(15 1080 200)">yay!</text>
 
       </svg>
     </div>
@@ -372,11 +513,11 @@
   </div>
 
   <div class="info">
-    <strong>💡 Tips Upload ke Lynk.id:</strong>
+    <strong>💡 Tips Upload:</strong>
     <ol>
-      <li><strong>Profile picture:</strong> Upload via menu "Edit Profile" → "Change Photo" — Lynk.id otomatis crop jadi bulat</li>
-      <li><strong>Banner:</strong> Pakai sebagai cover/header (kalau Lynk.id support) atau pakai sebagai gambar promosi di IG/Threads bio link preview</li>
-      <li><strong>Tip ekstra:</strong> File PNG aku optimasi pakai font web — kalau hasil agak beda, refresh halaman ini sambil online biar Google Fonts ke-load dulu</li>
+      <li><strong>Profile pic:</strong> Upload via "Edit Profile" → "Change Photo" — Lynk.id auto-crop bulat</li>
+      <li><strong>Banner:</strong> Pakai sebagai cover Threads/IG, link preview WA, atau header story Highlights</li>
+      <li><strong>Pro tip:</strong> Tunggu 5 detik setelah halaman ke-load sebelum download (biar font Google Fonts ke-render dulu)</li>
     </ol>
   </div>
 
@@ -412,9 +553,8 @@ function downloadPNG(svgId, filename, width, height) {
     source = source.replace(/^<svg/, '<svg xmlns="http://www.w3.org/2000/svg"');
   }
 
-  // Embed font @import in SVG via <style> for canvas rendering
   const fontCSS = `<style>
-    @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&amp;family=Patrick+Hand&amp;family=Inter:wght@400;500;600;700;800;900&amp;display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&amp;family=Patrick+Hand&amp;family=Shadows+Into+Light&amp;family=Kalam:wght@400;700&amp;family=Inter:wght@400;500;600;700;800;900&amp;display=swap');
     text { font-family: 'Inter', sans-serif; }
   </style>`;
   source = source.replace(/<svg([^>]*)>/, '<svg$1>' + fontCSS);
