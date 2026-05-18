@@ -1,0 +1,1131 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="theme-color" content="#0a0118" />
+<meta name="description" content="Tools all-in-one buat riset produk affiliate, generate hook, script, CTA & caption viral. Dipake top affiliate Indonesia." />
+<title>RisetCuan Pro — Tools Riset Produk Affiliate Viral</title>
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png" />
+<style>
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color: transparent; }
+
+:root {
+  --bg-0: #0a0118;
+  --bg-1: #14082b;
+  --bg-2: #1c0f3b;
+  --primary: #a78bfa;
+  --primary-2: #ec4899;
+  --primary-3: #38bdf8;
+  --green: #10b981;
+  --orange: #f59e0b;
+  --red: #ef4444;
+  --gold: #fbbf24;
+  --text: #f8fafc;
+  --text-2: #cbd5e1;
+  --text-3: #94a3b8;
+  --text-4: #64748b;
+  --border: rgba(255,255,255,0.08);
+  --border-2: rgba(255,255,255,0.14);
+  --card: rgba(255,255,255,0.04);
+  --card-hover: rgba(255,255,255,0.07);
+  --gradient: linear-gradient(135deg, #a78bfa, #ec4899);
+  --gradient-2: linear-gradient(135deg, #38bdf8, #a78bfa);
+  --gradient-gold: linear-gradient(135deg, #fbbf24, #f59e0b);
+  --gradient-text: linear-gradient(135deg, #c4b5fd, #f9a8d4, #93c5fd);
+  --shadow-glow: 0 10px 40px rgba(167, 139, 250, 0.25);
+}
+
+html { scroll-behavior: smooth; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Inter", Roboto, sans-serif;
+  background: var(--bg-0);
+  color: var(--text);
+  line-height: 1.55;
+  overflow-x: hidden;
+  min-height: 100vh;
+  padding-bottom: 40px;
+  position: relative;
+}
+body::before, body::after {
+  content: ""; position: fixed;
+  border-radius: 50%;
+  filter: blur(120px);
+  z-index: -1;
+  pointer-events: none;
+}
+body::before {
+  width:500px; height:500px;
+  background: radial-gradient(circle, #7c3aed 0%, transparent 70%);
+  top:-200px; left:-150px;
+  opacity:.45;
+}
+body::after {
+  width:600px; height:600px;
+  background: radial-gradient(circle, #ec4899 0%, transparent 70%);
+  top:40%; right:-200px;
+  opacity:.3;
+}
+
+button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+input, textarea, select { font-family: inherit; }
+a { color: inherit; text-decoration: none; }
+.container { max-width: 1100px; margin: 0 auto; padding: 0 16px; }
+.gradient-text {
+  background: var(--gradient-text);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.hidden { display: none !important; }
+
+/* ===== HEADER ===== */
+.header {
+  position: sticky; top: 0; z-index: 50;
+  background: rgba(10,1,24,0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+}
+.header-inner {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 14px 16px; max-width: 1100px; margin: 0 auto;
+}
+.logo {
+  display:flex; align-items:center; gap:9px;
+  font-weight:800; font-size:1.05rem; letter-spacing:-.5px;
+}
+.logo-icon {
+  width:34px; height:34px;
+  background: var(--gradient);
+  border-radius:10px;
+  display:flex; align-items:center; justify-content:center;
+  font-size:1rem;
+  box-shadow: var(--shadow-glow);
+}
+.pro-badge {
+  font-size:.65rem; font-weight:800;
+  background: var(--gradient-gold);
+  color:#000;
+  padding:2px 7px;
+  border-radius: 5px;
+  letter-spacing:.5px;
+}
+.cta-buy {
+  background: var(--gradient);
+  padding: 8px 14px;
+  border-radius: 10px;
+  font-size: .82rem;
+  font-weight: 700;
+  color: white;
+  display: flex; align-items: center; gap: 5px;
+  box-shadow: 0 4px 16px rgba(167,139,250,0.4);
+}
+
+/* ===== HERO ===== */
+.hero { padding: 28px 16px 18px; text-align: center; }
+.hero-badge {
+  display: inline-block;
+  background: rgba(251,191,36,.12);
+  color: #fcd34d;
+  border: 1px solid rgba(251,191,36,.3);
+  padding: 6px 14px;
+  border-radius: 30px;
+  font-size: .78rem;
+  font-weight: 600;
+  margin-bottom: 14px;
+}
+.hero h1 {
+  font-size: 1.85rem;
+  line-height: 1.15;
+  font-weight: 800;
+  letter-spacing: -.7px;
+  margin-bottom: 10px;
+}
+.hero p {
+  color: var(--text-3);
+  font-size: .92rem;
+  max-width: 560px;
+  margin: 0 auto 18px;
+}
+.hero-stats {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  font-size: .8rem;
+  color: var(--text-3);
+  flex-wrap: wrap;
+}
+.hero-stats strong { color: var(--text); font-size: 1rem; display: block; }
+
+@media (min-width:700px) {
+  .hero h1 { font-size: 2.4rem; }
+}
+
+/* ===== TABS ===== */
+.tabs-bar {
+  background: rgba(10,1,24,0.85);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 64px;
+  z-index: 40;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.tabs-bar::-webkit-scrollbar { display:none; }
+.tabs {
+  display: flex; gap: 4px;
+  padding: 10px 16px;
+  max-width: 1100px;
+  margin: 0 auto;
+  white-space: nowrap;
+}
+.tab-btn {
+  padding: 9px 14px;
+  border-radius: 10px;
+  font-size: .82rem;
+  font-weight: 600;
+  color: var(--text-3);
+  background: transparent;
+  transition: all .2s;
+  display:flex; align-items:center; gap:6px;
+  flex-shrink: 0;
+}
+.tab-btn:hover { color: var(--text); background: rgba(255,255,255,.05); }
+.tab-btn.active {
+  background: var(--gradient);
+  color: white;
+  box-shadow: 0 4px 16px rgba(167,139,250,.35);
+}
+
+/* ===== MAIN ===== */
+main { padding: 24px 0; }
+.tab-content { display: none; }
+.tab-content.active { display: block; animation: fadeUp .3s ease; }
+@keyframes fadeUp {
+  from { opacity:0; transform: translateY(8px); }
+  to { opacity:1; transform: translateY(0); }
+}
+
+.section-h h2 {
+  font-size: 1.2rem;
+  font-weight: 800;
+  letter-spacing: -.3px;
+  margin-bottom: 4px;
+}
+.section-h p { font-size: .85rem; color: var(--text-3); margin-bottom: 16px; }
+
+/* ===== CARD ===== */
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 18px;
+  margin-bottom: 14px;
+}
+
+/* ===== FORM ===== */
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+@media (min-width:600px) {
+  .form-grid.cols-2 { grid-template-columns: 1fr 1fr; }
+}
+.form-group label {
+  display: block;
+  font-size: .8rem;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: var(--text-2);
+}
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 11px 13px;
+  background: rgba(255,255,255,.04);
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  color: var(--text);
+  font-size: .9rem;
+  outline: none;
+  transition: all .2s;
+}
+.form-group input::placeholder,
+.form-group textarea::placeholder { color: var(--text-4); }
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: var(--primary);
+  background: rgba(167,139,250,.05);
+  box-shadow: 0 0 0 3px rgba(167,139,250,.15);
+}
+.form-group textarea { resize: vertical; min-height: 70px; }
+.form-group select {
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3e%3cpath fill='%23cbd5e1' d='M6 8L0 0h12z'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  padding-right: 36px;
+}
+.form-group select option { background: var(--bg-1); color: var(--text); }
+.helper { font-size:.75rem; color: var(--text-3); margin-top: 6px; line-height:1.4; }
+
+/* ===== BUTTONS ===== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 20px;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: .9rem;
+  transition: all .2s;
+  white-space: nowrap;
+}
+.btn-primary {
+  background: var(--gradient);
+  color: white;
+  box-shadow: var(--shadow-glow);
+}
+.btn-primary:hover { transform: translateY(-1px); box-shadow: 0 12px 40px rgba(236,72,153,.35); }
+.btn-ghost {
+  background: rgba(255,255,255,.05);
+  border: 1px solid var(--border-2);
+  color: var(--text);
+}
+.btn-ghost:hover { background: rgba(255,255,255,.08); }
+.btn-block { width: 100%; }
+.btn-sm { padding: 8px 14px; font-size: .8rem; }
+.btn-gold {
+  background: var(--gradient-gold);
+  color: #000;
+  font-weight: 800;
+  box-shadow: 0 8px 24px rgba(251,191,36,.3);
+}
+
+/* ===== RESULT BOX ===== */
+.result-section { margin-top: 18px; }
+.result-h {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+.result-h h3 { font-size: 1rem; font-weight: 700; }
+.result-h .result-count {
+  font-size: .75rem;
+  color: var(--primary);
+  background: rgba(167,139,250,.1);
+  padding: 3px 10px;
+  border-radius: 10px;
+  font-weight: 600;
+}
+
+.result-item {
+  background: rgba(0,0,0,0.25);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 14px 16px;
+  margin-bottom: 10px;
+  position: relative;
+  transition: all .2s;
+}
+.result-item:hover {
+  border-color: rgba(167,139,250,.3);
+  background: rgba(167,139,250,.05);
+}
+.result-item-h {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+.result-tag {
+  font-size: .68rem;
+  font-weight: 700;
+  letter-spacing: .5px;
+  padding: 3px 9px;
+  border-radius: 6px;
+  text-transform: uppercase;
+  flex-shrink: 0;
+}
+.tag-emotion { background: rgba(236,72,153,.18); color: #f9a8d4; }
+.tag-curiosity { background: rgba(167,139,250,.18); color: #c4b5fd; }
+.tag-urgency { background: rgba(239,68,68,.18); color: #fca5a5; }
+.tag-benefit { background: rgba(16,185,129,.18); color: #6ee7b7; }
+.tag-question { background: rgba(56,189,248,.18); color: #7dd3fc; }
+.tag-shock { background: rgba(245,158,11,.18); color: #fcd34d; }
+.tag-soft { background: rgba(168,85,247,.18); color: #d8b4fe; }
+.tag-hard { background: rgba(248,113,113,.18); color: #fca5a5; }
+.tag-fomo { background: rgba(251,146,60,.18); color: #fdba74; }
+.tag-trust { background: rgba(74,222,128,.18); color: #86efac; }
+
+.result-text {
+  font-size: .92rem;
+  line-height: 1.55;
+  color: var(--text);
+  margin-bottom: 8px;
+  word-wrap: break-word;
+}
+.result-actions {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.copy-btn {
+  background: rgba(167,139,250,.12);
+  border: 1px solid rgba(167,139,250,.3);
+  padding: 5px 12px;
+  border-radius: 8px;
+  font-size: .72rem;
+  font-weight: 600;
+  color: var(--primary);
+  transition: all .2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+.copy-btn:hover { background: rgba(167,139,250,.2); }
+.copy-btn.copied {
+  background: rgba(16,185,129,.2);
+  color: #6ee7b7;
+  border-color: rgba(16,185,129,.4);
+}
+
+/* Pain point cards */
+.insight-card {
+  background: linear-gradient(135deg, rgba(167,139,250,.1), rgba(236,72,153,.05));
+  border: 1px solid rgba(167,139,250,.25);
+  border-radius: 14px;
+  padding: 14px 16px;
+  margin-bottom: 10px;
+}
+.insight-card h4 {
+  font-size: .9rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.insight-card p {
+  font-size: .85rem;
+  color: var(--text-2);
+  line-height: 1.6;
+}
+.insight-card ul {
+  list-style: none;
+  margin-top: 8px;
+}
+.insight-card li {
+  font-size: .85rem;
+  color: var(--text-2);
+  padding: 5px 0 5px 18px;
+  position: relative;
+  line-height: 1.5;
+}
+.insight-card li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: var(--green);
+  font-weight: 800;
+}
+
+/* Script box */
+.script-box {
+  background: rgba(0,0,0,.3);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+.script-box-h {
+  padding: 12px 16px;
+  background: rgba(167,139,250,.08);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.script-box-h strong {
+  font-size: .9rem;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.script-box-body {
+  padding: 14px 16px;
+  font-size: .88rem;
+  line-height: 1.7;
+  white-space: pre-wrap;
+  font-family: -apple-system, "Inter", monospace;
+}
+.script-line {
+  display: flex;
+  gap: 10px;
+  padding: 6px 0;
+  border-bottom: 1px dashed rgba(255,255,255,.05);
+}
+.script-line:last-child { border: none; }
+.script-time {
+  color: var(--primary);
+  font-weight: 700;
+  flex-shrink: 0;
+  min-width: 56px;
+  font-size: .78rem;
+  font-family: "SF Mono", Menlo, monospace;
+}
+.script-text {
+  flex: 1;
+  font-size: .88rem;
+  color: var(--text);
+}
+.script-text em {
+  color: var(--text-3);
+  font-style: italic;
+  font-size: .82rem;
+}
+
+/* Pricing card (untuk halaman jual) */
+.pricing-banner {
+  background: linear-gradient(135deg, rgba(251,191,36,.12), rgba(245,158,11,.08));
+  border: 1px solid rgba(251,191,36,.3);
+  border-radius: 18px;
+  padding: 22px;
+  margin-bottom: 18px;
+  text-align: center;
+}
+.pricing-banner h3 {
+  font-size: 1.1rem;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+.pricing-banner p {
+  font-size: .88rem;
+  color: var(--text-2);
+  margin-bottom: 14px;
+}
+.pricing-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+.price-old {
+  text-decoration: line-through;
+  color: var(--text-3);
+  font-size: .95rem;
+}
+.price-now {
+  font-size: 2rem;
+  font-weight: 900;
+  color: #fbbf24;
+  letter-spacing: -1px;
+}
+
+/* Database / Winning Products */
+.winning-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+@media (min-width:700px) {
+  .winning-grid { grid-template-columns: repeat(2, 1fr); }
+}
+.winning-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 14px;
+  transition: all .25s;
+  cursor: pointer;
+}
+.winning-card:hover {
+  border-color: rgba(167,139,250,.3);
+  background: var(--card-hover);
+  transform: translateY(-2px);
+}
+.winning-rank {
+  display: inline-block;
+  background: var(--gradient-gold);
+  color: #000;
+  font-size: .68rem;
+  font-weight: 800;
+  padding: 3px 8px;
+  border-radius: 6px;
+  margin-bottom: 8px;
+  letter-spacing: .5px;
+}
+.winning-card h4 {
+  font-size: .98rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+.winning-card .cat {
+  font-size: .72rem;
+  color: var(--text-3);
+  margin-bottom: 10px;
+}
+.winning-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  padding: 10px;
+  background: rgba(0,0,0,.25);
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+.winning-stats div { text-align: center; }
+.winning-stats strong {
+  display: block;
+  font-size: .85rem;
+  font-weight: 700;
+  color: var(--text);
+}
+.winning-stats small {
+  font-size: .65rem;
+  color: var(--text-3);
+  text-transform: uppercase;
+  letter-spacing: .5px;
+}
+.winning-tags {
+  display: flex;
+  gap: 5px;
+  flex-wrap: wrap;
+}
+.winning-tags span {
+  font-size: .68rem;
+  padding: 3px 8px;
+  background: rgba(167,139,250,.12);
+  color: var(--primary);
+  border-radius: 5px;
+  font-weight: 600;
+}
+
+/* Toast */
+.toast {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%) translateY(120px);
+  background: rgba(10,1,24,.95);
+  border: 1px solid var(--border-2);
+  color: var(--text);
+  padding: 12px 22px;
+  border-radius: 30px;
+  font-size: .85rem;
+  font-weight: 600;
+  z-index: 200;
+  opacity: 0;
+  transition: all .3s;
+  box-shadow: 0 10px 40px rgba(0,0,0,.5);
+  backdrop-filter: blur(20px);
+  max-width: 90%;
+  text-align: center;
+}
+.toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+/* Empty state */
+.empty {
+  text-align: center;
+  padding: 30px 20px;
+  color: var(--text-3);
+}
+.empty-icon { font-size: 2.6rem; margin-bottom: 10px; opacity: .5; }
+.empty-title { font-weight: 600; color: var(--text-2); margin-bottom: 4px; }
+.empty p { font-size: .85rem; }
+
+.tip-box {
+  background: rgba(56,189,248,.08);
+  border-left: 3px solid var(--primary-3);
+  border-radius: 8px;
+  padding: 12px 14px;
+  margin-bottom: 14px;
+  font-size: .85rem;
+  color: var(--text-2);
+  line-height: 1.6;
+}
+.tip-box strong { color: var(--primary-3); }
+
+/* Modal sederhana */
+.modal-overlay {
+  position: fixed; inset: 0;
+  background: rgba(10,1,24,.75);
+  backdrop-filter: blur(8px);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .3s;
+  padding: 16px;
+}
+.modal-overlay.open { opacity: 1; pointer-events: auto; }
+.modal {
+  background: var(--bg-1);
+  border: 1px solid var(--border-2);
+  width: 100%;
+  max-width: 460px;
+  max-height: 90vh;
+  border-radius: 20px;
+  overflow-y: auto;
+  position: relative;
+  transform: scale(.95);
+  transition: transform .3s;
+}
+.modal-overlay.open .modal { transform: scale(1); }
+.modal-close {
+  position: absolute; top: 12px; right: 12px;
+  background: rgba(255,255,255,.06);
+  width: 34px; height: 34px;
+  border-radius: 50%;
+  font-size: .95rem;
+  z-index: 5;
+}
+.modal-close:hover { background: rgba(255,255,255,.12); }
+.modal-body { padding: 22px 20px; }
+.modal-body h2 { font-size: 1.15rem; margin-bottom: 6px; }
+.modal-body p { font-size: .88rem; color: var(--text-3); margin-bottom: 16px; }
+
+.bullet-list {
+  margin: 12px 0;
+  list-style: none;
+}
+.bullet-list li {
+  padding: 6px 0 6px 26px;
+  font-size: .88rem;
+  position: relative;
+  line-height: 1.5;
+}
+.bullet-list li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: var(--green);
+  font-weight: 800;
+  background: rgba(16,185,129,.15);
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: .7rem;
+  top: 8px;
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  margin-top: 40px;
+  padding: 24px 16px;
+  color: var(--text-3);
+  font-size: .85rem;
+  border-top: 1px solid var(--border);
+}
+.footer-sub { font-size: .72rem; color: var(--text-4); margin-top: 4px; }
+</style>
+</head>
+<body>
+
+<!-- ========== HEADER ========== -->
+<header class="header">
+  <div class="header-inner">
+    <a href="#" class="logo">
+      <span class="logo-icon">🎯</span>
+      <span>Riset<span class="gradient-text">Cuan</span></span>
+      <span class="pro-badge">PRO</span>
+    </a>
+    <button class="cta-buy" onclick="openBuyModal()">
+      🛒 Beli Akses
+    </button>
+  </div>
+</header>
+
+<!-- ========== HERO ========== -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-badge">⚡ Tools yang Dipake Top Affiliate Indonesia</div>
+    <h1>
+      Riset Produk Affiliate <br>
+      <span class="gradient-text">Auto Viral & Cuan</span>
+    </h1>
+    <p>
+      Stop bingung mau jualan apa. Semua tools riset, hook, script & caption affiliate kamu butuh — ada di sini. Tinggal copy paste, jualan jalan.
+    </p>
+    <div class="hero-stats">
+      <div><strong>1500+</strong>Hook Template</div>
+      <div><strong>20+</strong>Kategori Produk</div>
+      <div><strong>10rb+</strong>Affiliate Pakai</div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== TABS ========== -->
+<nav class="tabs-bar">
+  <div class="tabs">
+    <button class="tab-btn active" data-tab="riset">🎯 Riset Produk</button>
+    <button class="tab-btn" data-tab="hook">🪝 Hook Generator</button>
+    <button class="tab-btn" data-tab="script">📝 Script Video</button>
+    <button class="tab-btn" data-tab="caption">💬 Caption</button>
+    <button class="tab-btn" data-tab="cta">🔥 CTA Generator</button>
+    <button class="tab-btn" data-tab="audience">👥 Target Audience</button>
+    <button class="tab-btn" data-tab="winning">🏆 Winning Products</button>
+  </div>
+</nav>
+
+<!-- ========== MAIN ========== -->
+<main>
+<div class="container">
+
+  <!-- ========== TAB: RISET PRODUK ========== -->
+  <section class="tab-content active" id="tab-riset">
+    <div class="section-h">
+      <h2>🎯 Riset Produk Affiliate</h2>
+      <p>Cek kenapa produk laku, pain point apa yg disolve, & strategi nge-promote-nya</p>
+    </div>
+
+    <div class="tip-box">
+      <strong>💡 Tips:</strong> Masukin nama produk + kategori, sistem bakal kasih kamu insight kenapa produk ini laku, target market, sama strategi promosi yg cocok.
+    </div>
+
+    <div class="card">
+      <div class="form-grid cols-2">
+        <div class="form-group">
+          <label>Nama Produk</label>
+          <input type="text" id="risetName" placeholder="Contoh: BIOAQUA Makeup Remover 1L" />
+        </div>
+        <div class="form-group">
+          <label>Kategori</label>
+          <select id="risetCat">
+            <option value="skincare">💄 Skincare / Beauty</option>
+            <option value="fashion-wanita">👗 Fashion Wanita</option>
+            <option value="fashion-pria">👔 Fashion Pria</option>
+            <option value="fashion-anak">👶 Fashion Anak</option>
+            <option value="hijab">🧕 Hijab / Jilbab</option>
+            <option value="kuliner">🍔 Makanan / Snack</option>
+            <option value="alat-rumah">🏠 Alat Rumah Tangga</option>
+            <option value="elektronik">📱 Elektronik / Gadget</option>
+            <option value="kesehatan">💊 Kesehatan / Suplemen</option>
+            <option value="bayi">🍼 Perlengkapan Bayi</option>
+            <option value="hobi">🎮 Hobi / Mainan</option>
+            <option value="aksesoris">⌚ Aksesoris</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-grid cols-2">
+        <div class="form-group">
+          <label>Harga Produk</label>
+          <input type="text" id="risetPrice" placeholder="Contoh: 52000" />
+        </div>
+        <div class="form-group">
+          <label>Keunggulan Utama</label>
+          <input type="text" id="risetUSP" placeholder="Contoh: Ukuran Jumbo 1L, hemat banget" />
+        </div>
+      </div>
+      <button class="btn btn-primary btn-block" onclick="runRiset()">🔍 Mulai Riset Produk</button>
+    </div>
+
+    <div id="risetResult" class="result-section"></div>
+  </section>
+
+  <!-- ========== TAB: HOOK ========== -->
+  <section class="tab-content" id="tab-hook">
+    <div class="section-h">
+      <h2>🪝 Hook Generator Viral</h2>
+      <p>Hook = 3 detik pertama. Klo gagal, audience scroll. Ini 15+ template hook winning.</p>
+    </div>
+
+    <div class="card">
+      <div class="form-grid cols-2">
+        <div class="form-group">
+          <label>Nama / Tipe Produk</label>
+          <input type="text" id="hookProduct" placeholder="Contoh: Makeup Remover 1L" />
+        </div>
+        <div class="form-group">
+          <label>Target Audience</label>
+          <select id="hookAudience">
+            <option value="wanita-young">Wanita 17-25 thn</option>
+            <option value="wanita-mom">Mom / Ibu Muda</option>
+            <option value="hijabers">Hijabers / Muslim</option>
+            <option value="pria-young">Pria 17-25 thn</option>
+            <option value="pria-mature">Pria 25+ thn</option>
+            <option value="kids">Anak / Remaja</option>
+            <option value="general">Umum / Semua</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-grid cols-2">
+        <div class="form-group">
+          <label>Style Hook</label>
+          <select id="hookStyle">
+            <option value="all">🎲 Semua Style (Recommended)</option>
+            <option value="shock">😱 Shocking / Bikin Kaget</option>
+            <option value="question">❓ Pertanyaan / Tanya Audience</option>
+            <option value="curiosity">🤔 Curiosity / Bikin Penasaran</option>
+            <option value="problem">😩 Problem / Pain Point</option>
+            <option value="benefit">✨ Benefit / Manfaat</option>
+            <option value="story">📖 Story / Cerita</option>
+            <option value="urgency">⏰ Urgency / Mendesak</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Pain Point Utama</label>
+          <input type="text" id="hookPain" placeholder="Contoh: makeup susah hilang" />
+        </div>
+      </div>
+      <button class="btn btn-primary btn-block" onclick="genHook()">🪝 Generate Hook</button>
+    </div>
+
+    <div id="hookResult" class="result-section"></div>
+  </section>
+
+  <!-- ========== TAB: SCRIPT ========== -->
+  <section class="tab-content" id="tab-script">
+    <div class="section-h">
+      <h2>📝 Script Video Generator</h2>
+      <p>Script lengkap (Hook → Body → CTA) untuk TikTok, Reels, Shopee Video</p>
+    </div>
+
+    <div class="card">
+      <div class="form-grid cols-2">
+        <div class="form-group">
+          <label>Nama Produk</label>
+          <input type="text" id="scriptName" placeholder="Contoh: Hijab Cooltech Sheeva" />
+        </div>
+        <div class="form-group">
+          <label>Durasi Video</label>
+          <select id="scriptDur">
+            <option value="15">15 Detik (Reels Singkat)</option>
+            <option value="30" selected>30 Detik (TikTok Standard)</option>
+            <option value="60">60 Detik (Long Form)</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-grid cols-2">
+        <div class="form-group">
+          <label>Manfaat Utama</label>
+          <input type="text" id="scriptBenefit" placeholder="Contoh: dingin, gak gerah" />
+        </div>
+        <div class="form-group">
+          <label>Style Video</label>
+          <select id="scriptStyle">
+            <option value="review">⭐ Review Jujur</option>
+            <option value="problem">😩 Solve Problem</option>
+            <option value="story">📖 Cerita Pengalaman</option>
+            <option value="comparison">⚖️ Bandingin Produk</option>
+            <option value="haul">🛒 Haul / Unboxing</option>
+            <option value="trick">💡 Tips & Trick</option>
+          </select>
+        </div>
+      </div>
+      <button class="btn btn-primary btn-block" onclick="genScript()">📝 Generate Script Lengkap</button>
+    </div>
+
+    <div id="scriptResult" class="result-section"></div>
+  </section>
+
+  <!-- ========== TAB: CAPTION ========== -->
+  <section class="tab-content" id="tab-caption">
+    <div class="section-h">
+      <h2>💬 Caption + Hashtag Generator</h2>
+      <p>Caption viral + hashtag relevan untuk semua platform</p>
+    </div>
+
+    <div class="card">
+      <div class="form-grid cols-2">
+        <div class="form-group">
+          <label>Nama / Tipe Produk</label>
+          <input type="text" id="capProduct" placeholder="Contoh: Skincare BIOAQUA" />
+        </div>
+        <div class="form-group">
+          <label>Platform</label>
+          <select id="capPlatform">
+            <option value="tiktok">TikTok</option>
+            <option value="ig">Instagram Reels</option>
+            <option value="shopee">Shopee Video</option>
+            <option value="fb">Facebook</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-grid cols-2">
+        <div class="form-group">
+          <label>Mood Caption</label>
+          <select id="capMood">
+            <option value="curhat">😩 Curhat / Relate</option>
+            <option value="excited">🔥 Excited / Hyped</option>
+            <option value="info">📚 Info / Edukasi</option>
+            <option value="rekomen">✨ Rekomendasi</option>
+            <option value="ajakin">🤝 Ajak / Persuasive</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Niche / Kategori</label>
+          <select id="capNiche">
+            <option value="skincare">Skincare</option>
+            <option value="fashion">Fashion</option>
+            <option value="hijab">Hijab</option>
+            <option value="kuliner">Makanan</option>
+            <option value="rumah">Rumah Tangga</option>
+            <option value="bayi">Bayi & Anak</option>
+            <option value="elektronik">Elektronik</option>
+            <option value="kesehatan">Kesehatan</option>
+          </select>
+        </div>
+      </div>
+      <button class="btn btn-primary btn-block" onclick="genCaption()">💬 Generate Caption + Hashtag</button>
+    </div>
+
+    <div id="captionResult" class="result-section"></div>
+  </section>
+
+  <!-- ========== TAB: CTA ========== -->
+  <section class="tab-content" id="tab-cta">
+    <div class="section-h">
+      <h2>🔥 CTA Generator (Closing Killer)</h2>
+      <p>CTA yg bikin orang langsung klik link & checkout</p>
+    </div>
+
+    <div class="card">
+      <div class="form-grid cols-2">
+        <div class="form-group">
+          <label>Tipe CTA</label>
+          <select id="ctaType">
+            <option value="all">🎲 Semua Tipe</option>
+            <option value="soft">🌸 Soft Selling</option>
+            <option value="hard">💪 Hard Selling</option>
+            <option value="fomo">⏰ FOMO / Urgency</option>
+            <option value="trust">🛡️ Trust / Garansi</option>
+            <option value="curious">🤔 Curiosity</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Platform</label>
+          <select id="ctaPlatform">
+            <option value="tiktok">TikTok</option>
+            <option value="shopee">Shopee Affiliate</option>
+            <option value="ig">Instagram</option>
+            <option value="bio">Link in Bio</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Nama Produk (opsional)</label>
+        <input type="text" id="ctaProduct" placeholder="Contoh: Makeup Remover BIOAQUA" />
+      </div>
+      <button class="btn btn-primary btn-block" onclick="genCTA()">🔥 Generate CTA</button>
+    </div>
+
+    <div id="ctaResult" class="result-section"></div>
+  </section>
+
+  <!-- ========== TAB: AUDIENCE ========== -->
+  <section class="tab-content" id="tab-audience">
+    <div class="section-h">
+      <h2>👥 Target Audience Finder</h2>
+      <p>Cari tau siapa target market kamu — biar konten kamu nyambung</p>
+    </div>
+
+    <div class="card">
+      <div class="form-grid">
+        <div class="form-group">
+          <label>Kategori Produk</label>
+          <select id="audCat">
+            <option value="skincare">💄 Skincare / Beauty</option>
+            <option value="fashion-wanita">👗 Fashion Wanita</option>
+            <option value="hijab">🧕 Hijab / Jilbab</option>
+            <option value="fashion-anak">👶 Fashion Anak</option>
+            <option value="kuliner">🍔 Makanan / Snack</option>
+            <option value="alat-rumah">🏠 Alat Rumah Tangga</option>
+            <option value="elektronik">📱 Elektronik / Gadget</option>
+            <option value="kesehatan">💊 Kesehatan / Suplemen</option>
+            <option value="bayi">🍼 Perlengkapan Bayi</option>
+            <option value="hobi">🎮 Hobi / Mainan</option>
+          </select>
+        </div>
+      </div>
+      <button class="btn btn-primary btn-block" onclick="genAudience()">🎯 Cari Target Audience</button>
+    </div>
+
+    <div id="audienceResult" class="result-section"></div>
+  </section>
+
+  <!-- ========== TAB: WINNING PRODUCTS ========== -->
+  <section class="tab-content" id="tab-winning">
+    <div class="section-h">
+      <h2>🏆 Database Produk Winning</h2>
+      <p>Daftar produk yg lagi viral & terbukti laku ribuan unit. Update tiap minggu.</p>
+    </div>
+
+    <div class="tip-box">
+      <strong>💡 Cara pakai:</strong> Klik produk untuk lihat insight kenapa produk ini laku & strategi promosinya.
+    </div>
+
+    <div class="winning-grid" id="winningGrid"></div>
+  </section>
+
+</div>
+</main>
+
+<!-- ========== FOOTER ========== -->
+<footer class="footer">
+  <p><strong>RisetCuan Pro</strong> — Tools Affiliate Marketer Indonesia</p>
+  <p class="footer-sub">© 2026 by Yanzy Store · Versi 1.0</p>
+</footer>
+
+<!-- ========== MODAL BUY ========== -->
+<div class="modal-overlay" id="buyModal" onclick="closeBuyModal(event)">
+  <div class="modal" onclick="event.stopPropagation()">
+    <button class="modal-close" onclick="closeBuyModal()">✕</button>
+    <div class="modal-body">
+      <div class="pricing-banner">
+        <h3>🎯 RisetCuan Pro — Akses Lifetime</h3>
+        <p>Tools affiliate research yg dipake top creator Indonesia. Sekali bayar, pake selamanya.</p>
+        <div class="pricing-row">
+          <span class="price-old">Rp 149.000</span>
+          <span class="price-now">Rp 49rb</span>
+        </div>
+        <small style="color: var(--text-3);">⏰ Promo terbatas, naik Rp 99rb minggu depan</small>
+      </div>
+
+      <h2>✨ Yang Kamu Dapet:</h2>
+      <ul class="bullet-list">
+        <li>1500+ Template Hook Viral siap copy</li>
+        <li>Generator Script Video (15s/30s/60s)</li>
+        <li>Caption + Hashtag generator semua platform</li>
+        <li>CTA killer (Soft, Hard, FOMO, Trust)</li>
+        <li>Database Produk Winning + insight</li>
+        <li>Target Audience Finder</li>
+        <li>Pain Point Analyzer</li>
+        <li>Update gratis seumur hidup</li>
+        <li>Akses grup VIP affiliate</li>
+      </ul>
+
+      <a href="https://lynk.id/yanzy17" target="_blank" class="btn btn-gold btn-block" style="margin-top: 14px;">
+        🛒 Beli Sekarang via Lynk.id
+      </a>
+      <p style="font-size:.75rem; color: var(--text-3); text-align:center; margin-top:10px;">
+        🔒 Pembayaran aman lewat Lynk.id · Akses langsung dikirim
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- ========== TOAST ========== -->
+<div id="toast" class="toast"></div>
+
+<script src="riset-tools.js"></script>
+</body>
+</html>
