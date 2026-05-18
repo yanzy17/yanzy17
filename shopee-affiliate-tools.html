@@ -670,23 +670,23 @@ a { color: inherit; text-decoration: none; }
       <h3>🏷️ Hashtag Pack Affiliate Shopee</h3>
       <p class="sub">Klik untuk copy. Pakai 5-7 hashtag aja, jangan kebanyakan.</p>
       <div class="output-list">
-        <div class="out-item" onclick="copyText(this, '#shopeefinds #racunshopee #shopeehaul #affiliateshopee #fyp #rekomendasishopee #review')">
+        <div class="out-item" data-copy="#shopeefinds #racunshopee #shopeehaul #affiliateshopee #fyp #rekomendasishopee #review">
           <span class="out-item-tag">Umum</span><span class="out-item-copy">Copy</span><br>
           #shopeefinds #racunshopee #shopeehaul #affiliateshopee #fyp #rekomendasishopee #review
         </div>
-        <div class="out-item" onclick="copyText(this, '#skincaremurah #racunskincare #skincareindonesia #shopeefinds #glowup #fyp #affiliateshopee')">
+        <div class="out-item" data-copy="#skincaremurah #racunskincare #skincareindonesia #shopeefinds #glowup #fyp #affiliateshopee">
           <span class="out-item-tag">Skincare</span><span class="out-item-copy">Copy</span><br>
           #skincaremurah #racunskincare #skincareindonesia #shopeefinds #glowup #fyp #affiliateshopee
         </div>
-        <div class="out-item" onclick="copyText(this, '#fashionmurah #ootdindo #racunfashion #shopeefinds #fyp #ootd #styleinspiration')">
+        <div class="out-item" data-copy="#fashionmurah #ootdindo #racunfashion #shopeefinds #fyp #ootd #styleinspiration">
           <span class="out-item-tag">Fashion</span><span class="out-item-copy">Copy</span><br>
           #fashionmurah #ootdindo #racunfashion #shopeefinds #fyp #ootd #styleinspiration
         </div>
-        <div class="out-item" onclick="copyText(this, '#gadgetmurah #aksesorishp #racungadget #shopeefinds #techreview #fyp #shopeehaul')">
+        <div class="out-item" data-copy="#gadgetmurah #aksesorishp #racungadget #shopeefinds #techreview #fyp #shopeehaul">
           <span class="out-item-tag">Gadget</span><span class="out-item-copy">Copy</span><br>
           #gadgetmurah #aksesorishp #racungadget #shopeefinds #techreview #fyp #shopeehaul
         </div>
-        <div class="out-item" onclick="copyText(this, '#perlengkapanrumah #homedecor #racunrumahtangga #shopeefinds #ideideunik #fyp #lifehack')">
+        <div class="out-item" data-copy="#perlengkapanrumah #homedecor #racunrumahtangga #shopeefinds #ideideunik #fyp #lifehack">
           <span class="out-item-tag">Rumah</span><span class="out-item-copy">Copy</span><br>
           #perlengkapanrumah #homedecor #racunrumahtangga #shopeefinds #ideideunik #fyp #lifehack
         </div>
@@ -1057,7 +1057,7 @@ function generateCaption() {
 
   const out = document.getElementById('capOutput');
   out.innerHTML = captions.map(c => `
-    <div class="out-item" onclick="copyText(this, ${JSON.stringify(c.text)})">
+    <div class="out-item" data-copy="${escapeAttr(c.text)}">
       <span class="out-item-tag">${c.tag}</span><span class="out-item-copy">Copy</span><br>
       ${escapeHTML(c.text).replace(/\n/g, '<br>')}
     </div>
@@ -1084,7 +1084,7 @@ function renderHooks() {
   out.innerHTML = filtered.map(h => {
     const text = h.t.replace(/{produk}/g, produk);
     return `
-      <div class="out-item" onclick="copyText(this, ${JSON.stringify(text)})">
+      <div class="out-item" data-copy="${escapeAttr(text)}">
         <span class="out-item-tag">${h.c}</span><span class="out-item-copy">Copy</span><br>
         ${escapeHTML(text)}
       </div>
@@ -1110,7 +1110,7 @@ function renderCTAs() {
   const filtered = CTAS.filter(c => ctaCat === 'all' || c.c === ctaCat);
   const out = document.getElementById('ctaOutput');
   out.innerHTML = filtered.map(c => `
-    <div class="out-item" onclick="copyText(this, ${JSON.stringify(c.t)})">
+    <div class="out-item" data-copy="${escapeAttr(c.t)}">
       <span class="out-item-tag">${c.c}</span><span class="out-item-copy">Copy</span><br>
       ${escapeHTML(c.t)}
     </div>
@@ -1135,7 +1135,7 @@ function renderPrompts() {
   const filtered = PROMPTS.filter(p => promptCat === 'all' || p.c === promptCat);
   const out = document.getElementById('promptOutput');
   out.innerHTML = filtered.map(p => `
-    <div class="out-item" onclick="copyText(this, ${JSON.stringify(p.t)})">
+    <div class="out-item" data-copy="${escapeAttr(p.t)}">
       <span class="out-item-tag">${p.tag}</span><span class="out-item-copy">Copy</span><br>
       ${escapeHTML(p.t).replace(/\n/g, '<br>')}
     </div>
@@ -1211,6 +1211,18 @@ function escapeHTML(str) {
     '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
   }[s]));
 }
+
+function escapeAttr(str) {
+  return String(str).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/'/g,'&#39;');
+}
+
+/* Event delegation for all data-copy items */
+document.addEventListener('click', function(e) {
+  const item = e.target.closest('.out-item[data-copy]');
+  if (item) {
+    copyText(item, item.dataset.copy);
+  }
+});
 </script>
 
 </body>
