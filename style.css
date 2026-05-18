@@ -1028,3 +1028,130 @@ body {
 @media (min-width: 1100px) {
     .product-grid { grid-template-columns: repeat(5, 1fr); }
 }
+
+
+
+/* ============================================
+   RISETCUAN PRO BANNER (Homepage Promo)
+   ============================================ */
+.riset-banner {
+  margin: 30px 16px 24px;
+  padding: 28px 22px;
+  background: linear-gradient(135deg, rgba(167, 139, 250, 0.15), rgba(236, 72, 153, 0.10), rgba(56, 189, 248, 0.08));
+  border: 1px solid rgba(167, 139, 250, 0.35);
+  border-radius: 22px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(167, 139, 250, 0.18);
+}
+.riset-banner::before {
+  content: "";
+  position: absolute;
+  width: 300px; height: 300px;
+  background: radial-gradient(circle, rgba(236,72,153,.35) 0%, transparent 70%);
+  border-radius: 50%;
+  top: -150px; right: -100px;
+  filter: blur(40px);
+  pointer-events: none;
+}
+.riset-banner-inner { position: relative; z-index: 1; max-width: 600px; margin: 0 auto; }
+
+.riset-badge {
+  display: inline-block;
+  background: linear-gradient(135deg, #fbbf24, #f59e0b);
+  color: #000;
+  padding: 5px 14px;
+  border-radius: 20px;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  margin-bottom: 12px;
+}
+.riset-banner h2 {
+  font-size: 1.8rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  margin-bottom: 10px;
+  color: #fff;
+}
+.riset-banner h2 .gradient-text {
+  background: linear-gradient(135deg, #c4b5fd, #f9a8d4, #93c5fd);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.riset-banner p {
+  color: #cbd5e1;
+  font-size: 0.92rem;
+  line-height: 1.55;
+  margin-bottom: 16px;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.riset-features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+.riset-features span {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #e2e8f0;
+}
+.riset-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+@media (min-width: 600px) {
+  .riset-actions { flex-direction: row; justify-content: center; }
+}
+.riset-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 12px 22px;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+.riset-btn-primary {
+  background: linear-gradient(135deg, #a78bfa, #ec4899);
+  color: white;
+  box-shadow: 0 8px 24px rgba(167, 139, 250, 0.35);
+}
+.riset-btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(236, 72, 153, 0.4); }
+.riset-btn-buy {
+  background: linear-gradient(135deg, #fbbf24, #f59e0b);
+  color: #000;
+  box-shadow: 0 8px 24px rgba(251, 191, 36, 0.3);
+}
+.riset-btn-buy:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(251, 191, 36, 0.45); }
+.riset-price {
+  font-size: 0.85rem;
+  color: #94a3b8;
+  margin-top: 8px;
+}
+.riset-price .price-strike {
+  text-decoration: line-through;
+  color: #64748b;
+  margin-right: 6px;
+}
+.riset-price .price-now {
+  color: #fbbf24;
+  font-weight: 800;
+  font-size: 1rem;
+}
