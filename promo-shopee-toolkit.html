@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Promo Shopee Affiliate Toolkit — Cover, Isi, Back</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; -webkit-font-smoothing:antialiased; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background: #1a1a1a;
+  padding: 24px 12px;
+  min-height: 100vh;
+}
+.wrap { max-width: 480px; margin: 0 auto; display: flex; flex-direction: column; gap: 24px; }
+
+.label {
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: -12px;
+  opacity: 0.7;
+}
+
+/* ============================================
+   SLIDE BASE (1080x1080 ratio - tapi responsive)
+   ============================================ */
+.slide {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 24px;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 28px 24px;
+  color: white;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+}
+
+/* ============================================
+   1. COVER
+   ============================================ */
+.cover {
+  background: linear-gradient(135deg, #ee4d2d 0%, #ff6b35 50%, #ffa07a 100%);
+  justify-content: space-between;
+  text-align: center;
+}
+.cover::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 20% 80%, rgba(255,255,255,0.15) 0%, transparent 40%),
+    radial-gradient(circle at 80% 20%, rgba(255,255,255,0.15) 0%, transparent 40%);
+}
+.cover-top {
+  position: relative;
+  z-index: 1;
+}
+.cover-badge {
+  display: inline-block;
+  background: rgba(0,0,0,0.25);
+  backdrop-filter: blur(10px);
+  padding: 6px 14px;
+  border-radius: 30px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-bottom: 14px;
+  border: 1px solid rgba(255,255,255,0.2);
+}
+.cover-icon {
+  font-size: 3rem;
+  margin-bottom: 8px;
+}
+.cover-title {
+  font-size: 2.2rem;
+  font-weight: 900;
+  letter-spacing: -1.5px;
+  line-height: 1.05;
+  margin-bottom: 8px;
+  text-shadow: 0 4px 20px rgba(0,0,0,0.2);
+}
+.cover-title span { color: #fff200; }
+.cover-sub {
+  font-size: 0.95rem;
+  font-weight: 500;
+  opacity: 0.95;
+  line-height: 1.4;
+  max-width: 320px;
+  margin: 0 auto;
+}
+.cover-mid {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  padding: 0 8px;
+}
+.cover-pill {
+  background: rgba(255,255,255,0.2);
+  backdrop-filter: blur(10px);
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  border: 1px solid rgba(255,255,255,0.25);
+}
+.cover-bottom {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+}
+.cover-cta {
+  background: white;
+  color: #ee4d2d;
+  padding: 12px 24px;
+  border-radius: 30px;
+  font-size: 0.95rem;
+  font-weight: 800;
+  display: inline-block;
+  margin-bottom: 10px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+}
+.cover-author {
+  font-size: 0.75rem;
+  font-weight: 600;
+  opacity: 0.9;
+  letter-spacing: 0.5px;
+}
+
+/* ============================================
+   2. ISI / FITUR
+   ============================================ */
+.isi {
+  background: linear-gradient(180deg, #fff1ec 0%, #ffffff 100%);
+  color: #1f1f1f;
+  padding: 26px 22px;
+}
+.isi-header {
+  text-align: center;
+  margin-bottom: 16px;
+}
+.isi-tag {
+  display: inline-block;
+  background: #ee4d2d;
+  color: white;
+  font-size: 0.65rem;
+  font-weight: 800;
+  padding: 4px 10px;
+  border-radius: 20px;
+  letter-spacing: 0.8px;
+  margin-bottom: 8px;
+}
+.isi-title {
+  font-size: 1.45rem;
+  font-weight: 900;
+  letter-spacing: -0.5px;
+  line-height: 1.15;
+  color: #1f1f1f;
+}
+.isi-title span { color: #ee4d2d; }
+.isi-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-top: 12px;
+}
+.isi-item {
+  background: white;
+  border: 1.5px solid #ffd9c8;
+  border-radius: 12px;
+  padding: 10px 12px;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  box-shadow: 0 2px 8px rgba(238,77,45,0.06);
+}
+.isi-item-emoji {
+  font-size: 1.2rem;
+  line-height: 1;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.isi-item-text {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #1f1f1f;
+  line-height: 1.25;
+}
+.isi-item-text small {
+  display: block;
+  font-size: 0.62rem;
+  font-weight: 500;
+  color: #777;
+  margin-top: 2px;
+}
+.isi-bottom {
+  margin-top: 12px;
+  padding: 10px 14px;
+  background: linear-gradient(135deg, #ee4d2d, #ff6b35);
+  border-radius: 14px;
+  text-align: center;
+  color: white;
+}
+.isi-bottom strong {
+  display: block;
+  font-size: 0.95rem;
+  font-weight: 900;
+  margin-bottom: 2px;
+}
+.isi-bottom small {
+  font-size: 0.72rem;
+  opacity: 0.95;
+  font-weight: 500;
+}
+
+/* ============================================
+   3. HALAMAN BELAKANG / CTA
+   ============================================ */
+.back {
+  background: linear-gradient(135deg, #1a0e0a 0%, #3a1a10 50%, #ee4d2d 150%);
+  justify-content: space-between;
+  text-align: center;
+  position: relative;
+}
+.back::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 30% 20%, rgba(238,77,45,0.4) 0%, transparent 50%),
+    radial-gradient(circle at 70% 80%, rgba(255,107,53,0.3) 0%, transparent 50%);
+}
+.back-top {
+  position: relative;
+  z-index: 1;
+}
+.back-emoji {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+.back-headline {
+  font-size: 1.7rem;
+  font-weight: 900;
+  letter-spacing: -1px;
+  line-height: 1.1;
+  margin-bottom: 8px;
+}
+.back-headline span { color: #ffa500; }
+.back-desc {
+  font-size: 0.85rem;
+  opacity: 0.9;
+  line-height: 1.45;
+  max-width: 320px;
+  margin: 0 auto;
+}
+.back-mid {
+  position: relative;
+  z-index: 1;
+}
+.back-stats {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin: 12px 0;
+}
+.back-stat {
+  text-align: center;
+}
+.back-stat strong {
+  display: block;
+  font-size: 1.4rem;
+  font-weight: 900;
+  color: #ffa500;
+  line-height: 1;
+}
+.back-stat small {
+  font-size: 0.65rem;
+  font-weight: 600;
+  opacity: 0.85;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+}
+.back-bottom {
+  position: relative;
+  z-index: 1;
+}
+.back-cta {
+  background: linear-gradient(135deg, #ffa500, #ff6b35);
+  color: white;
+  padding: 14px 28px;
+  border-radius: 30px;
+  font-size: 1rem;
+  font-weight: 900;
+  display: inline-block;
+  margin-bottom: 12px;
+  box-shadow: 0 10px 30px rgba(255,165,0,0.4);
+  letter-spacing: 0.3px;
+}
+.back-contact {
+  font-size: 0.78rem;
+  font-weight: 600;
+  opacity: 0.95;
+  margin-bottom: 4px;
+}
+.back-author {
+  font-size: 0.7rem;
+  font-weight: 600;
+  opacity: 0.7;
+  letter-spacing: 0.5px;
+}
+
+/* HINT */
+.hint {
+  text-align: center;
+  color: #999;
+  font-size: 0.78rem;
+  padding: 16px 12px 8px;
+  line-height: 1.5;
+}
+.hint strong { color: #ee4d2d; }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <p class="hint">📸 <strong>Cara pakai:</strong> screenshot tiap kartu di bawah, lalu pakai buat promo IG / TikTok / WA Story.</p>
+
+  <!-- ========== COVER ========== -->
+  <p class="label">1 · COVER</p>
+  <div class="slide cover">
+    <div class="cover-top">
+      <div class="cover-badge">⚡ NEW · LIMITED OFFER</div>
+      <div class="cover-icon">🛍️</div>
+      <h1 class="cover-title">SHOPEE<br>AFFILIATE<br><span>TOOLKIT</span></h1>
+      <p class="cover-sub">Riset · Caption · Hook · CTA · Prompt AI · Kalkulator Komisi — semua dalam 1 web!</p>
+    </div>
+    <div class="cover-mid">
+      <span class="cover-pill">🔍 RISET</span>
+      <span class="cover-pill">📝 CAPTION</span>
+      <span class="cover-pill">🎣 HOOK</span>
+      <span class="cover-pill">🤖 PROMPT AI</span>
+    </div>
+    <div class="cover-bottom">
+      <div class="cover-cta">SWIPE BUAT LIHAT FITUR →</div>
+      <p class="cover-author">by @yanzy17</p>
+    </div>
+  </div>
+
+  <!-- ========== ISI / FITUR ========== -->
+  <p class="label">2 · ISI / FITUR</p>
+  <div class="slide isi">
+    <div class="isi-header">
+      <span class="isi-tag">YANG KAMU DAPAT</span>
+      <h2 class="isi-title">6 Tools Lengkap<br><span>Buat Closing 🚀</span></h2>
+    </div>
+    <div class="isi-grid">
+      <div class="isi-item">
+        <span class="isi-item-emoji">🔍</span>
+        <span class="isi-item-text">Riset Produk<small>10 kategori cuan</small></span>
+      </div>
+      <div class="isi-item">
+        <span class="isi-item-emoji">📝</span>
+        <span class="isi-item-text">Caption Generator<small>5 variasi auto</small></span>
+      </div>
+      <div class="isi-item">
+        <span class="isi-item-emoji">🎣</span>
+        <span class="isi-item-text">Hook 3 Detik<small>30+ template</small></span>
+      </div>
+      <div class="isi-item">
+        <span class="isi-item-emoji">🎯</span>
+        <span class="isi-item-text">CTA Siap Pakai<small>20+ pilihan</small></span>
+      </div>
+      <div class="isi-item">
+        <span class="isi-item-emoji">🤖</span>
+        <span class="isi-item-text">Prompt AI<small>ChatGPT & Gemini</small></span>
+      </div>
+      <div class="isi-item">
+        <span class="isi-item-emoji">💰</span>
+        <span class="isi-item-text">Kalkulator Komisi<small>Estimasi cuan</small></span>
+      </div>
+      <div class="isi-item">
+        <span class="isi-item-emoji">🕐</span>
+        <span class="isi-item-text">Jadwal Posting<small>Jam emas FYP</small></span>
+      </div>
+      <div class="isi-item">
+        <span class="isi-item-emoji">🏷️</span>
+        <span class="isi-item-text">Hashtag Pack<small>5 niche siap copy</small></span>
+      </div>
+    </div>
+    <div class="isi-bottom">
+      <strong>+ BONUS Checklist Viral 📈</strong>
+      <small>Tinggal copy → paste → cuan</small>
+    </div>
+  </div>
+
+  <!-- ========== HALAMAN BELAKANG ========== -->
+  <p class="label">3 · HALAMAN BELAKANG</p>
+  <div class="slide back">
+    <div class="back-top">
+      <div class="back-emoji">💸</div>
+      <h2 class="back-headline">Stop Bingung<br>Bikin Konten<br><span>Affiliate!</span></h2>
+      <p class="back-desc">Hemat berjam-jam, fokus produksi konten cuan. Tools all-in-one ini bantu kamu closing lebih cepat.</p>
+    </div>
+    <div class="back-mid">
+      <div class="back-stats">
+        <div class="back-stat">
+          <strong>6+</strong>
+          <small>Tools</small>
+        </div>
+        <div class="back-stat">
+          <strong>50+</strong>
+          <small>Template</small>
+        </div>
+        <div class="back-stat">
+          <strong>∞</strong>
+          <small>Akses</small>
+        </div>
+      </div>
+    </div>
+    <div class="back-bottom">
+      <div class="back-cta">DM "ORDER" SEKARANG →</div>
+      <p class="back-contact">📱 IG / WA: @yanzy17</p>
+      <p class="back-author">© 2026 Shopee Affiliate Toolkit</p>
+    </div>
+  </div>
+
+  <p class="hint">✅ Selesai! Screenshot tiap kartu lalu post sebagai carousel di IG/TikTok 🚀</p>
+
+</div>
+
+</body>
+</html>
