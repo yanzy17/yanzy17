@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Cover Lynk.id — Shopee Affiliate Toolkit</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; -webkit-font-smoothing:antialiased; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background: #0a0a0a;
+  padding: 30px 14px 50px;
+  min-height: 100vh;
+}
+
+.wrap { max-width: 480px; margin: 0 auto; display: flex; flex-direction: column; gap: 28px; }
+
+.label {
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: -10px;
+  opacity: 0.6;
+}
+
+.hint {
+  text-align: center;
+  color: #aaa;
+  font-size: 0.8rem;
+  padding: 12px 16px;
+  line-height: 1.55;
+  background: #1a1a1a;
+  border-radius: 12px;
+  border: 1px solid #333;
+}
+.hint strong { color: #ee4d2d; }
+
+/* ============================================
+   BASE COVER - aspect 1:1 (Lynk.id thumbnail)
+   ============================================ */
+.cover {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  color: white;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+}
+
+/* ============================================
+   1. SAMPUL DEPAN — Premium Ebook Cover
+   ============================================ */
+.cover-front {
+  background: 
+    radial-gradient(ellipse at top right, #ff7837 0%, transparent 55%),
+    radial-gradient(ellipse at bottom left, #d73a16 0%, transparent 55%),
+    linear-gradient(135deg, #ee4d2d, #ff5722);
+  padding: 32px 28px;
+  justify-content: space-between;
+  text-align: center;
+}
+
+.cover-front::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: 
+    radial-gradient(circle at 25% 25%, rgba(255,255,255,0.1) 1px, transparent 1px),
+    radial-gradient(circle at 75% 75%, rgba(255,255,255,0.1) 1px, transparent 1px);
+  background-size: 40px 40px;
+  opacity: 0.4;
+}
+
+.cf-top { position: relative; z-index: 1; }
+
+.cf-badge {
+  display: inline-block;
+  background: rgba(0,0,0,0.3);
+  backdrop-filter: blur(10px);
+  border: 1.5px solid rgba(255,255,255,0.25);
+  padding: 7px 16px;
+  border-radius: 30px;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+  margin-bottom: 18px;
+}
+
+.cf-icon-wrap {
+  width: 88px;
+  height: 88px;
+  margin: 0 auto 16px;
+  background: linear-gradient(145deg, #fff, #fff8f5);
+  border-radius: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  box-shadow: 
+    0 20px 40px rgba(0,0,0,0.3),
+    inset 0 -3px 8px rgba(0,0,0,0.05),
+    inset 0 3px 8px rgba(255,255,255,0.8);
+  transform: rotate(-4deg);
+}
+
+.cf-mid { 
+  position: relative; 
+  z-index: 1;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.cf-title {
+  font-size: 2.2rem;
+  font-weight: 900;
+  letter-spacing: -2px;
+  line-height: 0.95;
+  margin-bottom: 8px;
+  text-shadow: 0 6px 20px rgba(0,0,0,0.25);
+}
+.cf-title-yellow { 
+  color: #ffe600;
+  display: block;
+  font-size: 2.6rem;
+  text-shadow: 
+    0 4px 0 rgba(0,0,0,0.15),
+    0 8px 30px rgba(255,230,0,0.4);
+}
+
+.cf-tagline {
+  font-size: 0.92rem;
+  font-weight: 600;
+  opacity: 0.95;
+  letter-spacing: 0.3px;
+  margin-top: 4px;
+}
+
+.cf-divider {
+  width: 50px;
+  height: 3px;
+  background: rgba(255,255,255,0.5);
+  margin: 14px auto;
+  border-radius: 2px;
+}
+
+.cf-features {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  margin-top: 6px;
+}
+.cf-features span {
+  background: rgba(0,0,0,0.2);
+  padding: 4px 10px;
+  border-radius: 12px;
+  letter-spacing: 0.3px;
+}
+
+.cf-bottom { 
+  position: relative; 
+  z-index: 1;
+  text-align: center;
+}
+
+.cf-byline {
+  font-size: 0.78rem;
+  font-weight: 700;
+  opacity: 0.95;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.cf-byline strong { 
+  color: #ffe600;
+  font-weight: 900;
+}
+
+/* ============================================
+   2. ISI / PREVIEW FITUR
+   ============================================ */
+.cover-isi {
+  background: linear-gradient(160deg, #fff5f0 0%, #ffffff 70%);
+  color: #1f1f1f;
+  padding: 26px 22px;
+  justify-content: space-between;
+}
+
+.ci-header {
+  text-align: center;
+}
+.ci-tag {
+  display: inline-block;
+  background: linear-gradient(135deg, #ee4d2d, #ff7837);
+  color: white;
+  font-size: 0.6rem;
+  font-weight: 800;
+  padding: 4px 11px;
+  border-radius: 20px;
+  letter-spacing: 1.2px;
+  margin-bottom: 8px;
+  box-shadow: 0 4px 12px rgba(238,77,45,0.3);
+}
+.ci-title {
+  font-size: 1.55rem;
+  font-weight: 900;
+  letter-spacing: -0.8px;
+  line-height: 1.1;
+  color: #1a1a1a;
+}
+.ci-title em {
+  font-style: normal;
+  background: linear-gradient(135deg, #ee4d2d, #ff7837);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.ci-sub {
+  font-size: 0.78rem;
+  color: #666;
+  margin-top: 4px;
+  font-weight: 500;
+}
+
+.ci-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 7px;
+}
+.ci-item {
+  background: white;
+  border: 1.5px solid #ffe0d0;
+  border-radius: 12px;
+  padding: 9px 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 3px 10px rgba(238,77,45,0.05);
+}
+.ci-item-emoji {
+  font-size: 1.3rem;
+  flex-shrink: 0;
+}
+.ci-item-text {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #1f1f1f;
+  line-height: 1.2;
+}
+.ci-item-text small {
+  display: block;
+  font-size: 0.6rem;
+  font-weight: 500;
+  color: #888;
+  margin-top: 1px;
+}
+
+.ci-bottom {
+  background: linear-gradient(135deg, #1a0e0a, #3a1a10);
+  color: white;
+  border-radius: 14px;
+  padding: 11px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+.ci-bottom-left strong {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 900;
+  margin-bottom: 1px;
+}
+.ci-bottom-left small {
+  font-size: 0.65rem;
+  opacity: 0.85;
+  font-weight: 500;
+}
+.ci-bottom-emoji {
+  font-size: 1.6rem;
+}
+
+/* ============================================
+   3. HALAMAN BELAKANG / BACK COVER
+   ============================================ */
+.cover-back {
+  background: 
+    radial-gradient(ellipse at 20% 30%, rgba(238,77,45,0.5) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 70%, rgba(255,165,0,0.35) 0%, transparent 55%),
+    linear-gradient(140deg, #0d0604 0%, #2a0f06 100%);
+  padding: 30px 26px;
+  justify-content: space-between;
+  text-align: center;
+}
+
+.cb-stripe {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 5px;
+  background: linear-gradient(90deg, #ee4d2d, #ffa500, #ee4d2d);
+}
+
+.cb-top { position: relative; z-index: 1; }
+
+.cb-emoji {
+  font-size: 2.8rem;
+  margin-bottom: 8px;
+  filter: drop-shadow(0 8px 20px rgba(255,165,0,0.4));
+}
+
+.cb-headline {
+  font-size: 1.85rem;
+  font-weight: 900;
+  letter-spacing: -1.2px;
+  line-height: 1.05;
+  margin-bottom: 8px;
+}
+.cb-headline span {
+  background: linear-gradient(135deg, #ffa500, #ffe600);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  display: inline-block;
+}
+
+.cb-desc {
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.85);
+  line-height: 1.45;
+  font-weight: 500;
+  max-width: 320px;
+  margin: 0 auto;
+}
+
+.cb-mid {
+  position: relative;
+  z-index: 1;
+}
+
+.cb-benefits {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  text-align: left;
+  background: rgba(255,255,255,0.06);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 14px;
+  padding: 12px 14px;
+}
+.cb-benefit {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: rgba(255,255,255,0.95);
+}
+.cb-benefit-check {
+  width: 18px; height: 18px;
+  background: linear-gradient(135deg, #ee4d2d, #ff7837);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
+  font-weight: 900;
+  color: white;
+  flex-shrink: 0;
+  box-shadow: 0 4px 10px rgba(238,77,45,0.4);
+}
+
+.cb-bottom {
+  position: relative;
+  z-index: 1;
+}
+
+.cb-cta {
+  background: linear-gradient(135deg, #ffa500, #ff7837);
+  color: white;
+  padding: 13px 24px;
+  border-radius: 30px;
+  font-size: 0.95rem;
+  font-weight: 900;
+  display: inline-block;
+  margin-bottom: 10px;
+  box-shadow: 
+    0 12px 30px rgba(255,165,0,0.4),
+    0 4px 8px rgba(0,0,0,0.2);
+  letter-spacing: 0.5px;
+}
+
+.cb-handle {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: rgba(255,255,255,0.95);
+  margin-bottom: 4px;
+  letter-spacing: 0.5px;
+}
+.cb-handle span { color: #ffa500; }
+
+.cb-copyright {
+  font-size: 0.62rem;
+  font-weight: 600;
+  color: rgba(255,255,255,0.45);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <p class="hint">📸 <strong>Cara pakai:</strong><br>Screenshot tiap kartu di bawah → upload sebagai cover/thumbnail produk di <strong>Lynk.id</strong>.</p>
+
+  <!-- ========== 1. SAMPUL DEPAN ========== -->
+  <p class="label">1 · Sampul Depan</p>
+  <div class="cover cover-front">
+    <div class="cf-top">
+      <div class="cf-badge">⚡ DIGITAL TOOLKIT</div>
+      <div class="cf-icon-wrap">🛍️</div>
+    </div>
+
+    <div class="cf-mid">
+      <h1 class="cf-title">SHOPEE<br>AFFILIATE<br><span class="cf-title-yellow">TOOLKIT</span></h1>
+      <p class="cf-tagline">Riset · Caption · Hook · Prompt AI</p>
+      <div class="cf-divider"></div>
+      <div class="cf-features">
+        <span>6+ TOOLS</span>
+        <span>50+ TEMPLATE</span>
+        <span>SIAP PAKAI</span>
+      </div>
+    </div>
+
+    <div class="cf-bottom">
+      <p class="cf-byline">by <strong>@yanzy17</strong></p>
+    </div>
+  </div>
+
+  <!-- ========== 2. ISI / PREVIEW ========== -->
+  <p class="label">2 · Isi (Preview Fitur)</p>
+  <div class="cover cover-isi">
+    <div class="ci-header">
+      <span class="ci-tag">YANG KAMU DAPAT</span>
+      <h2 class="ci-title">Semua Tools Affiliate<br><em>Dalam 1 Web 🚀</em></h2>
+      <p class="ci-sub">Tinggal isi → copy → paste → cuan</p>
+    </div>
+
+    <div class="ci-grid">
+      <div class="ci-item">
+        <span class="ci-item-emoji">🔍</span>
+        <span class="ci-item-text">Riset Produk<small>10 kategori</small></span>
+      </div>
+      <div class="ci-item">
+        <span class="ci-item-emoji">📝</span>
+        <span class="ci-item-text">Caption Auto<small>5 variasi</small></span>
+      </div>
+      <div class="ci-item">
+        <span class="ci-item-emoji">🎣</span>
+        <span class="ci-item-text">Hook 3 Detik<small>30+ template</small></span>
+      </div>
+      <div class="ci-item">
+        <span class="ci-item-emoji">🎯</span>
+        <span class="ci-item-text">CTA Pack<small>20+ pilihan</small></span>
+      </div>
+      <div class="ci-item">
+        <span class="ci-item-emoji">🤖</span>
+        <span class="ci-item-text">Prompt AI<small>ChatGPT siap</small></span>
+      </div>
+      <div class="ci-item">
+        <span class="ci-item-emoji">💰</span>
+        <span class="ci-item-text">Kalkulator<small>Estimasi cuan</small></span>
+      </div>
+      <div class="ci-item">
+        <span class="ci-item-emoji">🕐</span>
+        <span class="ci-item-text">Jam Posting<small>FYP friendly</small></span>
+      </div>
+      <div class="ci-item">
+        <span class="ci-item-emoji">🏷️</span>
+        <span class="ci-item-text">Hashtag Pack<small>5 niche</small></span>
+      </div>
+    </div>
+
+    <div class="ci-bottom">
+      <div class="ci-bottom-left">
+        <strong>+ BONUS Checklist Viral</strong>
+        <small>Tips konten anti-flop</small>
+      </div>
+      <span class="ci-bottom-emoji">🎁</span>
+    </div>
+  </div>
+
+  <!-- ========== 3. HALAMAN BELAKANG ========== -->
+  <p class="label">3 · Halaman Belakang</p>
+  <div class="cover cover-back">
+    <div class="cb-stripe"></div>
+
+    <div class="cb-top">
+      <div class="cb-emoji">💸</div>
+      <h2 class="cb-headline">Stop Bingung<br>Bikin <span>Konten Affiliate!</span></h2>
+      <p class="cb-desc">Hemat berjam-jam riset & nulis caption. Fokus produksi konten cuan aja.</p>
+    </div>
+
+    <div class="cb-mid">
+      <div class="cb-benefits">
+        <div class="cb-benefit">
+          <span class="cb-benefit-check">✓</span>
+          <span>Akses selamanya, gak ada expired</span>
+        </div>
+        <div class="cb-benefit">
+          <span class="cb-benefit-check">✓</span>
+          <span>Bisa dibuka di HP & laptop</span>
+        </div>
+        <div class="cb-benefit">
+          <span class="cb-benefit-check">✓</span>
+          <span>Update otomatis tanpa biaya</span>
+        </div>
+        <div class="cb-benefit">
+          <span class="cb-benefit-check">✓</span>
+          <span>Support langsung dari admin</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="cb-bottom">
+      <div class="cb-cta">PESAN SEKARANG →</div>
+      <p class="cb-handle">📱 IG / WA: <span>@yanzy17</span></p>
+      <p class="cb-copyright">© 2026 · Made with ❤️</p>
+    </div>
+  </div>
+
+  <p class="hint">✅ <strong>Done!</strong> 3 cover siap di-screenshot buat upload ke Lynk.id 🚀</p>
+
+</div>
+
+</body>
+</html>
