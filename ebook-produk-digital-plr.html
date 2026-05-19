@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ebook Cara Bikin & Jual Produk Digital PLR - @yanzy17</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --bg-dark: #0a0a0f;
+            --bg-card: #14141f;
+            --accent: #ee4d2d;
+            --accent-light: #ff6b35;
+            --gold: #f4a261;
+            --text: #e8e8e8;
+            --text-muted: #9a9ab0;
+            --border: #2a2a3a;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-dark);
+            color: var(--text);
+            line-height: 1.7;
+            font-size: 16px;
+        }
+        .page {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 60px 40px;
+            min-height: 100vh;
+            position: relative;
+        }
+        .cover {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(135deg, #0a0a0f 0%, #1a1028 50%, #0a0a0f 100%);
+            border-bottom: 3px solid var(--accent);
+        }
+        .cover-badge {
+            display: inline-block;
+            background: var(--accent);
+            color: #fff;
+            padding: 6px 18px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+        }
+        .cover h1 {
+            font-size: 42px;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--accent), var(--gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 16px;
+            line-height: 1.2;
+        }
+        .cover .subtitle {
+            font-size: 18px;
+            color: var(--text-muted);
+            max-width: 480px;
+            margin-bottom: 40px;
+        }
+        .cover .author {
+            font-size: 16px;
+            color: var(--gold);
+            font-weight: 600;
+            margin-bottom: 30px;
+        }
+        .cover-features {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .cover-features span {
+            background: rgba(238,77,45,0.15);
+            border: 1px solid rgba(238,77,45,0.3);
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 13px;
+            color: var(--accent-light);
+        }
+        .section { padding-top: 20px; }
+        .section h2 {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--accent-light);
+            margin-bottom: 24px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid var(--border);
+        }
+        .section h3 {
+            font-size: 20px;
+            color: var(--gold);
+            margin: 24px 0 12px;
+        }
+        .section p { margin-bottom: 14px; color: var(--text); }
+        .section ul, .section ol {
+            margin: 12px 0 20px 20px;
+        }
+        .section li {
+            margin-bottom: 10px;
+            color: var(--text);
+        }
+        .section li strong { color: var(--accent-light); }
+        .tip-box {
+            background: rgba(238,77,45,0.08);
+            border-left: 4px solid var(--accent);
+            padding: 16px 20px;
+            border-radius: 0 8px 8px 0;
+            margin: 16px 0;
+        }
+        .tip-box strong { color: var(--accent-light); }
+        .toc-list { list-style: none; margin-left: 0; }
+        .toc-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+        }
+        .toc-list li span:first-child { color: var(--text); font-weight: 500; }
+        .toc-list li span:last-child { color: var(--text-muted); font-size: 14px; }
+        .checklist { list-style: none; margin-left: 0; }
+        .checklist li { padding: 8px 0; padding-left: 28px; position: relative; }
+        .checklist li::before {
+            content: "☐";
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+        }
+        .closing {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #0a0a0f 0%, #1a1028 50%, #0a0a0f 100%);
+        }
+        .closing h2 { border: none; margin-bottom: 16px; }
+        .closing p { color: var(--text-muted); max-width: 500px; }
+        .closing .signature {
+            margin-top: 30px;
+            font-size: 20px;
+            color: var(--gold);
+            font-weight: 700;
+        }
+        .download-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-light));
+            color: #fff;
+            border: none;
+            padding: 14px 24px;
+            border-radius: 50px;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(238,77,45,0.4);
+            z-index: 9999;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 30px rgba(238,77,45,0.6);
+        }
+        .page-num {
+            position: absolute;
+            bottom: 20px;
+            right: 40px;
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+        .footer-note {
+            text-align: center;
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-top: 40px;
+            padding-top: 16px;
+            border-top: 1px solid var(--border);
+        }
+        @page {
+            size: A4;
+            margin: 2cm;
+        }
+        @media print {
+            body { background: #fff; color: #1a1a1a; font-size: 11pt; }
+            .download-btn { display: none !important; }
+            .page {
+                min-height: auto;
+                padding: 0;
+                page-break-after: always;
+                max-width: 100%;
+            }
+            .page:last-child { page-break-after: avoid; }
+            .cover, .closing {
+                background: #0a0a0f !important;
+                color: #fff !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+                padding: 80px 40px;
+            }
+            .cover h1 {
+                -webkit-text-fill-color: var(--accent-light);
+                color: var(--accent-light);
+            }
+            .cover .subtitle, .cover .author { color: #ccc; }
+            .cover-badge { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .cover-features span { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .section h2 { color: var(--accent); }
+            .section h3 { color: #333; }
+            .section li strong { color: var(--accent); }
+            .tip-box {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+                background: #fff5f2;
+                border-left-color: var(--accent);
+            }
+            .tip-box strong { color: var(--accent); }
+            .closing { color: #fff !important; }
+            .closing h2 { color: var(--accent-light) !important; }
+            .closing p { color: #ccc !important; }
+            .closing .signature { color: var(--gold) !important; }
+            .page-num { color: #999; }
+            .toc-list li { border-color: #ddd; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- COVER PAGE -->
+<div class="page cover">
+    <span class="cover-badge">EBOOK PLR 2026</span>
+    <h1>CARA BIKIN & JUAL PRODUK DIGITAL</h1>
+    <p class="subtitle">Panduan Lengkap + Hak Jual Ulang (PLR)</p>
+    <p class="author">by @yanzy17</p>
+    <div class="cover-features">
+        <span>📘 8 Bab Lengkap</span>
+        <span>💡 50+ Tips Praktis</span>
+        <span>🔓 PLR License</span>
+        <span>🎯 Action Plan</span>
+    </div>
+    <span class="page-num">1</span>
+</div>
+
+<!-- DAFTAR ISI -->
+<div class="page section">
+    <h2>📑 Daftar Isi</h2>
+    <ul class="toc-list">
+        <li><span>Bab 1 — Kenapa Produk Digital?</span><span>Hal. 3</span></li>
+        <li><span>Bab 2 — Ide Produk Digital yang Laku Keras</span><span>Hal. 4</span></li>
+        <li><span>Bab 3 — Cara Bikin Produk Digital dari 0</span><span>Hal. 5</span></li>
+        <li><span>Bab 4 — Platform Jualan Terbaik</span><span>Hal. 6</span></li>
+        <li><span>Bab 5 — Strategi Pricing & Bundling</span><span>Hal. 7</span></li>
+        <li><span>Bab 6 — Cara Promosi & Jualan</span><span>Hal. 8</span></li>
+        <li><span>Bab 7 — Template Chat & Closing</span><span>Hal. 9</span></li>
+        <li><span>Bab 8 — Scale Up & Passive Income</span><span>Hal. 10</span></li>
+        <li><span>Bonus — Lisensi PLR</span><span>Hal. 11</span></li>
+        <li><span>Penutup</span><span>Hal. 12</span></li>
+    </ul>
+    <span class="page-num">2</span>
+</div>
+
+
+<!-- BAB 1: KENAPA PRODUK DIGITAL -->
+<div class="page section">
+    <h2>Bab 1: Kenapa Produk Digital?</h2>
+    <p>Sebelum kita masuk ke teknis, kamu perlu paham dulu KENAPA produk digital itu game-changer buat siapapun yang mau punya penghasilan online. Ini bukan hype — ini fakta yang udah dibuktiin ribuan kreator Indonesia.</p>
+
+    <h3>📌 Apa Itu Produk Digital?</h3>
+    <p>Produk digital adalah produk yang gak punya bentuk fisik — dikirim secara elektronik dan bisa dikonsumsi langsung setelah pembelian. Contohnya: ebook PDF, template desain, tools web, video tutorial, spreadsheet, dan masih banyak lagi. Intinya, apapun yang bisa di-download atau diakses online = produk digital.</p>
+
+    <h3>💰 Keuntungan vs Produk Fisik</h3>
+    <ul>
+        <li><strong>Bikin 1x, jual berkali-kali:</strong> Gak perlu produksi ulang. Satu file bisa dijual ke 1.000 orang tanpa nambah biaya.</li>
+        <li><strong>Zero stok, zero ongkir:</strong> Gak perlu gudang, gak perlu packing, gak perlu ke ekspedisi. Semua otomatis.</li>
+        <li><strong>Margin profit 100%:</strong> Gak ada HPP (Harga Pokok Produksi). Yang kamu jual itu pengetahuan & kreativitas.</li>
+        <li><strong>Scalable tanpa batas:</strong> Mau jualan ke 10 orang atau 10.000 orang, effort-nya sama. No bottleneck.</li>
+        <li><strong>Bisa dijalanin dari mana aja:</strong> Cuma butuh laptop/HP + internet. Mau kerja dari kosan, cafe, atau pantai — bebas.</li>
+        <li><strong>Passive income potential:</strong> Sekali setup + promosi yang bener, produk bisa terus menghasilkan walau kamu tidur.</li>
+    </ul>
+
+    <h3>📊 Jenis-Jenis Produk Digital</h3>
+    <ul>
+        <li><strong>Ebook & Panduan:</strong> Topik apapun yang kamu kuasai bisa jadi ebook. Self-help, bisnis, skill, hobi.</li>
+        <li><strong>Template Desain:</strong> Canva template buat feed IG, story, thumbnail YouTube, undangan digital.</li>
+        <li><strong>Tools & Web App:</strong> Calculator, generator, converter — simple tools yang solve masalah spesifik.</li>
+        <li><strong>Prompt Pack AI:</strong> Kumpulan prompt buat ChatGPT, Midjourney, atau AI tools lain. Market baru yang booming.</li>
+        <li><strong>Kursus Video:</strong> Mini course 5-10 video pendek. Gak perlu studio, HP aja cukup.</li>
+        <li><strong>Preset & Filter:</strong> Lightroom preset, CapCut template, filter foto aesthetic.</li>
+        <li><strong>Spreadsheet & Planner:</strong> Budget tracker, content calendar, habit tracker di Google Sheets/Excel.</li>
+        <li><strong>Notion Template:</strong> Second brain, project management, life dashboard. Notion users rela bayar buat template bagus.</li>
+    </ul>
+
+    <h3>📈 Data Market: Produk Digital Indonesia Lagi Booming</h3>
+    <p>Creator economy Indonesia naik pesat. Platform kayak Lynk.id dan Mayar.id aja udah nge-handle ribuan transaksi produk digital tiap hari. Threads & TikTok jadi channel utama buat jualan. Kreator dengan followers 1.000 aja udah bisa generate income jutaan dari produk digital.</p>
+
+    <h3>🤔 Siapa yang Bisa Bikin?</h3>
+    <p><strong>SEMUA ORANG.</strong> Serius. Kamu gak perlu jago coding, gak perlu jago desain, gak perlu punya followers banyak. Yang kamu butuhkan cuma: pengetahuan tentang SESUATU + kemampuan packaging itu jadi produk yang rapi. Tools gratis udah banyak banget — Canva, ChatGPT, Google Docs. No excuse.</p>
+
+    <div class="tip-box">
+        <strong>💡 Pro Tip:</strong> Kalau kamu pernah bantu temen solve masalah (apapun itu), berarti kamu udah punya "bahan" buat dijadiin produk digital. Pengetahuan yang buat kamu terasa biasa, buat orang lain itu bernilai banget.
+    </div>
+    <span class="page-num">3</span>
+</div>
+
+
+<!-- BAB 2: IDE PRODUK DIGITAL YANG LAKU KERAS -->
+<div class="page section">
+    <h2>Bab 2: Ide Produk Digital yang Laku Keras</h2>
+    <p>Ini bagian paling penting: pilih ide yang BENERAN ada demand-nya. Jangan bikin produk yang cuma kamu sendiri yang butuh. Berikut 15 ide produk digital yang proven laku di market Indonesia:</p>
+
+    <h3>💡 15 Ide Produk dengan Penjelasan</h3>
+    <ol>
+        <li><strong>Ebook Panduan (Niche Apapun):</strong> Panduan step-by-step tentang skill/topik tertentu. Contoh: panduan affiliate, cara diet, tips interview kerja. Selama ada yang butuh info itu, ebook kamu laku.</li>
+        <li><strong>Template Canva (Feed IG, Story, Thumbnail):</strong> Content creator butuh desain bagus tapi gak mau hire designer. Template Canva yang tinggal edit = solusi sempurna. Pack 30-50 template, jual 25-49rb.</li>
+        <li><strong>Prompt Pack AI (ChatGPT, Midjourney):</strong> Banyak orang punya akses AI tapi gak tau cara prompt yang bener. Kumpulin prompt terbaik per niche, jual sebagai "cheat sheet". Market ini masih BARU banget.</li>
+        <li><strong>Spreadsheet/Planner Keuangan:</strong> Template budget bulanan, tracker pengeluaran, planner tabungan. Orang Indonesia makin melek finansial, demand terus naik.</li>
+        <li><strong>Template CV & Portfolio:</strong> Fresh graduate & job seeker rela bayar buat CV yang standout. Bikin di Canva, jual per pack (5-10 variasi).</li>
+        <li><strong>Tools Web Interaktif:</strong> Calculator ROI, generator caption, color palette picker, link-in-bio page. Host gratis di GitHub Pages, monetize via donation/premium.</li>
+        <li><strong>Notion Template (Habit Tracker, Content Planner):</strong> Notion community di Indonesia growing fast. Template aesthetic + fungsional bisa dijual 19-39rb. Bikin sekali, jual selamanya.</li>
+        <li><strong>Preset Lightroom:</strong> Filter foto aesthetic yang konsisten buat feed IG. Pack 10-20 preset, jual 25-35rb. Target: influencer, UMKM, food blogger.</li>
+        <li><strong>Template Chat/Script Closing:</strong> Template DM buat jualan, follow-up customer, handle keberatan. Seller online butuh banget ini biar gak bingung mau chat apa.</li>
+        <li><strong>Kumpulan Hook/Caption/CTA:</strong> 100+ hook pembuka konten, caption engaging, CTA yang convert. Content creator bakal repeat order ini.</li>
+        <li><strong>Kursus Mini (Video Pendek):</strong> 5-10 video tutorial, masing-masing 5-15 menit. Topik spesifik (bukan generik). Contoh: "Cara Edit Video Reels Pake CapCut dalam 10 Menit".</li>
+        <li><strong>Checklist & SOP Bisnis:</strong> SOP onboarding karyawan, checklist launching produk, workflow content creation. Bisnis owner butuh ini buat scale up.</li>
+        <li><strong>Bundle Resource (Font, Icon, Mockup):</strong> Kurasi resource gratis yang tersebar, packaging jadi bundle rapi + cara pakainya. Value = convenience.</li>
+        <li><strong>Template Kontrak/Invoice Freelancer:</strong> Freelancer Indonesia banyak yang gak punya template legal yang proper. Bikin template kontrak, invoice, quotation — jual ke komunitas freelancer.</li>
+        <li><strong>Ebook PLR (Jual Ulang):</strong> Bikin ebook yang buyer-nya boleh jual ulang dengan nama mereka sendiri. Ini yang kamu pegang sekarang! Model bisnis yang sangat scalable.</li>
+    </ol>
+
+    <h3>🔍 Cara Validasi Ide Sebelum Bikin</h3>
+    <ul>
+        <li><strong>Cek demand di Threads/Twitter:</strong> Search keyword topik kamu. Banyak yang nanya/diskusi? Berarti ada demand.</li>
+        <li><strong>Lihat kompetitor:</strong> Cek Lynk.id, Ratakan, Gumroad — ada produk serupa yang laku? BAGUS. Itu validasi market exists.</li>
+        <li><strong>Tanya audience langsung:</strong> Bikin poll di Story/Threads: "Kalau gue bikin [produk X], ada yang mau?" Respons positif = green light.</li>
+        <li><strong>Check Google Trends:</strong> Topik lagi naik atau turun? Pilih yang trennya stabil atau naik.</li>
+    </ul>
+
+    <div class="tip-box">
+        <strong>🔥 Pro Tip:</strong> Ide terbaik itu yang solve masalah SPESIFIK. Jangan "Panduan Bisnis Online" (terlalu luas), tapi "Cara Jualan di Threads dari 0 Followers sampe 1 Juta Pertama" (spesifik, jelas target-nya).
+    </div>
+    <span class="page-num">4</span>
+</div>
+
+
+<!-- BAB 3: CARA BIKIN PRODUK DIGITAL DARI 0 -->
+<div class="page section">
+    <h2>Bab 3: Cara Bikin Produk Digital dari 0</h2>
+    <p>Oke, kamu udah punya ide. Sekarang saatnya EKSEKUSI. Good news: semua tools yang kamu butuhin itu GRATIS. Gak perlu modal uang, cuma modal waktu dan konsistensi.</p>
+
+    <h3>🛠️ Tools Gratis yang Bisa Dipake</h3>
+    <ul>
+        <li><strong>ChatGPT / Gemini:</strong> Generate konten draft, bikin outline, brainstorm ide, copywriting produk. Pakai sebagai asisten, bukan pengganti kreativitas kamu.</li>
+        <li><strong>Canva (Free Plan):</strong> Desain ebook, cover, template, carousel, dan semua visual yang kamu butuhkan. Drag & drop, gak perlu skill desain.</li>
+        <li><strong>Google Docs / Notion:</strong> Nulis & organize konten ebook. Kolaborasi kalau kerja bareng orang lain. Export ke PDF langsung.</li>
+        <li><strong>GitHub Pages:</strong> Hosting tools/webapp GRATIS unlimited. Perfect buat deploy calculator, generator, atau landing page.</li>
+        <li><strong>Google Sheets:</strong> Bikin template spreadsheet yang bisa di-share/download. Budget planner, tracker, database.</li>
+        <li><strong>OBS Studio:</strong> Rekam video tutorial/screen recording gratis. Kualitas profesional tanpa bayar software.</li>
+        <li><strong>CapCut:</strong> Edit video kursus mini. Gratis, powerful, banyak template siap pakai.</li>
+    </ul>
+
+    <h3>📝 Step-by-Step Bikin Ebook</h3>
+    <ol>
+        <li><strong>Tentuin topik & target audience:</strong> Siapa yang bakal baca? Masalah apa yang mau kamu solve? Semakin spesifik, semakin bagus. Contoh: bukan "cara bisnis", tapi "cara jualan produk digital di Threads buat pemula".</li>
+        <li><strong>Bikin outline (7-10 bab):</strong> Tulis poin-poin utama tiap bab. Ini kerangka ebook kamu. Minta ChatGPT bantu brainstorm kalau stuck.</li>
+        <li><strong>Tulis konten per bab:</strong> Pakai AI buat draft awal, tapi WAJIB edit manual biar suara kamu keluar. Tambahin pengalaman pribadi, contoh real, dan opini. Ini yang bikin ebook kamu beda dari yang lain.</li>
+        <li><strong>Desain cover & layout di Canva:</strong> First impression matters. Cover yang eye-catching = orang mau beli. Pakai template ebook Canva, customize warna & font sesuai brand kamu.</li>
+        <li><strong>Export ke PDF:</strong> Dari Canva langsung export PDF (pilih "PDF Print" buat kualitas terbaik). Atau kalau ebook-nya web-based, deploy sebagai HTML.</li>
+        <li><strong>Test sendiri — baca ulang, minta feedback:</strong> Baca dari awal sampai akhir. Ada yang kurang jelas? Typo? Minta 2-3 orang baca dan kasih feedback jujur sebelum launch.</li>
+    </ol>
+
+    <h3>🎨 Step-by-Step Bikin Template</h3>
+    <ol>
+        <li><strong>Identifikasi masalah yang mau diselesaikan:</strong> Template CV buat fresh grad? Content calendar buat creator? Semakin jelas pain point-nya, semakin gampang bikinnya.</li>
+        <li><strong>Bikin template di Canva/Notion/Sheets:</strong> Desain yang clean, fungsional, dan gampang di-customize. Jangan over-design — simple tapi useful itu kunci.</li>
+        <li><strong>Kasih instruksi cara pakai:</strong> Bikin guide singkat (1-2 halaman atau video Loom 3 menit). Buyer harus bisa langsung pakai tanpa bingung.</li>
+        <li><strong>Package rapi:</strong> ZIP file berisi template + instruksi + bonus (kalau ada). Atau kasih Canva link yang bisa di-duplicate.</li>
+    </ol>
+
+    <div class="tip-box">
+        <strong>⚡ Pro Tip:</strong> JANGAN PERFEKSIONIS. Versi pertama gak harus sempurna. Done is better than perfect. Launch dulu dengan versi 80%, improve based on feedback. Banyak orang gak pernah launch karena nunggu "sempurna" yang gak pernah dateng.
+    </div>
+    <span class="page-num">5</span>
+</div>
+
+
+<!-- BAB 4: PLATFORM JUALAN TERBAIK -->
+<div class="page section">
+    <h2>Bab 4: Platform Jualan Terbaik</h2>
+    <p>Produk udah jadi, sekarang kamu butuh tempat buat jualan. Jangan bingung pilih platform — yang penting mulai dari SATU yang paling gampang, expand nanti kalau udah jalan.</p>
+
+    <h3>🔗 Lynk.id</h3>
+    <p>Platform link-in-bio Indonesia yang support jualan produk digital. Cocok banget buat yang main di Threads & Instagram. Setup cuma 5 menit: daftar → upload file → set harga → share link. Buyer bayar → otomatis dapet akses download. Simple, no ribet.</p>
+    <ul>
+        <li>Kelebihan: Gratis, simple, integrasi payment lokal, bisa jadi link-in-bio sekaligus toko</li>
+        <li>Cocok buat: Pemula, kreator Threads/IG, yang mau mulai cepet</li>
+    </ul>
+
+    <h3>💳 Mayar.id</h3>
+    <p>Platform lebih pro dengan fitur lengkap: auto-deliver file setelah bayar, landing page built-in, analytics, dan email notification ke buyer. Cocok kalau kamu mau keliatan lebih profesional.</p>
+    <ul>
+        <li>Kelebihan: Landing page built-in, auto-delivery, analytics dashboard, terima berbagai payment</li>
+        <li>Cocok buat: Kreator yang udah serius, mau scaling, butuh automation</li>
+    </ul>
+
+    <h3>🏪 Ratakan</h3>
+    <p>Marketplace produk digital Indonesia. Kelebihannya: ada traffic organik dari marketplace itu sendiri. Orang dateng ke Ratakan buat CARI produk digital — jadi kamu dapet exposure gratis tanpa harus promosi sendiri.</p>
+    <ul>
+        <li>Kelebihan: Traffic organik, marketplace established, affiliate system built-in</li>
+        <li>Cocok buat: Yang mau passive exposure, PLR seller, gak mau ribet promosi</li>
+    </ul>
+
+    <h3>🌍 Gumroad</h3>
+    <p>Platform international — bisa terima pembayaran dalam USD. Kalau produk kamu bisa di-target ke market global (misalnya template atau prompt pack), ini pilihan tepat. UI clean, setup gampang.</p>
+    <ul>
+        <li>Kelebihan: Market global, terima USD/EUR, brand trust tinggi, analytics lengkap</li>
+        <li>Cocok buat: Produk yang bisa dijual international, yang mau earn in dollar</li>
+    </ul>
+
+    <h3>☕ Saweria</h3>
+    <p>Awalnya platform donasi/tip, sekarang bisa juga buat jualan file. Simple banget, tapi fiturnya masih basic. Cocok buat test market atau produk murah (under 20rb).</p>
+
+    <h3>🎨 KaryaKarsa</h3>
+    <p>Platform kreator Indonesia yang support membership & jualan karya digital. Cocok buat yang mau model subscription atau jualan konten eksklusif.</p>
+
+    <div class="tip-box">
+        <strong>🎯 Pro Tip:</strong> Mulai dari 1 platform aja — yang paling gampang buat kamu setup. Jangan paralysis analysis mikirin "platform mana yang terbaik". SEMUA platform works, yang bikin laku itu PROMOSI kamu, bukan platformnya. Setelah profitable, baru expand ke platform lain.
+    </div>
+    <span class="page-num">6</span>
+</div>
+
+
+<!-- BAB 5: STRATEGI PRICING & BUNDLING -->
+<div class="page section">
+    <h2>Bab 5: Strategi Pricing & Bundling</h2>
+    <p>Harga bukan cuma angka — ini psikologi. Harga yang tepat bisa bikin orang langsung checkout tanpa mikir lama. Harga yang salah bisa bikin produk bagus jadi gak laku.</p>
+
+    <h3>🧠 Psikologi Harga</h3>
+    <ul>
+        <li><strong>Angka 9 magic:</strong> 29rb terasa JAUH lebih murah dari 30rb. 49rb lebih menarik dari 50rb. Selalu gunakan angka berakhir 9.</li>
+        <li><strong>Anchoring effect:</strong> Tunjukin "harga normal" yang lebih tinggi, lalu coret. Orang merasa dapet deal. "~~59rb~~ 29rb" = instant perceived value.</li>
+        <li><strong>Harga terlalu murah = gak dipercaya:</strong> Kalau jual ebook 5rb, orang mikir "ini pasti isinya sampah". Jangan undervalue produk kamu.</li>
+        <li><strong>Price perception vs value:</strong> Yang penting bukan harganya berapa, tapi VALUE yang mereka dapet TERASA lebih gede dari harganya.</li>
+    </ul>
+
+    <h3>💰 Harga Ideal per Jenis Produk</h3>
+    <ul>
+        <li><strong>Ebook panduan:</strong> 15.000 - 39.000 (tergantung kedalaman konten & niche)</li>
+        <li><strong>Template pack (Canva/Notion):</strong> 25.000 - 49.000 (makin banyak template, makin mahal)</li>
+        <li><strong>Tools/webapp premium:</strong> 29.000 - 59.000 (kalau solve masalah spesifik, bisa lebih)</li>
+        <li><strong>Bundle (2-3 produk):</strong> 45.000 - 79.000 (diskon 20-30% dari harga satuan)</li>
+        <li><strong>PLR license (hak jual ulang):</strong> +10.000 - 20.000 dari harga normal (premium karena bisa dijual lagi)</li>
+        <li><strong>Kursus mini video:</strong> 39.000 - 99.000 (video = perceived value lebih tinggi)</li>
+    </ul>
+
+    <h3>📦 Strategi Bundling</h3>
+    <p>Bundling itu cara paling gampang buat naikin average order value. Gabungin 2-3 produk yang saling melengkapi, kasih diskon 20-30% dari total harga satuan. Contoh: Ebook + Template + Bonus checklist = Bundle Pro.</p>
+
+    <h3>📈 Strategi Naikin Harga</h3>
+    <ul>
+        <li><strong>Launch price → Regular price:</strong> Mulai murah buat dapet social proof & review, lalu naikin pelan-pelan.</li>
+        <li><strong>Setiap update = harga naik:</strong> Tambahin konten baru? Naikin harga 5-10rb. Early buyers dapet harga terbaik.</li>
+        <li><strong>Tier pricing:</strong> Basic (ebook only) 29rb → Pro (ebook + template) 49rb → Bundle (all-in) 69rb. Kasih 3 opsi, kebanyakan orang pilih tengah.</li>
+        <li><strong>Limited time offer:</strong> "Harga ini cuma sampe Jumat" — urgency bikin orang action sekarang, bukan "nanti aja".</li>
+    </ul>
+
+    <div class="tip-box">
+        <strong>💰 Pro Tip:</strong> Jangan takut naikin harga. Kalau produk kamu bagus dan ada testimoni positif, orang AKAN bayar. Start murah buat dapet momentum, tapi jangan stuck di harga murah selamanya. Setiap 50-100 buyer, naikin harga 5-10rb.
+    </div>
+    <span class="page-num">7</span>
+</div>
+
+
+<!-- BAB 6: CARA PROMOSI & JUALAN -->
+<div class="page section">
+    <h2>Bab 6: Cara Promosi & Jualan</h2>
+    <p>Produk terbaik di dunia TETEP gak laku kalau gak ada yang tau. Promosi itu 70% dari keberhasilan jualan produk digital. Here's the playbook yang udah proven works:</p>
+
+    <h3>🧵 Strategi Threads (Main Channel)</h3>
+    <p>Threads sekarang jadi goldmine buat jualan produk digital. Audience-nya engaged, suka baca, dan gak alergi sama jualan — asal kamu kasih value dulu.</p>
+    <ul>
+        <li><strong>Bikin utas review/showcase produk:</strong> Tunjukin isi produk kamu secara transparan. Buka 2-3 halaman, kasih preview value-nya. Orang yang ngerasa "ini bagus" bakal pengen full version.</li>
+        <li><strong>Hook yang bikin penasaran:</strong> "Gue baru bikin sesuatu yang bisa bantu kamu [solve X]..." — bikin orang mau baca terus.</li>
+        <li><strong>Kasih value gratis → CTA:</strong> Share 3-5 tips gratis dari ebook kamu, lalu bilang "Ini cuma 10% dari isinya. Full version ada di link bio."</li>
+        <li><strong>Konsisten posting 2-3x sehari:</strong> Mix antara value content, soft selling, dan hard CTA. Rasio ideal: 70% value, 20% soft sell, 10% hard sell.</li>
+        <li><strong>Engage di komentar orang lain:</strong> Jangan cuma posting doang. Comment yang insightful di post orang lain = orang penasaran → cek profil kamu → liat produk kamu.</li>
+        <li><strong>Bikin social proof:</strong> Screenshot testimoni buyer, share milestone ("udah 100+ orang yang download!"), kasih angka nyata.</li>
+    </ul>
+
+    <h3>🎬 TikTok & Reels</h3>
+    <ul>
+        <li>Video demo produk: screen record isi ebook/template, kasih narasi singkat</li>
+        <li>Before-after: tunjukin masalah → solusi pake produk kamu</li>
+        <li>Tutorial singkat: kasih 1 tip dari produk, bikin orang pengen more</li>
+        <li>Trending sound + product showcase = algorithm boost</li>
+    </ul>
+
+    <h3>📸 Instagram</h3>
+    <ul>
+        <li>Carousel preview isi produk (5-7 slide, yang terakhir = CTA)</li>
+        <li>Story countdown sebelum launch atau promo</li>
+        <li>Highlight khusus "PRODUK" buat yang baru visit profil kamu</li>
+        <li>Collab post dengan kreator lain buat expand reach</li>
+    </ul>
+
+    <h3>💬 WhatsApp & Telegram</h3>
+    <ul>
+        <li>Broadcast ke kontak yang relevan (jangan spam random orang)</li>
+        <li>Status update 3-5x sehari pas launch atau promo</li>
+        <li>Channel Telegram deals: posting update produk + exclusive discount buat subscriber</li>
+    </ul>
+
+    <h3>🔥 Strategi "Komen MAU"</h3>
+    <ol>
+        <li><strong>Post hook di Threads:</strong> "Gue punya [deskripsi produk]. Yang mau, komen MAU nanti gue DM."</li>
+        <li><strong>Yang komen "MAU" → DM satu-satu:</strong> Personal touch ini conversion rate-nya GILA. Orang ngerasa diperhatiin.</li>
+        <li><strong>Template DM:</strong> Sapa nama → jelaskan value singkat → drop harga (dengan anchoring) → kasih link bayar.</li>
+        <li><strong>Follow up kalau belum bales:</strong> Tunggu 12-24 jam, kirim follow up ringan. Jangan pushy, tapi remind.</li>
+    </ol>
+
+    <h3>✍️ Copywriting Jualan yang Works</h3>
+    <ul>
+        <li><strong>Formula PAS (Problem-Agitate-Solve):</strong> Sebut masalah → bikin mereka ngerasa "iya bener, gue juga gitu" → tunjukin solusinya (produk kamu).</li>
+        <li><strong>Social proof:</strong> "Udah 200+ orang yang download", screenshot testimoni, rating positif.</li>
+        <li><strong>Urgency:</strong> "Harga segini cuma sampe besok", "Tinggal 10 slot lagi", "Setelah ini naik jadi 49rb".</li>
+        <li><strong>Bonus stacking:</strong> "Beli hari ini dapet BONUS: [list bonus]". Makin banyak bonus, makin gak tahan.</li>
+    </ul>
+
+    <div class="tip-box">
+        <strong>🎯 Pro Tip:</strong> Jangan jualan 24/7. Orang bakal unfollow kalau tiap post isinya CTA. Build trust dulu dengan kasih value consistently, baru sesekali hard sell. Rasio 80:20 (value vs selling) itu sweet spot.
+    </div>
+    <span class="page-num">8</span>
+</div>
+
+
+<!-- BAB 7: TEMPLATE CHAT & CLOSING -->
+<div class="page section">
+    <h2>Bab 7: Template Chat & Closing</h2>
+    <p>Ini bagian yang paling "daging" — template chat yang tinggal copy-paste buat closing penjualan. Sesuaiin dikit dengan gaya bahasa kamu, tapi struktur ini udah proven convert.</p>
+
+    <h3>💬 Template Bales Komen "MAU" (3 Variasi)</h3>
+    <p><strong>Variasi 1 (Casual):</strong></p>
+    <p>"Haii kak! Makasih udah tertarik 🙏 Jadi [nama produk] ini isinya [benefit utama]. Lengkapnya aku jelasin ya..."</p>
+    <p><strong>Variasi 2 (Straight to point):</strong></p>
+    <p>"Hai kak! Nih detailnya: [nama produk] — [1 kalimat deskripsi]. Harga cuma [harga]. Mau langsung aku kasih linknya?"</p>
+    <p><strong>Variasi 3 (Value-first):</strong></p>
+    <p>"Halo kak! Btw sebelum aku kasih link, boleh tau kak lagi struggle di bagian mana? Biar aku bisa jelasin bagian mana dari [produk] yang paling bantu."</p>
+
+    <h3>📩 Template DM Pertama (Warm Approach)</h3>
+    <p>"Hai [nama]! Thanks udah komen MAU di post aku tadi 😊 Jadi [nama produk] ini basically [jelaskan value dalam 1-2 kalimat]. Yang udah pake bilang [testimoni singkat]. Harga normalnya [harga coret] tapi karena kamu dari Threads, aku kasih [harga promo]. Mau aku send linknya?"</p>
+
+    <h3>📋 Template Jelasin Produk (Benefit-Focused)</h3>
+    <p>"Jadi di dalem [produk] ini kamu bakal dapet: ✅ [Benefit 1] ✅ [Benefit 2] ✅ [Benefit 3] + BONUS: [bonus]. Intinya kak, ini bakal bantu kamu [hasil akhir yang diinginkan] tanpa harus [pain point yang dihindari]."</p>
+
+    <h3>💸 Template Drop Harga (dengan Anchoring)</h3>
+    <p>"Untuk harganya, kalau beli satuan masing-masing: [Produk A] 35rb + [Produk B] 29rb = total 64rb. Tapi karena kamu langsung dari post aku, aku kasih BUNDLE price cuma 39rb aja. Hemat hampir 40% 🔥 Linknya mau aku kirim sekarang?"</p>
+
+    <h3>🔄 Template Follow Up (Kalau Belum Bales)</h3>
+    <p>"Hai kak! Just checking aja, masih tertarik sama [produk] nya? 😊 No pressure ya, tapi mau info aja harga segini cuma berlaku sampe [deadline]. After that balik ke harga normal. Let me know kalau ada pertanyaan!"</p>
+
+    <h3>✅ Template After Payment</h3>
+    <p>"YEAY! Thank you kak udah order 🎉 Ini linknya: [link download]. Kalau ada yang bingung cara pakainya, feel free tanya aku ya. Oh iya kak, kalau udah sempet dipake, boleh banget kasih testimoni singkat? Bisa screenshot chat ini aja. Thank you so much! 🙏"</p>
+
+    <h3>🛡️ Template Handle Keberatan</h3>
+    <ul>
+        <li><strong>"Mahal" →</strong> "Aku paham kak. Tapi coba bandingin: kalau kamu harus [solve masalah sendiri], butuh waktu berapa lama? Ini udah tinggal pake, hemat waktu berjam-jam. Dan hasilnya bisa kamu pake selamanya. Worth it banget sih menurutku 😊"</li>
+        <li><strong>"Nanti aja" →</strong> "Oke kak no problem! Cuma mau info aja, harga [harga promo] ini cuma berlaku hari ini. Besok udah balik ke [harga normal]. Jadi kalau memang tertarik, hari ini timing terbaik 🙏"</li>
+        <li><strong>"Beneran works?" →</strong> "100% kak! Nih beberapa testimoni dari yang udah pake: [kirim screenshot]. Dan kalau ternyata gak sesuai, bisa hubungi aku langsung. Aku jamin kamu bakal puas 💯"</li>
+    </ul>
+
+    <div class="tip-box">
+        <strong>💡 Pro Tip:</strong> Jangan copy-paste template 100% tanpa personalisasi. Tambahin nama orang, refer ke komen mereka, atau sesuaiin konteks. Personal touch = conversion naik 2-3x lipat. Orang beli dari ORANG, bukan dari robot.
+    </div>
+    <span class="page-num">9</span>
+</div>
+
+
+<!-- BAB 8: SCALE UP & PASSIVE INCOME -->
+<div class="page section">
+    <h2>Bab 8: Scale Up & Passive Income</h2>
+    <p>Udah punya 1 produk yang laku? BAGUS. Sekarang saatnya scale. Dari 1 produk jadi 5, dari manual jadi autopilot, dari ratusan ribu jadi jutaan per bulan.</p>
+
+    <h3>📈 Dari 1 Produk Jadi 5 Produk</h3>
+    <ul>
+        <li><strong>Product ladder:</strong> Bikin produk di berbagai harga. Entry level (15rb) → Mid (35rb) → Premium (65rb). Capture buyer di semua budget.</li>
+        <li><strong>Spin-off:</strong> Ebook laku? Bikin template companion-nya. Template laku? Bikin video tutorial-nya. Satu topik bisa jadi 3-5 produk.</li>
+        <li><strong>Niche expansion:</strong> Jago di niche A? Coba niche B yang masih related. Misal: dari "jualan di Threads" expand ke "personal branding di sosmed".</li>
+        <li><strong>Update & re-launch:</strong> Produk lama di-update, rebrand, launch ulang ke audience baru. Isinya udah proven, tinggal refresh.</li>
+    </ul>
+
+    <h3>🔄 Bikin Product Ecosystem</h3>
+    <ul>
+        <li><strong>Upsell:</strong> Buyer beli ebook A → offer "Mau upgrade ke Bundle + Bonus? Cuma tambah 20rb"</li>
+        <li><strong>Cross-sell:</strong> "Yang beli [Produk A] biasanya juga suka [Produk B]. Mau sekalian?"</li>
+        <li><strong>Downsell:</strong> Gak jadi beli yang mahal? Offer produk lebih murah. "Gak masalah! Kalau budget terbatas, cobain [produk mini] dulu aja."</li>
+    </ul>
+
+    <h3>🤖 Automate Everything</h3>
+    <ul>
+        <li><strong>Auto-deliver:</strong> Pakai Mayar.id atau Lynk.id — buyer bayar → otomatis dapet file. Zero manual work.</li>
+        <li><strong>Scheduled posting:</strong> Batch bikin konten seminggu, schedule pakai tools. Konsisten posting walau kamu lagi liburan.</li>
+        <li><strong>Template response:</strong> Siapkan template bales DM/chat. Tinggal customize nama, kirim. 30 detik per orang.</li>
+        <li><strong>Email sequence:</strong> Setup welcome email → value email → offer email. Automated nurturing.</li>
+    </ul>
+
+    <h3>🤝 Collaborate & Leverage</h3>
+    <ul>
+        <li><strong>Affiliate program sendiri:</strong> Kasih orang lain komisi 30-50% kalau mereka berhasil jualin produk kamu. Mereka promote, kamu tinggal fulfill.</li>
+        <li><strong>Collab dengan kreator:</strong> Bikin produk bareng kreator lain. Audience gabungan = exposure 2x lipat.</li>
+        <li><strong>Guest content:</strong> Nulis thread/konten di akun orang lain, include CTA ke produk kamu. Win-win.</li>
+    </ul>
+
+    <h3>♻️ Repurpose Content</h3>
+    <p>1 ebook bisa jadi: 10 thread Threads + 5 carousel IG + 3 video TikTok + 7 Story + newsletter mingguan. SATU source material, banyak format output. Kerja 1x, promosi berkali-kali.</p>
+
+    <h3>🎯 Target Income Realistis</h3>
+    <ul>
+        <li><strong>Bulan 1-2:</strong> 100rb - 500rb (fase belajar & build audience)</li>
+        <li><strong>Bulan 3-4:</strong> 500rb - 2 juta (udah punya social proof, mulai konsisten)</li>
+        <li><strong>Bulan 5-6:</strong> 2 juta - 5 juta (multiple produk, audience growing)</li>
+        <li><strong>Bulan 6+:</strong> 5 juta - 10 juta+ (ecosystem jalan, semi-passive)</li>
+    </ul>
+    <p><strong>Compound effect:</strong> Makin banyak produk = makin banyak pintu masuk cuan. Setiap produk baru itu kayak nambah "sales rep" yang kerja 24/7 tanpa digaji.</p>
+
+    <div class="tip-box">
+        <strong>🚀 Pro Tip:</strong> Passive income itu gak beneran "passive" di awal. Kamu butuh effort gede di 3-6 bulan pertama buat build foundation. Tapi setelah itu, income bakal terus masuk dengan effort yang makin minimal. Trust the process.
+    </div>
+    <span class="page-num">10</span>
+</div>
+
+
+<!-- BONUS: LISENSI PLR -->
+<div class="page section">
+    <h2>🔓 Bonus: Lisensi PLR (Private Label Rights)</h2>
+    <p>Ini yang bikin ebook ini SPESIAL. Kamu gak cuma dapet ilmunya — kamu juga dapet HAK JUAL ULANG. Artinya kamu bisa jual ebook ini ke orang lain dan dapet 100% profitnya. Ini penjelasan lengkapnya:</p>
+
+    <h3>📌 Apa Itu PLR & Cara Kerjanya</h3>
+    <p>PLR (Private Label Rights) artinya kamu sebagai pembeli mendapat lisensi untuk menjual ulang produk ini seolah-olah itu produk kamu sendiri. Kamu boleh rebrand, edit isi, ganti nama, dan jual dengan harga yang kamu tentukan sendiri. Ini cara tercepat buat punya produk digital tanpa harus bikin dari nol.</p>
+
+    <h3>✅ Yang BOLEH Dilakukan Pembeli</h3>
+    <ul>
+        <li><strong>Jual ulang dengan harga sendiri:</strong> Mau jual 19rb, 39rb, atau 99rb — terserah kamu. Profit 100% masuk ke kamu.</li>
+        <li><strong>Ganti nama & brand:</strong> Ganti judul, ganti cover, tambahin nama kamu sebagai author. Bikin seolah itu produk original kamu.</li>
+        <li><strong>Edit isi sesuai kebutuhan:</strong> Tambahin konten, kurangin bagian yang gak relevan, sesuaiin sama audience kamu. Personalize sesuka hati.</li>
+        <li><strong>Bundling dengan produk lain:</strong> Gabungin ebook ini dengan produk digital lain yang kamu punya. Jual sebagai bundle premium.</li>
+        <li><strong>Gunakan sebagai bonus:</strong> Kasih ebook ini sebagai bonus pembelian produk utama kamu. Nambah perceived value.</li>
+        <li><strong>Konversi ke format lain:</strong> Jadiin video course, carousel, thread series, atau format apapun yang kamu mau.</li>
+    </ul>
+
+    <h3>❌ Yang TIDAK BOLEH Dilakukan</h3>
+    <ul>
+        <li><strong>Claim sebagai karya 100% original tanpa modifikasi:</strong> Minimal edit cover & tambahin personal touch. Jangan jual persis sama tanpa perubahan apapun.</li>
+        <li><strong>Kasih gratis ke publik:</strong> Ebook ini harus tetap DIJUAL, bukan dibagiin gratis. Value-nya harus dijaga.</li>
+        <li><strong>Jual PLR rights ke orang lain:</strong> Kamu dapet RESELL rights (hak jual produknya), bukan PLR rights (hak jual lisensinya). Buyer kamu TIDAK boleh jual ulang lagi.</li>
+        <li><strong>Upload ke platform free download:</strong> Jangan taruh di website/forum yang bisa diakses gratis oleh siapapun.</li>
+    </ul>
+
+    <h3>📄 Template Lisensi (Copy & Pakai)</h3>
+    <div class="tip-box">
+        <strong>LISENSI PLR — SYARAT & KETENTUAN</strong><br><br>
+        Dengan membeli produk ini, Anda mendapatkan:<br>
+        ✅ Hak jual ulang (resell) dengan harga yang Anda tentukan<br>
+        ✅ Hak edit, modifikasi, dan rebrand<br>
+        ✅ Hak menggunakan sebagai bonus/lead magnet (tetap berbayar)<br>
+        ✅ Hak bundling dengan produk lain<br><br>
+        Yang TIDAK diperbolehkan:<br>
+        ❌ Memberikan secara gratis ke publik<br>
+        ❌ Menjual/memberikan PLR rights ke buyer Anda<br>
+        ❌ Meng-upload ke platform free download<br><br>
+        Pelanggaran lisensi dapat mengakibatkan pencabutan hak akses.<br>
+        © 2026 @yanzy17 — All Rights Reserved.
+    </div>
+    <span class="page-num">11</span>
+</div>
+
+
+<!-- PENUTUP -->
+<div class="page closing">
+    <h2>🎉 Penutup</h2>
+    <p>Kalau kamu udah baca sampe sini, congrats — kamu udah punya semua pengetahuan yang dibutuhkan buat mulai bikin dan jualan produk digital. Dari ide, pembuatan, pricing, promosi, sampe closing. Semuanya udah ada di tangan kamu.</p>
+    <p style="margin-top: 16px;">Sekarang tinggal satu hal yang kurang: <strong style="color: var(--accent-light);">ACTION.</strong></p>
+    <p style="margin-top: 16px;">Gak perlu sempurna. Gak perlu nunggu "siap". Mulai dari 1 produk kecil — bisa ebook 10 halaman, template 5 desain, atau prompt pack 20 prompt. Yang penting: LAUNCH.</p>
+    <p style="margin-top: 16px;"><strong style="color: var(--gold);">Key Takeaways:</strong></p>
+    <p>✅ Produk digital = bikin 1x, jual berkali-kali, margin 100%</p>
+    <p>✅ Tools gratis udah cukup buat mulai (Canva, ChatGPT, Google Docs)</p>
+    <p>✅ Threads & sosmed = channel jualan gratis yang powerful</p>
+    <p>✅ Done > Perfect — launch dulu, improve later</p>
+    <p>✅ PLR = cara tercepat punya produk tanpa bikin dari 0</p>
+    <p style="margin-top: 24px;">1 produk hari ini = 1 sumber income baru besok. Compound effect akan kerja buat kamu. Start NOW. 🚀</p>
+    <p class="signature">@yanzy17</p>
+    <p class="footer-note">Cara Bikin & Jual Produk Digital · PLR License · by @yanzy17</p>
+    <span class="page-num">12</span>
+</div>
+
+<!-- FLOATING DOWNLOAD BUTTON -->
+<button class="download-btn" onclick="window.print()">📥 Download PDF</button>
+
+</body>
+</html>
