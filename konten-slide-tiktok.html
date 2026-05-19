@@ -3,105 +3,274 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Konten Slide TikTok — Tinggal Screenshot & Upload</title>
+<title>Konten Slide TikTok - @tipscuan95</title>
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
-body { background: #0a0a12; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; color: #fff; padding: 20px; min-height: 100vh; }
-.page-title { text-align: center; font-size: 1.5rem; font-weight: 800; margin: 20px 0 8px; color: #fff; }
-.page-sub { text-align: center; font-size: 0.9rem; color: #a78bfa; margin-bottom: 30px; }
-.set-label { font-size: 1.1rem; font-weight: 700; color: #a78bfa; margin: 40px 0 16px; padding-left: 4px; border-left: 4px solid #a78bfa; padding-left: 12px; }
-.slides-row { display: flex; gap: 16px; overflow-x: auto; padding: 8px 0 20px; scroll-snap-type: x mandatory; }
-.slides-row::-webkit-scrollbar { height: 6px; }
-.slides-row::-webkit-scrollbar-thumb { background: #a78bfa; border-radius: 3px; }
-.slide { min-width: 360px; width: 360px; height: 640px; background: #0f0f1a; border-radius: 16px; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 36px 28px; text-align: center; scroll-snap-align: start; position: relative; border: 1px solid rgba(167,139,250,0.1); }
-.slide::before { content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 60px; height: 3px; background: #a78bfa; border-radius: 0 0 4px 4px; }
-.slide-text { font-size: 1.65rem; font-weight: 800; line-height: 1.4; color: #ffffff; }
-.slide-text .hl { color: #a78bfa; }
-.slide-footer { position: absolute; bottom: 24px; font-size: 0.8rem; color: rgba(167,139,250,0.6); font-weight: 600; }
-.slide-num { position: absolute; top: 16px; right: 20px; font-size: 0.7rem; color: rgba(255,255,255,0.3); font-weight: 600; }
-@media (max-width: 480px) {
-  body { padding: 12px; }
-  .slide { min-width: 300px; width: 300px; height: 533px; padding: 28px 20px; }
-  .slide-text { font-size: 1.35rem; }
-  .slides-row { gap: 12px; }
+
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background: #0a0a14;
+  color: #f0f0f0;
+  padding: 20px;
+  line-height: 1.6;
+}
+
+h1 {
+  text-align: center;
+  font-size: 1.7rem;
+  margin-bottom: 8px;
+  letter-spacing: -0.5px;
+  font-weight: 800;
+  background: linear-gradient(135deg, #a78bfa, #ec4899);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.subtitle {
+  text-align: center;
+  color: #777;
+  margin-bottom: 35px;
+  font-size: 0.85rem;
+  letter-spacing: 0.5px;
+}
+
+.set-title {
+  font-size: 1.15rem;
+  letter-spacing: -0.5px;
+  font-weight: 700;
+  margin: 35px 0 15px;
+  padding: 10px 18px;
+  border-radius: 14px;
+  display: inline-block;
+}
+
+.slides-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 14px;
+  margin-bottom: 45px;
+}
+
+.slide {
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px;
+  padding: 36px 24px;
+  min-height: 180px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.slide:hover {
+  transform: translateY(-3px);
+}
+
+.slide-bg-emoji {
+  position: absolute;
+  font-size: 8rem;
+  opacity: 0.08;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 0;
+  user-select: none;
+}
+
+.slide-num {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(6px);
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: rgba(255,255,255,0.6);
+  z-index: 2;
+}
+
+.slide-text {
+  position: relative;
+  z-index: 1;
+  font-size: 1.05rem;
+  font-weight: 500;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.6);
+  max-width: 90%;
+}
+
+/* SET 1: Blue-Purple gradient */
+.set1 .set-title {
+  background: linear-gradient(135deg, rgba(99,102,241,0.2), rgba(168,85,247,0.2));
+  color: #a78bfa;
+}
+.set1 .slide {
+  background: linear-gradient(160deg, rgba(99,102,241,0.08) 0%, #0f0f1a 100%);
+  border: 1px solid rgba(99,102,241,0.15);
+  box-shadow: 0 0 20px rgba(99,102,241,0.08), inset 0 1px 0 rgba(255,255,255,0.04);
+}
+.set1 .hl { color: #a78bfa; font-weight: 700; }
+
+/* SET 2: Emerald green */
+.set2 .set-title {
+  background: rgba(16,185,129,0.15);
+  color: #10b981;
+}
+.set2 .slide {
+  background: linear-gradient(160deg, rgba(16,185,129,0.08) 0%, #0f0f1a 100%);
+  border: 1px solid rgba(16,185,129,0.15);
+  box-shadow: 0 0 20px rgba(16,185,129,0.08), inset 0 1px 0 rgba(255,255,255,0.04);
+}
+.set2 .hl { color: #10b981; font-weight: 700; }
+
+/* SET 3: Gold/Amber */
+.set3 .set-title {
+  background: rgba(245,158,11,0.15);
+  color: #f59e0b;
+}
+.set3 .slide {
+  background: linear-gradient(160deg, rgba(245,158,11,0.08) 0%, #0f0f1a 100%);
+  border: 1px solid rgba(245,158,11,0.15);
+  box-shadow: 0 0 20px rgba(245,158,11,0.08), inset 0 1px 0 rgba(255,255,255,0.04);
+}
+.set3 .hl { color: #f59e0b; font-weight: 700; }
+
+/* SET 4: Cyan/Teal */
+.set4 .set-title {
+  background: rgba(6,182,212,0.15);
+  color: #06b6d4;
+}
+.set4 .slide {
+  background: linear-gradient(160deg, rgba(6,182,212,0.08) 0%, #0f0f1a 100%);
+  border: 1px solid rgba(6,182,212,0.15);
+  box-shadow: 0 0 20px rgba(6,182,212,0.08), inset 0 1px 0 rgba(255,255,255,0.04);
+}
+.set4 .hl { color: #06b6d4; font-weight: 700; }
+
+/* SET 5: Warm Orange */
+.set5 .set-title {
+  background: rgba(249,115,22,0.15);
+  color: #f97316;
+}
+.set5 .slide {
+  background: linear-gradient(160deg, rgba(249,115,22,0.08) 0%, #0f0f1a 100%);
+  border: 1px solid rgba(249,115,22,0.15);
+  box-shadow: 0 0 20px rgba(249,115,22,0.08), inset 0 1px 0 rgba(255,255,255,0.04);
+}
+.set5 .hl { color: #f97316; font-weight: 700; }
+
+/* SET 6: Purple-Pink gradient */
+.set6 .set-title {
+  background: linear-gradient(135deg, rgba(168,85,247,0.2), rgba(236,72,153,0.2));
+  color: #d946ef;
+}
+.set6 .slide {
+  background: linear-gradient(160deg, rgba(168,85,247,0.08) 0%, rgba(236,72,153,0.05) 50%, #0f0f1a 100%);
+  border: 1px solid rgba(168,85,247,0.15);
+  box-shadow: 0 0 20px rgba(168,85,247,0.08), inset 0 1px 0 rgba(255,255,255,0.04);
+}
+.set6 .hl { color: #d946ef; font-weight: 700; }
+
+@media (max-width: 640px) {
+  .slides-grid { grid-template-columns: 1fr; }
+  .slide { min-height: 150px; padding: 28px 20px; }
+  .slide-bg-emoji { font-size: 6rem; }
+  h1 { font-size: 1.4rem; }
 }
 </style>
 </head>
 <body>
 
-<h1 class="page-title">Konten Slide TikTok</h1>
-<p class="page-sub">Screenshot tiap slide → upload ke TikTok sebagai foto carousel</p>
+<h1>Konten Slide TikTok / Reels</h1>
+<p class="subtitle">@tipscuan95 · 6 Set × 7 Slide · siap posting</p>
 
-<!-- SET 1 -->
-<div class="set-label">SET 1 — Kenapa Kebanyakan Orang Gak Pernah Kaya</div>
-<div class="slides-row">
-<div class="slide"><span class="slide-num">1/7</span><p class="slide-text">Kenapa kebanyakan orang<br>gak pernah bisa <span class="hl">kaya?</span></p><span class="slide-footer">@yanzy17</span></div>
-<div class="slide"><span class="slide-num">2/7</span><p class="slide-text">Bukan karena bodoh.<br>Bukan karena<br>gak kerja keras.</p><span class="slide-footer">@yanzy17</span></div>
-<div class="slide"><span class="slide-num">3/7</span><p class="slide-text">Tapi karena mereka cuma punya 1 sumber income:<br><span class="hl">GAJI.</span></p><span class="slide-footer">@yanzy17</span></div>
-<div class="slide"><span class="slide-num">4/7</span><p class="slide-text">Orang kaya punya <span class="hl">SISTEM</span> yang kerja buat mereka.<br>Bahkan pas tidur.</p><span class="slide-footer">@yanzy17</span></div>
-<div class="slide"><span class="slide-num">5/7</span><p class="slide-text">Di 2026, sistem itu bisa sesimpel:<br>bikin 1 file → jual berkali-kali → <span class="hl">profit 100%</span></p><span class="slide-footer">@yanzy17</span></div>
-<div class="slide"><span class="slide-num">6/7</span><p class="slide-text">Ini bukan mimpi.<br>Ini <span class="hl">realita.</span><br>Dan siapapun bisa mulai.</p><span class="slide-footer">@yanzy17</span></div>
-<div class="slide"><span class="slide-num">7/7</span><p class="slide-text">Follow <span class="hl">@yanzy17</span><br>buat insight lainnya 🔥</p><span class="slide-footer">@yanzy17</span></div>
+<!-- ========== SET 1 ========== -->
+<div class="set1">
+  <div class="set-title">SET 1 — Kenapa Kebanyakan Orang Gak Pernah Kaya</div>
+  <div class="slides-grid">
+    <div class="slide"><span class="slide-bg-emoji">🤔</span><span class="slide-num">1/7</span><p class="slide-text">Kenapa kebanyakan orang <span class="hl">gak pernah bisa kaya?</span></p></div>
+    <div class="slide"><span class="slide-bg-emoji">❌</span><span class="slide-num">2/7</span><p class="slide-text">Bukan karena bodoh. Bukan karena <span class="hl">gak kerja keras.</span></p></div>
+    <div class="slide"><span class="slide-bg-emoji">💼</span><span class="slide-num">3/7</span><p class="slide-text">Tapi karena mereka cuma punya <span class="hl">1 sumber income: GAJI.</span></p></div>
+    <div class="slide"><span class="slide-bg-emoji">⚙️</span><span class="slide-num">4/7</span><p class="slide-text">Orang kaya punya <span class="hl">SISTEM</span> yang kerja buat mereka. Bahkan pas tidur.</p></div>
+    <div class="slide"><span class="slide-bg-emoji">📱</span><span class="slide-num">5/7</span><p class="slide-text">Di 2026, sistem itu bisa sesimpel: bikin 1 file → jual berkali-kali → <span class="hl">profit 100%.</span></p></div>
+    <div class="slide"><span class="slide-bg-emoji">✅</span><span class="slide-num">6/7</span><p class="slide-text">Ini bukan mimpi. Ini <span class="hl">realita.</span> Dan siapapun bisa mulai.</p></div>
+    <div class="slide"><span class="slide-bg-emoji">🔥</span><span class="slide-num">7/7</span><p class="slide-text">Follow <span class="hl">@tipscuan95</span> buat insight lainnya 🔥</p></div>
+  </div>
 </div>
 
-<!-- SET 2 -->
-<div class="set-label">SET 2 — Uang Bukan Soal Kerja Keras</div>
-<div class="slides-row">
-<div class="slide"><span class="slide-num">1/7</span><p class="slide-text">Orang yang kerja <span class="hl">12 jam</span> belum tentu lebih kaya dari yang kerja <span class="hl">2 jam.</span></p><span class="slide-footer">@yanzy17</span></div>
-<div class="slide"><span class="slide-num">2/7</span><p class="slide-text">Kenapa?<br>Karena yang 12 jam<br>jual <span class="hl">WAKTU.</span></p><span class="slide-footer">@yanzy17</span></div>
-<div class="slide"><span class="slide-num">3/7</span><p class="slide-text">Yang 2 jam<br>jual <span class="hl">SISTEM.</span></p><span class="slide-footer">@yanzy17</span></div>
-<div class="slide"><span class="slide-num">4/7</span><p class="slide-text">Contoh sistem:<br><span class="hl">produk digital.</span><br>Bikin 1x, jual tiap hari tanpa sentuh lagi.</p><span class="slide-footer">@yanzy17</span></div>
-<div class="slide"><span class="slide-num">5/7</span><p class="slide-text">Gak perlu modal.<br>Gak perlu stok.<br>Gak perlu karyawan.</p><span class="slide-footer">@yanzy17</span></div>
-<div class="slide"><span class="slide-num">6/7</span><p class="slide-text">Yang kamu butuh:<br><span class="hl">pengetahuan + HP<br>+ konsistensi.</span></p><span class="slide-footer">@yanzy17</span></div>
-<div class="slide"><span class="slide-num">7/7</span><p class="slide-text">Save ini.<br>Kamu bakal butuh nanti. 📌</p><span class="slide-footer">@yanzy17</span></div>
+<!-- ========== SET 2 ========== -->
+<div class="set2">
+  <div class="set-title">SET 2 — Uang Bukan Soal Kerja Keras</div>
+  <div class="slides-grid">
+    <div class="slide"><span class="slide-bg-emoji">⏰</span><span class="slide-num">1/7</span><p class="slide-text">Orang yang kerja 12 jam belum tentu <span class="hl">lebih kaya</span> dari yang kerja 2 jam.</p></div>
+    <div class="slide"><span class="slide-bg-emoji">⌛</span><span class="slide-num">2/7</span><p class="slide-text">Kenapa? Karena yang 12 jam jual <span class="hl">WAKTU.</span></p></div>
+    <div class="slide"><span class="slide-bg-emoji">🎯</span><span class="slide-num">3/7</span><p class="slide-text">Yang 2 jam jual <span class="hl">SISTEM.</span></p></div>
+    <div class="slide"><span class="slide-bg-emoji">💻</span><span class="slide-num">4/7</span><p class="slide-text">Contoh sistem: <span class="hl">produk digital.</span> Bikin 1x, jual tiap hari tanpa sentuh lagi.</p></div>
+    <div class="slide"><span class="slide-bg-emoji">🚫</span><span class="slide-num">5/7</span><p class="slide-text">Gak perlu modal. Gak perlu stok. <span class="hl">Gak perlu karyawan.</span></p></div>
+    <div class="slide"><span class="slide-bg-emoji">📲</span><span class="slide-num">6/7</span><p class="slide-text">Yang kamu butuh: <span class="hl">pengetahuan + HP + konsistensi.</span></p></div>
+    <div class="slide"><span class="slide-bg-emoji">📌</span><span class="slide-num">7/7</span><p class="slide-text">Save ini. Kamu bakal butuh nanti. 📌</p></div>
+  </div>
 </div>
 
-<!-- SET 3 -->
-<div class="set-label">SET 3 — Mindset 1% Orang Sukses Online</div>
-<div class="slides-row">
-<div class="slide"><span class="slide-num">1/7</span><p class="slide-text">1% orang sukses online punya <span class="hl">1 kesamaan...</span></p><span class="slide-footer">@yanzy17</span></div>
-<div class="slide"><span class="slide-num">2/7</span><p class="slide-text">Mereka gak jual waktu.<br>Mereka jual <span class="hl">VALUE</span> yang bisa di-<span class="hl">SCALE.</span></p><span class="slide-footer">@yanzy17</span></div>
-<div class="slide"><span class="slide-num">3/7</span><p class="slide-text"><span class="hl">Scale</span> = bikin sekali, jual ke RIBUAN orang tanpa nambah effort.</p><span class="slide-footer">@yanzy17</span></div>
-<div class="slide"><span class="slide-num">4/7</span><p class="slide-text">1 ebook × 500 buyer × Rp 35.000<br>= <span class="hl">Rp 17,5 JUTA</span><br>Dari 1 file.</p><span class="slide-footer">@yanzy17</span></div>
-<div class="slide"><span class="slide-num">5/7</span><p class="slide-text">Ini yang dilakuin kreator di <span class="hl">Threads & TikTok</span> sekarang.</p><span class="slide-footer">@yanzy17</span></div>
-<div class="slide"><span class="slide-num">6/7</span><p class="slide-text">Pertanyaannya bukan<br>'bisa gak?'<br>Tapi <span class="hl">'kapan mulai?'</span></p><span class="slide-footer">@yanzy17</span></div>
-<div class="slide"><span class="slide-num">7/7</span><p class="slide-text">Follow buat breakdown lengkapnya 🧠</p><span class="slide-footer">@yanzy17</span></div>
+<!-- ========== SET 3 ========== -->
+<div class="set3">
+  <div class="set-title">SET 3 — Mindset 1% Orang Sukses Online</div>
+  <div class="slides-grid">
+    <div class="slide"><span class="slide-bg-emoji">🏆</span><span class="slide-num">1/7</span><p class="slide-text">1% orang sukses online punya <span class="hl">1 kesamaan...</span></p></div>
+    <div class="slide"><span class="slide-bg-emoji">📈</span><span class="slide-num">2/7</span><p class="slide-text">Mereka gak jual waktu. Mereka jual <span class="hl">VALUE yang bisa di-SCALE.</span></p></div>
+    <div class="slide"><span class="slide-bg-emoji">🚀</span><span class="slide-num">3/7</span><p class="slide-text">Scale = bikin sekali, jual ke <span class="hl">RIBUAN orang</span> tanpa nambah effort.</p></div>
+    <div class="slide"><span class="slide-bg-emoji">💰</span><span class="slide-num">4/7</span><p class="slide-text">1 ebook × 500 buyer × Rp 35.000 = <span class="hl">Rp 17,5 JUTA.</span> Dari 1 file.</p></div>
+    <div class="slide"><span class="slide-bg-emoji">📱</span><span class="slide-num">5/7</span><p class="slide-text">Ini yang dilakuin kreator di <span class="hl">Threads & TikTok</span> sekarang.</p></div>
+    <div class="slide"><span class="slide-bg-emoji">⏳</span><span class="slide-num">6/7</span><p class="slide-text">Pertanyaannya bukan 'bisa gak?' Tapi <span class="hl">'kapan mulai?'</span></p></div>
+    <div class="slide"><span class="slide-bg-emoji">🧠</span><span class="slide-num">7/7</span><p class="slide-text">Follow <span class="hl">@tipscuan95</span> buat breakdown lengkapnya 🧠</p></div>
+  </div>
 </div>
 
-<!-- SET 4 -->
-<div class="set-label">SET 4 — 3 Level Income Online</div>
-<div class="slides-row">
-<div class="slide"><span class="slide-num">1/7</span><p class="slide-text">3 level cari uang online.<br>Kamu di <span class="hl">level mana?</span></p><span class="slide-footer">@yanzy17</span></div>
-<div class="slide"><span class="slide-num">2/7</span><p class="slide-text"><span class="hl">Level 1:</span> Jual waktu (freelance).<br>Income = jam kerja.<br>Capek = stop.</p><span class="slide-footer">@yanzy17</span></div>
-<div class="slide"><span class="slide-num">3/7</span><p class="slide-text"><span class="hl">Level 2:</span> Jual fisik (dropship).<br>Ada stok, ongkir, retur, pusing.</p><span class="slide-footer">@yanzy17</span></div>
-<div class="slide"><span class="slide-num">4/7</span><p class="slide-text"><span class="hl">Level 3:</span> Jual DIGITAL.<br>Bikin 1x, jual ∞ kali.<br>Margin 100%.</p><span class="slide-footer">@yanzy17</span></div>
-<div class="slide"><span class="slide-num">5/7</span><p class="slide-text">Kebanyakan stuck di Level 1-2 karena <span class="hl">GAK TAU</span> Level 3 ada.</p><span class="slide-footer">@yanzy17</span></div>
-<div class="slide"><span class="slide-num">6/7</span><p class="slide-text">Sekarang kamu tau.<br>Tinggal <span class="hl">action.</span></p><span class="slide-footer">@yanzy17</span></div>
-<div class="slide"><span class="slide-num">7/7</span><p class="slide-text">Share ke temen yang masih stuck 👇</p><span class="slide-footer">@yanzy17</span></div>
+<!-- ========== SET 4 ========== -->
+<div class="set4">
+  <div class="set-title">SET 4 — 3 Level Income Online</div>
+  <div class="slides-grid">
+    <div class="slide"><span class="slide-bg-emoji">🎮</span><span class="slide-num">1/7</span><p class="slide-text">3 level cari uang online. <span class="hl">Kamu di level mana?</span></p></div>
+    <div class="slide"><span class="slide-bg-emoji">1️⃣</span><span class="slide-num">2/7</span><p class="slide-text"><span class="hl">Level 1:</span> Jual waktu (freelance). Income = jam kerja. Capek = stop.</p></div>
+    <div class="slide"><span class="slide-bg-emoji">2️⃣</span><span class="slide-num">3/7</span><p class="slide-text"><span class="hl">Level 2:</span> Jual fisik (dropship). Ada stok, ongkir, retur, pusing.</p></div>
+    <div class="slide"><span class="slide-bg-emoji">3️⃣</span><span class="slide-num">4/7</span><p class="slide-text"><span class="hl">Level 3:</span> Jual DIGITAL. Bikin 1x, jual ∞ kali. Margin 100%.</p></div>
+    <div class="slide"><span class="slide-bg-emoji">🔓</span><span class="slide-num">5/7</span><p class="slide-text">Kebanyakan stuck di Level 1-2 karena <span class="hl">GAK TAU Level 3 ada.</span></p></div>
+    <div class="slide"><span class="slide-bg-emoji">⚡</span><span class="slide-num">6/7</span><p class="slide-text">Sekarang kamu tau. <span class="hl">Tinggal action.</span></p></div>
+    <div class="slide"><span class="slide-bg-emoji">🔄</span><span class="slide-num">7/7</span><p class="slide-text">Share ke temen yang masih stuck 👇</p></div>
+  </div>
 </div>
 
-<!-- SET 5 -->
-<div class="set-label">SET 5 — Kenapa Kamu Belum Mulai</div>
-<div class="slides-row">
-<div class="slide"><span class="slide-num">1/7</span><p class="slide-text">Alasan sebenarnya kamu belum hasilin uang dari <span class="hl">internet...</span></p><span class="slide-footer">@yanzy17</span></div>
-<div class="slide"><span class="slide-num">2/7</span><p class="slide-text">Bukan gak punya modal.<br>Bukan gak punya waktu.</p><span class="slide-footer">@yanzy17</span></div>
-<div class="slide"><span class="slide-num">3/7</span><p class="slide-text">Tapi otakmu bilang:<br><span class="hl">'Gue gak cukup jago.'</span></p><span class="slide-footer">@yanzy17</span></div>
-<div class="slide"><span class="slide-num">4/7</span><p class="slide-text">Padahal yang sekarang cuan jutaan...<br>dulu juga mulai dari <span class="hl">NOL.</span></p><span class="slide-footer">@yanzy17</span></div>
-<div class="slide"><span class="slide-num">5/7</span><p class="slide-text">Yang bedain:<br>mereka <span class="hl">MULAI</span> walau belum sempurna.</p><span class="slide-footer">@yanzy17</span></div>
-<div class="slide"><span class="slide-num">6/7</span><p class="slide-text"><span class="hl">Done > Perfect.</span><br>Produk pertamamu gak harus bagus. Yang penting: ADA.</p><span class="slide-footer">@yanzy17</span></div>
-<div class="slide"><span class="slide-num">7/7</span><p class="slide-text">Mulai. <span class="hl">Sekarang.</span><br>Bukan besok. 🚀</p><span class="slide-footer">@yanzy17</span></div>
+<!-- ========== SET 5 ========== -->
+<div class="set5">
+  <div class="set-title">SET 5 — Kenapa Kamu Belum Mulai</div>
+  <div class="slides-grid">
+    <div class="slide"><span class="slide-bg-emoji">🪞</span><span class="slide-num">1/7</span><p class="slide-text">Alasan sebenarnya kamu <span class="hl">belum hasilin uang</span> dari internet...</p></div>
+    <div class="slide"><span class="slide-bg-emoji">❌</span><span class="slide-num">2/7</span><p class="slide-text">Bukan gak punya modal. <span class="hl">Bukan gak punya waktu.</span></p></div>
+    <div class="slide"><span class="slide-bg-emoji">🧠</span><span class="slide-num">3/7</span><p class="slide-text">Tapi otakmu bilang: <span class="hl">'Gue gak cukup jago.'</span></p></div>
+    <div class="slide"><span class="slide-bg-emoji">🌱</span><span class="slide-num">4/7</span><p class="slide-text">Padahal yang sekarang cuan jutaan... dulu juga <span class="hl">mulai dari NOL.</span></p></div>
+    <div class="slide"><span class="slide-bg-emoji">🏃</span><span class="slide-num">5/7</span><p class="slide-text">Yang bedain: mereka <span class="hl">MULAI walau belum sempurna.</span></p></div>
+    <div class="slide"><span class="slide-bg-emoji">✅</span><span class="slide-num">6/7</span><p class="slide-text"><span class="hl">Done > Perfect.</span> Produk pertamamu gak harus bagus. Yang penting: ADA.</p></div>
+    <div class="slide"><span class="slide-bg-emoji">🚀</span><span class="slide-num">7/7</span><p class="slide-text"><span class="hl">Mulai. Sekarang.</span> Bukan besok. 🚀</p></div>
+  </div>
 </div>
 
-<!-- SET 6 -->
-<div class="set-label">SET 6 — Fakta Brutal Tentang Uang</div>
-<div class="slides-row">
-<div class="slide"><span class="slide-num">1/7</span><p class="slide-text">Fakta brutal:<br>gajimu gak akan pernah bikin kamu <span class="hl">kaya.</span></p><span class="slide-footer">@yanzy17</span></div>
-<div class="slide"><span class="slide-num">2/7</span><p class="slide-text">Gaji naik 10%/tahun.<br>Inflasi naik 5-7%.<br>Lo cuma maju <span class="hl">SEDIKIT.</span></p><span class="slide-footer">@yanzy17</span></div>
-<div class="slide"><span class="slide-num">3/7</span><p class="slide-text">Orang kaya gak kerja lebih keras.<br>Mereka punya <span class="hl">ASET</span> yang kerja buat mereka.</p><span class="slide-footer">@yanzy17</span></div>
-<div class="slide"><span class="slide-num">4/7</span><p class="slide-text"><span class="hl">Aset digital</span> = produk yang lo bikin sekali, hasilin uang berulang-ulang.</p><span class="slide-footer">@yanzy17</span></div>
-<div class="slide"><span class="slide-num">5/7</span><p class="slide-text">Gue udah buktiin sendiri.<br>Dari 1 file PDF, sekarang <span class="hl">passive income</span> tiap hari.</p><span class="slide-footer">@yanzy17</span></div>
-<div class="slide"><span class="slide-num">6/7</span><p class="slide-text">Mau tau caranya<br><span class="hl">step-by-step?</span><br>Gue udah rangkum semuanya.</p><span class="slide-footer">@yanzy17</span></div>
-<div class="slide"><span class="slide-num">7/7</span><p class="slide-text">Komen <span class="hl">'MAU'</span><br>atau cek link di bio 🔗</p><span class="slide-footer">@yanzy17</span></div>
+<!-- ========== SET 6 ========== -->
+<div class="set6">
+  <div class="set-title">SET 6 — Fakta Brutal Tentang Uang</div>
+  <div class="slides-grid">
+    <div class="slide"><span class="slide-bg-emoji">💸</span><span class="slide-num">1/7</span><p class="slide-text">Fakta brutal: gajimu <span class="hl">gak akan pernah bikin kamu kaya.</span></p></div>
+    <div class="slide"><span class="slide-bg-emoji">📉</span><span class="slide-num">2/7</span><p class="slide-text">Gaji naik 10%/tahun. Inflasi naik 5-7%. Lo cuma maju <span class="hl">SEDIKIT.</span></p></div>
+    <div class="slide"><span class="slide-bg-emoji">🏦</span><span class="slide-num">3/7</span><p class="slide-text">Orang kaya gak kerja lebih keras. Mereka punya <span class="hl">ASET yang kerja buat mereka.</span></p></div>
+    <div class="slide"><span class="slide-bg-emoji">♻️</span><span class="slide-num">4/7</span><p class="slide-text">Aset digital = produk yang lo bikin sekali, <span class="hl">hasilin uang berulang-ulang.</span></p></div>
+    <div class="slide"><span class="slide-bg-emoji">💎</span><span class="slide-num">5/7</span><p class="slide-text">Gue udah buktiin sendiri. Dari 1 file PDF, sekarang <span class="hl">passive income tiap hari.</span></p></div>
+    <div class="slide"><span class="slide-bg-emoji">📘</span><span class="slide-num">6/7</span><p class="slide-text">Mau tau caranya step-by-step? <span class="hl">Gue udah rangkum semuanya.</span></p></div>
+    <div class="slide"><span class="slide-bg-emoji">🔗</span><span class="slide-num">7/7</span><p class="slide-text">Komen <span class="hl">'MAU'</span> atau cek link di bio 🔗</p></div>
+  </div>
 </div>
 
 </body>
