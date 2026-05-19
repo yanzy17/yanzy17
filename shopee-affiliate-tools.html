@@ -1,1229 +1,571 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="theme-color" content="#ee4d2d" />
-<title>Shopee Affiliate Toolkit — Riset, Caption, Hook, CTA & Prompt AI</title>
-<meta name="description" content="Tools all-in-one buat affiliate Shopee: riset produk, caption, hook, CTA, prompt AI, kalkulator komisi & tips viral." />
-<link rel="icon" type="image/png" href="icon-192.png" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#ee4d2d">
+<title>Shopee Affiliate Toolkit v2</title>
+<meta name="description" content="Tools all-in-one buat affiliate Shopee: riset produk, caption, hook, CTA, prompt AI, kalkulator komisi & tips viral.">
+<link rel="icon" type="image/png" href="icon-192.png">
 <style>
-/* ============================================
-   SHOPEE AFFILIATE TOOLKIT - Simple & Clean
-   ============================================ */
-*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color: transparent; }
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+:root{--primary:#ee4d2d;--primary-dark:#d73a16;--primary-light:#fff1ec;--bg:#f8f9fa;--surface:#fff;--ink:#1a1a1a;--ink2:#555;--ink3:#999;--border:#eee;--radius:14px;--shadow:0 2px 12px rgba(0,0,0,.06)}
+html{scroll-behavior:smooth}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;padding-bottom:80px}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer;border:none;background:none}
+input,select,textarea{font-family:inherit;font-size:1rem}
+.container{max-width:680px;margin:0 auto;padding:0 16px}
 
-:root {
-  --shopee: #ee4d2d;
-  --shopee-dark: #d73a16;
-  --shopee-soft: #fff1ec;
-  --bg: #fafafa;
-  --surface: #ffffff;
-  --ink: #1f1f1f;
-  --ink-2: #555;
-  --ink-3: #888;
-  --border: #ececec;
-  --border-2: #e0e0e0;
-  --success: #2e7d4f;
-  --warn: #b86a1f;
-  --radius: 12px;
-  --radius-lg: 16px;
-  --shadow-sm: 0 1px 3px rgba(0,0,0,0.04);
-  --shadow-md: 0 4px 14px rgba(0,0,0,0.06);
-}
+/* NAV */
+.nav{background:var(--primary);color:#fff;padding:16px;position:sticky;top:0;z-index:100;box-shadow:0 4px 20px rgba(238,77,45,.3)}
+.nav-inner{max-width:680px;margin:0 auto;display:flex;align-items:center;gap:10px}
+.nav-icon{width:36px;height:36px;background:#fff;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.2rem}
+.nav-text h1{font-size:.95rem;font-weight:800;letter-spacing:-.3px}
+.nav-text small{font-size:.68rem;opacity:.9}
 
-html { scroll-behavior: smooth; }
+/* HERO */
+.hero{text-align:center;padding:28px 16px 12px}
+.hero h2{font-size:1.5rem;font-weight:900;letter-spacing:-.5px;margin-bottom:6px}
+.hero p{font-size:.88rem;color:var(--ink2);max-width:400px;margin:0 auto}
 
-body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
-  background: var(--bg);
-  color: var(--ink);
-  line-height: 1.55;
-  -webkit-font-smoothing: antialiased;
-  padding-bottom: 60px;
-}
+/* MENU GRID */
+.menu-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;padding:16px;max-width:680px;margin:0 auto}
+.menu-item{background:var(--surface);border:1.5px solid var(--border);border-radius:var(--radius);padding:14px 8px;text-align:center;transition:all .2s;cursor:pointer}
+.menu-item:hover,.menu-item.active{border-color:var(--primary);background:var(--primary-light)}
+.menu-item-icon{font-size:1.5rem;margin-bottom:4px}
+.menu-item-label{font-size:.7rem;font-weight:700;color:var(--ink2)}
 
-button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; }
-input, textarea, select { font-family: inherit; }
-a { color: inherit; text-decoration: none; }
+/* SECTIONS */
+.section{display:none;padding:16px;max-width:680px;margin:0 auto}
+.section.active{display:block;animation:fadeUp .3s ease}
+@keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 
-.container { max-width: 760px; margin: 0 auto; padding: 0 16px; }
+/* CARDS */
+.card{background:var(--surface);border-radius:var(--radius);padding:18px;margin-bottom:12px;box-shadow:var(--shadow);border:1px solid var(--border)}
+.card h3{font-size:.95rem;font-weight:800;margin-bottom:4px;display:flex;align-items:center;gap:8px}
+.card .desc{font-size:.8rem;color:var(--ink3);margin-bottom:14px}
 
-/* ===== HEADER ===== */
-.topbar {
-  background: linear-gradient(135deg, #ee4d2d, #ff7337);
-  color: white;
-  padding: 18px 16px 22px;
-  position: sticky;
-  top: 0;
-  z-index: 50;
-  box-shadow: 0 4px 12px rgba(238,77,45,0.25);
-}
-.topbar .container { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
-.brand { display: flex; align-items: center; gap: 10px; min-width: 0; }
-.brand-icon {
-  width: 38px; height: 38px;
-  background: white;
-  border-radius: 10px;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 1.2rem;
-  flex-shrink: 0;
-}
-.brand-text { min-width: 0; }
-.brand-text h1 {
-  font-size: 1.05rem; font-weight: 800; letter-spacing: -0.3px;
-  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-}
-.brand-text small { font-size: 0.72rem; opacity: 0.9; }
-.back-btn {
-  background: rgba(255,255,255,0.2);
-  border: 1px solid rgba(255,255,255,0.3);
-  color: white;
-  padding: 7px 12px;
-  border-radius: 8px;
-  font-size: 0.78rem;
-  font-weight: 600;
-  flex-shrink: 0;
-}
-.back-btn:hover { background: rgba(255,255,255,0.3); }
+/* FORM */
+.field{margin-bottom:10px}
+.field label{display:block;font-size:.75rem;font-weight:700;margin-bottom:4px;color:var(--ink2)}
+.field input,.field select,.field textarea{width:100%;padding:11px 14px;border:1.5px solid var(--border);border-radius:10px;outline:none;transition:border .2s;background:var(--bg)}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--primary)}
+.field textarea{resize:vertical;min-height:70px}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:8px}
 
-/* ===== HERO ===== */
-.hero {
-  text-align: center;
-  padding: 22px 0 8px;
-}
-.hero h2 {
-  font-size: 1.35rem; font-weight: 800; letter-spacing: -0.4px; margin-bottom: 6px;
-}
-.hero p {
-  font-size: 0.88rem; color: var(--ink-2); max-width: 480px; margin: 0 auto;
-}
+/* BUTTONS */
+.btn{width:100%;padding:12px;border-radius:10px;font-size:.9rem;font-weight:700;color:#fff;background:var(--primary);transition:all .2s;display:flex;align-items:center;justify-content:center;gap:6px}
+.btn:hover{background:var(--primary-dark);transform:translateY(-1px)}
 
-/* ===== TABS ===== */
-.tabs {
-  display: flex;
-  gap: 6px;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  padding: 16px 16px 12px;
-  margin: 0 -16px;
-  scrollbar-width: none;
-}
-.tabs::-webkit-scrollbar { display: none; }
+/* OUTPUT */
+.output-list{display:flex;flex-direction:column;gap:8px;margin-top:12px}
+.out-item{background:var(--primary-light);border:1.5px solid #ffd9c8;border-radius:12px;padding:12px 14px;position:relative;cursor:pointer;transition:all .2s;font-size:.85rem;line-height:1.5}
+.out-item:hover{border-color:var(--primary)}
+.out-item.copied{background:#e8f8ee;border-color:#2e7d4f}
+.out-tag{display:inline-block;font-size:.6rem;font-weight:800;background:#fff;color:var(--primary);padding:2px 8px;border-radius:4px;margin-bottom:6px;letter-spacing:.5px;text-transform:uppercase}
+.out-copy{position:absolute;top:10px;right:10px;font-size:.65rem;color:var(--ink3);background:#fff;border:1px solid var(--border);padding:3px 8px;border-radius:6px;font-weight:600}
 
-.tab-btn {
-  flex-shrink: 0;
-  background: var(--surface);
-  border: 1.5px solid var(--border);
-  padding: 9px 14px;
-  border-radius: 10px;
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: var(--ink-2);
-  white-space: nowrap;
-  transition: all 0.18s;
-}
-.tab-btn:hover { border-color: var(--ink-3); }
-.tab-btn.active {
-  background: var(--shopee);
-  border-color: var(--shopee);
-  color: white;
-}
+/* PILLS */
+.pills{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
+.pill{background:var(--surface);border:1.5px solid var(--border);padding:6px 12px;border-radius:20px;font-size:.72rem;font-weight:700;color:var(--ink2);transition:all .2s}
+.pill:hover{border-color:var(--ink3)}
+.pill.active{background:var(--ink);border-color:var(--ink);color:#fff}
 
-/* ===== PANEL ===== */
-.panel { display: none; animation: fadeIn .25s ease; }
-.panel.active { display: block; }
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(4px); }
-  to { opacity: 1; transform: none; }
-}
+/* GRID RISET */
+.riset-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
+.riset-item{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:10px 12px;font-size:.82rem;font-weight:700}
+.riset-item small{display:block;font-size:.7rem;color:var(--ink3);font-weight:500;margin-top:2px}
 
-.card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  padding: 18px;
-  margin-bottom: 14px;
-  box-shadow: var(--shadow-sm);
-}
+/* CALC */
+.calc-result{margin-top:14px;padding:14px;background:var(--primary-light);border:1px solid #ffd9c8;border-radius:12px}
+.calc-row{display:flex;justify-content:space-between;padding:7px 0;font-size:.84rem;color:var(--ink2);border-bottom:1px dashed var(--border)}
+.calc-row:last-child{border:0}
+.calc-row.total{font-size:1rem;font-weight:900;color:var(--primary);border-top:2px solid var(--primary);margin-top:6px;padding-top:10px}
 
-.card h3 {
-  font-size: 0.98rem;
-  font-weight: 700;
-  margin-bottom: 4px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-.card .sub {
-  font-size: 0.82rem;
-  color: var(--ink-3);
-  margin-bottom: 14px;
-}
+/* EDUKASI */
+.edu-card{background:var(--surface);border-radius:var(--radius);padding:16px;margin-bottom:10px;border-left:4px solid var(--primary);box-shadow:var(--shadow)}
+.edu-card h4{font-size:.88rem;font-weight:800;margin-bottom:4px;color:var(--primary)}
+.edu-card p{font-size:.8rem;color:var(--ink2);line-height:1.55}
+.edu-card .example{margin-top:8px;background:var(--bg);border-radius:8px;padding:10px 12px;font-size:.78rem;color:var(--ink);font-style:italic;border-left:3px solid #ffd9c8}
 
-/* ===== FORM ===== */
-.field { margin-bottom: 12px; }
-.field label {
-  display: block;
-  font-size: 0.8rem;
-  font-weight: 600;
-  margin-bottom: 5px;
-  color: var(--ink);
-}
-.field input, .field select, .field textarea {
-  width: 100%;
-  padding: 11px 13px;
-  border: 1.5px solid var(--border);
-  border-radius: 10px;
-  font-size: 0.9rem;
-  background: var(--surface);
-  outline: none;
-  transition: all .18s;
-  color: var(--ink);
-}
-.field input:focus, .field select:focus, .field textarea:focus {
-  border-color: var(--shopee);
-  box-shadow: 0 0 0 3px rgba(238,77,45,0.1);
-}
-.field textarea { resize: vertical; min-height: 80px; }
+/* TOAST */
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(80px);background:var(--ink);color:#fff;padding:10px 20px;border-radius:30px;font-size:.82rem;font-weight:700;z-index:200;opacity:0;transition:all .25s;box-shadow:0 10px 30px rgba(0,0,0,.2)}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 
-.field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-@media (max-width: 480px) { .field-row { grid-template-columns: 1fr; } }
+/* FOOTER */
+.footer{text-align:center;padding:24px 16px;font-size:.78rem;color:var(--ink3);margin-top:20px}
+.footer strong{color:var(--primary)}
 
-.btn {
-  width: 100%;
-  background: var(--shopee);
-  color: white;
-  padding: 12px 16px;
-  border-radius: 10px;
-  font-size: 0.92rem;
-  font-weight: 700;
-  transition: all .18s;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-}
-.btn:hover { background: var(--shopee-dark); transform: translateY(-1px); }
-.btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
-
-.btn-ghost {
-  background: var(--surface);
-  color: var(--ink);
-  border: 1.5px solid var(--border);
-}
-.btn-ghost:hover { background: var(--bg); border-color: var(--ink-3); }
-
-/* ===== OUTPUT BLOCKS ===== */
-.output-list { display: flex; flex-direction: column; gap: 10px; margin-top: 14px; }
-
-.out-item {
-  background: var(--shopee-soft);
-  border: 1px solid #ffd9c8;
-  border-radius: 10px;
-  padding: 12px 14px;
-  position: relative;
-  font-size: 0.9rem;
-  line-height: 1.55;
-  cursor: pointer;
-  transition: all .18s;
-}
-.out-item:hover { border-color: var(--shopee); }
-.out-item.copied {
-  background: #e6f7ee;
-  border-color: var(--success);
-}
-.out-item-tag {
-  display: inline-block;
-  font-size: 0.65rem;
-  font-weight: 700;
-  background: white;
-  color: var(--shopee);
-  padding: 2px 7px;
-  border-radius: 4px;
-  margin-bottom: 6px;
-  letter-spacing: 0.3px;
-  text-transform: uppercase;
-}
-.out-item-copy {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  font-size: 0.7rem;
-  color: var(--ink-3);
-  background: white;
-  border: 1px solid var(--border);
-  padding: 3px 8px;
-  border-radius: 6px;
-}
-
-/* ===== EMPTY ===== */
-.empty {
-  text-align: center;
-  padding: 30px 20px;
-  color: var(--ink-3);
-  font-size: 0.88rem;
-}
-.empty-icon { font-size: 1.8rem; margin-bottom: 6px; opacity: 0.5; }
-
-/* ===== FILTER PILLS ===== */
-.pills {
-  display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 14px;
-}
-.pill {
-  background: var(--surface);
-  border: 1.5px solid var(--border);
-  padding: 6px 12px;
-  border-radius: 30px;
-  font-size: 0.78rem;
-  font-weight: 600;
-  color: var(--ink-2);
-  transition: all .18s;
-}
-.pill:hover { border-color: var(--ink-3); }
-.pill.active {
-  background: var(--ink);
-  border-color: var(--ink);
-  color: white;
-}
-
-/* ===== RISET LIST ===== */
-.riset-grid {
-  display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; margin-top: 10px;
-}
-@media (max-width: 480px) { .riset-grid { grid-template-columns: 1fr; } }
-
-.riset-item {
-  background: var(--bg);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 10px 12px;
-  font-size: 0.85rem;
-  font-weight: 600;
-}
-.riset-item small {
-  display: block;
-  font-size: 0.72rem;
-  color: var(--ink-3);
-  font-weight: 500;
-  margin-top: 2px;
-}
-
-/* ===== CHECKLIST ===== */
-.check-list { list-style: none; padding: 0; }
-.check-list li {
-  padding: 9px 0 9px 26px;
-  position: relative;
-  font-size: 0.88rem;
-  border-bottom: 1px dashed var(--border);
-}
-.check-list li:last-child { border: 0; }
-.check-list li::before {
-  content: "✓";
-  position: absolute;
-  left: 0;
-  top: 9px;
-  color: var(--success);
-  font-weight: 800;
-}
-
-/* ===== KALKULATOR OUTPUT ===== */
-.calc-result {
-  margin-top: 14px;
-  padding: 16px;
-  background: linear-gradient(135deg, var(--shopee-soft), #fff);
-  border: 1px solid #ffd9c8;
-  border-radius: 12px;
-}
-.calc-row {
-  display: flex; justify-content: space-between; align-items: center;
-  padding: 8px 0; font-size: 0.88rem; color: var(--ink-2);
-  border-bottom: 1px dashed var(--border);
-}
-.calc-row:last-child { border: 0; padding-top: 12px; }
-.calc-row.total {
-  font-size: 1.05rem; font-weight: 800; color: var(--shopee);
-  border-top: 2px solid var(--shopee); margin-top: 6px;
-}
-
-/* ===== JADWAL POSTING ===== */
-.schedule {
-  display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-  gap: 10px;
-  margin-top: 12px;
-}
-.schedule-item {
-  background: var(--bg);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 12px;
-  text-align: center;
-}
-.schedule-item strong {
-  display: block;
-  font-size: 0.95rem;
-  color: var(--shopee);
-  margin-bottom: 2px;
-}
-.schedule-item small {
-  font-size: 0.75rem;
-  color: var(--ink-3);
-}
-
-/* ===== TOAST ===== */
-.toast {
-  position: fixed;
-  bottom: 24px;
-  left: 50%;
-  transform: translateX(-50%) translateY(100px);
-  background: var(--ink);
-  color: white;
-  padding: 12px 22px;
-  border-radius: 30px;
-  font-size: 0.85rem;
-  font-weight: 600;
-  z-index: 200;
-  opacity: 0;
-  transition: all .25s;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-}
-.toast.show {
-  opacity: 1;
-  transform: translateX(-50%) translateY(0);
-}
-
-/* ===== FOOTER ===== */
-.footer {
-  text-align: center;
-  margin-top: 30px;
-  padding: 20px 16px;
-  font-size: 0.82rem;
-  color: var(--ink-3);
-}
-.footer strong { color: var(--shopee); }
+/* RESPONSIVE */
+@media(max-width:480px){.menu-grid{grid-template-columns:repeat(3,1fr);gap:8px}.field-row{grid-template-columns:1fr}.riset-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
 
-<!-- ===== HEADER ===== -->
-<header class="topbar">
-  <div class="container">
-    <div class="brand">
-      <div class="brand-icon">🛍️</div>
-      <div class="brand-text">
-        <h1>Shopee Affiliate Toolkit</h1>
-        <small>Riset · Caption · Hook · CTA · Prompt</small>
-      </div>
-    </div>
+<nav class="nav"><div class="nav-inner"><div class="nav-icon">🛍️</div><div class="nav-text"><h1>Shopee Affiliate Toolkit</h1><small>v2 · All-in-One Tools</small></div></div></nav>
 
-  </div>
-</header>
+<section class="hero"><h2>Tools Cuan Affiliate 🚀</h2><p>Pilih menu → isi → langsung dapat hasil siap pakai. Copy & paste aja.</p></section>
 
-<div class="container">
-
-  <!-- ===== HERO ===== -->
-  <section class="hero">
-    <h2>Semua Yang Kamu Butuh Buat Closing 🚀</h2>
-    <p>Pilih menu di bawah → isi input → langsung dapat hasil siap pakai. Tinggal copy & paste.</p>
-  </section>
-
-  <!-- ===== TABS ===== -->
-  <nav class="tabs" id="tabs">
-    <button class="tab-btn active" data-tab="riset">🔍 Riset Produk</button>
-    <button class="tab-btn" data-tab="caption">📝 Caption</button>
-    <button class="tab-btn" data-tab="hook">🎣 Hook</button>
-    <button class="tab-btn" data-tab="cta">🎯 CTA</button>
-    <button class="tab-btn" data-tab="prompt">🤖 Prompt AI</button>
-    <button class="tab-btn" data-tab="bonus">🎁 Bonus</button>
-  </nav>
-
-  <!-- ============================================
-       1. RISET PRODUK
-       ============================================ -->
-  <section class="panel active" id="panel-riset">
-    <div class="card">
-      <h3>🔍 Cari Ide Produk Cuan</h3>
-      <p class="sub">Pilih kategori → langsung dapet rekomendasi produk yang biasanya laris di Shopee Affiliate.</p>
-
-      <div class="field">
-        <label>Pilih Kategori</label>
-        <select id="risetKategori">
-          <option value="">— Pilih kategori —</option>
-          <option value="kecantikan">Kecantikan & Skincare</option>
-          <option value="fashion">Fashion Wanita</option>
-          <option value="fashionpria">Fashion Pria</option>
-          <option value="gadget">Gadget & Aksesoris HP</option>
-          <option value="rumah">Perlengkapan Rumah</option>
-          <option value="dapur">Peralatan Dapur</option>
-          <option value="ibu">Ibu & Bayi</option>
-          <option value="hobi">Hobi & Olahraga</option>
-          <option value="kesehatan">Kesehatan</option>
-          <option value="otomotif">Otomotif</option>
-        </select>
-      </div>
-      <button class="btn" onclick="generateRiset()">Tampilkan Ide Produk</button>
-
-      <div id="risetOutput" class="output-list"></div>
-    </div>
-
-    <div class="card">
-      <h3>✅ Checklist: Cara Memilih Produk yang Berpotensi Cuan</h3>
-      <p class="sub">Sebelum bikin konten, cek dulu produknya pakai checklist ini.</p>
-      <ul class="check-list">
-        <li>Rating toko minimal <strong>4.7</strong> dengan jumlah review banyak (>500)</li>
-        <li>Harga produk <strong>Rp 30.000 – Rp 150.000</strong> (paling laku di FYP)</li>
-        <li>Komisi minimal <strong>5%</strong> (idealnya 10-15% untuk new user / spesial)</li>
-        <li>Produk solving masalah, bukan sekadar lucu/bagus</li>
-        <li>Ada video review dari user lain (bukti sosial)</li>
-        <li>Stok masih banyak & toko aktif respon chat</li>
-        <li>Produk yang bisa di-demo / before-after / dipake langsung</li>
-        <li>Cek di TikTok & Reels: udah viral / mulai naik / belum kesentuh</li>
-      </ul>
-    </div>
-
-    <div class="card">
-      <h3>🌐 Tools Riset Eksternal (Gratis)</h3>
-      <p class="sub">Klik untuk buka tools resmi yang bantu riset produk lebih dalam.</p>
-      <div class="output-list">
-        <a class="out-item" href="https://shopee.co.id/" target="_blank" rel="noopener">
-          <span class="out-item-tag">Shopee</span><br>
-          <strong>Shopee Indonesia</strong> — Buka Shopee buat cari produk best seller & komisi tertinggi.
-        </a>
-        <a class="out-item" href="https://shopee.co.id/search?keyword=terlaris" target="_blank" rel="noopener">
-          <span class="out-item-tag">Terlaris</span><br>
-          <strong>Shopee Produk Terlaris</strong> — Lihat produk paling laku buat ide konten affiliate.
-        </a>
-        <a class="out-item" href="https://www.tiktok.com/search?q=shopeefinds" target="_blank" rel="noopener">
-          <span class="out-item-tag">FYP</span><br>
-          <strong>TikTok #ShopeeFinds</strong> — Cek konten viral affiliate Shopee yang lagi naik di FYP.
-        </a>
-        <a class="out-item" href="https://trends.google.com/trends/explore?geo=ID" target="_blank" rel="noopener">
-          <span class="out-item-tag">Trend</span><br>
-          <strong>Google Trends Indonesia</strong> — Cek apakah keyword produk lagi naik atau turun.
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================================
-       2. CAPTION GENERATOR
-       ============================================ -->
-  <section class="panel" id="panel-caption">
-    <div class="card">
-      <h3>📝 Caption Generator</h3>
-      <p class="sub">Isi info produk → dapet 5 variasi caption beda gaya. Pilih yang paling kena.</p>
-
-      <div class="field">
-        <label>Nama Produk</label>
-        <input type="text" id="capProduk" placeholder="Cth: Serum Glowing Wajah" />
-      </div>
-      <div class="field">
-        <label>Manfaat Utama</label>
-        <input type="text" id="capManfaat" placeholder="Cth: Bikin kulit cerah & glowing dalam 7 hari" />
-      </div>
-      <div class="field-row">
-        <div class="field">
-          <label>Target Audiens</label>
-          <input type="text" id="capAudiens" placeholder="Cth: Cewek 18-25, kulit kusam" />
-        </div>
-        <div class="field">
-          <label>Harga (Rp)</label>
-          <input type="text" id="capHarga" placeholder="Cth: 49.000" />
-        </div>
-      </div>
-      <button class="btn" onclick="generateCaption()">Buat 5 Caption</button>
-
-      <div id="capOutput" class="output-list"></div>
-    </div>
-  </section>
-
-  <!-- ============================================
-       3. HOOK GENERATOR
-       ============================================ -->
-  <section class="panel" id="panel-hook">
-    <div class="card">
-      <h3>🎣 Hook 3 Detik Pertama</h3>
-      <p class="sub">Hook = pemberhenti scroll. Pilih kategori, isi produkmu, klik tombol copy.</p>
-
-      <div class="field">
-        <label>Nama Produk Kamu (opsional)</label>
-        <input type="text" id="hookProduk" placeholder="Cth: kuas makeup" oninput="renderHooks()" />
-      </div>
-
-      <div class="pills" id="hookPills">
-        <button class="pill active" data-cat="all">Semua</button>
-        <button class="pill" data-cat="penasaran">Penasaran</button>
-        <button class="pill" data-cat="masalah">Masalah</button>
-        <button class="pill" data-cat="angka">Angka</button>
-        <button class="pill" data-cat="pengalaman">Pengalaman</button>
-        <button class="pill" data-cat="kontroversi">Kontroversi</button>
-        <button class="pill" data-cat="urgensi">Urgensi</button>
-      </div>
-
-      <div id="hookOutput" class="output-list"></div>
-    </div>
-  </section>
-
-  <!-- ============================================
-       4. CTA
-       ============================================ -->
-  <section class="panel" id="panel-cta">
-    <div class="card">
-      <h3>🎯 Call To Action Siap Pakai</h3>
-      <p class="sub">CTA yang bikin orang ngeklik link. Pilih sesuai vibe konten kamu.</p>
-
-      <div class="pills" id="ctaPills">
-        <button class="pill active" data-cat="all">Semua</button>
-        <button class="pill" data-cat="soft">Soft Selling</button>
-        <button class="pill" data-cat="urgency">Urgensi</button>
-        <button class="pill" data-cat="value">Value</button>
-        <button class="pill" data-cat="fomo">FOMO</button>
-        <button class="pill" data-cat="bio">Link di Bio</button>
-      </div>
-
-      <div id="ctaOutput" class="output-list"></div>
-    </div>
-  </section>
-
-  <!-- ============================================
-       5. PROMPT AI
-       ============================================ -->
-  <section class="panel" id="panel-prompt">
-    <div class="card">
-      <h3>🤖 Prompt AI (ChatGPT / Gemini)</h3>
-      <p class="sub">Tinggal copy → tempel di ChatGPT/Gemini → ganti bagian dalam <code>{kurung}</code>.</p>
-
-      <div class="pills" id="promptPills">
-        <button class="pill active" data-cat="all">Semua</button>
-        <button class="pill" data-cat="riset">Riset</button>
-        <button class="pill" data-cat="caption">Caption</button>
-        <button class="pill" data-cat="skrip">Skrip Video</button>
-        <button class="pill" data-cat="visual">Visual</button>
-        <button class="pill" data-cat="kompetitor">Analisis</button>
-      </div>
-
-      <div id="promptOutput" class="output-list"></div>
-    </div>
-  </section>
-
-  <!-- ============================================
-       6. BONUS
-       ============================================ -->
-  <section class="panel" id="panel-bonus">
-
-    <div class="card">
-      <h3>💰 Kalkulator Estimasi Komisi</h3>
-      <p class="sub">Hitung berapa potensi cuan kamu sebelum buat konten.</p>
-
-      <div class="field-row">
-        <div class="field">
-          <label>Harga Produk (Rp)</label>
-          <input type="number" id="kHarga" placeholder="50000" />
-        </div>
-        <div class="field">
-          <label>Komisi (%)</label>
-          <input type="number" id="kKomisi" placeholder="10" />
-        </div>
-      </div>
-      <div class="field-row">
-        <div class="field">
-          <label>Jumlah Klik Link</label>
-          <input type="number" id="kKlik" placeholder="1000" />
-        </div>
-        <div class="field">
-          <label>Conversion Rate (%)</label>
-          <input type="number" id="kCr" placeholder="3" />
-        </div>
-      </div>
-      <button class="btn" onclick="hitungKomisi()">Hitung Estimasi</button>
-
-      <div id="kalkOutput"></div>
-    </div>
-
-    <div class="card">
-      <h3>🕐 Jam Posting Terbaik di Indonesia</h3>
-      <p class="sub">Berdasarkan data umum kebiasaan scroll user di TikTok, IG & Threads.</p>
-      <div class="schedule">
-        <div class="schedule-item"><strong>06.00–08.00</strong><small>Sebelum kerja/sekolah</small></div>
-        <div class="schedule-item"><strong>12.00–13.00</strong><small>Jam istirahat</small></div>
-        <div class="schedule-item"><strong>18.00–21.00</strong><small>Jam emas (paling tinggi)</small></div>
-        <div class="schedule-item"><strong>21.30–23.00</strong><small>Sebelum tidur</small></div>
-      </div>
-    </div>
-
-    <div class="card">
-      <h3>📈 Checklist Konten Viral Affiliate</h3>
-      <p class="sub">Ceklis sebelum posting biar peluang FYP makin gede.</p>
-      <ul class="check-list">
-        <li>Hook 3 detik pertama bikin orang berhenti scroll</li>
-        <li>Lighting bagus & video gak goyang</li>
-        <li>Sebut <strong>masalah</strong> dulu, baru solusi (produk)</li>
-        <li>Tunjukin produk <strong>before-after</strong> atau cara pakai</li>
-        <li>Sertain text/caption agar yang nonton tanpa suara tetap paham</li>
-        <li>CTA jelas: "Link di bio" / "Cek keranjang kuning"</li>
-        <li>Pakai trending sound (TikTok) & hashtag relevan (5-7 hashtag)</li>
-        <li>Reply komen aktif 30 menit pertama setelah posting</li>
-      </ul>
-    </div>
-
-    <div class="card">
-      <h3>🏷️ Hashtag Pack Affiliate Shopee</h3>
-      <p class="sub">Klik untuk copy. Pakai 5-7 hashtag aja, jangan kebanyakan.</p>
-      <div class="output-list">
-        <div class="out-item" data-copy="#shopeefinds #racunshopee #shopeehaul #affiliateshopee #fyp #rekomendasishopee #review">
-          <span class="out-item-tag">Umum</span><span class="out-item-copy">Copy</span><br>
-          #shopeefinds #racunshopee #shopeehaul #affiliateshopee #fyp #rekomendasishopee #review
-        </div>
-        <div class="out-item" data-copy="#skincaremurah #racunskincare #skincareindonesia #shopeefinds #glowup #fyp #affiliateshopee">
-          <span class="out-item-tag">Skincare</span><span class="out-item-copy">Copy</span><br>
-          #skincaremurah #racunskincare #skincareindonesia #shopeefinds #glowup #fyp #affiliateshopee
-        </div>
-        <div class="out-item" data-copy="#fashionmurah #ootdindo #racunfashion #shopeefinds #fyp #ootd #styleinspiration">
-          <span class="out-item-tag">Fashion</span><span class="out-item-copy">Copy</span><br>
-          #fashionmurah #ootdindo #racunfashion #shopeefinds #fyp #ootd #styleinspiration
-        </div>
-        <div class="out-item" data-copy="#gadgetmurah #aksesorishp #racungadget #shopeefinds #techreview #fyp #shopeehaul">
-          <span class="out-item-tag">Gadget</span><span class="out-item-copy">Copy</span><br>
-          #gadgetmurah #aksesorishp #racungadget #shopeefinds #techreview #fyp #shopeehaul
-        </div>
-        <div class="out-item" data-copy="#perlengkapanrumah #homedecor #racunrumahtangga #shopeefinds #ideideunik #fyp #lifehack">
-          <span class="out-item-tag">Rumah</span><span class="out-item-copy">Copy</span><br>
-          #perlengkapanrumah #homedecor #racunrumahtangga #shopeefinds #ideideunik #fyp #lifehack
-        </div>
-      </div>
-    </div>
-
-  </section>
-
-  <!-- ===== FOOTER ===== -->
-  <footer class="footer">
-    <p><strong>Shopee Affiliate Toolkit</strong> · by @yanzy17</p>
-    <p>Dibuat buat bantu para affiliate hemat waktu — fokus produksi konten cuan 🚀</p>
-  </footer>
-
+<div class="menu-grid" id="menuGrid">
+<div class="menu-item active" data-section="riset"><div class="menu-item-icon">🔍</div><div class="menu-item-label">Riset</div></div>
+<div class="menu-item" data-section="caption"><div class="menu-item-icon">📝</div><div class="menu-item-label">Caption</div></div>
+<div class="menu-item" data-section="hook"><div class="menu-item-icon">🎣</div><div class="menu-item-label">Hook</div></div>
+<div class="menu-item" data-section="cta"><div class="menu-item-icon">🎯</div><div class="menu-item-label">CTA</div></div>
+<div class="menu-item" data-section="prompt"><div class="menu-item-icon">🤖</div><div class="menu-item-label">Prompt AI</div></div>
+<div class="menu-item" data-section="bonus"><div class="menu-item-icon">🎁</div><div class="menu-item-label">Bonus</div></div>
+<div class="menu-item" data-section="edukasi"><div class="menu-item-icon">📚</div><div class="menu-item-label">Edukasi</div></div>
 </div>
 
-<!-- ===== TOAST ===== -->
+<div id="content"></div>
+
 <div class="toast" id="toast">Tersalin ✓</div>
+<footer class="footer"><p><strong>Shopee Affiliate Toolkit v2</strong> · by @yanzy17</p><p>Fokus produksi konten cuan 🚀</p></footer>
+
+
 
 <script>
-/* =============================================================
-   DATA
-   ============================================================= */
+/* ====== DATA ====== */
+const RISET_DATA = [
+  {cat:"Fashion Wanita",emoji:"👗",items:["Dress Korean Style","Cardigan Rajut","Rok Plisket","Sandal Wanita","Tas Selempang","Hijab Pashmina","Kaos Oversize","Celana Kulot"]},
+  {cat:"Fashion Pria",emoji:"👔",items:["Kemeja Flanel","Celana Cargo","Jaket Parasut","Kaos Polos","Sepatu Sneakers","Topi Baseball","Tas Ransel","Celana Jeans Slim"]},
+  {cat:"Kecantikan",emoji:"💄",items:["Serum Vitamin C","Sunscreen SPF50","Lip Tint Korea","Cushion Foundation","Masker Wajah","Micellar Water","Sheet Mask","Moisturizer"]},
+  {cat:"Elektronik",emoji:"📱",items:["TWS Earbuds","Power Bank 10000mAh","Kabel Type-C","Ring Light","Phone Holder","Smart Watch","Charger Fast Charging","Tripod HP"]},
+  {cat:"Rumah Tangga",emoji:"🏠",items:["Rak Serbaguna","Organizer Laci","Dispenser Sabun","Lampu LED Strip","Gorden Blackout","Keset Bulu","Tempat Bumbu","Hanger Lipat"]},
+  {cat:"Ibu & Bayi",emoji:"👶",items:["Popok Premium","Botol Susu Anti Kolik","Baju Bayi Set","Gendongan Bayi","Playmat Lipat","Teether Silikon","Stroller Lipat","Baby Oil Organik"]},
+  {cat:"Makanan & Minuman",emoji:"🍜",items:["Snack Import Korea","Kopi Sachetan","Mie Instan Viral","Sambal Bawang","Minuman Collagen","Granola Healthy","Kurma Premium","Teh Herbal"]},
+  {cat:"Olahraga",emoji:"⚽",items:["Resistance Band","Matras Yoga","Dumbbell Set","Sepatu Lari","Jersey Bola","Kaos Dry-Fit","Botol Minum Gym","Skipping Rope"]},
+  {cat:"Hobi & Craft",emoji:"🎨",items:["Cat Akrilik Set","Sketchbook A4","Brush Lettering","Stiker Journaling","Paket Rajut","Diamond Painting","Watercolor Set","Washi Tape Pack"]},
+  {cat:"Otomotif",emoji:"🚗",items:["Parfum Mobil","Holder HP Mobil","Kamera Parkir","Sarung Jok","Wiper Fluid","Charger Mobil","Karpet Mobil","LED Interior"]}
+];
 
-// 1. RISET PRODUK
-const RISET_DATA = {
-  kecantikan: [
-    ['Serum Glow', 'Cari yang ada review before-after'],
-    ['Lip Tint Tahan Lama', 'Demo di bibir + tes air'],
-    ['Sunscreen Lokal', 'Edukasi pentingnya SPF'],
-    ['Masker Wajah', 'Konten "1 minggu pakai"'],
-    ['Pomade Bibir', 'Demo bibir kering → lembap'],
-    ['Eyeshadow Palette', 'Tutorial 3 look'],
-    ['Sheet Mask 1pcs', 'Try-on review'],
-    ['Penghilang Bekas Jerawat', 'Storytelling pengalaman']
-  ],
-  fashion: [
-    ['Tas Selempang Wanita', 'Demo isi muat apa aja'],
-    ['Outer / Cardigan', 'Mix-match 3 outfit'],
-    ['Set Loungewear', 'Konten WFH look'],
-    ['Sepatu Sneakers Putih', 'Cocok dipake ke mana'],
-    ['Dress Casual', 'Ootd hangout'],
-    ['Hijab Pashmina', 'Tutorial 3 model'],
-    ['Korset / Shapewear', 'Before-after di baju'],
-    ['Aksesoris Rambut', 'Tutorial styling']
-  ],
-  fashionpria: [
-    ['Kemeja Polos Pria', 'Outfit kerja vs kasual'],
-    ['Celana Cargo', 'Tutorial mix outfit'],
-    ['Jam Tangan Murah', 'Review tahan air engga'],
-    ['Sneakers Putih', 'Cocok ke kantor + kuliah'],
-    ['Topi Bucket', 'Outfit casual viral'],
-    ['Tas Sling Pria', 'Demo isinya muat apa'],
-    ['Parfum Pria', 'Review wangi tahan berapa jam'],
-    ['Kacamata Hitam', 'Try-on bentuk wajah']
-  ],
-  gadget: [
-    ['Earphone Bluetooth', 'Tes suara langsung'],
-    ['Powerbank Mini', 'Demo charging speed'],
-    ['Ring Light', 'Before-after lighting'],
-    ['Tripod HP', 'Demo angle bagus'],
-    ['Charger Fast', 'Tes ngecas berapa menit'],
-    ['Stiker Anti Gores', 'Cara pasang anti gelembung'],
-    ['Lensa Macro HP', 'Foto produk hasil amazing'],
-    ['Case HP Aesthetic', 'Try-on koleksi']
-  ],
-  rumah: [
-    ['Lampu Tidur Aesthetic', 'Demo nyala vs mati'],
-    ['Storage Box Bawah Kasur', 'Review muat apa aja'],
-    ['Tirai Anti UV', 'Demo ruangan jadi adem'],
-    ['Hanger Multifungsi', 'Hemat space lemari'],
-    ['Karpet Bulu', 'Try in di kamar'],
-    ['Cermin LED', 'Fitting room di kamar'],
-    ['Dekorasi Dinding', 'Before-after kamar'],
-    ['Pewangi Ruangan', 'Tes wanginya tahan']
-  ],
-  dapur: [
-    ['Air Fryer Mini', 'Demo masak 3 menu'],
-    ['Wadah Bumbu Set', 'Organize bumbu rapi'],
-    ['Rice Cooker Mini', 'Demo nasi 1-2 porsi'],
-    ['Pisau Set Stainless', 'Tes potong tomat'],
-    ['Kompor Portable', 'Cocok buat ngekos'],
-    ['Kotak Bekal', 'Bekel sehari'],
-    ['Pengupas Bawang', 'Demo cepet vs manual'],
-    ['Tumbler Vacuum', 'Tes panas tahan berapa jam']
-  ],
-  ibu: [
-    ['Botol Susu Anti Kolik', 'Review bunda'],
-    ['Stroller Lipat', 'Demo lipat 1 detik'],
-    ['Baju Bayi Lembut', 'Cek bahan adem'],
-    ['Mainan Edukasi', 'Demo cara main'],
-    ['Tas ASI', 'Muat berapa botol'],
-    ['Bedak Bayi Aman', 'Edukasi BPOM'],
-    ['Bantal Anti Peyang', 'Review setelah pemakaian'],
-    ['Sepatu Bayi Pre-walker', 'Try on imut']
-  ],
-  hobi: [
-    ['Yoga Mat', 'Demo workout di rumah'],
-    ['Resistance Band', 'Tutorial 5 gerakan'],
-    ['Sepatu Lari', 'Review lari 5km'],
-    ['Kamera Polaroid', 'Hasil foto unboxing'],
-    ['Buku Note Aesthetic', 'Stationery haul'],
-    ['Cat Air Set', 'Demo lukis pemula'],
-    ['Bola Mini Anti Stress', 'Demo cara pakai'],
-    ['Tenda Camping', 'Demo set up cepat']
-  ],
-  kesehatan: [
-    ['Vitamin C 1000mg', 'Review imun lebih kuat'],
-    ['Madu Asli', 'Tes lengket di sendok'],
-    ['Pijat Elektrik Mini', 'Demo pegel hilang'],
-    ['Plester Otot', 'Buat yang sering pegel'],
-    ['Timbangan Digital', 'Tes akurasi'],
-    ['Termometer Digital', 'Demo cek suhu'],
-    ['Suplemen Rambut', 'Storytelling rontok'],
-    ['Eye Patch', 'Mata panda hilang']
-  ],
-  otomotif: [
-    ['Vacuum Mobil Mini', 'Demo bersihin debu'],
-    ['Holder HP Mobil', 'Pasang aman'],
-    ['Pengharum Mobil', 'Wangi tahan berapa lama'],
-    ['Lap Microfiber', 'Tes nyerap air'],
-    ['Lampu LED Motor', 'Before-after malam hari'],
-    ['Sarung Jok Motor', 'Anti panas review'],
-    ['Helm Half Face', 'Tes kenyamanan'],
-    ['Stiker Bodi Motor', 'DIY makeover motor']
-  ]
-};
-
-// 3. HOOK
 const HOOKS = [
-  { c: 'penasaran', t: 'Aku gak nyangka {produk} bisa sebagus ini di harga segini...' },
-  { c: 'penasaran', t: 'Ternyata {produk} itu rahasianya cuma 1 hal aja. Liat sampe abis.' },
-  { c: 'penasaran', t: 'Kalo kamu belum tau soal {produk} ini, kamu bakal nyesel banget.' },
-  { c: 'penasaran', t: 'POV: kamu nemu {produk} yang ngubah harimu total.' },
-  { c: 'penasaran', t: 'Stop scroll. Ini {produk} terbaik yang pernah aku coba di Shopee.' },
-  { c: 'penasaran', t: 'Aku gak bakal kasih tau lagi soal {produk} ini setelah video ini.' },
-  { c: 'penasaran', t: 'Coba tebak harga {produk} ini berapa? Kamu bakal kaget.' },
-
-  { c: 'masalah', t: 'Kamu masih punya masalah sama {produk}? Coba ini deh.' },
-  { c: 'masalah', t: 'Capek banget tiap kali {produk}-nya gampang rusak? Akhirnya nemu yang awet.' },
-  { c: 'masalah', t: 'Cape ngabisin uang buat {produk} mahal padahal yang murah ini juga bagus.' },
-  { c: 'masalah', t: 'Kalo kamu sering ngeluh soal {produk}, video ini buat kamu.' },
-  { c: 'masalah', t: 'Bagian terburuk dari pakai {produk} adalah... sampai aku nemu yang ini.' },
-
-  { c: 'angka', t: '3 alasan kenapa {produk} ini wajib kamu punya sebelum 2027.' },
-  { c: 'angka', t: '5 hal yang aku pelajari setelah pake {produk} ini selama 30 hari.' },
-  { c: 'angka', t: 'Aku habis Rp 200rb cobain berbagai {produk}, dan yang ini juaranya.' },
-  { c: 'angka', t: 'Cuma 49rb? Aku gak percaya {produk} ini bisa sebagus itu.' },
-  { c: 'angka', t: '90% orang gak tau kalo {produk} ini ada di Shopee.' },
-
-  { c: 'pengalaman', t: 'Aku pake {produk} ini selama seminggu, dan hasilnya...' },
-  { c: 'pengalaman', t: 'Awalnya skeptis, tapi setelah coba {produk}-nya, aku langsung beli 3 lagi.' },
-  { c: 'pengalaman', t: 'Cerita gimana {produk} ini ngubah rutinitas pagi aku.' },
-  { c: 'pengalaman', t: 'Ini gambar sebelum & sesudah aku pake {produk} ini.' },
-  { c: 'pengalaman', t: 'Aku review jujur {produk} ini setelah pemakaian 30 hari.' },
-
-  { c: 'kontroversi', t: 'Sorry not sorry, {produk} mahal itu overpriced banget.' },
-  { c: 'kontroversi', t: 'Berhenti beli {produk} merek X, ini alternatif lebih murah & sama bagus.' },
-  { c: 'kontroversi', t: 'Yang gak suka {produk} ini, mungkin belum coba versi yang bener.' },
-  { c: 'kontroversi', t: 'Hot take: {produk} mahal bukan jaminan kualitas. Bukti? Liat ini.' },
-  { c: 'kontroversi', t: 'Aku tau ini bakal kontroversial, tapi {produk} murah ini lebih bagus dari yang mahal.' },
-
-  { c: 'urgensi', t: 'Buruan, {produk} ini lagi flash sale & cuma sampai jam 12 malam.' },
-  { c: 'urgensi', t: 'Stok {produk}-nya tinggal sedikit. Aku udah sayang banget kalo abis.' },
-  { c: 'urgensi', t: 'Diskon {produk}-nya bakal habis hari ini. Cek sekarang!' },
-  { c: 'urgensi', t: 'Last call! {produk} ini gak bakal balik harga segini lagi.' }
+  {cat:"penasaran",text:"Tau nggak sih kenapa produk ini viral banget di TikTok?"},
+  {cat:"penasaran",text:"Gue baru nemuin barang Shopee harga 20rb tapi kualitasnya kayak 200rb!"},
+  {cat:"penasaran",text:"Seriusan ini produk paling di-checkout se-Shopee bulan ini 🤯"},
+  {cat:"penasaran",text:"3 barang Shopee ini bikin kamar lo aesthetic tanpa boncos"},
+  {cat:"penasaran",text:"Cuma 15rb tapi fungsinya bikin hidup 10x lebih mudah!"},
+  {cat:"penasaran",text:"Lo pasti nggak nyangka barang ini bisa buat itu juga..."},
+  {cat:"penasaran",text:"Kenapa semua cewek lagi beli ini ya? Gue jadi penasaran"},
+  {cat:"masalah",text:"Capek makeup luntur? Coba trik ini pakai produk 30rb-an!"},
+  {cat:"masalah",text:"Rumah berantakan tapi males beres-beres? Cobain ini deh"},
+  {cat:"masalah",text:"Jerawat nggak hilang-hilang? Produk ini 3 hari langsung kering!"},
+  {cat:"masalah",text:"Bosen outfit lo gitu-gitu aja? Budget 100rb bisa mix-match 5 style"},
+  {cat:"masalah",text:"Rambut rusak karena sering catokan? Ini solusinya cuma 25rb"},
+  {cat:"masalah",text:"Susah tidur? Gue pake ini langsung KO 5 menit"},
+  {cat:"masalah",text:"HP cepet panas pas nge-game? Cooler ini solusi murah meriah"},
+  {cat:"angka",text:"5 produk Shopee under 50rb yang wajib lo punya di 2025"},
+  {cat:"angka",text:"7 barang ini udah di-checkout 100.000+ kali bulan ini"},
+  {cat:"angka",text:"3 skincare Shopee yang bikin glowing dalam 7 hari!"},
+  {cat:"angka",text:"10 produk viral Shopee yang bikin hemat jutaan per bulan"},
+  {cat:"angka",text:"Budget 200rb dapet 8 barang estetik buat kamar kost"},
+  {cat:"angka",text:"4 dari 5 beauty vlogger pakai produk ini, harganya cuma..."},
+  {cat:"angka",text:"Rating 4.9 dari 50.000+ review — ini produknya!"},
+  {cat:"pengalaman",text:"Jujur awalnya gue ragu beli ini, tapi pas nyoba... OMG!"},
+  {cat:"pengalaman",text:"Udah 3 bulan pakai ini dan hasilnya beneran keliatan 🙌"},
+  {cat:"pengalaman",text:"Nyesel nggak beli dari dulu, selama ini buang duit aja"},
+  {cat:"pengalaman",text:"Review jujur: gue beli ini tanpa ekspektasi, ternyata..."},
+  {cat:"pengalaman",text:"Temen gue nanya terus skincare gue apa, ini rahasianya"},
+  {cat:"pengalaman",text:"Dulu skeptis sama produk murah, sampai gue coba ini sendiri"},
+  {cat:"pengalaman",text:"Gue udah cobain 20+ produk serupa, ini THE BEST sih"},
+  {cat:"kontroversi",text:"Unpopular opinion: produk mahal belum tentu lebih bagus!"},
+  {cat:"kontroversi",text:"Katanya produk murah pasti jelek — SALAH BESAR."},
+  {cat:"kontroversi",text:"Influencer nggak mau kasih tau produk ini karena terlalu murah"},
+  {cat:"kontroversi",text:"Stop buang uang buat brand mahal, ini alternatifnya!"},
+  {cat:"kontroversi",text:"Beauty brand lokal ini kualitasnya ngalahin Korea, serius!"},
+  {cat:"kontroversi",text:"Berani taruhan lo bakal checkout setelah liat review ini"},
+  {cat:"kontroversi",text:"Produk ini harusnya viral tapi entah kenapa masih sepi 🤔"},
+  {cat:"urgensi",text:"Flash sale tinggal 2 jam! Harga ini nggak bakal balik lagi"},
+  {cat:"urgensi",text:"Stok tinggal 50 pcs — siapa cepat dia dapat!"},
+  {cat:"urgensi",text:"Voucher extra diskon cuma berlaku HARI INI, jangan sampe lewat"},
+  {cat:"urgensi",text:"Harga naik besok! Checkout sekarang masih dapet harga lama"},
+  {cat:"urgensi",text:"Gratis ongkir tinggal hari ini doang, gas checkout!"},
+  {cat:"urgensi",text:"Promo bundle hemat 50% cuma berlaku weekend ini"},
+  {cat:"urgensi",text:"Produk ini sempet sold out 3x, sekarang restock terbatas!"}
 ];
 
-// 4. CTA
 const CTAS = [
-  { c: 'soft', t: 'Kalau kamu kepoin, link-nya udah aku taro di kolom komentar yaa 💬' },
-  { c: 'soft', t: 'Buat yang nanya, link produk-nya cek di bio aku ya bestie ✨' },
-  { c: 'soft', t: 'Aku save semua produk yang aku pake di keranjang kuning, cek aja kalo mau coba 💛' },
-  { c: 'soft', t: 'Yang mau tau lebih detail, swipe up di story aku ya 👆' },
-  { c: 'soft', t: 'Aku gak nahan diri mau share produk ini. Linknya ada di bio kalau kamu mau coba.' },
-
-  { c: 'urgency', t: 'BURUAN! Diskonnya cuma sampai malam ini. Klik keranjang kuning sekarang 🔥' },
-  { c: 'urgency', t: 'Stok lagi tipis banget, jangan sampe kehabisan. Link langsung di komen ⚡' },
-  { c: 'urgency', t: 'Flash sale tinggal 2 jam lagi. Cek di keranjang kuning sebelum naik harga!' },
-  { c: 'urgency', t: 'Kalau gak buruan, harga aslinya 2x lipat. Link ada di bio.' },
-
-  { c: 'value', t: 'Aku jamin worth it banget. Cek aja di keranjang kuning, baca review-nya dulu.' },
-  { c: 'value', t: 'Aku gak akan rekomendasiin kalau gak yakin. Link di bio buat yang serius mau coba.' },
-  { c: 'value', t: 'Pake kode voucher di bio buat dapet diskon tambahan. Hemat lagi dong 💸' },
-  { c: 'value', t: 'Aku udah pake selama 30 hari, dan masih recommend banget. Linknya di bio.' },
-
-  { c: 'fomo', t: 'Yang udah liat duluan udah dapet harga termurah. Jangan sampe ketinggalan, link di komen.' },
-  { c: 'fomo', t: '500+ orang udah checkout produk ini hari ini. Kamu kapan? Link di bio.' },
-  { c: 'fomo', t: 'Kemarin yang DM aku semua udah dapet. Sekarang giliran kamu, link di keranjang kuning.' },
-  { c: 'fomo', t: 'Setiap aku posting, selalu ada yang bilang "kenapa baru tau sekarang". Jangan sampe kamu nyesel juga 🥲' },
-
-  { c: 'bio', t: '👉 Link di bio · langsung tap profil aku' },
-  { c: 'bio', t: '🛒 Cek keranjang kuning aku sekarang' },
-  { c: 'bio', t: '📌 Save dulu, baru cek link di bio' },
-  { c: 'bio', t: '💬 Komen "minat" nanti aku DM linknya' },
-  { c: 'bio', t: '✨ Klik linktree di bio · semua produk aku ada di sana' }
+  {cat:"soft",text:"Cek linknya di bio ya, siapa tau cocok buat kamu juga ✨"},
+  {cat:"soft",text:"Link ada di bio, tinggal klik aja kalau tertarik~"},
+  {cat:"soft",text:"Mau coba? Gue taruh linknya di bio biar gampang 🛒"},
+  {cat:"soft",text:"Kalau mau liat lebih detail, cek aja di keranjang kuning ya"},
+  {cat:"soft",text:"Share ke temen yang butuh ini juga ya!"},
+  {cat:"urgency",text:"Buruan checkout sebelum harga naik! Link di bio 🔥"},
+  {cat:"urgency",text:"Flash sale tinggal bentar, langsung gas ke link di bio!"},
+  {cat:"urgency",text:"Stok terbatas! Jangan sampai nyesel, cek bio sekarang"},
+  {cat:"urgency",text:"Harga segini nggak bakal lama, cepetan ke link di bio!"},
+  {cat:"urgency",text:"Promo habis hari ini — checkout sekarang atau nyesel nanti!"},
+  {cat:"value",text:"Harga segini dapet kualitas segitu? No brainer sih, link di bio"},
+  {cat:"value",text:"Investasi kecil, manfaat gede! Cek langsung di bio ya"},
+  {cat:"value",text:"Worth every rupiah! Buktiin sendiri, link di bio 💯"},
+  {cat:"value",text:"Murah tapi bagus emang ada — buktinya ini. Cek bio!"},
+  {cat:"value",text:"Duitnya kecil tapi upgrade-nya kerasa banget. Link di bio!"},
+  {cat:"fomo",text:"Yang lain udah pada checkout, masa kamu ketinggalan? 😏"},
+  {cat:"fomo",text:"Udah 10.000+ yang beli bulan ini, kamu kapan? Link di bio"},
+  {cat:"fomo",text:"Viral bukan tanpa alasan! Cobain & rasain sendiri, cek bio"},
+  {cat:"fomo",text:"Semua orang ngomongin ini, saatnya kamu buktiin. Link di bio!"},
+  {cat:"fomo",text:"Jangan cuma nonton, ikutan checkout! Keranjang kuning ya~"},
+  {cat:"bio",text:"🛒 Klik link di bio buat langsung checkout harga termurah!"},
+  {cat:"bio",text:"🔗 Semua link produk ada di bio — tinggal pilih & checkout"},
+  {cat:"bio",text:"📌 Tap link di bio buat dapetin produk + voucher ekstra"},
+  {cat:"bio",text:"💰 Mau harga spesial? Wajib lewat link di bio ya!"},
+  {cat:"bio",text:"🎁 Link di bio = harga termurah + gratis ongkir. Gas!"},
+  {cat:"bio",text:"⚡ Langsung aja ke link di bio, udah gue siapin semuanya"}
 ];
 
-// 5. PROMPT AI
 const PROMPTS = [
-  { c: 'riset', tag: 'Riset Produk',
-    t: `Bertindak sebagai ahli affiliate marketing Shopee Indonesia. Bantu aku riset 10 ide produk yang berpotensi viral di kategori "{kategori}" dengan kriteria:
-- Harga Rp 30.000 – Rp 150.000
-- Komisi minimal 5%
-- Solving masalah nyata audiens
-- Bisa di-demo / before-after di video pendek
-
-Untuk tiap produk, kasih: nama produk, target audiens (umur & masalah), angle konten viral, dan 1 contoh hook 3 detik. Gunakan bahasa santai khas Gen Z Indonesia.` },
-
-  { c: 'riset', tag: 'Cek Potensi Produk',
-    t: `Aku punya produk affiliate Shopee: "{nama produk}" dengan harga Rp {harga} dan komisi {komisi}%.
-Bantu analisis:
-1. Target audiens (umur, jenis kelamin, behaviour)
-2. 3 masalah utama yang bisa dijawab produk ini
-3. 5 angle konten yang bisa aku pakai (storytelling, demo, problem-solution, dll)
-4. 3 platform terbaik untuk promosi (TikTok / IG Reels / Threads)
-5. Skor potensi viral (1-10) + alasan` },
-
-  { c: 'caption', tag: 'Caption Storytelling',
-    t: `Buatkan 5 caption Instagram/TikTok dengan gaya STORYTELLING untuk produk affiliate Shopee:
-- Produk: {nama produk}
-- Manfaat utama: {manfaat}
-- Target: {target audiens}
-- Harga: Rp {harga}
-
-Format setiap caption:
-- Hook 3 detik (pemicu emosi/penasaran)
-- Body cerita pribadi (problem → solution)
-- CTA halus mengarah ke link bio
-- 5-7 hashtag relevan
-
-Bahasa: santai, Gen Z, gak kaku, ada emoji secukupnya.` },
-
-  { c: 'caption', tag: 'Caption Pendek (Threads/X)',
-    t: `Buat 10 caption pendek (max 280 karakter) untuk produk Shopee Affiliate:
-- Produk: {produk}
-- Manfaat: {manfaat}
-
-Variasikan: 3 storytelling, 3 humor relatable, 2 fact/edukasi, 2 hot take/kontroversi. Akhiri dengan CTA halus seperti "linknya di bio" atau "DM aku". Bahasa Indonesia santai, jangan terlalu hard-selling.` },
-
-  { c: 'skrip', tag: 'Skrip Video TikTok 30 Detik',
-    t: `Buatkan skrip video TikTok 30 detik untuk produk affiliate Shopee.
-- Produk: {nama produk}
-- Manfaat: {manfaat}
-- Target: {target audiens}
-
-Format:
-- Detik 0-3: Hook (visual + dialog)
-- Detik 3-15: Demo / cerita (ada twist)
-- Detik 15-25: Hasil / before-after
-- Detik 25-30: CTA + sebut "link di bio / keranjang kuning"
-
-Beri instruksi shot (close up, POV, b-roll) dan dialog kalimat per kalimat.` },
-
-  { c: 'skrip', tag: 'Skrip Reels 60 Detik',
-    t: `Buatkan skrip Reels Instagram durasi 60 detik untuk konten affiliate Shopee dengan struktur PROBLEM → AGITATE → SOLVE → CTA.
-- Produk: {produk}
-- Audiens: {audiens}
-
-Bagi per scene (5-7 scene), tiap scene ada:
-- Visual: apa yang ditampilkan
-- Voice over / on-screen text: kalimat persisnya
-- Durasi (detik)
-
-Akhiri dengan CTA yang spesifik & strong.` },
-
-  { c: 'visual', tag: 'Prompt Thumbnail / Cover',
-    t: `Buatkan 5 prompt untuk membuat thumbnail/cover konten affiliate Shopee yang eye-catching, dengan deskripsi visual yang detail (warna, komposisi, ekspresi, text overlay).
-- Produk: {produk}
-- Audiens: {audiens}
-- Vibe: {misal: aesthetic / playful / clean minimal}
-
-Output dalam format yang bisa langsung dipakai di Canva atau AI image generator.` },
-
-  { c: 'visual', tag: 'Ide B-Roll / Shot List',
-    t: `Aku mau bikin video review produk Shopee: "{produk}". Kasih aku 15 ide shot/b-roll yang variatif & bisa direkam pake HP. 
-Format: nomor, jenis shot (close up / wide / POV / hands / detail), apa yang direkam, durasi rekomendasi (detik).
-Tujuannya: hasil video gak monoton & enak ditonton.` },
-
-  { c: 'kompetitor', tag: 'Analisis Kompetitor',
-    t: `Bantu aku analisis 5 akun affiliate Shopee TikTok teratas di niche "{niche}". Untuk tiap akun, sebutkan:
-1. Username (sample/contoh)
-2. Gaya konten utama
-3. Format video andalan
-4. Pola caption & hook yang sering dipakai
-5. Frekuensi posting
-6. 1 hal yang bisa aku tiru & 1 hal yang harus aku hindari
-
-Akhiri dengan strategi konten yang BEDA dari mereka semua biar aku stand out.` },
-
-  { c: 'kompetitor', tag: 'Audit Konten Sendiri',
-    t: `Aku akan kasih kamu 3 caption + hook konten affiliate aku yang performanya kurang bagus. Audit dengan kerangka:
-1. Hook 3 detiknya kuat atau lemah? Kenapa?
-2. Caption-nya storytelling atau monoton?
-3. CTA-nya jelas atau ambigu?
-4. Apa 1 perubahan paling impactful yang harus aku lakukan?
-5. Rewrite versi perbaikannya.
-
-Konten aku:
-1. {konten 1}
-2. {konten 2}
-3. {konten 3}` }
+  {cat:"riset",text:"Buatkan list 10 produk Shopee yang lagi trending di kategori [KATEGORI] beserta estimasi komisi affiliate-nya. Sertakan alasan kenapa produk tersebut potensial untuk dipromosikan."},
+  {cat:"riset",text:"Analisis 5 produk Shopee dengan rating tertinggi di niche [NICHE]. Berikan insight tentang target market, harga ideal, dan angle promosi yang cocok."},
+  {cat:"caption",text:"Buatkan 5 variasi caption Instagram untuk promosi produk [NAMA PRODUK] dengan harga [HARGA]. Gunakan gaya bahasa Gen Z yang santai, sertakan emoji dan hashtag relevan."},
+  {cat:"caption",text:"Buat caption TikTok untuk video unboxing produk [NAMA PRODUK]. Harus ada hook di awal, storytelling singkat, dan CTA di akhir. Gaya bahasa: kayak ngobrol sama bestie."},
+  {cat:"skrip",text:"Buatkan skrip video TikTok 30 detik untuk review produk [NAMA PRODUK]. Format: Hook (3 detik) → Problem (5 detik) → Solution/Demo (15 detik) → CTA (7 detik). Gaya santai dan relatable."},
+  {cat:"skrip",text:"Buat skrip Reels 15 detik dengan konsep before-after menggunakan produk [NAMA PRODUK]. Harus catchy, cepat, dan bikin orang pengen beli."},
+  {cat:"visual",text:"Berikan 5 ide konsep visual/thumbnail yang eye-catching untuk konten affiliate produk [NAMA PRODUK]. Sertakan referensi warna, layout, dan text overlay yang recommended."},
+  {cat:"visual",text:"Buat shot list untuk foto produk [NAMA PRODUK] yang bisa dipakai di feed Instagram. Include angle, lighting, props, dan mood yang disarankan."},
+  {cat:"kompetitor",text:"Analisis strategi konten 3 affiliate Shopee top di niche [NICHE]. Apa yang membuat konten mereka viral? Berikan insight yang bisa ditiru."},
+  {cat:"kompetitor",text:"Bandingkan 3 produk serupa di Shopee kategori [KATEGORI]. Buat tabel perbandingan dari segi harga, rating, fitur, dan potensi komisi affiliate."}
 ];
 
-/* =============================================================
-   TABS
-   ============================================================= */
-const tabs = document.querySelectorAll('.tab-btn');
-const panels = document.querySelectorAll('.panel');
-tabs.forEach(t => {
-  t.addEventListener('click', () => {
-    const tab = t.dataset.tab;
-    tabs.forEach(x => x.classList.remove('active'));
-    panels.forEach(p => p.classList.remove('active'));
-    t.classList.add('active');
-    document.getElementById('panel-' + tab).classList.add('active');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+const EDUKASI_DATA = [
+  {
+    title:"Apa itu Hook? 🎣",
+    desc:"Hook adalah kalimat pembuka yang bikin orang BERHENTI scroll dan penasaran sama konten lo. Hook yang bagus = 3 detik pertama yang nentuin orang lanjut nonton atau skip.",
+    example:"Contoh: \"Tau nggak sih kenapa produk 20rb ini lebih bagus dari yang 200rb?\" — Ini bikin orang penasaran dan mau tau jawabannya!",
+    tips:"Tips: Mulai dengan pertanyaan, angka spesifik, atau pernyataan kontroversial. Hindari intro generic kayak \"Hai guys...\""
+  },
+  {
+    title:"Apa itu Caption? 📝",
+    desc:"Caption adalah teks yang mendampingi konten visual lo. Caption yang oke bisa ningkatin engagement, kasih konteks, dan ngarahin orang buat take action (beli/klik link).",
+    example:"Contoh: \"Dulu gue skeptis sama skincare murah... tapi setelah 2 minggu pake ini, temen kantor pada nanya gue pakai apa 😭✨ Link di bio!\"",
+    tips:"Tips: Gunakan storytelling singkat, relate-in sama masalah audience, dan selalu akhiri dengan CTA. Panjang ideal 3-5 kalimat."
+  },
+  {
+    title:"Apa itu CTA? 🎯",
+    desc:"CTA (Call to Action) adalah ajakan buat audience melakukan sesuatu: klik link, checkout, follow, atau share. Tanpa CTA yang jelas, audience cuma nonton tanpa action.",
+    example:"Contoh: \"Buruan checkout sebelum flash sale habis! 🔥 Link ada di bio, tinggal klik & checkout. Gratis ongkir hari ini doang!\"",
+    tips:"Tips: Buat CTA spesifik (jangan cuma \"cek bio\"), tambahkan urgensi, dan kasih tau benefit yang didapat kalau mereka action sekarang."
+  },
+  {
+    title:"Apa itu Prompt AI? 🤖",
+    desc:"Prompt AI adalah instruksi/perintah yang lo kasih ke AI (ChatGPT, dll) buat menghasilkan output yang lo mau. Semakin detail prompt-nya, semakin bagus hasilnya.",
+    example:"Contoh prompt: \"Buatkan 5 caption Instagram untuk produk serum vitamin C harga 45rb, gaya bahasa Gen Z, include emoji, dan ada CTA ke link di bio.\"",
+    tips:"Tips: Selalu sertakan konteks (produk, harga, target), format output yang diinginkan, tone/gaya bahasa, dan batasan (jumlah kata/kalimat)."
+  },
+  {
+    title:"Apa itu Riset Produk? 🔍",
+    desc:"Riset produk adalah proses mencari & menganalisis produk yang potensial buat dipromosikan sebagai affiliate. Tujuannya: pilih produk yang laris, komisinya oke, dan sesuai niche lo.",
+    example:"Contoh riset: Cek produk dengan penjualan 1000+/bulan, rating 4.5+, harga 50-200rb (sweet spot checkout), dan ada program affiliate dengan komisi minimal 5%.",
+    tips:"Tips: Fokus di 2-3 niche aja, pantau trending produk tiap minggu, dan perhatiin seasonality (musim hujan = payung/jas hujan, dll)."
+  }
+];
+
+
+/* ====== UTILITIES ====== */
+function escapeHTML(str){return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+function escapeAttr(str){return str.replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/'/g,'&#39;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+
+function copyText(text){
+  if(navigator.clipboard&&navigator.clipboard.writeText){
+    navigator.clipboard.writeText(text).then(()=>showToast()).catch(()=>fallbackCopy(text));
+  }else{fallbackCopy(text);}
+}
+function fallbackCopy(text){
+  const ta=document.createElement('textarea');
+  ta.value=text;ta.style.position='fixed';ta.style.left='-9999px';
+  document.body.appendChild(ta);ta.select();
+  try{document.execCommand('copy');showToast();}catch(e){alert('Gagal copy, coba manual ya');}
+  document.body.removeChild(ta);
+}
+function showToast(){
+  const t=document.getElementById('toast');t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),1800);
+}
+
+/* ====== EVENT DELEGATION FOR COPY ====== */
+document.addEventListener('click',function(e){
+  const item=e.target.closest('.out-item[data-copy]');
+  if(!item)return;
+  const text=item.getAttribute('data-copy');
+  copyText(text);
+  item.classList.add('copied');
+  setTimeout(()=>item.classList.remove('copied'),1200);
+});
+
+/* ====== MENU NAVIGATION ====== */
+const menuItems=document.querySelectorAll('.menu-item[data-section]');
+const contentDiv=document.getElementById('content');
+
+menuItems.forEach(mi=>{
+  mi.addEventListener('click',()=>{
+    menuItems.forEach(m=>m.classList.remove('active'));
+    mi.classList.add('active');
+    const sec=mi.getAttribute('data-section');
+    renderSection(sec);
   });
 });
 
-/* =============================================================
-   1. RISET
-   ============================================================= */
-function generateRiset() {
-  const cat = document.getElementById('risetKategori').value;
-  const out = document.getElementById('risetOutput');
-  if (!cat) {
-    out.innerHTML = '<div class="empty"><div class="empty-icon">👆</div>Pilih kategori dulu yaa</div>';
-    return;
+function renderSection(sec){
+  switch(sec){
+    case 'riset':renderRiset();break;
+    case 'caption':renderCaption();break;
+    case 'hook':renderHooks();break;
+    case 'cta':renderCTAs();break;
+    case 'prompt':renderPrompts();break;
+    case 'bonus':renderBonus();break;
+    case 'edukasi':renderEdukasi();break;
+    default:contentDiv.innerHTML='';
   }
-  const data = RISET_DATA[cat] || [];
-  out.innerHTML = '<div class="riset-grid">' + data.map(([nama, tip]) => `
-    <div class="riset-item">${nama}<small>💡 ${tip}</small></div>
-  `).join('') + '</div>';
 }
 
-/* =============================================================
-   2. CAPTION
-   ============================================================= */
-function generateCaption() {
-  const p = document.getElementById('capProduk').value.trim() || 'produk ini';
-  const m = document.getElementById('capManfaat').value.trim() || 'banget bantu rutinitas harian';
-  const a = document.getElementById('capAudiens').value.trim() || 'kamu yang lagi cari ini';
-  const h = document.getElementById('capHarga').value.trim() || 'super murah';
 
-  const captions = [
-    {
-      tag: 'Storytelling',
-      text: `Aku tuh tipe orang yang skeptis banget sama ${p}. Udah coba berbagai merek, semua biasa aja.\n\nSampe akhirnya nemu ${p} ini di Shopee — dan ternyata ${m}. Aku langsung beli stok lagi 🥹\n\nBuat ${a}, kayanya ini wajib coba. Linknya di bio yaa ✨\n\n#shopeefinds #racunshopee #fyp`
-    },
-    {
-      tag: 'Problem-Solution',
-      text: `Pernah ngerasain masalah pas pake ${p} merek lain? Aku banget. Sampe akhirnya nemu ini di Shopee.\n\n${m}. Harga? Cuma Rp ${h} aja!\n\nKalo kamu ${a}, ini solusi banget. Cek keranjang kuning aku 💛\n\n#shopeefinds #racunshopee #review`
-    },
-    {
-      tag: 'FOMO',
-      text: `Stop scroll dulu deh.\n\n${p} ini lagi diskon gila di Shopee dan stoknya tinggal sedikit banget. Aku gak tega kalau kamu ketinggalan.\n\nApalagi ${m}. Buat ${a}, ini gak boleh dilewatin.\n\nLink ada di bio. BURUAN ⚡`
-    },
-    {
-      tag: 'List / Edukasi',
-      text: `3 alasan kenapa ${p} ini wajib kamu punya:\n\n1. ${m}\n2. Harga cuma Rp ${h} (cek aja sendiri)\n3. Reviewnya udah ribuan & rating 4.9★\n\nBuat ${a}, ini pilihan paling masuk akal sekarang. Linknya di bio ya 👇\n\n#shopeefinds #review #fyp`
-    },
-    {
-      tag: 'Transformasi',
-      text: `Sebelum: aku selalu kesel sama ${p} biasa.\nSesudah: ketemu ${p} ini di Shopee dan ${m}.\n\nGak nyangka cuma Rp ${h} bisa sebagus ini. Buat ${a}, kalian harus cobain. Save dulu, baru cek link di bio yaa 📌\n\n#racunshopee #shopeefinds #fyp`
-    }
+/* ====== RISET SECTION ====== */
+function renderRiset(){
+  let cats=RISET_DATA.map((r,i)=>`<button class="pill${i===0?' active':''}" data-cat="${i}">${r.emoji} ${escapeHTML(r.cat)}</button>`).join('');
+  contentDiv.innerHTML=`
+    <section class="section active">
+      <div class="card">
+        <h3>🔍 Riset Produk Trending</h3>
+        <p class="desc">Pilih kategori, temukan produk potensial buat dipromosiin!</p>
+        <div class="pills" id="risetPills">${cats}</div>
+        <div id="risetResult"></div>
+      </div>
+    </section>`;
+  generateRiset(0);
+  document.getElementById('risetPills').addEventListener('click',function(e){
+    const pill=e.target.closest('.pill');
+    if(!pill)return;
+    this.querySelectorAll('.pill').forEach(p=>p.classList.remove('active'));
+    pill.classList.add('active');
+    generateRiset(parseInt(pill.getAttribute('data-cat')));
+  });
+}
+
+function generateRiset(idx){
+  const cat=RISET_DATA[idx];
+  let html='<div class="riset-grid">';
+  cat.items.forEach(item=>{
+    const komisi=Math.floor(Math.random()*8)+3;
+    const sales=Math.floor(Math.random()*9000)+1000;
+    html+=`<div class="riset-item">${escapeHTML(item)}<small>💰 Komisi ~${komisi}% · 📦 ${sales.toLocaleString('id')}+ terjual</small></div>`;
+  });
+  html+='</div>';
+  document.getElementById('risetResult').innerHTML=html;
+}
+
+/* ====== CAPTION SECTION ====== */
+function renderCaption(){
+  contentDiv.innerHTML=`
+    <section class="section active">
+      <div class="card">
+        <h3>📝 Generator Caption</h3>
+        <p class="desc">Masukkan nama produk & harga, langsung dapet 5 variasi caption siap pakai!</p>
+        <div class="field"><label>Nama Produk</label><input type="text" id="capProduk" placeholder="cth: Serum Vitamin C"></div>
+        <div class="field-row">
+          <div class="field"><label>Harga</label><input type="text" id="capHarga" placeholder="cth: 45.000"></div>
+          <div class="field"><label>Benefit Utama</label><input type="text" id="capBenefit" placeholder="cth: glowing 7 hari"></div>
+        </div>
+        <button class="btn" id="btnCaption">✨ Generate 5 Caption</button>
+        <div class="output-list" id="captionResult"></div>
+      </div>
+    </section>`;
+  document.getElementById('btnCaption').addEventListener('click',generateCaption);
+}
+
+function generateCaption(){
+  const produk=document.getElementById('capProduk').value.trim()||'Produk Viral';
+  const harga=document.getElementById('capHarga').value.trim()||'50.000';
+  const benefit=document.getElementById('capBenefit').value.trim()||'bikin hidup lebih gampang';
+
+  const captions=[
+    {type:'Storytelling',text:`Jujur awalnya gue ragu beli ${produk} karena harganya cuma ${harga}... tapi setelah seminggu pakai, hasilnya ${benefit} beneran 😭✨ Sekarang temen-temen pada nanya gue pake apa.\n\nMau coba juga? Link ada di bio ya! 🛒`},
+    {type:'Problem-Solution',text:`Masalah lo: capek & nggak pede 😩\nSolusinya: ${produk} — cuma ${harga} tapi bisa ${benefit}!\n\nGue udah buktiin sendiri dan nggak bakal balik ke produk lain. Serius worth it banget!\n\n🔗 Langsung aja cek link di bio, ada promo hari ini!`},
+    {type:'FOMO',text:`SEMUA orang lagi checkout ${produk} dan lo belum?! 🤯\n\nHarga cuma ${harga} tapi benefitnya ${benefit}. Stok tinggal dikit + promo bisa abis kapan aja.\n\nJangan cuma nonton, ikutan checkout! 🛒 Link di bio~`},
+    {type:'List/Edukasi',text:`3 alasan kenapa ${produk} worth it banget:\n\n✅ Harga cuma ${harga} (nggak bikin boncos)\n✅ Bisa ${benefit}\n✅ Rating 4.9 dari ribuan buyer\n\nMasih ragu? Baca review-nya sendiri deh. Link di bio! 💯`},
+    {type:'Transformasi',text:`Before: 😐 biasa aja, nggak pede\nAfter: 😍 ${benefit} berkat ${produk}\n\nCuma butuh ${harga} buat upgrade. Gue nggak lebay, emang sebagus itu sih.\n\nPengen hasil yang sama? Gas ke link di bio sekarang! ⚡`}
   ];
 
-  const out = document.getElementById('capOutput');
-  out.innerHTML = captions.map(c => `
-    <div class="out-item" data-copy="${escapeAttr(c.text)}">
-      <span class="out-item-tag">${c.tag}</span><span class="out-item-copy">Copy</span><br>
-      ${escapeHTML(c.text).replace(/\n/g, '<br>')}
-    </div>
-  `).join('');
+  let html='';
+  captions.forEach(c=>{
+    html+=`<div class="out-item" data-copy="${escapeAttr(c.text)}"><span class="out-tag">${escapeHTML(c.type)}</span><span class="out-copy">📋 Copy</span>${escapeHTML(c.text).replace(/\n/g,'<br>')}</div>`;
+  });
+  document.getElementById('captionResult').innerHTML=html;
 }
 
-/* =============================================================
-   3. HOOK
-   ============================================================= */
-let hookCat = 'all';
-document.getElementById('hookPills').addEventListener('click', e => {
-  if (e.target.classList.contains('pill')) {
-    document.querySelectorAll('#hookPills .pill').forEach(p => p.classList.remove('active'));
-    e.target.classList.add('active');
-    hookCat = e.target.dataset.cat;
-    renderHooks();
-  }
-});
 
-function renderHooks() {
-  const produk = document.getElementById('hookProduk').value.trim() || 'produk ini';
-  const filtered = HOOKS.filter(h => hookCat === 'all' || h.c === hookCat);
-  const out = document.getElementById('hookOutput');
-  out.innerHTML = filtered.map(h => {
-    const text = h.t.replace(/{produk}/g, produk);
-    return `
-      <div class="out-item" data-copy="${escapeAttr(text)}">
-        <span class="out-item-tag">${h.c}</span><span class="out-item-copy">Copy</span><br>
-        ${escapeHTML(text)}
+/* ====== HOOK SECTION ====== */
+function renderHooks(activeCat){
+  activeCat=activeCat||'penasaran';
+  const cats=['penasaran','masalah','angka','pengalaman','kontroversi','urgensi'];
+  const catEmojis={penasaran:'🤔',masalah:'😩',angka:'🔢',pengalaman:'💬',kontroversi:'🔥',urgensi:'⏰'};
+  let pills=cats.map(c=>`<button class="pill${c===activeCat?' active':''}" data-cat="${c}">${catEmojis[c]} ${c.charAt(0).toUpperCase()+c.slice(1)}</button>`).join('');
+  
+  const filtered=HOOKS.filter(h=>h.cat===activeCat);
+  let items='';
+  filtered.forEach(h=>{
+    items+=`<div class="out-item" data-copy="${escapeAttr(h.text)}"><span class="out-copy">📋 Copy</span>${escapeHTML(h.text)}</div>`;
+  });
+
+  contentDiv.innerHTML=`
+    <section class="section active">
+      <div class="card">
+        <h3>🎣 Hook Viral</h3>
+        <p class="desc">Pilih kategori hook, tap untuk copy langsung! Pakai di 3 detik pertama konten lo.</p>
+        <div class="pills" id="hookPills">${pills}</div>
+        <div class="output-list" id="hookResult">${items}</div>
       </div>
-    `;
-  }).join('');
-}
-renderHooks();
-
-/* =============================================================
-   4. CTA
-   ============================================================= */
-let ctaCat = 'all';
-document.getElementById('ctaPills').addEventListener('click', e => {
-  if (e.target.classList.contains('pill')) {
-    document.querySelectorAll('#ctaPills .pill').forEach(p => p.classList.remove('active'));
-    e.target.classList.add('active');
-    ctaCat = e.target.dataset.cat;
-    renderCTAs();
-  }
-});
-
-function renderCTAs() {
-  const filtered = CTAS.filter(c => ctaCat === 'all' || c.c === ctaCat);
-  const out = document.getElementById('ctaOutput');
-  out.innerHTML = filtered.map(c => `
-    <div class="out-item" data-copy="${escapeAttr(c.t)}">
-      <span class="out-item-tag">${c.c}</span><span class="out-item-copy">Copy</span><br>
-      ${escapeHTML(c.t)}
-    </div>
-  `).join('');
-}
-renderCTAs();
-
-/* =============================================================
-   5. PROMPT AI
-   ============================================================= */
-let promptCat = 'all';
-document.getElementById('promptPills').addEventListener('click', e => {
-  if (e.target.classList.contains('pill')) {
-    document.querySelectorAll('#promptPills .pill').forEach(p => p.classList.remove('active'));
-    e.target.classList.add('active');
-    promptCat = e.target.dataset.cat;
-    renderPrompts();
-  }
-});
-
-function renderPrompts() {
-  const filtered = PROMPTS.filter(p => promptCat === 'all' || p.c === promptCat);
-  const out = document.getElementById('promptOutput');
-  out.innerHTML = filtered.map(p => `
-    <div class="out-item" data-copy="${escapeAttr(p.t)}">
-      <span class="out-item-tag">${p.tag}</span><span class="out-item-copy">Copy</span><br>
-      ${escapeHTML(p.t).replace(/\n/g, '<br>')}
-    </div>
-  `).join('');
-}
-renderPrompts();
-
-/* =============================================================
-   6. KALKULATOR
-   ============================================================= */
-function hitungKomisi() {
-  const harga = parseFloat(document.getElementById('kHarga').value) || 0;
-  const komisi = parseFloat(document.getElementById('kKomisi').value) || 0;
-  const klik = parseFloat(document.getElementById('kKlik').value) || 0;
-  const cr = parseFloat(document.getElementById('kCr').value) || 0;
-
-  const out = document.getElementById('kalkOutput');
-  if (harga <= 0 || komisi <= 0 || klik <= 0 || cr <= 0) {
-    out.innerHTML = '<div class="empty"><div class="empty-icon">🧮</div>Isi semua field dulu yaa</div>';
-    return;
-  }
-
-  const orderan = Math.floor(klik * (cr / 100));
-  const komisiPerOrder = harga * (komisi / 100);
-  const totalKomisi = orderan * komisiPerOrder;
-  const omzet = orderan * harga;
-
-  const fmt = n => 'Rp ' + Math.round(n).toLocaleString('id-ID');
-
-  out.innerHTML = `
-    <div class="calc-result">
-      <div class="calc-row"><span>Total Klik</span><strong>${klik.toLocaleString('id-ID')}</strong></div>
-      <div class="calc-row"><span>Estimasi Order (CR ${cr}%)</span><strong>${orderan.toLocaleString('id-ID')} order</strong></div>
-      <div class="calc-row"><span>Komisi per Order</span><strong>${fmt(komisiPerOrder)}</strong></div>
-      <div class="calc-row"><span>Total Omzet</span><strong>${fmt(omzet)}</strong></div>
-      <div class="calc-row total"><span>💰 Estimasi Komisi Kamu</span><strong>${fmt(totalKomisi)}</strong></div>
-    </div>
-  `;
-}
-
-/* =============================================================
-   COPY TO CLIPBOARD
-   ============================================================= */
-function copyText(el, text) {
-  navigator.clipboard.writeText(text).then(() => {
-    el.classList.add('copied');
-    showToast('Tersalin ✓ Tinggal paste!');
-    setTimeout(() => el.classList.remove('copied'), 1500);
-  }).catch(() => {
-    // Fallback
-    const ta = document.createElement('textarea');
-    ta.value = text;
-    document.body.appendChild(ta);
-    ta.select();
-    document.execCommand('copy');
-    document.body.removeChild(ta);
-    el.classList.add('copied');
-    showToast('Tersalin ✓');
-    setTimeout(() => el.classList.remove('copied'), 1500);
+    </section>`;
+  
+  document.getElementById('hookPills').addEventListener('click',function(e){
+    const pill=e.target.closest('.pill');
+    if(!pill)return;
+    const cat=pill.getAttribute('data-cat');
+    this.querySelectorAll('.pill').forEach(p=>p.classList.remove('active'));
+    pill.classList.add('active');
+    const f=HOOKS.filter(h=>h.cat===cat);
+    let html='';
+    f.forEach(h=>{
+      html+=`<div class="out-item" data-copy="${escapeAttr(h.text)}"><span class="out-copy">📋 Copy</span>${escapeHTML(h.text)}</div>`;
+    });
+    document.getElementById('hookResult').innerHTML=html;
   });
 }
 
-function showToast(msg) {
-  const t = document.getElementById('toast');
-  t.textContent = msg;
-  t.classList.add('show');
-  clearTimeout(window._toastTimer);
-  window._toastTimer = setTimeout(() => t.classList.remove('show'), 1800);
+/* ====== CTA SECTION ====== */
+function renderCTAs(activeCat){
+  activeCat=activeCat||'soft';
+  const cats=['soft','urgency','value','fomo','bio'];
+  const catEmojis={soft:'😊',urgency:'⏰',value:'💎',fomo:'😱',bio:'🔗'};
+  let pills=cats.map(c=>`<button class="pill${c===activeCat?' active':''}" data-cat="${c}">${catEmojis[c]} ${c.charAt(0).toUpperCase()+c.slice(1)}</button>`).join('');
+  
+  const filtered=CTAS.filter(c=>c.cat===activeCat);
+  let items='';
+  filtered.forEach(c=>{
+    items+=`<div class="out-item" data-copy="${escapeAttr(c.text)}"><span class="out-copy">📋 Copy</span>${escapeHTML(c.text)}</div>`;
+  });
+
+  contentDiv.innerHTML=`
+    <section class="section active">
+      <div class="card">
+        <h3>🎯 CTA Siap Pakai</h3>
+        <p class="desc">Call-to-Action yang bikin audience langsung klik & checkout. Tap untuk copy!</p>
+        <div class="pills" id="ctaPills">${pills}</div>
+        <div class="output-list" id="ctaResult">${items}</div>
+      </div>
+    </section>`;
+  
+  document.getElementById('ctaPills').addEventListener('click',function(e){
+    const pill=e.target.closest('.pill');
+    if(!pill)return;
+    const cat=pill.getAttribute('data-cat');
+    this.querySelectorAll('.pill').forEach(p=>p.classList.remove('active'));
+    pill.classList.add('active');
+    const f=CTAS.filter(c=>c.cat===cat);
+    let html='';
+    f.forEach(c=>{
+      html+=`<div class="out-item" data-copy="${escapeAttr(c.text)}"><span class="out-copy">📋 Copy</span>${escapeHTML(c.text)}</div>`;
+    });
+    document.getElementById('ctaResult').innerHTML=html;
+  });
 }
 
-function escapeHTML(str) {
-  return String(str).replace(/[&<>"']/g, s => ({
-    '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
-  }[s]));
+/* ====== PROMPT SECTION ====== */
+function renderPrompts(activeCat){
+  activeCat=activeCat||'riset';
+  const cats=['riset','caption','skrip','visual','kompetitor'];
+  const catEmojis={riset:'🔍',caption:'📝',skrip:'🎬',visual:'🎨',kompetitor:'📊'};
+  let pills=cats.map(c=>`<button class="pill${c===activeCat?' active':''}" data-cat="${c}">${catEmojis[c]} ${c.charAt(0).toUpperCase()+c.slice(1)}</button>`).join('');
+  
+  const filtered=PROMPTS.filter(p=>p.cat===activeCat);
+  let items='';
+  filtered.forEach(p=>{
+    items+=`<div class="out-item" data-copy="${escapeAttr(p.text)}"><span class="out-tag">${escapeHTML(p.cat.toUpperCase())}</span><span class="out-copy">📋 Copy</span>${escapeHTML(p.text)}</div>`;
+  });
+
+  contentDiv.innerHTML=`
+    <section class="section active">
+      <div class="card">
+        <h3>🤖 Prompt AI Siap Pakai</h3>
+        <p class="desc">Copy prompt ini ke ChatGPT/Gemini buat generate konten affiliate lo. Ganti [BRACKET] sesuai produk!</p>
+        <div class="pills" id="promptPills">${pills}</div>
+        <div class="output-list" id="promptResult">${items}</div>
+      </div>
+    </section>`;
+  
+  document.getElementById('promptPills').addEventListener('click',function(e){
+    const pill=e.target.closest('.pill');
+    if(!pill)return;
+    const cat=pill.getAttribute('data-cat');
+    this.querySelectorAll('.pill').forEach(p=>p.classList.remove('active'));
+    pill.classList.add('active');
+    const f=PROMPTS.filter(p=>p.cat===cat);
+    let html='';
+    f.forEach(p=>{
+      html+=`<div class="out-item" data-copy="${escapeAttr(p.text)}"><span class="out-tag">${escapeHTML(p.cat.toUpperCase())}</span><span class="out-copy">📋 Copy</span>${escapeHTML(p.text)}</div>`;
+    });
+    document.getElementById('promptResult').innerHTML=html;
+  });
 }
 
-function escapeAttr(str) {
-  return String(str).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/'/g,'&#39;');
+
+/* ====== BONUS (KALKULATOR KOMISI) ====== */
+function renderBonus(){
+  contentDiv.innerHTML=`
+    <section class="section active">
+      <div class="card">
+        <h3>🎁 Kalkulator Komisi</h3>
+        <p class="desc">Hitung estimasi cuan affiliate lo per bulan. Masukin data, langsung keliatan hasilnya!</p>
+        <div class="field"><label>Harga Produk (Rp)</label><input type="number" id="calcHarga" placeholder="cth: 150000"></div>
+        <div class="field-row">
+          <div class="field"><label>Komisi (%)</label><input type="number" id="calcKomisi" placeholder="cth: 5" value="5"></div>
+          <div class="field"><label>Jumlah Terjual / Bulan</label><input type="number" id="calcQty" placeholder="cth: 100"></div>
+        </div>
+        <button class="btn" id="btnCalc">💰 Hitung Komisi</button>
+        <div id="calcResult"></div>
+      </div>
+    </section>`;
+  document.getElementById('btnCalc').addEventListener('click',hitungKomisi);
 }
 
-/* Event delegation for all data-copy items */
-document.addEventListener('click', function(e) {
-  const item = e.target.closest('.out-item[data-copy]');
-  if (item) {
-    copyText(item, item.dataset.copy);
-  }
-});
+function hitungKomisi(){
+  const harga=parseFloat(document.getElementById('calcHarga').value)||0;
+  const komisi=parseFloat(document.getElementById('calcKomisi').value)||0;
+  const qty=parseInt(document.getElementById('calcQty').value)||0;
+  
+  const perItem=harga*(komisi/100);
+  const perBulan=perItem*qty;
+  const per3Bulan=perBulan*3;
+  const perTahun=perBulan*12;
+
+  const fmt=n=>'Rp '+n.toLocaleString('id-ID');
+  
+  document.getElementById('calcResult').innerHTML=`
+    <div class="calc-result">
+      <div class="calc-row"><span>Komisi per item</span><strong>${fmt(perItem)}</strong></div>
+      <div class="calc-row"><span>Total per bulan (${qty} pcs)</span><strong>${fmt(perBulan)}</strong></div>
+      <div class="calc-row"><span>Proyeksi 3 bulan</span><strong>${fmt(per3Bulan)}</strong></div>
+      <div class="calc-row total"><span>Proyeksi 1 tahun 🚀</span><strong>${fmt(perTahun)}</strong></div>
+    </div>
+    <p style="font-size:.75rem;color:var(--ink3);margin-top:8px;text-align:center;">*Estimasi. Komisi aktual tergantung program affiliate Shopee.</p>`;
+}
+
+/* ====== EDUKASI SECTION ====== */
+function renderEdukasi(){
+  let html='<section class="section active"><div class="card"><h3>📚 Edukasi Affiliate</h3><p class="desc">Pahami tools-nya dulu biar makin jago bikin konten yang convert! 🧠</p></div>';
+  EDUKASI_DATA.forEach(edu=>{
+    html+=`
+      <div class="edu-card">
+        <h4>${escapeHTML(edu.title)}</h4>
+        <p>${escapeHTML(edu.desc)}</p>
+        <div class="example">${escapeHTML(edu.example)}</div>
+        <p style="margin-top:8px;font-size:.78rem;color:var(--primary);font-weight:600;">💡 ${escapeHTML(edu.tips)}</p>
+      </div>`;
+  });
+  html+='</section>';
+  contentDiv.innerHTML=html;
+}
+
+/* ====== INIT ====== */
+renderSection('riset');
 </script>
-
 </body>
 </html>
