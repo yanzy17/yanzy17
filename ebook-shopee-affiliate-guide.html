@@ -1,188 +1,474 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Panduan Shopee Affiliate</title>
-  <style>
-    :root{--primary:#ee4d2d;--primary-light:#fff1ec;--bg:#f8f9fa;--surface:#fff;--ink:#1a1a1a;--ink2:#555;--ink3:#999;--border:#eee;--radius:14px}
-    *{margin:0;padding:0;box-sizing:border-box}
-    body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;padding-bottom:80px}
-    .nav{position:sticky;top:0;background:var(--surface);border-bottom:1px solid var(--border);padding:14px 20px;z-index:100;display:flex;align-items:center;gap:10px}
-    .nav h1{font-size:1.1rem;color:var(--primary)}
-    .hero{text-align:center;padding:40px 20px 30px;background:linear-gradient(135deg,var(--primary-light),var(--surface))}
-    .hero h2{font-size:1.6rem;color:var(--ink);margin-bottom:8px}
-    .hero p{color:var(--ink2);font-size:.95rem}
-    .menu-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;padding:20px;max-width:700px;margin:0 auto}
-    .menu-btn{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:14px 10px;text-align:center;font-size:.82rem;font-weight:600;color:var(--ink2);cursor:pointer;transition:.2s}
-    .menu-btn:hover,.menu-btn.active{background:var(--primary-light);border-color:var(--primary);color:var(--primary)}
-    .content{max-width:700px;margin:0 auto;padding:0 16px}
-    .section-title{font-size:1.2rem;font-weight:700;margin:24px 0 12px;color:var(--ink)}
-    .out-item{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:16px;margin-bottom:10px;cursor:pointer;transition:.2s;position:relative}
-    .out-item:hover{border-color:var(--primary);box-shadow:0 2px 12px rgba(238,77,45,.08)}
-    .out-item::after{content:'Tap to copy';position:absolute;top:12px;right:12px;font-size:.7rem;color:var(--ink3);opacity:0;transition:.2s}
-    .out-item:hover::after{opacity:1}
-    .out-item h4{font-size:.85rem;color:var(--primary);margin-bottom:6px}
-    .out-item p{font-size:.9rem;color:var(--ink2)}
-    .edu-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:20px;margin-bottom:12px}
-    .edu-card h3{color:var(--primary);font-size:1rem;margin-bottom:8px}
-    .edu-card p{font-size:.88rem;color:var(--ink2);margin-bottom:6px}
-    .edu-card .highlight{background:var(--primary-light);border-radius:8px;padding:10px 14px;font-size:.85rem;color:var(--ink);margin-top:8px;font-style:italic}
-    .checklist{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:20px;margin-bottom:12px}
-    .checklist h3{color:var(--primary);font-size:1rem;margin-bottom:10px}
-    .checklist ul{list-style:none;padding:0}
-    .checklist li{font-size:.88rem;color:var(--ink2);padding:6px 0;border-bottom:1px solid var(--border);display:flex;align-items:flex-start;gap:8px}
-    .checklist li:last-child{border-bottom:none}
-    .checklist li::before{content:'☐';color:var(--primary);font-size:1rem;flex-shrink:0}
-    .toast{position:fixed;bottom:30px;left:50%;transform:translateX(-50%) translateY(100px);background:var(--ink);color:#fff;padding:12px 24px;border-radius:30px;font-size:.85rem;z-index:999;transition:.3s;opacity:0}
-    .toast.show{transform:translateX(-50%) translateY(0);opacity:1}
-    .footer{text-align:center;padding:40px 20px;color:var(--ink3);font-size:.8rem}
-    @media(max-width:480px){.menu-grid{grid-template-columns:repeat(3,1fr);gap:8px}.hero h2{font-size:1.3rem}}
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ebook Panduan Shopee Affiliate - @yanzy17</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --bg-dark: #0a0a0f;
+            --bg-card: #14141f;
+            --accent: #ee4d2d;
+            --accent-light: #ff6b35;
+            --gold: #f4a261;
+            --text: #e8e8e8;
+            --text-muted: #9a9ab0;
+            --border: #2a2a3a;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-dark);
+            color: var(--text);
+            line-height: 1.7;
+            font-size: 16px;
+        }
+        .page {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 60px 40px;
+            min-height: 100vh;
+            position: relative;
+        }
+        /* COVER */
+        .cover {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(135deg, #0a0a0f 0%, #1a1028 50%, #0a0a0f 100%);
+            border-bottom: 3px solid var(--accent);
+        }
+        .cover-badge {
+            display: inline-block;
+            background: var(--accent);
+            color: #fff;
+            padding: 6px 18px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+        }
+        .cover h1 {
+            font-size: 42px;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--accent), var(--gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 16px;
+            line-height: 1.2;
+        }
+        .cover .subtitle {
+            font-size: 18px;
+            color: var(--text-muted);
+            max-width: 480px;
+            margin-bottom: 40px;
+        }
+        .cover .author {
+            font-size: 16px;
+            color: var(--gold);
+            font-weight: 600;
+            margin-bottom: 30px;
+        }
+        .cover-features {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .cover-features span {
+            background: rgba(238,77,45,0.15);
+            border: 1px solid rgba(238,77,45,0.3);
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 13px;
+            color: var(--accent-light);
+        }
+        /* SECTIONS */
+        .section { padding-top: 20px; }
+        .section h2 {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--accent-light);
+            margin-bottom: 24px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid var(--border);
+        }
+        .section h3 {
+            font-size: 20px;
+            color: var(--gold);
+            margin: 24px 0 12px;
+        }
+        .section p { margin-bottom: 14px; color: var(--text); }
+        .section ul, .section ol {
+            margin: 12px 0 20px 20px;
+        }
+        .section li {
+            margin-bottom: 10px;
+            color: var(--text);
+        }
+        .section li strong { color: var(--accent-light); }
+        .tip-box {
+            background: rgba(238,77,45,0.08);
+            border-left: 4px solid var(--accent);
+            padding: 16px 20px;
+            border-radius: 0 8px 8px 0;
+            margin: 16px 0;
+        }
+        .tip-box strong { color: var(--accent-light); }
+        /* TOC */
+        .toc-list { list-style: none; margin-left: 0; }
+        .toc-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+        }
+        .toc-list li span:first-child { color: var(--text); font-weight: 500; }
+        .toc-list li span:last-child { color: var(--text-muted); font-size: 14px; }
+        /* CHECKLIST */
+        .checklist { list-style: none; margin-left: 0; }
+        .checklist li { padding: 8px 0; padding-left: 28px; position: relative; }
+        .checklist li::before {
+            content: "☐";
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+        }
+        /* CLOSING */
+        .closing {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #0a0a0f 0%, #1a1028 50%, #0a0a0f 100%);
+        }
+        .closing h2 { border: none; margin-bottom: 16px; }
+        .closing p { color: var(--text-muted); max-width: 500px; }
+        .closing .signature {
+            margin-top: 30px;
+            font-size: 20px;
+            color: var(--gold);
+            font-weight: 700;
+        }
+        /* DOWNLOAD BTN */
+        .download-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-light));
+            color: #fff;
+            border: none;
+            padding: 14px 24px;
+            border-radius: 50px;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(238,77,45,0.4);
+            z-index: 9999;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 30px rgba(238,77,45,0.6);
+        }
+        /* PAGE NUMBER */
+        .page-num {
+            position: absolute;
+            bottom: 20px;
+            right: 40px;
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+        /* PRINT STYLES */
+        @page {
+            size: A4;
+            margin: 2cm;
+        }
+        @media print {
+            body { background: #fff; color: #1a1a1a; font-size: 11pt; }
+            .download-btn { display: none !important; }
+            .page {
+                min-height: auto;
+                padding: 0;
+                page-break-after: always;
+                max-width: 100%;
+            }
+            .page:last-child { page-break-after: avoid; }
+            .cover, .closing {
+                background: #0a0a0f !important;
+                color: #fff !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+                padding: 80px 40px;
+            }
+            .cover h1 {
+                -webkit-text-fill-color: var(--accent-light);
+                color: var(--accent-light);
+            }
+            .cover .subtitle, .cover .author { color: #ccc; }
+            .cover-badge { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .cover-features span { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .section h2 { color: var(--accent); }
+            .section h3 { color: #333; }
+            .section li strong { color: var(--accent); }
+            .tip-box {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+                background: #fff5f2;
+                border-left-color: var(--accent);
+            }
+            .tip-box strong { color: var(--accent); }
+            .closing { color: #fff !important; }
+            .closing h2 { color: var(--accent-light) !important; }
+            .closing p { color: #ccc !important; }
+            .closing .signature { color: var(--gold) !important; }
+            .page-num { color: #999; }
+            .toc-list li { border-color: #ddd; }
+        }
+    </style>
 </head>
 <body>
-  <nav class="nav"><h1>🛒 Shopee Affiliate Guide</h1></nav>
-  <section class="hero">
-    <h2>Panduan Shopee Affiliate</h2>
-    <p>Strategi lengkap biar komisi lo makin gendut — dari sebar link sampai scale up</p>
-  </section>
-  <div class="menu-grid">
-    <div class="menu-btn active" data-tab="dasar">Dasar Affiliate</div>
-    <div class="menu-btn" data-tab="sebar">Sebar Link</div>
-    <div class="menu-btn" data-tab="konten">Konten Convert</div>
-    <div class="menu-btn" data-tab="komisi">Strategi Komisi</div>
-    <div class="menu-btn" data-tab="platform">Platform</div>
-    <div class="menu-btn" data-tab="kesalahan">Kesalahan Fatal</div>
-    <div class="menu-btn" data-tab="action">Action Plan</div>
-  </div>
-  <div class="content" id="content"></div>
-  <div class="toast" id="toast">Berhasil disalin! 📋</div>
-  <footer class="footer">Panduan Shopee Affiliate &middot; by @yanzy17</footer>
 
-  <script>
-    function escapeHTML(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')}
-    function escapeAttr(s){return s.replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/'/g,'&#39;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
+<!-- COVER PAGE -->
+<div class="page cover">
+    <span class="cover-badge">Ebook Gratis 2024</span>
+    <h1>PANDUAN SHOPEE AFFILIATE</h1>
+    <p class="subtitle">Strategi Lengkap dari Sebar Link sampai Cuan Maksimal</p>
+    <p class="author">by @yanzy17</p>
+    <div class="cover-features">
+        <span>🎯 7 Bab Lengkap</span>
+        <span>💡 30+ Tips Praktis</span>
+        <span>📋 Action Plan 30 Hari</span>
+        <span>🔥 Formula Konten</span>
+    </div>
+</div>
 
-    const data={
-      dasar:[
-        {title:"Cara Kerja Komisi",desc:"Buyer klik link affiliate lo → beli produk → lo dapet persentase komisi. Sesimpel itu! Komisi Shopee berkisar 3-15% tergantung kategori produk.",highlight:"Contoh: Produk 200rb, komisi 10% = lo dapet 20rb. Kalau sehari 10 orang beli, itu 200rb/hari tanpa modal!"},
-        {title:"Jenis Komisi",desc:"Ada 2 tipe: Shopee Commission (base rate dari Shopee) dan Commission XTRA (bonus tambahan dari seller). Gabungan keduanya bisa bikin komisi lo 2-3x lipat.",highlight:"Pro tip: Filter produk yang punya badge 'Commission XTRA' di Shopee Affiliate Center biar earning makin gede!"},
-        {title:"Cookie Window 7 Hari",desc:"Begitu buyer klik link lo, semua pembelian dia dalam 7 hari ke depan masuk komisi lo. Bahkan kalau dia beli produk LAIN yang gak lo promosiin!",highlight:"Ini kenapa timing sebar link pas event gede itu crucial — orang belanja banyak = komisi numpuk!"},
-        {title:"Syarat Komisi Cair",desc:"Komisi baru masuk saldo setelah: order selesai (buyer konfirmasi terima barang) + gak ada return/refund. Biasanya 7-14 hari setelah barang diterima.",highlight:"Jangan promosiin produk yang rating jelek — buyer return = komisi lo hangus! Pilih toko rating 4.8+ aja."}
-      ],
-      sebar:[
-        {title:"Generate Link di Affiliate Center",desc:"Buka Shopee Affiliate Center → cari produk → klik 'Generate Link'. Lo bisa generate link produk, link toko, atau link kategori."},
-        {title:"Bio IG / TikTok / Threads",desc:"Taroh link di bio. Ini 'rumah' traffic lo. Semua konten lo arahkan ke bio. Pakai Linktree kalau mau kumpulin banyak link."},
-        {title:"Caption & Story IG",desc:"Sebar di caption dengan CTA jelas: 'Link di bio ya!' atau pakai link sticker di Story buat direct access ke produk."},
-        {title:"Grup WhatsApp & Telegram",desc:"Share di grup yang relevan (grup ibu-ibu, grup beauty, dll). Jangan spam — kasih konteks dan review singkat kenapa produknya worth it."},
-        {title:"Shortlink Resmi",desc:"Pakai s.shopee.co.id (resmi dari Shopee) atau bit.ly buat bikin link lebih rapi. Link panjang = keliatan spam, link pendek = clean & trustworthy."},
-        {title:"Deep Link Strategy",desc:"Pakai deep link yang langsung buka halaman produk di app Shopee (bukan web). Conversion rate jauh lebih tinggi karena user langsung checkout."},
-        {title:"Timing Sebar: Flash Sale & Payday",desc:"Sebar link pas flash sale, payday sale, atau tanggal kembar (11.11, 12.12). Orang lagi dalam 'buying mood' = conversion rate naik drastis."},
-        {title:"Numpang Traffic Komentar Viral",desc:"Komen di postingan viral orang lain yang relevan. Kasih value + arahkan ke bio/link lo. Free traffic dari audience orang lain!"},
-        {title:"Linktree / Lynk.id",desc:"Kumpulin semua link affiliate lo di satu halaman Linktree/Lynk.id. Gampang di-manage, gampang di-share, keliatan profesional."},
-        {title:"Pin Comment TikTok",desc:"Upload video review → pin comment berisi link affiliate. Ini trik yang banyak affiliator top pakai karena comment paling atas pasti keliatan."},
-        {title:"Broadcast WA & Telegram Channel",desc:"Bikin channel Telegram atau broadcast list WA khusus deals. Audience yang join = udah interested. Conversion rate super tinggi karena mereka opt-in."}
-      ],
-      konten:[
-        {title:"Formula P-A-S-CTA",desc:"Problem (masalah) → Agitate (bikin relatable) → Solution (produk lo) → CTA (link). Formula copywriting paling proven buat jualan."},
-        {title:"Video Unboxing / Review Jujur",desc:"Tunjukin real experience lo pake produk. Jangan lebay — yang jujur justru lebih convert karena orang percaya."},
-        {title:"Before-After / Transformasi",desc:"Tunjukin perbandingan sebelum & sesudah pakai produk. Skincare, tools, gadget — visual transformation itu powerful banget."},
-        {title:"Listicle: 'X Produk Under 50rb'",desc:"'5 produk under 50rb yang bikin hidup lo lebih gampang' — format ini selalu works karena orang suka rekomendasi yang affordable."},
-        {title:"Comparison: Produk A vs B",desc:"Bandingin 2 produk serupa. Tunjukin pro-cons masing-masing. Orang yang lagi bingung pilih = langsung klik link rekomendasi lo."},
-        {title:"Tutorial Pakai Produk",desc:"Bikin tutorial singkat cara pakai. Misal: 'Cara setup ring light ini biar hasilnya studio quality'. Value + product placement = natural selling."},
-        {title:"Day-in-My-Life + Product Mention",desc:"Bikin konten daily vlog yang natural mention produk. 'Pagi ini gue pake skincare ini...' — soft selling yang gak keliatan jualan."},
-        {title:"Reverse Psychology: 'Jangan Beli Sebelum...'",desc:"'Jangan beli sebelum baca ini!' — judul kayak gini bikin orang penasaran dan justru mau tau kenapa. Curiosity gap = klik."},
-        {title:"Storytelling: Skeptis → Repeat Order",desc:"'Awalnya gue skeptis, ternyata ini game changer...' — cerita personal yang relatable bikin trust naik dan orang mau coba."},
-        {title:"Trending Sound + Product Placement",desc:"Pakai sound viral di TikTok/Reels + sisipkan produk. Algoritma push karena sound trending + lo dapet exposure gratisan."},
-        {title:"Konten Edukasi + Soft CTA",desc:"Kasih tips/edukasi related ke produk, terus di akhir: 'btw produk yang gue pake di video ini ada di link bio'. Natural dan gak pushy."}
-      ],
-      komisi:[
-        {title:"Pilih Produk Commission XTRA",desc:"Filter produk yang punya label Commission XTRA di Affiliate Center. Komisi bisa 10-20%! Jauh lebih gede dari base commission yang cuma 3-5%."},
-        {title:"Fokus Kategori Komisi Tinggi",desc:"Fashion, Beauty, dan Lifestyle itu kategori dengan base commission paling tinggi. Electronics mungkin mahal, tapi komisi %-nya kecil."},
-        {title:"Target New Buyer Shopee",desc:"Kalau buyer yang klik link lo itu BARU pertama kali beli di Shopee, komisi lo bisa 2-3x lipat! Ini bonus dari program Shopee."},
-        {title:"Manfaatin Flash Sale & Voucher",desc:"Promosiin produk yang lagi flash sale. Harga diskon = orang lebih gampang checkout = conversion rate naik = komisi lebih banyak masuk."},
-        {title:"Promosi Bundle / Cart",desc:"Arahkan buyer buat beli banyak produk sekaligus. 1 klik link, buyer beli 5 barang = lo dapet komisi dari SEMUA 5 barang itu. Stacking!"},
-        {title:"Konsisten Posting = Algoritma Push",desc:"Makin sering lo posting, makin banyak reach. Makin banyak reach = makin banyak klik link = makin banyak komisi. Simple math."},
-        {title:"Track Performa Lo",desc:"Cek dashboard Affiliate Center: CTR (click-through rate), conversion rate, produk mana yang paling laku. Double down yang works, cut yang gak."},
-        {title:"Diversifikasi Produk",desc:"Jangan cuma promosiin 1 produk. Sebar di 5-10 produk beda. Kalau satu flop, yang lain bisa carry. Jangan taroh semua telur di satu keranjang."},
-        {title:"Ride the Momentum Event Shopee",desc:"Setiap bulan Shopee pasti ada event (payday, tanggal kembar, brand day). Ini waktu terbaik push konten karena orang udah niat belanja."}
-      ],
-      platform:[
-        {title:"TikTok",desc:"Best for viral reach. Video pendek 15-60 detik, review produk, unboxing. Algoritma push ke FYP = exposure gila walau followers dikit. Pakai trending sound!",highlight:"Pro tip: Pin comment dengan link affiliate. Upload 2-3 video/hari buat maximize reach."},
-        {title:"Instagram Reels & Story",desc:"Aesthetic content + Reels buat reach baru + Story link sticker buat direct traffic. Carousel post juga works buat listicle produk.",highlight:"Pro tip: Story Highlights khusus 'Rekomendasi' biar orang bisa akses kapan aja."},
-        {title:"Threads",desc:"Text-based platform yang lagi naik. Hook kuat + review singkat + 'link di bio'. Engagement organik masih tinggi karena platform baru.",highlight:"Pro tip: Bikin thread panjang review produk, CTA di akhir. Simpel tapi efektif."},
-        {title:"Telegram Channel",desc:"Direct push ke audience yang udah loyal. Bisa share deals harian, flash sale alert, produk rekomendasi. Open rate tinggi banget.",highlight:"Pro tip: Bikin channel 'Daily Deals' + schedule post tiap jam 8 pagi & 8 malam."},
-        {title:"WhatsApp Status",desc:"Personal touch yang bikin trust tinggi. Temen & keluarga lihat lo genuinely pakai produk = lebih percaya & mau beli lewat link lo.",highlight:"Pro tip: Update status 3-5x sehari. Mix antara personal life & product recommendation."},
-        {title:"YouTube Shorts",desc:"Evergreen content — video lo bisa dapet views berbulan-bulan setelah upload. Plus, YouTube punya search traffic = orang cari review produk di sana.",highlight:"Pro tip: Optimasi judul & deskripsi buat SEO. 'Review [nama produk] Shopee 2024' itu keyword emas."}
-      ],
-      kesalahan:[
-        {title:"Spam Link Tanpa Konteks",desc:"Sebar link doang tanpa kasih alasan kenapa orang harus beli = keliatan spam. Selalu kasih konteks: review singkat, alasan beli, pengalaman lo."},
-        {title:"Pilih Produk Asal-asalan",desc:"Produk rating jelek, toko sepi, review negatif = buyer return = komisi hangus. Always cek rating 4.8+, penjualan 1000+, dan review positif."},
-        {title:"Gak Pake CTA di Konten",desc:"Konten bagus tapi gak bilang 'klik link di bio' atau 'cek link di comment' = orang gak tau harus ngapain. SELALU kasih CTA yang jelas."},
-        {title:"Cuma Sebar di 1 Platform",desc:"Kalau cuma di IG doang, lo miss traffic dari TikTok, Threads, Telegram, dll. Diversifikasi platform = multiple income stream dari 1 konten."},
-        {title:"Gak Track Performa",desc:"Gak tau produk mana yang convert, platform mana yang paling banyak klik = lo kerja buta. Cek dashboard minimal seminggu sekali!"},
-        {title:"Promosi Produk Gak Sesuai Niche",desc:"Akun beauty tiba-tiba promosi spare part motor = audience confused & gak trust. Stay on niche biar audience lo tau lo expert di bidang itu."},
-        {title:"Gak Konsisten",desc:"Posting seminggu rajin, terus hilang sebulan = algoritma lupa lo exist. Konsistensi > intensitas. Mending 1x/hari tiap hari daripada 10x terus hilang."},
-        {title:"Copy Paste Konten Orang",desc:"Selain kena takedown/report, audience juga bisa bedain mana yang original vs kopas. Bikin konten sendiri, pake voice lo sendiri. Authenticity sells."}
-      ],
-      action:[
-        {title:"Minggu 1: Foundation",items:["Lengkapin profil di semua platform (bio + foto + link)","Daftar & setup Shopee Affiliate Center","Pilih niche utama (beauty/fashion/gadget/lifestyle)","Riset & pilih 5 produk pertama (rating 4.8+, Commission XTRA)","Bikin 3 konten pertama (1 review, 1 listicle, 1 unboxing)","Setup Linktree / Lynk.id untuk kumpulin semua link"]},
-        {title:"Minggu 2: Eksekusi",items:["Posting 1x/hari di platform utama","Sebar link di minimal 3 platform berbeda","Reply semua comment & DM (engage audience)","Bikin 2 Story IG/hari dengan link sticker","Join & kontribusi di 3 grup WA/Telegram yang relevan","Eksperimen format konten: video vs carousel vs text"]},
-        {title:"Minggu 3: Analisis & Optimasi",items:["Cek dashboard: produk mana yang paling banyak klik & convert","Ganti/cut produk yang gak perform selama 2 minggu","Double down konten format yang paling banyak engagement","Scale produk & konten yang works (bikin variasi)","Mulai track earning harian di spreadsheet","A/B test: beda CTA, beda jam posting, beda hook"]},
-        {title:"Minggu 4: Scale Up",items:["Tambah 1 platform baru (misal: dari IG expand ke TikTok)","Naikin frekuensi posting jadi 2x/hari","Evaluasi total earning bulan ini vs target","Bikin content calendar untuk bulan depan","Set target realistis untuk bulan ke-2","Celebrate small wins & adjust strategy!"]}
-      ]
-    };
+<!-- DAFTAR ISI -->
+<div class="page section">
+    <h2>📑 Daftar Isi</h2>
+    <ul class="toc-list">
+        <li><span>Bab 1 — Cara Kerja Affiliate</span><span>Hal. 3</span></li>
+        <li><span>Bab 2 — Strategi Sebar Link</span><span>Hal. 4</span></li>
+        <li><span>Bab 3 — Konten yang Convert</span><span>Hal. 5</span></li>
+        <li><span>Bab 4 — Strategi Komisi Maksimal</span><span>Hal. 6</span></li>
+        <li><span>Bab 5 — Platform Terbaik</span><span>Hal. 7</span></li>
+        <li><span>Bab 6 — Kesalahan Fatal</span><span>Hal. 8</span></li>
+        <li><span>Bab 7 — Action Plan 30 Hari</span><span>Hal. 9</span></li>
+        <li><span>Penutup</span><span>Hal. 10</span></li>
+    </ul>
+    <span class="page-num">2</span>
+</div>
 
-    function renderDasar(){
-      return `<h3 class="section-title">Dasar Affiliate</h3>`+data.dasar.map(d=>`<div class="edu-card"><h3>${escapeHTML(d.title)}</h3><p>${escapeHTML(d.desc)}</p><div class="highlight">${escapeHTML(d.highlight)}</div></div>`).join('')
-    }
-    function renderTips(arr,label){
-      return `<h3 class="section-title">${escapeHTML(label)}</h3>`+arr.map(t=>`<div class="out-item" data-copy="${escapeAttr(t.title+': '+t.desc)}"><h4>${escapeHTML(t.title)}</h4><p>${escapeHTML(t.desc)}</p></div>`).join('')
-    }
-    function renderPlatform(){
-      return `<h3 class="section-title">Platform Terbaik</h3>`+data.platform.map(p=>`<div class="edu-card"><h3>${escapeHTML(p.title)}</h3><p>${escapeHTML(p.desc)}</p><div class="highlight">${escapeHTML(p.highlight)}</div></div>`).join('')
-    }
-    function renderKesalahan(){
-      return `<h3 class="section-title">Kesalahan Fatal</h3>`+data.kesalahan.map(k=>`<div class="out-item" data-copy="${escapeAttr(k.title+': '+k.desc)}"><h4>❌ ${escapeHTML(k.title)}</h4><p>${escapeHTML(k.desc)}</p></div>`).join('')
-    }
-    function renderAction(){
-      return `<h3 class="section-title">Action Plan 30 Hari</h3>`+data.action.map(a=>`<div class="checklist"><h3>${escapeHTML(a.title)}</h3><ul>${a.items.map(i=>`<li>${escapeHTML(i)}</li>`).join('')}</ul></div>`).join('')
-    }
+<!-- BAB 1 -->
+<div class="page section">
+    <h2>Bab 1: Cara Kerja Affiliate</h2>
+    <p>Shopee Affiliate itu simpel: kamu share link, orang klik & beli, kamu dapet komisi. Tapi biar gajinya konsisten, kamu perlu paham mekanisme di baliknya.</p>
 
-    const tabs={
-      dasar:()=>renderDasar(),
-      sebar:()=>renderTips(data.sebar,'Sebar Link'),
-      konten:()=>renderTips(data.konten,'Konten yang Convert'),
-      komisi:()=>renderTips(data.komisi,'Strategi Komisi Maksimal'),
-      platform:()=>renderPlatform(),
-      kesalahan:()=>renderKesalahan(),
-      action:()=>renderAction()
-    };
+    <h3>🔄 Alur Komisi</h3>
+    <ol>
+        <li><strong>Kamu share link</strong> — lewat sosmed, chat, atau platform manapun</li>
+        <li><strong>Buyer klik link kamu</strong> — cookie ter-track ke akun mereka</li>
+        <li><strong>Buyer checkout & bayar</strong> — dalam window period</li>
+        <li><strong>Pesanan selesai</strong> — buyer konfirmasi terima barang</li>
+        <li><strong>Komisi masuk</strong> — otomatis ke saldo affiliate kamu</li>
+    </ol>
 
-    const content=document.getElementById('content');
-    const toast=document.getElementById('toast');
+    <h3>💰 Jenis Komisi</h3>
+    <ul>
+        <li><strong>Base Commission:</strong> Komisi standar dari Shopee (biasanya 1-5% tergantung kategori)</li>
+        <li><strong>Commission XTRA:</strong> Bonus tambahan dari seller (bisa sampe 10-20%!). Ini yang bikin cuan gede.</li>
+    </ul>
 
-    function showTab(tab){
-      document.querySelectorAll('.menu-btn').forEach(b=>b.classList.toggle('active',b.dataset.tab===tab));
-      content.innerHTML=tabs[tab]();
-    }
+    <h3>🍪 Cookie Window 7 Hari</h3>
+    <p>Setelah buyer klik link kamu, mereka punya waktu 7 hari buat checkout. Selama belum klik link affiliate lain, komisi tetap ke kamu.</p>
 
-    document.querySelector('.menu-grid').addEventListener('click',e=>{
-      const btn=e.target.closest('.menu-btn');
-      if(btn)showTab(btn.dataset.tab);
-    });
+    <div class="tip-box">
+        <strong>💡 Syarat Komisi Cair:</strong> Buyer harus bayar (bukan COD gagal), pesanan selesai (konfirmasi terima), dan bukan transaksi fraud/refund.
+    </div>
+    <span class="page-num">3</span>
+</div>
 
-    content.addEventListener('click',e=>{
-      const item=e.target.closest('[data-copy]');
-      if(!item)return;
-      const text=item.getAttribute('data-copy');
-      navigator.clipboard.writeText(text).then(()=>{
-        toast.classList.add('show');
-        setTimeout(()=>toast.classList.remove('show'),2000);
-      });
-    });
+<!-- BAB 2 -->
+<div class="page section">
+    <h2>Bab 2: Strategi Sebar Link</h2>
+    <p>Link affiliate cuma berguna kalau ada yang klik. Ini 10 cara proven buat sebar link dengan conversion rate tinggi:</p>
 
-    showTab('dasar');
-  </script>
+    <ol>
+        <li><strong>Bio Instagram/TikTok:</strong> Taruh link di bio pake Linktree atau langsung. Tambahin CTA yang bikin penasaran.</li>
+        <li><strong>Instagram Story:</strong> Pake fitur link sticker. Kasih preview produk + "geser atas buat harga shock".</li>
+        <li><strong>Caption yang Storytelling:</strong> Jangan langsung jualan. Cerita dulu pengalaman pake produk, baru drop link di akhir.</li>
+        <li><strong>Broadcast WhatsApp:</strong> Kirim ke grup/broadcast list. Format: foto + review singkat + link. Timing sore/malam.</li>
+        <li><strong>Channel Telegram:</strong> Buat channel khusus deals. Posting 3-5x sehari pas ada promo bagus.</li>
+        <li><strong>Pin Comment TikTok:</strong> Bikin video review, pin comment berisi link. "Yang nanya link, nih ada di comment pertama."</li>
+        <li><strong>Linktree/Beacons:</strong> Kumpulin semua link produk recommended di satu halaman. Update berkala.</li>
+        <li><strong>Deep Link:</strong> Langsung arahkan ke halaman produk spesifik, bukan homepage. Conversion lebih tinggi 3x.</li>
+        <li><strong>Numpang Komentar Viral:</strong> Comment di postingan viral yang relevan. "Btw ini produknya [link]". Hati-hati jangan spam.</li>
+        <li><strong>Timing Flash Sale:</strong> Sebar link 15-30 menit sebelum flash sale mulai. Urgency = conversion naik drastis.</li>
+    </ol>
+
+    <div class="tip-box">
+        <strong>🔥 Pro Tip:</strong> Jangan taruh link doang tanpa konteks. Selalu kasih alasan kenapa mereka harus klik SEKARANG — diskon terbatas, stok tinggal sedikit, atau promo bakal habis.
+    </div>
+    <span class="page-num">4</span>
+</div>
+
+<!-- BAB 3 -->
+<div class="page section">
+    <h2>Bab 3: Konten yang Convert</h2>
+    <p>Konten yang bagus bukan yang viral, tapi yang bikin orang beli. Ini 10 formula konten yang terbukti convert:</p>
+
+    <ol>
+        <li><strong>Formula PAS (Problem-Agitate-Solve):</strong> "Bibir kering terus? Udah coba banyak lip balm tapi tetap pecah-pecah? Cobain ini, 3 hari langsung lembab."</li>
+        <li><strong>Unboxing + First Impression:</strong> Tunjukin excitement pas buka paket. Real reaction = trust naik. Fokus ke detail kualitas.</li>
+        <li><strong>Before-After:</strong> Paling powerful buat skincare, home decor, organizing. Visual yang kontras = scroll-stopping.</li>
+        <li><strong>Listicle "X Barang di Bawah 50rb":</strong> Orang suka list + harga murah. Format ini selalu perform di semua platform.</li>
+        <li><strong>Comparison/VS:</strong> "Produk A vs B, mana yang worth it?" Format ini bikin orang nonton sampe habis buat tau jawabannya.</li>
+        <li><strong>Tutorial Pake Produk:</strong> Tunjukin cara pake yang bener. Edukasi + soft selling = combo mematikan.</li>
+        <li><strong>Day in the Life (DITL):</strong> Selipin produk affiliate di rutinitas harian kamu. Feels natural, gak maksa.</li>
+        <li><strong>Reverse Psychology:</strong> "Jangan beli ini kalau..." — bikin orang penasaran dan justru pengen beli.</li>
+        <li><strong>Storytelling + Testimonial:</strong> Ceritain pengalaman real. "Awalnya skeptis, tapi setelah 2 minggu..."</li>
+        <li><strong>Trending Sound + Product:</strong> Pake sound viral di TikTok/Reels, tapi isinya review produk. Algorithm boost + selling.</li>
+    </ol>
+
+    <div class="tip-box">
+        <strong>🎯 Key Insight:</strong> Konten yang convert itu yang bikin orang merasa "gue butuh ini" bukan "ini lagi jualan". Jual solusi, bukan produk.
+    </div>
+    <span class="page-num">5</span>
+</div>
+
+<!-- BAB 4 -->
+<div class="page section">
+    <h2>Bab 4: Strategi Komisi Maksimal</h2>
+    <p>Bukan cuma soal banyak yang klik, tapi gimana caranya setiap klik menghasilkan komisi paling gede.</p>
+
+    <ol>
+        <li><strong>Prioritasin Commission XTRA:</strong> Filter produk yang ada badge XTRA. Komisi bisa 2-4x lipat dari base commission.</li>
+        <li><strong>Fokus Kategori Komisi Tinggi:</strong> Fashion, Beauty, Mom & Baby biasanya punya rate lebih tinggi. Riset dulu sebelum promote.</li>
+        <li><strong>Target New Buyer:</strong> Shopee kasih bonus komisi kalau buyer yang klik link kamu itu first-time buyer. Bisa dapet tambahan 10rb-50rb per order.</li>
+        <li><strong>Manfaatin Flash Sale & Campaign:</strong> Saat 9.9, 11.11, 12.12, commission rate biasanya dinaikin. All-in di momen ini.</li>
+        <li><strong>Bundle Recommendation:</strong> Rekomendasiin beberapa produk sekaligus. Satu buyer beli 3 barang = 3x komisi dari satu klik.</li>
+        <li><strong>Konsisten Posting:</strong> Algoritma rewards consistency. Posting tiap hari, minimal 1 konten affiliate per hari.</li>
+        <li><strong>Track & Optimize:</strong> Cek dashboard affiliate tiap hari. Produk mana yang convert? Double down di situ.</li>
+        <li><strong>Diversifikasi Produk:</strong> Jangan cuma 1 niche. Test berbagai kategori, liat mana yang audience kamu paling responsif.</li>
+    </ol>
+
+    <div class="tip-box">
+        <strong>💰 Real Talk:</strong> Top affiliator Shopee bisa dapet 5-20 juta/bulan. Kuncinya bukan followers banyak, tapi konten yang tepat sasaran + konsistensi.
+    </div>
+    <span class="page-num">6</span>
+</div>
+
+<!-- BAB 5 -->
+<div class="page section">
+    <h2>Bab 5: Platform Terbaik</h2>
+    <p>Setiap platform punya kelebihan masing-masing. Pilih yang sesuai strength kamu:</p>
+
+    <h3>📱 TikTok</h3>
+    <p>Reach paling gede buat pemula. Video pendek 15-60 detik udah cukup. FYP bisa nembus ribuan views walau followers masih sedikit.</p>
+    <div class="tip-box"><strong>Pro Tip:</strong> Pake hook 3 detik pertama yang bikin stop scroll. Taruh link di bio + pin comment.</div>
+
+    <h3>📸 Instagram</h3>
+    <p>Cocok buat konten aesthetic & trust building. Reels buat reach, Story buat conversion langsung (link sticker).</p>
+    <div class="tip-box"><strong>Pro Tip:</strong> Story dengan poll/quiz interaktif sebelum drop link → engagement naik, conversion ikut naik.</div>
+
+    <h3>🧵 Threads</h3>
+    <p>Text-based, cocok buat listicle & thread review panjang. Orang di Threads suka baca, jadi copywriting kamu lebih dihargai.</p>
+
+    <h3>✈️ Telegram</h3>
+    <p>Channel deals = passive income. Sekali set up, tinggal posting link + deskripsi singkat. Subscriber loyal = klik konsisten.</p>
+
+    <h3>💬 WhatsApp</h3>
+    <p>Conversion rate paling tinggi karena personal. Broadcast list ke orang yang udah kenal kamu = trust level maksimal.</p>
+
+    <h3>🎬 YouTube Shorts</h3>
+    <p>Evergreen content. Video yang perform bisa terus dapet views berbulan-bulan. Taruh link di deskripsi & pin comment.</p>
+    <span class="page-num">7</span>
+</div>
+
+<!-- BAB 6 -->
+<div class="page section">
+    <h2>Bab 6: Kesalahan Fatal</h2>
+    <p>Hindari 8 mistake ini kalau gak mau buang waktu & effort percuma:</p>
+
+    <ol>
+        <li><strong>Spam Link Tanpa Konteks:</strong> Drop link doang tanpa review = 0 trust = 0 klik. Selalu kasih value dulu.</li>
+        <li><strong>Promote Produk yang Gak Kamu Pakai:</strong> Audience bisa ngerasain. Kalau ketahuan, trust langsung hancur selamanya.</li>
+        <li><strong>Gak Cek Rating & Review Produk:</strong> Promote produk rating jelek = buyer kecewa = refund = komisi batal. Always cek minimal 4.5 stars.</li>
+        <li><strong>Ignoring Analytics:</strong> Gak pernah cek dashboard = gak tau apa yang works. Data adalah kompas kamu.</li>
+        <li><strong>Terlalu Banyak Niche:</strong> Mau promote semua kategori tapi gak expert di satupun. Mending jago di 2-3 niche aja.</li>
+        <li><strong>Copy Paste Konten Orang:</strong> Selain gak etis, algorithm juga penalize duplicate content. Original selalu menang.</li>
+        <li><strong>Gak Konsisten:</strong> Posting seminggu rajin, terus hilang sebulan. Algorithm butuh consistency signal. Minimal 1x sehari.</li>
+        <li><strong>Lupa CTA (Call to Action):</strong> Konten bagus tapi gak bilang "klik link di bio" = audience bingung harus ngapain.</li>
+    </ol>
+
+    <div class="tip-box">
+        <strong>⚠️ Warning:</strong> Satu kesalahan paling mahal = menyerah terlalu cepat. Kebanyakan orang quit di bulan pertama, padahal hasilnya mulai keliatan di bulan ke-2 atau ke-3.
+    </div>
+    <span class="page-num">8</span>
+</div>
+
+<!-- BAB 7 -->
+<div class="page section">
+    <h2>Bab 7: Action Plan 30 Hari</h2>
+    <p>Ikutin roadmap ini step by step. Gak perlu overthink, yang penting jalan dulu:</p>
+
+    <h3>📅 Minggu 1: Setup & Research</h3>
+    <ul class="checklist">
+        <li>Daftar Shopee Affiliate Program</li>
+        <li>Setup bio & link di semua platform</li>
+        <li>Riset 3 niche potensial (cek komisi rate-nya)</li>
+        <li>Pilih 10 produk pertama buat di-promote</li>
+        <li>Bikin content plan sederhana (7 hari ke depan)</li>
+    </ul>
+
+    <h3>📅 Minggu 2: Content Creation</h3>
+    <ul class="checklist">
+        <li>Posting 1 konten affiliate per hari</li>
+        <li>Test 3 format konten berbeda (review, listicle, tutorial)</li>
+        <li>Sebar link di minimal 3 platform</li>
+        <li>Join grup/komunitas yang relevan</li>
+        <li>Analisis konten mana yang dapet engagement tertinggi</li>
+    </ul>
+
+    <h3>📅 Minggu 3: Optimize & Scale</h3>
+    <ul class="checklist">
+        <li>Double down di format konten yang perform</li>
+        <li>Naikin frekuensi posting jadi 2x sehari</li>
+        <li>Mulai build Telegram channel atau WhatsApp broadcast</li>
+        <li>Fokus produk Commission XTRA</li>
+        <li>Cek dashboard harian, catat insight</li>
+    </ul>
+
+    <h3>📅 Minggu 4: Autopilot Mode</h3>
+    <ul class="checklist">
+        <li>Buat SOP konten harian (template repeatable)</li>
+        <li>Set target: minimal 5 order/hari dari link affiliate</li>
+        <li>Repurpose top-performing content ke platform lain</li>
+        <li>Explore paid traffic kalau budget memungkinkan</li>
+        <li>Review & plan untuk bulan depan</li>
+    </ul>
+    <span class="page-num">9</span>
+</div>
+
+<!-- PENUTUP -->
+<div class="page closing">
+    <h2>🎉 Penutup</h2>
+    <p>Kalau kamu udah baca sampe sini, berarti kamu serius. Dan itu udah 90% lebih maju dari kebanyakan orang yang cuma "pengen cuan" tapi gak mau action.</p>
+    <p style="margin-top: 16px;">Affiliate bukan skema cepat kaya. Ini bisnis yang butuh konsistensi, kreativitas, dan kesabaran. Tapi kalau kamu jalanin bener, income 5-20 juta/bulan itu sangat achievable.</p>
+    <p style="margin-top: 16px;">Mulai dari 1 link, 1 konten, 1 hari. Compound effect bakal kerja buat kamu.</p>
+    <p style="margin-top: 16px;">Good luck & semoga cuan! 🚀</p>
+    <p class="signature">@yanzy17</p>
+    <span class="page-num">10</span>
+</div>
+
+<!-- FLOATING DOWNLOAD BUTTON -->
+<button class="download-btn" onclick="window.print()">📥 Download PDF</button>
+
 </body>
 </html>
