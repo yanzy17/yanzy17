@@ -1,116 +1,535 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Konten Slide TikTok - @tipscuan95</title>
-<style>
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body { background: #0a0a12; font-family: 'Segoe UI', sans-serif; color: #fff; padding: 20px 10px; display: flex; flex-direction: column; align-items: center; }
-.page-title { text-align: center; margin-bottom: 30px; }
-.page-title h1 { font-size: 1.5rem; margin-bottom: 8px; }
-.page-title p { font-size: 0.85rem; color: #aaa; }
-.set-label { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 10px 20px; margin: 30px 0 15px; font-size: 0.9rem; font-weight: 600; text-align: center; max-width: 390px; width: 100%; }
-.slide { position: relative; width: 100%; max-width: 390px; height: 692px; border-radius: 20px; overflow: hidden; display: flex; flex-direction: column; align-items: center; justify-content: center; margin: 0 auto 20px; padding: 40px 30px; }
-.slide::after { content: ''; position: absolute; inset: 0; opacity: 0.03; pointer-events: none; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
-.slide .orb { position: absolute; border-radius: 50%; filter: blur(40px); pointer-events: none; }
-.slide .orb1 { width: 180px; height: 180px; top: -40px; left: -40px; }
-.slide .orb2 { width: 120px; height: 120px; bottom: -30px; right: -30px; }
-.slide .accent-line { position: absolute; height: 2px; width: 60px; border-radius: 2px; opacity: 0.4; }
-.slide .accent-line.top { top: 60px; right: 30px; }
-.slide .accent-line.bottom { bottom: 100px; left: 30px; }
-.slide-number { position: absolute; top: 20px; left: 20px; background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); border-radius: 20px; padding: 4px 12px; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.5px; z-index: 2; }
-.slide-emoji { font-size: 5.5rem; opacity: 0.35; margin-bottom: -20px; z-index: 1; filter: drop-shadow(0 0 20px rgba(255,255,255,0.1)); }
-.slide-text { text-align: center; font-size: 1.7rem; font-weight: 800; line-height: 1.35; z-index: 2; padding: 0 5px; }
-.slide-text .highlight { padding: 2px 8px; border-radius: 6px; }
-.slide-footer { position: absolute; bottom: 25px; text-align: center; z-index: 2; width: 100%; }
-.slide-footer .line { width: 40px; height: 2px; margin: 0 auto 10px; border-radius: 2px; opacity: 0.5; }
-.slide-footer .username { font-size: 0.8rem; opacity: 0.7; font-weight: 500; }
-.s1 { background: radial-gradient(circle at 20% 30%, rgba(139,92,246,0.15), transparent 50%), radial-gradient(circle at 80% 70%, rgba(139,92,246,0.1), transparent 50%), #0f0f1a; }
-.s1 .orb1 { background: rgba(139,92,246,0.2); } .s1 .orb2 { background: rgba(139,92,246,0.15); }
-.s1 .accent-line { background: #8b5cf6; } .s1 .slide-text .highlight { background: rgba(139,92,246,0.2); color: #c4b5fd; }
-.s1 .slide-footer .line { background: #8b5cf6; }
-.s2 { background: radial-gradient(circle at 20% 30%, rgba(16,185,129,0.15), transparent 50%), radial-gradient(circle at 80% 70%, rgba(16,185,129,0.1), transparent 50%), #0f0f1a; }
-.s2 .orb1 { background: rgba(16,185,129,0.2); } .s2 .orb2 { background: rgba(16,185,129,0.15); }
-.s2 .accent-line { background: #10b981; } .s2 .slide-text .highlight { background: rgba(16,185,129,0.2); color: #6ee7b7; }
-.s2 .slide-footer .line { background: #10b981; }
-.s3 { background: radial-gradient(circle at 20% 30%, rgba(245,158,11,0.15), transparent 50%), radial-gradient(circle at 80% 70%, rgba(245,158,11,0.1), transparent 50%), #0f0f1a; }
-.s3 .orb1 { background: rgba(245,158,11,0.2); } .s3 .orb2 { background: rgba(245,158,11,0.15); }
-.s3 .accent-line { background: #f59e0b; } .s3 .slide-text .highlight { background: rgba(245,158,11,0.2); color: #fcd34d; }
-.s3 .slide-footer .line { background: #f59e0b; }
-.s4 { background: radial-gradient(circle at 20% 30%, rgba(6,182,212,0.15), transparent 50%), radial-gradient(circle at 80% 70%, rgba(6,182,212,0.1), transparent 50%), #0f0f1a; }
-.s4 .orb1 { background: rgba(6,182,212,0.2); } .s4 .orb2 { background: rgba(6,182,212,0.15); }
-.s4 .accent-line { background: #06b6d4; } .s4 .slide-text .highlight { background: rgba(6,182,212,0.2); color: #67e8f9; }
-.s4 .slide-footer .line { background: #06b6d4; }
-.s5 { background: radial-gradient(circle at 20% 30%, rgba(249,115,22,0.15), transparent 50%), radial-gradient(circle at 80% 70%, rgba(249,115,22,0.1), transparent 50%), #0f0f1a; }
-.s5 .orb1 { background: rgba(249,115,22,0.2); } .s5 .orb2 { background: rgba(249,115,22,0.15); }
-.s5 .accent-line { background: #f97316; } .s5 .slide-text .highlight { background: rgba(249,115,22,0.2); color: #fdba74; }
-.s5 .slide-footer .line { background: #f97316; }
-.s6 { background: radial-gradient(circle at 20% 30%, rgba(217,70,239,0.15), transparent 50%), radial-gradient(circle at 80% 70%, rgba(217,70,239,0.1), transparent 50%), #0f0f1a; }
-.s6 .orb1 { background: rgba(217,70,239,0.2); } .s6 .orb2 { background: rgba(217,70,239,0.15); }
-.s6 .accent-line { background: #d946ef; } .s6 .slide-text .highlight { background: rgba(217,70,239,0.2); color: #f0abfc; }
-.s6 .slide-footer .line { background: #d946ef; }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Konten Slide TikTok - @tipscuan95</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', -apple-system, sans-serif;
+            background: #080810;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 30px 15px;
+            gap: 24px;
+        }
+        .set-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-top: 30px;
+            margin-bottom: 4px;
+            text-align: center;
+        }
+        .set-subtitle { font-size: 0.8rem; color: #888; margin-bottom: 10px; text-align: center; }
+        .slide {
+            width: 390px;
+            height: 692px;
+            border-radius: 24px;
+            background: #0f0f1a;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 28px 28px 20px;
+        }
+        .slide .bg-mesh {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            pointer-events: none;
+            z-index: 0;
+        }
+        .slide > *:not(.bg-mesh) { position: relative; z-index: 1; }
+        .slide-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+        .slide-number {
+            font-size: 0.75rem;
+            font-weight: 600;
+            background: rgba(255,255,255,0.08);
+            padding: 4px 12px;
+            border-radius: 20px;
+            color: #ccc;
+        }
+        .accent-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+        .icon-area {
+            width: 160px;
+            height: 160px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 10px 0 24px;
+            border-radius: 30px;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.06);
+        }
+        .icon-area svg { width: 100px; height: 100px; }
+        .slide-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 8px;
+            line-height: 1.3;
+        }
+        .slide-desc {
+            font-size: 0.85rem;
+            color: #aaa;
+            text-align: center;
+            line-height: 1.5;
+            margin-bottom: 18px;
+            max-width: 300px;
+        }
+        .slide-meta {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-top: auto;
+            margin-bottom: 16px;
+        }
+        .meta-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.8rem;
+        }
+        .meta-label { color: #888; min-width: 70px; }
+        .meta-value { color: #ddd; font-weight: 500; }
+        .stars { color: #facc15; letter-spacing: 2px; }
+        .badge {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        .slide-footer {
+            width: 100%;
+            border-top: 1px solid rgba(255,255,255,0.08);
+            padding-top: 12px;
+            text-align: center;
+            font-size: 0.75rem;
+            color: #666;
+        }
+        /* Cover slides */
+        .cover-slide {
+            justify-content: center;
+            text-align: center;
+        }
+        .cover-slide .slide-title { font-size: 1.5rem; margin-bottom: 12px; }
+        .cover-slide .slide-desc { font-size: 0.9rem; color: #999; }
+        /* Comparison slides */
+        .compare-box {
+            width: 100%;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 14px;
+            padding: 12px 14px;
+            margin-bottom: 8px;
+        }
+        .compare-box .box-label {
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 4px;
+        }
+        .compare-box .box-text { font-size: 0.8rem; color: #bbb; line-height: 1.4; }
+        .verdict {
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-align: center;
+            margin: 8px 0;
+            padding: 6px 14px;
+            border-radius: 10px;
+            background: rgba(255,255,255,0.04);
+        }
+        @media (max-width: 420px) {
+            .slide { width: 100%; height: auto; min-height: 620px; }
+        }
+    </style>
 </head>
 <body>
-<div class="page-title">
-<h1>Konten Slide TikTok</h1>
-<p>Scroll ke bawah untuk lihat semua slide. Screenshot 1 per 1 untuk upload.</p>
+
+
+<!-- ============ SET 1: 5 Sumber Penghasilan Online dari HP ============ -->
+<h2 class="set-title" style="color:#6366f1;">SET 1</h2>
+<p class="set-subtitle">5 Sumber Penghasilan Online dari HP</p>
+
+<!-- Cover -->
+<div class="slide cover-slide">
+    <div class="bg-mesh"><svg width="100%" height="100%"><defs><radialGradient id="g1a" cx="30%" cy="20%"><stop offset="0%" stop-color="#6366f1" stop-opacity="0.15"/><stop offset="100%" stop-color="transparent"/></radialGradient><radialGradient id="g1b" cx="80%" cy="80%"><stop offset="0%" stop-color="#6366f1" stop-opacity="0.08"/><stop offset="100%" stop-color="transparent"/></radialGradient></defs><rect fill="url(#g1a)" width="100%" height="100%"/><rect fill="url(#g1b)" width="100%" height="100%"/></svg></div>
+    <div class="icon-area" style="border-color:rgba(99,102,241,0.2);background:rgba(99,102,241,0.05);">
+        <svg width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="#6366f1" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12" y2="18.01"/></svg>
+    </div>
+    <h2 class="slide-title">5 Penghasilan Online yang Bisa Lo Mulai dari HP 📱</h2>
+    <p class="slide-desc">Dari yang paling gampang sampe yang butuh effort lebih</p>
+    <div class="slide-footer">@tipscuan95</div>
 </div>
 
-<div class="set-label">SET 1 — Kenapa Kebanyakan Orang Gak Pernah Kaya</div>
-<div class="slide s1"><div class="orb orb1"></div><div class="orb orb2"></div><div class="accent-line top"></div><div class="accent-line bottom"></div><div class="slide-number">1 / 7</div><div class="slide-emoji">🤔</div><div class="slide-text">Kenapa kebanyakan orang gak pernah bisa <span class="highlight">KAYA?</span></div><div class="slide-footer"><div class="line"></div><div class="username">@tipscuan95</div></div></div>
-<div class="slide s1"><div class="orb orb1"></div><div class="orb orb2"></div><div class="accent-line top"></div><div class="accent-line bottom"></div><div class="slide-number">2 / 7</div><div class="slide-emoji">❌</div><div class="slide-text">Bukan karena bodoh. Bukan karena gak <span class="highlight">kerja keras.</span></div><div class="slide-footer"><div class="line"></div><div class="username">@tipscuan95</div></div></div>
-<div class="slide s1"><div class="orb orb1"></div><div class="orb orb2"></div><div class="accent-line top"></div><div class="accent-line bottom"></div><div class="slide-number">3 / 7</div><div class="slide-emoji">💼</div><div class="slide-text">Tapi karena mereka cuma punya 1 sumber income: <span class="highlight">GAJI.</span></div><div class="slide-footer"><div class="line"></div><div class="username">@tipscuan95</div></div></div>
-<div class="slide s1"><div class="orb orb1"></div><div class="orb orb2"></div><div class="accent-line top"></div><div class="accent-line bottom"></div><div class="slide-number">4 / 7</div><div class="slide-emoji">⚙️</div><div class="slide-text">Orang kaya punya <span class="highlight">SISTEM</span> yang kerja buat mereka. Bahkan pas tidur.</div><div class="slide-footer"><div class="line"></div><div class="username">@tipscuan95</div></div></div>
-<div class="slide s1"><div class="orb orb1"></div><div class="orb orb2"></div><div class="accent-line top"></div><div class="accent-line bottom"></div><div class="slide-number">5 / 7</div><div class="slide-emoji">📱</div><div class="slide-text">Di 2026, sistem itu sesimpel: bikin 1 file → jual berkali-kali → <span class="highlight">profit 100%.</span></div><div class="slide-footer"><div class="line"></div><div class="username">@tipscuan95</div></div></div>
-<div class="slide s1"><div class="orb orb1"></div><div class="orb orb2"></div><div class="accent-line top"></div><div class="accent-line bottom"></div><div class="slide-number">6 / 7</div><div class="slide-emoji">✅</div><div class="slide-text">Ini bukan mimpi. Ini realita. <span class="highlight">Siapapun bisa mulai.</span></div><div class="slide-footer"><div class="line"></div><div class="username">@tipscuan95</div></div></div>
-<div class="slide s1"><div class="orb orb1"></div><div class="orb orb2"></div><div class="accent-line top"></div><div class="accent-line bottom"></div><div class="slide-number">7 / 7</div><div class="slide-emoji">🔥</div><div class="slide-text">Follow <span class="highlight">@tipscuan95</span> buat insight lainnya 🔥</div><div class="slide-footer"><div class="line"></div><div class="username">@tipscuan95</div></div></div>
+<!-- Slide 2: Affiliate Marketing -->
+<div class="slide">
+    <div class="bg-mesh"><svg width="100%" height="100%"><defs><radialGradient id="g1c" cx="50%" cy="30%"><stop offset="0%" stop-color="#6366f1" stop-opacity="0.1"/><stop offset="100%" stop-color="transparent"/></radialGradient></defs><rect fill="url(#g1c)" width="100%" height="100%"/></svg></div>
+    <div class="slide-header">
+        <span class="slide-number">01 / 05</span>
+        <span class="accent-dot" style="background:#6366f1;"></span>
+    </div>
+    <div class="icon-area" style="border-color:rgba(99,102,241,0.2);background:rgba(99,102,241,0.05);">
+        <svg width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="#6366f1" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+    </div>
+    <h2 class="slide-title">Affiliate Marketing</h2>
+    <p class="slide-desc">Sebar link produk, orang beli, kamu dapet komisi. Tanpa stok, tanpa modal.</p>
+    <div class="slide-meta">
+        <div class="meta-row"><span class="meta-label">Kesulitan</span><span class="stars">⭐⭐☆☆☆</span><span class="meta-value">Mudah</span></div>
+        <div class="meta-row"><span class="meta-label">Potensi</span><span class="badge" style="background:rgba(99,102,241,0.15);color:#6366f1;">Rp 500rb - 10jt/bulan</span></div>
+        <div class="meta-row"><span class="meta-label">Modal</span><span class="meta-value">Gratis</span></div>
+        <div class="meta-row"><span class="meta-label">Waktu</span><span class="meta-value">1 hari</span></div>
+    </div>
+    <div class="slide-footer">@tipscuan95</div>
+</div>
 
-<div class="set-label">SET 2 — Uang Bukan Soal Kerja Keras</div>
-<div class="slide s2"><div class="orb orb1"></div><div class="orb orb2"></div><div class="accent-line top"></div><div class="accent-line bottom"></div><div class="slide-number">1 / 7</div><div class="slide-emoji">⏰</div><div class="slide-text">Orang kerja 12 jam belum tentu lebih kaya dari yang kerja <span class="highlight">2 jam.</span></div><div class="slide-footer"><div class="line"></div><div class="username">@tipscuan95</div></div></div>
-<div class="slide s2"><div class="orb orb1"></div><div class="orb orb2"></div><div class="accent-line top"></div><div class="accent-line bottom"></div><div class="slide-number">2 / 7</div><div class="slide-emoji">⌛</div><div class="slide-text">Kenapa? Yang 12 jam jual <span class="highlight">WAKTU.</span></div><div class="slide-footer"><div class="line"></div><div class="username">@tipscuan95</div></div></div>
-<div class="slide s2"><div class="orb orb1"></div><div class="orb orb2"></div><div class="accent-line top"></div><div class="accent-line bottom"></div><div class="slide-number">3 / 7</div><div class="slide-emoji">🎯</div><div class="slide-text">Yang 2 jam jual <span class="highlight">SISTEM.</span></div><div class="slide-footer"><div class="line"></div><div class="username">@tipscuan95</div></div></div>
-<div class="slide s2"><div class="orb orb1"></div><div class="orb orb2"></div><div class="accent-line top"></div><div class="accent-line bottom"></div><div class="slide-number">4 / 7</div><div class="slide-emoji">💻</div><div class="slide-text">Contoh sistem: produk digital. Bikin 1x, jual tiap hari <span class="highlight">tanpa sentuh.</span></div><div class="slide-footer"><div class="line"></div><div class="username">@tipscuan95</div></div></div>
-<div class="slide s2"><div class="orb orb1"></div><div class="orb orb2"></div><div class="accent-line top"></div><div class="accent-line bottom"></div><div class="slide-number">5 / 7</div><div class="slide-emoji">🚫</div><div class="slide-text">Gak perlu modal. Gak perlu stok. <span class="highlight">Gak perlu karyawan.</span></div><div class="slide-footer"><div class="line"></div><div class="username">@tipscuan95</div></div></div>
-<div class="slide s2"><div class="orb orb1"></div><div class="orb orb2"></div><div class="accent-line top"></div><div class="accent-line bottom"></div><div class="slide-number">6 / 7</div><div class="slide-emoji">📲</div><div class="slide-text">Yang kamu butuh: pengetahuan + HP + <span class="highlight">konsistensi.</span></div><div class="slide-footer"><div class="line"></div><div class="username">@tipscuan95</div></div></div>
-<div class="slide s2"><div class="orb orb1"></div><div class="orb orb2"></div><div class="accent-line top"></div><div class="accent-line bottom"></div><div class="slide-number">7 / 7</div><div class="slide-emoji">📌</div><div class="slide-text">Save ini. Kamu bakal butuh nanti. 📌</div><div class="slide-footer"><div class="line"></div><div class="username">@tipscuan95</div></div></div>
+<!-- Slide 3: Jual Produk Digital -->
+<div class="slide">
+    <div class="bg-mesh"><svg width="100%" height="100%"><defs><radialGradient id="g1d" cx="60%" cy="25%"><stop offset="0%" stop-color="#6366f1" stop-opacity="0.1"/><stop offset="100%" stop-color="transparent"/></radialGradient></defs><rect fill="url(#g1d)" width="100%" height="100%"/></svg></div>
+    <div class="slide-header">
+        <span class="slide-number">02 / 05</span>
+        <span class="accent-dot" style="background:#6366f1;"></span>
+    </div>
+    <div class="icon-area" style="border-color:rgba(99,102,241,0.2);background:rgba(99,102,241,0.05);">
+        <svg width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="#6366f1" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+    </div>
+    <h2 class="slide-title">Jual Produk Digital</h2>
+    <p class="slide-desc">Bikin ebook, template, atau tools. Jual berkali-kali tanpa produksi ulang.</p>
+    <div class="slide-meta">
+        <div class="meta-row"><span class="meta-label">Kesulitan</span><span class="stars">⭐⭐☆☆☆</span><span class="meta-value">Mudah</span></div>
+        <div class="meta-row"><span class="meta-label">Potensi</span><span class="badge" style="background:rgba(99,102,241,0.15);color:#6366f1;">Rp 1jt - 20jt/bulan</span></div>
+        <div class="meta-row"><span class="meta-label">Modal</span><span class="meta-value">Gratis</span></div>
+        <div class="meta-row"><span class="meta-label">Waktu</span><span class="meta-value">3-7 hari</span></div>
+    </div>
+    <div class="slide-footer">@tipscuan95</div>
+</div>
 
-<div class="set-label">SET 3 — Mindset 1% Orang Sukses</div>
-<div class="slide s3"><div class="orb orb1"></div><div class="orb orb2"></div><div class="accent-line top"></div><div class="accent-line bottom"></div><div class="slide-number">1 / 7</div><div class="slide-emoji">🏆</div><div class="slide-text">1% orang sukses online punya <span class="highlight">1 kesamaan...</span></div><div class="slide-footer"><div class="line"></div><div class="username">@tipscuan95</div></div></div>
-<div class="slide s3"><div class="orb orb1"></div><div class="orb orb2"></div><div class="accent-line top"></div><div class="accent-line bottom"></div><div class="slide-number">2 / 7</div><div class="slide-emoji">📈</div><div class="slide-text">Mereka gak jual waktu. Mereka jual VALUE yang bisa di-<span class="highlight">SCALE.</span></div><div class="slide-footer"><div class="line"></div><div class="username">@tipscuan95</div></div></div>
-<div class="slide s3"><div class="orb orb1"></div><div class="orb orb2"></div><div class="accent-line top"></div><div class="accent-line bottom"></div><div class="slide-number">3 / 7</div><div class="slide-emoji">🚀</div><div class="slide-text">Scale = bikin sekali, jual ke <span class="highlight">RIBUAN</span> orang tanpa nambah effort.</div><div class="slide-footer"><div class="line"></div><div class="username">@tipscuan95</div></div></div>
-<div class="slide s3"><div class="orb orb1"></div><div class="orb orb2"></div><div class="accent-line top"></div><div class="accent-line bottom"></div><div class="slide-number">4 / 7</div><div class="slide-emoji">💰</div><div class="slide-text">1 ebook × 500 buyer × 35rb = <span class="highlight">Rp 17,5 JUTA.</span> Dari 1 file.</div><div class="slide-footer"><div class="line"></div><div class="username">@tipscuan95</div></div></div>
-<div class="slide s3"><div class="orb orb1"></div><div class="orb orb2"></div><div class="accent-line top"></div><div class="accent-line bottom"></div><div class="slide-number">5 / 7</div><div class="slide-emoji">📱</div><div class="slide-text">Ini yang dilakuin kreator di <span class="highlight">Threads & TikTok</span> sekarang.</div><div class="slide-footer"><div class="line"></div><div class="username">@tipscuan95</div></div></div>
-<div class="slide s3"><div class="orb orb1"></div><div class="orb orb2"></div><div class="accent-line top"></div><div class="accent-line bottom"></div><div class="slide-number">6 / 7</div><div class="slide-emoji">⏳</div><div class="slide-text">Pertanyaannya bukan 'bisa gak?' Tapi <span class="highlight">'kapan mulai?'</span></div><div class="slide-footer"><div class="line"></div><div class="username">@tipscuan95</div></div></div>
-<div class="slide s3"><div class="orb orb1"></div><div class="orb orb2"></div><div class="accent-line top"></div><div class="accent-line bottom"></div><div class="slide-number">7 / 7</div><div class="slide-emoji">🧠</div><div class="slide-text">Follow <span class="highlight">@tipscuan95</span> buat breakdown lengkapnya 🧠</div><div class="slide-footer"><div class="line"></div><div class="username">@tipscuan95</div></div></div>
 
-<div class="set-label">SET 4 — 3 Level Income Online</div>
-<div class="slide s4"><div class="orb orb1"></div><div class="orb orb2"></div><div class="accent-line top"></div><div class="accent-line bottom"></div><div class="slide-number">1 / 7</div><div class="slide-emoji">🎮</div><div class="slide-text">3 level cari uang online. Kamu di <span class="highlight">level mana?</span></div><div class="slide-footer"><div class="line"></div><div class="username">@tipscuan95</div></div></div>
-<div class="slide s4"><div class="orb orb1"></div><div class="orb orb2"></div><div class="accent-line top"></div><div class="accent-line bottom"></div><div class="slide-number">2 / 7</div><div class="slide-emoji">1️⃣</div><div class="slide-text">Level 1: Jual waktu. Income = jam kerja. <span class="highlight">Capek = stop.</span></div><div class="slide-footer"><div class="line"></div><div class="username">@tipscuan95</div></div></div>
-<div class="slide s4"><div class="orb orb1"></div><div class="orb orb2"></div><div class="accent-line top"></div><div class="accent-line bottom"></div><div class="slide-number">3 / 7</div><div class="slide-emoji">2️⃣</div><div class="slide-text">Level 2: Jual fisik. Stok, ongkir, retur, <span class="highlight">pusing.</span></div><div class="slide-footer"><div class="line"></div><div class="username">@tipscuan95</div></div></div>
-<div class="slide s4"><div class="orb orb1"></div><div class="orb orb2"></div><div class="accent-line top"></div><div class="accent-line bottom"></div><div class="slide-number">4 / 7</div><div class="slide-emoji">3️⃣</div><div class="slide-text">Level 3: Jual DIGITAL. Bikin 1x, jual ∞ kali. <span class="highlight">Margin 100%.</span></div><div class="slide-footer"><div class="line"></div><div class="username">@tipscuan95</div></div></div>
-<div class="slide s4"><div class="orb orb1"></div><div class="orb orb2"></div><div class="accent-line top"></div><div class="accent-line bottom"></div><div class="slide-number">5 / 7</div><div class="slide-emoji">🔓</div><div class="slide-text">Kebanyakan stuck di Level 1-2 karena <span class="highlight">GAK TAU</span> Level 3 ada.</div><div class="slide-footer"><div class="line"></div><div class="username">@tipscuan95</div></div></div>
-<div class="slide s4"><div class="orb orb1"></div><div class="orb orb2"></div><div class="accent-line top"></div><div class="accent-line bottom"></div><div class="slide-number">6 / 7</div><div class="slide-emoji">⚡</div><div class="slide-text">Sekarang kamu tau. Tinggal <span class="highlight">action.</span></div><div class="slide-footer"><div class="line"></div><div class="username">@tipscuan95</div></div></div>
-<div class="slide s4"><div class="orb orb1"></div><div class="orb orb2"></div><div class="accent-line top"></div><div class="accent-line bottom"></div><div class="slide-number">7 / 7</div><div class="slide-emoji">🔄</div><div class="slide-text">Share ke temen yang masih stuck 👇</div><div class="slide-footer"><div class="line"></div><div class="username">@tipscuan95</div></div></div>
+<!-- Slide 4: Content Creator -->
+<div class="slide">
+    <div class="bg-mesh"><svg width="100%" height="100%"><defs><radialGradient id="g1e" cx="40%" cy="35%"><stop offset="0%" stop-color="#6366f1" stop-opacity="0.1"/><stop offset="100%" stop-color="transparent"/></radialGradient></defs><rect fill="url(#g1e)" width="100%" height="100%"/></svg></div>
+    <div class="slide-header">
+        <span class="slide-number">03 / 05</span>
+        <span class="accent-dot" style="background:#6366f1;"></span>
+    </div>
+    <div class="icon-area" style="border-color:rgba(99,102,241,0.2);background:rgba(99,102,241,0.05);">
+        <svg width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="#6366f1" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+    </div>
+    <h2 class="slide-title">Content Creator (YouTube/TikTok)</h2>
+    <p class="slide-desc">Bikin konten video, dapat uang dari AdSense, brand deal, & affiliate.</p>
+    <div class="slide-meta">
+        <div class="meta-row"><span class="meta-label">Kesulitan</span><span class="stars">⭐⭐⭐⭐☆</span><span class="meta-value">Sulit</span></div>
+        <div class="meta-row"><span class="meta-label">Potensi</span><span class="badge" style="background:rgba(99,102,241,0.15);color:#6366f1;">Rp 2jt - 50jt/bulan</span></div>
+        <div class="meta-row"><span class="meta-label">Modal</span><span class="meta-value">HP doang</span></div>
+        <div class="meta-row"><span class="meta-label">Waktu</span><span class="meta-value">3-6 bulan baru cuan</span></div>
+    </div>
+    <div class="slide-footer">@tipscuan95</div>
+</div>
 
-<div class="set-label">SET 5 — Kenapa Kamu Belum Mulai</div>
-<div class="slide s5"><div class="orb orb1"></div><div class="orb orb2"></div><div class="accent-line top"></div><div class="accent-line bottom"></div><div class="slide-number">1 / 7</div><div class="slide-emoji">🪞</div><div class="slide-text">Alasan sebenarnya kamu belum hasilin uang dari <span class="highlight">internet...</span></div><div class="slide-footer"><div class="line"></div><div class="username">@tipscuan95</div></div></div>
-<div class="slide s5"><div class="orb orb1"></div><div class="orb orb2"></div><div class="accent-line top"></div><div class="accent-line bottom"></div><div class="slide-number">2 / 7</div><div class="slide-emoji">❌</div><div class="slide-text">Bukan gak punya modal. Bukan gak punya <span class="highlight">waktu.</span></div><div class="slide-footer"><div class="line"></div><div class="username">@tipscuan95</div></div></div>
-<div class="slide s5"><div class="orb orb1"></div><div class="orb orb2"></div><div class="accent-line top"></div><div class="accent-line bottom"></div><div class="slide-number">3 / 7</div><div class="slide-emoji">🧠</div><div class="slide-text">Otakmu bilang: <span class="highlight">'Gue gak cukup jago.'</span></div><div class="slide-footer"><div class="line"></div><div class="username">@tipscuan95</div></div></div>
-<div class="slide s5"><div class="orb orb1"></div><div class="orb orb2"></div><div class="accent-line top"></div><div class="accent-line bottom"></div><div class="slide-number">4 / 7</div><div class="slide-emoji">🌱</div><div class="slide-text">Padahal yang sekarang cuan jutaan... dulu mulai dari <span class="highlight">NOL.</span></div><div class="slide-footer"><div class="line"></div><div class="username">@tipscuan95</div></div></div>
-<div class="slide s5"><div class="orb orb1"></div><div class="orb orb2"></div><div class="accent-line top"></div><div class="accent-line bottom"></div><div class="slide-number">5 / 7</div><div class="slide-emoji">🏃</div><div class="slide-text">Yang bedain: mereka <span class="highlight">MULAI</span> walau belum sempurna.</div><div class="slide-footer"><div class="line"></div><div class="username">@tipscuan95</div></div></div>
-<div class="slide s5"><div class="orb orb1"></div><div class="orb orb2"></div><div class="accent-line top"></div><div class="accent-line bottom"></div><div class="slide-number">6 / 7</div><div class="slide-emoji">✅</div><div class="slide-text"><span class="highlight">Done > Perfect.</span> Yang penting: ADA.</div><div class="slide-footer"><div class="line"></div><div class="username">@tipscuan95</div></div></div>
-<div class="slide s5"><div class="orb orb1"></div><div class="orb orb2"></div><div class="accent-line top"></div><div class="accent-line bottom"></div><div class="slide-number">7 / 7</div><div class="slide-emoji">🚀</div><div class="slide-text">Mulai. Sekarang. <span class="highlight">Bukan besok.</span> 🚀</div><div class="slide-footer"><div class="line"></div><div class="username">@tipscuan95</div></div></div>
+<!-- Slide 5: Freelance -->
+<div class="slide">
+    <div class="bg-mesh"><svg width="100%" height="100%"><defs><radialGradient id="g1f" cx="70%" cy="20%"><stop offset="0%" stop-color="#6366f1" stop-opacity="0.1"/><stop offset="100%" stop-color="transparent"/></radialGradient></defs><rect fill="url(#g1f)" width="100%" height="100%"/></svg></div>
+    <div class="slide-header">
+        <span class="slide-number">04 / 05</span>
+        <span class="accent-dot" style="background:#6366f1;"></span>
+    </div>
+    <div class="icon-area" style="border-color:rgba(99,102,241,0.2);background:rgba(99,102,241,0.05);">
+        <svg width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="#6366f1" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+    </div>
+    <h2 class="slide-title">Freelance (Jasa Online)</h2>
+    <p class="slide-desc">Jual skill: desain, writing, editing, coding. Klien bayar per project.</p>
+    <div class="slide-meta">
+        <div class="meta-row"><span class="meta-label">Kesulitan</span><span class="stars">⭐⭐⭐☆☆</span><span class="meta-value">Sedang</span></div>
+        <div class="meta-row"><span class="meta-label">Potensi</span><span class="badge" style="background:rgba(99,102,241,0.15);color:#6366f1;">Rp 3jt - 30jt/bulan</span></div>
+        <div class="meta-row"><span class="meta-label">Modal</span><span class="meta-value">Skill + laptop</span></div>
+        <div class="meta-row"><span class="meta-label">Waktu</span><span class="meta-value">1-2 minggu</span></div>
+    </div>
+    <div class="slide-footer">@tipscuan95</div>
+</div>
 
-<div class="set-label">SET 6 — Fakta Brutal Tentang Uang</div>
-<div class="slide s6"><div class="orb orb1"></div><div class="orb orb2"></div><div class="accent-line top"></div><div class="accent-line bottom"></div><div class="slide-number">1 / 7</div><div class="slide-emoji">💸</div><div class="slide-text">Fakta brutal: gajimu gak akan pernah bikin kamu <span class="highlight">kaya.</span></div><div class="slide-footer"><div class="line"></div><div class="username">@tipscuan95</div></div></div>
-<div class="slide s6"><div class="orb orb1"></div><div class="orb orb2"></div><div class="accent-line top"></div><div class="accent-line bottom"></div><div class="slide-number">2 / 7</div><div class="slide-emoji">📉</div><div class="slide-text">Gaji naik 10%/tahun. Inflasi 5-7%. Lo cuma maju <span class="highlight">SEDIKIT.</span></div><div class="slide-footer"><div class="line"></div><div class="username">@tipscuan95</div></div></div>
-<div class="slide s6"><div class="orb orb1"></div><div class="orb orb2"></div><div class="accent-line top"></div><div class="accent-line bottom"></div><div class="slide-number">3 / 7</div><div class="slide-emoji">🏦</div><div class="slide-text">Orang kaya punya <span class="highlight">ASET</span> yang kerja buat mereka.</div><div class="slide-footer"><div class="line"></div><div class="username">@tipscuan95</div></div></div>
-<div class="slide s6"><div class="orb orb1"></div><div class="orb orb2"></div><div class="accent-line top"></div><div class="accent-line bottom"></div><div class="slide-number">4 / 7</div><div class="slide-emoji">♻️</div><div class="slide-text">Aset digital = bikin sekali, hasilin uang <span class="highlight">berulang-ulang.</span></div><div class="slide-footer"><div class="line"></div><div class="username">@tipscuan95</div></div></div>
-<div class="slide s6"><div class="orb orb1"></div><div class="orb orb2"></div><div class="accent-line top"></div><div class="accent-line bottom"></div><div class="slide-number">5 / 7</div><div class="slide-emoji">💎</div><div class="slide-text">Gue buktiin sendiri. 1 file PDF = <span class="highlight">passive income</span> tiap hari.</div><div class="slide-footer"><div class="line"></div><div class="username">@tipscuan95</div></div></div>
-<div class="slide s6"><div class="orb orb1"></div><div class="orb orb2"></div><div class="accent-line top"></div><div class="accent-line bottom"></div><div class="slide-number">6 / 7</div><div class="slide-emoji">📘</div><div class="slide-text">Mau tau caranya step-by-step? Udah gue <span class="highlight">rangkum.</span></div><div class="slide-footer"><div class="line"></div><div class="username">@tipscuan95</div></div></div>
-<div class="slide s6"><div class="orb orb1"></div><div class="orb orb2"></div><div class="accent-line top"></div><div class="accent-line bottom"></div><div class="slide-number">7 / 7</div><div class="slide-emoji">🔗</div><div class="slide-text">Komen <span class="highlight">'MAU'</span> atau cek link di bio 🔗</div><div class="slide-footer"><div class="line"></div><div class="username">@tipscuan95</div></div></div>
+<!-- Slide 6: Dropship / Reseller -->
+<div class="slide">
+    <div class="bg-mesh"><svg width="100%" height="100%"><defs><radialGradient id="g1g" cx="30%" cy="60%"><stop offset="0%" stop-color="#6366f1" stop-opacity="0.1"/><stop offset="100%" stop-color="transparent"/></radialGradient></defs><rect fill="url(#g1g)" width="100%" height="100%"/></svg></div>
+    <div class="slide-header">
+        <span class="slide-number">05 / 05</span>
+        <span class="accent-dot" style="background:#6366f1;"></span>
+    </div>
+    <div class="icon-area" style="border-color:rgba(99,102,241,0.2);background:rgba(99,102,241,0.05);">
+        <svg width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="#6366f1" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+    </div>
+    <h2 class="slide-title">Dropship / Reseller</h2>
+    <p class="slide-desc">Jual produk orang lain tanpa stok. Tapi ada ongkir & handling.</p>
+    <div class="slide-meta">
+        <div class="meta-row"><span class="meta-label">Kesulitan</span><span class="stars">⭐⭐⭐☆☆</span><span class="meta-value">Sedang</span></div>
+        <div class="meta-row"><span class="meta-label">Potensi</span><span class="badge" style="background:rgba(99,102,241,0.15);color:#6366f1;">Rp 1jt - 15jt/bulan</span></div>
+        <div class="meta-row"><span class="meta-label">Modal</span><span class="meta-value">0 - 500rb</span></div>
+        <div class="meta-row"><span class="meta-label">Waktu</span><span class="meta-value">1 hari</span></div>
+    </div>
+    <div class="slide-footer">@tipscuan95</div>
+</div>
+
+
+<!-- ============ SET 2: 5 Produk Digital yang Bisa Lo Jual Hari Ini ============ -->
+<h2 class="set-title" style="color:#8b5cf6;">SET 2</h2>
+<p class="set-subtitle">5 Produk Digital yang Bisa Lo Jual Hari Ini</p>
+
+<!-- Cover -->
+<div class="slide cover-slide">
+    <div class="bg-mesh"><svg width="100%" height="100%"><defs><radialGradient id="g2a" cx="25%" cy="25%"><stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.15"/><stop offset="100%" stop-color="transparent"/></radialGradient><radialGradient id="g2b" cx="75%" cy="75%"><stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.08"/><stop offset="100%" stop-color="transparent"/></radialGradient></defs><rect fill="url(#g2a)" width="100%" height="100%"/><rect fill="url(#g2b)" width="100%" height="100%"/></svg></div>
+    <div class="icon-area" style="border-color:rgba(139,92,246,0.2);background:rgba(139,92,246,0.05);">
+        <svg width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="#8b5cf6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+    </div>
+    <h2 class="slide-title">5 Produk Digital yang Bisa Lo Jual HARI INI 🚀</h2>
+    <p class="slide-desc">Tanpa modal, tanpa skill coding</p>
+    <div class="slide-footer">@tipscuan95</div>
+</div>
+
+<!-- Slide 2: Ebook / PDF Guide -->
+<div class="slide">
+    <div class="bg-mesh"><svg width="100%" height="100%"><defs><radialGradient id="g2c" cx="50%" cy="30%"><stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.1"/><stop offset="100%" stop-color="transparent"/></radialGradient></defs><rect fill="url(#g2c)" width="100%" height="100%"/></svg></div>
+    <div class="slide-header">
+        <span class="slide-number">01 / 05</span>
+        <span class="accent-dot" style="background:#8b5cf6;"></span>
+    </div>
+    <div class="icon-area" style="border-color:rgba(139,92,246,0.2);background:rgba(139,92,246,0.05);">
+        <svg width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="#8b5cf6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+    </div>
+    <h2 class="slide-title">Ebook / PDF Guide</h2>
+    <p class="slide-desc">Tulis pengetahuan lo jadi panduan. Topik apa aja yang lo kuasai.</p>
+    <div class="slide-meta">
+        <div class="meta-row"><span class="meta-label">Kesulitan</span><span class="stars">⭐⭐☆☆☆</span><span class="meta-value">Mudah</span></div>
+        <div class="meta-row"><span class="meta-label">Potensi</span><span class="badge" style="background:rgba(139,92,246,0.15);color:#8b5cf6;">Rp 15rb - 50rb per pcs</span></div>
+        <div class="meta-row"><span class="meta-label">Tools</span><span class="meta-value">Canva + ChatGPT</span></div>
+        <div class="meta-row"><span class="meta-label">Waktu bikin</span><span class="meta-value">1-3 hari</span></div>
+    </div>
+    <div class="slide-footer">@tipscuan95</div>
+</div>
+
+<!-- Slide 3: Template Canva -->
+<div class="slide">
+    <div class="bg-mesh"><svg width="100%" height="100%"><defs><radialGradient id="g2d" cx="60%" cy="40%"><stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.1"/><stop offset="100%" stop-color="transparent"/></radialGradient></defs><rect fill="url(#g2d)" width="100%" height="100%"/></svg></div>
+    <div class="slide-header">
+        <span class="slide-number">02 / 05</span>
+        <span class="accent-dot" style="background:#8b5cf6;"></span>
+    </div>
+    <div class="icon-area" style="border-color:rgba(139,92,246,0.2);background:rgba(139,92,246,0.05);">
+        <svg width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="#8b5cf6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r="2.5"/><path d="M17.5 10.5a4 4 0 0 0-8 0"/><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 15l4-4 3 3 4-4 7 7"/></svg>
+    </div>
+    <h2 class="slide-title">Template Canva</h2>
+    <p class="slide-desc">Desain feed IG, story, thumbnail. Orang beli biar gak perlu desain sendiri.</p>
+    <div class="slide-meta">
+        <div class="meta-row"><span class="meta-label">Kesulitan</span><span class="stars">⭐⭐☆☆☆</span><span class="meta-value">Mudah</span></div>
+        <div class="meta-row"><span class="meta-label">Potensi</span><span class="badge" style="background:rgba(139,92,246,0.15);color:#8b5cf6;">Rp 25rb - 49rb per pack</span></div>
+        <div class="meta-row"><span class="meta-label">Tools</span><span class="meta-value">Canva Free</span></div>
+        <div class="meta-row"><span class="meta-label">Waktu bikin</span><span class="meta-value">2-5 jam</span></div>
+    </div>
+    <div class="slide-footer">@tipscuan95</div>
+</div>
+
+
+<!-- Slide 4: Prompt Pack AI -->
+<div class="slide">
+    <div class="bg-mesh"><svg width="100%" height="100%"><defs><radialGradient id="g2e" cx="35%" cy="50%"><stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.1"/><stop offset="100%" stop-color="transparent"/></radialGradient></defs><rect fill="url(#g2e)" width="100%" height="100%"/></svg></div>
+    <div class="slide-header">
+        <span class="slide-number">03 / 05</span>
+        <span class="accent-dot" style="background:#8b5cf6;"></span>
+    </div>
+    <div class="icon-area" style="border-color:rgba(139,92,246,0.2);background:rgba(139,92,246,0.05);">
+        <svg width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="#8b5cf6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="10" rx="2"/><circle cx="12" cy="5" r="3"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/><circle cx="9" cy="16" r="1"/><circle cx="15" cy="16" r="1"/></svg>
+    </div>
+    <h2 class="slide-title">Prompt Pack AI</h2>
+    <p class="slide-desc">Kumpulan prompt ChatGPT/Gemini buat berbagai kebutuhan. Market lagi booming.</p>
+    <div class="slide-meta">
+        <div class="meta-row"><span class="meta-label">Kesulitan</span><span class="stars">⭐☆☆☆☆</span><span class="meta-value">Sangat Mudah</span></div>
+        <div class="meta-row"><span class="meta-label">Potensi</span><span class="badge" style="background:rgba(139,92,246,0.15);color:#8b5cf6;">Rp 19rb - 39rb per pack</span></div>
+        <div class="meta-row"><span class="meta-label">Tools</span><span class="meta-value">ChatGPT</span></div>
+        <div class="meta-row"><span class="meta-label">Waktu bikin</span><span class="meta-value">1-2 jam</span></div>
+    </div>
+    <div class="slide-footer">@tipscuan95</div>
+</div>
+
+<!-- Slide 5: Notion Template -->
+<div class="slide">
+    <div class="bg-mesh"><svg width="100%" height="100%"><defs><radialGradient id="g2f" cx="70%" cy="30%"><stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.1"/><stop offset="100%" stop-color="transparent"/></radialGradient></defs><rect fill="url(#g2f)" width="100%" height="100%"/></svg></div>
+    <div class="slide-header">
+        <span class="slide-number">04 / 05</span>
+        <span class="accent-dot" style="background:#8b5cf6;"></span>
+    </div>
+    <div class="icon-area" style="border-color:rgba(139,92,246,0.2);background:rgba(139,92,246,0.05);">
+        <svg width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="#8b5cf6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+    </div>
+    <h2 class="slide-title">Notion Template</h2>
+    <p class="slide-desc">Habit tracker, content planner, finance dashboard. Notion users rela bayar.</p>
+    <div class="slide-meta">
+        <div class="meta-row"><span class="meta-label">Kesulitan</span><span class="stars">⭐⭐☆☆☆</span><span class="meta-value">Mudah</span></div>
+        <div class="meta-row"><span class="meta-label">Potensi</span><span class="badge" style="background:rgba(139,92,246,0.15);color:#8b5cf6;">Rp 20rb - 45rb per template</span></div>
+        <div class="meta-row"><span class="meta-label">Tools</span><span class="meta-value">Notion Free</span></div>
+        <div class="meta-row"><span class="meta-label">Waktu bikin</span><span class="meta-value">3-5 jam</span></div>
+    </div>
+    <div class="slide-footer">@tipscuan95</div>
+</div>
+
+<!-- Slide 6: Template Script/Chat Closing -->
+<div class="slide">
+    <div class="bg-mesh"><svg width="100%" height="100%"><defs><radialGradient id="g2g" cx="50%" cy="60%"><stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.1"/><stop offset="100%" stop-color="transparent"/></radialGradient></defs><rect fill="url(#g2g)" width="100%" height="100%"/></svg></div>
+    <div class="slide-header">
+        <span class="slide-number">05 / 05</span>
+        <span class="accent-dot" style="background:#8b5cf6;"></span>
+    </div>
+    <div class="icon-area" style="border-color:rgba(139,92,246,0.2);background:rgba(139,92,246,0.05);">
+        <svg width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="#8b5cf6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+    </div>
+    <h2 class="slide-title">Template Script/Chat Closing</h2>
+    <p class="slide-desc">Template DM jualan, follow up, handle keberatan. Seller online butuh banget.</p>
+    <div class="slide-meta">
+        <div class="meta-row"><span class="meta-label">Kesulitan</span><span class="stars">⭐☆☆☆☆</span><span class="meta-value">Sangat Mudah</span></div>
+        <div class="meta-row"><span class="meta-label">Potensi</span><span class="badge" style="background:rgba(139,92,246,0.15);color:#8b5cf6;">Rp 19rb - 35rb per pack</span></div>
+        <div class="meta-row"><span class="meta-label">Tools</span><span class="meta-value">Google Docs</span></div>
+        <div class="meta-row"><span class="meta-label">Waktu bikin</span><span class="meta-value">2-3 jam</span></div>
+    </div>
+    <div class="slide-footer">@tipscuan95</div>
+</div>
+
+
+<!-- ============ SET 3: Perbandingan: Kerja Kantoran vs Bisnis Digital ============ -->
+<h2 class="set-title" style="color:#10b981;">SET 3</h2>
+<p class="set-subtitle">Perbandingan: Kerja Kantoran vs Bisnis Digital</p>
+
+<!-- Cover -->
+<div class="slide cover-slide">
+    <div class="bg-mesh"><svg width="100%" height="100%"><defs><radialGradient id="g3a" cx="20%" cy="30%"><stop offset="0%" stop-color="#10b981" stop-opacity="0.15"/><stop offset="100%" stop-color="transparent"/></radialGradient><radialGradient id="g3b" cx="80%" cy="70%"><stop offset="0%" stop-color="#10b981" stop-opacity="0.08"/><stop offset="100%" stop-color="transparent"/></radialGradient></defs><rect fill="url(#g3a)" width="100%" height="100%"/><rect fill="url(#g3b)" width="100%" height="100%"/></svg></div>
+    <div class="icon-area" style="border-color:rgba(16,185,129,0.2);background:rgba(16,185,129,0.05);">
+        <svg width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+    </div>
+    <h2 class="slide-title">Kerja Kantoran vs Bisnis Digital ⚡</h2>
+    <p class="slide-desc">Mana yang lebih worth it di 2026?</p>
+    <div class="slide-footer">@tipscuan95</div>
+</div>
+
+<!-- Slide 2: Income -->
+<div class="slide">
+    <div class="bg-mesh"><svg width="100%" height="100%"><defs><radialGradient id="g3c" cx="50%" cy="25%"><stop offset="0%" stop-color="#10b981" stop-opacity="0.1"/><stop offset="100%" stop-color="transparent"/></radialGradient></defs><rect fill="url(#g3c)" width="100%" height="100%"/></svg></div>
+    <div class="slide-header">
+        <span class="slide-number">01 / 05</span>
+        <span class="accent-dot" style="background:#10b981;"></span>
+    </div>
+    <div class="icon-area" style="border-color:rgba(16,185,129,0.2);background:rgba(16,185,129,0.05);">
+        <svg width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+    </div>
+    <h2 class="slide-title">Income</h2>
+    <div class="compare-box">
+        <div class="box-label" style="color:#888;">🏢 Kantoran</div>
+        <div class="box-text">Fix tiap bulan, naik 5-10%/tahun</div>
+    </div>
+    <div class="compare-box">
+        <div class="box-label" style="color:#10b981;">💻 Digital</div>
+        <div class="box-text">Gak ada batas. Bisa 0, bisa 50jt. Tergantung effort & strategi.</div>
+    </div>
+    <div class="verdict" style="color:#10b981;">🏆 Digital (kalau konsisten)</div>
+    <div class="slide-footer">@tipscuan95</div>
+</div>
+
+<!-- Slide 3: Waktu & Kebebasan -->
+<div class="slide">
+    <div class="bg-mesh"><svg width="100%" height="100%"><defs><radialGradient id="g3d" cx="40%" cy="40%"><stop offset="0%" stop-color="#10b981" stop-opacity="0.1"/><stop offset="100%" stop-color="transparent"/></radialGradient></defs><rect fill="url(#g3d)" width="100%" height="100%"/></svg></div>
+    <div class="slide-header">
+        <span class="slide-number">02 / 05</span>
+        <span class="accent-dot" style="background:#10b981;"></span>
+    </div>
+    <div class="icon-area" style="border-color:rgba(16,185,129,0.2);background:rgba(16,185,129,0.05);">
+        <svg width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+    </div>
+    <h2 class="slide-title">Waktu & Kebebasan</h2>
+    <div class="compare-box">
+        <div class="box-label" style="color:#888;">🏢 Kantoran</div>
+        <div class="box-text">8-10 jam/hari. Senin-Jumat. Izin harus approve atasan.</div>
+    </div>
+    <div class="compare-box">
+        <div class="box-label" style="color:#10b981;">💻 Digital</div>
+        <div class="box-text">Kapan aja, di mana aja. Mau kerja jam 2 pagi juga bisa.</div>
+    </div>
+    <div class="verdict" style="color:#10b981;">🏆 Digital</div>
+    <div class="slide-footer">@tipscuan95</div>
+</div>
+
+
+<!-- Slide 4: Risiko -->
+<div class="slide">
+    <div class="bg-mesh"><svg width="100%" height="100%"><defs><radialGradient id="g3e" cx="60%" cy="35%"><stop offset="0%" stop-color="#10b981" stop-opacity="0.1"/><stop offset="100%" stop-color="transparent"/></radialGradient></defs><rect fill="url(#g3e)" width="100%" height="100%"/></svg></div>
+    <div class="slide-header">
+        <span class="slide-number">03 / 05</span>
+        <span class="accent-dot" style="background:#10b981;"></span>
+    </div>
+    <div class="icon-area" style="border-color:rgba(16,185,129,0.2);background:rgba(16,185,129,0.05);">
+        <svg width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+    </div>
+    <h2 class="slide-title">Risiko</h2>
+    <div class="compare-box">
+        <div class="box-label" style="color:#888;">🏢 Kantoran</div>
+        <div class="box-text">Relatif aman, tapi bisa di-PHK kapan aja.</div>
+    </div>
+    <div class="compare-box">
+        <div class="box-label" style="color:#10b981;">💻 Digital</div>
+        <div class="box-text">Income gak stabil di awal. Tapi kalau udah jalan = semi-passive.</div>
+    </div>
+    <div class="verdict" style="color:#facc15;">🤝 Tergantung mental</div>
+    <div class="slide-footer">@tipscuan95</div>
+</div>
+
+<!-- Slide 5: Skill yang Dibutuhkan -->
+<div class="slide">
+    <div class="bg-mesh"><svg width="100%" height="100%"><defs><radialGradient id="g3f" cx="30%" cy="50%"><stop offset="0%" stop-color="#10b981" stop-opacity="0.1"/><stop offset="100%" stop-color="transparent"/></radialGradient></defs><rect fill="url(#g3f)" width="100%" height="100%"/></svg></div>
+    <div class="slide-header">
+        <span class="slide-number">04 / 05</span>
+        <span class="accent-dot" style="background:#10b981;"></span>
+    </div>
+    <div class="icon-area" style="border-color:rgba(16,185,129,0.2);background:rgba(16,185,129,0.05);">
+        <svg width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><circle cx="12" cy="12" r="10"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+    </div>
+    <h2 class="slide-title">Skill yang Dibutuhkan</h2>
+    <div class="compare-box">
+        <div class="box-label" style="color:#888;">🏢 Kantoran</div>
+        <div class="box-text">Skill spesifik + politics kantor + networking fisik</div>
+    </div>
+    <div class="compare-box">
+        <div class="box-label" style="color:#10b981;">💻 Digital</div>
+        <div class="box-text">Content creation + copywriting + consistency. Bisa dipelajari gratis.</div>
+    </div>
+    <div class="verdict" style="color:#10b981;">🏆 Digital (lebih accessible)</div>
+    <div class="slide-footer">@tipscuan95</div>
+</div>
+
+<!-- Slide 6: Kesimpulan -->
+<div class="slide">
+    <div class="bg-mesh"><svg width="100%" height="100%"><defs><radialGradient id="g3g" cx="50%" cy="40%"><stop offset="0%" stop-color="#10b981" stop-opacity="0.12"/><stop offset="100%" stop-color="transparent"/></radialGradient></defs><rect fill="url(#g3g)" width="100%" height="100%"/></svg></div>
+    <div class="slide-header">
+        <span class="slide-number">05 / 05</span>
+        <span class="accent-dot" style="background:#10b981;"></span>
+    </div>
+    <div class="icon-area" style="border-color:rgba(16,185,129,0.2);background:rgba(16,185,129,0.05);">
+        <svg width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg>
+    </div>
+    <h2 class="slide-title">Kesimpulan</h2>
+    <p class="slide-desc" style="font-size:0.9rem;color:#ccc;line-height:1.6;">Idealnya: jangan quit kantoran dulu. Bangun bisnis digital sebagai SIDE INCOME. Kalau udah melebihi gaji, baru consider full-time.</p>
+    <div class="verdict" style="color:#10b981;font-size:0.9rem;margin-top:12px;">Follow @tipscuan95 buat lebih banyak insight 🧠</div>
+    <div class="slide-footer">@tipscuan95</div>
+</div>
 
 </body>
 </html>
