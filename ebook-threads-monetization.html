@@ -1,0 +1,2211 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Master Threads Monetization — Vol. 01</title>
+<meta name="description" content="Ebook lengkap monetisasi Threads: 7 jalur cuan, template utas, roadmap 60 hari, scaling ke empire. By @yanzy17" />
+
+<!-- Editorial fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+<style>
+/* =============================================
+   MASTER THREADS MONETIZATION
+   Editorial · Black & White · Premium
+   ============================================= */
+
+@page {
+    size: A4;
+    margin: 20mm 18mm 24mm 18mm;
+    @bottom-left {
+        content: "MASTER THREADS MONETIZATION";
+        font-family: "Inter", sans-serif;
+        font-size: 8pt;
+        color: #555;
+        letter-spacing: 0.2em;
+    }
+    @bottom-right {
+        content: counter(page) " / " counter(pages);
+        font-family: "JetBrains Mono", monospace;
+        font-size: 8pt;
+        color: #555;
+    }
+}
+@page :first {
+    margin: 0;
+    @bottom-left { content: ""; }
+    @bottom-right { content: ""; }
+}
+
+:root {
+    --paper: #fafaf7;
+    --paper-2: #f3f3ee;
+    --paper-3: #ebebe5;
+    --ink: #0a0a0a;
+    --ink-soft: #2a2a2a;
+    --ink-mute: #555;
+    --ink-dim: #888;
+    --line: #1a1a1a;
+    --line-soft: #d4d4cf;
+    --line-faint: #e5e5e0;
+    --highlight: #ffe66b;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+    font-family: "Inter", -apple-system, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.65;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+}
+
+a { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1.5px; }
+a:hover { background: var(--ink); color: var(--paper); text-decoration: none; }
+img { max-width: 100%; }
+
+/* =================== LAYOUT =================== */
+.page {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 90px 56px;
+    border-bottom: 1px solid var(--line);
+    position: relative;
+    background: var(--paper);
+}
+
+.page-num {
+    position: absolute;
+    bottom: 28px;
+    right: 56px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.7rem;
+    color: var(--ink-mute);
+    letter-spacing: 0.2em;
+}
+
+.page-folio {
+    position: absolute;
+    top: 28px;
+    left: 56px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.7rem;
+    color: var(--ink-mute);
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+}
+
+/* =================== TOC NAV =================== */
+.toc-nav {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: var(--paper);
+    border-bottom: 1px solid var(--line);
+    padding: 14px 24px;
+    display: flex;
+    gap: 0;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    font-family: "JetBrains Mono", monospace;
+}
+.toc-nav::-webkit-scrollbar { display: none; }
+.toc-nav a {
+    flex-shrink: 0;
+    font-size: 0.7rem;
+    color: var(--ink-soft);
+    padding: 4px 14px;
+    border-right: 1px solid var(--line-soft);
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    white-space: nowrap;
+    transition: all 0.15s;
+}
+.toc-nav a:last-child { border-right: none; }
+.toc-nav a:hover {
+    background: var(--ink);
+    color: var(--paper);
+}
+
+/* =================== COVER =================== */
+.cover {
+    min-height: 100vh;
+    background: var(--paper);
+    color: var(--ink);
+    padding: 60px 56px;
+    border: none;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    position: relative;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+.cover::before,
+.cover::after {
+    content: "";
+    position: absolute;
+    background: var(--ink);
+}
+.cover::before {
+    top: 28px; left: 28px; right: 28px;
+    height: 2px;
+}
+.cover::after {
+    bottom: 28px; left: 28px; right: 28px;
+    height: 2px;
+}
+
+.cover-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+    color: var(--ink-soft);
+    padding-top: 20px;
+}
+
+.cover-meta-r {
+    text-align: right;
+}
+
+.cover-main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    text-align: left;
+    padding: 40px 0;
+}
+
+.cover-edition {
+    font-family: "Playfair Display", Georgia, serif;
+    font-style: italic;
+    font-size: 1.1rem;
+    color: var(--ink-mute);
+    margin-bottom: 24px;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 24px;
+    width: 240px;
+}
+
+.cover h1 {
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: clamp(3.5rem, 13vw, 7rem);
+    font-weight: 900;
+    line-height: 0.92;
+    letter-spacing: -0.04em;
+    color: var(--ink);
+    margin-bottom: 20px;
+}
+
+.cover h1 em {
+    font-style: italic;
+    font-weight: 400;
+}
+
+.cover-sub {
+    font-family: "Inter", sans-serif;
+    font-size: clamp(1rem, 2.6vw, 1.3rem);
+    font-weight: 500;
+    color: var(--ink-soft);
+    max-width: 540px;
+    line-height: 1.5;
+    margin-top: 16px;
+    border-top: 1px solid var(--line);
+    padding-top: 20px;
+}
+
+.cover-features {
+    display: flex;
+    gap: 28px;
+    flex-wrap: wrap;
+    margin-top: 36px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--ink-soft);
+}
+.cover-features span {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.cover-features span::before {
+    content: "—";
+    color: var(--ink);
+    font-weight: 700;
+}
+
+.cover-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding-bottom: 20px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+    color: var(--ink-soft);
+}
+
+.cover-footer strong {
+    display: block;
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: 1.6rem;
+    font-style: italic;
+    font-weight: 700;
+    color: var(--ink);
+    text-transform: none;
+    letter-spacing: -0.01em;
+    margin-top: 4px;
+}
+
+/* =================== TYPOGRAPHY =================== */
+.section-tag {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    margin-bottom: 24px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--line-soft);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.section-tag .ch {
+    font-weight: 700;
+    color: var(--ink);
+}
+
+.page h2.title {
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: clamp(2.2rem, 5.5vw, 3.4rem);
+    font-weight: 900;
+    line-height: 1.05;
+    letter-spacing: -0.025em;
+    margin-bottom: 28px;
+    color: var(--ink);
+}
+
+.page h2.title em {
+    font-weight: 400;
+    font-style: italic;
+}
+
+.divider {
+    width: 80px;
+    height: 3px;
+    background: var(--ink);
+    margin: 28px 0;
+    border: none;
+}
+
+.divider.thin {
+    height: 1px;
+    background: var(--line);
+}
+
+.lead {
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: 1.35rem;
+    font-style: italic;
+    line-height: 1.55;
+    color: var(--ink);
+    margin-bottom: 28px;
+    max-width: 600px;
+    border-left: 3px solid var(--ink);
+    padding-left: 22px;
+}
+
+.page p {
+    margin-bottom: 18px;
+    font-size: 1.02rem;
+    line-height: 1.75;
+    color: var(--ink-soft);
+}
+
+.page p strong {
+    color: var(--ink);
+    font-weight: 700;
+}
+
+.page p em {
+    font-style: italic;
+    color: var(--ink);
+}
+
+.page h3 {
+    font-family: "Inter", sans-serif;
+    font-size: 0.85rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    margin: 40px 0 16px;
+    color: var(--ink);
+    padding-top: 12px;
+    border-top: 2px solid var(--ink);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.page h3::before {
+    content: counter(h3-counter, decimal-leading-zero);
+    counter-increment: h3-counter;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.78rem;
+    color: var(--ink-mute);
+    font-weight: 500;
+}
+
+.page h4 {
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin: 28px 0 12px;
+    color: var(--ink);
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+}
+
+.page ul, .page ol {
+    margin-bottom: 22px;
+    padding-left: 0;
+    list-style: none;
+}
+
+.page ul li, .page ol li {
+    position: relative;
+    padding-left: 28px;
+    margin-bottom: 10px;
+    color: var(--ink-soft);
+    line-height: 1.7;
+}
+
+.page ul li::before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: var(--ink);
+    font-weight: 700;
+}
+
+.page ol {
+    counter-reset: list-counter;
+}
+
+.page ol li {
+    counter-increment: list-counter;
+}
+
+.page ol li::before {
+    content: counter(list-counter, decimal-leading-zero) ".";
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: var(--ink);
+    font-weight: 700;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.9rem;
+}
+
+/* =================== TOC LIST =================== */
+.toc-list {
+    list-style: none !important;
+    padding: 0 !important;
+    margin: 24px 0;
+}
+
+.toc-list li {
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.toc-list li::before { display: none !important; }
+
+.toc-list a {
+    display: flex;
+    align-items: baseline;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--line-soft);
+    text-decoration: none;
+    transition: all 0.15s;
+    background: transparent !important;
+    color: var(--ink) !important;
+}
+
+.toc-list a:hover {
+    padding-left: 12px;
+    background: transparent !important;
+    color: var(--ink) !important;
+}
+
+.toc-list a:hover .toc-label {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.toc-list .toc-num {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.85rem;
+    color: var(--ink-mute);
+    margin-right: 22px;
+    min-width: 36px;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+}
+
+.toc-list .toc-label {
+    flex: 1;
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: 1.15rem;
+    font-weight: 500;
+    color: var(--ink);
+    line-height: 1.3;
+}
+
+.toc-list .toc-tag {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.7rem;
+    color: var(--ink-mute);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+}
+
+/* =================== PULL QUOTE =================== */
+.pull-quote {
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: 1.7rem;
+    font-style: italic;
+    font-weight: 400;
+    line-height: 1.35;
+    color: var(--ink);
+    text-align: center;
+    margin: 44px auto;
+    padding: 36px 0;
+    border-top: 2px solid var(--ink);
+    border-bottom: 2px solid var(--ink);
+    max-width: 640px;
+}
+
+.pull-quote::before {
+    content: "❝";
+    display: block;
+    font-size: 3rem;
+    line-height: 0.5;
+    margin-bottom: 18px;
+    color: var(--ink);
+}
+
+/* =================== STAT CARDS =================== */
+.stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    margin: 32px 0;
+    border-top: 2px solid var(--ink);
+    border-bottom: 2px solid var(--ink);
+}
+.stat-card {
+    text-align: left;
+    padding: 24px 20px;
+    border-right: 1px solid var(--line-soft);
+}
+.stat-card:last-child { border-right: none; }
+.stat-card strong {
+    display: block;
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: 2.6rem;
+    font-weight: 900;
+    color: var(--ink);
+    line-height: 1;
+    margin-bottom: 8px;
+    letter-spacing: -0.02em;
+}
+.stat-card span {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.7rem;
+    color: var(--ink-mute);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    line-height: 1.3;
+    display: block;
+}
+
+/* =================== CARDS / BOXES =================== */
+.card {
+    background: var(--paper);
+    border: 1.5px solid var(--ink);
+    padding: 24px 28px;
+    margin: 22px 0;
+    position: relative;
+}
+
+.card-tag {
+    position: absolute;
+    top: -10px;
+    left: 16px;
+    background: var(--paper);
+    padding: 0 10px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    font-weight: 700;
+    color: var(--ink);
+}
+
+.card.solid {
+    background: var(--ink);
+    color: var(--paper);
+}
+.card.solid p, .card.solid li { color: var(--paper); }
+.card.solid strong { color: var(--paper); background: transparent; }
+.card.solid em { color: var(--paper-3); }
+.card.solid .card-tag {
+    background: var(--ink);
+    color: var(--paper);
+}
+.card.solid ul li::before { color: var(--paper); }
+.card.solid ol li::before { color: var(--paper); }
+
+.card.outline {
+    background: var(--paper-2);
+    border-color: var(--ink-soft);
+}
+
+.card p:last-child { margin-bottom: 0; }
+.card .card-title {
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 12px;
+    line-height: 1.3;
+}
+.card.solid .card-title { color: var(--paper); }
+
+/* =================== STEPS =================== */
+.step-list {
+    margin: 28px 0;
+    counter-reset: step-counter;
+}
+
+.step {
+    display: grid;
+    grid-template-columns: 60px 1fr;
+    gap: 20px;
+    padding: 22px 0;
+    border-top: 1px solid var(--line-soft);
+    counter-increment: step-counter;
+    align-items: start;
+}
+
+.step:last-child { border-bottom: 1px solid var(--line-soft); }
+
+.step-num {
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: 2.6rem;
+    font-weight: 900;
+    line-height: 1;
+    color: var(--ink);
+    letter-spacing: -0.04em;
+}
+
+.step-num::before {
+    content: counter(step-counter, decimal-leading-zero);
+}
+
+.step-body h5 {
+    font-family: "Inter", sans-serif;
+    font-size: 0.85rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--ink);
+    margin-bottom: 6px;
+}
+
+.step-body p {
+    font-size: 0.98rem;
+    color: var(--ink-soft);
+    line-height: 1.6;
+    margin-bottom: 0;
+}
+
+/* =================== TEMPLATE BLOCKS =================== */
+.tpl-grid { counter-reset: tpl-counter; margin: 24px 0; }
+
+.tpl {
+    counter-increment: tpl-counter;
+    display: grid;
+    grid-template-columns: 50px 1fr;
+    gap: 16px;
+    padding: 18px 0;
+    border-top: 1px solid var(--line-soft);
+}
+
+.tpl:last-child { border-bottom: 1px solid var(--line-soft); }
+
+.tpl::before {
+    content: "№" counter(tpl-counter, decimal-leading-zero);
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.78rem;
+    color: var(--ink-mute);
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    padding-top: 4px;
+}
+
+.tpl p {
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: 1.08rem;
+    line-height: 1.55;
+    color: var(--ink);
+    margin: 0;
+    font-style: italic;
+}
+
+/* =================== TABLE =================== */
+.cmp-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 24px 0;
+    font-size: 0.92rem;
+    border-top: 2px solid var(--ink);
+    border-bottom: 2px solid var(--ink);
+}
+.cmp-table th, .cmp-table td {
+    padding: 14px 14px;
+    text-align: left;
+    vertical-align: top;
+    border-bottom: 1px solid var(--line-soft);
+}
+.cmp-table th {
+    font-family: "Inter", sans-serif;
+    font-weight: 800;
+    font-size: 0.7rem;
+    color: var(--ink);
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    border-bottom: 2px solid var(--ink);
+}
+.cmp-table td { color: var(--ink-soft); }
+.cmp-table tr:last-child td { border-bottom: none; }
+
+/* =================== FAQ =================== */
+.faq {
+    padding: 24px 0;
+    border-top: 1px solid var(--line-soft);
+}
+.faq:last-child { border-bottom: 1px solid var(--line-soft); }
+.faq .q {
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 10px;
+    line-height: 1.35;
+}
+.faq .q::before {
+    content: "Q.";
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--ink-mute);
+    margin-right: 10px;
+    letter-spacing: 0.05em;
+}
+.faq .a {
+    color: var(--ink-soft);
+    font-size: 1rem;
+    line-height: 1.7;
+    margin: 0;
+    padding-left: 30px;
+    position: relative;
+}
+.faq .a::before {
+    content: "A.";
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--ink);
+    letter-spacing: 0.05em;
+}
+
+/* =================== ROADMAP =================== */
+.roadmap-block {
+    padding: 28px 0;
+    border-top: 2px solid var(--ink);
+}
+.roadmap-block:last-child { border-bottom: 2px solid var(--ink); }
+.roadmap-block .week-meta {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+}
+.roadmap-block .week-num {
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: 3rem;
+    font-weight: 900;
+    line-height: 1;
+    color: var(--ink);
+    letter-spacing: -0.04em;
+}
+.roadmap-block .week-info {
+    flex: 1;
+    min-width: 200px;
+}
+.roadmap-block .week-tag {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.7rem;
+    color: var(--ink-mute);
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    margin-bottom: 4px;
+}
+.roadmap-block h4 {
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin: 0;
+    line-height: 1.2;
+}
+.roadmap-block ul {
+    margin: 12px 0 0;
+}
+.roadmap-block ul li {
+    font-size: 0.96rem;
+}
+
+/* =================== PILLAR / METHOD CARDS =================== */
+.method-grid {
+    margin: 28px 0;
+    counter-reset: method-counter;
+}
+.method {
+    counter-increment: method-counter;
+    padding: 28px 0;
+    border-top: 2px solid var(--ink);
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 22px;
+    align-items: start;
+}
+.method:last-child { border-bottom: 2px solid var(--ink); }
+
+.method-num {
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: 4rem;
+    font-weight: 900;
+    line-height: 0.85;
+    color: var(--ink);
+    letter-spacing: -0.05em;
+}
+.method-num::before { content: counter(method-counter, decimal-leading-zero); }
+
+.method-body h4 {
+    margin-top: 0;
+    margin-bottom: 8px;
+}
+
+.method-body .method-tag {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.7rem;
+    color: var(--ink-mute);
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    margin-bottom: 8px;
+    display: block;
+}
+
+.method-body p { font-size: 0.96rem; line-height: 1.65; }
+
+/* =================== CLOSING =================== */
+.closing {
+    text-align: center;
+    background: var(--ink);
+    color: var(--paper);
+    padding: 120px 56px;
+    border: none;
+    max-width: 100%;
+    position: relative;
+}
+
+.closing .section-tag {
+    color: var(--paper-3);
+    border-color: var(--ink-mute);
+    justify-content: center;
+}
+
+.closing h2 {
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: clamp(2.6rem, 7vw, 4.4rem);
+    font-weight: 900;
+    line-height: 1;
+    color: var(--paper);
+    margin-bottom: 24px;
+    letter-spacing: -0.03em;
+}
+
+.closing h2 em { font-style: italic; font-weight: 400; }
+
+.closing p {
+    max-width: 540px;
+    margin: 0 auto 18px;
+    color: var(--paper-3);
+    font-size: 1.08rem;
+    line-height: 1.65;
+}
+
+.closing p strong { color: var(--paper); }
+
+.signature {
+    margin-top: 56px;
+    padding-top: 32px;
+    border-top: 1px solid var(--ink-mute);
+    color: var(--paper);
+    font-family: "Playfair Display", Georgia, serif;
+    font-style: italic;
+    font-size: 1.1rem;
+    letter-spacing: 0.05em;
+    max-width: 320px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.signature small {
+    display: block;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.7rem;
+    color: var(--paper-3);
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+    margin-top: 8px;
+    font-style: normal;
+}
+
+/* =================== FLOATING DOWNLOAD =================== */
+.download-bar {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 100;
+}
+
+.download-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--ink);
+    color: var(--paper);
+    padding: 14px 22px;
+    border: 2px solid var(--ink);
+    font-family: "Inter", sans-serif;
+    font-weight: 700;
+    font-size: 0.78rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.download-btn:hover {
+    background: var(--paper);
+    color: var(--ink);
+}
+
+.download-btn svg { width: 16px; height: 16px; }
+
+/* =================== MOBILE =================== */
+@media (max-width: 640px) {
+    .page { padding: 56px 22px; }
+    .page-num { right: 22px; bottom: 16px; }
+    .page-folio { left: 22px; top: 18px; }
+    .stats { grid-template-columns: 1fr; }
+    .stat-card { border-right: none; border-bottom: 1px solid var(--line-soft); }
+    .stat-card:last-child { border-bottom: none; }
+    .step { grid-template-columns: 44px 1fr; gap: 14px; }
+    .step-num { font-size: 2rem; }
+    .method { grid-template-columns: 60px 1fr; gap: 16px; }
+    .method-num { font-size: 3rem; }
+    .roadmap-block .week-num { font-size: 2.2rem; }
+    .cover { padding: 40px 28px; }
+    .cover-meta { flex-direction: column; gap: 12px; }
+    .cover-meta-r { text-align: left; }
+    .cmp-table { font-size: 0.82rem; }
+    .cmp-table th, .cmp-table td { padding: 10px 8px; }
+    .pull-quote { font-size: 1.3rem; padding: 24px 0; }
+    .closing { padding: 80px 28px; }
+}
+
+/* =================== PRINT =================== */
+@media print {
+    html, body {
+        background: white !important;
+        color: #000 !important;
+        font-size: 11pt;
+        line-height: 1.55;
+    }
+    .toc-nav, .download-bar, .no-print { display: none !important; }
+    .page {
+        max-width: 100%;
+        padding: 0 !important;
+        margin: 0 !important;
+        border: none !important;
+        page-break-after: always;
+        break-after: page;
+        background: white !important;
+    }
+    .page:last-child { page-break-after: auto; }
+    .page-num, .page-folio { display: none !important; }
+
+    .cover, .closing {
+        min-height: 297mm;
+        padding: 30mm 22mm !important;
+        page-break-after: always;
+    }
+
+    .cover { background: white !important; color: #000 !important; }
+    .closing {
+        background: #0a0a0a !important;
+        color: #fafaf7 !important;
+    }
+    .closing h2, .closing p, .closing .signature { color: #fafaf7 !important; }
+
+    .card.solid { background: #0a0a0a !important; color: #fafaf7 !important; }
+    .card.solid p, .card.solid li, .card.solid .card-title { color: #fafaf7 !important; }
+
+    h1, h2, h3, h4, .step, .method, .roadmap-block, .card, .pull-quote, .faq {
+        page-break-inside: avoid;
+        break-inside: avoid;
+    }
+    h1, h2, h3, h4 {
+        page-break-after: avoid;
+        break-after: avoid;
+    }
+
+    .lead, .pull-quote { color: #000 !important; }
+    a { color: #000 !important; text-decoration: underline !important; }
+    a:hover { background: transparent !important; color: #000 !important; }
+}
+</style>
+</head>
+<body>
+
+<!-- Floating Download to PDF button -->
+<div class="download-bar no-print">
+    <button class="download-btn" onclick="window.print()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+            <polyline points="7 10 12 15 17 10"/>
+            <line x1="12" y1="15" x2="12" y2="3"/>
+        </svg>
+        Download PDF
+    </button>
+</div>
+
+<!-- Sticky Navigation -->
+<nav class="toc-nav">
+    <a href="#cover">Cover</a>
+    <a href="#preface">Preface</a>
+    <a href="#how-to-read">How to Read</a>
+    <a href="#contents">Contents</a>
+    <a href="#bab1">01. Why Threads</a>
+    <a href="#bab2">02. Setup</a>
+    <a href="#bab3">03. Anatomi Utas</a>
+    <a href="#bab4">04. 7 Jalur Cuan</a>
+    <a href="#bab5">05. Affiliate</a>
+    <a href="#bab6">06. Produk Digital</a>
+    <a href="#bab7">07. Jasa</a>
+    <a href="#bab8">08. Endorse</a>
+    <a href="#bab9">09. Personal Brand</a>
+    <a href="#bab10">10. Templates</a>
+    <a href="#bab11">11. Roadmap 60D</a>
+    <a href="#bab12">12. Metrics</a>
+    <a href="#bab13">13. Mistakes</a>
+    <a href="#bab14">14. Empire</a>
+    <a href="#bab15">15. FAQ</a>
+    <a href="#closing">Closing</a>
+</nav>
+
+<!-- ============================================================
+     COVER
+     ============================================================ -->
+<section class="cover" id="cover">
+    <div class="cover-meta">
+        <div>
+            <div>The Yanzy Press</div>
+            <div>Edition 01 / 2026</div>
+        </div>
+        <div class="cover-meta-r">
+            <div>Vol. 02</div>
+            <div>Independent Publishing</div>
+        </div>
+    </div>
+
+    <div class="cover-main">
+        <div class="cover-edition">A field guide for serious creators —</div>
+
+        <h1>
+            Master<br>
+            <em>Threads</em><br>
+            Monetization.
+        </h1>
+
+        <p class="cover-sub">
+            Cara turunin saldo bank dari utas yang awalnya cuma curhatan. Tujuh jalur monetisasi, 60 hari roadmap, dan template yang udah dipake ratusan creator naik level.
+        </p>
+
+        <div class="cover-features">
+            <span>15 Bab</span>
+            <span>7 Jalur Cuan</span>
+            <span>30+ Templates</span>
+            <span>Roadmap 60 Hari</span>
+        </div>
+    </div>
+
+    <div class="cover-footer">
+        <div>
+            <div>by</div>
+            <strong>@yanzy17</strong>
+        </div>
+        <div class="cover-meta-r">
+            <div>For independent</div>
+            <div>creators only.</div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================================
+     PREFACE
+     ============================================================ -->
+<section class="page" id="preface">
+    <div class="page-folio">Master Threads Monetization · Preface</div>
+    <div class="section-tag">
+        <span>Kata Pengantar</span>
+        <span class="ch">P · 01</span>
+    </div>
+
+    <h2 class="title">Threads itu <em>tambang emas</em><br>yang masih sepi.</h2>
+    <hr class="divider" />
+
+    <p class="lead">
+        Tahun 2023 Threads cuma 2 juta pengguna di Indonesia. 2026 udah lebih dari 25 juta — dan masih tumbuh. Tapi 95% creator di sana cuma posting curhatan tanpa monetisasi. Sayang banget.
+    </p>
+
+    <p>
+        Gue tulis ebook ini setelah lebih dari setahun ngamatin pola creator yang berhasil <strong>cuan beneran dari Threads</strong> — bukan cuma viral. Mereka pakai Threads bukan untuk eksis, tapi untuk <em>build aset</em> yang menghasilkan uang berbulan-bulan tanpa effort tambahan.
+    </p>
+
+    <p>
+        Bedanya Threads sama TikTok atau Instagram: <strong>audiens-nya membaca</strong>. Daya beli lebih tinggi, attention span lebih panjang, dan trust mereka ke creator lebih cepat terbentuk. Itu kombinasi gila buat siapapun yang serius mau monetize konten.
+    </p>
+
+    <p>
+        Buku ini bukan kumpulan teori. Setiap bab adalah <em>playbook</em> yang bisa langsung lo eksekusi: dari setup akun yang konvert, anatomi utas yang viral, sampai 7 jalur monetisasi konkret beserta cara naik level masing-masing.
+    </p>
+
+    <div class="pull-quote">
+        Threads bukan platform untuk dilihat. Threads adalah platform untuk dibaca.
+    </div>
+
+    <div class="stats">
+        <div class="stat-card">
+            <strong>15</strong>
+            <span>Bab Lengkap</span>
+        </div>
+        <div class="stat-card">
+            <strong>07</strong>
+            <span>Jalur Cuan</span>
+        </div>
+        <div class="stat-card">
+            <strong>60</strong>
+            <span>Hari Roadmap</span>
+        </div>
+    </div>
+
+    <div class="page-num">P. 001</div>
+</section>
+
+<!-- ============================================================
+     HOW TO READ
+     ============================================================ -->
+<section class="page" id="how-to-read">
+    <div class="page-folio">Master Threads Monetization · How to Read</div>
+    <div class="section-tag">
+        <span>Cara Membaca</span>
+        <span class="ch">P · 02</span>
+    </div>
+
+    <h2 class="title">Tiga jalur baca, <em>satu tujuan.</em></h2>
+    <hr class="divider" />
+
+    <p>Ebook ini dirancang untuk dibaca dengan tiga jalur tergantung lo di tahap mana:</p>
+
+    <h3>Jalur Sequential</h3>
+    <p>Lo baru di Threads atau belum pernah monetize sama sekali. <strong>Baca berurutan</strong> dari Bab 1. Praktekin Bab 2 (setup) sambil baca Bab 3 (anatomi utas). Jangan lompat.</p>
+
+    <h3>Jalur Targeted</h3>
+    <p>Lo udah aktif di Threads tapi belum cuan. <strong>Lompat ke Bab 4</strong> (7 jalur monetisasi), pilih 1 jalur yang paling cocok, lalu langsung ke bab spesifiknya (Bab 5–8).</p>
+
+    <h3>Jalur Reference</h3>
+    <p>Lo udah cuan tapi mau scale. <strong>Bab 9 (Personal Brand)</strong>, <strong>Bab 11 (Roadmap)</strong>, dan <strong>Bab 14 (Empire)</strong> adalah teman lo.</p>
+
+    <div class="card">
+        <span class="card-tag">Catatan Editor</span>
+        <p>Ebook ini bukan untuk dibaca sekali lalu disimpan. Setiap bab dirancang untuk dibaca <em>ulang</em> di tahap yang berbeda dalam perjalanan monetisasi lo. Kasih bookmark, kasih catatan, kasih garis bawah. Buku yang bersih = buku yang nggak dipakai.</p>
+    </div>
+
+    <div class="page-num">P. 002</div>
+</section>
+
+<!-- ============================================================
+     CONTENTS
+     ============================================================ -->
+<section class="page" id="contents">
+    <div class="page-folio">Master Threads Monetization · Contents</div>
+    <div class="section-tag">
+        <span>Daftar Isi</span>
+        <span class="ch">P · 03</span>
+    </div>
+
+    <h2 class="title">Contents.</h2>
+    <hr class="divider" />
+
+    <ul class="toc-list">
+        <li><a href="#bab1"><span class="toc-num">01</span><span class="toc-label">Kenapa Threads — Goldmine yang Masih Sepi</span><span class="toc-tag">Foundation</span></a></li>
+        <li><a href="#bab2"><span class="toc-num">02</span><span class="toc-label">Setup Akun yang Siap Monetisasi</span><span class="toc-tag">Praktek</span></a></li>
+        <li><a href="#bab3"><span class="toc-num">03</span><span class="toc-label">Anatomi Utas yang Viral &amp; Konvert</span><span class="toc-tag">Konten</span></a></li>
+        <li><a href="#bab4"><span class="toc-num">04</span><span class="toc-label">7 Jalur Monetisasi — Pilih Mana?</span><span class="toc-tag">Strategi</span></a></li>
+        <li><a href="#bab5"><span class="toc-num">05</span><span class="toc-label">Jalur 1 — Affiliate Marketing</span><span class="toc-tag">Cuan</span></a></li>
+        <li><a href="#bab6"><span class="toc-num">06</span><span class="toc-label">Jalur 2 — Jualan Produk Digital</span><span class="toc-tag">Cuan</span></a></li>
+        <li><a href="#bab7"><span class="toc-num">07</span><span class="toc-label">Jalur 3 — Jualan Jasa &amp; Konsultasi</span><span class="toc-tag">Cuan</span></a></li>
+        <li><a href="#bab8"><span class="toc-num">08</span><span class="toc-label">Jalur 4 — Endorsement &amp; Brand Deal</span><span class="toc-tag">Cuan</span></a></li>
+        <li><a href="#bab9"><span class="toc-num">09</span><span class="toc-label">Build Personal Brand yang Kompound</span><span class="toc-tag">Brand</span></a></li>
+        <li><a href="#bab10"><span class="toc-num">10</span><span class="toc-label">30+ Template Utas, Hook &amp; CTA</span><span class="toc-tag">Templates</span></a></li>
+        <li><a href="#bab11"><span class="toc-num">11</span><span class="toc-label">Roadmap 60 Hari — Hari ke Hari</span><span class="toc-tag">Action</span></a></li>
+        <li><a href="#bab12"><span class="toc-num">12</span><span class="toc-label">Metriks yang Wajib Dilacak</span><span class="toc-tag">Data</span></a></li>
+        <li><a href="#bab13"><span class="toc-num">13</span><span class="toc-label">10 Kesalahan Fatal Pemula</span><span class="toc-tag">Avoid</span></a></li>
+        <li><a href="#bab14"><span class="toc-num">14</span><span class="toc-label">Scale: Dari Threads ke Empire</span><span class="toc-tag">Lanjutan</span></a></li>
+        <li><a href="#bab15"><span class="toc-num">15</span><span class="toc-label">FAQ — Pertanyaan Tersering</span><span class="toc-tag">Bonus</span></a></li>
+        <li><a href="#closing"><span class="toc-num">—</span><span class="toc-label">Closing &amp; Action Plan</span><span class="toc-tag">End</span></a></li>
+    </ul>
+
+    <div class="page-num">P. 003</div>
+</section>
+
+
+<!-- ============================================================
+     BAB 1 — WHY THREADS
+     ============================================================ -->
+<section class="page" id="bab1">
+    <div class="page-folio">Bab 01 · Why Threads</div>
+    <div class="section-tag">
+        <span>Foundation · Bab Pertama</span>
+        <span class="ch">№ 01</span>
+    </div>
+
+    <h2 class="title">Kenapa Threads — <em>goldmine</em> yang masih sepi.</h2>
+    <hr class="divider" />
+
+    <p class="lead">
+        TikTok jenuh. Instagram penuh. Twitter chaos. Threads, di tengah semua itu, masih punya ruang. Dan ruang yang sepi adalah ruang dengan peluang terbesar.
+    </p>
+
+    <p>
+        Pas TikTok pertama booming di 2019, creator yang masuk lebih awal sekarang udah punya jutaan followers. Pas Instagram Reels rilis, gelombang pertama yang serius bikin konten sekarang dapet ratusan juta dari brand deal. <strong>Pola yang sama lagi terjadi di Threads</strong> — dan kebanyakan orang tidak menyadarinya.</p>
+
+    <h3>Statistik Kasar yang Bikin Kaget</h3>
+
+    <div class="stats">
+        <div class="stat-card">
+            <strong>25M+</strong>
+            <span>Pengguna Aktif di Indonesia (2026)</span>
+        </div>
+        <div class="stat-card">
+            <strong>71%</strong>
+            <span>Audiens Usia 18–34 Tahun</span>
+        </div>
+        <div class="stat-card">
+            <strong>4.2x</strong>
+            <span>Engagement Rate vs Twitter</span>
+        </div>
+    </div>
+
+    <p>Angka di atas <em>perkiraan</em> berdasarkan tren publik. Yang lebih penting daripada angka adalah <strong>karakter audiensnya</strong>.</p>
+
+    <h3>Apa yang Bikin Threads Beda</h3>
+
+    <div class="step-list">
+        <div class="step">
+            <div class="step-num"></div>
+            <div class="step-body">
+                <h5>Audiens Membaca, Bukan Sekadar Lihat</h5>
+                <p>Threads berbasis teks. Orang yang scroll Threads adalah orang yang <em>mau membaca</em> — beda dengan TikTok yang scroll cepet. Itu artinya mereka lebih sabar dengan konten edukasi, storytelling, dan soft selling.</p>
+            </div>
+        </div>
+        <div class="step">
+            <div class="step-num"></div>
+            <div class="step-body">
+                <h5>Algoritma Adil Buat Akun Kecil</h5>
+                <p>Akun 50 followers bisa tembus 100K views dalam 1 utas. Algoritma Threads (per 2026) masih sangat ramah ke konten berkualitas, bukan ke jumlah followers. Artinya: lo nggak butuh modal followers buat mulai.</p>
+            </div>
+        </div>
+        <div class="step">
+            <div class="step-num"></div>
+            <div class="step-body">
+                <h5>Trust Terbentuk Lebih Cepat</h5>
+                <p>Format teks bikin audiens merasa "ngobrol" sama lo, bukan "ditonton" lo. Dalam 5–10 utas, audiens udah merasa kenal lo personally. Itu trust yang biasanya butuh 50+ video di TikTok.</p>
+            </div>
+        </div>
+        <div class="step">
+            <div class="step-num"></div>
+            <div class="step-body">
+                <h5>Konversi Lebih Tinggi per View</h5>
+                <p>10K views di TikTok mungkin 50 klik link. 10K views di Threads bisa 500+ klik. Audiens yang udah baca panjang biasanya udah <em>warm</em> — siap action.</p>
+            </div>
+        </div>
+        <div class="step">
+            <div class="step-num"></div>
+            <div class="step-body">
+                <h5>Kompetisi Belum Banyak (Belum)</h5>
+                <p>Mayoritas creator masih anggap Threads sebagai "Twitter cadangan". Mereka cuma cross-post tweet ke sana. Lo yang serius ngebangun di Threads = lo yang bakal punya advantage 2–3 tahun ke depan.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="pull-quote">
+        Pasar yang sepi bukan berarti pasar yang mati. Itu berarti window of opportunity sedang terbuka.
+    </div>
+
+    <h3>Tipe Konten yang Menang di Threads</h3>
+    <p>Bukan semua konten works di sini. Ada 5 format yang konsisten viral & konvert:</p>
+
+    <ul>
+        <li><strong>Storytelling Personal.</strong> Cerita pengalaman nyata dengan struktur "kondisi awal → konflik → resolusi". Threads suka authenticity.</li>
+        <li><strong>Listicle Bermanfaat.</strong> "7 hal yang aku pelajari soal ___", "5 kebiasaan yang ngubah hidupku", dll. Format gampang di-bookmark.</li>
+        <li><strong>Pendapat Kontroversial (Halal).</strong> Ngomong sesuatu yang berani melawan opini umum, tapi punya argumen. Memicu komentar = naikin reach.</li>
+        <li><strong>Behind-the-Scene.</strong> Cerita proses lo bikin sesuatu — bisnis, karya, project. Audiens suka feeling "ikut perjalanan".</li>
+        <li><strong>Hot Take Industri.</strong> Komentar tajam soal tren di niche lo. Posisikan lo sebagai pemikir, bukan sekadar follower tren.</li>
+    </ul>
+
+    <div class="card solid">
+        <span class="card-tag">Bottom Line</span>
+        <p>Threads bukan platform untuk semua orang. Tapi kalau lo bisa menulis dengan jujur, punya pendapat, dan sabar membangun trust — Threads adalah platform paling underrated buat monetisasi independen di 2026.</p>
+    </div>
+
+    <div class="page-num">P. 004</div>
+</section>
+
+<!-- ============================================================
+     BAB 2 — SETUP AKUN
+     ============================================================ -->
+<section class="page" id="bab2">
+    <div class="page-folio">Bab 02 · Setup</div>
+    <div class="section-tag">
+        <span>Praktek · Setup</span>
+        <span class="ch">№ 02</span>
+    </div>
+
+    <h2 class="title">Setup akun yang <em>siap monetisasi.</em></h2>
+    <hr class="divider" />
+
+    <p class="lead">
+        Sebelum lo posting utas pertama, set up dulu fondasi akun. Bedanya akun "buat eksis" sama akun "buat cuan" ada di 5 elemen ini.
+    </p>
+
+    <h3>Username — Pilih dengan Strategi</h3>
+    <p>
+        Username yang bagus = mudah diingat, mudah diketik, dan punya kaitan sama niche lo. Hindari angka acak atau underscore berlebihan. Idealnya:
+    </p>
+    <ul>
+        <li><strong>Pakai nama asli</strong> kalau lo bangun personal brand (contoh: <em>@andimulyono</em>)</li>
+        <li><strong>Pakai handle niche</strong> kalau lo build akun topical (contoh: <em>@uangpojok</em> buat konten finansial)</li>
+        <li>Hindari kata yang susah dieja atau singkatan tidak jelas</li>
+        <li>Cek availability di Instagram & TikTok juga — biar konsisten cross-platform</li>
+    </ul>
+
+    <h3>Profile Picture — Foto Wajah Menang</h3>
+    <p>
+        Statistik internal kebanyakan platform sosial: akun dengan PP wajah dapat 38% lebih banyak follow daripada PP logo/random. Threads tidak terkecuali. Pakai foto wajah yang:
+    </p>
+    <ul>
+        <li>Resolusi tinggi, terang, fokus di mata</li>
+        <li>Background polos atau soft-blur</li>
+        <li>Ekspresi welcoming (senyum tipis &gt; netral &gt; serius)</li>
+    </ul>
+
+    <h3>Bio — Formula 4 Baris yang Konvert</h3>
+    <p>Bio Threads cuma 150 karakter. Tapi 4 baris singkat ini bisa nge-frame siapa lo dalam 3 detik:</p>
+
+    <div class="card outline">
+        <span class="card-tag">Template Bio</span>
+        <div class="card-title">[Identity] · [Niche]<br>[Apa yang lo bantu]<br>[Proof / Hasil]<br>[CTA / Link]</div>
+        <p style="margin-top: 14px;"><strong>Contoh:</strong></p>
+        <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.92rem; line-height: 1.6;">
+            Andi · Independent Writer<br>
+            Bantu kamu nulis utas yang FYP &amp; konvert<br>
+            500 utas, 12M views, 7 digit/bln<br>
+            ↓ Ebook gratisku ↓
+        </p>
+    </div>
+
+    <h3>Link Bio — Strategi Single vs Hub</h3>
+    <p>
+        Threads cuma kasih lo 1 slot link. Pilih dengan bijak.
+    </p>
+
+    <table class="cmp-table">
+        <thead>
+            <tr><th>Strategi</th><th>Cocok Kalau</th><th>Tools</th></tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Single Link</strong></td>
+                <td>Lo punya 1 produk fokus utama (ebook, kursus, jasa)</td>
+                <td>Direct ke landing page</td>
+            </tr>
+            <tr>
+                <td><strong>Hub / Linktree</strong></td>
+                <td>Lo punya banyak produk + sosmed lain</td>
+                <td>Linktree, Beacons, Lynk.id, profile.html sendiri</td>
+            </tr>
+            <tr>
+                <td><strong>Lead Magnet</strong></td>
+                <td>Lo lagi build email list (rekomendasi kuat)</td>
+                <td>ConvertKit, Beehiiv, Substack</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>Pilih Niche — 10 Niche Paling Cuan di Threads</h3>
+    <p>
+        Niche lo menentukan jenis audiens, harga produk, dan cara monetisasi. Ini 10 niche dengan track record tinggi di Threads Indonesia:
+    </p>
+
+    <div class="tpl-grid">
+        <div class="tpl"><p>Personal finance &amp; investasi (saham, reksadana, financial planning)</p></div>
+        <div class="tpl"><p>Karir &amp; produktivitas (job search, salary negotiation, work-life)</p></div>
+        <div class="tpl"><p>Self-development &amp; mental health (mindset, habit, journaling)</p></div>
+        <div class="tpl"><p>Bisnis &amp; entrepreneurship (UMKM, freelance, side hustle)</p></div>
+        <div class="tpl"><p>Tech &amp; AI (tools, prompt, productivity app)</p></div>
+        <div class="tpl"><p>Parenting &amp; relationship (couple, family, dating)</p></div>
+        <div class="tpl"><p>Beauty &amp; fashion (review jujur, OOTD, skincare routine)</p></div>
+        <div class="tpl"><p>Food &amp; resep ekonomis (anak kos, ibu rumah tangga, healthy)</p></div>
+        <div class="tpl"><p>Travel &amp; lifestyle (budget travel, hidden gem, slow travel)</p></div>
+        <div class="tpl"><p>Edukasi spesifik (bahasa, coding, design, fotografi)</p></div>
+    </div>
+
+    <div class="card">
+        <span class="card-tag">Aturan Niche</span>
+        <p>Pilih <strong>1 niche utama + 1 sub-niche</strong> yang nyambung. Contoh: Personal Finance (utama) + Habit (sub). Hindari nyampur "fashion + politik + masakan" — algoritma Threads bingung, audiens juga bingung. Niche sempit menang.</p>
+    </div>
+
+    <div class="page-num">P. 005</div>
+</section>
+
+<!-- ============================================================
+     BAB 3 — ANATOMI UTAS
+     ============================================================ -->
+<section class="page" id="bab3">
+    <div class="page-folio">Bab 03 · Anatomy</div>
+    <div class="section-tag">
+        <span>Konten · Anatomi</span>
+        <span class="ch">№ 03</span>
+    </div>
+
+    <h2 class="title">Anatomi utas <em>yang viral.</em></h2>
+    <hr class="divider" />
+
+    <p class="lead">
+        Utas yang viral bukan keberuntungan. Mereka punya struktur. Begitu lo paham strukturnya, lo bisa bikin utas viral kapan aja — dengan probabilitas yang lebih tinggi dari sekadar "semoga FYP".
+    </p>
+
+    <h3>Framework 3C — Curiosity, Conflict, Clarity</h3>
+    <p>
+        Setiap utas yang viral punya minimal 2 dari 3 elemen ini:
+    </p>
+
+    <div class="step-list">
+        <div class="step">
+            <div class="step-num"></div>
+            <div class="step-body">
+                <h5>Curiosity — Bikin Penasaran</h5>
+                <p>Hook ngasih "informasi setengah". Kasih sinyal ada sesuatu yang penting, tapi jangan kasih jawabannya. Otak manusia <em>nggak tahan</em> sama kalimat menggantung.</p>
+            </div>
+        </div>
+        <div class="step">
+            <div class="step-num"></div>
+            <div class="step-body">
+                <h5>Conflict — Tunjukkan Pertentangan</h5>
+                <p>Hook yang bertentangan dengan opini umum = mesin komentar. "Berhenti rajin nabung kalau gajimu UMR" — kontroversial, tapi ada poin. Komentar = naikin reach.</p>
+            </div>
+        </div>
+        <div class="step">
+            <div class="step-num"></div>
+            <div class="step-body">
+                <h5>Clarity — Jelas, Singkat, Spesifik</h5>
+                <p>Threads suka yang to-the-point. 1–2 kalimat, angka spesifik, kata kerja kuat. Hindari kalimat panjang yang muter-muter.</p>
+            </div>
+        </div>
+    </div>
+
+    <h3>Hook — 8 Detik Pertama Menentukan</h3>
+    <p>
+        Threads scroll cepet. Kalau hook lo nggak bikin orang berhenti dalam 8 detik, utas lo mati. Ini 5 formula hook yang konsisten kerja:
+    </p>
+
+    <ol>
+        <li><strong>[Angka] + [Hal Spesifik] + [Janji / Konflik]</strong><br><em>"5 kebiasaan kecil yang ngubah hidupku di umur 22."</em></li>
+        <li><strong>Pengakuan Personal</strong><br><em>"Aku habis Rp 50jt buat belajar hal ini. Sekarang gratis untuk kamu."</em></li>
+        <li><strong>Plot Twist Hook</strong><br><em>"Plot twist: ternyata [hal yang dipercayai] itu salah selama ini."</em></li>
+        <li><strong>Kebenaran Pahit</strong><br><em>"Ini fakta yang nggak akan dikasih tau orang tua kamu soal [topik]."</em></li>
+        <li><strong>Direct Address</strong><br><em>"Buat kamu yang lagi [kondisi], baca utas ini sebelum nyesel."</em></li>
+    </ol>
+
+    <h3>Body — Tahan Attention dengan Pacing</h3>
+    <p>
+        Setelah orang berhenti scroll, lo punya 30–90 detik untuk nahan attention. Aturan body utas yang nempel:
+    </p>
+
+    <ul>
+        <li><strong>Satu ide per baris.</strong> Threads optimal di paragraf pendek 1–2 kalimat. Hindari blok teks panjang.</li>
+        <li><strong>Pakai angka & list.</strong> Format "1, 2, 3..." bikin otak gampang nyerna.</li>
+        <li><strong>Sisipkan pernyataan tegas.</strong> Setiap 3–4 baris, kasih satu kalimat punchy yang bisa di-screenshot. Itu yang bakal viral.</li>
+        <li><strong>Cerita &gt; tips kering.</strong> Kalau bisa kemas tips dalam bentuk cerita, audiens 3x lebih engaged.</li>
+        <li><strong>Tampilkan vulnerability.</strong> Threads loves authenticity. Akui kesalahan, kelemahan, kekhawatiran lo. Itu yang bikin orang follow.</li>
+    </ul>
+
+    <h3>Closing — Ajakan Action yang Halus</h3>
+    <p>
+        Hindari closing kering kayak "follow buat tips lainnya". Itu generic dan nggak konvert. Pakai 1 dari 4 closing ini:
+    </p>
+
+    <div class="card outline">
+        <span class="card-tag">4 Closing yang Konvert</span>
+        <p><strong>1. Question Hook —</strong> <em>"Yang relate, drop emoji 🌱 di komen."</em> (memicu engagement = naikin reach)</p>
+        <p><strong>2. Soft Pitch —</strong> <em>"Aku tulis lengkap soal ini di ebook gratisku, link di bio."</em> (arahkan ke produk)</p>
+        <p><strong>3. Bookmark Trigger —</strong> <em>"Save utas ini. Suatu saat lo bakal balik lagi ke sini."</em> (save = sinyal positif algoritma)</p>
+        <p><strong>4. Quote Trigger —</strong> <em>"Yang nggak setuju, gue tantang lo argumen di komen."</em> (memicu quote = ekspansi reach)</p>
+    </div>
+
+    <h3>Format Pendek vs Panjang — Kapan Pakai Apa?</h3>
+
+    <table class="cmp-table">
+        <thead>
+            <tr><th>Format</th><th>Karakter</th><th>Best For</th></tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Single Post Pendek</strong></td>
+                <td>1–500 chars</td>
+                <td>Hot take, quote, observasi tajam</td>
+            </tr>
+            <tr>
+                <td><strong>Single Post Panjang</strong></td>
+                <td>500–1000 chars</td>
+                <td>Mini-essay, soft pitch produk, listicle</td>
+            </tr>
+            <tr>
+                <td><strong>Utas (Multi-Post)</strong></td>
+                <td>3–10 post</td>
+                <td>Storytelling panjang, deep tutorial, case study</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="pull-quote">
+        Hook adalah pintu masuk. Body adalah pengalaman. Closing adalah ajakan pulang dengan bawa sesuatu.
+    </div>
+
+    <div class="page-num">P. 006</div>
+</section>
+
+<!-- ============================================================
+     BAB 4 — 7 JALUR MONETISASI
+     ============================================================ -->
+<section class="page" id="bab4">
+    <div class="page-folio">Bab 04 · 7 Methods</div>
+    <div class="section-tag">
+        <span>Strategi · Overview</span>
+        <span class="ch">№ 04</span>
+    </div>
+
+    <h2 class="title">7 Jalur monetisasi —<br><em>pilih mana?</em></h2>
+    <hr class="divider" />
+
+    <p class="lead">
+        Threads bukan hanya sekadar tempat curhat. Kalau lo serius, ada 7 jalur monetisasi konkret yang bisa lo eksekusi dari akun yang sama. Bab ini panduan memilih.
+    </p>
+
+    <p>
+        Penting: <strong>jangan lakukan semua sekaligus.</strong> Kebanyakan creator gagal karena ngejar 5 jalur dalam 1 bulan. Pilih 1 jalur dulu, kuasai, baru ekspansi.
+    </p>
+
+    <div class="method-grid">
+        <div class="method">
+            <div class="method-num"></div>
+            <div class="method-body">
+                <span class="method-tag">Jalur 1 · Bahas di Bab 5</span>
+                <h4>Affiliate Marketing</h4>
+                <p>Promosiin produk orang lain (Shopee, Tokopedia, TikTok Shop, dll) lewat link affiliate. Komisi 1–15%. <strong>Cocok buat:</strong> pemula tanpa modal, niche review/recommendation. <strong>Ekspektasi cuan:</strong> Rp 500K–10jt/bulan dalam 6 bulan.</p>
+            </div>
+        </div>
+
+        <div class="method">
+            <div class="method-num"></div>
+            <div class="method-body">
+                <span class="method-tag">Jalur 2 · Bahas di Bab 6</span>
+                <h4>Jualan Produk Digital</h4>
+                <p>Bikin sendiri produk: ebook, template Notion, prompt pack, preset, kursus, atau membership. Margin 90%+. <strong>Cocok buat:</strong> creator dengan keahlian spesifik. <strong>Ekspektasi cuan:</strong> Rp 1jt–50jt/bulan tergantung scale.</p>
+            </div>
+        </div>
+
+        <div class="method">
+            <div class="method-num"></div>
+            <div class="method-body">
+                <span class="method-tag">Jalur 3 · Bahas di Bab 7</span>
+                <h4>Jualan Jasa &amp; Konsultasi</h4>
+                <p>Tawarin skill lo sebagai jasa: copywriting, design, ghostwriting, social media management, coaching 1-on-1. <strong>Cocok buat:</strong> profesional dengan skill yang udah teruji. <strong>Ekspektasi cuan:</strong> Rp 2jt–30jt/bulan.</p>
+            </div>
+        </div>
+
+        <div class="method">
+            <div class="method-num"></div>
+            <div class="method-body">
+                <span class="method-tag">Jalur 4 · Bahas di Bab 8</span>
+                <h4>Endorsement &amp; Brand Deal</h4>
+                <p>Brand bayar lo buat ngomongin produk mereka. Rate Rp 500K–50jt per posting tergantung followers &amp; engagement. <strong>Cocok buat:</strong> akun 5K+ followers dengan niche jelas. <strong>Ekspektasi cuan:</strong> tergantung deal — bisa 1 deal sekali sebulan, bisa weekly.</p>
+            </div>
+        </div>
+
+        <div class="method">
+            <div class="method-num"></div>
+            <div class="method-body">
+                <span class="method-tag">Jalur 5 · Long Term Play</span>
+                <h4>Build Audience → Pivot Platform</h4>
+                <p>Pakai Threads sebagai funnel awal, alihin audiens ke platform lain yang monetisasinya lebih besar (YouTube, Newsletter berbayar, Patreon). <strong>Cocok buat:</strong> creator yang punya endurance jangka panjang. <strong>Ekspektasi cuan:</strong> 0 di bulan 1–3, exponential di tahun 1+.</p>
+            </div>
+        </div>
+
+        <div class="method">
+            <div class="method-num"></div>
+            <div class="method-body">
+                <span class="method-tag">Jalur 6 · Bonus Platform</span>
+                <h4>Threads Creator Bonus</h4>
+                <p>Meta sesekali ngeluarin program bonus untuk creator aktif (mirip TikTok Creator Fund). Berbasis views &amp; engagement. <strong>Cocok buat:</strong> creator volume tinggi. <strong>Ekspektasi cuan:</strong> Rp 100K–5jt/bulan, sebagai bonus, bukan main income.</p>
+            </div>
+        </div>
+
+        <div class="method">
+            <div class="method-num"></div>
+            <div class="method-body">
+                <span class="method-tag">Jalur 7 · Premium Tier</span>
+                <h4>Coaching, Workshop, Mentorship</h4>
+                <p>Setelah lo punya hasil &amp; reputasi, jual <strong>akses ke lo</strong>. 1-on-1 coaching, workshop berbayar, atau mentorship grup. Rate per jam Rp 500K–5jt+. <strong>Cocok buat:</strong> creator yang udah cuan dari jalur lain dan punya track record. <strong>Ekspektasi cuan:</strong> Rp 5jt–100jt/bulan.</p>
+            </div>
+        </div>
+    </div>
+
+    <h3>Cara Memilih Jalur untuk Lo</h3>
+    <p>Pertanyaan cepat untuk filter:</p>
+    <ul>
+        <li><strong>Modal lo 0 dan baru mulai?</strong> → Jalur 1 (Affiliate)</li>
+        <li><strong>Punya keahlian tapi belum jadi produk?</strong> → Jalur 6 dulu (Bonus) sambil siapin Jalur 2 (Produk Digital)</li>
+        <li><strong>Punya skill profesional?</strong> → Jalur 3 (Jasa) — paling cepat cuan</li>
+        <li><strong>Akun udah 5K+ &amp; engaged?</strong> → Jalur 4 (Endorsement)</li>
+        <li><strong>Mau bangun jangka panjang?</strong> → Kombinasi Jalur 2 + 5</li>
+        <li><strong>Udah cuan stabil dari jalur lain?</strong> → Naik level ke Jalur 7</li>
+    </ul>
+
+    <div class="card solid">
+        <span class="card-tag">Aturan Emas</span>
+        <p>Pilih 1 jalur primer + 1 jalur sekunder. Kuasai 90 hari. Baru ekspansi. Creator yang ngejar 5 jalur sekaligus = creator yang nggak ngedalemin satu pun.</p>
+    </div>
+
+    <div class="page-num">P. 007</div>
+</section>
+
+
+<!-- ============================================================
+     BAB 5 — AFFILIATE MARKETING DI THREADS
+     ============================================================ -->
+<section class="page" id="bab5">
+    <div class="page-folio">Bab 05 · Affiliate</div>
+    <div class="section-tag">
+        <span>Jalur 1 · Affiliate</span>
+        <span class="ch">№ 05</span>
+    </div>
+
+    <h2 class="title">Affiliate di Threads —<br><em>soft sell yang menghasilkan.</em></h2>
+    <hr class="divider" />
+
+    <p class="lead">
+        Affiliate di Threads beda dari TikTok. Di sini nggak ada keranjang kuning. Yang ada: trust, storytelling, dan konversi dari orang yang udah baca cerita lo sampai habis.
+    </p>
+
+    <p>Kenapa affiliate works di Threads? Karena audiens Threads <strong>sudah warm</strong> setelah baca utas lo. Mereka nggak butuh video demonstrasi — mereka butuh <em>rekomendasi jujur dari orang yang mereka trust</em>.</p>
+
+    <h3>Framework: Story → Recommend → Link</h3>
+    <p>Jangan langsung tempel link. Pakai formula ini:</p>
+    <ol>
+        <li><strong>Ceritain masalah</strong> yang relatable sama audiens lo</li>
+        <li><strong>Ceritain perjalanan</strong> lo nyari solusi (trial & error)</li>
+        <li><strong>Kenalin produk</strong> sebagai "yang akhirnya works" — jujur, tanpa hype</li>
+        <li><strong>Taruh link di akhir</strong> atau di komentar pertama (pin)</li>
+    </ol>
+
+    <h3>Di Mana Taruh Link Affiliate?</h3>
+    <ul>
+        <li><strong>Bio / Linktree</strong> — paling aman, CTA-kan "link di bio"</li>
+        <li><strong>Komentar pin di utas lo sendiri</strong> — natural, nggak ganggu flow cerita</li>
+        <li><strong>Reply terakhir utas</strong> — setelah value delivered, kasih link</li>
+    </ul>
+
+    <div class="card">
+        <span class="card-tag">Platform Affiliate yang Works</span>
+        <p><strong>Shopee Affiliate</strong> — komisi 1–12%, cookie 7 hari, paling populer di Indonesia<br>
+        <strong>Tokopedia Affiliate</strong> — komisi 1–10%, cocok buat niche gadget<br>
+        <strong>TikTok Shop Affiliate</strong> — kalau lo cross-post video<br>
+        <strong>Kursus/SaaS Affiliate</strong> — Domestika, Skillshare, Notion, dll. Komisi 20–50%!</p>
+    </div>
+
+    <h3>5 Format Utas Affiliate yang Konvert</h3>
+    <div class="tpl-grid">
+        <div class="tpl"><p>"Aku habis Rp [X] buat nyari [solusi]. Dari 10 yang aku coba, cuma 1 yang beneran works. Ini ceritanya..." → link di reply terakhir</p></div>
+        <div class="tpl"><p>"5 produk di bawah Rp [X] yang bikin hidup aku lebih gampang — no. 3 paling bikin nagih." → masing-masing dengan link</p></div>
+        <div class="tpl"><p>"Sebelum vs sesudah pakai [produk]. Bedanya kerasa dari hari ke-3." → storytelling, link di bio</p></div>
+        <div class="tpl"><p>"Teman aku minta rekomendasi [produk]. Ini 3 yang selalu aku kasih." → format listicle pendek</p></div>
+        <div class="tpl"><p>"Unpopular opinion: [produk mahal] overrated. Ini alternatif Rp [murah] yang kualitasnya sama." → comparison hook</p></div>
+    </div>
+
+    <div class="card solid">
+        <span class="card-tag">Key Takeaway</span>
+        <p>Affiliate di Threads = <strong>editorial recommendation</strong>, bukan hard sell. Lo adalah "teman yang punya rekomendasi bagus" — bukan sales. Semakin authentic, semakin konvert.</p>
+    </div>
+
+    <div class="page-num">P. 008</div>
+</section>
+
+
+<!-- ============================================================
+     BAB 6 — PRODUK DIGITAL
+     ============================================================ -->
+<section class="page" id="bab6">
+    <div class="page-folio">Bab 06 · Digital Products</div>
+    <div class="section-tag">
+        <span>Jalur 2 · Produk Digital</span>
+        <span class="ch">№ 06</span>
+    </div>
+
+    <h2 class="title">Jualan produk digital —<br><em>margin 90%, effort sekali.</em></h2>
+    <hr class="divider" />
+
+    <p class="lead">Bikin produk digital sekali, jual berkali-kali. Margin bisa 90%+ karena nggak ada biaya produksi fisik. Threads jadi funnel sempurna buat nge-drive traffic ke produk lo.</p>
+
+    <h3>Produk Digital yang Laris dari Threads</h3>
+    <ul>
+        <li><strong>Ebook / PDF guide</strong> — paling gampang dibikin, barrier rendah</li>
+        <li><strong>Template Notion</strong> — habit tracker, financial planner, content calendar</li>
+        <li><strong>Prompt Pack AI</strong> — kumpulan prompt ChatGPT/Claude buat niche tertentu</li>
+        <li><strong>Preset / Filter</strong> — Lightroom, CapCut</li>
+        <li><strong>Mini course / Workshop recording</strong></li>
+        <li><strong>Membership / Newsletter berbayar</strong></li>
+    </ul>
+
+    <h3>Funnel: Threads → Produk Digital</h3>
+    <div class="step-list">
+        <div class="step">
+            <div class="step-num"></div>
+            <div class="step-body">
+                <h5>Value Utas Gratis (Daily)</h5>
+                <p>Posting utas edukasi setiap hari. Kasih 80% value gratis di Threads. Ini membangun trust dan posisi lo sebagai expert.</p>
+            </div>
+        </div>
+        <div class="step">
+            <div class="step-num"></div>
+            <div class="step-body">
+                <h5>Tease Produk (Weekly)</h5>
+                <p>Seminggu 1-2x, kasih teaser: "Aku tulis lengkap 50 halaman soal ini di ebook gue. Link di bio." — soft, nggak pushy.</p>
+            </div>
+        </div>
+        <div class="step">
+            <div class="step-num"></div>
+            <div class="step-body">
+                <h5>Launch Day (Monthly)</h5>
+                <p>Bikin utas launch khusus: ceritain kenapa lo bikin produk ini, apa isinya, testimoni awal, dan harga. Kasih urgency (limited discount).</p>
+            </div>
+        </div>
+    </div>
+
+    <h3>Harga yang Masuk Akal</h3>
+    <table class="cmp-table">
+        <thead><tr><th>Produk</th><th>Harga Sweet Spot</th><th>Potensi/Bulan</th></tr></thead>
+        <tbody>
+            <tr><td>Ebook / PDF</td><td>Rp 29K–99K</td><td>50–500 sales</td></tr>
+            <tr><td>Template Notion</td><td>Rp 19K–79K</td><td>30–200 sales</td></tr>
+            <tr><td>Prompt Pack</td><td>Rp 25K–59K</td><td>20–150 sales</td></tr>
+            <tr><td>Mini Course</td><td>Rp 99K–499K</td><td>10–100 sales</td></tr>
+            <tr><td>Membership</td><td>Rp 49K–199K/bulan</td><td>Recurring revenue</td></tr>
+        </tbody>
+    </table>
+
+    <div class="card">
+        <span class="card-tag">Platform Jualan</span>
+        <p><strong>Lynk.id</strong> — paling populer buat creator Indonesia, bisa jual file langsung<br>
+        <strong>Gumroad</strong> — international, bisa jual dari $1<br>
+        <strong>KaryaKarsa</strong> — lokal, mirip Patreon<br>
+        <strong>Trakteer</strong> — bisa jual file + terima tip</p>
+    </div>
+
+    <div class="page-num">P. 009</div>
+</section>
+
+
+<!-- ============================================================
+     BAB 7 — JASA & KONSULTASI
+     ============================================================ -->
+<section class="page" id="bab7">
+    <div class="page-folio">Bab 07 · Services</div>
+    <div class="section-tag">
+        <span>Jalur 3 · Jasa</span>
+        <span class="ch">№ 07</span>
+    </div>
+
+    <h2 class="title">Jualan jasa dari <em>Threads.</em></h2>
+    <hr class="divider" />
+
+    <p class="lead">Punya skill? Threads bisa jadi showroom portfolio lo yang paling efektif. Setiap utas = bukti keahlian. Setiap reply = networking.</p>
+
+    <h3>Jasa yang Laris Dijual via Threads</h3>
+    <ul>
+        <li><strong>Ghostwriting</strong> — tulisin utas/konten buat akun orang lain</li>
+        <li><strong>Social Media Management</strong> — kelola akun Threads/IG klien</li>
+        <li><strong>Copywriting</strong> — landing page, email, ads</li>
+        <li><strong>Design / Branding</strong> — logo, feed design, visual identity</li>
+        <li><strong>1-on-1 Coaching</strong> — personal finance, karir, bisnis, konten</li>
+        <li><strong>Konsultasi strategis</strong> — content strategy, monetisasi, brand building</li>
+    </ul>
+
+    <h3>Cara Dapet Klien dari Threads</h3>
+    <ol>
+        <li><strong>Post konten yang nunjukin skill.</strong> Bukan bilang "aku jago nulis" — tapi bikin utas yang nunjukin lo jago nulis.</li>
+        <li><strong>Tulis case study.</strong> "Gimana aku bantu klien X dari 0 ke 10K followers dalam 30 hari." — itu magnet klien.</li>
+        <li><strong>Kasih micro-free-value.</strong> Reply utas orang dengan insight berharga. Orang bakal cek profile lo → bio → hire.</li>
+        <li><strong>CTA halus di bio.</strong> "Open for: ghostwriting & content strategy — DM 'HIRE'."</li>
+    </ol>
+
+    <h3>Pricing Jasa Creator Threads</h3>
+    <table class="cmp-table">
+        <thead><tr><th>Jasa</th><th>Rate Pemula</th><th>Rate Expert</th></tr></thead>
+        <tbody>
+            <tr><td>Ghostwriting 1 utas</td><td>Rp 150K–300K</td><td>Rp 500K–2jt</td></tr>
+            <tr><td>SM Management /bulan</td><td>Rp 1–3jt</td><td>Rp 5–15jt</td></tr>
+            <tr><td>1-on-1 Coaching /jam</td><td>Rp 200K–500K</td><td>Rp 1–5jt</td></tr>
+            <tr><td>Content Strategy</td><td>Rp 500K–1.5jt</td><td>Rp 3–10jt</td></tr>
+        </tbody>
+    </table>
+
+    <div class="page-num">P. 010</div>
+</section>
+
+<!-- ============================================================
+     BAB 8 — ENDORSEMENT
+     ============================================================ -->
+<section class="page" id="bab8">
+    <div class="page-folio">Bab 08 · Endorsement</div>
+    <div class="section-tag">
+        <span>Jalur 4 · Brand Deal</span>
+        <span class="ch">№ 08</span>
+    </div>
+
+    <h2 class="title">Endorsement &amp; <em>brand deal.</em></h2>
+    <hr class="divider" />
+
+    <p class="lead">Brand mulai ngelirik Threads. Creator dengan 5K+ followers dan engagement rate tinggi udah bisa dapet deal Rp 500K–50jt per posting.</p>
+
+    <h3>Kapan Lo Bisa Mulai Terima Endorse?</h3>
+    <ul>
+        <li><strong>Followers minimal:</strong> 3K–5K (engaged, bukan bot)</li>
+        <li><strong>Engagement rate:</strong> 5%+ (likes + comments / followers)</li>
+        <li><strong>Niche jelas:</strong> brand harus tau audiens lo = target market mereka</li>
+        <li><strong>Track record:</strong> punya utas yang viral / engagement konsisten</li>
+    </ul>
+
+    <h3>Cara Dapet Deal Pertama</h3>
+    <ol>
+        <li><strong>Bikin media kit.</strong> 1 halaman PDF: bio, niche, stats, contoh konten, rate card.</li>
+        <li><strong>DM brand kecil.</strong> Target brand lokal / UMKM yang belum punya KOL. Tawarin collaboration post dengan rate terjangkau.</li>
+        <li><strong>Daftar ke platform influencer:</strong> Partipost, Sociabuzz, Allstars.id</li>
+        <li><strong>Tag brand di utas review jujur.</strong> Banyak brand notice creator yang genuinely ngomongin produk mereka — lalu DM duluan.</li>
+    </ol>
+
+    <h3>Rate Card Benchmark</h3>
+    <table class="cmp-table">
+        <thead><tr><th>Followers</th><th>Rate per Post</th><th>Rate per Utas</th></tr></thead>
+        <tbody>
+            <tr><td>3K–10K</td><td>Rp 300K–1jt</td><td>Rp 500K–2jt</td></tr>
+            <tr><td>10K–50K</td><td>Rp 1–5jt</td><td>Rp 2–8jt</td></tr>
+            <tr><td>50K–100K</td><td>Rp 5–15jt</td><td>Rp 8–25jt</td></tr>
+            <tr><td>100K+</td><td>Rp 15–50jt+</td><td>Negotiable</td></tr>
+        </tbody>
+    </table>
+
+    <div class="card">
+        <span class="card-tag">Golden Rule</span>
+        <p>Jangan terima endorse produk yang nggak lo percaya. 1x endorse produk jelek = trust yang lo bangun berbulan-bulan hancur dalam 1 posting. Audiens Threads sangat peka sama inauthenticity.</p>
+    </div>
+
+    <div class="page-num">P. 011</div>
+</section>
+
+
+<!-- ============================================================
+     BAB 9 — PERSONAL BRAND
+     ============================================================ -->
+<section class="page" id="bab9">
+    <div class="page-folio">Bab 09 · Personal Brand</div>
+    <div class="section-tag">
+        <span>Brand · Compound</span>
+        <span class="ch">№ 09</span>
+    </div>
+
+    <h2 class="title">Build personal brand<br>yang <em>compound.</em></h2>
+    <hr class="divider" />
+
+    <p class="lead">Followers bisa ilang. Algoritma bisa berubah. Tapi personal brand yang kuat = aset seumur hidup. Di Threads, lo bisa build brand dalam hitungan bulan, bukan tahun.</p>
+
+    <h3>4 Pilar Personal Brand di Threads</h3>
+    <div class="step-list">
+        <div class="step"><div class="step-num"></div><div class="step-body"><h5>Authority — Keahlian yang Terbukti</h5><p>Share pengalaman, hasil, case study. Bukan teori — tapi bukti. "Aku udah lakuin ini dan hasilnya ___."</p></div></div>
+        <div class="step"><div class="step-num"></div><div class="step-body"><h5>Authenticity — Jadi Diri Sendiri</h5><p>Threads rewards vulnerability. Ceritain kegagalan, keraguan, proses belajar lo. Orang follow manusia, bukan mesin konten.</p></div></div>
+        <div class="step"><div class="step-num"></div><div class="step-body"><h5>Consistency — Muncul Terus</h5><p>Posting 1-2x/hari minimum. Algoritma butuh sinyal konsisten. Hilang 1 minggu = reset reach.</p></div></div>
+        <div class="step"><div class="step-num"></div><div class="step-body"><h5>Positioning — Jadi "The [Niche] Guy/Girl"</h5><p>Orang harus bisa deskripsi lo dalam 1 kalimat. "Oh yang sering bahas finansial anak muda itu kan?" — itu positioning yang berhasil.</p></div></div>
+    </div>
+
+    <h3>Content Mix Ideal (Per Minggu)</h3>
+    <table class="cmp-table">
+        <thead><tr><th>Tipe</th><th>Frekuensi</th><th>Fungsi</th></tr></thead>
+        <tbody>
+            <tr><td>Edukasi / Tips</td><td>3x/minggu</td><td>Build authority</td></tr>
+            <tr><td>Storytelling Personal</td><td>2x/minggu</td><td>Build connection</td></tr>
+            <tr><td>Hot Take / Opini</td><td>1x/minggu</td><td>Drive engagement</td></tr>
+            <tr><td>Soft Pitch Produk</td><td>1x/minggu</td><td>Monetize</td></tr>
+        </tbody>
+    </table>
+
+    <div class="pull-quote">Personal brand bukan soal "keliatan keren". Personal brand adalah janji yang lo buat ke audiens, dan lo tepati setiap hari.</div>
+
+    <div class="page-num">P. 012</div>
+</section>
+
+<!-- ============================================================
+     BAB 10 — TEMPLATES
+     ============================================================ -->
+<section class="page" id="bab10">
+    <div class="page-folio">Bab 10 · Templates</div>
+    <div class="section-tag">
+        <span>Templates · Copy Paste</span>
+        <span class="ch">№ 10</span>
+    </div>
+
+    <h2 class="title">30+ Template <em>siap pakai.</em></h2>
+    <hr class="divider" />
+
+    <p class="lead">Ganti bagian [ ] sesuai niche lo. Tinggal copy, sesuaikan, posting. Format sudah terbukti viral.</p>
+
+    <h3>Hook Utas — Baris Pertama</h3>
+    <div class="tpl-grid">
+        <div class="tpl"><p>Aku habis [waktu] belajar [topik]. Ini ringkasannya yang nggak ada di buku manapun.</p></div>
+        <div class="tpl"><p>[Angka] hal yang aku sesali nggak tau di umur [umur]. Jangan ulangin.</p></div>
+        <div class="tpl"><p>Unpopular opinion: [pendapat kontroversial yang valid]. Ini alasannya.</p></div>
+        <div class="tpl"><p>Dari [pengalaman], aku sadar 1 hal tentang [topik] yang nggak pernah ada yang bahas.</p></div>
+        <div class="tpl"><p>Thread ini bakal save kamu [waktu/uang]. Bookmark sekarang, baca pelan-pelan nanti.</p></div>
+        <div class="tpl"><p>Pernah ngerasa [perasaan negatif umum]? Ini yang aku lakuin untuk keluar dari situ.</p></div>
+        <div class="tpl"><p>Banyak orang nanya gimana caranya [skill]. Hari ini aku breakdown dari 0.</p></div>
+        <div class="tpl"><p>Kalau aku bisa ulang [fase hidup], aku bakal lakuin [X] dari awal.</p></div>
+        <div class="tpl"><p>Ini framework yang aku pakai setiap kali [aktivitas]. Belum pernah gagal.</p></div>
+        <div class="tpl"><p>Ada 1 perubahan kecil yang bikin [hasil besar] dalam hidup aku. Dan ini gratis.</p></div>
+    </div>
+
+    <h3>CTA Closing — Baris Terakhir Utas</h3>
+    <div class="tpl-grid">
+        <div class="tpl"><p>Save utas ini. Suatu saat lo bakal balik ke sini.</p></div>
+        <div class="tpl"><p>Yang relate, drop 🌱 di komen biar aku tau lo baca sampe sini.</p></div>
+        <div class="tpl"><p>Aku tulis lebih lengkap di ebook gue — link di bio, gratis buat 100 orang pertama.</p></div>
+        <div class="tpl"><p>Follow @[handle] buat konten kayak gini setiap hari. No fluff.</p></div>
+        <div class="tpl"><p>Mau versi lengkap + template? DM aku "KIRIM" — aku balas satu-satu.</p></div>
+        <div class="tpl"><p>Yang nggak setuju, argumen di komen. Yang setuju, share ke temen lo yang butuh.</p></div>
+        <div class="tpl"><p>Kalau utas ini ngebantu, quote dengan pendapat lo sendiri — gue repost.</p></div>
+        <div class="tpl"><p>Next week aku bahas [topik lanjutan]. Follow biar nggak ketinggalan.</p></div>
+    </div>
+
+    <h3>Soft Sell Template</h3>
+    <div class="tpl-grid">
+        <div class="tpl"><p>Btw, semua framework yang aku share di sini udah aku compile di [produk]. 50 halaman, actionable, harga secangkir kopi. Link di bio.</p></div>
+        <div class="tpl"><p>Yang mau shortcut: aku buka slot konsultasi 1-on-1, 30 menit, Rp [X]. DM "CONSULT" kalau mau.</p></div>
+        <div class="tpl"><p>Produk ini ngebantu 200+ orang [hasil]. Kalau lo serius, cek review-nya di link bio aku.</p></div>
+        <div class="tpl"><p>Kalau lo prefer belajar terstruktur daripada scroll utas random — ebook aku buat itu. Link di bio, bisa dibaca offline.</p></div>
+    </div>
+
+    <div class="page-num">P. 013</div>
+</section>
+
+
+<!-- ============================================================
+     BAB 11 — ROADMAP 60 HARI
+     ============================================================ -->
+<section class="page" id="bab11">
+    <div class="page-folio">Bab 11 · Roadmap</div>
+    <div class="section-tag">
+        <span>Action · 60 Days</span>
+        <span class="ch">№ 11</span>
+    </div>
+
+    <h2 class="title">Roadmap <em>60 hari.</em></h2>
+    <hr class="divider" />
+
+    <p class="lead">Ikutin urut. Jangan skip. 60 hari dari sekarang, lo udah punya fondasi monetisasi Threads yang bisa lo scale seumur hidup.</p>
+
+    <div class="roadmap-block">
+        <div class="week-meta"><div class="week-num">W1</div><div class="week-info"><div class="week-tag">Hari 1–7</div><h4>Setup &amp; Riset</h4></div></div>
+        <ul>
+            <li>Tentuin niche (Bab 2). Tulis di kertas: "Niche aku: ___, audiens: ___"</li>
+            <li>Setup bio, PP, username (Bab 2)</li>
+            <li>Follow 20 akun top di niche lo. Amati pola konten mereka</li>
+            <li>Bikin content calendar minggu pertama (7 utas)</li>
+            <li>Posting utas pertama — jangan tunggu sempurna</li>
+        </ul>
+    </div>
+
+    <div class="roadmap-block">
+        <div class="week-meta"><div class="week-num">W2</div><div class="week-info"><div class="week-tag">Hari 8–14</div><h4>Konten &amp; Engagement</h4></div></div>
+        <ul>
+            <li>Posting 1 utas/hari + 1 single post. Target: 10 konten minggu ini</li>
+            <li>Reply ke 10 utas creator lain per hari (genuine, bukan spam)</li>
+            <li>Analisa: mana 2 utas dengan reach tertinggi? Bikin lebih banyak yang mirip</li>
+            <li>Eksperimen: 1 storytelling, 1 listicle, 1 hot take, 1 tutorial</li>
+        </ul>
+    </div>
+
+    <div class="roadmap-block">
+        <div class="week-meta"><div class="week-num">W3–4</div><div class="week-info"><div class="week-tag">Hari 15–30</div><h4>Konsistensi &amp; Pilih Jalur Cuan</h4></div></div>
+        <ul>
+            <li>Maintain 1 utas/hari. Total: 30 utas di akhir bulan 1</li>
+            <li>Review Bab 4. Pilih 1 jalur monetisasi primer</li>
+            <li>Siapkan: link affiliate / produk digital / penawaran jasa</li>
+            <li>Buat 1 utas soft pitch pertama (Bab 5/6/7)</li>
+            <li>Target akhir Minggu 4: 300–1000 followers</li>
+        </ul>
+    </div>
+
+    <div class="roadmap-block">
+        <div class="week-meta"><div class="week-num">W5–6</div><div class="week-info"><div class="week-tag">Hari 31–42</div><h4>Monetisasi Pertama</h4></div></div>
+        <ul>
+            <li>Post 2 utas soft pitch per minggu + 5 value utas</li>
+            <li>Launch produk digital pertama (kalau Jalur 2) atau dapet klien pertama (Jalur 3)</li>
+            <li>Track: berapa klik link, berapa konversi, berapa rupiah masuk</li>
+            <li>Minta testimoni dari pembeli/klien pertama</li>
+            <li>Target: cuan pertama Rp 100K–1jt</li>
+        </ul>
+    </div>
+
+    <div class="roadmap-block">
+        <div class="week-meta"><div class="week-num">W7–8</div><div class="week-info"><div class="week-tag">Hari 43–60</div><h4>Iterasi &amp; Scale</h4></div></div>
+        <ul>
+            <li>Analisa full: top 5 utas terbaik → replikasi format</li>
+            <li>Tambah jalur sekunder (misal: affiliate + produk digital)</li>
+            <li>Mulai build email list / komunitas WA sebagai owned audience</li>
+            <li>Bikin SOP konten harian biar sustainable tanpa burnout</li>
+            <li>Target akhir 60 hari: 1K–3K followers, cuan Rp 500K–5jt kumulatif</li>
+        </ul>
+    </div>
+
+    <div class="page-num">P. 014</div>
+</section>
+
+<!-- ============================================================
+     BAB 12 — METRICS
+     ============================================================ -->
+<section class="page" id="bab12">
+    <div class="page-folio">Bab 12 · Metrics</div>
+    <div class="section-tag">
+        <span>Data · Tracking</span>
+        <span class="ch">№ 12</span>
+    </div>
+
+    <h2 class="title">Metriks yang <em>wajib dilacak.</em></h2>
+    <hr class="divider" />
+
+    <p class="lead">Apa yang nggak lo ukur, nggak bisa lo improve. Cukup track 5 angka ini seminggu sekali — dan lo bakal tau persis apa yang harus diubah.</p>
+
+    <table class="cmp-table">
+        <thead><tr><th>Metrik</th><th>Kenapa Penting</th><th>Target</th></tr></thead>
+        <tbody>
+            <tr><td><strong>Views per Utas</strong></td><td>Sinyal reach / distribusi algoritma</td><td>Naik 20%/minggu</td></tr>
+            <tr><td><strong>Engagement Rate</strong></td><td>(Likes+Comments+Shares) / Views × 100</td><td>5%+ = bagus, 10%+ = viral</td></tr>
+            <tr><td><strong>Follower Growth</strong></td><td>Apakah konten lo attract right audience</td><td>+50–200/minggu (organik)</td></tr>
+            <tr><td><strong>Link Clicks</strong></td><td>Seberapa efektif CTA lo</td><td>1–5% dari views</td></tr>
+            <tr><td><strong>Revenue</strong></td><td>Angka final — berapa masuk rekening</td><td>Naik setiap bulan</td></tr>
+        </tbody>
+    </table>
+
+    <div class="card">
+        <span class="card-tag">Weekly Review SOP</span>
+        <p>Setiap Minggu malam, luangin 15 menit:<br><strong>1.</strong> Cek top 3 utas (view tertinggi) — apa kesamaannya?<br><strong>2.</strong> Cek bottom 3 utas — apa yang salah?<br><strong>3.</strong> Hitung total revenue minggu ini<br><strong>4.</strong> Set 1 eksperimen baru buat minggu depan</p>
+    </div>
+
+    <div class="page-num">P. 015</div>
+</section>
+
+
+<!-- ============================================================
+     BAB 13 — MISTAKES
+     ============================================================ -->
+<section class="page" id="bab13">
+    <div class="page-folio">Bab 13 · Mistakes</div>
+    <div class="section-tag">
+        <span>Avoid · Fatal Errors</span>
+        <span class="ch">№ 13</span>
+    </div>
+
+    <h2 class="title">10 kesalahan <em>fatal.</em></h2>
+    <hr class="divider" />
+
+    <p class="lead">Satu kesalahan bisa mundur 3 bulan. Hindari 10 ini dan lo udah lebih maju dari 90% pemula.</p>
+
+    <div class="step-list">
+        <div class="step"><div class="step-num"></div><div class="step-body"><h5>Monetize Terlalu Cepat</h5><p>Belum ada trust, udah jualan. Hasilnya: 0 sales + followers unfollow. Build value 30 hari dulu baru soft sell.</p></div></div>
+        <div class="step"><div class="step-num"></div><div class="step-body"><h5>Ganti Niche Terus</h5><p>Minggu 1 bahas finance, minggu 2 relationship, minggu 3 politik. Algoritma bingung, audiens pergi.</p></div></div>
+        <div class="step"><div class="step-num"></div><div class="step-body"><h5>Copy-Paste Konten Orang</h5><p>Threads audiens pinter — mereka tau mana original mana jiplakan. Reputasi lo hancur kalau ketahuan.</p></div></div>
+        <div class="step"><div class="step-num"></div><div class="step-body"><h5>Nggak Reply Komentar</h5><p>Komentar = sinyal ke algoritma. Makin banyak reply = makin luas distribusi. Jangan biarin komentar nganggur.</p></div></div>
+        <div class="step"><div class="step-num"></div><div class="step-body"><h5>Post Cuma 2x Seminggu</h5><p>Algoritma Threads butuh sinyal konsisten. Minimal 1x/hari. Kalau nggak sanggup, schedule pake tools.</p></div></div>
+        <div class="step"><div class="step-num"></div><div class="step-body"><h5>Nggak Punya CTA di Bio</h5><p>Bio tanpa link atau CTA = traffic terbuang. Setiap pengunjung profil harus tau mau klik apa.</p></div></div>
+        <div class="step"><div class="step-num"></div><div class="step-body"><h5>Terlalu Banyak Platform Sekaligus</h5><p>Threads + TikTok + IG + YouTube + Twitter sekaligus = burnout bulan ke-2. Kuasai 1 dulu.</p></div></div>
+        <div class="step"><div class="step-num"></div><div class="step-body"><h5>Nulis Hook yang Lemah</h5><p>80% performa utas ditentuin hook. Kalau hook biasa-biasa aja, body sebagus apapun nggak dibaca.</p></div></div>
+        <div class="step"><div class="step-num"></div><div class="step-body"><h5>Nggak Tracking Data</h5><p>Posting tanpa lihat analytics = tebak-tebakan. Baca Bab 12 dan track weekly.</p></div></div>
+        <div class="step"><div class="step-num"></div><div class="step-body"><h5>Nyerah di Bulan Pertama</h5><p>Bulan 1 emang sepi. Itu normal. Creator yang berhasil sekarang dulu juga sepi di awal. Bedanya: mereka nggak berhenti.</p></div></div>
+    </div>
+
+    <div class="page-num">P. 016</div>
+</section>
+
+<!-- ============================================================
+     BAB 14 — EMPIRE
+     ============================================================ -->
+<section class="page" id="bab14">
+    <div class="page-folio">Bab 14 · Empire</div>
+    <div class="section-tag">
+        <span>Scale · Empire</span>
+        <span class="ch">№ 14</span>
+    </div>
+
+    <h2 class="title">Dari Threads ke <em>empire.</em></h2>
+    <hr class="divider" />
+
+    <p class="lead">Setelah 3–6 bulan monetisasi stabil, lo bisa mulai mikir lebih besar. Ini bukan lagi soal 1 utas viral — ini soal membangun bisnis yang berjalan tanpa lo posting setiap hari.</p>
+
+    <h3>5 Level Scale</h3>
+    <div class="step-list">
+        <div class="step"><div class="step-num"></div><div class="step-body"><h5>Multi-Format</h5><p>Repurpose konten Threads ke IG carousel, TikTok voiceover, YouTube Shorts, Newsletter. 1 ide = 5 platform. Reach naik 5x tanpa bikin konten baru.</p></div></div>
+        <div class="step"><div class="step-num"></div><div class="step-body"><h5>Build Team</h5><p>Hire 1 ghostwriter atau editor. Lo ideate + review, mereka eksekusi. Output naik 3x, quality tetap.</p></div></div>
+        <div class="step"><div class="step-num"></div><div class="step-body"><h5>Recurring Revenue</h5><p>Konversi one-time sales jadi recurring: membership, subscription newsletter, atau retainer jasa bulanan.</p></div></div>
+        <div class="step"><div class="step-num"></div><div class="step-body"><h5>Build Community</h5><p>Bikin grup eksklusif (Discord, WA, Telegram) untuk audience premium lo. Monetize lewat membership fee.</p></div></div>
+        <div class="step"><div class="step-num"></div><div class="step-body"><h5>Productize Everything</h5><p>Setiap pengetahuan = produk. Setiap proses = template. Setiap pengalaman = ebook. Bangun katalog produk digital yang terus bertambah.</p></div></div>
+    </div>
+
+    <div class="card solid">
+        <span class="card-tag">Endgame</span>
+        <p>Empire bukan soal follower. Empire = sistem yang menghasilkan uang walaupun lo nggak posting 1 minggu. Threads adalah pintu masuk, tapi yang lo bangun di dalamnya — itu yang jadi aset seumur hidup.</p>
+    </div>
+
+    <div class="page-num">P. 017</div>
+</section>
+
+<!-- ============================================================
+     BAB 15 — FAQ
+     ============================================================ -->
+<section class="page" id="bab15">
+    <div class="page-folio">Bab 15 · FAQ</div>
+    <div class="section-tag">
+        <span>Bonus · FAQ</span>
+        <span class="ch">№ 15</span>
+    </div>
+
+    <h2 class="title">Pertanyaan <em>tersering.</em></h2>
+    <hr class="divider" />
+
+    <div class="faq"><div class="q">Berapa lama sampai dapet cuan pertama dari Threads?</div><p class="a">Rata-rata 30–60 hari kalau konsisten post 1x/hari + punya produk/affiliate siap. Ada yang lebih cepat (minggu ke-2), ada yang lebih lama (3 bulan). Faktor utama: konsistensi, bukan bakat.</p></div>
+
+    <div class="faq"><div class="q">Followers aku masih 100. Bisa monetize?</div><p class="a">Bisa — khususnya via affiliate atau produk digital. 100 followers yang engaged bisa generate lebih banyak cuan daripada 10K followers pasif. Yang penting: konten lo sesuai niche dan ada CTA jelas.</p></div>
+
+    <div class="faq"><div class="q">Jam berapa posting yang paling bagus?</div><p class="a">Secara umum: 07.00–09.00 (pagi), 12.00–13.00 (istirahat siang), 19.00–21.00 (malam hari). Tapi tiap akun beda — cek analytics lo sendiri setelah 2 minggu posting konsisten.</p></div>
+
+    <div class="faq"><div class="q">Boleh cross-post dari Twitter ke Threads?</div><p class="a">Boleh — tapi edit dulu. Audiens Threads sedikit beda (lebih Gen Z, lebih suka storytelling, lebih IG-native). Copy-paste mentah biasanya performanya jelek.</p></div>
+
+    <div class="faq"><div class="q">Threads bakal mati kayak Clubhouse nggak?</div><p class="a">Kemungkinan kecil. Threads backed by Meta (2 miliar user base Instagram), dan pertumbuhannya stabil. Plus Meta sedang invest heavily di Threads monetisasi buat creator. Risk rendah.</p></div>
+
+    <div class="faq"><div class="q">Niche aku sempit banget, apa masih bisa viral?</div><p class="a">Justru niche sempit = konversi tinggi. Lo mungkin nggak dapet 1M views, tapi 10K views dari audiens yang sangat targeted bisa convert 500K+ revenue. Quality > quantity.</p></div>
+
+    <div class="faq"><div class="q">Perlu ngiklan nggak?</div><p class="a">Belum di tahap awal. Threads belum punya native ads (per 2026). Fokus organik dulu — dan kalau mau boost, boost di IG (karena connected). Tapi honestly, organic di Threads masih sangat powerful.</p></div>
+
+    <div class="faq"><div class="q">Boleh pakai AI buat nulis utas?</div><p class="a">Boleh sebagai starting point — tapi WAJIB edit. Audiens Threads bisa ngebedain tulisan AI vs manusia. Pakai AI buat draft + ide, tapi suara dan personality harus dari lo sendiri.</p></div>
+
+    <div class="page-num">P. 018</div>
+</section>
+
+<!-- ============================================================
+     CLOSING
+     ============================================================ -->
+<section class="closing" id="closing">
+    <div class="section-tag">
+        <span>— End —</span>
+    </div>
+
+    <h2>Write.<br><em>Monetize.</em><br>Repeat.</h2>
+
+    <p>
+        Lo udah pegang playbook yang lengkap. 15 bab, 7 jalur cuan, 60 hari roadmap, dan 30+ template. Tapi semua ini <strong>nggak ada gunanya</strong> kalau lo nggak buka Threads hari ini dan posting utas pertama lo.
+    </p>
+
+    <p>
+        Kunci suksesnya bukan bakat menulis. Bukan timing sempurna. Bukan luck. Kuncinya: <strong>konsistensi yang membosankan</strong> sampai akhirnya compound effect bekerja.
+    </p>
+
+    <p>
+        60 hari dari sekarang, lo bakal bersyukur lo mulai hari ini. Atau 60 hari dari sekarang, lo masih scroll Threads orang lain sambil mikir "kapan ya gue bisa kayak gitu". Pilihan ada di tangan lo.
+    </p>
+
+    <div class="signature">
+        @yanzy17
+        <small>Independent Creator · 2026</small>
+    </div>
+</section>
+
+</body>
+</html>
