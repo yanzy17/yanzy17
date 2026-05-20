@@ -9,7 +9,7 @@
 <!-- Editorial fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700;800;900&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,700;0,8..60,900;1,8..60,400;1,8..60,700&family=Inter:wght@300;400;500;600;700;800;900&family=IBM+Plex+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 
 <style>
 /* =============================================
@@ -29,7 +29,7 @@
     }
     @bottom-right {
         content: counter(page) " / " counter(pages);
-        font-family: "DM Mono", monospace;
+        font-family: "IBM Plex Mono", monospace;
         font-size: 8pt;
         color: #555;
     }
@@ -86,7 +86,7 @@ img { max-width: 100%; }
     position: absolute;
     bottom: 28px;
     right: 56px;
-    font-family: "DM Mono", monospace;
+    font-family: "IBM Plex Mono", monospace;
     font-size: 0.7rem;
     color: var(--ink-mute);
     letter-spacing: 0.2em;
@@ -96,7 +96,7 @@ img { max-width: 100%; }
     position: absolute;
     top: 28px;
     left: 56px;
-    font-family: "DM Mono", monospace;
+    font-family: "IBM Plex Mono", monospace;
     font-size: 0.7rem;
     color: var(--ink-mute);
     letter-spacing: 0.25em;
@@ -115,7 +115,7 @@ img { max-width: 100%; }
     gap: 0;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
-    font-family: "DM Mono", monospace;
+    font-family: "IBM Plex Mono", monospace;
 }
 .toc-nav::-webkit-scrollbar { display: none; }
 .toc-nav a {
@@ -169,7 +169,7 @@ img { max-width: 100%; }
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    font-family: "DM Mono", monospace;
+    font-family: "IBM Plex Mono", monospace;
     font-size: 0.7rem;
     text-transform: uppercase;
     letter-spacing: 0.25em;
@@ -191,7 +191,7 @@ img { max-width: 100%; }
 }
 
 .cover-edition {
-    font-family: "DM Serif Display", Georgia, serif;
+    font-family: "Source Serif 4", Georgia, serif;
     font-style: italic;
     font-size: 1.1rem;
     color: var(--ink-mute);
@@ -202,7 +202,7 @@ img { max-width: 100%; }
 }
 
 .cover h1 {
-    font-family: "DM Serif Display", Georgia, serif;
+    font-family: "Source Serif 4", Georgia, serif;
     font-size: clamp(3.5rem, 13vw, 7rem);
     font-weight: 900;
     line-height: 0.92;
@@ -233,7 +233,7 @@ img { max-width: 100%; }
     gap: 28px;
     flex-wrap: wrap;
     margin-top: 36px;
-    font-family: "DM Mono", monospace;
+    font-family: "IBM Plex Mono", monospace;
     font-size: 0.72rem;
     text-transform: uppercase;
     letter-spacing: 0.2em;
@@ -255,7 +255,7 @@ img { max-width: 100%; }
     justify-content: space-between;
     align-items: flex-end;
     padding-bottom: 20px;
-    font-family: "DM Mono", monospace;
+    font-family: "IBM Plex Mono", monospace;
     font-size: 0.72rem;
     text-transform: uppercase;
     letter-spacing: 0.25em;
@@ -264,7 +264,7 @@ img { max-width: 100%; }
 
 .cover-footer strong {
     display: block;
-    font-family: "DM Serif Display", Georgia, serif;
+    font-family: "Source Serif 4", Georgia, serif;
     font-size: 1.6rem;
     font-style: italic;
     font-weight: 700;
@@ -276,7 +276,7 @@ img { max-width: 100%; }
 
 /* =================== TYPOGRAPHY =================== */
 .section-tag {
-    font-family: "DM Mono", monospace;
+    font-family: "IBM Plex Mono", monospace;
     font-size: 0.7rem;
     letter-spacing: 0.3em;
     text-transform: uppercase;
@@ -295,7 +295,7 @@ img { max-width: 100%; }
 }
 
 .page h2.title {
-    font-family: "DM Serif Display", Georgia, serif;
+    font-family: "Source Serif 4", Georgia, serif;
     font-size: clamp(2.2rem, 5.5vw, 3.4rem);
     font-weight: 900;
     line-height: 1.05;
@@ -323,7 +323,7 @@ img { max-width: 100%; }
 }
 
 .lead {
-    font-family: "DM Serif Display", Georgia, serif;
+    font-family: "Source Serif 4", Georgia, serif;
     font-size: 1.35rem;
     font-style: italic;
     line-height: 1.55;
@@ -369,14 +369,14 @@ img { max-width: 100%; }
 .page h3::before {
     content: counter(h3-counter, decimal-leading-zero);
     counter-increment: h3-counter;
-    font-family: "DM Mono", monospace;
+    font-family: "IBM Plex Mono", monospace;
     font-size: 0.78rem;
     color: var(--ink-mute);
     font-weight: 500;
 }
 
 .page h4 {
-    font-family: "DM Serif Display", Georgia, serif;
+    font-family: "Source Serif 4", Georgia, serif;
     font-size: 1.3rem;
     font-weight: 700;
     margin: 28px 0 12px;
@@ -423,7 +423,7 @@ img { max-width: 100%; }
     top: 0;
     color: var(--ink);
     font-weight: 700;
-    font-family: "DM Mono", monospace;
+    font-family: "IBM Plex Mono", monospace;
     font-size: 0.9rem;
 }
 
@@ -464,7 +464,7 @@ img { max-width: 100%; }
 }
 
 .toc-list .toc-num {
-    font-family: "DM Mono", monospace;
+    font-family: "IBM Plex Mono", monospace;
     font-size: 0.85rem;
     color: var(--ink-mute);
     margin-right: 22px;
@@ -475,7 +475,7 @@ img { max-width: 100%; }
 
 .toc-list .toc-label {
     flex: 1;
-    font-family: "DM Serif Display", Georgia, serif;
+    font-family: "Source Serif 4", Georgia, serif;
     font-size: 1.15rem;
     font-weight: 500;
     color: var(--ink);
@@ -483,7 +483,7 @@ img { max-width: 100%; }
 }
 
 .toc-list .toc-tag {
-    font-family: "DM Mono", monospace;
+    font-family: "IBM Plex Mono", monospace;
     font-size: 0.7rem;
     color: var(--ink-mute);
     text-transform: uppercase;
@@ -492,7 +492,7 @@ img { max-width: 100%; }
 
 /* =================== PULL QUOTE =================== */
 .pull-quote {
-    font-family: "DM Serif Display", Georgia, serif;
+    font-family: "Source Serif 4", Georgia, serif;
     font-size: 1.7rem;
     font-style: italic;
     font-weight: 400;
@@ -532,7 +532,7 @@ img { max-width: 100%; }
 .stat-card:last-child { border-right: none; }
 .stat-card strong {
     display: block;
-    font-family: "DM Serif Display", Georgia, serif;
+    font-family: "Source Serif 4", Georgia, serif;
     font-size: 2.6rem;
     font-weight: 900;
     color: var(--ink);
@@ -541,7 +541,7 @@ img { max-width: 100%; }
     letter-spacing: -0.02em;
 }
 .stat-card span {
-    font-family: "DM Mono", monospace;
+    font-family: "IBM Plex Mono", monospace;
     font-size: 0.7rem;
     color: var(--ink-mute);
     letter-spacing: 0.15em;
@@ -565,7 +565,7 @@ img { max-width: 100%; }
     left: 16px;
     background: var(--paper);
     padding: 0 10px;
-    font-family: "DM Mono", monospace;
+    font-family: "IBM Plex Mono", monospace;
     font-size: 0.7rem;
     text-transform: uppercase;
     letter-spacing: 0.2em;
@@ -594,7 +594,7 @@ img { max-width: 100%; }
 
 .card p:last-child { margin-bottom: 0; }
 .card .card-title {
-    font-family: "DM Serif Display", Georgia, serif;
+    font-family: "Source Serif 4", Georgia, serif;
     font-size: 1.2rem;
     font-weight: 700;
     color: var(--ink);
@@ -622,7 +622,7 @@ img { max-width: 100%; }
 .step:last-child { border-bottom: 1px solid var(--line-soft); }
 
 .step-num {
-    font-family: "DM Serif Display", Georgia, serif;
+    font-family: "Source Serif 4", Georgia, serif;
     font-size: 2.6rem;
     font-weight: 900;
     line-height: 1;
@@ -667,7 +667,7 @@ img { max-width: 100%; }
 
 .tpl::before {
     content: "№" counter(tpl-counter, decimal-leading-zero);
-    font-family: "DM Mono", monospace;
+    font-family: "IBM Plex Mono", monospace;
     font-size: 0.78rem;
     color: var(--ink-mute);
     font-weight: 500;
@@ -676,7 +676,7 @@ img { max-width: 100%; }
 }
 
 .tpl p {
-    font-family: "DM Serif Display", Georgia, serif;
+    font-family: "Source Serif 4", Georgia, serif;
     font-size: 1.08rem;
     line-height: 1.55;
     color: var(--ink);
@@ -718,7 +718,7 @@ img { max-width: 100%; }
 }
 .faq:last-child { border-bottom: 1px solid var(--line-soft); }
 .faq .q {
-    font-family: "DM Serif Display", Georgia, serif;
+    font-family: "Source Serif 4", Georgia, serif;
     font-size: 1.25rem;
     font-weight: 700;
     color: var(--ink);
@@ -727,7 +727,7 @@ img { max-width: 100%; }
 }
 .faq .q::before {
     content: "Q.";
-    font-family: "DM Mono", monospace;
+    font-family: "IBM Plex Mono", monospace;
     font-size: 0.75rem;
     font-weight: 700;
     color: var(--ink-mute);
@@ -747,7 +747,7 @@ img { max-width: 100%; }
     position: absolute;
     left: 0;
     top: 0;
-    font-family: "DM Mono", monospace;
+    font-family: "IBM Plex Mono", monospace;
     font-size: 0.75rem;
     font-weight: 700;
     color: var(--ink);
@@ -768,7 +768,7 @@ img { max-width: 100%; }
     flex-wrap: wrap;
 }
 .roadmap-block .week-num {
-    font-family: "DM Serif Display", Georgia, serif;
+    font-family: "Source Serif 4", Georgia, serif;
     font-size: 3rem;
     font-weight: 900;
     line-height: 1;
@@ -780,7 +780,7 @@ img { max-width: 100%; }
     min-width: 200px;
 }
 .roadmap-block .week-tag {
-    font-family: "DM Mono", monospace;
+    font-family: "IBM Plex Mono", monospace;
     font-size: 0.7rem;
     color: var(--ink-mute);
     text-transform: uppercase;
@@ -788,7 +788,7 @@ img { max-width: 100%; }
     margin-bottom: 4px;
 }
 .roadmap-block h4 {
-    font-family: "DM Serif Display", Georgia, serif;
+    font-family: "Source Serif 4", Georgia, serif;
     font-size: 1.4rem;
     font-weight: 700;
     color: var(--ink);
@@ -819,7 +819,7 @@ img { max-width: 100%; }
 .method:last-child { border-bottom: 2px solid var(--ink); }
 
 .method-num {
-    font-family: "DM Serif Display", Georgia, serif;
+    font-family: "Source Serif 4", Georgia, serif;
     font-size: 4rem;
     font-weight: 900;
     line-height: 0.85;
@@ -834,7 +834,7 @@ img { max-width: 100%; }
 }
 
 .method-body .method-tag {
-    font-family: "DM Mono", monospace;
+    font-family: "IBM Plex Mono", monospace;
     font-size: 0.7rem;
     color: var(--ink-mute);
     text-transform: uppercase;
@@ -863,7 +863,7 @@ img { max-width: 100%; }
 }
 
 .closing h2 {
-    font-family: "DM Serif Display", Georgia, serif;
+    font-family: "Source Serif 4", Georgia, serif;
     font-size: clamp(2.6rem, 7vw, 4.4rem);
     font-weight: 900;
     line-height: 1;
@@ -889,7 +889,7 @@ img { max-width: 100%; }
     padding-top: 32px;
     border-top: 1px solid var(--ink-mute);
     color: var(--paper);
-    font-family: "DM Serif Display", Georgia, serif;
+    font-family: "Source Serif 4", Georgia, serif;
     font-style: italic;
     font-size: 1.1rem;
     letter-spacing: 0.05em;
@@ -900,7 +900,7 @@ img { max-width: 100%; }
 
 .signature small {
     display: block;
-    font-family: "DM Mono", monospace;
+    font-family: "IBM Plex Mono", monospace;
     font-size: 0.7rem;
     color: var(--paper-3);
     text-transform: uppercase;
