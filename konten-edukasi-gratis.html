@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>100+ Hook, Caption & CTA Affiliate Shopee - Ebook Gratis by @tipscuan95</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --bg-dark: #0a0a0f;
+            --bg-card: #14141f;
+            --accent: #ee4d2d;
+            --accent-light: #ff6b35;
+            --gold: #f4a261;
+            --text: #e8e8e8;
+            --text-muted: #9a9ab0;
+            --border: #2a2a3a;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-dark);
+            color: var(--text);
+            line-height: 1.7;
+            font-size: 16px;
+        }
+        .page {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 60px 40px;
+            min-height: 100vh;
+            position: relative;
+        }
+        .cover {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(135deg, #0a0a0f 0%, #1a1028 50%, #0a0a0f 100%);
+            border-bottom: 3px solid var(--accent);
+        }
+        .cover-badge {
+            display: inline-block;
+            background: var(--accent);
+            color: #fff;
+            padding: 6px 18px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+        }
+        .cover h1 {
+            font-size: 38px;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--accent), var(--gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 16px;
+            line-height: 1.2;
+        }
+        .cover .subtitle {
+            font-size: 18px;
+            color: var(--text-muted);
+            max-width: 520px;
+            margin-bottom: 40px;
+        }
+        .cover .author {
+            font-size: 16px;
+            color: var(--gold);
+            font-weight: 600;
+            margin-bottom: 30px;
+        }
+        .cover-features {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .cover-features span {
+            background: rgba(238,77,45,0.15);
+            border: 1px solid rgba(238,77,45,0.3);
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 13px;
+            color: var(--accent-light);
+        }
+        .section { padding-top: 20px; }
+        .section h2 {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--accent-light);
+            margin-bottom: 24px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid var(--border);
+        }
+        .section h3 {
+            font-size: 20px;
+            color: var(--gold);
+            margin: 24px 0 12px;
+        }
+        .section h4 {
+            font-size: 16px;
+            color: var(--accent-light);
+            margin: 16px 0 8px;
+        }
+        .section p { margin-bottom: 14px; color: var(--text); }
+        .section ul, .section ol {
+            margin: 12px 0 20px 20px;
+        }
+        .section li {
+            margin-bottom: 10px;
+            color: var(--text);
+        }
+        .section li strong { color: var(--accent-light); }
+        .tip-box {
+            background: rgba(238,77,45,0.08);
+            border-left: 4px solid var(--accent);
+            padding: 16px 20px;
+            border-radius: 0 8px 8px 0;
+            margin: 16px 0;
+        }
+        .tip-box strong { color: var(--accent-light); }
+        .hook-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 12px 16px;
+            margin-bottom: 8px;
+            font-style: italic;
+            color: var(--text);
+        }
+        .hook-item::before {
+            content: "💬 ";
+        }
+        .caption-box {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 16px 20px;
+            margin-bottom: 12px;
+        }
+        .caption-box p { margin-bottom: 6px; font-size: 15px; }
+        .cta-item {
+            background: rgba(244,162,97,0.08);
+            border: 1px solid rgba(244,162,97,0.2);
+            border-radius: 8px;
+            padding: 10px 16px;
+            margin-bottom: 8px;
+            color: var(--gold);
+        }
+        .toc-list { list-style: none; margin-left: 0; }
+        .toc-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+        }
+        .toc-list li span:first-child { color: var(--text); font-weight: 500; }
+        .toc-list li span:last-child { color: var(--text-muted); font-size: 14px; }
+        .checklist { list-style: none; margin-left: 0; }
+        .checklist li { padding: 10px 0; padding-left: 32px; position: relative; font-size: 15px; }
+        .checklist li::before {
+            content: "☐";
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-size: 18px;
+        }
+        .closing {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #0a0a0f 0%, #1a1028 50%, #0a0a0f 100%);
+        }
+        .closing h2 { border: none; margin-bottom: 16px; }
+        .closing p { color: var(--text-muted); max-width: 500px; margin-bottom: 12px; }
+        .closing .signature {
+            margin-top: 30px;
+            font-size: 20px;
+            color: var(--gold);
+            font-weight: 700;
+        }
+        .download-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-light));
+            color: #fff;
+            border: none;
+            padding: 14px 24px;
+            border-radius: 50px;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(238,77,45,0.4);
+            z-index: 9999;
+            transition: transform 0.2s, box-shadow 0.2s;
+            text-decoration: none;
+        }
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 30px rgba(238,77,45,0.6);
+        }
+        .page-num {
+            position: absolute;
+            bottom: 20px;
+            right: 40px;
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+        .footer-info {
+            text-align: center;
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border);
+        }
+        @page {
+            size: A4;
+            margin: 2cm;
+        }
+        @media print {
+            body { background: #fff; color: #1a1a1a; font-size: 11pt; }
+            .download-btn { display: none !important; }
+            .page {
+                min-height: auto;
+                padding: 0;
+                page-break-after: always;
+                max-width: 100%;
+            }
+            .page:last-child { page-break-after: avoid; }
+            .cover, .closing {
+                background: #0a0a0f !important;
+                color: #fff !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+                padding: 80px 40px;
+            }
+            .cover h1 {
+                -webkit-text-fill-color: var(--accent-light);
+                color: var(--accent-light);
+            }
+            .cover .subtitle, .cover .author { color: #ccc; }
+            .cover-badge { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .cover-features span { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .section h2 { color: var(--accent); }
+            .section h3 { color: #333; }
+            .section li strong { color: var(--accent); }
+            .tip-box {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+                background: #fff5f2;
+                border-left-color: var(--accent);
+            }
+            .hook-item { background: #f8f8f8; border-color: #ddd; }
+            .caption-box { background: #f8f8f8; border-color: #ddd; }
+            .cta-item { background: #fffaf5; border-color: #f4a261; }
+            .closing { color: #fff !important; }
+            .closing h2 { color: var(--accent-light) !important; }
+            .closing p { color: #ccc !important; }
+            .closing .signature { color: var(--gold) !important; }
+            .page-num { color: #999; }
+            .toc-list li { border-color: #ddd; }
+        }
+    </style>
+</head>
+<body>
+
+<button class="download-btn" onclick="window.print()">📥 Download PDF</button>
+
+<!-- PAGE 1: COVER -->
+<div class="page cover">
+    <span class="cover-badge">EBOOK GRATIS 2026</span>
+    <h1>100+ HOOK, CAPTION & CTA AFFILIATE SHOPEE</h1>
+    <p class="subtitle">Koleksi Lengkap Siap Copy-Paste Buat Konten yang Convert</p>
+    <p class="author">by @tipscuan95</p>
+    <div class="cover-features">
+        <span>📝 100+ Template</span>
+        <span>📂 6 Kategori</span>
+        <span>✅ Siap Pakai</span>
+        <span>🔄 Update Berkala</span>
+    </div>
+    <span class="page-num">1</span>
+</div>
+
+<!-- PAGE 2: DAFTAR ISI -->
+<div class="page section">
+    <h2>📑 Daftar Isi</h2>
+    <ul class="toc-list">
+        <li><span>Bab 1 — Pengantar: Cara Pakai Ebook Ini</span><span>Hal. 3</span></li>
+        <li><span>Bab 2 — 30+ Hook Affiliate</span><span>Hal. 4</span></li>
+        <li><span>Bab 3 — 30+ Caption Affiliate</span><span>Hal. 5-6</span></li>
+        <li><span>Bab 4 — 20+ CTA Siap Pakai</span><span>Hal. 7</span></li>
+        <li><span>Bab 5 — 15 Tips Konten yang Convert</span><span>Hal. 8</span></li>
+        <li><span>Bab 6 — Checklist Harian Affiliate</span><span>Hal. 9</span></li>
+        <li><span>Penutup</span><span>Hal. 10</span></li>
+    </ul>
+    <div class="tip-box">
+        <strong>💡 Cara Pakai:</strong> Ebook ini dirancang supaya kamu bisa langsung copy-paste template, lalu sesuaikan dengan produk & gaya bahasa kamu sendiri. Bookmark halaman favorit kamu!
+    </div>
+    <span class="page-num">2</span>
+</div>
+
+<!-- PAGE 3: BAB 1 -->
+<div class="page section">
+    <h2>Bab 1: Pengantar — Cara Pakai Ebook Ini</h2>
+
+    <h3>📌 Apa Itu Hook, Caption, dan CTA?</h3>
+    <ul>
+        <li><strong>Hook:</strong> Kalimat pembuka yang bikin orang berhenti scroll. Tujuannya: menarik perhatian dalam 1-2 detik pertama.</li>
+        <li><strong>Caption:</strong> Isi konten yang menjelaskan, meyakinkan, atau menghibur audiens. Ini "daging"-nya konten kamu.</li>
+        <li><strong>CTA (Call to Action):</strong> Kalimat penutup yang mengarahkan audiens untuk klik link, checkout, atau follow.</li>
+    </ul>
+
+    <h3>🚀 Cara Pakai Template di Ebook Ini</h3>
+    <ol>
+        <li><strong>Pilih template</strong> yang cocok dengan produk/niche kamu</li>
+        <li><strong>Sesuaikan</strong> detail produk (nama, harga, manfaat)</li>
+        <li><strong>Tambah sentuhan personal</strong> — cerita pengalaman kamu sendiri</li>
+        <li><strong>Posting</strong> di platform yang kamu aktif (TikTok, IG, Threads, dsb)</li>
+    </ol>
+
+    <div class="tip-box">
+        <strong>⚠️ PENTING:</strong> Jangan copy-paste 100% tanpa modifikasi! Tambahin sentuhan personal biar authentic dan relatable. Audiens bisa bedain konten yang genuine vs yang cuma copas template.
+    </div>
+
+    <h3>🎯 Formula Konten Affiliate yang Efektif</h3>
+    <p><strong>HOOK + CAPTION + CTA = KONTEN YANG CONVERT</strong></p>
+    <p>Gabungkan 1 hook + 1 caption + 1 CTA dari ebook ini. Mix & match sesuai kebutuhan. Semakin sering kamu practice, semakin natural hasilnya.</p>
+
+    <span class="page-num">3</span>
+</div>
+
+<!-- PAGE 4: BAB 2 - HOOKS -->
+<div class="page section">
+    <h2>Bab 2: 30+ Hook Affiliate</h2>
+    <p>Hook yang kuat bikin orang berhenti scroll dan penasaran. Pilih sesuai gaya konten kamu:</p>
+
+    <h3>🔍 Curiosity (Penasaran)</h3>
+    <div class="hook-item">"Tau gak kenapa produk ini jadi best seller 3 bulan berturut-turut?"</div>
+    <div class="hook-item">"Aku hampir gak percaya pas pertama kali coba produk ini..."</div>
+    <div class="hook-item">"Ada 1 produk Shopee under 50rb yang bikin hidupku berubah."</div>
+    <div class="hook-item">"Stop beli [kategori] sebelum baca ini dulu."</div>
+    <div class="hook-item">"Ini produk yang selalu sold out tapi jarang orang tau."</div>
+
+    <h3>💊 Problem-Solution</h3>
+    <div class="hook-item">"Bibir pecah-pecah terus walau udah pake lip balm? Cobain ini."</div>
+    <div class="hook-item">"Rumah berantakan tapi males beresin? Produk ini solusinya."</div>
+    <div class="hook-item">"Capek makeup luntur sebelum siang? Aku nemu fixing spray 30rb yang tahan seharian."</div>
+    <div class="hook-item">"Kulit kusam & gak glowing? Serum ini cuma 25rb tapi hasilnya..."</div>
+    <div class="hook-item">"Rambut rontok parah? Aku udah coba 10 produk, ini yang akhirnya works."</div>
+
+    <h3>🔢 Angka/Listicle</h3>
+    <div class="hook-item">"5 produk Shopee under 50rb yang wajib kamu punya."</div>
+    <div class="hook-item">"3 skincare murah yang hasilnya ngalahin brand mahal."</div>
+    <div class="hook-item">"7 barang estetik buat kamar kost budget 100rb."</div>
+    <div class="hook-item">"4 dari 5 beauty vlogger pakai produk ini — harganya cuma..."</div>
+    <div class="hook-item">"Rating 4.9 dari 10.000+ review. Ini produknya."</div>
+
+    <h3>📖 Storytelling</h3>
+    <div class="hook-item">"Awalnya aku skeptis. Masa iya produk 35rb bisa sebagus itu?"</div>
+    <div class="hook-item">"Temen kantor tiba-tiba nanya aku pake skincare apa. Ini rahasianya."</div>
+    <div class="hook-item">"Aku udah habis 500rb coba berbagai produk. Yang ini juaranya."</div>
+    <div class="hook-item">"Dulu aku malu pake produk murah. Sampai aku nemu ini."</div>
+    <div class="hook-item">"2 minggu pake ini, orang-orang mulai notice perubahannya."</div>
+
+    <h3>⚡ FOMO/Urgency</h3>
+    <div class="hook-item">"Flash sale tinggal 2 jam. Harga ini gak bakal balik."</div>
+    <div class="hook-item">"Stok produk ini tinggal sedikit — kemarin aja sempat sold out."</div>
+    <div class="hook-item">"Harga naik besok. Hari ini kesempatan terakhir dapet harga segini."</div>
+    <div class="hook-item">"Voucher gratis ongkir cuma berlaku hari ini. Gas checkout!"</div>
+    <div class="hook-item">"Promo ini cuma muncul sekali sebulan. Jangan sampai kelewat."</div>
+
+    <h3>🔥 Kontroversi</h3>
+    <div class="hook-item">"Unpopular opinion: produk Shopee murah BUKAN berarti jelek."</div>
+    <div class="hook-item">"Berhenti buang uang buat brand mahal. Ini alternatif 1/10 harganya."</div>
+    <div class="hook-item">"Skincare mahal itu 80% bayar packaging doang. Prove me wrong."</div>
+    <div class="hook-item">"Aku ganti semua makeup ku ke produk under 50rb. Hasilnya? Sama aja."</div>
+    <div class="hook-item">"Produk viral belum tentu bagus. Tapi yang ini beda."</div>
+
+    <span class="page-num">4</span>
+</div>
+
+<!-- PAGE 5-6: BAB 3 - CAPTIONS -->
+<div class="page section">
+    <h2>Bab 3: 30+ Caption Affiliate</h2>
+    <p>Caption yang baik = hook + value + CTA. Berikut koleksi siap pakai:</p>
+
+    <h3>📖 Storytelling Caption</h3>
+    <div class="caption-box">
+        <p>Jujur awalnya aku skeptis. Produk 35rb mana mungkin sebagus review orang-orang. Tapi setelah 2 minggu pake, temen-temen mulai nanya aku pake apa 😳 Sekarang ini jadi holy grail aku. Cek link di bio buat yang penasaran! ✨</p>
+    </div>
+    <div class="caption-box">
+        <p>Cerita dikit ya. Dulu aku tipe yang selalu beli skincare mahal karena mikir "mahal = bagus." Sampai suatu hari iseng coba produk Shopee yang viral ini... dan hasilnya literally sama 😭💸 Dari situ aku sadar, harga bukan segalanya. Link di bio! 🔗</p>
+    </div>
+    <div class="caption-box">
+        <p>3 bulan lalu kulit aku kusam banget. Udah nyerah sebenernya. Tapi temen recommend serum ini — harganya under 30rb. Aku pikir "yaudah coba aja." Dan sekarang? Liat sendiri before-after ku 🤯 Produknya ada di link bio ya~</p>
+    </div>
+    <div class="caption-box">
+        <p>Aku orangnya impulsive buyer 🙈 Tapi produk ini BENERAN worth every penny. Udah repurchase 4x dan belum pernah kecewa. Kalau kamu lagi cari [kategori] yang affordable tapi quality, ini jawabannya. Cek bio aku! ✅</p>
+    </div>
+    <div class="caption-box">
+        <p>POV: kamu nemuin produk yang bikin kamu berhenti coba-coba produk lain 😌 Itu aku pas nemu ini. Simple, murah, tapi hasilnya?? Chef's kiss 🤌 Link ada di bio — thank me later!</p>
+    </div>
+    <div class="caption-box">
+        <p>Dulu tiap pagi struggle banget sama rambut. Berantakan, susah diatur. Sampai aku nemu produk ini dari Shopee — harganya gak sampe 50rb tapi bikin rambut aku nurut seharian 🥹 Serius ini game changer. Cek link di bio!</p>
+    </div>
+
+    <h3>💊 Problem-Solution Caption</h3>
+    <div class="caption-box">
+        <p>❌ Masalah: Makeup luntur sebelum jam makan siang<br>✅ Solusi: Setting spray ini cuma 30rb tapi tahan 12 jam!<br>Udah aku buktiin sendiri di cuaca panas Jakarta. Hasilnya? Zero touch-up seharian 💪 Link di bio!</p>
+    </div>
+    <div class="caption-box">
+        <p>❌ Masalah: Kamar kost sempit & berantakan<br>✅ Solusi: Organizer set ini under 100rb tapi bikin kamar keliatan 2x lebih luas!<br>Aku beli 3 set sekaligus dan sekarang semua rapi. Link di bio buat yang butuh 🏠</p>
+    </div>
+    <div class="caption-box">
+        <p>❌ Masalah: Bibir kering & pecah-pecah terus<br>✅ Solusi: Lip sleeping mask ini 25rb — bangun tidur bibir langsung plump & lembab!<br>Aku udah pake 2 bulan dan gak pernah balik ke lip balm biasa lagi. Cek bio~ 💋</p>
+    </div>
+    <div class="caption-box">
+        <p>❌ Masalah: Baju cepet bau apek walau udah dicuci<br>✅ Solusi: Laundry booster ini viral karena emang works! Baju wangi tahan 3 hari ☁️<br>Harganya under 20rb. Aku stok 5 botol sekaligus. Link ada di bio!</p>
+    </div>
+    <div class="caption-box">
+        <p>❌ Masalah: Jerawat yang gak kunjung hilang<br>✅ Solusi: Patch jerawat ini literally nyedot isi jerawat overnight! 😱<br>Harga 15rb dapet 30 patches. Aku selalu sedia ini di rumah. Link di bio ya!</p>
+    </div>
+    <div class="caption-box">
+        <p>❌ Masalah: Kuku gampang patah & rapuh<br>✅ Solusi: Nail serum 20rb ini bikin kuku aku kuat dalam 1 minggu!<br>Sebelumnya kuku aku rapuh banget. Sekarang udah bisa panjang tanpa patah. Cek bio 💅</p>
+    </div>
+
+    <span class="page-num">5</span>
+</div>
+
+<div class="page section">
+    <h3>⚡ FOMO Caption</h3>
+    <div class="caption-box">
+        <p>🚨 FLASH SALE ALERT! Produk ini lagi diskon 70% — dari 120rb jadi cuma 35rb! Stok tinggal sedikit dan terakhir kali promo ini, sold out dalam 2 jam 😱 Gas link di bio SEKARANG sebelum kehabisan! 🔥</p>
+    </div>
+    <div class="caption-box">
+        <p>⏰ Heads up! Voucher gratis ongkir + cashback 50% cuma berlaku HARI INI. Aku udah checkout 3 barang tadi pagi 🛒 Jangan sampai nyesel besok pas harga udah normal. Link di bio — GO! 🏃‍♀️</p>
+    </div>
+    <div class="caption-box">
+        <p>📢 Ini produk yang kemarin sempet sold out seminggu. Sekarang BARU restock — dan aku tau dari pengalaman, stoknya gak bakal bertahan lama. Kalau udah lama incarin, sekarang saatnya. Link di bio! ⚡</p>
+    </div>
+    <div class="caption-box">
+        <p>🔥 Promo tanggal kembar ini GILA. Produk favorit aku yang biasanya 90rb sekarang cuma 29rb?! Aku langsung checkout 2 tanpa mikir. Promo berakhir tengah malam — link di bio! 🕛</p>
+    </div>
+    <div class="caption-box">
+        <p>💥 Breaking: brand ini baru launch produk baru dan harga intro-nya MURAH BANGET. Tapi harga bakal naik minggu depan setelah promo launch selesai. Mau dapet harga termurah? Link di bio sekarang! 🎯</p>
+    </div>
+    <div class="caption-box">
+        <p>🚫 Kalau kamu lihat post ini besok, kemungkinan besar udah sold out. Produk ini cuma restock sebulan sekali dan selalu habis dalam hitungan jam. Jangan bilang aku gak kasih tau ya 😏 Link di bio!</p>
+    </div>
+
+    <h3>📋 List/Edukasi Caption</h3>
+    <div class="caption-box">
+        <p>5 produk Shopee under 50rb yang bikin hidup lebih gampang:<br>1. Organizer serbaguna — 35rb<br>2. Clip kabel anti berantakan — 12rb<br>3. Lampu LED meja — 45rb<br>4. Tumbler estetik — 29rb<br>5. Phone stand adjustable — 25rb<br>Semua linknya ada di bio! 🛒✨</p>
+    </div>
+    <div class="caption-box">
+        <p>3 alasan kenapa kamu HARUS coba serum ini:<br>1. Harga under 30rb (budget-friendly banget)<br>2. Ingredients-nya setara brand 200rb+<br>3. Review 4.9 dari 15.000+ buyer<br>Masih ragu? Cek sendiri di link bio 💯</p>
+    </div>
+    <div class="caption-box">
+        <p>Skincare routine aku yang totalnya under 100rb:<br>☀️ Pagi: Cleanser 25rb → Serum 30rb → Sunscreen 40rb<br>🌙 Malam: Cleanser → Serum → Moisturizer 28rb<br>Simple, affordable, tapi hasilnya nyata ✨ Link semua produk di bio!</p>
+    </div>
+    <div class="caption-box">
+        <p>4 barang yang bikin kamar kost aesthetic dengan budget 150rb:<br>1. Fairy lights — 25rb ✨<br>2. Tanaman artificial — 35rb 🌿<br>3. Wall poster minimalis — 40rb 🖼️<br>4. Rak dinding floating — 50rb 📚<br>Total: 150rb. Hasilnya? Kayak di Pinterest 😍 Link di bio!</p>
+    </div>
+    <div class="caption-box">
+        <p>7 rekomendasi produk buat kamu yang sering WFH:<br>1. Monitor stand — ergonomis!<br>2. Mouse wireless — bye kabel ribet<br>3. Desk organizer — meja rapi = pikiran jernih<br>4. Lampu meja LED — mata gak cepet capek<br>5. Bantal punggung — RIP sakit pinggang<br>6. Tumbler 1L — reminder minum<br>7. Coaster anti slip — estetik!<br>Semua under 50rb. Link di bio 🔗</p>
+    </div>
+    <div class="caption-box">
+        <p>Aku rank produk Shopee yang paling worth it bulan ini:<br>🥇 Serum Vitamin C — glowing instant<br>🥈 Dry shampoo — lifesaver buat yang males keramas<br>🥉 Eyelash serum — bulu mata tumbuh natural<br>Ketiga-tiganya under 40rb dan rating di atas 4.8 ⭐ Cek bio!</p>
+    </div>
+
+    <h3>⭐ Review/Testimoni Caption</h3>
+    <div class="caption-box">
+        <p>Honest review setelah 1 bulan pake: ini WORTH IT banget 💯 Aku beli karena penasaran sama hype-nya, dan ternyata emang sebagus review orang-orang. Teksturnya ringan, cepet nyerap, dan hasilnya keliatan dari minggu pertama. Rating aku: 9/10! Link di bio ✨</p>
+    </div>
+    <div class="caption-box">
+        <p>Update: udah repurchase yang ke-3 nih 🔄 Kalau aku sampe repurchase, berarti emang bagus karena aku orangnya gampang bosen dan suka ganti-ganti. Produk ini beda — konsisten hasilnya dari pertama sampe sekarang. Highly recommend! Link bio~ 💕</p>
+    </div>
+    <div class="caption-box">
+        <p>Before-after aku pake produk ini 2 minggu (swipe →) Gak ada filter, gak ada edit. Ini pure hasil dari produk 28rb yang aku temuin random di Shopee 🤯 Aku sendiri kaget hasilnya secepet ini. Penasaran? Link ada di bio! 📸</p>
+    </div>
+    <div class="caption-box">
+        <p>Banyak yang DM nanya produk apa yang aku pake. Ini dia jawabannya! 🙌 Aku udah pake 3 bulan dan so far zero complaint. Harganya affordable, hasilnya real, dan gak bikin iritasi. Cocok buat semua skin type. Cek bio ya~ 💫</p>
+    </div>
+    <div class="caption-box">
+        <p>Rating aku buat produk ini: ⭐⭐⭐⭐⭐ (5/5!)<br>✅ Harga terjangkau<br>✅ Packaging rapi & aman<br>✅ Hasil keliatan cepet<br>✅ Gak bikin breakout<br>❌ Minusnya: cuma 1 — cepet habis karena tiap hari dipake 😂<br>Link di bio buat yang mau coba!</p>
+    </div>
+    <div class="caption-box">
+        <p>Temen aku yang dulunya skeptis akhirnya ikut beli setelah liat hasil di aku 😂 Dan guess what? Dia langsung chat "kenapa gak dari dulu kasih tau!" Kalau kamu juga masih ragu, just try it. 28rb doang kok resikonya 💁‍♀️ Link di bio!</p>
+    </div>
+
+    <span class="page-num">6</span>
+</div>
+
+<!-- PAGE 7: BAB 4 - CTA -->
+<div class="page section">
+    <h2>Bab 4: 20+ CTA Siap Pakai</h2>
+    <p>CTA yang tepat = closing yang bikin orang action. Pilih sesuai tone konten kamu:</p>
+
+    <h3>🌸 Soft Selling</h3>
+    <div class="cta-item">"Link ada di bio ya, cek kalau penasaran ✨"</div>
+    <div class="cta-item">"Kalau mau tau produknya apa, langsung aja cek bio~"</div>
+    <div class="cta-item">"Aku taruh linknya di bio. No pressure, cek aja dulu 😊"</div>
+    <div class="cta-item">"Pengen coba? Link di bio — bisa liat review dulu kok!"</div>
+    <div class="cta-item">"Share ke temen yang butuh ya. Link lengkapnya di bio 💕"</div>
+
+    <h3>⏰ Urgency</h3>
+    <div class="cta-item">"Buruan checkout sebelum sold out! Link di bio 🔥"</div>
+    <div class="cta-item">"Promo tinggal hari ini — jangan sampai nyesel! Link di bio ⏰"</div>
+    <div class="cta-item">"Harga segini gak bakal balik. Gas link di bio SEKARANG! 🚀"</div>
+    <div class="cta-item">"Stok tinggal sedikit! Klik link di bio sebelum kehabisan 😱"</div>
+    <div class="cta-item">"Flash sale berakhir 2 jam lagi. Link di bio — don't miss it! ⚡"</div>
+
+    <h3>💎 Value-Based</h3>
+    <div class="cta-item">"Worth it banget, cek sendiri reviewnya. Link di bio 💯"</div>
+    <div class="cta-item">"Investasi kecil, hasil besar. Cek produknya di link bio ✅"</div>
+    <div class="cta-item">"Udah dibuktiin 10.000+ buyer. Giliran kamu — link di bio!"</div>
+    <div class="cta-item">"Harga segini dapet kualitas segitu? No-brainer. Link di bio 🎯"</div>
+    <div class="cta-item">"Kalau budget terbatas tapi mau hasil maksimal, ini solusinya. Link bio!"</div>
+
+    <h3>😏 FOMO</h3>
+    <div class="cta-item">"Yang lain udah pada checkout, kamu kapan? Link di bio 😏"</div>
+    <div class="cta-item">"Jangan cuma di-save. Checkout sekarang sebelum harga naik! Link bio 🛒"</div>
+    <div class="cta-item">"1000+ orang udah beli minggu ini. Kamu masih mikir? Link di bio!"</div>
+    <div class="cta-item">"Kemarin ada yang DM nyesel gak beli pas promo. Jangan jadi yang berikutnya 😬 Link bio!"</div>
+    <div class="cta-item">"Semua orang ngomongin produk ini. Saatnya kamu buktiin sendiri — link bio! 🔥"</div>
+
+    <h3>🎯 Direct</h3>
+    <div class="cta-item">"🛒 Langsung klik link di bio buat checkout harga termurah!"</div>
+    <div class="cta-item">"Mau? Klik link di bio. Simple as that ✌️"</div>
+    <div class="cta-item">"Link pembelian ada di bio. Tinggal klik → checkout → done! 🎉"</div>
+    <div class="cta-item">"Gak usah basa-basi — link di bio, checkout sekarang! 💪"</div>
+    <div class="cta-item">"Klik link di bio → pilih varian → checkout. Under 2 menit! 🚀"</div>
+
+    <span class="page-num">7</span>
+</div>
+
+<!-- PAGE 8: BAB 5 - TIPS -->
+<div class="page section">
+    <h2>Bab 5: 15 Tips Bikin Konten Affiliate yang Convert</h2>
+    <p>Konten tanpa strategi = buang waktu. Terapin 15 tips ini buat naikin conversion rate kamu:</p>
+
+    <ol>
+        <li><strong>Selalu review produk yang kamu beneran pake.</strong> Audiens bisa bedain review genuine vs fake. Authenticity = trust = conversion.</li>
+        <li><strong>Tunjukin before-after kalau bisa.</strong> Visual proof itu 10x lebih meyakinkan daripada sekedar bilang "bagus banget."</li>
+        <li><strong>Pakai angka spesifik di hook.</strong> "5 produk under 50rb" > "beberapa produk murah." Angka bikin orang curious.</li>
+        <li><strong>Posting di jam prime time.</strong> 7-9 pagi dan 7-10 malam = golden hour buat engagement. Test & track hasilnya.</li>
+        <li><strong>1 konten → sebar di 3+ platform.</strong> Bikin 1x tapi upload ke TikTok, Reels, Threads, Pinterest. Maximize reach!</li>
+        <li><strong>Balas semua komentar dalam 30 menit pertama.</strong> Algoritma push konten yang punya engagement awal tinggi.</li>
+        <li><strong>Pakai trending sound di TikTok/Reels.</strong> Trending audio = free boost dari algoritma. Manfaatin!</li>
+        <li><strong>Bikin Story IG minimal 3x sehari.</strong> Story = tempat soft selling paling efektif. Casual tapi converting.</li>
+        <li><strong>Fokus di 2-3 niche aja, jangan semua.</strong> Orang follow kamu karena konsisten di 1 topik, bukan karena jualan random.</li>
+        <li><strong>Track produk mana yang paling banyak klik.</strong> Cek dashboard affiliate rutin. Double down on what works!</li>
+        <li><strong>Ganti produk yang gak perform setelah 2 minggu.</strong> Jangan emotional sama produk. Kalau gak convert, next.</li>
+        <li><strong>Screenshot testimoni buyer buat social proof.</strong> "Orang lain udah beli & puas" = powerful persuasion tool.</li>
+        <li><strong>Konsisten posting minimal 1x sehari.</strong> Konsistensi > viral sekali. Algorithm rewards consistency.</li>
+        <li><strong>Manfaatin momen flash sale & tanggal kembar.</strong> 11.11, 12.12, pay day sale = buying intent tinggi. Push harder!</li>
+        <li><strong>Jangan takut showing face.</strong> Konten dengan wajah = trust level naik drastis. People buy from people.</li>
+    </ol>
+
+    <div class="tip-box">
+        <strong>🎯 Golden Rule:</strong> Konten yang convert itu bukan yang paling "jualan" — tapi yang paling relatable dan helpful. Bantu audiens solve masalah mereka, komisi ngikut sendiri.
+    </div>
+
+    <span class="page-num">8</span>
+</div>
+
+<!-- PAGE 9: BAB 6 - CHECKLIST -->
+<div class="page section">
+    <h2>Bab 6: Checklist Harian Affiliate</h2>
+    <p>Konsistensi adalah kunci cuan di affiliate. Gunakan checklist ini setiap hari biar kamu tetap on track:</p>
+
+    <h3>📋 Daily Checklist</h3>
+    <ul class="checklist">
+        <li>Posting minimal 1 konten affiliate (Reels/TikTok/Threads)</li>
+        <li>Update Story IG/WA dengan link affiliate</li>
+        <li>Engage di 5-10 komentar orang lain (biar visible)</li>
+        <li>Cek dashboard affiliate (klik & konversi hari ini)</li>
+        <li>Reply semua DM & komentar masuk</li>
+        <li>Riset 1 produk baru yang potensial</li>
+        <li>Share konten ke 1 platform tambahan</li>
+    </ul>
+
+    <h3>📅 Weekly Bonus</h3>
+    <ul class="checklist">
+        <li>Review performa konten minggu ini (mana yang paling banyak klik?)</li>
+        <li>Bikin batch konten 3-5 hari ke depan</li>
+        <li>Update link produk yang udah sold out / ganti yang baru</li>
+        <li>Coba 1 format konten baru (carousel, duet, thread)</li>
+        <li>Analisa kompetitor — apa yang mereka lakuin beda?</li>
+    </ul>
+
+    <div class="tip-box">
+        <strong>💡 Pro Tip:</strong> Screenshot checklist ini dan jadiin wallpaper HP kamu. Atau print dan tempel di meja. Yang penting: lakuin SETIAP HARI. Hasilnya bakal keliatan di minggu ke-2!
+    </div>
+
+    <span class="page-num">9</span>
+</div>
+
+<!-- PAGE 10: PENUTUP -->
+<div class="page closing">
+    <h2>🎉 Selamat!</h2>
+    <p>Kamu udah punya <strong>100+ template</strong> hook, caption, dan CTA siap pakai. Sekarang tinggal satu hal: <strong>EKSEKUSI.</strong></p>
+    <p>Gak perlu sempurna dari awal. Mulai dari 1 konten per hari. Konsisten selama 30 hari. Lihat hasilnya sendiri.</p>
+    <p>Ingat: affiliate itu marathon, bukan sprint. Yang menang bukan yang paling jago — tapi yang paling konsisten 💪</p>
+    <p style="color: var(--accent-light); font-weight: 600; margin-top: 20px;">Follow @tipscuan95 buat update rutin & tips affiliate lainnya!</p>
+    <p style="margin-top: 24px; font-size: 14px; color: var(--gold);">📢 Ebook ini GRATIS. Share ke temen yang baru mulai affiliate ya! Semoga bermanfaat 🙏</p>
+    <p class="signature">— @tipscuan95</p>
+    <div class="footer-info">100+ Hook, Caption & CTA Affiliate Shopee · GRATIS · by @tipscuan95</div>
+    <span class="page-num">10</span>
+</div>
+
+</body>
+</html>
