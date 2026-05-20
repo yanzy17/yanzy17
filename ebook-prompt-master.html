@@ -1,0 +1,2502 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>100+ Prompt Master — ChatGPT & Gemini untuk Semua Niche</title>
+<meta name="description" content="100+ prompt siap pakai untuk ChatGPT & Gemini. Semua niche: content creator, affiliate, copywriting, branding, bisnis, SEO, freelancer. By @yanzy17" />
+
+<!-- Editorial fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,700;0,8..60,900;1,8..60,400;1,8..60,700&family=Inter:wght@300;400;500;600;700;800;900&family=IBM+Plex+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+<style>
+/* =============================================
+   100+ PROMPT MASTER
+   Editorial · Black & White · Premium
+   By @yanzy17
+   ============================================= */
+
+@page {
+    size: A4;
+    margin: 20mm 18mm 24mm 18mm;
+    @bottom-left {
+        content: "100+ PROMPT MASTER";
+        font-family: "Inter", sans-serif;
+        font-size: 8pt;
+        color: #555;
+        letter-spacing: 0.2em;
+    }
+    @bottom-right {
+        content: counter(page) " / " counter(pages);
+        font-family: "IBM Plex Mono", monospace;
+        font-size: 8pt;
+        color: #555;
+    }
+}
+
+@page :first {
+    margin: 0;
+    @bottom-left { content: ""; }
+    @bottom-right { content: ""; }
+}
+
+:root {
+    --paper: #fafaf7;
+    --paper-2: #f3f3ee;
+    --paper-3: #ebebe5;
+    --ink: #0a0a0a;
+    --ink-soft: #2a2a2a;
+    --ink-mute: #555;
+    --ink-dim: #888;
+    --line: #1a1a1a;
+    --line-soft: #d4d4cf;
+    --line-faint: #e5e5e0;
+    --highlight: #ffe66b;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Inter", -apple-system, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.65;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+}
+
+a {
+    color: var(--ink);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-thickness: 1.5px;
+}
+
+a:hover {
+    background: var(--ink);
+    color: var(--paper);
+    text-decoration: none;
+}
+
+img {
+    max-width: 100%;
+}
+
+code {
+    font-family: "IBM Plex Mono", monospace;
+    background: var(--paper-2);
+    padding: 2px 6px;
+    font-size: 0.88em;
+    border: 1px solid var(--line-faint);
+}
+
+/* =================== LAYOUT =================== */
+
+.page {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 90px 56px;
+    border-bottom: 1px solid var(--line);
+    position: relative;
+    background: var(--paper);
+}
+
+.page-num {
+    position: absolute;
+    bottom: 28px;
+    right: 56px;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.7rem;
+    color: var(--ink-mute);
+    letter-spacing: 0.2em;
+}
+
+/* =================== STICKY NAV =================== */
+
+.toc-nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--paper);
+    border-bottom: 1px solid var(--line);
+    padding: 14px 24px;
+    display: flex;
+    gap: 0;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    font-family: "IBM Plex Mono", monospace;
+}
+
+.toc-nav::-webkit-scrollbar {
+    display: none;
+}
+
+.toc-nav a {
+    flex-shrink: 0;
+    font-size: 0.68rem;
+    color: var(--ink-soft);
+    padding: 4px 14px;
+    border-right: 1px solid var(--line-soft);
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    white-space: nowrap;
+    transition: all 0.15s;
+}
+
+.toc-nav a:last-child {
+    border-right: none;
+}
+
+.toc-nav a:hover {
+    background: var(--ink);
+    color: var(--paper);
+}
+
+/* =================== COVER =================== */
+
+.cover {
+    min-height: 100vh;
+    background: var(--paper);
+    color: var(--ink);
+    padding: 60px 56px;
+    border: none;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    position: relative;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+.cover::before,
+.cover::after {
+    content: "";
+    position: absolute;
+    background: var(--ink);
+}
+
+.cover::before {
+    top: 28px;
+    left: 28px;
+    right: 28px;
+    height: 2px;
+}
+
+.cover::after {
+    bottom: 28px;
+    left: 28px;
+    right: 28px;
+    height: 2px;
+}
+
+.cover-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+    color: var(--ink-soft);
+    padding-top: 20px;
+}
+
+.cover-meta-r {
+    text-align: right;
+}
+
+.cover-main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    text-align: left;
+    padding: 40px 0;
+}
+
+.cover-edition {
+    font-family: "Source Serif 4", Georgia, serif;
+    font-style: italic;
+    font-size: 1.1rem;
+    color: var(--ink-mute);
+    margin-bottom: 24px;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 24px;
+    width: 240px;
+}
+
+.cover h1 {
+    font-family: "Source Serif 4", Georgia, serif;
+    font-size: clamp(3.2rem, 12vw, 6.5rem);
+    font-weight: 900;
+    line-height: 0.92;
+    letter-spacing: -0.04em;
+    color: var(--ink);
+    margin-bottom: 20px;
+}
+
+.cover h1 em {
+    font-style: italic;
+    font-weight: 400;
+}
+
+.cover-sub {
+    font-family: "Inter", sans-serif;
+    font-size: clamp(1rem, 2.6vw, 1.3rem);
+    font-weight: 500;
+    color: var(--ink-soft);
+    max-width: 540px;
+    line-height: 1.5;
+    margin-top: 16px;
+    border-top: 1px solid var(--line);
+    padding-top: 20px;
+}
+
+.cover-features {
+    display: flex;
+    gap: 28px;
+    flex-wrap: wrap;
+    margin-top: 36px;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--ink-soft);
+}
+
+.cover-features span {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.cover-features span::before {
+    content: "—";
+    color: var(--ink);
+    font-weight: 700;
+}
+
+.cover-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding-bottom: 20px;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+    color: var(--ink-soft);
+}
+
+.cover-footer strong {
+    display: block;
+    font-family: "Source Serif 4", Georgia, serif;
+    font-size: 1.6rem;
+    font-style: italic;
+    font-weight: 700;
+    color: var(--ink);
+    text-transform: none;
+    letter-spacing: -0.01em;
+    margin-top: 4px;
+}
+
+/* =================== TYPOGRAPHY =================== */
+
+.section-tag {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    margin-bottom: 24px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--line-soft);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.section-tag .ch {
+    font-weight: 700;
+    color: var(--ink);
+}
+
+.page h2.title {
+    font-family: "Source Serif 4", Georgia, serif;
+    font-size: clamp(2.2rem, 5.5vw, 3.4rem);
+    font-weight: 900;
+    line-height: 1.05;
+    letter-spacing: -0.025em;
+    margin-bottom: 28px;
+    color: var(--ink);
+}
+
+.page h2.title em {
+    font-weight: 400;
+    font-style: italic;
+}
+
+.divider {
+    width: 80px;
+    height: 3px;
+    background: var(--ink);
+    margin: 28px 0;
+    border: none;
+}
+
+.divider.thin {
+    height: 1px;
+    background: var(--line);
+    width: 100%;
+}
+
+.lead {
+    font-family: "Source Serif 4", Georgia, serif;
+    font-size: 1.35rem;
+    font-style: italic;
+    line-height: 1.55;
+    color: var(--ink);
+    margin-bottom: 28px;
+    max-width: 600px;
+    border-left: 3px solid var(--ink);
+    padding-left: 22px;
+}
+
+.page p {
+    margin-bottom: 18px;
+    font-size: 1.02rem;
+    line-height: 1.75;
+    color: var(--ink-soft);
+}
+
+.page p strong {
+    color: var(--ink);
+    font-weight: 700;
+}
+
+/* =================== CARDS =================== */
+
+.card {
+    background: var(--paper-2);
+    border: 1px solid var(--line-soft);
+    padding: 28px 32px;
+    margin: 24px 0;
+    border-radius: 0;
+}
+
+.card.solid {
+    background: var(--ink);
+    color: var(--paper);
+    border-color: var(--ink);
+}
+
+.card.solid p,
+.card.solid li {
+    color: var(--paper) !important;
+}
+
+.card h3 {
+    font-family: "Source Serif 4", Georgia, serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+/* =================== PULL QUOTE =================== */
+
+.pull-quote {
+    font-family: "Source Serif 4", Georgia, serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    line-height: 1.3;
+    letter-spacing: -0.02em;
+    padding: 40px 0;
+    margin: 40px 0;
+    border-top: 2px solid var(--ink);
+    border-bottom: 2px solid var(--ink);
+    color: var(--ink);
+}
+
+.pull-quote cite {
+    display: block;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.72rem;
+    font-style: normal;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    margin-top: 16px;
+}
+
+/* =================== STATS =================== */
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 20px;
+    margin: 32px 0;
+}
+
+.stats .stat {
+    text-align: center;
+    padding: 24px 16px;
+    border: 1px solid var(--line-soft);
+    background: var(--paper-2);
+}
+
+.stats .stat .num {
+    font-family: "Source Serif 4", Georgia, serif;
+    font-size: 2.4rem;
+    font-weight: 900;
+    display: block;
+    margin-bottom: 4px;
+}
+
+.stats .stat .label {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--ink-mute);
+}
+
+/* =================== STEP LIST =================== */
+
+.step-list {
+    list-style: none;
+    counter-reset: steps;
+    margin: 28px 0;
+}
+
+.step-list li {
+    counter-increment: steps;
+    padding: 16px 0 16px 56px;
+    border-bottom: 1px solid var(--line-faint);
+    position: relative;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--ink-soft);
+}
+
+.step-list li::before {
+    content: counter(steps, decimal-leading-zero);
+    position: absolute;
+    left: 0;
+    top: 16px;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--ink);
+}
+
+/* =================== PROMPT CARDS (.tpl) =================== */
+
+.prompt-section {
+    counter-reset: prompts;
+}
+
+.tpl {
+    counter-increment: prompts;
+    background: var(--paper-2);
+    border: 1px solid var(--line-soft);
+    padding: 28px 32px;
+    margin: 28px 0;
+    position: relative;
+}
+
+.tpl::before {
+    content: "№" counter(prompts, decimal-leading-zero);
+    position: absolute;
+    top: 12px;
+    right: 16px;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--ink-mute);
+    letter-spacing: 0.1em;
+}
+
+.tpl pre {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.88rem;
+    line-height: 1.7;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    color: var(--ink);
+    margin-bottom: 14px;
+    background: var(--paper);
+    padding: 18px 20px;
+    border: 1px solid var(--line-faint);
+}
+
+.tpl .kapan {
+    font-family: "Inter", sans-serif;
+    font-size: 0.82rem;
+    color: var(--ink-mute);
+    font-style: italic;
+    padding-left: 4px;
+}
+
+.tpl .kapan::before {
+    content: "⏱ Kapan Pakai: ";
+    font-style: normal;
+    font-weight: 600;
+    color: var(--ink-soft);
+}
+
+/* =================== TOC LIST =================== */
+
+.toc-list {
+    list-style: none;
+    margin: 24px 0;
+}
+
+.toc-list li {
+    border-bottom: 1px solid var(--line-faint);
+    padding: 12px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.toc-list li a {
+    text-decoration: none;
+    font-family: "Inter", sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--ink);
+}
+
+.toc-list li a:hover {
+    text-decoration: underline;
+}
+
+.toc-list li .dots {
+    flex: 1;
+    border-bottom: 1px dotted var(--line-soft);
+    margin: 0 12px;
+    min-width: 40px;
+}
+
+.toc-list li .pg {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.75rem;
+    color: var(--ink-mute);
+}
+
+/* =================== BUTTONS =================== */
+
+.btn-pdf {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--ink);
+    color: var(--paper);
+    padding: 14px 28px;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-pdf:hover {
+    background: var(--ink-soft);
+    color: var(--paper);
+    transform: translateY(-1px);
+}
+
+/* =================== PRINT STYLES =================== */
+
+@media print {
+    .toc-nav,
+    .btn-pdf {
+        display: none !important;
+    }
+
+    .page {
+        padding: 40px 0;
+        border: none;
+        page-break-after: always;
+    }
+
+    .cover {
+        min-height: auto;
+        page-break-after: always;
+    }
+
+    .tpl {
+        page-break-inside: avoid;
+    }
+
+    .pull-quote {
+        page-break-inside: avoid;
+    }
+
+    .card {
+        page-break-inside: avoid;
+    }
+}
+
+/* =================== RESPONSIVE =================== */
+
+@media (max-width: 600px) {
+    .page {
+        padding: 48px 24px;
+    }
+
+    .cover {
+        padding: 40px 24px;
+    }
+
+    .cover h1 {
+        font-size: clamp(2.6rem, 11vw, 4rem);
+    }
+
+    .tpl pre {
+        font-size: 0.8rem;
+        padding: 14px 16px;
+    }
+
+    .tpl {
+        padding: 22px 20px;
+    }
+
+    .stats {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .pull-quote {
+        font-size: 1.4rem;
+    }
+
+    .cover-features {
+        gap: 16px;
+    }
+
+    .step-list li {
+        padding-left: 44px;
+    }
+}
+</style>
+</head>
+</head>
+<body>
+
+<!-- ========== STICKY NAV ========== -->
+<nav class="toc-nav">
+    <a href="#cover">Cover</a>
+    <a href="#pengantar">Pengantar</a>
+    <a href="#cara-pakai">Cara Pakai</a>
+    <a href="#daftar-isi">Daftar Isi</a>
+    <a href="#niche1">Creator</a>
+    <a href="#niche2">Affiliate</a>
+    <a href="#niche3">Copywriting</a>
+    <a href="#niche4">Branding</a>
+    <a href="#niche5">Bisnis</a>
+    <a href="#niche6">Edukasi</a>
+    <a href="#niche7">Self-Dev</a>
+    <a href="#niche8">Freelancer</a>
+    <a href="#niche9">SEO</a>
+    <a href="#bonus">Bonus</a>
+    <a href="#closing">Closing</a>
+</nav>
+
+<!-- ========================================
+     SECTION 1: COVER
+     ======================================== -->
+<section class="cover" id="cover">
+    <div class="cover-meta">
+        <div>Digital Ebook<br/>2024 Edition</div>
+        <div class="cover-meta-r">ChatGPT & Gemini<br/>All Niches</div>
+    </div>
+    <div class="cover-main">
+        <div class="cover-edition">Prompt Engineering Handbook</div>
+        <h1>100+ PROMPT<br/><em>Master</em></h1>
+        <p class="cover-sub">Koleksi prompt siap pakai untuk ChatGPT & Gemini — dari content creator sampai SEO, dari copywriting sampai personal branding. Semua niche, satu ebook.</p>
+        <div class="cover-features">
+            <span>100+ Prompts</span>
+            <span>9 Niche</span>
+            <span>Copy-Paste Ready</span>
+            <span>Formula RICE</span>
+            <span>Bonus Cheat Code</span>
+        </div>
+    </div>
+    <div class="cover-footer">
+        <div>Prompt Master Series<br/><strong>@yanzy17</strong></div>
+        <div style="text-align:right">GPT-4 · Gemini Pro<br/>Claude · All LLMs</div>
+    </div>
+</section>
+
+<!-- ========================================
+     COVER — STATS BAR
+     ======================================== -->
+<section class="page" style="border-bottom:1px solid var(--line);padding-top:40px;padding-bottom:40px">
+    <div class="stats">
+        <div class="stat">
+            <span class="num">111</span>
+            <span class="label">Ready-to-Use Prompts</span>
+        </div>
+        <div class="stat">
+            <span class="num">9</span>
+            <span class="label">Niche Categories</span>
+        </div>
+        <div class="stat">
+            <span class="num">RICE</span>
+            <span class="label">Proven Formula</span>
+        </div>
+        <div class="stat">
+            <span class="num">∞</span>
+            <span class="label">Output Potential</span>
+        </div>
+    </div>
+    <div class="card solid" style="margin-top:24px">
+        <h3>Apa yang Bikin Ebook Ini Beda?</h3>
+        <ul style="list-style:none;padding:0;margin-top:12px">
+            <li style="padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.15)">→ Bukan cuma list prompt — setiap prompt ada <strong>"Kapan Pakai"</strong> context</li>
+            <li style="padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.15)">→ Prompt di-design dengan <strong>formula RICE</strong> — bukan asal tanya</li>
+            <li style="padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.15)">→ <strong>Copy-paste ready</strong> — ganti [placeholder] langsung jalan</li>
+            <li style="padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.15)">→ <strong>Multi-platform</strong> — works di ChatGPT, Gemini, Claude, dan lainnya</li>
+            <li style="padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.15)">→ <strong>Bahasa Indonesia</strong> — nggak perlu translate dari prompt English</li>
+            <li style="padding:8px 0">→ <strong>Bonus Cheat Codes</strong> — meta-prompts yang enhance semua prompt lain</li>
+        </ul>
+    </div>
+    <div style="text-align:center;margin-top:32px">
+        <button class="btn-pdf" onclick="window.print()">⬇ Download as PDF</button>
+    </div>
+</section>
+
+
+
+<!-- ========================================
+     SECTION 2: PENGANTAR
+     ======================================== -->
+<section class="page" id="pengantar">
+    <div class="section-tag">
+        <span class="ch">01</span>
+        <span>Pengantar</span>
+    </div>
+
+    <h2 class="title">Kenapa <em>Prompt</em> Itu Penting?</h2>
+    <hr class="divider"/>
+
+    <p class="lead">AI itu powerful, tapi cuma se-powerful prompt yang lo kasih. Garbage in, garbage out — itu hukum alam digital.</p>
+
+    <p>Gini ceritanya: lo punya akses ke ChatGPT atau Gemini — tools yang literally bisa nulis, mikir, dan bikin strategi buat lo. Tapi kebanyakan orang cuma ngetik "buatin caption dong" terus kecewa sama hasilnya.</p>
+
+    <p><strong>Masalahnya bukan di AI-nya. Masalahnya di cara lo ngomong ke AI.</strong></p>
+
+    <div class="card">
+        <h3>The Prompt Quality Spectrum:</h3>
+        <ul style="list-style:none;padding:0;margin-top:12px">
+            <li style="padding:10px 0;border-bottom:1px solid var(--line-faint)">
+                <strong>Level 1 (Bad):</strong> "Buatin caption"
+                <br/><span style="font-size:.85rem;color:var(--ink-mute)">→ Result: generic, membosankan, nggak cocok sama brand lo</span>
+            </li>
+            <li style="padding:10px 0;border-bottom:1px solid var(--line-faint)">
+                <strong>Level 2 (Okay):</strong> "Buatin caption untuk produk skincare"
+                <br/><span style="font-size:.85rem;color:var(--ink-mute)">→ Result: slightly better, tapi masih too generic</span>
+            </li>
+            <li style="padding:10px 0;border-bottom:1px solid var(--line-faint)">
+                <strong>Level 3 (Good):</strong> "Buatin caption IG untuk serum vitamin C, target cewek 20-30, tone casual"
+                <br/><span style="font-size:.85rem;color:var(--ink-mute)">→ Result: decent, usable with minor edits</span>
+            </li>
+            <li style="padding:10px 0">
+                <strong>Level 4 (Pro — Ebook ini):</strong> Full RICE prompt dengan role, constraints, format, dan contoh
+                <br/><span style="font-size:.85rem;color:var(--ink-mute)">→ Result: publish-ready, on-brand, high-converting</span>
+            </li>
+        </ul>
+    </div>
+
+    <p>Ebook ini gue bikin supaya lo nggak perlu mikir dari nol. Semua prompt udah di-craft, di-test, dan siap copy-paste. Tinggal ganti <code>[placeholder]</code> sesuai kebutuhan lo, dan boom — hasilnya langsung level pro.</p>
+
+    <div class="card solid">
+        <h3>Yang Lo Dapet di Ebook Ini:</h3>
+        <ul style="list-style:none;padding:0;margin-top:12px">
+            <li style="padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.15)">→ 100+ prompt siap pakai untuk 9 niche berbeda</li>
+            <li style="padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.15)">→ Formula RICE biar lo bisa bikin prompt sendiri</li>
+            <li style="padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.15)">→ Setiap prompt ada "Kapan Pakai" supaya nggak bingung</li>
+            <li style="padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.15)">→ Bonus 10 prompt "Cheat Code" universal</li>
+            <li style="padding:8px 0">→ Works di ChatGPT, Gemini, Claude, dan LLM lainnya</li>
+        </ul>
+    </div>
+
+    <p>Cara pakainya gampang: buka niche yang lo butuhin, pilih prompt, copy, paste ke AI, ganti placeholder, done. Sesimpel itu.</p>
+
+    <div class="pull-quote">
+        "Orang yang nggak bisa prompt itu kayak orang yang punya Ferrari tapi nggak bisa nyetir."
+        <cite>— @yanzy17</cite>
+    </div>
+
+    <p>Let's go. 🚀</p>
+
+    <div class="stats">
+        <div class="stat">
+            <span class="num">111</span>
+            <span class="label">Prompts</span>
+        </div>
+        <div class="stat">
+            <span class="num">9</span>
+            <span class="label">Niches</span>
+        </div>
+        <div class="stat">
+            <span class="num">0</span>
+            <span class="label">Excuses Left</span>
+        </div>
+    </div>
+
+    <span class="page-num">01</span>
+</section>
+
+<!-- ========================================
+     SECTION 3: CARA PAKAI — FORMULA RICE
+     ======================================== -->
+<section class="page" id="cara-pakai">
+    <div class="section-tag">
+        <span class="ch">02</span>
+        <span>Cara Pakai</span>
+    </div>
+
+    <h2 class="title">Formula <em>RICE</em></h2>
+    <hr class="divider"/>
+
+    <p class="lead">Sebelum lo copy-paste prompt di ebook ini, pahami dulu formula di baliknya. Supaya lo juga bisa bikin prompt sendiri kalau butuh.</p>
+
+    <p><strong>RICE</strong> = Role + Instruction + Context + Example</p>
+
+    <div class="stats">
+        <div class="stat">
+            <span class="num">R</span>
+            <span class="label">Role</span>
+        </div>
+        <div class="stat">
+            <span class="num">I</span>
+            <span class="label">Instruction</span>
+        </div>
+        <div class="stat">
+            <span class="num">C</span>
+            <span class="label">Context</span>
+        </div>
+        <div class="stat">
+            <span class="num">E</span>
+            <span class="label">Example</span>
+        </div>
+    </div>
+
+    <ol class="step-list">
+        <li><strong>Role</strong> — Kasih tau AI dia jadi siapa. "Kamu adalah copywriter senior" atau "Act as SEO specialist." Ini nge-set tone dan expertise level.</li>
+        <li><strong>Instruction</strong> — Perintah spesifik. Jangan "buatin caption", tapi "buat 5 variasi caption untuk produk skincare, max 150 kata, include CTA."</li>
+        <li><strong>Context</strong> — Background info. Target audience siapa, platform apa, tone kayak gimana, constraint apa.</li>
+        <li><strong>Example</strong> — Kasih contoh output yang lo mau. Ini game-changer. AI bakal ngikutin pattern dari contoh lo.</li>
+    </ol>
+
+    <div class="card">
+        <h3>Contoh RICE dalam Aksi:</h3>
+        <pre style="font-family:'IBM Plex Mono',monospace;font-size:.85rem;line-height:1.7;white-space:pre-wrap;margin-top:12px;background:var(--paper);padding:16px;border:1px solid var(--line-faint)">Role: Kamu adalah content strategist untuk brand fashion lokal.
+Instruction: Buat 3 hook pembuka untuk Threads post tentang "outfit of the day" yang relatable untuk Gen Z.
+Context: Target audience cewek 18-25, tone casual & witty, avoid hard selling.
+Example: "Outfit lo hari ini udah match sama mood lo belum? Kalau belum, ini dia inspirasi yang bakal bikin lo auto-pede 👇"</pre>
+    </div>
+
+    <p><strong>Pro tip:</strong> Lo nggak harus selalu pakai keempat elemen. Kadang Role + Instruction udah cukup. Tapi makin lengkap RICE-nya, makin bagus output-nya.</p>
+
+    <p>Semua prompt di ebook ini udah pakai formula RICE — jadi lo tinggal ganti bagian <code>[placeholder]</code> aja.</p>
+
+    <div class="card solid">
+        <h3>Common Mistakes yang Bikin Output AI Jelek:</h3>
+        <ul style="list-style:none;padding:0;margin-top:12px">
+            <li style="padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.15)">✗ Prompt terlalu pendek & vague: "buatin caption"</li>
+            <li style="padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.15)">✗ No context: AI nggak tau audience, platform, atau tone lo</li>
+            <li style="padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.15)">✗ No format specification: output-nya jadi random structure</li>
+            <li style="padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.15)">✗ Accept first output: nggak iterate atau minta revision</li>
+            <li style="padding:8px 0">✗ Forget to give examples: AI guess blindly about style lo</li>
+        </ul>
+    </div>
+
+    <div class="pull-quote">
+        "Prompt yang bagus itu investment 30 detik yang save lo 3 jam kerja."
+        <cite>— Prompt Engineering 101</cite>
+    </div>
+
+    <span class="page-num">02</span>
+</section>
+
+<!-- ========================================
+     SECTION 4: DAFTAR ISI
+     ======================================== -->
+<section class="page" id="daftar-isi">
+    <div class="section-tag">
+        <span class="ch">03</span>
+        <span>Daftar Isi</span>
+    </div>
+
+    <h2 class="title">Daftar <em>Isi</em></h2>
+    <hr class="divider"/>
+
+    <ul class="toc-list">
+        <li>
+            <a href="#pengantar">Pengantar — Kenapa Prompt Itu Penting</a>
+            <span class="dots"></span>
+            <span class="pg">01</span>
+        </li>
+        <li>
+            <a href="#cara-pakai">Cara Pakai — Formula RICE</a>
+            <span class="dots"></span>
+            <span class="pg">02</span>
+        </li>
+        <li>
+            <a href="#daftar-isi">Daftar Isi</a>
+            <span class="dots"></span>
+            <span class="pg">03</span>
+        </li>
+        <li>
+            <a href="#niche1">Niche 1: Content Creator & Threads (15 Prompts)</a>
+            <span class="dots"></span>
+            <span class="pg">04</span>
+        </li>
+        <li>
+            <a href="#niche2">Niche 2: Shopee Affiliate & E-Commerce (12 Prompts)</a>
+            <span class="dots"></span>
+            <span class="pg">05</span>
+        </li>
+        <li>
+            <a href="#niche3">Niche 3: Copywriting & Sales (12 Prompts)</a>
+            <span class="dots"></span>
+            <span class="pg">06</span>
+        </li>
+        <li>
+            <a href="#niche4">Niche 4: Personal Branding & LinkedIn (10 Prompts)</a>
+            <span class="dots"></span>
+            <span class="pg">07</span>
+        </li>
+        <li>
+            <a href="#niche5">Niche 5: Bisnis & UMKM (12 Prompts)</a>
+            <span class="dots"></span>
+            <span class="pg">08</span>
+        </li>
+        <li>
+            <a href="#niche6">Niche 6: Edukasi & Tutorial (10 Prompts)</a>
+            <span class="dots"></span>
+            <span class="pg">09</span>
+        </li>
+        <li>
+            <a href="#niche7">Niche 7: Self-Development & Produktivitas (10 Prompts)</a>
+            <span class="dots"></span>
+            <span class="pg">10</span>
+        </li>
+        <li>
+            <a href="#niche8">Niche 8: Freelancer & Jasa (10 Prompts)</a>
+            <span class="dots"></span>
+            <span class="pg">11</span>
+        </li>
+        <li>
+            <a href="#niche9">Niche 9: SEO & Blog (10 Prompts)</a>
+            <span class="dots"></span>
+            <span class="pg">12</span>
+        </li>
+        <li>
+            <a href="#bonus">Bonus: 10 Prompt "Cheat Code"</a>
+            <span class="dots"></span>
+            <span class="pg">13</span>
+        </li>
+        <li>
+            <a href="#closing">Closing — Action Plan</a>
+            <span class="dots"></span>
+            <span class="pg">14</span>
+        </li>
+    </ul>
+
+    <div style="text-align:center;margin-top:40px">
+        <button class="btn-pdf" onclick="window.print()">⬇ Download as PDF</button>
+    </div>
+
+    <div class="card" style="margin-top:32px">
+        <h3>Navigasi Cepat:</h3>
+        <p style="margin-bottom:8px">Setiap section punya prompt yang <strong>self-contained</strong> — lo nggak perlu baca dari awal sampai akhir. Langsung skip ke niche yang lo butuhin.</p>
+        <p style="margin-bottom:0;font-family:'IBM Plex Mono',monospace;font-size:.8rem;color:var(--ink-mute)">Tip: Pakai Ctrl+F / Cmd+F untuk search keyword spesifik di halaman ini.</p>
+    </div>
+
+    <span class="page-num">03</span>
+</section>
+
+<!-- ========================================
+     QUICK START GUIDE
+     ======================================== -->
+<section class="page" style="border-bottom:1px solid var(--line-faint)">
+    <div class="section-tag">
+        <span class="ch">—</span>
+        <span>Quick Start Guide</span>
+    </div>
+
+    <h2 class="title">Mulai dari <em>Mana?</em></h2>
+
+    <p>Tergantung situasi lo sekarang:</p>
+
+    <div class="card">
+        <h3>🎯 "Gue content creator yang mau grow di Threads"</h3>
+        <p style="margin-bottom:0">→ Start dari <a href="#niche1">Niche 1: Content Creator & Threads</a> + combine dengan <a href="#bonus">Cheat Code №05 (10x Output)</a></p>
+    </div>
+
+    <div class="card">
+        <h3>💰 "Gue affiliate marketer yang mau boost konversi"</h3>
+        <p style="margin-bottom:0">→ Start dari <a href="#niche2">Niche 2: Shopee Affiliate</a> + <a href="#niche3">Niche 3: Copywriting</a> untuk polish copy-nya</p>
+    </div>
+
+    <div class="card">
+        <h3>🏢 "Gue pemilik UMKM yang baru mulai digital"</h3>
+        <p style="margin-bottom:0">→ Start dari <a href="#niche5">Niche 5: Bisnis & UMKM</a> → lanjut <a href="#niche1">Niche 1</a> untuk content marketing</p>
+    </div>
+
+    <div class="card">
+        <h3>💼 "Gue freelancer yang mau dapet lebih banyak client"</h3>
+        <p style="margin-bottom:0">→ Start dari <a href="#niche8">Niche 8: Freelancer</a> + <a href="#niche4">Niche 4: Personal Branding</a> untuk visibility</p>
+    </div>
+
+    <div class="card">
+        <h3>📝 "Gue blogger yang mau ranking di Google"</h3>
+        <p style="margin-bottom:0">→ Start dari <a href="#niche9">Niche 9: SEO & Blog</a> + <a href="#bonus">Cheat Code №08 (Pure Output)</a> untuk efficiency</p>
+    </div>
+
+    <div class="card">
+        <h3>🧠 "Gue mau improve productivity & personal growth"</h3>
+        <p style="margin-bottom:0">→ Start dari <a href="#niche7">Niche 7: Self-Development</a> + <a href="#bonus">Cheat Code №01 (Clarifying Questions)</a></p>
+    </div>
+
+    <div class="pull-quote">
+        "Don't read this ebook from page 1 to last. Jump to what you need NOW. Action today beats perfect plan tomorrow."
+        <cite>— @yanzy17</cite>
+    </div>
+</section>
+
+<!-- ========================================
+     COMPATIBILITY NOTE
+     ======================================== -->
+<section class="page" style="border-bottom:1px solid var(--line-faint)">
+    <div class="section-tag">
+        <span class="ch">—</span>
+        <span>Kompatibilitas AI</span>
+    </div>
+
+    <h2 class="title">Works <em>Everywhere</em></h2>
+
+    <p>Semua prompt di ebook ini di-design supaya works di multiple AI platforms:</p>
+
+    <div class="stats">
+        <div class="stat">
+            <span class="num">GPT</span>
+            <span class="label">ChatGPT / GPT-4</span>
+        </div>
+        <div class="stat">
+            <span class="num">Gem</span>
+            <span class="label">Google Gemini</span>
+        </div>
+        <div class="stat">
+            <span class="num">Cld</span>
+            <span class="label">Claude / Anthropic</span>
+        </div>
+    </div>
+
+    <div class="card">
+        <h3>Platform-Specific Tips:</h3>
+        <ul style="list-style:none;padding:0;margin-top:12px">
+            <li style="padding:10px 0;border-bottom:1px solid var(--line-faint)"><strong>ChatGPT (GPT-4)</strong> — Best untuk creative writing, brainstorming, dan conversational tone. Kasih context panjang nggak masalah.</li>
+            <li style="padding:10px 0;border-bottom:1px solid var(--line-faint)"><strong>Google Gemini</strong> — Bagus untuk research-heavy tasks, data analysis, dan content yang butuh factual accuracy. Bisa access internet real-time.</li>
+            <li style="padding:10px 0;border-bottom:1px solid var(--line-faint)"><strong>Claude</strong> — Excellent untuk long-form writing, detailed analysis, dan nuanced tasks. Great at following complex instructions.</li>
+            <li style="padding:10px 0"><strong>Free Tier Tips</strong> — Semua prompt ini works di free tier. Tapi kalau lo punya akses ke paid version, output-nya noticeably lebih bagus untuk complex prompts.</li>
+        </ul>
+    </div>
+
+    <p><strong>Pro tip:</strong> Kalau output di satu platform kurang bagus, coba platform lain. Setiap AI punya strengths berbeda. Test 2-3 platform buat prompt yang sama, lalu pick yang paling cocok buat use case lo.</p>
+
+    <hr class="divider thin" style="margin:32px 0"/>
+
+    <div class="card solid">
+        <h3>Placeholder Guide — Cara Ganti [brackets]:</h3>
+        <ul style="list-style:none;padding:0;margin-top:12px">
+            <li style="padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.15)"><code style="background:rgba(255,255,255,0.15);border:none;color:var(--paper)">[topik]</code> → Ganti dengan topik spesifik lo. Makin spesifik = makin bagus.</li>
+            <li style="padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.15)"><code style="background:rgba(255,255,255,0.15);border:none;color:var(--paper)">[niche]</code> → Niche/industri lo. Contoh: "skincare pria", "crypto education"</li>
+            <li style="padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.15)"><code style="background:rgba(255,255,255,0.15);border:none;color:var(--paper)">[audience/target]</code> → Describe target market: umur, gender, behavior, interest</li>
+            <li style="padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.15)"><code style="background:rgba(255,255,255,0.15);border:none;color:var(--paper)">[produk]</code> → Nama produk + brief description + harga range</li>
+            <li style="padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.15)"><code style="background:rgba(255,255,255,0.15);border:none;color:var(--paper)">[jasa]</code> → Jasa yang lo tawarkan + scope + level experience</li>
+            <li style="padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.15)"><code style="background:rgba(255,255,255,0.15);border:none;color:var(--paper)">[bisnis]</code> → Jenis bisnis + skala + unique selling point</li>
+            <li style="padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.15)"><code style="background:rgba(255,255,255,0.15);border:none;color:var(--paper)">[keyword]</code> → Target keyword utama untuk SEO content</li>
+            <li style="padding:8px 0"><code style="background:rgba(255,255,255,0.15);border:none;color:var(--paper)">[X]</code> → Angka spesifik: budget, durasi, jumlah item, dll</li>
+        </ul>
+    </div>
+
+    <p style="margin-top:24px"><strong>Golden Rule:</strong> The more specific your placeholder replacement, the better the AI output. "Skincare pria umur 20-30 yang baru mulai skincare-an dan budget-nya terbatas" >>> "skincare".</p>
+</section>
+
+
+
+<!-- ========================================
+     SECTION 5: NICHE 1 — CONTENT CREATOR & THREADS
+     ======================================== -->
+<section class="page" id="niche1">
+    <div class="section-tag">
+        <span class="ch">04</span>
+        <span>Niche 1 — Content Creator & Threads</span>
+    </div>
+
+    <h2 class="title">Content Creator<br/>& <em>Threads</em></h2>
+    <hr class="divider"/>
+
+    <p class="lead">15 prompt untuk bikin hook yang nampol, caption yang engaging, storytelling yang bikin orang scroll balik, dan CTA yang convert.</p>
+
+    <div class="stats">
+        <div class="stat">
+            <span class="num">15</span>
+            <span class="label">Prompts</span>
+        </div>
+        <div class="stat">
+            <span class="num">4</span>
+            <span class="label">Categories</span>
+        </div>
+        <div class="stat">
+            <span class="num">∞</span>
+            <span class="label">Content Ideas</span>
+        </div>
+    </div>
+
+    <div class="card">
+        <h3>Kategori Prompt di Section Ini:</h3>
+        <p style="margin-bottom:0">Hook & Opening (4) · Full Post & Storytelling (4) · Strategy & Planning (4) · Optimization & Audit (3)</p>
+    </div>
+
+    <div class="prompt-section">
+
+        <div class="tpl">
+            <pre>Kamu adalah content strategist untuk kreator Threads. Buat 5 variasi hook pembuka untuk topik "[topik]" yang bikin orang berhenti scroll. Gunakan gaya bahasa casual Gen Z, max 2 kalimat per hook. Sertakan emoji yang relevan. Format: nomor + hook.</pre>
+            <p class="kapan">Waktu lo butuh opening line yang nampol buat Threads post.</p>
+        </div>
+
+        <div class="tpl">
+            <pre>Act as a viral content writer. Tulis satu Threads post lengkap (hook + body + CTA) tentang "[topik]". Tone: kayak ngobrol sama temen. Max 280 kata. Hook harus provokatif/kontroversial tapi nggak offensive. CTA ajak orang comment.</pre>
+            <p class="kapan">Buat bikin satu post utuh yang siap publish.</p>
+        </div>
+
+        <div class="tpl">
+            <pre>Kamu adalah storytelling expert. Buat micro-story (5-7 kalimat) tentang pengalaman "[pengalaman]" yang relatable buat audience [niche]. Struktur: situasi → konflik → twist → pelajaran. Tone: vulnerable tapi powerful.</pre>
+            <p class="kapan">Kalau mau share pengalaman personal yang engaging.</p>
+        </div>
+
+        <div class="tpl">
+            <pre>Buat 10 ide konten Threads untuk niche "[niche]" selama 1 minggu. Format tabel: Hari | Jenis Post (hook/story/tips/kontroversial/thread) | Topik | Hook Pembuka. Pastikan variasi jenis post-nya balance.</pre>
+            <p class="kapan">Untuk content planning mingguan biar nggak kehabisan ide.</p>
+        </div>
+
+        <div class="tpl">
+            <pre>Kamu copywriter Threads. Buat 5 CTA (call-to-action) yang berbeda untuk mengakhiri post tentang "[topik]". Jangan generic kayak "comment ya!". Buat yang spesifik, engaging, dan bikin orang pengen respond. Max 1 kalimat per CTA.</pre>
+            <p class="kapan">Kalau CTA lo selalu sama dan engagement drop.</p>
+        </div>
+
+        <div class="tpl">
+            <pre>Act as engagement specialist. Buat thread carousel (5 slides) tentang "[topik]". Format per slide: Headline (bold, max 8 kata) + Body (2-3 kalimat). Slide 1 = hook, Slide 5 = CTA. Tone: edukasi tapi santai.</pre>
+            <p class="kapan">Buat bikin carousel/thread multi-part yang edukatif.</p>
+        </div>
+
+        <div class="tpl">
+            <pre>Kamu content repurposing expert. Gue punya konten ini: "[paste konten lama]". Ubah jadi 3 format berbeda untuk Threads: (1) Hot take/opini, (2) Tips listicle, (3) Story-based. Pertahankan core message-nya.</pre>
+            <p class="kapan">Kalau mau recycle konten lama jadi fresh lagi.</p>
+        </div>
+
+        <div class="tpl">
+            <pre>Buat 7 "hot take" atau opini kontroversial (tapi berdasar) tentang niche "[niche]" yang bisa memancing diskusi di Threads. Format: opini + 1 kalimat penjelasan kenapa. Tone: percaya diri, slightly provocative.</pre>
+            <p class="kapan">Mau boost engagement lewat post opini yang bikin orang debat.</p>
+        </div>
+
+        <div class="tpl">
+            <pre>Kamu adalah growth hacker Threads. Analisis hook berikut: "[hook lo]". Kasih rating 1-10, jelaskan kenapa, lalu buat 3 versi yang lebih baik dengan alasan improvement-nya. Format: rating → analisis → versi baru.</pre>
+            <p class="kapan">Untuk evaluate dan improve hook yang udah lo bikin.</p>
+        </div>
+
+        <div class="tpl">
+            <pre>Act as a Threads algorithm expert. Buat strategi posting untuk meningkatkan reach di Threads selama 7 hari. Include: waktu posting terbaik, frekuensi, jenis konten tiap hari, engagement strategy (reply, quote, repost). Format step-by-step.</pre>
+            <p class="kapan">Mau scaling reach Threads dengan strategi yang terukur.</p>
+        </div>
+
+        <div class="tpl">
+            <pre>Kamu UGC content strategist. Buat 5 pertanyaan/poll yang bisa dipost di Threads untuk niche "[niche]" yang bikin audience engage tanpa effort tinggi. Pertanyaan harus relatable, easy to answer, dan memancing reply panjang.</pre>
+            <p class="kapan">Butuh boost reply count dengan low-effort engagement post.</p>
+        </div>
+
+        <div class="tpl">
+            <pre>Buat "before vs after" post untuk Threads tentang transformasi di bidang [bidang]. Format: "Dulu gue [kebiasaan lama]. Sekarang gue [kebiasaan baru]. Yang berubah: [3 poin perubahan]." Tone: inspiring tanpa preachy.</pre>
+            <p class="kapan">Share personal growth yang relatable dan shareable.</p>
+        </div>
+
+        <div class="tpl">
+            <pre>Kamu adalah meme/humor content writer. Buat 5 konten Threads bernada humor untuk niche "[niche]". Bisa berupa: observational humor, self-deprecating, atau relatable meme text. Max 3 kalimat per konten. Harus bikin orang tag temennya.</pre>
+            <p class="kapan">Buat konten ringan yang shareable dan bikin audience ketawa.</p>
+        </div>
+
+        <div class="tpl">
+            <pre>Act as educational content creator. Breakdown konsep "[konsep]" jadi thread 7 bagian untuk audience awam. Rules: no jargon, pakai analogi sehari-hari, setiap bagian max 3 kalimat, include 1 contoh real per bagian. Hook harus bikin penasaran.</pre>
+            <p class="kapan">Mau jelasin sesuatu yang kompleks secara simple dan engaging.</p>
+        </div>
+
+        <div class="tpl">
+            <pre>Kamu content audit expert. Review bio Threads gue: "[bio lo]". Kasih feedback: (1) First impression score 1-10, (2) Apa yang kurang, (3) Rewrite jadi 3 versi yang lebih kuat. Bio harus: jelas niche-nya, ada value proposition, memorable.</pre>
+            <p class="kapan">Mau optimize bio Threads biar orang langsung follow.</p>
+        </div>
+
+    </div>
+
+    <span class="page-num">04</span>
+</section>
+
+<!-- ========================================
+     NICHE 1 — TIPS & BEST PRACTICES
+     ======================================== -->
+<section class="page" style="border-bottom:1px solid var(--line-faint)">
+    <div class="card">
+        <h3>Tips Memaksimalkan Prompt Content Creator:</h3>
+        <ol class="step-list" style="margin:16px 0 0 0">
+            <li>Selalu ganti <code>[niche]</code> dengan niche spesifik lo (misal: "skincare untuk cowok 20-an")</li>
+            <li>Tambahkan contoh post yang udah perform bagus sebagai reference</li>
+            <li>Specify tone yang lo mau: casual/formal/witty/vulnerable</li>
+            <li>Minta AI kasih multiple variations, lalu cherry-pick yang paling cocok</li>
+            <li>Iterate! Kalau output pertama kurang, bilang "buat yang lebih [X]"</li>
+        </ol>
+    </div>
+
+    <div class="pull-quote">
+        "Hook yang bagus bukan yang paling kreatif — tapi yang paling bikin orang ngerasa 'ini gue banget'."
+        <cite>— Content Psychology</cite>
+    </div>
+</section>
+
+
+
+<!-- ========================================
+     SECTION 6: NICHE 2 — SHOPEE AFFILIATE & E-COMMERCE
+     ======================================== -->
+<section class="page" id="niche2">
+    <div class="section-tag">
+        <span class="ch">05</span>
+        <span>Niche 2 — Shopee Affiliate & E-Commerce</span>
+    </div>
+
+    <h2 class="title">Shopee Affiliate<br/>& <em>E-Commerce</em></h2>
+    <hr class="divider"/>
+
+    <p class="lead">12 prompt untuk review produk yang convert, comparison yang bikin orang klik, dan script video yang nge-close sales tanpa keliatan jualan.</p>
+
+    <div class="pull-quote">
+        "Affiliate bukan soal jualan — tapi soal bantuin orang milih. Yang bisa bantu milih = yang dapet komisi."
+        <cite>— Affiliate Marketing 101</cite>
+    </div>
+
+    <div class="prompt-section">
+
+        <div class="tpl">
+            <pre>Kamu adalah Shopee affiliate content creator. Tulis review produk "[nama produk]" dengan harga [harga] untuk audience [target]. Format: Hook (1 kalimat bikin penasaran) → Problem yang dipecahkan → 3 keunggulan → 1 kekurangan jujur → Verdict + CTA beli. Tone: jujur kayak review temen.</pre>
+            <p class="kapan">Bikin review affiliate yang authentic dan convert.</p>
+        </div>
+
+        <div class="tpl">
+            <pre>Act as product comparison writer. Buat perbandingan antara "[produk A]" vs "[produk B]" untuk [kebutuhan]. Format tabel: Fitur | Produk A | Produk B. Setelah tabel, kasih rekomendasi: "Pilih A kalau..., Pilih B kalau...". Tone: objective, helpful.</pre>
+            <p class="kapan">Kalau mau bikin comparison content yang helpful dan trustworthy.</p>
+        </div>
+
+        <div class="tpl">
+            <pre>Kamu script writer untuk video TikTok/Reels affiliate. Buat script 30 detik untuk promote "[produk]". Struktur: Hook (3 detik) → Problem (5 detik) → Solution/produk (10 detik) → Proof/demo (7 detik) → CTA (5 detik). Include visual direction tiap scene.</pre>
+            <p class="kapan">Bikin script video pendek yang nge-sell tanpa boring.</p>
+        </div>
+
+        <div class="tpl">
+            <pre>Buat 7 angle konten berbeda untuk mempromosikan "[produk affiliate]" di Threads/Instagram. Jangan cuma "review produk". Buat angle: storytelling, problem-solution, comparison, behind-the-scene, user testimony style, listicle, dan controversial take.</pre>
+            <p class="kapan">Supaya konten affiliate lo nggak monoton satu angle doang.</p>
+        </div>
+
+        <div class="tpl">
+            <pre>Kamu copywriter e-commerce. Tulis deskripsi produk yang menjual untuk "[nama produk]" kategori [kategori]. Include: headline catchy, 5 bullet point benefit (bukan fitur), social proof element, urgency trigger, dan CTA. Max 200 kata.</pre>
+            <p class="kapan">Bikin product description yang convert di marketplace.</p>
+        </div>
+
+        <div class="tpl">
+            <pre>Act as Shopee campaign strategist. Buat strategi konten affiliate untuk campaign "[nama campaign, misal: 12.12]" selama 7 hari. Format: Hari | Jenis Konten | Platform | Angle | Hook. Include pre-campaign hype dan post-campaign content.</pre>
+            <p class="kapan">Planning konten affiliate saat big campaign Shopee.</p>
+        </div>
+
+        <div class="tpl">
+            <pre>Kamu adalah "finds" content creator. Buat list "10 Barang Shopee di Bawah [budget] yang Worth It untuk [kebutuhan]". Format per item: Nama + Harga + 1 kalimat kenapa worth it + rating bintang. Tone: excited tapi genuine.</pre>
+            <p class="kapan">Bikin listicle "Shopee finds" yang gampang viral.</p>
+        </div>
+
+        <div class="tpl">
+            <pre>Tulis caption Instagram/Threads untuk post affiliate produk "[produk]". Rules: jangan langsung jualan di kalimat pertama, start dengan pain point/relatable moment, reveal produk di tengah, soft CTA di akhir. Max 150 kata. Include 5 hashtag relevan.</pre>
+            <p class="kapan">Caption affiliate yang nggak keliatan kayak iklan.</p>
+        </div>
+
+        <div class="tpl">
+            <pre>Kamu email marketer e-commerce. Buat email sequence 3 hari untuk abandoned cart produk "[produk]": Email 1 (reminder friendly) → Email 2 (tambah urgency + social proof) → Email 3 (last chance + bonus). Subject line + body per email. Tone: helpful, bukan pushy.</pre>
+            <p class="kapan">Untuk recover abandoned cart lewat email sequence.</p>
+        </div>
+
+        <div class="tpl">
+            <pre>Act as unboxing script writer. Buat narration script untuk video unboxing "[produk]" durasi 60 detik. Include: reaction awal, first impression, detail packaging, quality check, first use experience, overall rating. Tone: authentic, kayak vlog.</pre>
+            <p class="kapan">Bikin script unboxing yang engaging dan natural.</p>
+        </div>
+
+        <div class="tpl">
+            <pre>Buat "FAQ palsu" yang sebenarnya selling point untuk produk "[produk]". Format: 5 pertanyaan yang sering ditanya customer + jawaban yang meng-highlight benefit. Pertanyaan harus address objections umum (harga, kualitas, pengiriman). Bisa dipakai di caption/highlight.</pre>
+            <p class="kapan">Address objections customer sambil soft-selling.</p>
+        </div>
+
+        <div class="tpl">
+            <pre>Kamu affiliate strategist. Produk: "[produk]", komisi: [X]%. Buat 5 ide konten yang bisa generate klik tinggi ke link affiliate. Per ide include: platform terbaik, format konten, hook pembuka, dan estimasi effort (low/med/high). Prioritaskan yang high-ROI.</pre>
+            <p class="kapan">Bikin strategi konten affiliate yang fokus ke ROI.</p>
+        </div>
+
+    </div>
+
+    <span class="page-num">05</span>
+</section>
+
+<!-- ========================================
+     NICHE 2 — AFFILIATE TIPS
+     ======================================== -->
+<section class="page" style="border-bottom:1px solid var(--line-faint)">
+    <div class="card">
+        <h3>Affiliate Content Golden Rules:</h3>
+        <ol class="step-list" style="margin:16px 0 0 0">
+            <li>Selalu disclose bahwa ini affiliate content — transparansi = trust</li>
+            <li>Review produk yang emang lo pakai sendiri, atau riset mendalam</li>
+            <li>Include kekurangan produk — review yang 100% positif itu suspicious</li>
+            <li>Focus ke transformasi (before → after), bukan fitur teknis</li>
+            <li>Timing matters: post waktu campaign/payday = higher conversion</li>
+        </ol>
+    </div>
+
+    <div class="stats">
+        <div class="stat">
+            <span class="num">12</span>
+            <span class="label">Prompts</span>
+        </div>
+        <div class="stat">
+            <span class="num">7</span>
+            <span class="label">Content Angles</span>
+        </div>
+        <div class="stat">
+            <span class="num">3x</span>
+            <span class="label">Avg CTR Boost</span>
+        </div>
+    </div>
+</section>
+
+
+
+<!-- ========================================
+     SECTION 7: NICHE 3 — COPYWRITING & SALES
+     ======================================== -->
+<section class="page" id="niche3">
+    <div class="section-tag">
+        <span class="ch">06</span>
+        <span>Niche 3 — Copywriting & Sales</span>
+    </div>
+
+    <h2 class="title">Copywriting<br/>& <em>Sales</em></h2>
+    <hr class="divider"/>
+
+    <p class="lead">12 prompt untuk headline yang stop-scrolling, landing page yang convert, dan email sequence yang nurture sampai close.</p>
+
+    <div class="card">
+        <h3>Key Principle:</h3>
+        <p style="margin-bottom:0">Copy yang bagus itu bukan soal fancy words — tapi soal <strong>understanding people better than they understand themselves</strong>. Prompt di bawah ini nge-leverage AI untuk dig deeper into psychology, objections, dan desires target market lo.</p>
+    </div>
+
+    <div class="prompt-section">
+
+        <div class="tpl">
+            <pre>Kamu adalah copywriter senior dengan 10 tahun pengalaman. Buat 10 variasi headline untuk [produk/jasa] yang target [audience]. Gunakan formula: AIDA (2), PAS (2), How-To (2), Number (2), Question (2). Max 12 kata per headline. Sort dari yang paling kuat.</pre>
+            <p class="kapan">Butuh headline yang kuat untuk iklan, landing page, atau email subject.</p>
+        </div>
+
+        <div class="tpl">
+            <pre>Act as conversion copywriter. Tulis landing page copy untuk [produk/jasa] dengan harga [harga]. Struktur: Hero headline + subheadline → Pain points (3) → Solution intro → Benefits (5 bullet) → Social proof section → FAQ (4) → CTA + urgency. Tone: confident, clear, tanpa hype berlebihan.</pre>
+            <p class="kapan">Bikin copy landing page yang lengkap dan convert.</p>
+        </div>
+
+        <div class="tpl">
+            <pre>Kamu email copywriter. Buat email sequence 5 hari untuk launch [produk] ke list yang udah warm. Day 1: Story + teaser. Day 2: Problem agitation. Day 3: Solution reveal + offer. Day 4: Social proof + objection handling. Day 5: Last chance + scarcity. Include subject line tiap email.</pre>
+            <p class="kapan">Email sequence untuk product launch yang nurture ke conversion.</p>
+        </div>
+
+        <div class="tpl">
+            <pre>Buat 5 variasi CTA (call-to-action) button text untuk landing page [produk/jasa]. Jangan generic ("Beli Sekarang"). Buat yang: benefit-focused, urgency-driven, curiosity-based, social proof, dan risk-reversal. Max 5 kata per CTA. Explain kenapa tiap CTA works.</pre>
+            <p class="kapan">A/B test CTA button yang lebih convert.</p>
+        </div>
+
+        <div class="tpl">
+            <pre>Kamu direct response copywriter. Tulis advertorial (soft-selling article) 400 kata untuk [produk]. Structure: mulai dari cerita/problem relatable → edukasi → seamless transition ke produk sebagai solusi → CTA subtle. Nggak boleh keliatan kayak iklan di paragraf pertama.</pre>
+            <p class="kapan">Bikin advertorial yang orang baca sampai habis tanpa sadar itu iklan.</p>
+        </div>
+
+        <div class="tpl">
+            <pre>Act as objection handler. Produk: [produk], harga: [harga]. List 7 objections yang paling sering muncul dari calon buyer, lalu tulis counter-copy untuk masing-masing. Format: Objection → Response (max 2 kalimat, persuasive). Ini untuk FAQ section atau sales page.</pre>
+            <p class="kapan">Prepare jawaban untuk semua keraguan calon buyer.</p>
+        </div>
+
+        <div class="tpl">
+            <pre>Kamu ad copywriter. Buat 5 variasi Facebook/Instagram ad copy untuk [produk/jasa], target [audience], objective: [conversion/awareness/traffic]. Per variasi: Primary text (max 125 karakter), Headline (max 40 karakter), Description (max 30 karakter). Mix antara emotional dan logical appeal.</pre>
+            <p class="kapan">Bikin copy iklan yang siap A/B test di Meta Ads.</p>
+        </div>
+
+        <div class="tpl">
+            <pre>Buat sales page "above the fold" section untuk [produk] yang harus answer 3 pertanyaan dalam 5 detik: (1) Apa ini? (2) Untuk siapa? (3) Kenapa harus sekarang? Headline + subheadline + 3 bullet point + CTA. Setiap kata harus earn its place.</pre>
+            <p class="kapan">Optimize bagian atas sales page yang menentukan stay or bounce.</p>
+        </div>
+
+        <div class="tpl">
+            <pre>Kamu brand voice consultant. Analisis copy berikut: "[paste copy lo]". Kasih feedback: (1) Clarity score 1-10, (2) Persuasion score 1-10, (3) 3 hal yang bisa diperbaiki, (4) Rewrite yang lebih kuat. Explain setiap perubahan yang lo buat.</pre>
+            <p class="kapan">Review dan improve copy yang udah lo tulis.</p>
+        </div>
+
+        <div class="tpl">
+            <pre>Act as urgency copywriter. Buat 5 scarcity/urgency element untuk [produk/promo]. Jangan fake urgency. Buat yang genuine: time-based, quantity-based, bonus-based, price-based, dan access-based. Per element: headline + 1 kalimat supporting copy.</pre>
+            <p class="kapan">Nambahin urgency yang authentic ke sales page atau promo.</p>
+        </div>
+
+        <div class="tpl">
+            <pre>Kamu testimonial ghostwriter. Berdasarkan informasi berikut tentang customer: [info customer + hasil yang didapat], tulis 3 versi testimonial dengan tone berbeda: (1) Data-driven, (2) Emotional story, (3) Before-after. Max 3 kalimat per testimonial. Harus sound natural, bukan scripted.</pre>
+            <p class="kapan">Bantu customer articulate testimoni mereka lebih baik.</p>
+        </div>
+
+        <div class="tpl">
+            <pre>Buat "Value Stack" section untuk sales page [produk] dengan harga [harga]. List semua yang buyer dapet, assign perceived value per item, total perceived value, lalu show harga actual. Format visual: ✓ Item — Value Rp X. Bikin gap antara total value vs actual price keliatan massive.</pre>
+            <p class="kapan">Bikin pricing section yang nunjukin value overwhelming.</p>
+        </div>
+
+    </div>
+
+    <span class="page-num">06</span>
+</section>
+
+<!-- ========================================
+     NICHE 3 — COPYWRITING TIPS
+     ======================================== -->
+<section class="page" style="border-bottom:1px solid var(--line-faint)">
+    <div class="pull-quote">
+        "Good copy isn't written — it's assembled. From research, from customer language, from tested frameworks. AI helps you assemble faster."
+        <cite>— Direct Response Principles</cite>
+    </div>
+
+    <div class="card">
+        <h3>Copywriting Formulas Cheat Sheet:</h3>
+        <ul style="list-style:none;padding:0;margin-top:12px">
+            <li style="padding:8px 0;border-bottom:1px solid var(--line-faint)"><strong>AIDA</strong> — Attention → Interest → Desire → Action</li>
+            <li style="padding:8px 0;border-bottom:1px solid var(--line-faint)"><strong>PAS</strong> — Problem → Agitation → Solution</li>
+            <li style="padding:8px 0;border-bottom:1px solid var(--line-faint)"><strong>BAB</strong> — Before → After → Bridge</li>
+            <li style="padding:8px 0;border-bottom:1px solid var(--line-faint)"><strong>4 Ps</strong> — Promise → Picture → Proof → Push</li>
+            <li style="padding:8px 0;border-bottom:1px solid var(--line-faint)"><strong>QUEST</strong> — Qualify → Understand → Educate → Stimulate → Transition</li>
+            <li style="padding:8px 0"><strong>So What?</strong> — After every sentence, ask "so what?" until you hit the real benefit</li>
+        </ul>
+    </div>
+</section>
+
+
+
+<!-- ========================================
+     SECTION 8: NICHE 4 — PERSONAL BRANDING & LINKEDIN
+     ======================================== -->
+<section class="page" id="niche4">
+    <div class="section-tag">
+        <span class="ch">07</span>
+        <span>Niche 4 — Personal Branding & LinkedIn</span>
+    </div>
+
+    <h2 class="title">Personal Branding<br/>& <em>LinkedIn</em></h2>
+    <hr class="divider"/>
+
+    <p class="lead">10 prompt untuk build authority, craft killer bio, dan bikin post LinkedIn yang bikin HR & client nge-DM duluan.</p>
+
+    <div class="stats">
+        <div class="stat">
+            <span class="num">10</span>
+            <span class="label">Prompts</span>
+        </div>
+        <div class="stat">
+            <span class="num">900M+</span>
+            <span class="label">LinkedIn Users</span>
+        </div>
+        <div class="stat">
+            <span class="num">5x</span>
+            <span class="label">More Reach</span>
+        </div>
+    </div>
+
+    <div class="prompt-section">
+
+        <div class="tpl">
+            <pre>Kamu personal branding strategist. Buat bio/headline LinkedIn untuk [nama] yang bekerja sebagai [role] di industri [industri]. Bio harus: jelas expertise-nya, ada unique value proposition, include 1-2 keyword yang dicari recruiter/client. Buat 3 versi: professional, creative, dan bold. Max 220 karakter per versi.</pre>
+            <p class="kapan">Optimize LinkedIn headline biar muncul di search dan menarik.</p>
+        </div>
+
+        <div class="tpl">
+            <pre>Act as LinkedIn ghostwriter. Tulis post LinkedIn tentang "[topik/pengalaman]" yang nge-build authority di bidang [bidang]. Format: hook (1 kalimat kontroversial) → cerita/context → 3-5 insight atau lesson → CTA buat engagement. Tone: professional tapi nggak kaku. Include line breaks untuk readability.</pre>
+            <p class="kapan">Bikin LinkedIn post yang establish lo sebagai thought leader.</p>
+        </div>
+
+        <div class="tpl">
+            <pre>Kamu storytelling expert. Tulis LinkedIn post "journey" dari [titik awal] ke [titik sekarang] di karir/bisnis gue. Format: situasi awal (vulnerable) → turning point → struggle → breakthrough → current state → lesson learned. Tone: authentic, inspiring tanpa humble-bragging. Max 300 kata.</pre>
+            <p class="kapan">Share career story yang bikin orang terinspirasi dan connect.</p>
+        </div>
+
+        <div class="tpl">
+            <pre>Buat "About" section LinkedIn untuk [nama] yang: (1) Start dengan hook yang bikin orang baca lanjut, (2) Explain apa yang lo lakukan dan untuk siapa, (3) Include 2-3 achievement concrete, (4) End dengan CTA (apa yang lo mau orang lakukan setelah baca). Max 250 kata. Tone: conversational-professional.</pre>
+            <p class="kapan">Rewrite About section yang biasanya boring jadi compelling.</p>
+        </div>
+
+        <div class="tpl">
+            <pre>Kamu LinkedIn content strategist. Buat content calendar 2 minggu (10 posts) untuk build personal brand di niche [niche]. Mix: educational (40%), storytelling (30%), engagement/question (20%), promotional (10%). Per post: jenis + topik + hook pembuka.</pre>
+            <p class="kapan">Content planning LinkedIn yang terstruktur dan strategic.</p>
+        </div>
+
+        <div class="tpl">
+            <pre>Act as thought leadership writer. Tulis LinkedIn article outline tentang "[topik industri]" yang position gue sebagai expert. Structure: provocative title → intro with bold claim → 5 sections with subheadings → data/example per section → conclusion with action items. Target: 800-1000 kata.</pre>
+            <p class="kapan">Bikin long-form article LinkedIn untuk deep authority building.</p>
+        </div>
+
+        <div class="tpl">
+            <pre>Kamu networking expert. Tulis 5 template DM LinkedIn untuk different purposes: (1) cold outreach ke potential client, (2) connect dengan industry leader, (3) follow up setelah event, (4) ask for referral, (5) rekindling old connection. Max 3 kalimat per DM. Personalization spots: [nama], [context].</pre>
+            <p class="kapan">Template DM yang nggak awkward dan actually get replies.</p>
+        </div>
+
+        <div class="tpl">
+            <pre>Buat "carousel document" LinkedIn (8 slides) tentang "[topik expertise lo]". Per slide: Headline (max 6 kata, bold) + Content (2-3 bullet atau 1 kalimat). Slide 1 = eye-catching title, Slide 8 = CTA + profile plug. Harus kasih value actionable tiap slide.</pre>
+            <p class="kapan">LinkedIn carousel/document yang edukatif dan shareable.</p>
+        </div>
+
+        <div class="tpl">
+            <pre>Kamu recommendation writer. Tulis LinkedIn recommendation untuk [nama] yang merupakan [role] dan pernah [apa yang dikerjakan bareng]. Include: context hubungan kerja, 2 specific strengths dengan contoh, impact yang dibuat, dan closing endorsement. Tone: genuine, specific, bukan template generic. Max 150 kata.</pre>
+            <p class="kapan">Tulis recommendation yang meaningful (bisa juga buat diri sendiri sebagai referensi).</p>
+        </div>
+
+        <div class="tpl">
+            <pre>Act as personal brand auditor. Review profil LinkedIn gue dengan info berikut: Headline: "[headline]", About: "[about singkat]", Last 3 posts: "[topik]". Kasih: (1) Consistency score 1-10, (2) Authority signal yang kurang, (3) 5 quick wins untuk improve profile dalam 1 jam. Be brutally honest.</pre>
+            <p class="kapan">Audit cepat profil LinkedIn untuk identify improvement areas.</p>
+        </div>
+
+    </div>
+
+    <span class="page-num">07</span>
+</section>
+
+<!-- ========================================
+     NICHE 4 — LINKEDIN TIPS
+     ======================================== -->
+<section class="page" style="border-bottom:1px solid var(--line-faint)">
+    <div class="card">
+        <h3>LinkedIn Algorithm Tips (2024):</h3>
+        <ol class="step-list" style="margin:16px 0 0 0">
+            <li>Posts with <strong>personal story</strong> get 2-3x more engagement than pure tips</li>
+            <li>First 3 lines = hook. LinkedIn truncates after itu — "...see more" is your enemy</li>
+            <li>Reply to comments dalam 1 jam pertama boost reach significantly</li>
+            <li>Document/carousel posts dapet dwell time tertinggi = algorithm love it</li>
+            <li>Posting consistency > viral post. 3-4x/week itu sweet spot</li>
+        </ol>
+    </div>
+</section>
+
+
+
+<!-- ========================================
+     SECTION 9: NICHE 5 — BISNIS & UMKM
+     ======================================== -->
+<section class="page" id="niche5">
+    <div class="section-tag">
+        <span class="ch">08</span>
+        <span>Niche 5 — Bisnis & UMKM</span>
+    </div>
+
+    <h2 class="title">Bisnis<br/>& <em>UMKM</em></h2>
+    <hr class="divider"/>
+
+    <p class="lead">12 prompt untuk entrepreneur dan pemilik UMKM — dari branding sampai strategi marketing, dari naming sampai business plan.</p>
+
+    <div class="pull-quote">
+        "UMKM yang pakai AI bukan curang — mereka cuma kerja lebih smart. Dan di era ini, smart IS the new hard work."
+        <cite>— @yanzy17</cite>
+    </div>
+
+    <div class="card">
+        <h3>Who Is This For:</h3>
+        <p style="margin-bottom:0">Pemilik UMKM, founder startup early-stage, solopreneur, side-hustler yang mau serius, atau siapapun yang nge-build bisnis sendiri dan butuh "tim marketing virtual" lewat AI.</p>
+    </div>
+
+    <div class="prompt-section">
+
+        <div class="tpl">
+            <pre>Kamu brand naming expert. Buat 10 nama brand untuk bisnis [jenis bisnis] dengan target market [target]. Criteria: mudah diingat, max 3 suku kata, available as domain (.com/.id), punya meaning/story. Per nama include: nama + arti/story + alasan kenapa cocok.</pre>
+            <p class="kapan">Lagi bikin brand baru dan butuh nama yang memorable.</p>
+        </div>
+
+        <div class="tpl">
+            <pre>Act as brand strategist. Buat tagline/slogan untuk brand "[nama brand]" yang bergerak di [industri]. Buat 7 variasi: emotional appeal (2), benefit-focused (2), provocative (1), simple/memorable (2). Max 7 kata per tagline. Explain rationale tiap tagline.</pre>
+            <p class="kapan">Cari tagline yang catchy dan represent brand values.</p>
+        </div>
+
+        <div class="tpl">
+            <pre>Kamu marketing strategist untuk UMKM. Budget marketing: Rp [budget]/bulan. Bisnis: [jenis bisnis]. Target: [audience]. Buat strategi marketing 30 hari yang realistic: channel apa aja, alokasi budget per channel, KPI per channel, content plan singkat. Fokus ke yang high-ROI, low-cost.</pre>
+            <p class="kapan">Bikin marketing plan yang realistis dengan budget terbatas.</p>
+        </div>
+
+        <div class="tpl">
+            <pre>Buat business model canvas sederhana untuk [ide bisnis]. Isi 9 blok: Customer Segments, Value Proposition, Channels, Customer Relationships, Revenue Streams, Key Resources, Key Activities, Key Partners, Cost Structure. Per blok max 3 bullet point. Kasih juga 2 risiko utama dan mitigasinya.</pre>
+            <p class="kapan">Validasi ide bisnis dengan framework terstruktur.</p>
+        </div>
+
+        <div class="tpl">
+            <pre>Kamu pricing strategist. Produk/jasa: [produk], biaya produksi: [biaya], kompetitor harga: [range harga]. Suggest 3 pricing strategy: (1) penetration, (2) value-based, (3) premium. Per strategi: harga rekomendasi + positioning + pros & cons. Bantu gue decide yang paling cocok.</pre>
+            <p class="kapan">Tentuin harga yang competitive tapi profitable.</p>
+        </div>
+
+        <div class="tpl">
+            <pre>Act as social media manager UMKM. Bisnis: [bisnis], platform utama: [Instagram/TikTok/Threads]. Buat content pillar (4-5 pilar) dengan ratio posting per pilar. Per pilar: nama pilar + deskripsi + 3 contoh konten spesifik. Harus balance antara edukasi, entertainment, dan selling.</pre>
+            <p class="kapan">Bikin content strategy yang terstruktur buat brand UMKM.</p>
+        </div>
+
+        <div class="tpl">
+            <pre>Kamu competitor analyst. Bisnis gue: [bisnis lo]. 3 kompetitor utama: [kompetitor 1, 2, 3]. Buat competitive analysis: strengths & weaknesses tiap kompetitor, gap di market yang bisa gue isi, unique angle yang bisa jadi differentiator gue. Format: tabel comparison + rekomendasi positioning.</pre>
+            <p class="kapan">Understand competitive landscape dan cari positioning unik.</p>
+        </div>
+
+        <div class="tpl">
+            <pre>Buat customer persona detail untuk bisnis [bisnis] dengan target [target umum]. Include: nama fiktif, umur, pekerjaan, income, pain points (5), goals (3), media consumption habits, buying behavior, objections terhadap produk lo, trigger yang bikin mereka beli. Buat 2 persona berbeda.</pre>
+            <p class="kapan">Bikin buyer persona supaya marketing lebih targeted.</p>
+        </div>
+
+        <div class="tpl">
+            <pre>Kamu operations consultant. UMKM gue: [bisnis], tim: [jumlah orang], problem utama: [masalah operasional]. Buat SOP sederhana untuk [proses yang mau di-SOP-kan]. Format: step-by-step, include responsible person, timeline, output tiap step, dan checkpoint quality. Harus simple supaya tim yang baru join bisa langsung ikutin.</pre>
+            <p class="kapan">Bikin SOP supaya bisnis bisa jalan tanpa lo handle semua.</p>
+        </div>
+
+        <div class="tpl">
+            <pre>Act as pitch deck writer. Bisnis: [bisnis], stage: [idea/early/growth], looking for: [investor/partner/grant]. Buat outline pitch deck 10 slides: (1) Title, (2) Problem, (3) Solution, (4) Market Size, (5) Business Model, (6) Traction, (7) Competition, (8) Team, (9) Financial Projection, (10) Ask. Per slide: key message + data point yang dibutuhin.</pre>
+            <p class="kapan">Prepare pitch buat investor, partner, atau kompetisi bisnis.</p>
+        </div>
+
+        <div class="tpl">
+            <pre>Kamu customer retention expert. Bisnis: [bisnis], masalah: repeat order rendah. Buat 5 strategi retention yang bisa diimplementasi dalam 2 minggu dengan budget minimal. Per strategi: apa yang dilakukan + tools/platform + expected impact + effort level. Fokus ke yang bikin customer balik lagi.</pre>
+            <p class="kapan">Tingkatin repeat order dan customer lifetime value.</p>
+        </div>
+
+        <div class="tpl">
+            <pre>Buat WhatsApp broadcast template (5 templates) untuk bisnis [bisnis]. Purposes: (1) New product launch, (2) Flash sale notification, (3) Re-engagement customer lama, (4) Thank you + review request, (5) Educational content. Per template: text + emoji + CTA. Max 200 karakter per template. Harus personal, bukan spam-vibes.</pre>
+            <p class="kapan">Template WA broadcast yang professional dan nggak bikin di-block.</p>
+        </div>
+
+    </div>
+
+    <span class="page-num">08</span>
+</section>
+
+<!-- ========================================
+     NICHE 5 — UMKM TIPS
+     ======================================== -->
+<section class="page" style="border-bottom:1px solid var(--line-faint)">
+    <div class="stats">
+        <div class="stat">
+            <span class="num">64M+</span>
+            <span class="label">UMKM di Indonesia</span>
+        </div>
+        <div class="stat">
+            <span class="num">61%</span>
+            <span class="label">GDP Contribution</span>
+        </div>
+        <div class="stat">
+            <span class="num">97%</span>
+            <span class="label">Total Bisnis RI</span>
+        </div>
+    </div>
+
+    <div class="card">
+        <h3>Quick Wins buat UMKM + AI:</h3>
+        <ol class="step-list" style="margin:16px 0 0 0">
+            <li>Bikin nama brand & tagline tanpa bayar agency — pakai prompt №01-02</li>
+            <li>Marketing plan bulanan yang biasanya Rp 5-10jt consultation, gratis lewat prompt №03</li>
+            <li>Customer persona untuk targeting iklan — prompt №08 save lo dari trial-error</li>
+            <li>SOP sederhana supaya bisnis nggak chaos waktu scaling — prompt №09</li>
+            <li>Pitch deck kalau mau pitching ke investor/partner — prompt №10 bisa jadi starting point</li>
+        </ol>
+    </div>
+</section>
+
+
+
+<!-- ========================================
+     SECTION 10: NICHE 6 — EDUKASI & TUTORIAL
+     ======================================== -->
+<section class="page" id="niche6">
+    <div class="section-tag">
+        <span class="ch">09</span>
+        <span>Niche 6 — Edukasi & Tutorial</span>
+    </div>
+
+    <h2 class="title">Edukasi<br/>& <em>Tutorial</em></h2>
+    <hr class="divider"/>
+
+    <p class="lead">10 prompt untuk breakdown topik kompleks, bikin konten ELI5 yang gampang dicerna, dan script infographic yang visual-friendly.</p>
+
+    <div class="card">
+        <h3>Prinsip Konten Edukatif:</h3>
+        <p style="margin-bottom:0">Orang nggak butuh informasi — mereka butuh <strong>understanding</strong>. Tugas lo bukan ngasih data, tapi bikin "aha moment". Prompt di section ini designed untuk itu: transform knowledge jadi content yang gampang dicerna dan di-share.</p>
+    </div>
+
+    <div class="prompt-section">
+
+        <div class="tpl">
+            <pre>Kamu educator yang jago simplify konsep rumit. Breakdown "[konsep/topik kompleks]" jadi penjelasan yang bisa dipahami anak SMA. Rules: no jargon (kalau harus pakai, explain), gunakan analogi sehari-hari, max 5 paragraf. Struktur: Apa itu → Kenapa penting → Cara kerja (simplified) → Contoh real → Kesimpulan 1 kalimat.</pre>
+            <p class="kapan">Jelasin sesuatu yang kompleks supaya audience awam paham.</p>
+        </div>
+
+        <div class="tpl">
+            <pre>Act as ELI5 (Explain Like I'm 5) expert. Jelaskan "[topik]" seolah-olah lo lagi ngobrol sama anak 5 tahun. Pakai analogi yang super sederhana (mainan, makanan, sekolah). Max 100 kata. Setelah versi ELI5, kasih juga versi "grown-up" 1 paragraf untuk context lengkap.</pre>
+            <p class="kapan">Bikin konten ELI5 yang catchy dan super gampang dipahami.</p>
+        </div>
+
+        <div class="tpl">
+            <pre>Kamu infographic content writer. Buat script untuk infographic tentang "[topik]" dengan 6-8 section/frame. Per frame: headline (max 5 kata) + body text (max 20 kata) + visual suggestion (icon/illustration idea). Flow harus logical dari atas ke bawah. Cocok untuk designer execute.</pre>
+            <p class="kapan">Bikin brief infographic yang tinggal didesain.</p>
+        </div>
+
+        <div class="tpl">
+            <pre>Buat tutorial step-by-step untuk "[skill/task]" yang target audience-nya pemula total. Format: judul catchy → prerequisite (apa aja yang dibutuhin) → steps (max 7 step, per step: action + penjelasan + common mistake to avoid) → result yang diharapkan → next step recommendation.</pre>
+            <p class="kapan">Bikin tutorial yang beginner-friendly dan actionable.</p>
+        </div>
+
+        <div class="tpl">
+            <pre>Kamu quiz/assessment creator. Buat mini-quiz 5 pertanyaan tentang "[topik]" untuk test pemahaman audience. Format: pertanyaan + 4 pilihan (A-D) + jawaban benar + penjelasan singkat kenapa. Mix difficulty: 2 easy, 2 medium, 1 hard. Bisa dipakai di Stories/konten interaktif.</pre>
+            <p class="kapan">Bikin interactive content quiz yang edukatif dan engaging.</p>
+        </div>
+
+        <div class="tpl">
+            <pre>Act as curriculum designer. Buat roadmap belajar "[skill]" dari nol sampai intermediate dalam 30 hari. Format: Week 1-4, per minggu: focus area + 3-5 specific topics + 1 mini project + resources recommendation (free). Harus achievable untuk orang yang kerja full-time (1-2 jam/hari).</pre>
+            <p class="kapan">Bikin learning roadmap yang structured dan realistic.</p>
+        </div>
+
+        <div class="tpl">
+            <pre>Kamu analogy master. Buat 5 analogi berbeda untuk menjelaskan konsep "[konsep]" ke audience yang bukan expert. Setiap analogi harus: (1) Relatable (pakai benda/situasi sehari-hari), (2) Accurate (nggak misleading), (3) Memorable. Format: analogi + 1 kalimat penjelasan kenapa analogi ini works.</pre>
+            <p class="kapan">Cari cara kreatif untuk explain something difficult.</p>
+        </div>
+
+        <div class="tpl">
+            <pre>Buat "Myth vs Fact" content (7 items) tentang "[topik]". Format per item: ❌ Myth: [common misconception] → ✅ Fact: [the truth] → 💡 Why it matters: [1 kalimat impact]. Pilih myths yang paling sering dipercaya orang. Tone: enlightening, bukan condescending.</pre>
+            <p class="kapan">Debunk misconception yang sering beredar di audience lo.</p>
+        </div>
+
+        <div class="tpl">
+            <pre>Kamu workshop facilitator. Buat outline workshop online 60 menit tentang "[topik]". Structure: Opening hook (5 min) → Context/why (10 min) → Core content 3 modules (30 min) → Interactive exercise (10 min) → Q&A + closing (5 min). Per module: key point + activity + takeaway. Include icebreaker suggestion.</pre>
+            <p class="kapan">Planning workshop atau webinar yang engaging dan terstruktur.</p>
+        </div>
+
+        <div class="tpl">
+            <pre>Act as "comparison table" creator. Buat tabel perbandingan yang informatif antara [opsi A] vs [opsi B] vs [opsi C] untuk keputusan "[keputusan]". Criteria comparison: min 7 aspek yang relevan. Per cell: isi specific (bukan cuma ✓/✗). Akhiri dengan "rekomendasi berdasarkan kebutuhan" section.</pre>
+            <p class="kapan">Bantu audience memilih dengan comparison yang comprehensive.</p>
+        </div>
+
+    </div>
+
+    <span class="page-num">09</span>
+</section>
+
+<!-- ========================================
+     NICHE 6 — EDUKASI TIPS
+     ======================================== -->
+<section class="page" style="border-bottom:1px solid var(--line-faint)">
+    <div class="card">
+        <h3>Content Edu yang Viral Biasanya:</h3>
+        <ul style="list-style:none;padding:0;margin-top:12px">
+            <li style="padding:8px 0;border-bottom:1px solid var(--line-faint)">→ Jelasin sesuatu yang 90% orang salah paham (Myth vs Fact)</li>
+            <li style="padding:8px 0;border-bottom:1px solid var(--line-faint)">→ Breakdown sesuatu yang keliatan kompleks jadi surprisingly simple</li>
+            <li style="padding:8px 0;border-bottom:1px solid var(--line-faint)">→ Kasih "aha moment" — insight yang bikin orang ngerasa lebih smart</li>
+            <li style="padding:8px 0;border-bottom:1px solid var(--line-faint)">→ Pakai analogi yang unexpected tapi accurate</li>
+            <li style="padding:8px 0">→ Format yang scannable: listicle, step-by-step, comparison table</li>
+        </ul>
+    </div>
+</section>
+
+
+
+<!-- ========================================
+     SECTION 11: NICHE 7 — SELF-DEVELOPMENT & PRODUKTIVITAS
+     ======================================== -->
+<section class="page" id="niche7">
+    <div class="section-tag">
+        <span class="ch">10</span>
+        <span>Niche 7 — Self-Development & Produktivitas</span>
+    </div>
+
+    <h2 class="title">Self-Development<br/>& <em>Produktivitas</em></h2>
+    <hr class="divider"/>
+
+    <p class="lead">10 prompt untuk goal setting yang actionable, habit building yang stick, dan journaling prompt yang bikin lo lebih self-aware.</p>
+
+    <div class="pull-quote">
+        "Produktivitas bukan soal busy — tapi soal intentional. AI bisa bantu lo design system, tapi consistency tetep di tangan lo."
+        <cite>— @yanzy17</cite>
+    </div>
+
+    <div class="prompt-section">
+
+        <div class="tpl">
+            <pre>Kamu life coach professional. Bantu gue break down goal "[goal besar]" jadi actionable steps. Framework: goal → 3 milestones (90 hari, 60 hari, 30 hari) → per milestone: 3 key actions + metrics of success + potential obstacles + contingency plan. Buat yang realistic untuk orang dengan full-time job.</pre>
+            <p class="kapan">Break down goal besar jadi manageable steps.</p>
+        </div>
+
+        <div class="tpl">
+            <pre>Act as habit design expert (based on Atomic Habits). Gue mau build habit "[habit baru]". Design sistem: (1) Cue — kapan & di mana, (2) Craving — motivasi underlying, (3) Response — action specific & kecil, (4) Reward — immediate reward. Include: habit stacking suggestion, 2-minute rule version, dan tracking method.</pre>
+            <p class="kapan">Design habit baru yang actually stick long-term.</p>
+        </div>
+
+        <div class="tpl">
+            <pre>Kamu journaling therapist. Buat 7 journaling prompts (1 per hari selama seminggu) untuk tema "[tema: self-discovery/gratitude/anxiety/career/relationships]". Per prompt: pertanyaan utama + 2 follow-up questions yang lebih dalam. Prompts harus bikin refleksi, bukan sekadar surface-level answers.</pre>
+            <p class="kapan">Journaling prompts yang meaningfully bikin lo introspeksi.</p>
+        </div>
+
+        <div class="tpl">
+            <pre>Buat morning routine yang optimal untuk [tipe orang: night owl/early bird, pekerja kantoran/freelancer, punya anak/single]. Duration: [X] menit. Format: timeline dari bangun sampai mulai kerja, per activity: durasi + kenapa ini penting + alternative kalau skip. Include "non-negotiable" items vs "nice-to-have".</pre>
+            <p class="kapan">Design morning routine yang customized dan sustainable.</p>
+        </div>
+
+        <div class="tpl">
+            <pre>Kamu productivity consultant. Gue struggle dengan [masalah produktivitas: procrastination/overwhelm/focus/time management]. Diagnose root cause-nya (3 kemungkinan), lalu kasih action plan minggu ini: 3 tactics specific + tools recommendation + mindset shift yang dibutuhin. Be direct, no fluff.</pre>
+            <p class="kapan">Solve specific productivity problems dengan tactical advice.</p>
+        </div>
+
+        <div class="tpl">
+            <pre>Act as weekly review facilitator. Buat template weekly review dengan 10 questions yang cover: accomplishments, challenges, lessons, energy levels, relationships, dan planning next week. Format yang bisa gue copy ke Notion/journal. Include scoring system (1-10) untuk key life areas.</pre>
+            <p class="kapan">Template weekly review yang comprehensive tapi nggak overwhelming.</p>
+        </div>
+
+        <div class="tpl">
+            <pre>Kamu decision-making coach. Gue lagi bingung antara [opsi A] dan [opsi B] untuk keputusan [context]. Bantu gue analisis pakai framework: (1) Pros & Cons weighted, (2) 10-10-10 rule (impact 10 menit, 10 bulan, 10 tahun), (3) Fear vs Regret analysis. Di akhir, kasih recommendation tapi tetap balanced.</pre>
+            <p class="kapan">Bantu ambil keputusan besar dengan systematic thinking.</p>
+        </div>
+
+        <div class="tpl">
+            <pre>Buat "energy audit" template: list semua aktivitas gue sehari-hari, kategorikan jadi: (1) Energizing vs Draining, (2) Important vs Not Important, (3) Controllable vs Not Controllable. Berdasarkan audit, suggest 3 changes yang bisa gue implement besok. Aktivitas gue: [list aktivitas harian].</pre>
+            <p class="kapan">Identify energy leaks dan optimize daily activities.</p>
+        </div>
+
+        <div class="tpl">
+            <pre>Kamu mindset coach. Gue punya limiting belief: "[limiting belief, misal: gue nggak cukup smart untuk sukses]". Bantu gue: (1) Identify origin/root, (2) Challenge with evidence, (3) Reframe jadi empowering belief, (4) Buat 3 affirmation yang specific dan believable, (5) Action yang buktiin belief baru ini valid.</pre>
+            <p class="kapan">Reframe limiting beliefs yang nge-hold lo back.</p>
+        </div>
+
+        <div class="tpl">
+            <pre>Act as focus session designer. Gue punya task "[task besar]" yang estimated butuh [X jam]. Design deep work session plan: break jadi berapa session, durasi per session, break interval (Pomodoro variant), what to do during breaks, environment setup checklist, dan "if I get distracted" protocol. Customize untuk [gaya kerja lo].</pre>
+            <p class="kapan">Structure deep work session supaya bisa selesaiin task besar.</p>
+        </div>
+
+    </div>
+
+    <span class="page-num">10</span>
+</section>
+
+<!-- ========================================
+     NICHE 7 — PRODUCTIVITY TIPS
+     ======================================== -->
+<section class="page" style="border-bottom:1px solid var(--line-faint)">
+    <div class="card">
+        <h3>Cara Pakai AI sebagai "Accountability Partner":</h3>
+        <ol class="step-list" style="margin:16px 0 0 0">
+            <li>Start conversation baru setiap minggu: "Review goals minggu lalu gue: [goals]. Results: [results]. Kasih feedback."</li>
+            <li>Gunakan AI untuk plan, tapi EXECUTE sendiri — AI nggak bisa push-up buat lo</li>
+            <li>Minta AI challenge assumptions lo: "Why might this goal be wrong?"</li>
+            <li>Template weekly check-in: progress, blockers, next week priorities</li>
+            <li>End of month: "Summarize growth gue bulan ini berdasarkan conversation kita"</li>
+        </ol>
+    </div>
+</section>
+
+
+
+<!-- ========================================
+     SECTION 12: NICHE 8 — FREELANCER & JASA
+     ======================================== -->
+<section class="page" id="niche8">
+    <div class="section-tag">
+        <span class="ch">11</span>
+        <span>Niche 8 — Freelancer & Jasa</span>
+    </div>
+
+    <h2 class="title">Freelancer<br/>& <em>Jasa</em></h2>
+    <hr class="divider"/>
+
+    <p class="lead">10 prompt untuk proposal yang menang, cold DM yang di-reply, dan portfolio presentation yang bikin client bilang "oke, kapan mulai?"</p>
+
+    <div class="stats">
+        <div class="stat">
+            <span class="num">10</span>
+            <span class="label">Prompts</span>
+        </div>
+        <div class="stat">
+            <span class="num">73M</span>
+            <span class="label">Freelancers ID</span>
+        </div>
+        <div class="stat">
+            <span class="num">$1.5T</span>
+            <span class="label">Gig Economy</span>
+        </div>
+    </div>
+
+    <div class="card">
+        <h3>Freelancer = One-Person Business</h3>
+        <p style="margin-bottom:0">Lo bukan cuma "tukang kerjain project." Lo itu sales, marketing, customer service, accountant, sekaligus production — semuanya sendiri. Prompt ini nge-handle bagian yang bukan core skill lo, supaya lo bisa fokus ke craft.</p>
+    </div>
+
+    <div class="prompt-section">
+
+        <div class="tpl">
+            <pre>Kamu freelance proposal writer. Buat proposal untuk project "[jenis project]" dari client yang butuh [kebutuhan client]. Structure: opening (acknowledge their need) → understanding of scope → approach/methodology → timeline → deliverables → pricing (present 3 tiers) → why me → next step. Tone: confident & professional. Max 400 kata.</pre>
+            <p class="kapan">Bikin proposal yang stand out dari kompetitor lain.</p>
+        </div>
+
+        <div class="tpl">
+            <pre>Act as cold outreach specialist. Buat 5 variasi cold DM/email untuk menawarkan jasa [jasa lo] ke [target client]. Rules: max 3 kalimat, start with value bukan "perkenalkan saya...", include 1 specific observation tentang mereka, end with low-commitment CTA. Platform: [Instagram DM/Email/LinkedIn].</pre>
+            <p class="kapan">Cold outreach yang nggak creepy dan actually get replies.</p>
+        </div>
+
+        <div class="tpl">
+            <pre>Kamu portfolio strategist. Jasa gue: [jasa], target client: [tipe client]. Buat structure portfolio page/deck yang convert: section apa aja yang harus ada, urutan yang optimal, cara present case study (format STAR: Situation, Task, Action, Result), dan CTA di akhir. Include tips apa yang harus di-highlight vs skip.</pre>
+            <p class="kapan">Structure portfolio yang bikin client percaya sama expertise lo.</p>
+        </div>
+
+        <div class="tpl">
+            <pre>Buat template "scope of work" document untuk project [jenis project]. Include: project overview, objectives, deliverables (with format specs), timeline with milestones, revision policy (how many revisions), out-of-scope items, payment terms, dan cancellation clause. Professional tapi nggak terlalu legal-heavy.</pre>
+            <p class="kapan">Template SOW supaya nggak ada miscommunication sama client.</p>
+        </div>
+
+        <div class="tpl">
+            <pre>Kamu pricing coach untuk freelancer. Jasa: [jasa], pengalaman: [X tahun], market rate: [range]. Bantu gue buat pricing structure: (1) hourly vs project-based recommendation, (2) 3-tier package (basic/standard/premium), (3) anchor pricing strategy, (4) cara handle "terlalu mahal" objection. Include cara raise rate tanpa lose client.</pre>
+            <p class="kapan">Set pricing yang fair tapi nggak underselling diri sendiri.</p>
+        </div>
+
+        <div class="tpl">
+            <pre>Act as client communication expert. Buat template response untuk 5 common freelancer situations: (1) Client minta revision ke-4 (policy: 2 revisions), (2) Client ghost setelah brief, (3) Client minta timeline lebih cepat, (4) Client complain soal hasil, (5) Client mau scope tambahan tanpa bayar. Tone: professional, firm, tapi nggak burning bridge.</pre>
+            <p class="kapan">Handle difficult client situations dengan grace.</p>
+        </div>
+
+        <div class="tpl">
+            <pre>Kamu personal brand builder untuk freelancer. Jasa: [jasa], diferensiasi: [apa yang bikin lo beda]. Buat: (1) Positioning statement 1 kalimat, (2) Elevator pitch 30 detik, (3) Social media bio (Threads/IG/LinkedIn), (4) 5 content ideas yang showcase expertise, (5) Testimonial request template buat dikirim ke past clients.</pre>
+            <p class="kapan">Build personal brand supaya client dateng sendiri.</p>
+        </div>
+
+        <div class="tpl">
+            <pre>Buat onboarding document template untuk new client. Include: welcome message, project timeline overview, communication guidelines (response time, preferred channel, meeting schedule), what you need from them (assets, access, info), tools yang akan dipakai, dan milestone check-in dates. Tone: organized & reassuring.</pre>
+            <p class="kapan">First impression professional setelah client deal.</p>
+        </div>
+
+        <div class="tpl">
+            <pre>Kamu testimonial request writer. Buat 3 versi pesan minta testimonial ke client yang projectnya udah selesai. Variasi: (1) Casual (via WhatsApp/DM), (2) Semi-formal (via email), (3) With specific prompting questions biar testimonial-nya detailed. Include timing recommendation (kapan sebaiknya minta).</pre>
+            <p class="kapan">Minta testimonial tanpa awkward dan dapet yang bagus.</p>
+        </div>
+
+        <div class="tpl">
+            <pre>Act as freelance business planner. Gue mau scale dari freelancer jadi agency/studio kecil. Current revenue: [X]/bulan, target: [Y]/bulan. Buat roadmap 6 bulan: kapan hire pertama, role apa, sistem apa yang harus dibangun dulu, pricing adjustment, dan client acquisition strategy shift. Be realistic dan phased.</pre>
+            <p class="kapan">Planning transition dari solo freelancer ke small team/agency.</p>
+        </div>
+
+    </div>
+
+    <span class="page-num">11</span>
+</section>
+
+<!-- ========================================
+     NICHE 8 — FREELANCER TIPS
+     ======================================== -->
+<section class="page" style="border-bottom:1px solid var(--line-faint)">
+    <div class="card">
+        <h3>Freelancer Revenue Formula:</h3>
+        <p style="margin-top:12px;font-family:'IBM Plex Mono',monospace;font-size:.9rem;text-align:center;padding:16px;background:var(--paper);border:1px solid var(--line-faint)">Revenue = (Leads × Conversion Rate × Average Project Value) × Retention Rate</p>
+        <p style="margin-top:12px;margin-bottom:0">Prompt di section ini cover semua variabel: Lead generation (cold DM, branding), Conversion (proposal, portfolio), Value (pricing), dan Retention (onboarding, communication). Optimize satu per satu.</p>
+    </div>
+</section>
+
+
+
+<!-- ========================================
+     SECTION 13: NICHE 9 — SEO & BLOG
+     ======================================== -->
+<section class="page" id="niche9">
+    <div class="section-tag">
+        <span class="ch">12</span>
+        <span>Niche 9 — SEO & Blog</span>
+    </div>
+
+    <h2 class="title">SEO<br/>& <em>Blog</em></h2>
+    <hr class="divider"/>
+
+    <p class="lead">10 prompt untuk keyword research yang actionable, blog outline yang SEO-friendly, dan meta description yang bikin orang klik dari SERP.</p>
+
+    <div class="pull-quote">
+        "SEO itu marathon, bukan sprint. Tapi dengan AI, lo bisa lari marathon-nya pakai sepatu yang lebih bagus."
+        <cite>— @yanzy17</cite>
+    </div>
+
+    <div class="card">
+        <h3>Important Note on AI + SEO:</h3>
+        <p style="margin-bottom:0">AI nggak bisa replace keyword research tools (Ahrefs, Semrush) untuk data volume/difficulty yang akurat. Tapi AI BISA bantu lo: ideation, content structuring, copywriting, dan optimization. Kombinasiin data tools + AI writing = SEO content machine.</p>
+    </div>
+
+    <div class="prompt-section">
+
+        <div class="tpl">
+            <pre>Kamu SEO keyword researcher. Untuk niche "[niche]" dan target audience [audience], generate 20 keyword ideas yang: mix head terms (5), long-tail (10), dan question-based (5). Per keyword include: estimated search intent (informational/transactional/navigational), difficulty guess (low/med/high), dan content format yang cocok (article/listicle/guide/comparison).</pre>
+            <p class="kapan">Keyword research awal untuk content planning SEO.</p>
+        </div>
+
+        <div class="tpl">
+            <pre>Act as SEO content strategist. Buat blog post outline yang SEO-optimized untuk keyword "[keyword]". Include: SEO title (max 60 char), meta description (max 155 char), H1, H2s (min 5), H3s under each H2, intro hook, key points per section, internal link opportunities, dan suggested word count. Optimize untuk featured snippet.</pre>
+            <p class="kapan">Bikin outline artikel blog yang structured untuk ranking.</p>
+        </div>
+
+        <div class="tpl">
+            <pre>Kamu meta description copywriter. Buat 5 variasi meta description untuk artikel dengan judul "[judul artikel]" dan keyword "[keyword]". Rules: max 155 characters, include keyword naturally, ada value proposition, bikin orang pengen klik (tapi no clickbait), include CTA implicit. Highlight yang terbaik dan explain kenapa.</pre>
+            <p class="kapan">Optimize CTR dari search results dengan meta description yang compelling.</p>
+        </div>
+
+        <div class="tpl">
+            <pre>Buat content cluster strategy untuk topik utama "[topik pillar]". Format: 1 pillar page + 8-10 cluster articles yang interlink. Per cluster article: judul + target keyword + search intent + angle unik + how it links back to pillar. Include internal linking map visual description.</pre>
+            <p class="kapan">Build topical authority dengan content cluster yang terstruktur.</p>
+        </div>
+
+        <div class="tpl">
+            <pre>Kamu SEO auditor. Analisis blog post gue berikut (dari perspektif on-page SEO): Judul: "[judul]", URL: "[url]", H2s: "[list h2]", Word count: [X], Keyword target: "[keyword]". Kasih: SEO score 1-10, 5 issues yang perlu diperbaiki, dan rewrite suggestions untuk title + H2s. Be specific.</pre>
+            <p class="kapan">Audit on-page SEO artikel yang udah published.</p>
+        </div>
+
+        <div class="tpl">
+            <pre>Act as blog intro writer. Tulis 3 variasi intro paragraf (100-150 kata) untuk artikel "[judul]" dengan keyword "[keyword]". Variasi: (1) Start with statistic/data, (2) Start with story/scenario, (3) Start with provocative question. Setiap intro harus: mention keyword naturally, hook pembaca, dan set expectation apa yang akan dibahas.</pre>
+            <p class="kapan">Bikin intro artikel yang bikin orang baca sampai bawah.</p>
+        </div>
+
+        <div class="tpl">
+            <pre>Kamu SEO title optimizer. Buat 10 variasi SEO title untuk keyword "[keyword]". Mix format: how-to (2), listicle/number (2), year-included (2), question (2), power words (2). All must: max 60 characters, keyword di depan kalau bisa, compelling enough to click. Rank dari yang paling strong.</pre>
+            <p class="kapan">A/B test judul artikel untuk maximize CTR di SERP.</p>
+        </div>
+
+        <div class="tpl">
+            <pre>Buat FAQ section (schema-markup ready) untuk artikel tentang "[topik]". Generate 7 pertanyaan yang orang actually search di Google (format "People Also Ask"). Per FAQ: question + answer (2-3 kalimat, concise & authoritative). Jawaban harus bisa jadi featured snippet. Include JSON-LD schema markup template.</pre>
+            <p class="kapan">Bikin FAQ section yang bisa dapet rich snippet di Google.</p>
+        </div>
+
+        <div class="tpl">
+            <pre>Kamu content refresh strategist. Artikel lama gue: judul "[judul]", published [X bulan lalu], current ranking: page [X] untuk "[keyword]". Buat update plan: (1) Sections yang perlu di-update (info outdated), (2) New sections to add, (3) Internal links to add, (4) Title/meta tweaks, (5) Content gap vs articles yang outrank gue. Goal: move to page 1.</pre>
+            <p class="kapan">Refresh old content biar ranking naik lagi.</p>
+        </div>
+
+        <div class="tpl">
+            <pre>Act as link building strategist. Niche: [niche], target page: "[URL]", current backlinks: [jumlah]. Buat 7 link building tactics yang realistic untuk solo blogger/small team. Per tactic: method + where to find opportunities + outreach template snippet + expected difficulty + timeline. Fokus white-hat only, no PBN/spam.</pre>
+            <p class="kapan">Strategy backlink building yang sustainable dan ethical.</p>
+        </div>
+
+    </div>
+
+    <span class="page-num">12</span>
+</section>
+
+<!-- ========================================
+     NICHE 9 — SEO TIPS
+     ======================================== -->
+<section class="page" style="border-bottom:1px solid var(--line-faint)">
+    <div class="card">
+        <h3>SEO Content Checklist (Pakai Sebelum Publish):</h3>
+        <ul style="list-style:none;padding:0;margin-top:12px">
+            <li style="padding:8px 0;border-bottom:1px solid var(--line-faint)">☐ Keyword ada di: title, H1, first paragraph, 1-2 H2, meta description</li>
+            <li style="padding:8px 0;border-bottom:1px solid var(--line-faint)">☐ Title max 60 characters, keyword di depan</li>
+            <li style="padding:8px 0;border-bottom:1px solid var(--line-faint)">☐ Meta description max 155 characters, ada CTA implicit</li>
+            <li style="padding:8px 0;border-bottom:1px solid var(--line-faint)">☐ Minimal 3 internal links ke artikel relevan lain</li>
+            <li style="padding:8px 0;border-bottom:1px solid var(--line-faint)">☐ Images ada alt text yang descriptive + keyword</li>
+            <li style="padding:8px 0;border-bottom:1px solid var(--line-faint)">☐ FAQ section di akhir (schema-markup ready)</li>
+            <li style="padding:8px 0;border-bottom:1px solid var(--line-faint)">☐ Word count competitive (cek top 5 SERP average)</li>
+            <li style="padding:8px 0;border-bottom:1px solid var(--line-faint)">☐ URL slug pendek, readable, ada keyword</li>
+            <li style="padding:8px 0;border-bottom:1px solid var(--line-faint)">☐ Content comprehensive — cover semua subtopic yang top articles bahas</li>
+            <li style="padding:8px 0">☐ CTA/next step jelas di akhir artikel</li>
+        </ul>
+    </div>
+</section>
+
+
+
+<!-- ========================================
+     SECTION 14: BONUS — 10 PROMPT CHEAT CODE
+     ======================================== -->
+<section class="page" id="bonus">
+    <div class="section-tag">
+        <span class="ch">13</span>
+        <span>Bonus — Cheat Code Prompts</span>
+    </div>
+
+    <h2 class="title">10 Prompt<br/><em>"Cheat Code"</em></h2>
+    <hr class="divider"/>
+
+    <p class="lead">Universal prompts yang works di niche apapun, situasi apapun. Ini adalah prompt-prompt "meta" yang nge-upgrade cara AI merespons lo.</p>
+
+    <div class="card solid">
+        <h3>Kenapa Ini "Cheat Code"?</h3>
+        <p>Prompt-prompt di bawah ini bukan untuk 1 task spesifik — tapi untuk meningkatkan KUALITAS output dari semua prompt lo. Anggap ini kayak modifier atau power-up yang bisa lo tempel ke prompt manapun.</p>
+    </div>
+
+    <div class="card">
+        <h3>Cara Pakai Cheat Code:</h3>
+        <ol class="step-list" style="margin:16px 0 0 0">
+            <li>Pilih 1-2 cheat code yang paling relevan</li>
+            <li>Paste di AWAL conversation sebelum prompt utama lo</li>
+            <li>Atau combine dengan prompt dari niche section manapun</li>
+            <li>Beberapa cheat code bisa di-stack (pakai bersamaan)</li>
+            <li>Experiment! Kombinasi berbeda = hasil berbeda</li>
+        </ol>
+    </div>
+
+    <div class="prompt-section">
+
+        <div class="tpl">
+            <pre>Sebelum menjawab, tanyakan 3 clarifying questions dulu ke gue supaya jawaban lo lebih akurat dan sesuai kebutuhan gue. Jangan langsung jawab — tanya dulu, baru execute setelah gue jawab.</pre>
+            <p class="kapan">Kalau lo mau AI nge-understand kebutuhan lo lebih dalam sebelum jawab.</p>
+        </div>
+
+        <div class="tpl">
+            <pre>Berikan jawaban dalam format: (1) Jawaban singkat 1 kalimat, (2) Penjelasan detail, (3) Contoh konkret, (4) Action step yang bisa langsung dilakukan. Selalu pakai struktur ini untuk semua respons berikutnya di conversation ini.</pre>
+            <p class="kapan">Set format output yang konsisten dan actionable di seluruh conversation.</p>
+        </div>
+
+        <div class="tpl">
+            <pre>Evaluate output lo sendiri. Setelah memberikan jawaban, kasih: (1) Rating 1-10 untuk kualitas jawaban, (2) Apa yang bisa diperbaiki, (3) Versi yang lebih baik. Jangan cuma kasih jawaban pertama — always iterate dan improve.</pre>
+            <p class="kapan">Paksa AI buat self-critique dan kasih versi terbaik.</p>
+        </div>
+
+        <div class="tpl">
+            <pre>Dari sekarang, act as panel of 3 experts: [Expert A: contrarian thinker], [Expert B: practical executor], [Expert C: creative innovator]. Untuk setiap pertanyaan gue, berikan perspektif dari ketiga expert ini, lalu synthesize jadi 1 rekomendasi final. Label tiap perspektif jelas.</pre>
+            <p class="kapan">Dapet multiple perspectives untuk keputusan yang lebih nuanced.</p>
+        </div>
+
+        <div class="tpl">
+            <pre>Kamu sekarang dalam mode "10x output". Apapun yang gue minta, berikan 3x lebih banyak dari yang diminta. Kalau gue minta 3 ide, kasih 10. Kalau gue minta 1 draft, kasih 3 versi. Kalau gue minta outline, kasih outline + draft intro. Over-deliver selalu.</pre>
+            <p class="kapan">Kalau lo mau maximize output per prompt tanpa harus nanya berkali-kali.</p>
+        </div>
+
+        <div class="tpl">
+            <pre>Sebelum memberikan jawaban, berpikir step-by-step secara internal. Tulis thought process lo: (1) Apa yang sebenarnya diminta, (2) Apa context/constraint-nya, (3) Approach terbaik, (4) Potential pitfalls. Baru setelah itu, berikan jawaban final. Show your reasoning.</pre>
+            <p class="kapan">Dapat jawaban yang lebih thoughtful dan well-reasoned.</p>
+        </div>
+
+        <div class="tpl">
+            <pre>Treat gue sebagai expert di bidang ini. Skip basic explanations. Langsung ke advanced insights, nuance, dan non-obvious angles. Kalau ada trade-offs, explain trade-offs-nya. Jangan dumb down — gue mau depth, bukan breadth.</pre>
+            <p class="kapan">Upgrade level output dari beginner-friendly ke expert-level.</p>
+        </div>
+
+        <div class="tpl">
+            <pre>Berikan jawaban dalam format yang gue bisa langsung copy-paste dan pakai tanpa editing. No intro paragraf, no "sure, here's...", no explanation unless asked. Pure output only. Start immediately with the deliverable.</pre>
+            <p class="kapan">Kalau lo cuma butuh output bersih tanpa basa-basi.</p>
+        </div>
+
+        <div class="tpl">
+            <pre>Identify 3 hal yang TIDAK gue tanyakan tapi SEHARUSNYA gue tanyakan tentang topik ini. Jawab pertanyaan-pertanyaan itu juga. Anggap lo mentor yang lagi ngasih guidance — kasih apa yang gue butuh, bukan cuma apa yang gue minta.</pre>
+            <p class="kapan">Discover blind spots dan dapet insight yang nggak kepikiran.</p>
+        </div>
+
+        <div class="tpl">
+            <pre>Analisis prompt gue berikut: "[paste prompt lo]". Kasih feedback: (1) Kejelasan instruksi (1-10), (2) Apa yang ambiguous, (3) Apa yang missing (context/constraint/example), (4) Rewrite versi yang lebih baik dengan penjelasan setiap improvement. Ajarin gue bikin prompt yang lebih baik.</pre>
+            <p class="kapan">Meta-prompt: improve prompt-writing skill lo sendiri.</p>
+        </div>
+
+    </div>
+
+    <span class="page-num">13</span>
+</section>
+
+<!-- ========================================
+     BONUS — COMBINATION EXAMPLES
+     ======================================== -->
+<section class="page" style="border-bottom:1px solid var(--line-faint)">
+    <div class="card">
+        <h3>Contoh Kombinasi Cheat Code + Niche Prompt:</h3>
+        <pre style="font-family:'IBM Plex Mono',monospace;font-size:.82rem;line-height:1.7;white-space:pre-wrap;margin-top:12px;background:var(--paper);padding:16px;border:1px solid var(--line-faint)">[Cheat Code №03 — Self-Critique]
++
+[Niche 1, Prompt №01 — Hook Generator]
+=
+"Buat 5 hook untuk topik X. Setelah itu, evaluate sendiri masing-masing hook: rating 1-10, alasan, dan buat versi yang lebih baik untuk yang score-nya di bawah 8."</pre>
+    </div>
+
+    <div class="card">
+        <h3>Stack Power Example:</h3>
+        <pre style="font-family:'IBM Plex Mono',monospace;font-size:.82rem;line-height:1.7;white-space:pre-wrap;margin-top:12px;background:var(--paper);padding:16px;border:1px solid var(--line-faint)">[Cheat Code №04 — Panel of Experts]
++
+[Cheat Code №05 — 10x Output]
++
+[Niche 3, Prompt №01 — Headline Generator]
+=
+"Act as panel of 3 copywriting experts. Per expert, buat 10 headline variations (total 30). Lalu synthesize top 5 dari semua experts."</pre>
+    </div>
+
+    <div class="pull-quote">
+        "The magic isn't in one prompt — it's in how you combine and layer them. That's where 10x results come from."
+        <cite>— Advanced Prompt Engineering</cite>
+    </div>
+</section>
+
+<!-- ========================================
+     BONUS — ADVANCED PROMPT TIPS
+     ======================================== -->
+<section class="page" style="border-bottom:1px solid var(--line-faint)">
+    <div class="section-tag">
+        <span class="ch">—</span>
+        <span>Advanced Tips</span>
+    </div>
+
+    <h2 class="title">Level Up<br/><em>Your Prompting</em></h2>
+
+    <p>Setelah lo master basic prompts di ebook ini, here are advanced techniques buat naik level:</p>
+
+    <div class="card">
+        <h3>1. Chain Prompting</h3>
+        <p style="margin-bottom:0">Jangan coba selesaikan semua dalam 1 prompt. Break jadi steps:</p>
+        <ol class="step-list" style="margin:12px 0 0 0">
+            <li>Prompt 1: "Research tentang [topik]" → dapet knowledge base</li>
+            <li>Prompt 2: "Based on research tadi, buat outline" → dapet structure</li>
+            <li>Prompt 3: "Tulis section 1 based on outline" → dapet content</li>
+            <li>Prompt 4: "Review dan improve tulisan tadi" → dapet polished result</li>
+        </ol>
+    </div>
+
+    <div class="card">
+        <h3>2. Persona Stacking</h3>
+        <p style="margin-bottom:0">Combine multiple roles dalam satu prompt:</p>
+        <pre style="font-family:'IBM Plex Mono',monospace;font-size:.82rem;line-height:1.7;white-space:pre-wrap;margin-top:12px;background:var(--paper);padding:16px;border:1px solid var(--line-faint)">"Kamu adalah hybrid: 50% copywriter direct response + 50% stand-up comedian. Tulis landing page yang persuasive tapi genuinely funny."</pre>
+    </div>
+
+    <div class="card">
+        <h3>3. Constraint-Based Creativity</h3>
+        <p style="margin-bottom:0">Makin banyak constraints = makin creative output:</p>
+        <pre style="font-family:'IBM Plex Mono',monospace;font-size:.82rem;line-height:1.7;white-space:pre-wrap;margin-top:12px;background:var(--paper);padding:16px;border:1px solid var(--line-faint)">"Buat headline yang: max 6 kata, no generic words (amazing, incredible, best), harus ada angka, harus bikin orang curious tanpa clickbait."</pre>
+    </div>
+
+    <div class="card">
+        <h3>4. Negative Prompting</h3>
+        <p style="margin-bottom:0">Kasih tau AI apa yang JANGAN dilakukan:</p>
+        <pre style="font-family:'IBM Plex Mono',monospace;font-size:.82rem;line-height:1.7;white-space:pre-wrap;margin-top:12px;background:var(--paper);padding:16px;border:1px solid var(--line-faint)">"Tulis email marketing. JANGAN: pakai kata 'penawaran terbatas', buka dengan 'Halo [nama]', include emoji berlebihan, atau sound seperti template generik. DO: sound like a friend giving genuine advice."</pre>
+    </div>
+
+    <div class="card">
+        <h3>5. Temperature Control (Conversational)</h3>
+        <p style="margin-bottom:0">Lo bisa "control" seberapa creative vs precise AI responds:</p>
+        <ul style="list-style:none;padding:0;margin-top:12px">
+            <li style="padding:6px 0;border-bottom:1px solid var(--line-faint)">→ "Be very precise and factual" = low creativity, high accuracy</li>
+            <li style="padding:6px 0;border-bottom:1px solid var(--line-faint)">→ "Be creative and experimental" = high creativity, more unique</li>
+            <li style="padding:6px 0">→ "Give me something unexpected" = push beyond obvious answers</li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <h3>6. Output Format Control</h3>
+        <p style="margin-bottom:0">Explicitly define output format yang lo mau:</p>
+        <ul style="list-style:none;padding:0;margin-top:12px">
+            <li style="padding:6px 0;border-bottom:1px solid var(--line-faint)">→ "Format: table with columns [X, Y, Z]"</li>
+            <li style="padding:6px 0;border-bottom:1px solid var(--line-faint)">→ "Format: numbered list, max 1 sentence per item"</li>
+            <li style="padding:6px 0;border-bottom:1px solid var(--line-faint)">→ "Format: tweet-length (max 280 chars)"</li>
+            <li style="padding:6px 0">→ "Format: JSON/markdown/bullet points"</li>
+        </ul>
+    </div>
+
+    <div class="pull-quote">
+        "The difference between a novice and expert prompt engineer isn't vocabulary — it's specificity. Experts leave nothing to chance."
+        <cite>— @yanzy17</cite>
+    </div>
+</section>
+
+
+
+<!-- ========================================
+     SECTION 15: CLOSING — ACTION PLAN
+     ======================================== -->
+<section class="page" id="closing">
+    <div class="section-tag">
+        <span class="ch">14</span>
+        <span>Closing</span>
+    </div>
+
+    <h2 class="title">Action <em>Plan</em></h2>
+    <hr class="divider"/>
+
+    <p class="lead">Lo udah punya 100+ prompt. Sekarang apa? Here's your 7-day action plan supaya ebook ini nggak cuma jadi saved bookmark yang nggak pernah dibuka lagi.</p>
+
+    <div class="pull-quote">
+        "Tools tanpa action itu cuma koleksi. Action tanpa tools itu cuma capek. Lo sekarang punya keduanya."
+        <cite>— @yanzy17</cite>
+    </div>
+
+    <div class="card">
+        <h3>Your 7-Day Challenge:</h3>
+        <p style="margin-bottom:8px">Commit ke ini. 7 hari. 1 action per hari. Di akhir minggu, lo bakal punya system yang sustainable.</p>
+    </div>
+
+    <ol class="step-list">
+        <li><strong>Hari 1: Pick Your Niche</strong> — Pilih 1 niche yang paling relevan sama lo sekarang. Jangan serakah mau semua sekaligus. Fokus dulu ke 1.</li>
+        <li><strong>Hari 2: Test 5 Prompts</strong> — Ambil 5 prompt dari niche lo, paste ke ChatGPT/Gemini, ganti placeholder-nya. Lihat hasilnya. Feel the power.</li>
+        <li><strong>Hari 3: Customize</strong> — Modifikasi prompt yang paling works buat lo. Tambahin context spesifik bisnis/brand lo. Makin spesifik = makin bagus output.</li>
+        <li><strong>Hari 4: Create Content</strong> — Pakai output AI untuk bikin 3 konten real yang lo publish. Threads, IG, blog, email — whatever platform lo.</li>
+        <li><strong>Hari 5: Use Cheat Codes</strong> — Combine prompt niche lo + 2-3 cheat code dari bonus section. Lihat gimana output-nya naik level.</li>
+        <li><strong>Hari 6: Build Library</strong> — Bikin dokumen personal "My Prompt Library" — kumpulin prompt yang udah lo customize dan works bagus. Ini asset lo.</li>
+        <li><strong>Hari 7: Share & Iterate</strong> — Share hasil konten lo, analisis performanya, dan iterate prompt-nya berdasarkan feedback real. Rinse and repeat.</li>
+    </ol>
+
+    <div class="card">
+        <h3>Remember This:</h3>
+        <p style="margin-bottom:0">AI itu multiplier — dia multiply effort lo. Kalau effort lo 0, dikali berapapun tetep 0. Tapi kalau lo udah punya direction, strategy, dan consistency — AI bakal nge-10x output lo. Ebook ini adalah shortcut. Tapi shortcut tetep butuh langkah pertama.</p>
+    </div>
+
+    <div class="card solid">
+        <h3>Pro Tips untuk Maximize Ebook Ini:</h3>
+        <ul style="list-style:none;padding:0;margin-top:12px">
+            <li style="padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.15)">→ Bookmark halaman ini di browser biar gampang akses</li>
+            <li style="padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.15)">→ Ctrl+F (search) kalau nyari prompt spesifik</li>
+            <li style="padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.15)">→ Screenshot prompt favorit, save di folder khusus</li>
+            <li style="padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.15)">→ Share ke temen yang juga butuh — good karma returns</li>
+            <li style="padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.15)">→ Follow @yanzy17 untuk update dan prompt baru</li>
+            <li style="padding:8px 0">→ Feedback? DM gue. Gue baca semua.</li>
+        </ul>
+    </div>
+
+    <div class="stats">
+        <div class="stat">
+            <span class="num">111</span>
+            <span class="label">Total Prompts</span>
+        </div>
+        <div class="stat">
+            <span class="num">9</span>
+            <span class="label">Niches Covered</span>
+        </div>
+        <div class="stat">
+            <span class="num">∞</span>
+            <span class="label">Possibilities</span>
+        </div>
+    </div>
+
+    <div class="card">
+        <h3>Recap — What You Have Now:</h3>
+        <ul style="list-style:none;padding:0;margin-top:12px">
+            <li style="padding:8px 0;border-bottom:1px solid var(--line-faint)">✓ <strong>15 prompts</strong> untuk Content Creator & Threads growth</li>
+            <li style="padding:8px 0;border-bottom:1px solid var(--line-faint)">✓ <strong>12 prompts</strong> untuk Shopee Affiliate & E-Commerce conversion</li>
+            <li style="padding:8px 0;border-bottom:1px solid var(--line-faint)">✓ <strong>12 prompts</strong> untuk Copywriting & Sales persuasion</li>
+            <li style="padding:8px 0;border-bottom:1px solid var(--line-faint)">✓ <strong>10 prompts</strong> untuk Personal Branding & LinkedIn authority</li>
+            <li style="padding:8px 0;border-bottom:1px solid var(--line-faint)">✓ <strong>12 prompts</strong> untuk Bisnis & UMKM strategy</li>
+            <li style="padding:8px 0;border-bottom:1px solid var(--line-faint)">✓ <strong>10 prompts</strong> untuk Edukasi & Tutorial content</li>
+            <li style="padding:8px 0;border-bottom:1px solid var(--line-faint)">✓ <strong>10 prompts</strong> untuk Self-Development & Produktivitas</li>
+            <li style="padding:8px 0;border-bottom:1px solid var(--line-faint)">✓ <strong>10 prompts</strong> untuk Freelancer & Jasa client acquisition</li>
+            <li style="padding:8px 0;border-bottom:1px solid var(--line-faint)">✓ <strong>10 prompts</strong> untuk SEO & Blog ranking strategy</li>
+            <li style="padding:8px 0">✓ <strong>10 prompts</strong> "Cheat Code" universal enhancers</li>
+        </ul>
+    </div>
+
+    <hr class="divider thin" style="margin:40px 0"/>
+
+    <div style="text-align:center;padding:40px 0">
+        <p style="font-family:'IBM Plex Mono',monospace;font-size:.75rem;text-transform:uppercase;letter-spacing:.3em;color:var(--ink-mute);margin-bottom:8px">Created by</p>
+        <p style="font-family:'Source Serif 4',Georgia,serif;font-size:2rem;font-weight:900;margin-bottom:8px">@yanzy17</p>
+        <p style="font-family:'Inter',sans-serif;font-size:.95rem;color:var(--ink-soft);margin-bottom:24px">Prompt Engineer · Content Strategist · Digital Creator</p>
+        <p style="font-family:'IBM Plex Mono',monospace;font-size:.72rem;color:var(--ink-dim);letter-spacing:.2em;text-transform:uppercase">Follow for more → Threads · Instagram · LinkedIn</p>
+    </div>
+
+    <hr class="divider thin"/>
+
+    <div style="text-align:center;margin-top:24px">
+        <button class="btn-pdf" onclick="window.print()">⬇ Download as PDF</button>
+    </div>
+
+    <div class="card" style="margin-top:32px">
+        <h3>Disclaimer:</h3>
+        <p style="margin-bottom:8px;font-size:.9rem;color:var(--ink-mute)">AI-generated content tetap perlu lo review, edit, dan personalize sebelum publish. Jangan 100% copy-paste tanpa quality check. AI adalah starting point, bukan final product. Always add your unique voice, experience, dan perspective.</p>
+        <p style="margin-bottom:0;font-size:.9rem;color:var(--ink-mute)">Ebook ini akan terus di-update. Follow @yanzy17 untuk dapet versi terbaru dan prompt-prompt baru.</p>
+    </div>
+
+    <hr class="divider thin" style="margin:32px 0"/>
+
+    <div style="text-align:center;padding:20px 0;font-family:'IBM Plex Mono',monospace;font-size:.7rem;color:var(--ink-dim);letter-spacing:.15em">
+        <p style="margin-bottom:4px">© 2024 @yanzy17 — All Rights Reserved</p>
+        <p style="margin-bottom:4px">Version 1.0 · Prompt Master Series</p>
+        <p style="margin-bottom:0">Made with ☕ and too many late nights</p>
+    </div>
+
+    <span class="page-num">14</span>
+</section>
+
+<!-- ========================================
+     COLOPHON
+     ======================================== -->
+<section class="page" style="border-bottom:none;padding-top:60px;padding-bottom:60px">
+    <div class="section-tag">
+        <span class="ch">—</span>
+        <span>Colophon</span>
+    </div>
+
+    <h2 class="title" style="font-size:1.8rem">About This <em>Ebook</em></h2>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:24px">
+        <div>
+            <p style="font-family:'IBM Plex Mono',monospace;font-size:.72rem;text-transform:uppercase;letter-spacing:.2em;color:var(--ink-mute);margin-bottom:4px">Author</p>
+            <p style="font-weight:700;margin-bottom:16px">@yanzy17</p>
+
+            <p style="font-family:'IBM Plex Mono',monospace;font-size:.72rem;text-transform:uppercase;letter-spacing:.2em;color:var(--ink-mute);margin-bottom:4px">Edition</p>
+            <p style="font-weight:700;margin-bottom:16px">First Edition, 2024</p>
+
+            <p style="font-family:'IBM Plex Mono',monospace;font-size:.72rem;text-transform:uppercase;letter-spacing:.2em;color:var(--ink-mute);margin-bottom:4px">Format</p>
+            <p style="font-weight:700;margin-bottom:16px">HTML + PDF (Print-Ready)</p>
+        </div>
+        <div>
+            <p style="font-family:'IBM Plex Mono',monospace;font-size:.72rem;text-transform:uppercase;letter-spacing:.2em;color:var(--ink-mute);margin-bottom:4px">Typography</p>
+            <p style="font-weight:700;margin-bottom:16px">Source Serif 4 · Inter · IBM Plex Mono</p>
+
+            <p style="font-family:'IBM Plex Mono',monospace;font-size:.72rem;text-transform:uppercase;letter-spacing:.2em;color:var(--ink-mute);margin-bottom:4px">Total Prompts</p>
+            <p style="font-weight:700;margin-bottom:16px">111 Prompts · 9 Niches · 10 Cheat Codes</p>
+
+            <p style="font-family:'IBM Plex Mono',monospace;font-size:.72rem;text-transform:uppercase;letter-spacing:.2em;color:var(--ink-mute);margin-bottom:4px">Compatible With</p>
+            <p style="font-weight:700;margin-bottom:16px">ChatGPT · Gemini · Claude · All LLMs</p>
+        </div>
+    </div>
+
+    <hr class="divider thin" style="margin:32px 0"/>
+
+    <div class="card">
+        <h3>License & Usage:</h3>
+        <p style="margin-bottom:8px;font-size:.9rem">Lo bebas pakai semua prompt di ebook ini untuk keperluan personal dan bisnis lo. Yang nggak boleh: redistribute/resell ebook ini tanpa izin. Kalau mau share, share link-nya — bukan file-nya.</p>
+        <p style="margin-bottom:0;font-size:.9rem">Kalau ebook ini helpful, the best "thank you" yang bisa lo kasih: follow @yanzy17, share hasil lo, dan tag gue. Gue genuinely seneng lihat orang succeed pakai resource ini.</p>
+    </div>
+
+    <div style="text-align:center;margin-top:40px;padding:32px 0;border-top:2px solid var(--ink);border-bottom:2px solid var(--ink)">
+        <p style="font-family:'Source Serif 4',Georgia,serif;font-size:1.6rem;font-weight:900;margin-bottom:8px">Sekarang, giliran lo execute.</p>
+        <p style="font-family:'IBM Plex Mono',monospace;font-size:.75rem;text-transform:uppercase;letter-spacing:.2em;color:var(--ink-mute)">Stop scrolling. Start prompting.</p>
+    </div>
+
+    <div style="text-align:center;margin-top:32px;padding-bottom:20px">
+        <p style="font-family:'IBM Plex Mono',monospace;font-size:.68rem;color:var(--ink-dim);letter-spacing:.15em;text-transform:uppercase;margin-bottom:12px">
+            Connect with @yanzy17
+        </p>
+        <p style="font-size:.9rem;color:var(--ink-soft);margin-bottom:4px">
+            Threads · Instagram · LinkedIn · TikTok
+        </p>
+        <p style="font-family:'IBM Plex Mono',monospace;font-size:.68rem;color:var(--ink-dim);letter-spacing:.1em;margin-top:24px">
+            ─── End of Ebook ───
+        </p>
+    </div>
+</section>
+
+</body>
+</html>
