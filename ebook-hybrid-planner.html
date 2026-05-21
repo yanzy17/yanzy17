@@ -1,0 +1,2577 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hybrid Planner Pro — Template Notion, Planner Harian & Manajemen Waktu untuk Hybrid Worker</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Nunito+Sans:wght@300;400;600;700&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #1a2332;
+  --warm-white: #fefcf9;
+  --blue: #4a90d9;
+  --gold: #c8a45c;
+  --navy-light: #2a3a4f;
+  --blue-light: #e8f1fb;
+  --gold-light: #f9f3e6;
+  --gray: #6b7b8d;
+  --gray-light: #e8eaed;
+  --shadow: 0 2px 16px rgba(26,35,50,0.08);
+  --shadow-lg: 0 8px 32px rgba(26,35,50,0.12);
+  --radius: 10px;
+  --radius-lg: 16px;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Nunito Sans', sans-serif;
+  background: var(--warm-white);
+  color: var(--navy);
+  line-height: 1.75;
+  font-size: 16px;
+}
+h1,h2,h3,h4,h5,h6 { font-family: 'Outfit', sans-serif; line-height: 1.3; }
+code, .mono { font-family: 'Fira Code', monospace; font-size: 0.85em; }
+a { color: var(--blue); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+
+/* Navigation */
+.sticky-nav {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(26,35,50,0.97);
+  backdrop-filter: blur(10px);
+  padding: 12px 24px;
+  display: flex; align-items: center; justify-content: space-between;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+}
+.sticky-nav .nav-title {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700; font-size: 0.95rem;
+  color: var(--warm-white); letter-spacing: -0.3px;
+}
+.sticky-nav .nav-links {
+  display: flex; gap: 8px; flex-wrap: wrap; align-items: center;
+}
+.sticky-nav .nav-links a {
+  color: rgba(255,255,255,0.7); font-size: 0.78rem;
+  padding: 4px 10px; border-radius: 20px;
+  transition: all 0.2s;
+}
+.sticky-nav .nav-links a:hover {
+  color: #fff; background: rgba(74,144,217,0.3);
+  text-decoration: none;
+}
+
+/* Page / Section */
+.page {
+  max-width: 820px; margin: 0 auto;
+  padding: 60px 24px;
+  position: relative;
+}
+.page-number {
+  position: absolute; top: 20px; right: 24px;
+  font-family: 'Fira Code', monospace;
+  font-size: 0.75rem; color: var(--gray);
+  background: var(--gray-light); padding: 2px 10px;
+  border-radius: 12px;
+}
+.section-tag {
+  display: inline-block;
+  font-family: 'Fira Code', monospace;
+  font-size: 0.72rem; font-weight: 500;
+  color: var(--blue); background: var(--blue-light);
+  padding: 4px 12px; border-radius: 20px;
+  margin-bottom: 16px; letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+.section-tag.gold { color: var(--gold); background: var(--gold-light); }
+
+
+/* Cards */
+.card {
+  background: #fff; border-radius: var(--radius);
+  padding: 28px; margin: 20px 0;
+  box-shadow: var(--shadow);
+  border: 1px solid rgba(0,0,0,0.04);
+}
+.card.highlight {
+  border-left: 4px solid var(--blue);
+}
+.card.dark {
+  background: var(--navy); color: var(--warm-white);
+  border: none;
+}
+.card.dark h3, .card.dark h4 { color: var(--warm-white); }
+.card.dark .section-tag { background: rgba(74,144,217,0.2); }
+.card.gold-border {
+  border-left: 4px solid var(--gold);
+}
+
+/* Stats Grid */
+.stats {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px; margin: 24px 0;
+}
+.stat-item {
+  text-align: center; padding: 24px 16px;
+  background: #fff; border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+.stat-item .stat-number {
+  font-family: 'Outfit', sans-serif;
+  font-size: 2.2rem; font-weight: 800;
+  color: var(--blue); line-height: 1;
+}
+.stat-item .stat-label {
+  font-size: 0.82rem; color: var(--gray);
+  margin-top: 8px;
+}
+
+/* Step List */
+.step-list { list-style: none; counter-reset: step; margin: 20px 0; }
+.step-list li {
+  counter-increment: step; position: relative;
+  padding: 16px 16px 16px 56px; margin: 12px 0;
+  background: #fff; border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+.step-list li::before {
+  content: counter(step);
+  position: absolute; left: 16px; top: 16px;
+  width: 30px; height: 30px;
+  background: var(--blue); color: #fff;
+  border-radius: 50%; display: flex;
+  align-items: center; justify-content: center;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700; font-size: 0.85rem;
+}
+
+
+/* Template Cards */
+.tpl {
+  background: #fff; border-radius: var(--radius);
+  padding: 24px; margin: 16px 0;
+  box-shadow: var(--shadow);
+  border-top: 3px solid var(--gold);
+  position: relative;
+}
+.tpl .tpl-number {
+  position: absolute; top: -12px; left: 20px;
+  background: var(--gold); color: #fff;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700; font-size: 0.75rem;
+  padding: 2px 12px; border-radius: 12px;
+}
+.tpl h4 { margin-top: 8px; }
+
+/* Pull Quote */
+.pull-quote {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.4rem; font-weight: 500;
+  color: var(--navy); padding: 32px;
+  margin: 32px 0; position: relative;
+  border-left: 4px solid var(--gold);
+  background: var(--gold-light);
+  border-radius: 0 var(--radius) var(--radius) 0;
+}
+.pull-quote::before {
+  content: '"'; font-size: 4rem;
+  position: absolute; top: -10px; left: 12px;
+  color: var(--gold); opacity: 0.4;
+  font-family: serif;
+}
+
+/* Tables */
+.table-wrap {
+  overflow-x: auto; margin: 20px 0;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+.table-wrap table {
+  width: 100%; border-collapse: collapse;
+  font-size: 0.9rem;
+}
+.table-wrap th {
+  background: var(--navy); color: var(--warm-white);
+  padding: 14px 16px; text-align: left;
+  font-family: 'Outfit', sans-serif; font-weight: 600;
+}
+.table-wrap td {
+  padding: 12px 16px; border-bottom: 1px solid var(--gray-light);
+}
+.table-wrap tr:hover td { background: var(--blue-light); }
+
+/* Badge */
+.badge {
+  display: inline-block; font-size: 0.7rem;
+  padding: 3px 10px; border-radius: 12px;
+  font-weight: 600; margin: 2px 4px;
+}
+.badge.blue { background: var(--blue-light); color: var(--blue); }
+.badge.gold { background: var(--gold-light); color: var(--gold); }
+.badge.navy { background: var(--navy); color: var(--warm-white); }
+.badge.green { background: #e6f7ed; color: #2d8f5e; }
+
+
+/* Cover */
+.cover {
+  min-height: 100vh; display: flex;
+  flex-direction: column; align-items: center;
+  justify-content: center; text-align: center;
+  background: linear-gradient(135deg, var(--navy) 0%, #2a3f5f 50%, #1a3050 100%);
+  color: var(--warm-white); padding: 60px 24px;
+  position: relative; overflow: hidden;
+}
+.cover::before {
+  content: ''; position: absolute;
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(74,144,217,0.15) 0%, transparent 70%);
+  top: -200px; right: -200px; border-radius: 50%;
+}
+.cover::after {
+  content: ''; position: absolute;
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, rgba(200,164,92,0.1) 0%, transparent 70%);
+  bottom: -100px; left: -100px; border-radius: 50%;
+}
+.cover h1 {
+  font-size: clamp(2.8rem, 8vw, 5rem);
+  font-weight: 900; letter-spacing: -2px;
+  margin-bottom: 16px; position: relative; z-index: 1;
+  background: linear-gradient(135deg, #fff 0%, #e0e8f0 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.cover .subtitle {
+  font-size: 1.15rem; opacity: 0.85;
+  max-width: 560px; margin: 0 auto 32px;
+  position: relative; z-index: 1;
+}
+.cover .badges {
+  display: flex; gap: 12px; flex-wrap: wrap;
+  justify-content: center; margin: 24px 0;
+  position: relative; z-index: 1;
+}
+.cover .badges span {
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.2);
+  padding: 8px 18px; border-radius: 24px;
+  font-size: 0.82rem; font-weight: 600;
+}
+.cover .author {
+  margin-top: 40px; font-size: 0.9rem;
+  opacity: 0.7; position: relative; z-index: 1;
+}
+
+/* Download Button */
+.download-btn {
+  position: fixed; bottom: 24px; right: 24px;
+  background: var(--blue); color: #fff;
+  padding: 14px 24px; border-radius: 30px;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 600; font-size: 0.85rem;
+  box-shadow: 0 4px 20px rgba(74,144,217,0.4);
+  cursor: pointer; border: none; z-index: 999;
+  transition: all 0.2s;
+  text-decoration: none; display: flex;
+  align-items: center; gap: 8px;
+}
+.download-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 28px rgba(74,144,217,0.5);
+  text-decoration: none; color: #fff;
+}
+
+
+/* TOC */
+.toc-list { list-style: none; margin: 20px 0; }
+.toc-list li {
+  padding: 14px 20px; margin: 6px 0;
+  background: #fff; border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  display: flex; justify-content: space-between;
+  align-items: center; transition: all 0.2s;
+}
+.toc-list li:hover {
+  transform: translateX(4px);
+  box-shadow: var(--shadow-lg);
+}
+.toc-list li a { font-weight: 600; color: var(--navy); }
+.toc-list li .toc-badge { font-size: 0.72rem; color: var(--gray); }
+
+/* Checklist */
+.checklist { list-style: none; margin: 16px 0; }
+.checklist li {
+  padding: 8px 0 8px 32px; position: relative;
+  border-bottom: 1px solid var(--gray-light);
+}
+.checklist li::before {
+  content: '☐'; position: absolute; left: 0; top: 8px;
+  font-size: 1.1rem; color: var(--blue);
+}
+
+/* Timeline */
+.timeline { position: relative; margin: 24px 0; padding-left: 32px; }
+.timeline::before {
+  content: ''; position: absolute;
+  left: 12px; top: 0; bottom: 0;
+  width: 2px; background: var(--blue-light);
+}
+.timeline-item {
+  position: relative; margin: 20px 0;
+  padding: 16px 20px;
+  background: #fff; border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+.timeline-item::before {
+  content: ''; position: absolute;
+  left: -26px; top: 20px;
+  width: 10px; height: 10px;
+  background: var(--blue); border-radius: 50%;
+}
+.timeline-item .time-label {
+  font-family: 'Fira Code', monospace;
+  font-size: 0.78rem; color: var(--blue);
+  font-weight: 500;
+}
+
+/* Utilities */
+.mt-1 { margin-top: 8px; } .mt-2 { margin-top: 16px; }
+.mt-3 { margin-top: 24px; } .mt-4 { margin-top: 32px; }
+.mb-2 { margin-bottom: 16px; } .mb-3 { margin-bottom: 24px; }
+.text-center { text-align: center; }
+.text-sm { font-size: 0.85rem; }
+.text-gray { color: var(--gray); }
+.fw-600 { font-weight: 600; }
+.grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+.divider { height: 1px; background: var(--gray-light); margin: 40px 0; }
+
+/* Print */
+@media print {
+  .sticky-nav, .download-btn { display: none; }
+  .page { padding: 30px 0; page-break-after: always; }
+  .card { box-shadow: none; border: 1px solid #ddd; }
+  body { font-size: 11pt; }
+}
+@media (max-width: 640px) {
+  .page { padding: 40px 16px; }
+  .stats { grid-template-columns: 1fr 1fr; }
+  .grid-2 { grid-template-columns: 1fr; }
+  .sticky-nav .nav-links { display: none; }
+  .cover h1 { font-size: 2.4rem; }
+}
+</style>
+</head>
+<body>
+
+
+<!-- STICKY NAV -->
+<nav class="sticky-nav">
+  <div class="nav-title">📘 Hybrid Planner Pro</div>
+  <div class="nav-links">
+    <a href="#cover">Cover</a>
+    <a href="#toc">Daftar Isi</a>
+    <a href="#bab1">Mindset</a>
+    <a href="#bab2">Notion</a>
+    <a href="#bab3">Planner</a>
+    <a href="#bab6">Time Block</a>
+    <a href="#bab9">Focus</a>
+    <a href="#bab12">Roadmap</a>
+    <a href="#bab13">Templates</a>
+  </div>
+</nav>
+
+<!-- DOWNLOAD BUTTON -->
+<a href="javascript:window.print()" class="download-btn">
+  <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M8 12l-4-4h2.5V3h3v5H12L8 12z"/><path d="M14 14H2v-2h12v2z"/></svg>
+  Download PDF
+</a>
+
+<!-- ==================== COVER ==================== -->
+<section class="cover" id="cover">
+  <h1>HYBRID<br>PLANNER PRO</h1>
+  <p class="subtitle">Template Notion lengkap, planner harian digital, dan sistem manajemen waktu yang dirancang khusus untuk hybrid worker yang ingin produktif di mana pun mereka bekerja.</p>
+  <div class="badges">
+    <span>📋 15+ Notion Templates</span>
+    <span>⏰ Time-Blocking System</span>
+    <span>🧠 Energy Management</span>
+    <span>📅 30-Day Setup Plan</span>
+  </div>
+  <div class="badges">
+    <span>🏠 WFH Protocols</span>
+    <span>🏢 Office Optimization</span>
+    <span>🔄 Weekly Review System</span>
+  </div>
+  <p class="author">by <strong>@yanzy17</strong> · Edisi 2026 · v1.0</p>
+</section>
+
+
+<!-- ==================== PENGANTAR ==================== -->
+<section class="page" id="pengantar">
+  <span class="page-number">01</span>
+  <span class="section-tag">pengantar</span>
+  <h2>Kenapa Hybrid Worker Butuh Sistem?</h2>
+  
+  <p class="mt-2">Lo pernah nggak ngerasa hari ini produktif banget di kantor, tapi besoknya WFH malah bubar semua? Atau sebaliknya — WFH flow banget, tapi begitu masuk office malah kena meeting marathon?</p>
+  
+  <p class="mt-2">Welcome to the hybrid struggle. Dan lo nggak sendirian.</p>
+
+  <div class="stats mt-3">
+    <div class="stat-item">
+      <div class="stat-number">73%</div>
+      <div class="stat-label">hybrid worker merasa burnt out karena context switching</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number">2.5x</div>
+      <div class="stat-label">lebih sulit maintain rutinitas di hybrid setup</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number">47%</div>
+      <div class="stat-label">struggle dengan work-life boundary saat WFH</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number">68%</div>
+      <div class="stat-label">perusahaan akan tetap hybrid sampai 2027+</div>
+    </div>
+  </div>
+
+  <div class="card highlight mt-3">
+    <h4>🎯 Masalah Utama Hybrid Worker:</h4>
+    <ul class="mt-2" style="padding-left:20px;">
+      <li><strong>Context Switching Overload</strong> — Otak lo harus reset setiap kali pindah environment (rumah → kantor → cafe)</li>
+      <li><strong>No Consistent Structure</strong> — Rutinitas yang works di rumah nggak works di kantor, dan sebaliknya</li>
+      <li><strong>Meeting Fragmentation</strong> — Di kantor kena meeting fisik, WFH kena Zoom marathon</li>
+      <li><strong>Boundary Blur</strong> — Kapan mulai kerja? Kapan selesai? Siapa yang tau?</li>
+      <li><strong>Tool Scattered</strong> — Notes di sini, task di sana, calendar beda lagi</li>
+    </ul>
+  </div>
+
+  <div class="pull-quote">
+    Hybrid work bukan soal "kerja di mana", tapi soal "sistem apa yang bisa adapt di mana pun lo berada."
+  </div>
+
+  <div class="card dark mt-3">
+    <h4>📖 Ebook Ini Akan Kasih Lo:</h4>
+    <p class="mt-2">Sebuah sistem lengkap — dari Notion workspace architecture, daily planner templates, time-blocking mastery, sampai 30-day implementation roadmap. Semua designed specifically untuk orang yang kerja di multiple locations dan butuh satu unified system yang works everywhere.</p>
+  </div>
+</section>
+
+
+<!-- ==================== CARA PAKAI ==================== -->
+<section class="page" id="cara-pakai">
+  <span class="page-number">02</span>
+  <span class="section-tag gold">cara pakai</span>
+  <h2>3 Jalur Membaca Ebook Ini</h2>
+  
+  <p class="mt-2">Nggak harus baca dari awal sampai akhir. Pilih jalur yang sesuai kebutuhan lo sekarang:</p>
+
+  <div class="grid-2 mt-3">
+    <div class="card highlight">
+      <h4>🛤️ Jalur 1: Sequential</h4>
+      <p class="badge blue">Untuk pemula</p>
+      <p class="mt-2">Baca dari Bab 1 sampai Bab 15 secara berurutan. Cocok kalau lo baru mulai hybrid work atau mau rebuild sistem dari nol.</p>
+      <p class="mt-2 text-sm text-gray">Estimasi: 3-4 jam reading + 2 minggu implementasi</p>
+    </div>
+    <div class="card gold-border">
+      <h4>⚡ Jalur 2: Setup Only</h4>
+      <p class="badge gold">Untuk yang butuh cepat</p>
+      <p class="mt-2">Langsung ke Bab 2 (Notion System) → Bab 3 (Daily Planner) → Bab 12 (30-Day Roadmap). Lo langsung punya working system dalam 1 minggu.</p>
+      <p class="mt-2 text-sm text-gray">Estimasi: 1.5 jam reading + 1 minggu setup</p>
+    </div>
+    <div class="card">
+      <h4>📚 Jalur 3: Reference</h4>
+      <p class="badge navy">Untuk yang udah punya sistem</p>
+      <p class="mt-2">Pakai Daftar Isi, lompat ke bab yang lo butuhkan. Ambil template yang relevan, adapt ke sistem existing lo.</p>
+      <p class="mt-2 text-sm text-gray">Estimasi: On-demand, sesuai kebutuhan</p>
+    </div>
+  </div>
+
+  <div class="card dark mt-3">
+    <h4>💡 Pro Tip</h4>
+    <p class="mt-2">Bookmark ebook ini. Lo bakal balik lagi — guaranteed. Setiap minggu, revisit 1 bab untuk deepening. Sistem terbaik itu yang terus di-iterate.</p>
+  </div>
+</section>
+
+
+<!-- ==================== DAFTAR ISI ==================== -->
+<section class="page" id="toc">
+  <span class="page-number">03</span>
+  <span class="section-tag">daftar isi</span>
+  <h2>Daftar Isi Lengkap</h2>
+
+  <ul class="toc-list mt-3">
+    <li><a href="#pengantar">Pengantar — Kenapa Hybrid Worker Butuh Sistem</a><span class="toc-badge">01</span></li>
+    <li><a href="#cara-pakai">Cara Pakai Ebook Ini</a><span class="toc-badge">02</span></li>
+    <li><a href="#bab1">BAB 1 — Mindset Hybrid Worker</a><span class="toc-badge">04</span></li>
+    <li><a href="#bab2">BAB 2 — Sistem Notion Lengkap</a><span class="toc-badge">05</span></li>
+    <li><a href="#bab3">BAB 3 — Planner Harian Digital</a><span class="toc-badge">06</span></li>
+    <li><a href="#bab4">BAB 4 — Weekly Planning System</a><span class="toc-badge">07</span></li>
+    <li><a href="#bab5">BAB 5 — Monthly Review & Goals</a><span class="toc-badge">08</span></li>
+    <li><a href="#bab6">BAB 6 — Time Blocking Mastery</a><span class="toc-badge">09</span></li>
+    <li><a href="#bab7">BAB 7 — Energy Management</a><span class="toc-badge">10</span></li>
+    <li><a href="#bab8">BAB 8 — Meeting Optimization</a><span class="toc-badge">11</span></li>
+    <li><a href="#bab9">BAB 9 — Focus & Deep Work Protocol</a><span class="toc-badge">12</span></li>
+    <li><a href="#bab10">BAB 10 — Communication & Boundaries</a><span class="toc-badge">13</span></li>
+    <li><a href="#bab11">BAB 11 — Tools & Tech Stack</a><span class="toc-badge">14</span></li>
+    <li><a href="#bab12">BAB 12 — 30-Day Setup Roadmap</a><span class="toc-badge">15</span></li>
+    <li><a href="#bab13">BAB 13 — Templates Library</a><span class="toc-badge">16</span></li>
+    <li><a href="#bab14">BAB 14 — Troubleshooting</a><span class="toc-badge">17</span></li>
+    <li><a href="#bab15">BAB 15 — FAQ</a><span class="toc-badge">18</span></li>
+    <li><a href="#closing">Closing & Action Plan</a><span class="toc-badge">19</span></li>
+  </ul>
+</section>
+
+
+<!-- ==================== BAB 1: MINDSET ==================== -->
+<section class="page" id="bab1">
+  <span class="page-number">04</span>
+  <span class="section-tag">bab 1</span>
+  <h2>Mindset Hybrid Worker</h2>
+  <p class="text-gray">The Unique Challenges & Mental Models</p>
+
+  <div class="pull-quote mt-3">
+    Hybrid work bukan "WFH + Office Day." Ini adalah skill baru yang perlu dipelajari — sama seperti lo belajar tools baru.
+  </div>
+
+  <h3 class="mt-4">🧠 3 Tipe Hari dalam Hybrid Work</h3>
+  
+  <div class="grid-2 mt-2">
+    <div class="card">
+      <h4>🏢 Office Days</h4>
+      <p class="badge blue">Collaboration-Heavy</p>
+      <p class="mt-2"><strong>Optimized for:</strong> Meetings, brainstorming, 1-on-1s, team bonding, spontaneous conversations</p>
+      <p class="mt-2"><strong>Mindset shift:</strong> "Hari ini gue invest di relationships dan decisions yang butuh face-time."</p>
+      <p class="mt-2"><strong>Pitfall:</strong> Jangan coba deep work di kantor yang open-plan. Embrace the chaos.</p>
+    </div>
+    <div class="card">
+      <h4>🏠 WFH Days</h4>
+      <p class="badge green">Deep Work Focus</p>
+      <p class="mt-2"><strong>Optimized for:</strong> Deep work, creative tasks, writing, coding, strategic thinking</p>
+      <p class="mt-2"><strong>Mindset shift:</strong> "Hari ini gue protect focus time. Setiap interruption = debt."</p>
+      <p class="mt-2"><strong>Pitfall:</strong> Jangan isi WFH day dengan back-to-back Zoom calls. Itu bukan WFH, itu office di rumah.</p>
+    </div>
+    <div class="card gold-border">
+      <h4>🚀 Flex/Travel Days</h4>
+      <p class="badge gold">Administrative & Planning</p>
+      <p class="mt-2"><strong>Optimized for:</strong> Admin tasks, planning, light meetings, learning, documentation</p>
+      <p class="mt-2"><strong>Mindset shift:</strong> "Hari ini gue clear the deck. Process inbox, plan next week, update docs."</p>
+      <p class="mt-2"><strong>Pitfall:</strong> Jangan expect high-output day. Flex days itu maintenance mode — dan itu OK.</p>
+    </div>
+  </div>
+
+  <h3 class="mt-4">⚡ Energy Management > Time Management</h3>
+  
+  <div class="card highlight mt-2">
+    <p>Produktivitas bukan soal berapa JAM lo kerja. Tapi soal di JAM BERAPA lo melakukan JENIS PEKERJAAN yang tepat.</p>
+    <div class="table-wrap mt-3">
+      <table>
+        <tr><th>Energy Level</th><th>Jenis Kerja</th><th>Contoh</th></tr>
+        <tr><td><strong>🔋 Peak</strong> (100%)</td><td>Creative & Strategic</td><td>Writing, coding complex features, decision-making</td></tr>
+        <tr><td><strong>🔋 High</strong> (75%)</td><td>Collaborative</td><td>Meetings, brainstorming, code review</td></tr>
+        <tr><td><strong>🔋 Medium</strong> (50%)</td><td>Structured</td><td>Email, documentation, data entry</td></tr>
+        <tr><td><strong>🔋 Low</strong> (25%)</td><td>Administrative</td><td>Filing, scheduling, light reading</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <h3 class="mt-4">🔄 The Hybrid Worker Mental Model</h3>
+  
+  <ol class="step-list mt-2">
+    <li><strong>Plan by Day Type</strong> — Setiap minggu, assign "type" ke setiap hari. Jangan campur aduk intentionnya.</li>
+    <li><strong>Match Energy to Task</strong> — Peak hours untuk deep work. Low energy untuk admin. Always.</li>
+    <li><strong>Build Transition Rituals</strong> — Ritual pindah mode (rumah → kantor, kerja → istirahat) mencegah bleed-over.</li>
+    <li><strong>Embrace Asymmetry</strong> — Nggak semua hari harus sama productive. Some days are investment days.</li>
+    <li><strong>Single System, Multiple Contexts</strong> — Satu tools/system yang works di semua environment. Notion is perfect for this.</li>
+  </ol>
+
+  <div class="card dark mt-3">
+    <h4>🎯 Actionable Takeaway Bab 1</h4>
+    <p class="mt-2">Minggu depan, coba label setiap hari kerja lo dengan: 🏢 Office / 🏠 WFH / 🚀 Flex. Lalu tentukan TOP 1 intention per hari berdasarkan tipe itu. Track selama 1 minggu dan lihat perbedaannya.</p>
+  </div>
+</section>
+
+
+<!-- ==================== BAB 2: NOTION SYSTEM ==================== -->
+<section class="page" id="bab2">
+  <span class="page-number">05</span>
+  <span class="section-tag">bab 2</span>
+  <h2>Sistem Notion Lengkap</h2>
+  <p class="text-gray">Full Workspace Architecture untuk Hybrid Worker</p>
+
+  <div class="card highlight mt-3">
+    <h4>🏗️ Workspace Structure Overview</h4>
+    <pre class="mono mt-2" style="background:var(--navy);color:var(--warm-white);padding:20px;border-radius:8px;overflow-x:auto;font-size:0.8rem;">
+📁 HYBRID PLANNER PRO (Workspace)
+├── 🏠 Dashboard (Master Hub)
+├── 📅 Daily Log (Database)
+├── 📋 Weekly Review (Database)
+├── 🎯 Project Tracker (Database)
+├── ✅ Habit Tracker (Database)
+├── 📝 Meeting Notes (Database)
+├── 📚 Resource Library (Database)
+├── 🗂️ Templates (Page)
+└── ⚙️ Settings & Config (Page)
+    </pre>
+  </div>
+
+  <h3 class="mt-4">1. Master Dashboard Design</h3>
+  
+  <div class="card mt-2">
+    <h4>📊 Dashboard Widgets Layout</h4>
+    <p class="mt-2">Dashboard lo harus bisa di-scan dalam 5 detik. Here's the layout:</p>
+    
+    <div class="table-wrap mt-2">
+      <table>
+        <tr><th>Section</th><th>Widget</th><th>Source Database</th></tr>
+        <tr><td>Top Row</td><td>Today's Date + Day Type Badge</td><td>Formula/Manual</td></tr>
+        <tr><td>Top Row</td><td>Energy Level Selector</td><td>Daily Log</td></tr>
+        <tr><td>Left Column</td><td>Today's Top 3 Tasks</td><td>Daily Log (filtered: today)</td></tr>
+        <tr><td>Left Column</td><td>Current Focus Block</td><td>Calendar linked view</td></tr>
+        <tr><td>Right Column</td><td>Habit Streak Summary</td><td>Habit Tracker (filtered)</td></tr>
+        <tr><td>Right Column</td><td>Quick Capture Inbox</td><td>Resource Library (filtered: unprocessed)</td></tr>
+        <tr><td>Bottom</td><td>This Week's Progress Bar</td><td>Weekly Review</td></tr>
+        <tr><td>Bottom</td><td>Upcoming Deadlines (7 days)</td><td>Project Tracker (filtered)</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <h3 class="mt-4">2. Daily Log Database</h3>
+  
+  <div class="card mt-2">
+    <h4>📅 Database Properties</h4>
+    <div class="table-wrap mt-2">
+      <table>
+        <tr><th>Property Name</th><th>Type</th><th>Options/Config</th></tr>
+        <tr><td><code>Date</code></td><td>Date</td><td>Format: DD MMM YYYY</td></tr>
+        <tr><td><code>Day Type</code></td><td>Select</td><td>🏢 Office / 🏠 WFH / 🚀 Flex</td></tr>
+        <tr><td><code>Energy Level</code></td><td>Select</td><td>⚡ Peak / 🔋 High / 🔌 Medium / 🪫 Low</td></tr>
+        <tr><td><code>MIT 1</code></td><td>Text (Title)</td><td>Most Important Task</td></tr>
+        <tr><td><code>MIT 2</code></td><td>Text</td><td>Second priority</td></tr>
+        <tr><td><code>MIT 3</code></td><td>Text</td><td>Third priority</td></tr>
+        <tr><td><code>Focus Hours</code></td><td>Number</td><td>Format: hours (0-8)</td></tr>
+        <tr><td><code>Meeting Count</code></td><td>Number</td><td>Total meetings today</td></tr>
+        <tr><td><code>Mood</code></td><td>Select</td><td>😊 Great / 🙂 Good / 😐 Okay / 😤 Frustrated / 😴 Tired</td></tr>
+        <tr><td><code>Win of the Day</code></td><td>Text</td><td>1 thing you're proud of</td></tr>
+        <tr><td><code>Tomorrow's Priority</code></td><td>Text</td><td>Pre-set for next day</td></tr>
+        <tr><td><code>Completion Score</code></td><td>Formula</td><td>See formula below</td></tr>
+      </table>
+    </div>
+    
+    <div class="card highlight mt-3" style="background:var(--blue-light);">
+      <h4>🧮 Completion Score Formula</h4>
+      <code style="display:block;margin-top:8px;padding:12px;background:var(--navy);color:#7fdbca;border-radius:6px;font-size:0.8rem;overflow-x:auto;">
+if(prop("MIT 1") != "" and prop("MIT 2") != "" and prop("MIT 3") != "", "✅ All Done", if(prop("MIT 1") != "" and prop("MIT 2") != "", "🟡 2/3", if(prop("MIT 1") != "", "🟠 1/3", "❌ None")))
+      </code>
+      <p class="mt-2 text-sm">Formula ini ngecek apakah MIT terisi (completed) dan kasih visual score.</p>
+    </div>
+  </div>
+
+
+  <h3 class="mt-4">3. Weekly Review Database</h3>
+  
+  <div class="card mt-2">
+    <h4>📋 Weekly Review Properties</h4>
+    <div class="table-wrap mt-2">
+      <table>
+        <tr><th>Property Name</th><th>Type</th><th>Description</th></tr>
+        <tr><td><code>Week Number</code></td><td>Title</td><td>e.g., "Week 23 — Jun 2026"</td></tr>
+        <tr><td><code>Date Range</code></td><td>Date (range)</td><td>Mon-Sun of that week</td></tr>
+        <tr><td><code>Theme/Focus</code></td><td>Text</td><td>1 word tema minggu ini</td></tr>
+        <tr><td><code>Goals Met</code></td><td>Number</td><td>Out of total goals set</td></tr>
+        <tr><td><code>Total Focus Hours</code></td><td>Rollup</td><td>Sum dari Daily Log → Focus Hours</td></tr>
+        <tr><td><code>Avg Energy</code></td><td>Formula</td><td>Average energy score</td></tr>
+        <tr><td><code>Wins</code></td><td>Text</td><td>Top 3 wins of the week</td></tr>
+        <tr><td><code>Lessons</code></td><td>Text</td><td>What to improve</td></tr>
+        <tr><td><code>Next Week Priorities</code></td><td>Text</td><td>Top 3 for next week</td></tr>
+        <tr><td><code>Score</code></td><td>Select</td><td>⭐⭐⭐⭐⭐ (1-5 stars)</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <h3 class="mt-4">4. Project Tracker Database</h3>
+  
+  <div class="card mt-2">
+    <h4>🎯 Project Tracker Properties</h4>
+    <div class="table-wrap mt-2">
+      <table>
+        <tr><th>Property Name</th><th>Type</th><th>Config</th></tr>
+        <tr><td><code>Project Name</code></td><td>Title</td><td>—</td></tr>
+        <tr><td><code>Status</code></td><td>Select</td><td>💡 Idea / 📝 Planning / 🔨 In Progress / 👀 Review / ✅ Done / 🗄️ Archive</td></tr>
+        <tr><td><code>Priority</code></td><td>Select</td><td>🔴 P1 / 🟡 P2 / 🟢 P3</td></tr>
+        <tr><td><code>Due Date</code></td><td>Date</td><td>Deadline</td></tr>
+        <tr><td><code>Owner</code></td><td>Person</td><td>Assigned to</td></tr>
+        <tr><td><code>Category</code></td><td>Multi-select</td><td>Work / Personal / Side Project / Learning</td></tr>
+        <tr><td><code>Progress</code></td><td>Number (%)</td><td>0-100%</td></tr>
+        <tr><td><code>Related Tasks</code></td><td>Relation</td><td>Links to Daily Log</td></tr>
+        <tr><td><code>Notes</code></td><td>Text</td><td>Context & details</td></tr>
+      </table>
+    </div>
+    <p class="mt-2 text-sm"><strong>Views to create:</strong></p>
+    <ul style="padding-left:20px;font-size:0.9rem;">
+      <li><strong>Kanban</strong> — Group by Status, show Priority + Due Date</li>
+      <li><strong>Timeline</strong> — Gantt view by Due Date, colored by Category</li>
+      <li><strong>Active Only</strong> — Filter: Status = In Progress, sorted by Priority</li>
+      <li><strong>Calendar</strong> — Due dates on calendar view</li>
+    </ul>
+  </div>
+
+  <h3 class="mt-4">5. Habit Tracker Database</h3>
+  
+  <div class="card mt-2">
+    <h4>✅ Habit Tracker Properties</h4>
+    <div class="table-wrap mt-2">
+      <table>
+        <tr><th>Property Name</th><th>Type</th><th>Config</th></tr>
+        <tr><td><code>Habit</code></td><td>Title</td><td>e.g., "Morning routine"</td></tr>
+        <tr><td><code>Category</code></td><td>Select</td><td>Health / Productivity / Learning / Mindset</td></tr>
+        <tr><td><code>Frequency</code></td><td>Select</td><td>Daily / Weekdays / 3x/week</td></tr>
+        <tr><td><code>Current Streak</code></td><td>Number</td><td>Days in a row</td></tr>
+        <tr><td><code>Best Streak</code></td><td>Number</td><td>All-time record</td></tr>
+        <tr><td><code>Last Done</code></td><td>Date</td><td>Last completion</td></tr>
+        <tr><td><code>Status Today</code></td><td>Checkbox</td><td>Done today?</td></tr>
+      </table>
+    </div>
+    <p class="mt-2 text-sm text-gray">💡 Recommended starting habits: Morning routine, Deep work block, Exercise, Reading 20 min, Shutdown routine</p>
+  </div>
+
+
+  <h3 class="mt-4">6. Meeting Notes Database</h3>
+  
+  <div class="card mt-2">
+    <h4>📝 Meeting Notes Properties</h4>
+    <div class="table-wrap mt-2">
+      <table>
+        <tr><th>Property Name</th><th>Type</th><th>Config</th></tr>
+        <tr><td><code>Meeting Title</code></td><td>Title</td><td>—</td></tr>
+        <tr><td><code>Date</code></td><td>Date</td><td>Meeting date</td></tr>
+        <tr><td><code>Type</code></td><td>Select</td><td>1-on-1 / Team / Client / All-Hands / Workshop</td></tr>
+        <tr><td><code>Attendees</code></td><td>Multi-select</td><td>People names</td></tr>
+        <tr><td><code>Action Items</code></td><td>Text</td><td>List of follow-ups</td></tr>
+        <tr><td><code>Decisions Made</code></td><td>Text</td><td>Key decisions</td></tr>
+        <tr><td><code>Related Project</code></td><td>Relation</td><td>Links to Project Tracker</td></tr>
+        <tr><td><code>Follow-up Date</code></td><td>Date</td><td>When to check progress</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <h3 class="mt-4">7. Resource Library Database</h3>
+  
+  <div class="card mt-2">
+    <h4>📚 Resource Library Properties</h4>
+    <div class="table-wrap mt-2">
+      <table>
+        <tr><th>Property Name</th><th>Type</th><th>Config</th></tr>
+        <tr><td><code>Title</code></td><td>Title</td><td>Article/book/tool name</td></tr>
+        <tr><td><code>Type</code></td><td>Select</td><td>Article / Book / Tool / Course / Video / Podcast</td></tr>
+        <tr><td><code>Topic</code></td><td>Multi-select</td><td>Productivity / Tech / Career / Health / Finance</td></tr>
+        <tr><td><code>URL</code></td><td>URL</td><td>Link to resource</td></tr>
+        <tr><td><code>Status</code></td><td>Select</td><td>📥 Inbox / 📖 Reading / ✅ Done / ⭐ Favorite</td></tr>
+        <tr><td><code>Key Takeaways</code></td><td>Text</td><td>Summary notes</td></tr>
+        <tr><td><code>Added Date</code></td><td>Created time</td><td>Auto</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="card dark mt-3">
+    <h4>🎯 Actionable Takeaway Bab 2</h4>
+    <p class="mt-2">Mulai dengan bikin Daily Log database dulu. Itu foundation-nya. Isi selama 3 hari, baru expand ke databases lain. Jangan setup semua sekaligus — nanti overwhelm dan abandon.</p>
+  </div>
+</section>
+
+
+<!-- ==================== BAB 3: PLANNER HARIAN ==================== -->
+<section class="page" id="bab3">
+  <span class="page-number">06</span>
+  <span class="section-tag">bab 3</span>
+  <h2>Planner Harian Digital</h2>
+  <p class="text-gray">Hour-by-Hour Templates untuk Setiap Tipe Hari</p>
+
+  <div class="pull-quote mt-3">
+    A day without a plan is a day donated to other people's priorities.
+  </div>
+
+  <h3 class="mt-4">🏠 Template: WFH Day</h3>
+  <p class="mt-2">WFH day = deep work paradise. Protect it.</p>
+  
+  <div class="card mt-2">
+    <div class="timeline">
+      <div class="timeline-item">
+        <span class="time-label">06:00 - 07:00</span>
+        <h4>🌅 Morning Routine</h4>
+        <p>Wake up, no phone 30 min, movement (stretch/walk/exercise), shower, healthy breakfast</p>
+      </div>
+      <div class="timeline-item">
+        <span class="time-label">07:00 - 07:15</span>
+        <h4>📋 Daily Planning</h4>
+        <p>Open Notion → Daily Log → Set MIT 1-2-3, check calendar, set energy level, choose day type</p>
+      </div>
+      <div class="timeline-item">
+        <span class="time-label">07:15 - 09:30</span>
+        <h4>🧠 Deep Work Block #1</h4>
+        <p>MIT 1 — Pekerjaan paling penting. Phone silent. Notifications off. Focus mode ON. No email, no Slack.</p>
+        <p class="text-sm text-gray mt-1">Technique: 2x 60-min focus sessions + 15-min break di tengah</p>
+      </div>
+      <div class="timeline-item">
+        <span class="time-label">09:30 - 10:00</span>
+        <h4>☕ Buffer Block</h4>
+        <p>Coffee break. Quick Slack check. Reply urgent only. Stretch. Refill water.</p>
+      </div>
+      <div class="timeline-item">
+        <span class="time-label">10:00 - 12:00</span>
+        <h4>🧠 Deep Work Block #2</h4>
+        <p>MIT 2 — Second priority task. Same rules: focus mode, no notifications. Use Pomodoro if energy dipping (25/5 cycles).</p>
+      </div>
+      <div class="timeline-item">
+        <span class="time-label">12:00 - 13:00</span>
+        <h4>🍽️ Lunch Break</h4>
+        <p>ACTUAL break. Leave desk. Eat mindfully. Walk 10 min. No screen if possible.</p>
+      </div>
+      <div class="timeline-item">
+        <span class="time-label">13:00 - 14:30</span>
+        <h4>💬 Meeting Window</h4>
+        <p>Kalau ada meeting, schedule di sini. Kalau nggak ada, ini jadi MIT 3 time.</p>
+      </div>
+      <div class="timeline-item">
+        <span class="time-label">14:30 - 16:00</span>
+        <h4>📧 Shallow Work Block</h4>
+        <p>Email batch processing, Slack replies, documentation, admin tasks, code review</p>
+      </div>
+      <div class="timeline-item">
+        <span class="time-label">16:00 - 16:30</span>
+        <h4>🔄 Shutdown Routine</h4>
+        <p>Update Notion Daily Log, set tomorrow's priorities, close all tabs, write "Win of the Day"</p>
+      </div>
+    </div>
+  </div>
+
+
+  <h3 class="mt-4">🏢 Template: Office Day</h3>
+  <p class="mt-2">Office day = collaboration & relationship investment. Jangan fight it.</p>
+  
+  <div class="card mt-2">
+    <div class="timeline">
+      <div class="timeline-item">
+        <span class="time-label">06:30 - 07:30</span>
+        <h4>🌅 Morning Routine + Commute Prep</h4>
+        <p>Shorter routine. Prep bag night before. Commute = podcast/audiobook time.</p>
+      </div>
+      <div class="timeline-item">
+        <span class="time-label">08:00 - 08:30</span>
+        <h4>📋 Arrival Routine</h4>
+        <p>Settle in, quick Notion check, review today's meetings, set 1 MIT (realistic for office day)</p>
+      </div>
+      <div class="timeline-item">
+        <span class="time-label">08:30 - 10:00</span>
+        <h4>💬 Morning Meetings / Collaboration</h4>
+        <p>Standup, team sync, 1-on-1s. Take notes in Notion Meeting Notes database.</p>
+      </div>
+      <div class="timeline-item">
+        <span class="time-label">10:00 - 11:30</span>
+        <h4>🤝 Collaborative Work</h4>
+        <p>Pair programming, design reviews, whiteboarding, in-person discussions yang nggak efektif via Zoom</p>
+      </div>
+      <div class="timeline-item">
+        <span class="time-label">11:30 - 13:00</span>
+        <h4>🍽️ Lunch + Social</h4>
+        <p>Lunch with colleagues. Ini investment, bukan waste of time. Network = career capital.</p>
+      </div>
+      <div class="timeline-item">
+        <span class="time-label">13:00 - 14:30</span>
+        <h4>💬 Afternoon Meetings</h4>
+        <p>Client calls, project reviews, planning sessions</p>
+      </div>
+      <div class="timeline-item">
+        <span class="time-label">14:30 - 16:00</span>
+        <h4>⚡ Focused Sprint</h4>
+        <p>1 MIT — Find quiet corner atau booking room. Do the ONE thing yang harus selesai today.</p>
+      </div>
+      <div class="timeline-item">
+        <span class="time-label">16:00 - 16:30</span>
+        <h4>🔄 Office Shutdown</h4>
+        <p>Clear desk, update Notion, send any follow-ups dari meetings, set tomorrow's priorities</p>
+      </div>
+      <div class="timeline-item">
+        <span class="time-label">16:30 - 17:30</span>
+        <h4>🚗 Commute = Processing Time</h4>
+        <p>Voice-note reflections, podcast, atau just decompress. Jangan kerja di commute.</p>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="mt-4">🚀 Template: Flex/Travel Day</h3>
+  <p class="mt-2">Flex day = maintenance mode. Clear backlogs, plan ahead, recharge systems.</p>
+  
+  <div class="card mt-2">
+    <div class="timeline">
+      <div class="timeline-item">
+        <span class="time-label">07:00 - 08:00</span>
+        <h4>🌅 Relaxed Morning</h4>
+        <p>Slower start. Journaling 10 min. Set intention: "Today I clear the deck."</p>
+      </div>
+      <div class="timeline-item">
+        <span class="time-label">08:00 - 09:30</span>
+        <h4>📥 Inbox Zero Sprint</h4>
+        <p>Process ALL inboxes: Email, Slack, Notion inbox, physical mail, voice notes. Decide, delegate, or delete.</p>
+      </div>
+      <div class="timeline-item">
+        <span class="time-label">09:30 - 11:00</span>
+        <h4>📅 Planning & Review</h4>
+        <p>Weekly review (if Friday), monthly goals check, update project statuses, clean up Notion</p>
+      </div>
+      <div class="timeline-item">
+        <span class="time-label">11:00 - 12:00</span>
+        <h4>📚 Learning Block</h4>
+        <p>Read articles from Resource Library, take a course lesson, watch a skill video</p>
+      </div>
+      <div class="timeline-item">
+        <span class="time-label">12:00 - 13:30</span>
+        <h4>🍽️ Extended Lunch</h4>
+        <p>Longer break. Walk, exercise, errand. Flex day perk.</p>
+      </div>
+      <div class="timeline-item">
+        <span class="time-label">13:30 - 15:00</span>
+        <h4>🔧 Systems Maintenance</h4>
+        <p>Update templates, automate workflows, fix broken systems, document processes</p>
+      </div>
+      <div class="timeline-item">
+        <span class="time-label">15:00 - 16:00</span>
+        <h4>📝 Content/Documentation</h4>
+        <p>Write documentation, create SOPs, update READMEs, prepare presentations</p>
+      </div>
+      <div class="timeline-item">
+        <span class="time-label">16:00 - 16:15</span>
+        <h4>🔄 Quick Shutdown</h4>
+        <p>Update Notion, confirm tomorrow's plan is set. Early finish — reward for maintenance work.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card dark mt-3">
+    <h4>🎯 Actionable Takeaway Bab 3</h4>
+    <p class="mt-2">Pilih 1 template (WFH/Office/Flex) yang paling relevan buat besok. Duplicate ke Notion sebagai template. Follow it for 3 days — perhatiin kapan lo deviate dan kenapa. Adjust accordingly.</p>
+  </div>
+</section>
+
+
+<!-- ==================== BAB 4: WEEKLY PLANNING ==================== -->
+<section class="page" id="bab4">
+  <span class="page-number">07</span>
+  <span class="section-tag">bab 4</span>
+  <h2>Weekly Planning System</h2>
+  <p class="text-gray">Sunday Planning Ritual (45 Minutes)</p>
+
+  <div class="pull-quote mt-3">
+    Give me six hours to chop down a tree and I'll spend the first four sharpening the axe. — Planning is sharpening.
+  </div>
+
+  <h3 class="mt-4">📅 The Sunday Planning Ritual</h3>
+  <p class="mt-2">Setiap Minggu malam (atau Senin pagi kalau lo prefer), invest 45 menit untuk plan the week. Ini yang bikin difference antara reactive vs intentional.</p>
+
+  <div class="card highlight mt-3">
+    <h4>⏱️ 45-Minute Planning Breakdown</h4>
+    <ol class="step-list mt-2">
+      <li><strong>Review Last Week (10 min)</strong> — Buka Weekly Review template. Score minggu lalu 1-5. Tulis 3 wins dan 1 lesson. Jangan skip ini — reflection = compound growth.</li>
+      <li><strong>Brain Dump (5 min)</strong> — Tulis SEMUA yang ada di kepala lo. Tasks, worries, ideas, follow-ups. Jangan filter. Just dump everything out.</li>
+      <li><strong>Calendar Scan (5 min)</strong> — Review semua meetings & commitments minggu depan. Identify: mana yang bisa di-cancel/delegate? Mana yang butuh prep?</li>
+      <li><strong>Assign Day Types (5 min)</strong> — Label setiap hari: Office / WFH / Flex. Based on meetings, deadlines, dan energy needs.</li>
+      <li><strong>Set Weekly MIT (10 min)</strong> — Pilih 3 outcomes yang HARUS selesai minggu ini. Bukan tasks — outcomes. "Finish proposal draft" bukan "work on proposal."</li>
+      <li><strong>Time Block (10 min)</strong> — Block deep work, meetings, buffer time di calendar. Protect your focus blocks seperti protect meetings penting.</li>
+    </ol>
+  </div>
+
+  <h3 class="mt-4">📝 Weekly Planning Template (Copy ke Notion)</h3>
+  
+  <div class="tpl mt-2">
+    <span class="tpl-number">TEMPLATE</span>
+    <h4>Weekly Planning — Week of [DATE]</h4>
+    <div class="mt-3" style="font-size:0.9rem;">
+      <p><strong>🔍 REVIEW LAST WEEK</strong></p>
+      <ul class="checklist">
+        <li>Score minggu lalu (1-5): ___</li>
+        <li>Top 3 Wins: 1.___ 2.___ 3.___</li>
+        <li>Biggest Lesson: ___</li>
+        <li>What would I do differently?: ___</li>
+      </ul>
+      
+      <p class="mt-3"><strong>🧠 BRAIN DUMP</strong></p>
+      <p class="text-sm text-gray">Tulis semua yang ada di kepala tanpa filter:</p>
+      <p style="min-height:60px;background:var(--gray-light);border-radius:6px;padding:12px;margin-top:8px;">___</p>
+      
+      <p class="mt-3"><strong>🎯 THIS WEEK'S TOP 3 OUTCOMES</strong></p>
+      <ul class="checklist">
+        <li>Outcome 1 (Must complete): ___</li>
+        <li>Outcome 2 (Should complete): ___</li>
+        <li>Outcome 3 (Nice to complete): ___</li>
+      </ul>
+      
+      <p class="mt-3"><strong>📅 DAY TYPE ASSIGNMENTS</strong></p>
+      <div class="table-wrap">
+        <table>
+          <tr><th>Day</th><th>Type</th><th>Primary Focus</th><th>Top Task</th></tr>
+          <tr><td>Monday</td><td>🏢/🏠/🚀</td><td>___</td><td>___</td></tr>
+          <tr><td>Tuesday</td><td>🏢/🏠/🚀</td><td>___</td><td>___</td></tr>
+          <tr><td>Wednesday</td><td>🏢/🏠/🚀</td><td>___</td><td>___</td></tr>
+          <tr><td>Thursday</td><td>🏢/🏠/🚀</td><td>___</td><td>___</td></tr>
+          <tr><td>Friday</td><td>🏢/🏠/🚀</td><td>___</td><td>___</td></tr>
+        </table>
+      </div>
+
+      <p class="mt-3"><strong>⚠️ POTENTIAL BLOCKERS</strong></p>
+      <ul class="checklist">
+        <li>Blocker 1: ___ → Mitigation: ___</li>
+        <li>Blocker 2: ___ → Mitigation: ___</li>
+      </ul>
+
+      <p class="mt-3"><strong>🔋 ENERGY PLAN</strong></p>
+      <p class="text-sm">Kapan peak energy minggu ini? Schedule deep work di sana.</p>
+      <ul class="checklist">
+        <li>Peak hours: ___</li>
+        <li>Low energy day (predicted): ___</li>
+        <li>Recovery activities planned: ___</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card dark mt-3">
+    <h4>🎯 Actionable Takeaway Bab 4</h4>
+    <p class="mt-2">Set calendar reminder: setiap Minggu jam 19:00, "Weekly Planning Ritual - 45 min." Treat this like a non-negotiable meeting with yourself. After 4 weeks, lo nggak akan bisa hidup tanpanya.</p>
+  </div>
+</section>
+
+
+<!-- ==================== BAB 5: MONTHLY REVIEW ==================== -->
+<section class="page" id="bab5">
+  <span class="page-number">08</span>
+  <span class="section-tag">bab 5</span>
+  <h2>Monthly Review & Goals</h2>
+  <p class="text-gray">OKR-Lite System & Habit Scorecard</p>
+
+  <h3 class="mt-3">📊 Monthly Reflection Template</h3>
+  
+  <div class="tpl mt-2">
+    <span class="tpl-number">TEMPLATE</span>
+    <h4>Monthly Review — [BULAN] 2026</h4>
+    <div class="mt-3" style="font-size:0.9rem;">
+      <p><strong>📈 NUMBERS REVIEW</strong></p>
+      <div class="table-wrap mt-2">
+        <table>
+          <tr><th>Metric</th><th>Target</th><th>Actual</th><th>Delta</th></tr>
+          <tr><td>Total Focus Hours</td><td>80 hrs</td><td>___</td><td>___</td></tr>
+          <tr><td>Projects Completed</td><td>3</td><td>___</td><td>___</td></tr>
+          <tr><td>Avg Daily Energy</td><td>High</td><td>___</td><td>___</td></tr>
+          <tr><td>Meetings per Week</td><td>&lt; 10</td><td>___</td><td>___</td></tr>
+          <tr><td>Habit Completion Rate</td><td>80%</td><td>___</td><td>___</td></tr>
+          <tr><td>Books/Articles Read</td><td>4</td><td>___</td><td>___</td></tr>
+        </table>
+      </div>
+
+      <p class="mt-3"><strong>🏆 TOP 5 WINS</strong></p>
+      <ol style="padding-left:20px;">
+        <li>___</li><li>___</li><li>___</li><li>___</li><li>___</li>
+      </ol>
+
+      <p class="mt-3"><strong>📚 TOP 3 LESSONS LEARNED</strong></p>
+      <ol style="padding-left:20px;">
+        <li>___</li><li>___</li><li>___</li>
+      </ol>
+
+      <p class="mt-3"><strong>❌ WHAT DIDN'T WORK</strong></p>
+      <ul style="padding-left:20px;">
+        <li>System/habit yang nggak jalan: ___</li>
+        <li>Why: ___</li>
+        <li>Adjustment for next month: ___</li>
+      </ul>
+
+      <p class="mt-3"><strong>🎯 NEXT MONTH'S FOCUS</strong></p>
+      <ul class="checklist">
+        <li>Theme/Word for the month: ___</li>
+        <li>Top 3 Goals: 1.___ 2.___ 3.___</li>
+        <li>1 New Habit to Add: ___</li>
+        <li>1 Thing to Remove/Stop: ___</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 class="mt-4">🎯 OKR-Lite System (Personal Version)</h3>
+  
+  <div class="card highlight mt-2">
+    <p>OKR (Objectives & Key Results) versi simplified untuk personal use. Nggak perlu seformal corporate OKR.</p>
+    
+    <div class="table-wrap mt-3">
+      <table>
+        <tr><th>Component</th><th>What It Is</th><th>Example</th></tr>
+        <tr><td><strong>Objective</strong></td><td>Qualitative goal — inspiring, directional</td><td>"Become a more intentional hybrid worker"</td></tr>
+        <tr><td><strong>Key Result 1</strong></td><td>Measurable outcome</td><td>"Complete 20+ deep work sessions/month"</td></tr>
+        <tr><td><strong>Key Result 2</strong></td><td>Measurable outcome</td><td>"Reduce meetings to max 8/week"</td></tr>
+        <tr><td><strong>Key Result 3</strong></td><td>Measurable outcome</td><td>"Score 4+ on weekly reviews for 3 weeks straight"</td></tr>
+      </table>
+    </div>
+    
+    <p class="mt-2 text-sm"><strong>Rule:</strong> Max 2-3 Objectives per quarter. Each with 2-3 Key Results. Less is more.</p>
+  </div>
+
+  <h3 class="mt-4">✅ Habit Scorecard</h3>
+  
+  <div class="card mt-2">
+    <h4>Monthly Habit Scorecard Template</h4>
+    <p class="mt-2">Setiap akhir bulan, score your habits:</p>
+    <div class="table-wrap mt-2">
+      <table>
+        <tr><th>Habit</th><th>Target</th><th>Done</th><th>%</th><th>Streak</th><th>Verdict</th></tr>
+        <tr><td>Morning Routine</td><td>22 days</td><td>___</td><td>___</td><td>___</td><td>Keep / Modify / Drop</td></tr>
+        <tr><td>Deep Work Block</td><td>20 days</td><td>___</td><td>___</td><td>___</td><td>Keep / Modify / Drop</td></tr>
+        <tr><td>Exercise</td><td>12 days</td><td>___</td><td>___</td><td>___</td><td>Keep / Modify / Drop</td></tr>
+        <tr><td>Reading 20min</td><td>22 days</td><td>___</td><td>___</td><td>___</td><td>Keep / Modify / Drop</td></tr>
+        <tr><td>Shutdown Routine</td><td>22 days</td><td>___</td><td>___</td><td>___</td><td>Keep / Modify / Drop</td></tr>
+      </table>
+    </div>
+    <p class="mt-2 text-sm text-gray">Rule of thumb: &lt;50% completion = either modify the habit or drop it. Forcing doesn't work.</p>
+  </div>
+
+  <div class="card dark mt-3">
+    <h4>🎯 Actionable Takeaway Bab 5</h4>
+    <p class="mt-2">Set 1 Objective untuk quarter ini dengan 3 Key Results. Tulis di Notion. Review setiap akhir bulan. Ini gives direction ke seluruh sistem yang lo bangun.</p>
+  </div>
+</section>
+
+
+<!-- ==================== BAB 6: TIME BLOCKING ==================== -->
+<section class="page" id="bab6">
+  <span class="page-number">09</span>
+  <span class="section-tag">bab 6</span>
+  <h2>Time Blocking Mastery</h2>
+  <p class="text-gray">4 Types of Time Blocks & How to Protect Them</p>
+
+  <div class="pull-quote mt-3">
+    What gets scheduled gets done. What doesn't get blocked gets stolen by other people's priorities.
+  </div>
+
+  <h3 class="mt-4">🧱 4 Types of Time Blocks</h3>
+  
+  <div class="grid-2 mt-2">
+    <div class="card highlight">
+      <h4>🧠 1. Deep Work Block</h4>
+      <p class="badge blue">90-120 min</p>
+      <p class="mt-2"><strong>Purpose:</strong> Complex, creative, strategic tasks yang butuh full concentration.</p>
+      <p class="mt-1"><strong>Rules:</strong></p>
+      <ul style="padding-left:16px;font-size:0.9rem;">
+        <li>No notifications — airplane mode</li>
+        <li>Single task only — no multitasking</li>
+        <li>Pre-decide what you'll work on</li>
+        <li>Tell team you're unavailable</li>
+      </ul>
+      <p class="mt-2 text-sm text-gray">Best time: First 2-3 hours after waking (peak energy)</p>
+    </div>
+    <div class="card">
+      <h4>📧 2. Shallow Work Block</h4>
+      <p class="badge green">45-60 min</p>
+      <p class="mt-2"><strong>Purpose:</strong> Admin, emails, Slack, quick tasks, routine work yang nggak butuh deep thinking.</p>
+      <p class="mt-1"><strong>Rules:</strong></p>
+      <ul style="padding-left:16px;font-size:0.9rem;">
+        <li>Batch similar tasks together</li>
+        <li>Set timer — don't let it expand</li>
+        <li>Use checklists for efficiency</li>
+        <li>Process, don't just check</li>
+      </ul>
+      <p class="mt-2 text-sm text-gray">Best time: Post-lunch atau late afternoon (lower energy)</p>
+    </div>
+    <div class="card gold-border">
+      <h4>⏸️ 3. Buffer Block</h4>
+      <p class="badge gold">15-30 min</p>
+      <p class="mt-2"><strong>Purpose:</strong> Transition between activities, unexpected tasks, overflow from other blocks.</p>
+      <p class="mt-1"><strong>Rules:</strong></p>
+      <ul style="padding-left:16px;font-size:0.9rem;">
+        <li>Place between every 2 blocks</li>
+        <li>Don't pre-assign tasks to it</li>
+        <li>Use for: stretch, water, bathroom, quick replies</li>
+        <li>If not needed, bonus rest!</li>
+      </ul>
+      <p class="mt-2 text-sm text-gray">Best time: Between every major block transition</p>
+    </div>
+    <div class="card" style="border-left:4px solid #2d8f5e;">
+      <h4>🌿 4. Recovery Block</h4>
+      <p class="badge green">30-60 min</p>
+      <p class="mt-2"><strong>Purpose:</strong> Recharge energy. Walk, nap, meditation, non-work activity.</p>
+      <p class="mt-1"><strong>Rules:</strong></p>
+      <ul style="padding-left:16px;font-size:0.9rem;">
+        <li>Non-negotiable — treat like a meeting</li>
+        <li>No screens if possible</li>
+        <li>Active recovery > passive scrolling</li>
+        <li>At least 1 per day</li>
+      </ul>
+      <p class="mt-2 text-sm text-gray">Best time: After lunch or mid-afternoon energy dip</p>
+    </div>
+  </div>
+
+  <h3 class="mt-4">🛡️ How to Protect Time Blocks</h3>
+  
+  <div class="card mt-2">
+    <ol class="step-list">
+      <li><strong>Block in Calendar as "Busy"</strong> — Semua time block masuk calendar. Deep work = "Focus Time (Do Not Disturb)." Orang lihat lo busy, they won't book.</li>
+      <li><strong>Communicate to Team</strong> — "Hey team, 08-10 setiap hari gue focus time. Reach me after 10." Simple. Clear.</li>
+      <li><strong>Use Auto-Responders</strong> — Slack status: "🎯 Deep Work until 10:00." Email auto-reply kalau urgent.</li>
+      <li><strong>Start Small</strong> — Mulai dengan 1 deep work block per day. Naikin gradually to 2-3 setelah 2 minggu.</li>
+      <li><strong>The 10-Minute Rule</strong> — Kalau someone asks for your time during a block, say: "Can we do this in 10 minutes? If not, let's schedule it."</li>
+    </ol>
+  </div>
+
+  <h3 class="mt-4">📅 Calendar Integration Tips</h3>
+  
+  <div class="card highlight mt-2">
+    <h4>Google Calendar / Outlook Setup</h4>
+    <ul style="padding-left:20px;font-size:0.9rem;" class="mt-2">
+      <li><strong>Color coding:</strong> Red = Deep Work, Blue = Meetings, Yellow = Buffer, Green = Recovery</li>
+      <li><strong>Recurring blocks:</strong> Set recurring events for daily deep work at your peak hours</li>
+      <li><strong>Default duration:</strong> Set default meeting length to 25 min (bukan 30) atau 50 min (bukan 60)</li>
+      <li><strong>"Focus Time" feature:</strong> Google Calendar has built-in Focus Time that auto-declines conflicts</li>
+      <li><strong>Meeting-free days:</strong> Block 1-2 full days per week sebagai "No Meeting Day" recurring event</li>
+    </ul>
+  </div>
+
+  <div class="card dark mt-3">
+    <h4>🎯 Actionable Takeaway Bab 6</h4>
+    <p class="mt-2">Besok, block 1 Deep Work session (90 min) di calendar lo. Color it red. Set Slack status. Do your MIT 1 in that block. See how it feels. Then add more blocks gradually.</p>
+  </div>
+</section>
+
+
+<!-- ==================== BAB 7: ENERGY MANAGEMENT ==================== -->
+<section class="page" id="bab7">
+  <span class="page-number">10</span>
+  <span class="section-tag">bab 7</span>
+  <h2>Energy Management</h2>
+  <p class="text-gray">Ultradian Rhythms & Peak Performance Windows</p>
+
+  <div class="pull-quote mt-3">
+    You don't manage time — you manage energy. Time is fixed. Energy is renewable.
+  </div>
+
+  <h3 class="mt-4">🔬 Ultradian Rhythms: The Science</h3>
+  
+  <div class="card highlight mt-2">
+    <p>Tubuh lo bekerja dalam siklus 90-120 menit yang disebut <strong>Ultradian Rhythms</strong>. Setiap siklus punya fase peak (high focus) dan trough (perlu rest). Ini bukan opinion — ini biology.</p>
+    <div class="stats mt-3">
+      <div class="stat-item">
+        <div class="stat-number">90</div>
+        <div class="stat-label">menit per focus cycle</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">20</div>
+        <div class="stat-label">menit rest antara cycle</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">4-5</div>
+        <div class="stat-label">productive cycles per day (max)</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">6</div>
+        <div class="stat-label">jam total deep work capacity/day</div>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="mt-4">🗺️ Energy Mapping Template</h3>
+  
+  <div class="card mt-2">
+    <p>Track energy level lo selama 1 minggu untuk discover your patterns:</p>
+    <div class="table-wrap mt-2">
+      <table>
+        <tr><th>Time</th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th></tr>
+        <tr><td><code>06:00-08:00</code></td><td>___</td><td>___</td><td>___</td><td>___</td><td>___</td></tr>
+        <tr><td><code>08:00-10:00</code></td><td>___</td><td>___</td><td>___</td><td>___</td><td>___</td></tr>
+        <tr><td><code>10:00-12:00</code></td><td>___</td><td>___</td><td>___</td><td>___</td><td>___</td></tr>
+        <tr><td><code>12:00-14:00</code></td><td>___</td><td>___</td><td>___</td><td>___</td><td>___</td></tr>
+        <tr><td><code>14:00-16:00</code></td><td>___</td><td>___</td><td>___</td><td>___</td><td>___</td></tr>
+        <tr><td><code>16:00-18:00</code></td><td>___</td><td>___</td><td>___</td><td>___</td><td>___</td></tr>
+      </table>
+    </div>
+    <p class="mt-2 text-sm">Scale: ⚡ Peak (5) / 🔋 High (4) / 🔌 Medium (3) / 🪫 Low (2) / 💤 Crashed (1)</p>
+    <p class="mt-2 text-sm text-gray">After 1 week: Identify your consistent peak windows and dip times. Schedule accordingly.</p>
+  </div>
+
+  <h3 class="mt-4">⚡ Peak Performance Windows</h3>
+  
+  <div class="card mt-2">
+    <h4>Typical Energy Patterns (adjust ke rhythm lo)</h4>
+    <div class="table-wrap mt-2">
+      <table>
+        <tr><th>Window</th><th>Typical Energy</th><th>Best For</th><th>Avoid</th></tr>
+        <tr><td><strong>06:00-09:00</strong></td><td>⚡ Rising Peak</td><td>Creative work, writing, strategy</td><td>Email, meetings</td></tr>
+        <tr><td><strong>09:00-11:00</strong></td><td>⚡ Peak</td><td>Complex problem-solving, coding</td><td>Routine admin</td></tr>
+        <tr><td><strong>11:00-12:00</strong></td><td>🔋 High</td><td>Collaborative work, reviews</td><td>Starting new projects</td></tr>
+        <tr><td><strong>12:00-14:00</strong></td><td>🪫 Post-Lunch Dip</td><td>Light meetings, social, walk</td><td>Deep work, decisions</td></tr>
+        <tr><td><strong>14:00-15:30</strong></td><td>🔌 Recovery</td><td>Admin, email batch, documentation</td><td>Creative work</td></tr>
+        <tr><td><strong>15:30-17:00</strong></td><td>🔋 Second Wind</td><td>Wrapping up, planning tomorrow</td><td>Starting big tasks</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <h3 class="mt-4">🔋 Energy Boosters & Drains</h3>
+  
+  <div class="grid-2 mt-2">
+    <div class="card" style="border-left:4px solid #2d8f5e;">
+      <h4>✅ Energy Boosters</h4>
+      <ul style="padding-left:16px;font-size:0.9rem;" class="mt-2">
+        <li>10-min walk (especially outside)</li>
+        <li>Cold water on face/wrists</li>
+        <li>Power nap 10-20 min (not longer!)</li>
+        <li>Music change (upbeat for energy)</li>
+        <li>Quick social interaction</li>
+        <li>Protein-rich snack</li>
+        <li>5 deep breaths / box breathing</li>
+        <li>Change physical position/location</li>
+      </ul>
+    </div>
+    <div class="card" style="border-left:4px solid #d94a4a;">
+      <h4>❌ Energy Drains</h4>
+      <ul style="padding-left:16px;font-size:0.9rem;" class="mt-2">
+        <li>Back-to-back meetings (3+ hours)</li>
+        <li>Decision fatigue (too many small decisions)</li>
+        <li>Context switching every 15 min</li>
+        <li>Sugar crash (heavy carb lunch)</li>
+        <li>Doomscrolling / social media</li>
+        <li>Unresolved conflict/stress</li>
+        <li>Poor sleep (< 7 hours)</li>
+        <li>Working past your shutdown time</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card dark mt-3">
+    <h4>🎯 Actionable Takeaway Bab 7</h4>
+    <p class="mt-2">Selama 5 hari ke depan, isi Energy Mapping template setiap 2 jam (set alarm). Di akhir minggu, lo akan punya personal energy map. Use it to redesign your schedule — put deep work at peak, admin at dips.</p>
+  </div>
+</section>
+
+
+<!-- ==================== BAB 8: MEETING OPTIMIZATION ==================== -->
+<section class="page" id="bab8">
+  <span class="page-number">11</span>
+  <span class="section-tag">bab 8</span>
+  <h2>Meeting Optimization</h2>
+  <p class="text-gray">Audit, Optimize, Eliminate — Meeting yang Nggak Perlu</p>
+
+  <div class="stats mt-3">
+    <div class="stat-item">
+      <div class="stat-number">31</div>
+      <div class="stat-label">jam/bulan rata-rata spent di unnecessary meetings</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number">65%</div>
+      <div class="stat-label">meetings bisa di-replace dengan async update</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number">23</div>
+      <div class="stat-label">menit untuk recover focus setelah meeting</div>
+    </div>
+  </div>
+
+  <h3 class="mt-4">🔍 Meeting Audit Template</h3>
+  
+  <div class="card mt-2">
+    <p>Setiap bulan, audit SEMUA recurring meetings lo:</p>
+    <div class="table-wrap mt-2">
+      <table>
+        <tr><th>Meeting</th><th>Frequency</th><th>Duration</th><th>My Role</th><th>Value (1-5)</th><th>Action</th></tr>
+        <tr><td>Team Standup</td><td>Daily</td><td>15 min</td><td>Participant</td><td>___</td><td>Keep/Modify/Kill</td></tr>
+        <tr><td>1-on-1 Manager</td><td>Weekly</td><td>30 min</td><td>Active</td><td>___</td><td>Keep/Modify/Kill</td></tr>
+        <tr><td>All-Hands</td><td>Monthly</td><td>60 min</td><td>Listener</td><td>___</td><td>Keep/Modify/Kill</td></tr>
+        <tr><td>Project Sync</td><td>2x/week</td><td>45 min</td><td>Active</td><td>___</td><td>Keep/Modify/Kill</td></tr>
+        <tr><td>[Add yours]</td><td>___</td><td>___</td><td>___</td><td>___</td><td>Keep/Modify/Kill</td></tr>
+      </table>
+    </div>
+    <p class="mt-2 text-sm"><strong>Decision criteria:</strong> Score < 3 = Kill or convert to async. Score 3 = Modify (shorter/less frequent). Score 4-5 = Keep.</p>
+  </div>
+
+  <h3 class="mt-4">📋 Meeting Agenda Template</h3>
+  
+  <div class="tpl mt-2">
+    <span class="tpl-number">TEMPLATE</span>
+    <h4>Meeting Agenda — [Title]</h4>
+    <div class="mt-2" style="font-size:0.9rem;">
+      <p><strong>📅 Date:</strong> ___ | <strong>⏱️ Duration:</strong> 25 min | <strong>👥 Attendees:</strong> ___</p>
+      <p class="mt-2"><strong>🎯 Meeting Objective:</strong> (1 clear sentence — what decision/outcome do we need?)</p>
+      <p>___</p>
+      <p class="mt-2"><strong>📝 Pre-Read:</strong> (what should attendees review BEFORE the meeting)</p>
+      <p>___</p>
+      <p class="mt-2"><strong>📋 Agenda:</strong></p>
+      <ul style="padding-left:20px;">
+        <li>[5 min] Check-in / context setting</li>
+        <li>[10 min] Discussion point #1: ___</li>
+        <li>[5 min] Discussion point #2: ___</li>
+        <li>[5 min] Action items & next steps</li>
+      </ul>
+      <p class="mt-2"><strong>✅ Action Items:</strong></p>
+      <ul style="padding-left:20px;">
+        <li>[ ] ___ → Owner: ___ → Due: ___</li>
+        <li>[ ] ___ → Owner: ___ → Due: ___</li>
+      </ul>
+      <p class="mt-2"><strong>🔑 Decisions Made:</strong></p>
+      <p>___</p>
+    </div>
+  </div>
+
+  <h3 class="mt-4">🔄 Async vs Sync Decision Framework</h3>
+  
+  <div class="card highlight mt-2">
+    <h4>Kapan SYNC (meeting)?</h4>
+    <ul style="padding-left:16px;font-size:0.9rem;" class="mt-2">
+      <li>Brainstorming yang butuh real-time energy</li>
+      <li>Sensitive/emotional topics (conflict resolution, feedback)</li>
+      <li>Complex decisions dengan banyak stakeholder</li>
+      <li>Relationship building (1-on-1s, team bonding)</li>
+      <li>Urgent issues yang butuh immediate alignment</li>
+    </ul>
+    
+    <h4 class="mt-3">Kapan ASYNC (no meeting)?</h4>
+    <ul style="padding-left:16px;font-size:0.9rem;" class="mt-2">
+      <li>Status updates (pakai written update di Slack/Notion)</li>
+      <li>Information sharing (record a Loom video)</li>
+      <li>Simple decisions (pakai polling/voting)</li>
+      <li>Feedback on documents (comment di doc)</li>
+      <li>FYI announcements (post di channel)</li>
+    </ul>
+  </div>
+
+  <h3 class="mt-4">🚫 "No Meeting" Policy Template</h3>
+  
+  <div class="tpl mt-2">
+    <span class="tpl-number">TEMPLATE</span>
+    <h4>No-Meeting Policy (Share ke Team)</h4>
+    <div class="mt-2" style="font-size:0.9rem;">
+      <p><em>Hi team,</em></p>
+      <p class="mt-1"><em>Untuk maximize focus time, gue implement "No Meeting Blocks":</em></p>
+      <ul style="padding-left:20px;font-style:italic;">
+        <li>Senin & Rabu: 08:00-12:00 = No meetings (deep work)</li>
+        <li>Setiap hari: Before 09:00 and after 16:00 = No meetings</li>
+        <li>Jumat sore: No meetings (weekly planning time)</li>
+      </ul>
+      <p class="mt-1"><em>Di luar jam itu, feel free to book. Urgent? DM gue di Slack, gue respond within 30 min. Thanks!</em></p>
+    </div>
+  </div>
+
+  <div class="card dark mt-3">
+    <h4>🎯 Actionable Takeaway Bab 8</h4>
+    <p class="mt-2">Week ini, audit recurring meetings lo pakai template di atas. Kill atau convert at least 2 meetings ke async. Reclaim 1-2 jam/minggu minimum.</p>
+  </div>
+</section>
+
+
+<!-- ==================== BAB 9: FOCUS & DEEP WORK ==================== -->
+<section class="page" id="bab9">
+  <span class="page-number">12</span>
+  <span class="section-tag">bab 9</span>
+  <h2>Focus & Deep Work Protocol</h2>
+  <p class="text-gray">Environment Setup, Distraction Elimination, 90-Min Protocol</p>
+
+  <div class="pull-quote mt-3">
+    Deep work is like a superpower in our economy. If you can produce elite-level work, you'll thrive. If you can't, you'll be left behind.
+  </div>
+
+  <h3 class="mt-4">🏗️ Environment Setup Checklist</h3>
+  
+  <div class="grid-2 mt-2">
+    <div class="card">
+      <h4>🏠 WFH Focus Setup</h4>
+      <ul class="checklist">
+        <li>Dedicated workspace (bukan di kasur!)</li>
+        <li>Door closed atau "Do Not Disturb" sign</li>
+        <li>Phone di room lain / drawer</li>
+        <li>Noise-canceling headphones ON</li>
+        <li>Water bottle full di desk</li>
+        <li>Room temperature comfortable (22-24°C)</li>
+        <li>Proper lighting (natural > fluorescent)</li>
+        <li>Clean desk — only current task materials</li>
+        <li>Focus playlist ready (lo-fi, ambient, binaural)</li>
+        <li>All social media tabs CLOSED</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>🏢 Office Focus Setup</h4>
+      <ul class="checklist">
+        <li>Book quiet room / find quiet corner</li>
+        <li>Headphones = universal "don't disturb" signal</li>
+        <li>Slack status: "🎯 Focus Mode until [time]"</li>
+        <li>Laptop only — close extra monitors</li>
+        <li>Notepad for "interrupt log" (capture later)</li>
+        <li>Snacks + water pre-prepared</li>
+        <li>Calendar blocked as "Busy"</li>
+        <li>Notify nearest colleagues: "Deep work next 90 min"</li>
+        <li>Phone face-down, silent</li>
+        <li>One task, one window, one goal</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 class="mt-4">🎯 The 90-Minute Deep Work Protocol</h3>
+  
+  <div class="card highlight mt-2">
+    <h4>Step-by-Step Protocol</h4>
+    <ol class="step-list mt-2">
+      <li><strong>Pre-Session Setup (5 min)</strong> — Decide exactly what you'll work on. Write it down: "In this session, I will ___." Close everything else. Set 90-min timer.</li>
+      <li><strong>Warm-Up Phase (10 min)</strong> — Start with the easiest part of the task. Review notes, re-read last progress. Get your brain into context.</li>
+      <li><strong>Peak Focus Phase (60 min)</strong> — Full immersion. No breaks, no checking. If distraction thought comes, write it on "later" list and return immediately.</li>
+      <li><strong>Cool-Down Phase (10 min)</strong> — Start wrapping up. Leave a "breadcrumb" — write where you stopped and next step. Future-you will thank you.</li>
+      <li><strong>Completion (5 min)</strong> — Stand up. Walk. Drink water. Log progress in Notion. Celebrate the session — you just did what 95% of people can't.</li>
+    </ol>
+  </div>
+
+  <h3 class="mt-4">🚫 Distraction Elimination Strategy</h3>
+  
+  <div class="card mt-2">
+    <h4>The "Distraction Audit" — Track for 1 Day</h4>
+    <div class="table-wrap mt-2">
+      <table>
+        <tr><th>Time</th><th>Distraction</th><th>Source</th><th>Duration Lost</th><th>Prevention</th></tr>
+        <tr><td>09:15</td><td>Checked Instagram</td><td>Internal (boredom)</td><td>12 min</td><td>App blocker</td></tr>
+        <tr><td>09:45</td><td>Colleague question</td><td>External</td><td>8 min</td><td>Headphones + status</td></tr>
+        <tr><td>10:20</td><td>Email notification</td><td>External (tech)</td><td>5 min</td><td>Turn off notifications</td></tr>
+        <tr><td>11:00</td><td>Random idea</td><td>Internal</td><td>3 min</td><td>"Later" list on desk</td></tr>
+        <tr><td>___</td><td>___</td><td>___</td><td>___</td><td>___</td></tr>
+      </table>
+    </div>
+    <p class="mt-2 text-sm text-gray">Most people lose 2-3 hours/day to micro-distractions. Fixing even 50% of this = 1+ extra productive hour/day.</p>
+  </div>
+
+  <h3 class="mt-4">🔧 Focus Tools Stack</h3>
+  
+  <div class="card mt-2">
+    <div class="table-wrap">
+      <table>
+        <tr><th>Tool</th><th>Purpose</th><th>Platform</th></tr>
+        <tr><td><strong>Forest</strong></td><td>Gamified focus timer (grow trees)</td><td>iOS, Android</td></tr>
+        <tr><td><strong>Freedom</strong></td><td>Block distracting websites & apps</td><td>All platforms</td></tr>
+        <tr><td><strong>Brain.fm</strong></td><td>AI-generated focus music</td><td>Web, App</td></tr>
+        <tr><td><strong>Notion</strong></td><td>Task management & daily logging</td><td>All platforms</td></tr>
+        <tr><td><strong>Toggl Track</strong></td><td>Time tracking per project</td><td>All platforms</td></tr>
+        <tr><td><strong>Cold Turkey</strong></td><td>Nuclear option — blocks everything</td><td>Desktop</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <h3 class="mt-4">🍅 Pomodoro Variations</h3>
+  
+  <div class="grid-2 mt-2">
+    <div class="card">
+      <h4>Classic Pomodoro</h4>
+      <p class="mt-1">25 min work / 5 min break</p>
+      <p class="text-sm text-gray">Best for: Admin tasks, email processing, learning</p>
+    </div>
+    <div class="card">
+      <h4>Extended Pomodoro</h4>
+      <p class="mt-1">50 min work / 10 min break</p>
+      <p class="text-sm text-gray">Best for: Writing, coding, creative work</p>
+    </div>
+    <div class="card">
+      <h4>Ultradian Sprint</h4>
+      <p class="mt-1">90 min work / 20 min break</p>
+      <p class="text-sm text-gray">Best for: Deep strategic work, complex problems</p>
+    </div>
+    <div class="card">
+      <h4>Flowtime</h4>
+      <p class="mt-1">Work until flow breaks / rest = 1/5 of work time</p>
+      <p class="text-sm text-gray">Best for: When you're "in the zone" — don't break flow</p>
+    </div>
+  </div>
+
+  <div class="card dark mt-3">
+    <h4>🎯 Actionable Takeaway Bab 9</h4>
+    <p class="mt-2">Try the 90-Minute Protocol besok pagi. Pre-decide task-nya malam ini. Set up environment sebelum tidur (close tabs, prep desk). Wake up → protocol → celebrate. One session. That's all.</p>
+  </div>
+</section>
+
+
+<!-- ==================== BAB 10: COMMUNICATION ==================== -->
+<section class="page" id="bab10">
+  <span class="page-number">13</span>
+  <span class="section-tag">bab 10</span>
+  <h2>Communication & Boundaries</h2>
+  <p class="text-gray">Async Templates, Availability Hours, How to Say No</p>
+
+  <h3 class="mt-3">📨 Async Communication Templates</h3>
+  
+  <div class="tpl mt-2">
+    <span class="tpl-number">TEMPLATE 1</span>
+    <h4>Written Status Update (Replace Standup Meeting)</h4>
+    <div class="mt-2" style="font-size:0.9rem;background:var(--gray-light);padding:16px;border-radius:8px;">
+      <p><strong>📅 [Nama] — Status Update [Date]</strong></p>
+      <p class="mt-1"><strong>✅ Yesterday:</strong></p>
+      <ul style="padding-left:16px;"><li>Completed [task] for [project]</li><li>Reviewed [item] and sent feedback</li></ul>
+      <p class="mt-1"><strong>🎯 Today:</strong></p>
+      <ul style="padding-left:16px;"><li>Focus: [MIT 1]</li><li>Also: [task 2], [task 3]</li></ul>
+      <p class="mt-1"><strong>🚧 Blockers:</strong> None / [describe blocker + what help needed]</p>
+      <p class="mt-1"><strong>📍 Location:</strong> 🏠 WFH / 🏢 Office</p>
+    </div>
+  </div>
+
+  <div class="tpl mt-2">
+    <span class="tpl-number">TEMPLATE 2</span>
+    <h4>Async Decision Request</h4>
+    <div class="mt-2" style="font-size:0.9rem;background:var(--gray-light);padding:16px;border-radius:8px;">
+      <p><strong>🤔 Decision Needed: [Topic]</strong></p>
+      <p class="mt-1"><strong>Context:</strong> [1-2 sentences background]</p>
+      <p class="mt-1"><strong>Options:</strong></p>
+      <ul style="padding-left:16px;">
+        <li>Option A: [description] — Pro: ___ / Con: ___</li>
+        <li>Option B: [description] — Pro: ___ / Con: ___</li>
+      </ul>
+      <p class="mt-1"><strong>My recommendation:</strong> Option [X] because [reason]</p>
+      <p class="mt-1"><strong>Need decision by:</strong> [date/time]</p>
+      <p class="mt-1"><strong>If no response:</strong> I'll proceed with Option [X]</p>
+    </div>
+  </div>
+
+  <h3 class="mt-4">⏰ Availability Hours Template</h3>
+  
+  <div class="card highlight mt-2">
+    <h4>Share ini ke Team / Taruh di Slack Profile</h4>
+    <div class="table-wrap mt-2">
+      <table>
+        <tr><th>Category</th><th>Hours</th><th>Channel</th><th>Response Time</th></tr>
+        <tr><td><strong>🟢 Available</strong></td><td>09:00 - 16:00</td><td>Slack, Email</td><td>< 30 min</td></tr>
+        <tr><td><strong>🟡 Limited</strong></td><td>08:00-09:00, 16:00-17:00</td><td>Slack (DM only)</td><td>< 2 hours</td></tr>
+        <tr><td><strong>🎯 Focus Mode</strong></td><td>Blocked in calendar</td><td>Emergency DM only</td><td>After focus block</td></tr>
+        <tr><td><strong>🔴 Offline</strong></td><td>Before 08:00, after 17:00</td><td>—</td><td>Next business day</td></tr>
+      </table>
+    </div>
+    <p class="mt-2 text-sm text-gray">Emergency definition: System down, client escalation, deadline today. Not: "quick question", "when you get a chance"</p>
+  </div>
+
+  <h3 class="mt-4">🚫 How to Say No (Without Being a Jerk)</h3>
+  
+  <div class="card mt-2">
+    <h4>5 Frameworks untuk Decline dengan Elegan</h4>
+    <ol style="padding-left:20px;font-size:0.9rem;" class="mt-2">
+      <li class="mb-2"><strong>"Yes, but later"</strong> — "I'd love to help! I'm in deep focus until 14:00. Can I get back to you then?"</li>
+      <li class="mb-2"><strong>"Here's what I CAN do"</strong> — "I can't join the full meeting, but I can review the doc async and give written feedback by EOD."</li>
+      <li class="mb-2"><strong>"Let me redirect"</strong> — "I'm not the best person for this. Have you checked with [name]? They're closer to this topic."</li>
+      <li class="mb-2"><strong>"Priority trade-off"</strong> — "Happy to take this on. Which of my current tasks should I deprioritize to make room?"</li>
+      <li class="mb-2"><strong>"The honest no"</strong> — "I appreciate you thinking of me, but I'm at capacity this week. Let's revisit next week?"</li>
+    </ol>
+  </div>
+
+  <h3 class="mt-4">💬 Slack/Teams Status Strategy</h3>
+  
+  <div class="card mt-2">
+    <h4>Recommended Status Rotations</h4>
+    <div class="table-wrap mt-2">
+      <table>
+        <tr><th>Status</th><th>Emoji</th><th>When</th><th>Auto-clear</th></tr>
+        <tr><td>Deep Work — back at [time]</td><td>🎯</td><td>During focus blocks</td><td>After block ends</td></tr>
+        <tr><td>In meetings until [time]</td><td>📅</td><td>Meeting marathon</td><td>After last meeting</td></tr>
+        <tr><td>WFH today</td><td>🏠</td><td>All day WFH</td><td>End of day</td></tr>
+        <tr><td>At the office</td><td>🏢</td><td>Office days</td><td>End of day</td></tr>
+        <tr><td>Lunch break</td><td>🍽️</td><td>12:00-13:00</td><td>1 hour</td></tr>
+        <tr><td>OOO — back [date]</td><td>🌴</td><td>Leave/vacation</td><td>Return date</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="card dark mt-3">
+    <h4>🎯 Actionable Takeaway Bab 10</h4>
+    <p class="mt-2">Update Slack profile lo dengan Availability Hours. Set up 3 status presets yang bisa lo rotate setiap hari. Kirim 1 async status update besok pagi instead of attending standup (kalau applicable).</p>
+  </div>
+</section>
+
+
+<!-- ==================== BAB 11: TOOLS & TECH STACK ==================== -->
+<section class="page" id="bab11">
+  <span class="page-number">14</span>
+  <span class="section-tag">bab 11</span>
+  <h2>Tools & Tech Stack</h2>
+  <p class="text-gray">Recommended Tools per Category & Integration Tips</p>
+
+  <h3 class="mt-3">🧰 The Hybrid Worker Tech Stack</h3>
+  
+  <div class="card mt-2">
+    <h4>📋 Task & Project Management</h4>
+    <div class="table-wrap mt-2">
+      <table>
+        <tr><th>Tool</th><th>Best For</th><th>Price</th><th>Integration</th></tr>
+        <tr><td><strong>Notion</strong></td><td>All-in-one workspace (our primary)</td><td>Free / $8/mo</td><td>Calendar, Slack, Zapier</td></tr>
+        <tr><td><strong>Todoist</strong></td><td>Quick task capture & GTD</td><td>Free / $4/mo</td><td>Calendar, Notion, email</td></tr>
+        <tr><td><strong>Linear</strong></td><td>Engineering project management</td><td>Free / $8/mo</td><td>GitHub, Slack, Notion</td></tr>
+        <tr><td><strong>Asana</strong></td><td>Team project tracking</td><td>Free / $11/mo</td><td>Slack, Calendar, 200+ apps</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="card mt-2">
+    <h4>⏱️ Time Tracking</h4>
+    <div class="table-wrap mt-2">
+      <table>
+        <tr><th>Tool</th><th>Best For</th><th>Price</th><th>Key Feature</th></tr>
+        <tr><td><strong>Toggl Track</strong></td><td>Simple time tracking</td><td>Free / $9/mo</td><td>One-click timer, reports</td></tr>
+        <tr><td><strong>RescueTime</strong></td><td>Automatic activity tracking</td><td>Free / $12/mo</td><td>Passive — no manual entry</td></tr>
+        <tr><td><strong>Clockify</strong></td><td>Free unlimited tracking</td><td>Free</td><td>Team reports, integrations</td></tr>
+        <tr><td><strong>Harvest</strong></td><td>Tracking + invoicing</td><td>Free / $11/mo</td><td>Best for freelancers</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="card mt-2">
+    <h4>🎯 Focus & Productivity</h4>
+    <div class="table-wrap mt-2">
+      <table>
+        <tr><th>Tool</th><th>Best For</th><th>Price</th><th>Key Feature</th></tr>
+        <tr><td><strong>Forest</strong></td><td>Gamified focus sessions</td><td>$4 (one-time)</td><td>Grow trees, social accountability</td></tr>
+        <tr><td><strong>Freedom</strong></td><td>Website & app blocking</td><td>$7/mo</td><td>Scheduled blocks, all devices</td></tr>
+        <tr><td><strong>Brain.fm</strong></td><td>Focus music (AI-generated)</td><td>$7/mo</td><td>Scientifically designed audio</td></tr>
+        <tr><td><strong>Endel</strong></td><td>Personalized soundscapes</td><td>$6/mo</td><td>Adapts to time/weather/heart rate</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="card mt-2">
+    <h4>💬 Communication</h4>
+    <div class="table-wrap mt-2">
+      <table>
+        <tr><th>Tool</th><th>Best For</th><th>Async Power</th><th>Tip</th></tr>
+        <tr><td><strong>Slack</strong></td><td>Team chat</td><td>Threads, scheduled messages</td><td>Use threads religiously</td></tr>
+        <tr><td><strong>Loom</strong></td><td>Async video messages</td><td>Replace "quick sync" meetings</td><td>5-min Loom > 30-min meeting</td></tr>
+        <tr><td><strong>Notion</strong></td><td>Documentation & updates</td><td>Comments, mentions</td><td>All decisions in writing</td></tr>
+        <tr><td><strong>Calendly</strong></td><td>Scheduling</td><td>No back-and-forth</td><td>Set availability windows only</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="card mt-2">
+    <h4>🔄 Automation & Integration</h4>
+    <div class="table-wrap mt-2">
+      <table>
+        <tr><th>Tool</th><th>Best For</th><th>Example Automation</th></tr>
+        <tr><td><strong>Zapier</strong></td><td>Connect any 2 apps</td><td>New calendar event → Create Notion page</td></tr>
+        <tr><td><strong>Make (Integromat)</strong></td><td>Complex multi-step workflows</td><td>Email received → Categorize → Add to Notion inbox</td></tr>
+        <tr><td><strong>Notion Automations</strong></td><td>Within-Notion workflows</td><td>Status changed → Update date property</td></tr>
+        <tr><td><strong>IFTTT</strong></td><td>Simple if-then automations</td><td>Time = 17:00 → Send "shutdown" reminder</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <h3 class="mt-4">🔗 Integration Architecture</h3>
+  
+  <div class="card highlight mt-2">
+    <h4>How Everything Connects (Notion as Hub)</h4>
+    <pre class="mono mt-2" style="background:var(--navy);color:var(--warm-white);padding:20px;border-radius:8px;overflow-x:auto;font-size:0.78rem;">
+┌─────────────┐     ┌─────────────┐     ┌─────────────┐
+│   Google    │────▶│             │◀────│    Slack    │
+│  Calendar   │     │   NOTION    │     │  (updates)  │
+└─────────────┘     │   (Hub)     │     └─────────────┘
+                    │             │
+┌─────────────┐     │  Dashboard  │     ┌─────────────┐
+│   Toggl     │────▶│  Daily Log  │◀────│    Loom     │
+│   Track     │     │  Projects   │     │  (async)    │
+└─────────────┘     │  Meetings   │     └─────────────┘
+                    │             │
+┌─────────────┐     │             │     ┌─────────────┐
+│   Zapier    │────▶│             │◀────│  Todoist    │
+│ (automate)  │     └─────────────┘     │ (capture)   │
+└─────────────┘                         └─────────────┘
+    </pre>
+  </div>
+
+  <div class="card dark mt-3">
+    <h4>🎯 Actionable Takeaway Bab 11</h4>
+    <p class="mt-2">Don't add all tools at once. Start with Notion + Calendar sync + 1 focus tool. Setelah 2 minggu comfortable, add time tracking. Then automation. Layer by layer.</p>
+  </div>
+</section>
+
+
+<!-- ==================== BAB 12: 30-DAY ROADMAP ==================== -->
+<section class="page" id="bab12">
+  <span class="page-number">15</span>
+  <span class="section-tag">bab 12</span>
+  <h2>30-Day Setup Roadmap</h2>
+  <p class="text-gray">Week-by-Week Implementation Plan</p>
+
+  <div class="pull-quote mt-3">
+    Don't try to build the perfect system in one weekend. Build a good-enough system in 30 days, then iterate forever.
+  </div>
+
+  <h3 class="mt-4">📅 Week 1: Foundation (Day 1-7)</h3>
+  <p class="text-sm text-gray">Goal: Basic system up and running</p>
+  
+  <div class="card mt-2">
+    <div class="table-wrap">
+      <table>
+        <tr><th>Day</th><th>Task</th><th>Time Needed</th><th>Outcome</th></tr>
+        <tr><td><strong>Day 1</strong></td><td>Create Notion workspace + Daily Log database</td><td>45 min</td><td>Database ready with all properties</td></tr>
+        <tr><td><strong>Day 2</strong></td><td>Fill Day 1 Daily Log + do Energy Mapping</td><td>15 min</td><td>First entry complete, tracking energy</td></tr>
+        <tr><td><strong>Day 3</strong></td><td>Assign day types for this week + set MIT</td><td>20 min</td><td>Weekly overview clear</td></tr>
+        <tr><td><strong>Day 4</strong></td><td>Time-block tomorrow's calendar (1 deep work block)</td><td>15 min</td><td>First protected focus time</td></tr>
+        <tr><td><strong>Day 5</strong></td><td>Try 90-min Deep Work Protocol</td><td>90 min</td><td>First deep work session complete</td></tr>
+        <tr><td><strong>Day 6</strong></td><td>Set up morning + shutdown routine</td><td>20 min</td><td>Bookends defined</td></tr>
+        <tr><td><strong>Day 7</strong></td><td>First Weekly Review (even though partial week)</td><td>30 min</td><td>Review habit established</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <h3 class="mt-4">📅 Week 2: Systems (Day 8-14)</h3>
+  <p class="text-sm text-gray">Goal: Expand Notion system + refine daily routine</p>
+  
+  <div class="card mt-2">
+    <div class="table-wrap">
+      <table>
+        <tr><th>Day</th><th>Task</th><th>Time Needed</th><th>Outcome</th></tr>
+        <tr><td><strong>Day 8</strong></td><td>Create Project Tracker database</td><td>30 min</td><td>All current projects listed</td></tr>
+        <tr><td><strong>Day 9</strong></td><td>Create Habit Tracker + pick 3 starter habits</td><td>25 min</td><td>Tracking 3 daily habits</td></tr>
+        <tr><td><strong>Day 10</strong></td><td>Create Meeting Notes database + template</td><td>20 min</td><td>Next meeting = structured notes</td></tr>
+        <tr><td><strong>Day 11</strong></td><td>Build Master Dashboard (link all databases)</td><td>45 min</td><td>One-page overview working</td></tr>
+        <tr><td><strong>Day 12</strong></td><td>Meeting audit — identify 2 to kill/convert</td><td>30 min</td><td>Reclaimed 1-2 hrs/week</td></tr>
+        <tr><td><strong>Day 13</strong></td><td>Set availability hours + Slack status presets</td><td>15 min</td><td>Team knows your schedule</td></tr>
+        <tr><td><strong>Day 14</strong></td><td>Full Weekly Review + plan Week 3</td><td>45 min</td><td>Solid review + adjusted plan</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <h3 class="mt-4">📅 Week 3: Optimization (Day 15-21)</h3>
+  <p class="text-sm text-gray">Goal: Fine-tune based on 2 weeks of data</p>
+  
+  <div class="card mt-2">
+    <div class="table-wrap">
+      <table>
+        <tr><th>Day</th><th>Task</th><th>Time Needed</th><th>Outcome</th></tr>
+        <tr><td><strong>Day 15</strong></td><td>Analyze energy map — adjust time blocks to match</td><td>30 min</td><td>Optimized schedule</td></tr>
+        <tr><td><strong>Day 16</strong></td><td>Create Weekly Planning template in Notion</td><td>25 min</td><td>Sunday ritual templated</td></tr>
+        <tr><td><strong>Day 17</strong></td><td>Add focus tool (Forest/Freedom/Brain.fm)</td><td>15 min</td><td>External focus support</td></tr>
+        <tr><td><strong>Day 18</strong></td><td>Refine WFH vs Office templates (what's working?)</td><td>20 min</td><td>Personalized day templates</td></tr>
+        <tr><td><strong>Day 19</strong></td><td>Create Resource Library + add 5 bookmarks</td><td>20 min</td><td>Learning system started</td></tr>
+        <tr><td><strong>Day 20</strong></td><td>Distraction audit — log for full day</td><td>Passive</td><td>Distraction patterns identified</td></tr>
+        <tr><td><strong>Day 21</strong></td><td>Weekly Review + implement distraction fixes</td><td>45 min</td><td>Environment optimized</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <h3 class="mt-4">📅 Week 4: Automation (Day 22-30)</h3>
+  <p class="text-sm text-gray">Goal: Automate repetitive parts, make system low-friction</p>
+  
+  <div class="card mt-2">
+    <div class="table-wrap">
+      <table>
+        <tr><th>Day</th><th>Task</th><th>Time Needed</th><th>Outcome</th></tr>
+        <tr><td><strong>Day 22</strong></td><td>Set up Notion templates (daily, weekly, meeting)</td><td>30 min</td><td>One-click new entries</td></tr>
+        <tr><td><strong>Day 23</strong></td><td>Connect Calendar to Notion (Zapier/native)</td><td>25 min</td><td>Auto-sync events</td></tr>
+        <tr><td><strong>Day 24</strong></td><td>Create recurring calendar blocks (deep work, buffer)</td><td>15 min</td><td>Auto-protected time</td></tr>
+        <tr><td><strong>Day 25</strong></td><td>Set up time tracking (Toggl → weekly reports)</td><td>20 min</td><td>Data on time usage</td></tr>
+        <tr><td><strong>Day 26</strong></td><td>Create async update template + share with team</td><td>15 min</td><td>Team aligned on async</td></tr>
+        <tr><td><strong>Day 27</strong></td><td>Monthly Review #1 — full template</td><td>45 min</td><td>First monthly reflection</td></tr>
+        <tr><td><strong>Day 28</strong></td><td>Set personal OKRs for next quarter</td><td>30 min</td><td>Direction clear</td></tr>
+        <tr><td><strong>Day 29</strong></td><td>Document your system (for future-you)</td><td>20 min</td><td>System is self-documenting</td></tr>
+        <tr><td><strong>Day 30</strong></td><td>Celebrate! 🎉 Review full journey, note improvements</td><td>30 min</td><td>SYSTEM COMPLETE 🏆</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="card dark mt-3">
+    <h4>🎯 Actionable Takeaway Bab 12</h4>
+    <p class="mt-2">Start Day 1 TODAY. Right now. Create that Daily Log database. Isi entry pertama. Set reminder untuk besok. One step at a time — 30 days from now, lo bakal punya complete system yang udah lo test sendiri.</p>
+  </div>
+</section>
+
+
+<!-- ==================== BAB 13: TEMPLATES LIBRARY ==================== -->
+<section class="page" id="bab13">
+  <span class="page-number">16</span>
+  <span class="section-tag gold">bab 13</span>
+  <h2>Templates Library</h2>
+  <p class="text-gray">Copy-Paste Ready Templates untuk Daily Use</p>
+
+  <h3 class="mt-3">📋 Template Collection</h3>
+
+  <div class="tpl mt-3">
+    <span class="tpl-number">01</span>
+    <h4>Daily Standup (Self) Template</h4>
+    <div class="mt-2" style="font-size:0.9rem;background:var(--gray-light);padding:16px;border-radius:8px;">
+      <p><strong>📅 Date:</strong> [today] | <strong>📍 Location:</strong> 🏠/🏢/🚀 | <strong>🔋 Energy:</strong> ___/5</p>
+      <p class="mt-2"><strong>🎯 Today's MIT (Most Important Tasks):</strong></p>
+      <ol style="padding-left:20px;">
+        <li><strong>MUST:</strong> ___</li>
+        <li><strong>SHOULD:</strong> ___</li>
+        <li><strong>COULD:</strong> ___</li>
+      </ol>
+      <p class="mt-2"><strong>📅 Meetings today:</strong> ___ meetings, ___ total hours</p>
+      <p><strong>🧠 Deep Work planned:</strong> ___:___ to ___:___ ([duration] min)</p>
+      <p><strong>⚠️ Potential blocker:</strong> ___</p>
+      <p><strong>💡 One thing I'm looking forward to:</strong> ___</p>
+    </div>
+  </div>
+
+  <div class="tpl mt-3">
+    <span class="tpl-number">02</span>
+    <h4>1-on-1 Meeting Template</h4>
+    <div class="mt-2" style="font-size:0.9rem;background:var(--gray-light);padding:16px;border-radius:8px;">
+      <p><strong>👥 1-on-1 with:</strong> ___ | <strong>📅 Date:</strong> ___ | <strong>⏱️ Duration:</strong> 30 min</p>
+      <p class="mt-2"><strong>🔄 UPDATES (5 min)</strong></p>
+      <ul style="padding-left:16px;">
+        <li>My progress since last 1-on-1: ___</li>
+        <li>Completed: ___</li>
+        <li>In progress: ___</li>
+      </ul>
+      <p class="mt-2"><strong>🎯 DISCUSSION TOPICS (15 min)</strong></p>
+      <ul style="padding-left:16px;">
+        <li>Topic 1: ___</li>
+        <li>Topic 2: ___</li>
+        <li>Feedback I want: ___</li>
+      </ul>
+      <p class="mt-2"><strong>🚧 BLOCKERS & SUPPORT NEEDED (5 min)</strong></p>
+      <ul style="padding-left:16px;">
+        <li>Blocker: ___ → Need: ___</li>
+        <li>Resource request: ___</li>
+      </ul>
+      <p class="mt-2"><strong>📝 ACTION ITEMS (5 min)</strong></p>
+      <ul style="padding-left:16px;">
+        <li>[ ] Me: ___ by ___</li>
+        <li>[ ] Manager: ___ by ___</li>
+      </ul>
+      <p class="mt-2"><strong>🌟 DEVELOPMENT</strong></p>
+      <p>Career goal check-in: ___</p>
+      <p>Skill I want to develop: ___</p>
+    </div>
+  </div>
+
+  <div class="tpl mt-3">
+    <span class="tpl-number">03</span>
+    <h4>Project Kickoff Template</h4>
+    <div class="mt-2" style="font-size:0.9rem;background:var(--gray-light);padding:16px;border-radius:8px;">
+      <p><strong>🚀 PROJECT KICKOFF: [Project Name]</strong></p>
+      <p class="mt-2"><strong>📋 PROJECT OVERVIEW</strong></p>
+      <ul style="padding-left:16px;">
+        <li><strong>Objective:</strong> What problem does this solve? ___</li>
+        <li><strong>Success criteria:</strong> How do we know it's done? ___</li>
+        <li><strong>Deadline:</strong> ___</li>
+        <li><strong>Priority:</strong> P1 / P2 / P3</li>
+      </ul>
+      <p class="mt-2"><strong>👥 PEOPLE</strong></p>
+      <ul style="padding-left:16px;">
+        <li>Owner (accountable): ___</li>
+        <li>Contributors: ___</li>
+        <li>Stakeholders (informed): ___</li>
+      </ul>
+      <p class="mt-2"><strong>📅 MILESTONES</strong></p>
+      <ul style="padding-left:16px;">
+        <li>Milestone 1: ___ → Due: ___</li>
+        <li>Milestone 2: ___ → Due: ___</li>
+        <li>Milestone 3: ___ → Due: ___</li>
+      </ul>
+      <p class="mt-2"><strong>⚠️ RISKS & DEPENDENCIES</strong></p>
+      <ul style="padding-left:16px;">
+        <li>Risk: ___ → Mitigation: ___</li>
+        <li>Dependency: ___ → Owner: ___</li>
+      </ul>
+      <p class="mt-2"><strong>💬 COMMUNICATION</strong></p>
+      <ul style="padding-left:16px;">
+        <li>Updates: Weekly async in #[channel]</li>
+        <li>Sync meetings: [frequency] [day/time]</li>
+        <li>Decision log: [Notion page link]</li>
+      </ul>
+    </div>
+  </div>
+
+
+  <div class="tpl mt-3">
+    <span class="tpl-number">04</span>
+    <h4>Decision Log Template</h4>
+    <div class="mt-2" style="font-size:0.9rem;background:var(--gray-light);padding:16px;border-radius:8px;">
+      <p><strong>🤔 DECISION LOG</strong></p>
+      <p class="mt-2"><strong>Decision:</strong> [What was decided]</p>
+      <p><strong>Date:</strong> ___</p>
+      <p><strong>Decision Maker(s):</strong> ___</p>
+      <p class="mt-2"><strong>Context:</strong></p>
+      <p>Why was this decision needed? What problem does it solve? ___</p>
+      <p class="mt-2"><strong>Options Considered:</strong></p>
+      <ul style="padding-left:16px;">
+        <li>Option A: ___ (Pros: ___ / Cons: ___)</li>
+        <li>Option B: ___ (Pros: ___ / Cons: ___)</li>
+        <li>Option C: ___ (Pros: ___ / Cons: ___)</li>
+      </ul>
+      <p class="mt-2"><strong>Chosen:</strong> Option ___ because ___</p>
+      <p><strong>Reversibility:</strong> Easy / Medium / Hard (one-way door)</p>
+      <p><strong>Review Date:</strong> Revisit by ___</p>
+      <p><strong>Impact:</strong> Who/what is affected? ___</p>
+    </div>
+  </div>
+
+  <div class="tpl mt-3">
+    <span class="tpl-number">05</span>
+    <h4>"Brain Dump to Action" Template</h4>
+    <div class="mt-2" style="font-size:0.9rem;background:var(--gray-light);padding:16px;border-radius:8px;">
+      <p><strong>🧠 BRAIN DUMP → ACTION</strong></p>
+      <p class="text-sm text-gray">Step 1: Dump everything. Step 2: Categorize. Step 3: Action.</p>
+      <p class="mt-2"><strong>RAW DUMP</strong> (tulis semua tanpa filter, 5 minutes):</p>
+      <p style="min-height:50px;border:1px dashed var(--gray);border-radius:6px;padding:8px;margin-top:4px;">___</p>
+      <p class="mt-2"><strong>CATEGORIZE:</strong></p>
+      <div class="table-wrap mt-1">
+        <table>
+          <tr><th>🔴 Do Today</th><th>🟡 Do This Week</th><th>🟢 Someday/Maybe</th><th>🗑️ Delete</th></tr>
+          <tr><td>___</td><td>___</td><td>___</td><td>___</td></tr>
+          <tr><td>___</td><td>___</td><td>___</td><td>___</td></tr>
+          <tr><td>___</td><td>___</td><td>___</td><td>___</td></tr>
+        </table>
+      </div>
+      <p class="mt-2"><strong>ACTION PLAN</strong> (from "Do Today"):</p>
+      <ul style="padding-left:16px;">
+        <li>[ ] Task: ___ → Time block: ___</li>
+        <li>[ ] Task: ___ → Time block: ___</li>
+        <li>[ ] Task: ___ → Time block: ___</li>
+      </ul>
+      <p class="mt-2"><strong>DELEGATE:</strong> ___ → To whom: ___</p>
+    </div>
+  </div>
+
+  <div class="tpl mt-3">
+    <span class="tpl-number">06</span>
+    <h4>End of Week Scorecard</h4>
+    <div class="mt-2" style="font-size:0.9rem;background:var(--gray-light);padding:16px;border-radius:8px;">
+      <p><strong>📊 WEEKLY SCORECARD — Week of [Date]</strong></p>
+      <p class="mt-2"><strong>🎯 GOALS vs REALITY</strong></p>
+      <div class="table-wrap mt-1">
+        <table>
+          <tr><th>Goal Set</th><th>Status</th><th>Notes</th></tr>
+          <tr><td>1. ___</td><td>✅ / 🟡 / ❌</td><td>___</td></tr>
+          <tr><td>2. ___</td><td>✅ / 🟡 / ❌</td><td>___</td></tr>
+          <tr><td>3. ___</td><td>✅ / 🟡 / ❌</td><td>___</td></tr>
+        </table>
+      </div>
+      <p class="mt-2"><strong>📈 KEY METRICS</strong></p>
+      <ul style="padding-left:16px;">
+        <li>Focus hours this week: ___/20 target</li>
+        <li>Meetings attended: ___ (goal: < 10)</li>
+        <li>Habit completion rate: ___% (goal: 80%)</li>
+        <li>Avg daily energy: ___/5</li>
+        <li>Deep work sessions: ___/5</li>
+      </ul>
+      <p class="mt-2"><strong>🏆 WIN OF THE WEEK:</strong> ___</p>
+      <p><strong>📚 LESSON OF THE WEEK:</strong> ___</p>
+      <p><strong>🔧 1 THING TO ADJUST NEXT WEEK:</strong> ___</p>
+      <p class="mt-2"><strong>OVERALL SCORE:</strong> ⭐⭐⭐⭐⭐ (___/5)</p>
+    </div>
+  </div>
+
+  <div class="card dark mt-3">
+    <h4>🎯 Actionable Takeaway Bab 13</h4>
+    <p class="mt-2">Pick 2 templates yang paling relevan sekarang. Copy ke Notion. Use them this week. Templates cuma berguna kalau dipakai — jadi start small, add more later.</p>
+  </div>
+</section>
+
+
+<!-- ==================== BAB 14: TROUBLESHOOTING ==================== -->
+<section class="page" id="bab14">
+  <span class="page-number">17</span>
+  <span class="section-tag">bab 14</span>
+  <h2>Troubleshooting</h2>
+  <p class="text-gray">Common Problems & Practical Solutions</p>
+
+  <h3 class="mt-3">🔧 Problem #1: "I Can't Stick to My Plan"</h3>
+  
+  <div class="card highlight mt-2">
+    <h4>Root Causes:</h4>
+    <ul style="padding-left:16px;font-size:0.9rem;" class="mt-2">
+      <li>Plan terlalu ambitious (over-scheduling)</li>
+      <li>No buffer time — satu delay cascading</li>
+      <li>External interruptions tak terduga</li>
+      <li>Willpower reliance (bukan system reliance)</li>
+    </ul>
+    <h4 class="mt-3">Solutions:</h4>
+    <ol style="padding-left:16px;font-size:0.9rem;" class="mt-1">
+      <li><strong>Plan at 70% capacity</strong> — Sisakan 30% untuk unexpected. Kalau nggak ada interrupt, bonus free time.</li>
+      <li><strong>Add buffer blocks</strong> — 15 min antara setiap major block. Non-negotiable.</li>
+      <li><strong>Use "If-Then" rules</strong> — "If meeting overruns → I still protect my next deep work block by cutting shallow work."</li>
+      <li><strong>Track deviations</strong> — Note WHY you deviated. Patterns will emerge. Fix the system, not yourself.</li>
+      <li><strong>Shrink the plan</strong> — Dari MIT 3, turunin ke MIT 1 dulu. Consistency > ambition.</li>
+    </ol>
+  </div>
+
+  <h3 class="mt-3">🔧 Problem #2: "Too Many Meetings"</h3>
+  
+  <div class="card highlight mt-2">
+    <h4>Root Causes:</h4>
+    <ul style="padding-left:16px;font-size:0.9rem;" class="mt-2">
+      <li>Default culture = meeting for everything</li>
+      <li>FOMO — takut miss information</li>
+      <li>No clear async alternatives established</li>
+      <li>Calendar Tetris — orang book slot kosong lo</li>
+    </ul>
+    <h4 class="mt-3">Solutions:</h4>
+    <ol style="padding-left:16px;font-size:0.9rem;" class="mt-1">
+      <li><strong>Block focus time FIRST</strong> — Before others can book. Recurring blocks = claimed territory.</li>
+      <li><strong>Propose async alternative</strong> — "Can we do this via Slack thread? I'll respond by [time]."</li>
+      <li><strong>Decline with value</strong> — "I'm not needed here, but happy to review notes and add async input."</li>
+      <li><strong>Shorten all meetings</strong> — 25 min instead of 30. 50 min instead of 60. Set default in calendar settings.</li>
+      <li><strong>Batch meetings</strong> — All meetings on Tue/Thu. Mon/Wed/Fri = meeting-free (or mostly).</li>
+    </ol>
+  </div>
+
+  <h3 class="mt-3">🔧 Problem #3: "WFH Distractions"</h3>
+  
+  <div class="card highlight mt-2">
+    <h4>Root Causes:</h4>
+    <ul style="padding-left:16px;font-size:0.9rem;" class="mt-2">
+      <li>No dedicated workspace (kerja di living room/bed)</li>
+      <li>Family/roommates interrupting</li>
+      <li>Phone/social media dalam reach</li>
+      <li>No clear work "mode" boundary</li>
+    </ul>
+    <h4 class="mt-3">Solutions:</h4>
+    <ol style="padding-left:16px;font-size:0.9rem;" class="mt-1">
+      <li><strong>Create physical boundary</strong> — Satu spot khusus kerja. Even kalau cuma 1 meja kecil. Brain associates space with mode.</li>
+      <li><strong>Communicate schedule</strong> — Share jadwal ke family/roommates. "09-12 = jangan ganggu kecuali darurat."</li>
+      <li><strong>Phone quarantine</strong> — Phone di drawer/room lain selama deep work. Out of sight = out of mind.</li>
+      <li><strong>Use app blockers</strong> — Freedom, Cold Turkey, atau Screen Time limits. Remove choice from the equation.</li>
+      <li><strong>"Work mode" ritual</strong> — Put on shoes. Play specific playlist. Open Notion. Ritual = brain trigger for focus.</li>
+    </ol>
+  </div>
+
+  <h3 class="mt-3">🔧 Problem #4: "Burnout Signals"</h3>
+  
+  <div class="card highlight mt-2">
+    <h4>Warning Signs:</h4>
+    <ul style="padding-left:16px;font-size:0.9rem;" class="mt-2">
+      <li>Consistently low energy di Daily Log (3+ days in a row)</li>
+      <li>Dreading tasks that used to excite you</li>
+      <li>Working past shutdown time regularly</li>
+      <li>Mood = Frustrated/Tired for the whole week</li>
+      <li>Can't focus even during "peak" hours</li>
+      <li>Sunday anxiety about Monday</li>
+    </ul>
+    <h4 class="mt-3">Recovery Protocol:</h4>
+    <ol style="padding-left:16px;font-size:0.9rem;" class="mt-1">
+      <li><strong>Immediate: Cut workload by 50%</strong> — Only MIT 1 for 1 week. Everything else can wait or be delegated.</li>
+      <li><strong>Sleep audit</strong> — Are you getting 7-8 hours? Fix this FIRST. Nothing works without sleep.</li>
+      <li><strong>No-work evening rule</strong> — Zero work after shutdown time. No email "quick check."</li>
+      <li><strong>Add recovery blocks</strong> — 30-60 min walks, nature, exercise. Non-negotiable.</li>
+      <li><strong>Take a real day off</strong> — Not sick day where you still check email. REAL off. Phone off. Nature. Rest.</li>
+      <li><strong>If persists > 2 weeks</strong> — Talk to manager / seek professional support. Burnout is clinical — it's not weakness.</li>
+    </ol>
+  </div>
+
+  <h3 class="mt-3">🔧 Problem #5: "Switching Between Office/Home is Chaotic"</h3>
+  
+  <div class="card highlight mt-2">
+    <h4>Root Causes:</h4>
+    <ul style="padding-left:16px;font-size:0.9rem;" class="mt-2">
+      <li>Different setup at each location (tools, monitors, etc.)</li>
+      <li>No transition ritual between modes</li>
+      <li>Information scattered (some at office, some at home)</li>
+      <li>Different routines causing cognitive load</li>
+    </ul>
+    <h4 class="mt-3">Solutions:</h4>
+    <ol style="padding-left:16px;font-size:0.9rem;" class="mt-1">
+      <li><strong>Cloud-first everything</strong> — Notion (not local files), Google Drive (not desktop), browser bookmarks (not local). Access anywhere.</li>
+      <li><strong>Identical core setup</strong> — Same headphones, same charger, same notebook at both locations. Reduce friction to zero.</li>
+      <li><strong>"Commute transition" ritual</strong> — Leaving office: 5-min journal on phone (what's pending). Arriving home: 10-min decompress before anything.</li>
+      <li><strong>"Travel bag" always packed</strong> — Charger, headphones, notebook, snacks — always in bag. Never scramble morning-of.</li>
+      <li><strong>Day-type templates</strong> — Different schedule for office vs WFH already planned. No decision-making needed in the morning.</li>
+    </ol>
+  </div>
+
+  <div class="card dark mt-3">
+    <h4>🎯 Actionable Takeaway Bab 14</h4>
+    <p class="mt-2">Identify your TOP 1 problem from the list above. Implement the #1 solution dari section itu. One fix at a time. Don't try to solve everything simultaneously — that's how burnout happens.</p>
+  </div>
+</section>
+
+
+<!-- ==================== BAB 15: FAQ ==================== -->
+<section class="page" id="bab15">
+  <span class="page-number">18</span>
+  <span class="section-tag">bab 15</span>
+  <h2>FAQ — Frequently Asked Questions</h2>
+  <p class="text-gray">10 Pertanyaan yang Paling Sering Ditanya</p>
+
+  <div class="card mt-3">
+    <h4>Q1: "Gue bukan orang yang organized. Bisa nggak pakai sistem ini?"</h4>
+    <p class="mt-2"><strong>A:</strong> Absolutely. Sistem ini designed untuk orang yang BELUM organized. Lo nggak perlu jadi "productivity junkie" dulu. Start dengan Daily Log + 1 MIT per day. Itu aja. Organisasi itu skill yang di-build, bukan personality trait. Give it 2 weeks — lo bakal surprised.</p>
+  </div>
+
+  <div class="card mt-2">
+    <h4>Q2: "Harus pakai Notion? Kalau pakai tools lain gimana?"</h4>
+    <p class="mt-2"><strong>A:</strong> Notion itu recommended because it's the most flexible. Tapi SEMUA konsep di ebook ini applicable ke tools lain: Obsidian, Todoist, Asana, bahkan Google Sheets + Calendar. Yang penting adalah SISTEM-nya, bukan tools-nya. Adapt the framework to your preferred tool.</p>
+  </div>
+
+  <div class="card mt-2">
+    <h4>Q3: "Berapa lama sampai sistem ini jadi autopilot?"</h4>
+    <p class="mt-2"><strong>A:</strong> Roughly: Week 1-2 = Conscious effort (feels clunky). Week 3-4 = Getting smoother. Week 5-8 = Mostly automatic. After 2 months = Feels weird WITHOUT the system. Consistency > perfection. Nggak perlu perfect execution — just show up daily.</p>
+  </div>
+
+  <div class="card mt-2">
+    <h4>Q4: "Boss gue yang schedule meetings. Gue nggak bisa control calendar."</h4>
+    <p class="mt-2"><strong>A:</strong> Lo lebih punya control dari yang lo pikir. (1) Block focus time BEFORE boss can book it. (2) Communicate: "I'm most productive in mornings — can we do afternoon meetings?" (3) Propose async alternatives. Most bosses respect boundaries kalau lo frame it as "I deliver better work this way."</p>
+  </div>
+
+  <div class="card mt-2">
+    <h4>Q5: "Ini terlalu banyak. Overwhelmed. Mulai dari mana?"</h4>
+    <p class="mt-2"><strong>A:</strong> ONLY do this: (1) Create Daily Log database. (2) Set 1 MIT every morning. (3) Do 1 Deep Work block (even just 45 min). That's it. Literally three things. Do those for 2 weeks. Then add more. The 30-Day Roadmap di Bab 12 breaks it down step by step.</p>
+  </div>
+
+  <div class="card mt-2">
+    <h4>Q6: "Gimana kalau hari gue nggak sesuai template? (e.g., urgent meeting mendadak)"</h4>
+    <p class="mt-2"><strong>A:</strong> Templates itu guidelines, bukan rules keras. The real question is: setelah interrupt, bisa nggak lo RETURN to the plan? That's the skill. Urgent meeting muncul → attend → lalu BACK to your MIT. Don't let one disruption derail the whole day. Use buffer blocks for overflow.</p>
+  </div>
+
+  <div class="card mt-2">
+    <h4>Q7: "Gue kerja di timezone berbeda sama team. Hybrid + timezone = double chaos."</h4>
+    <p class="mt-2"><strong>A:</strong> Async-first approach jadi even more penting. (1) Write down everything — no verbal-only decisions. (2) Use Loom for updates yang need context. (3) Have 1-2 overlap hours dedicated to sync communication. (4) Rest of day = your own optimal schedule based on YOUR timezone dan energy. Ini sebenarnya advantage — less meetings!</p>
+  </div>
+
+  <div class="card mt-2">
+    <h4>Q8: "Anak/keluarga di rumah. WFH = work from chaos."</h4>
+    <p class="mt-2"><strong>A:</strong> Real talk — ini hard mode. Solutions: (1) Negotiate "focus hours" with partner/family (e.g., 09-11 = don't disturb unless emergency). (2) Use early morning before family wakes up for deep work. (3) Accept that your WFH day won't look like a single person's WFH day — and that's OK. Optimize around constraints, don't fight them.</p>
+  </div>
+
+  <div class="card mt-2">
+    <h4>Q9: "Kapan tau sistem ini perlu di-overhaul?"</h4>
+    <p class="mt-2"><strong>A:</strong> Signs it's time to redesign: (1) Weekly review score consistently < 3 for 3+ weeks. (2) You're avoiding opening Notion/your system. (3) Role/job changed significantly. (4) You're maintaining the system MORE than using it. Rule: quarterly light review, annual full overhaul. Systems should evolve with you.</p>
+  </div>
+
+  <div class="card mt-2">
+    <h4>Q10: "Ini free? Atau ada upsell? What's the catch?"</h4>
+    <p class="mt-2"><strong>A:</strong> No catch. Ebook ini comprehensive dan self-contained. Lo nggak perlu beli apa-apa lagi. If you want the pre-built Notion template (one-click duplicate), follow @yanzy17 for updates. But honestly, building it yourself from the specs in Bab 2 teaches you MORE and makes it truly yours. Build > Buy.</p>
+  </div>
+</section>
+
+
+<!-- ==================== CLOSING ==================== -->
+<section class="page" id="closing">
+  <span class="page-number">19</span>
+  <span class="section-tag gold">closing</span>
+  <h2>Closing & Action Plan</h2>
+  <p class="text-gray">What to Do RIGHT NOW</p>
+
+  <div class="pull-quote mt-3">
+    The best productivity system is the one you actually use. Not the prettiest. Not the most complex. The one that WORKS for YOUR life.
+  </div>
+
+  <h3 class="mt-4">🎯 Your Immediate Action Plan</h3>
+  
+  <div class="card highlight mt-2">
+    <h4>Do These 5 Things in the Next 24 Hours:</h4>
+    <ol class="step-list mt-2">
+      <li><strong>Create your Daily Log database in Notion</strong> — Copy the properties from Bab 2. Takes 15 minutes. This is your foundation.</li>
+      <li><strong>Fill in today's entry</strong> — Set your energy level, write your MIT, note your day type. First data point = first step.</li>
+      <li><strong>Block 1 Deep Work session for tomorrow</strong> — 90 minutes. Put it in your calendar. Color it red. Protect it like it's a meeting with your CEO.</li>
+      <li><strong>Pick your Day Types for this week</strong> — Label Mon-Fri as Office/WFH/Flex. Write the primary intention for each day.</li>
+      <li><strong>Set your Shutdown Time</strong> — Pick a time. After that = no work. Start tonight. Your future self will thank you.</li>
+    </ol>
+  </div>
+
+  <h3 class="mt-4">📈 The Compound Effect</h3>
+  
+  <div class="card mt-2">
+    <p>Kalau lo implement 1% improvement per day:</p>
+    <div class="stats mt-2">
+      <div class="stat-item">
+        <div class="stat-number">1 week</div>
+        <div class="stat-label">Lo punya daily routine yang works</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">1 month</div>
+        <div class="stat-label">Lo punya complete system</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">3 months</div>
+        <div class="stat-label">System is on autopilot</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">6 months</div>
+        <div class="stat-label">People ask: "How are you so organized?"</div>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="mt-4">🙏 Final Words</h3>
+  
+  <div class="card dark mt-2">
+    <p>Hybrid work itu bukan masalah yang perlu di-solve sekali. Ini adalah ongoing practice — seperti fitness. Lo nggak "selesai" gym. Lo terus show up, adjust, improve.</p>
+    <p class="mt-2">Ebook ini kasih lo the complete blueprint. But the execution? That's on you. And I believe you can do it — because lo udah invest time untuk baca sampai sini. That tells me something about your commitment.</p>
+    <p class="mt-2">Start today. Not Monday. Not "when things calm down." TODAY.</p>
+    <p class="mt-3" style="font-size:1.1rem;"><strong>Go build your system. Own your time. Thrive hybrid.</strong></p>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="text-center mt-4">
+    <h3>📘 Hybrid Planner Pro</h3>
+    <p class="mt-2 text-gray">by <strong>@yanzy17</strong></p>
+    <p class="text-sm text-gray mt-1">Edisi 2026 · Version 1.0</p>
+    <p class="text-sm text-gray mt-1">Template Notion, Planner Harian & Manajemen Waktu untuk Hybrid Worker</p>
+    <div class="mt-3">
+      <span class="badge blue">Notion Templates</span>
+      <span class="badge gold">Time Management</span>
+      <span class="badge navy">Hybrid Work</span>
+      <span class="badge green">Productivity</span>
+    </div>
+    <p class="mt-4 text-sm text-gray">Made with 💙 for the hybrid work community.</p>
+    <p class="text-sm text-gray">Share this ebook. Tag someone who needs it. Let's make hybrid work actually work.</p>
+  </div>
+</section>
+
+<!-- ==================== BONUS: EISENHOWER MATRIX & FRAMEWORKS ==================== -->
+<section class="page" id="bonus-frameworks">
+  <span class="page-number">BONUS</span>
+  <span class="section-tag gold">bonus</span>
+  <h2>Productivity Frameworks Reference</h2>
+  <p class="text-gray">Quick-Reference Cards untuk Framework yang Dipakai di Ebook Ini</p>
+
+  <div class="grid-2 mt-3">
+    <div class="card">
+      <h4>📊 Eisenhower Matrix</h4>
+      <p class="text-sm text-gray mt-1">Prioritize by urgency + importance</p>
+      <div class="table-wrap mt-2">
+        <table>
+          <tr><th></th><th>Urgent</th><th>Not Urgent</th></tr>
+          <tr><td><strong>Important</strong></td><td>🔴 DO FIRST<br><span class="text-sm">Crises, deadlines</span></td><td>🟢 SCHEDULE<br><span class="text-sm">Deep work, planning</span></td></tr>
+          <tr><td><strong>Not Important</strong></td><td>🟡 DELEGATE<br><span class="text-sm">Interruptions, some emails</span></td><td>⚫ ELIMINATE<br><span class="text-sm">Time wasters, busywork</span></td></tr>
+        </table>
+      </div>
+    </div>
+    <div class="card">
+      <h4>1️⃣3️⃣5️⃣ The 1-3-5 Rule</h4>
+      <p class="text-sm text-gray mt-1">Daily task limit for realistic planning</p>
+      <ul style="padding-left:16px;font-size:0.9rem;" class="mt-2">
+        <li><strong>1 Big Thing</strong> — Your MIT, the non-negotiable</li>
+        <li><strong>3 Medium Things</strong> — Important but not giant</li>
+        <li><strong>5 Small Things</strong> — Quick wins, admin, replies</li>
+      </ul>
+      <p class="mt-2 text-sm text-gray">Total: 9 items max/day. If you finish all = great day. Even finishing the 1 big thing = successful day.</p>
+    </div>
+    <div class="card">
+      <h4>🎯 MIT (Most Important Tasks)</h4>
+      <p class="text-sm text-gray mt-1">Focus on impact over activity</p>
+      <ul style="padding-left:16px;font-size:0.9rem;" class="mt-2">
+        <li>Choose 1-3 MITs each morning</li>
+        <li>Do MIT 1 FIRST (before email, before Slack)</li>
+        <li>If only MIT 1 gets done, the day is still a win</li>
+        <li>MITs should move projects forward, not just maintain</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>⏰ Time Boxing vs Time Blocking</h4>
+      <p class="text-sm text-gray mt-1">Two related but different concepts</p>
+      <ul style="padding-left:16px;font-size:0.9rem;" class="mt-2">
+        <li><strong>Time Blocking:</strong> Reserve time for a CATEGORY of work (e.g., "Deep Work 09-11")</li>
+        <li><strong>Time Boxing:</strong> Assign a fixed time LIMIT to a specific task (e.g., "Write report — max 45 min")</li>
+        <li>Combine both: Block the category, then time-box individual tasks within it</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="grid-2 mt-2">
+    <div class="card">
+      <h4>🔄 GTD (Getting Things Done) Simplified</h4>
+      <p class="text-sm text-gray mt-1">David Allen's framework in 5 steps</p>
+      <ol style="padding-left:16px;font-size:0.9rem;" class="mt-2">
+        <li><strong>Capture</strong> — Get everything out of your head into a system</li>
+        <li><strong>Clarify</strong> — Is it actionable? What's the next action?</li>
+        <li><strong>Organize</strong> — Put it in the right list/project/calendar</li>
+        <li><strong>Reflect</strong> — Weekly review to keep system current</li>
+        <li><strong>Engage</strong> — Do the work with confidence in your system</li>
+      </ol>
+    </div>
+    <div class="card">
+      <h4>🧠 Eat the Frog</h4>
+      <p class="text-sm text-gray mt-1">Mark Twain's productivity principle</p>
+      <p class="mt-2" style="font-size:0.9rem;">"If it's your job to eat a frog, it's best to do it first thing in the morning."</p>
+      <ul style="padding-left:16px;font-size:0.9rem;" class="mt-2">
+        <li>Your "frog" = the task you're most likely to procrastinate on</li>
+        <li>Do it FIRST. Before anything else.</li>
+        <li>After the frog, everything else feels easy</li>
+        <li>Combines perfectly with MIT — your MIT 1 IS your frog</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+
+<!-- ==================== BONUS 2: NOTION FORMULA CHEATSHEET ==================== -->
+<section class="page" id="bonus-formulas">
+  <span class="page-number">BONUS 2</span>
+  <span class="section-tag">bonus</span>
+  <h2>Notion Formula Cheatsheet</h2>
+  <p class="text-gray">Copy-Paste Formulas untuk Hybrid Planner System</p>
+
+  <div class="card mt-3">
+    <h4>📊 Weekly Focus Hours Calculator</h4>
+    <p class="text-sm text-gray mt-1">Rollup formula untuk sum focus hours per minggu</p>
+    <code style="display:block;margin-top:8px;padding:12px;background:var(--navy);color:#7fdbca;border-radius:6px;font-size:0.78rem;overflow-x:auto;">
+prop("Daily Logs").map(current.prop("Focus Hours")).sum()
+    </code>
+    <p class="mt-2 text-sm">Set as Rollup property di Weekly Review database, linked to Daily Log relation.</p>
+  </div>
+
+  <div class="card mt-2">
+    <h4>📅 Days Until Deadline</h4>
+    <p class="text-sm text-gray mt-1">Auto-calculate days remaining di Project Tracker</p>
+    <code style="display:block;margin-top:8px;padding:12px;background:var(--navy);color:#7fdbca;border-radius:6px;font-size:0.78rem;overflow-x:auto;">
+dateBetween(prop("Due Date"), now(), "days")
+    </code>
+    <p class="mt-2 text-sm">Shows negative number kalau overdue — great for urgency awareness.</p>
+  </div>
+
+  <div class="card mt-2">
+    <h4>🔥 Habit Streak Status</h4>
+    <p class="text-sm text-gray mt-1">Visual indicator based on streak length</p>
+    <code style="display:block;margin-top:8px;padding:12px;background:var(--navy);color:#7fdbca;border-radius:6px;font-size:0.78rem;overflow-x:auto;">
+if(prop("Current Streak") >= 21, "🔥 Legendary", if(prop("Current Streak") >= 7, "⚡ On Fire", if(prop("Current Streak") >= 3, "✨ Building", "🌱 Starting")))
+    </code>
+  </div>
+
+  <div class="card mt-2">
+    <h4>📈 Progress Percentage (Auto-calculated)</h4>
+    <p class="text-sm text-gray mt-1">Based on completed sub-tasks</p>
+    <code style="display:block;margin-top:8px;padding:12px;background:var(--navy);color:#7fdbca;border-radius:6px;font-size:0.78rem;overflow-x:auto;">
+round(prop("Tasks Done") / prop("Total Tasks") * 100)
+    </code>
+  </div>
+
+  <div class="card mt-2">
+    <h4>🎯 Daily Score Calculation</h4>
+    <p class="text-sm text-gray mt-1">Composite score dari multiple factors</p>
+    <code style="display:block;margin-top:8px;padding:12px;background:var(--navy);color:#7fdbca;border-radius:6px;font-size:0.78rem;overflow-x:auto;">
+round((if(prop("MIT 1 Done"), 40, 0) + if(prop("MIT 2 Done"), 30, 0) + if(prop("MIT 3 Done"), 20, 0) + if(prop("Shutdown Done"), 10, 0)) / 10, 1)
+    </code>
+    <p class="mt-2 text-sm">Score out of 10. MIT 1 = 4 points, MIT 2 = 3, MIT 3 = 2, Shutdown routine = 1.</p>
+  </div>
+
+  <div class="card mt-2">
+    <h4>📊 Week Day Auto-Label</h4>
+    <p class="text-sm text-gray mt-1">Auto-show day of week from date</p>
+    <code style="display:block;margin-top:8px;padding:12px;background:var(--navy);color:#7fdbca;border-radius:6px;font-size:0.78rem;overflow-x:auto;">
+formatDate(prop("Date"), "dddd") + " — " + formatDate(prop("Date"), "D MMM YYYY")
+    </code>
+    <p class="mt-2 text-sm">Output example: "Monday — 15 Jun 2026"</p>
+  </div>
+
+  <div class="card mt-2">
+    <h4>⏰ Meeting Load Warning</h4>
+    <p class="text-sm text-gray mt-1">Alert when too many meetings in a day</p>
+    <code style="display:block;margin-top:8px;padding:12px;background:var(--navy);color:#7fdbca;border-radius:6px;font-size:0.78rem;overflow-x:auto;">
+if(prop("Meeting Count") > 5, "🔴 OVERLOAD — Cancel something!", if(prop("Meeting Count") > 3, "🟡 Heavy — Protect remaining time", "🟢 Manageable"))
+    </code>
+  </div>
+</section>
+
+<!-- ==================== BONUS 3: QUICK-START CHECKLISTS ==================== -->
+<section class="page" id="bonus-checklists">
+  <span class="page-number">BONUS 3</span>
+  <span class="section-tag gold">bonus</span>
+  <h2>Quick-Start Checklists</h2>
+  <p class="text-gray">Print-friendly checklists untuk reference cepat</p>
+
+  <div class="grid-2 mt-3">
+    <div class="card">
+      <h4>🌅 Morning Routine Checklist</h4>
+      <ul class="checklist mt-2">
+        <li>Wake up (no snooze)</li>
+        <li>No phone for first 15 min</li>
+        <li>Water (500ml minimum)</li>
+        <li>Movement (stretch/walk/exercise) 10+ min</li>
+        <li>Shower & get dressed (even WFH!)</li>
+        <li>Open Notion → Daily Log</li>
+        <li>Set today's MIT 1-2-3</li>
+        <li>Check calendar (meetings today)</li>
+        <li>Set Day Type badge</li>
+        <li>Rate current energy level</li>
+        <li>Start Deep Work Block #1</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>🌙 Shutdown Routine Checklist</h4>
+      <ul class="checklist mt-2">
+        <li>Stop ALL work tasks</li>
+        <li>Update Daily Log (completion, mood, win)</li>
+        <li>Clear inbox to zero (or note pending items)</li>
+        <li>Set tomorrow's MIT 1 (pre-decide)</li>
+        <li>Close all work tabs/apps</li>
+        <li>Update Slack status to "Offline"</li>
+        <li>Put phone in "evening mode"</li>
+        <li>Physical transition (change clothes, walk)</li>
+        <li>Say out loud: "Workday is DONE."</li>
+        <li>Do something non-work (cook, exercise, family)</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="grid-2 mt-2">
+    <div class="card">
+      <h4>📅 Sunday Planning Checklist</h4>
+      <ul class="checklist mt-2">
+        <li>Open Weekly Review template</li>
+        <li>Score last week (1-5)</li>
+        <li>Write 3 wins from last week</li>
+        <li>Write 1 biggest lesson</li>
+        <li>Brain dump (5 min timer)</li>
+        <li>Scan next week's calendar</li>
+        <li>Assign Day Types (Office/WFH/Flex)</li>
+        <li>Set 3 Weekly Outcomes</li>
+        <li>Block Deep Work in calendar</li>
+        <li>Prep Monday's MIT 1</li>
+        <li>Pack bag if office day tomorrow</li>
+        <li>Relax — planning done! 🎉</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>🏠 WFH Setup Checklist</h4>
+      <ul class="checklist mt-2">
+        <li>Dedicated workspace ready</li>
+        <li>Chair ergonomics okay</li>
+        <li>Monitor at eye level</li>
+        <li>Good lighting (natural preferred)</li>
+        <li>Headphones charged</li>
+        <li>Water bottle filled</li>
+        <li>Snacks pre-prepared</li>
+        <li>Phone out of reach</li>
+        <li>Door closed / sign up</li>
+        <li>Focus playlist ready</li>
+        <li>App blocker activated</li>
+        <li>Notion open, Daily Log ready</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card dark mt-3">
+    <h4>🖨️ Pro Tip: Print These</h4>
+    <p class="mt-2">Print halaman ini dan tempel di dekat workspace lo. Physical reminders work better than digital ones ketika lo baru building habits. After 30 days, lo nggak butuh checklist lagi — it's automatic.</p>
+  </div>
+</section>
+
+<!-- ==================== FOOTER / SCRIPT ==================== -->
+<footer style="text-align:center;padding:40px 24px;background:var(--navy);color:rgba(255,255,255,0.6);font-size:0.82rem;">
+  <p><strong style="color:#fff;">Hybrid Planner Pro</strong> — by @yanzy17</p>
+  <p class="mt-1">Template Notion, Planner Harian & Manajemen Waktu untuk Hybrid Worker</p>
+  <p class="mt-1">© 2026 All rights reserved. Share freely, credit always.</p>
+</footer>
+
+<script>
+// Smooth scroll for navigation links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+
+// Navbar scroll effect
+const nav = document.querySelector('.sticky-nav');
+let lastScroll = 0;
+window.addEventListener('scroll', () => {
+  const currentScroll = window.pageYOffset;
+  if (currentScroll > 100) {
+    nav.style.boxShadow = '0 4px 20px rgba(0,0,0,0.2)';
+  } else {
+    nav.style.boxShadow = '0 2px 12px rgba(0,0,0,0.15)';
+  }
+  lastScroll = currentScroll;
+});
+
+// Print/Download PDF functionality
+function downloadPDF() {
+  window.print();
+}
+</script>
+</body>
+</html>
