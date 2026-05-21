@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hybrid Worker Pro — Notion Workspace Template</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --notion-text: #37352f;
+            --notion-text-light: #787774;
+            --notion-bg: #ffffff;
+            --notion-bg-light: #f7f6f3;
+            --notion-bg-hover: #ebebea;
+            --notion-border: #e9e9e7;
+            --notion-blue: #2eaadc;
+            --notion-blue-bg: #d3e5ef;
+            --notion-green: #0f7b6c;
+            --notion-green-bg: #dbeddb;
+            --notion-red: #e03e3e;
+            --notion-red-bg: #ffe2dd;
+            --notion-yellow: #dfab01;
+            --notion-yellow-bg: #fdecc8;
+            --notion-purple: #6940a5;
+            --notion-purple-bg: #e8deee;
+            --notion-orange: #d9730d;
+            --notion-orange-bg: #fadec9;
+            --notion-pink: #ad1a72;
+            --notion-pink-bg: #f4dfeb;
+            --sidebar-width: 260px;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            color: var(--notion-text);
+            background: var(--notion-bg);
+            line-height: 1.6;
+            font-size: 16px;
+        }
+        .layout { display: flex; min-height: 100vh; }
+        .sidebar {
+            width: var(--sidebar-width);
+            background: var(--notion-bg-light);
+            border-right: 1px solid var(--notion-border);
+            padding: 12px 8px;
+            position: fixed;
+            top: 0; left: 0; bottom: 0;
+            overflow-y: auto;
+            z-index: 100;
+            transition: transform 0.2s;
+        }
+        .sidebar-header {
+            padding: 8px 12px;
+            font-weight: 600;
+            font-size: 14px;
+            color: var(--notion-text);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 8px;
+        }
+        .sidebar-nav { list-style: none; }
+        .sidebar-nav li {
+            padding: 6px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            color: var(--notion-text-light);
+            transition: background 0.1s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .sidebar-nav li:hover { background: var(--notion-bg-hover); color: var(--notion-text); }
+        .sidebar-nav li.active { background: var(--notion-bg-hover); color: var(--notion-text); font-weight: 500; }
+        .sidebar-nav li .emoji { font-size: 16px; }
+        .main-content {
+            margin-left: var(--sidebar-width);
+            flex: 1;
+            max-width: 900px;
+            padding: 40px 96px;
+        }
+        .breadcrumb {
+            font-size: 13px;
+            color: var(--notion-text-light);
+            margin-bottom: 16px;
+            display: flex; align-items: center; gap: 4px;
+        }
+        .breadcrumb span { cursor: pointer; }
+        .breadcrumb span:hover { color: var(--notion-text); }
+        .page-section { display: none; }
+        .page-section.active { display: block; }
+        .page-title { font-size: 40px; font-weight: 700; margin-bottom: 4px; line-height: 1.2; }
+        .page-subtitle { font-size: 14px; color: var(--notion-text-light); margin-bottom: 32px; }
+        h2 { font-size: 24px; font-weight: 600; margin: 32px 0 12px 0; }
+        h3 { font-size: 20px; font-weight: 600; margin: 24px 0 8px 0; }
+        h4 { font-size: 16px; font-weight: 600; margin: 16px 0 8px 0; }
+        p { margin-bottom: 12px; }
+        .callout { display: flex; gap: 12px; padding: 16px; border-radius: 6px; margin: 16px 0; font-size: 14px; }
+        .callout-blue { background: var(--notion-blue-bg); }
+        .callout-yellow { background: var(--notion-yellow-bg); }
+        .callout-green { background: var(--notion-green-bg); }
+        .callout-red { background: var(--notion-red-bg); }
+        .callout-purple { background: var(--notion-purple-bg); }
+        .callout-icon { font-size: 20px; flex-shrink: 0; }
+        .callout-content { flex: 1; }
+        .toggle { border: 1px solid var(--notion-border); border-radius: 6px; margin: 8px 0; overflow: hidden; }
+        .toggle-header { padding: 12px 16px; cursor: pointer; display: flex; align-items: center; gap: 8px; font-weight: 500; user-select: none; }
+        .toggle-header:hover { background: var(--notion-bg-light); }
+        .toggle-arrow { transition: transform 0.2s; font-size: 12px; color: var(--notion-text-light); }
+        .toggle.open .toggle-arrow { transform: rotate(90deg); }
+        .toggle-content { padding: 0 16px 16px 36px; display: none; font-size: 14px; }
+        .toggle.open .toggle-content { display: block; }
+        .db-table { width: 100%; border-collapse: collapse; font-size: 14px; margin: 16px 0; overflow-x: auto; display: block; }
+        .db-table thead { background: var(--notion-bg-light); }
+        .db-table th { padding: 8px 12px; text-align: left; font-weight: 500; font-size: 12px; color: var(--notion-text-light); text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 1px solid var(--notion-border); white-space: nowrap; }
+        .db-table td { padding: 8px 12px; border-bottom: 1px solid var(--notion-border); vertical-align: top; white-space: nowrap; }
+        .db-table tr:hover td { background: var(--notion-bg-light); }
+        .tag { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 12px; font-weight: 500; margin: 1px 2px; }
+        .tag-blue { background: var(--notion-blue-bg); color: #1a6b8a; }
+        .tag-green { background: var(--notion-green-bg); color: var(--notion-green); }
+        .tag-red { background: var(--notion-red-bg); color: var(--notion-red); }
+        .tag-yellow { background: var(--notion-yellow-bg); color: #7c5c00; }
+        .tag-purple { background: var(--notion-purple-bg); color: var(--notion-purple); }
+        .tag-orange { background: var(--notion-orange-bg); color: var(--notion-orange); }
+        .tag-pink { background: var(--notion-pink-bg); color: var(--notion-pink); }
+        .tag-gray { background: var(--notion-bg-hover); color: var(--notion-text-light); }
+        .progress-bar { width: 100%; height: 8px; background: var(--notion-bg-hover); border-radius: 4px; overflow: hidden; margin: 4px 0; }
+        .progress-fill { height: 100%; border-radius: 4px; transition: width 0.3s; }
+        .widget { border: 1px solid var(--notion-border); border-radius: 8px; padding: 20px; margin: 12px 0; }
+        .widget-title { font-size: 14px; font-weight: 600; color: var(--notion-text-light); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 12px; }
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+        .quick-link { padding: 12px 16px; border-radius: 6px; background: var(--notion-bg-light); cursor: pointer; transition: background 0.1s; display: flex; align-items: center; gap: 8px; font-size: 14px; }
+        .quick-link:hover { background: var(--notion-bg-hover); }
+        .divider { border-top: 1px solid var(--notion-border); margin: 24px 0; }
+        .formula-block { background: var(--notion-bg-light); border-radius: 6px; padding: 12px 16px; font-family: "SF Mono", "Fira Code", Menlo, monospace; font-size: 13px; margin: 8px 0; overflow-x: auto; white-space: pre-wrap; word-break: break-all; }
+        .kanban { display: flex; gap: 12px; overflow-x: auto; padding: 16px 0; }
+        .kanban-col { min-width: 220px; background: var(--notion-bg-light); border-radius: 8px; padding: 12px; }
+        .kanban-col-title { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; padding: 4px 0; }
+        .kanban-card { background: var(--notion-bg); border-radius: 6px; padding: 10px 12px; margin-bottom: 8px; box-shadow: 0 1px 2px rgba(0,0,0,0.06); font-size: 13px; }
+        .kanban-card-title { font-weight: 500; margin-bottom: 6px; }
+        .habit-grid { overflow-x: auto; font-size: 12px; }
+        .habit-grid table { border-collapse: collapse; width: 100%; }
+        .habit-grid th, .habit-grid td { padding: 4px 6px; text-align: center; border: 1px solid var(--notion-border); min-width: 28px; }
+        .habit-grid th { background: var(--notion-bg-light); font-weight: 500; }
+        .habit-grid .habit-name { text-align: left; font-weight: 500; min-width: 140px; white-space: nowrap; }
+        .habit-check { color: var(--notion-green); }
+        .habit-miss { color: var(--notion-red); }
+        .time-block { display: flex; align-items: center; gap: 12px; padding: 8px 12px; border-left: 3px solid var(--notion-blue); margin: 4px 0; background: var(--notion-bg-light); border-radius: 0 4px 4px 0; font-size: 14px; }
+        .time-block-time { font-weight: 600; min-width: 100px; font-size: 13px; }
+        .template-block { background: var(--notion-bg-light); border-radius: 8px; padding: 20px; margin: 16px 0; font-size: 14px; }
+        .checkbox-item { display: flex; align-items: center; gap: 8px; padding: 4px 0; font-size: 14px; }
+        .checkbox { width: 16px; height: 16px; border: 2px solid var(--notion-border); border-radius: 3px; flex-shrink: 0; }
+        .floating-btn { position: fixed; bottom: 24px; right: 24px; background: var(--notion-text); color: white; border: none; padding: 12px 20px; border-radius: 8px; font-size: 14px; font-weight: 500; cursor: pointer; box-shadow: 0 4px 12px rgba(0,0,0,0.2); z-index: 200; display: flex; align-items: center; gap: 8px; }
+        .floating-btn:hover { opacity: 0.9; }
+        .menu-toggle { display: none; position: fixed; top: 12px; left: 12px; z-index: 200; background: var(--notion-bg); border: 1px solid var(--notion-border); border-radius: 6px; padding: 8px 12px; font-size: 20px; cursor: pointer; }
+        @media (max-width: 768px) {
+            .sidebar { transform: translateX(-100%); }
+            .sidebar.open { transform: translateX(0); }
+            .main-content { margin-left: 0; padding: 20px 16px; }
+            .menu-toggle { display: block; }
+            .grid-2, .grid-3 { grid-template-columns: 1fr; }
+            .kanban { flex-direction: column; }
+            .kanban-col { min-width: 100%; }
+        }
+        @media print { .sidebar, .menu-toggle, .floating-btn { display: none !important; } .main-content { margin-left: 0; padding: 20px; } .page-section { display: block !important; page-break-before: always; } }
+    </style>
+</head>
+<body>
+<button class="menu-toggle" onclick="toggleSidebar()">☰</button>
+<div class="layout">
+<nav class="sidebar" id="sidebar">
+    <div class="sidebar-header"><span>🚀</span> Hybrid Worker Pro</div>
+    <ul class="sidebar-nav">
+        <li class="active" onclick="showPage('dashboard')"><span class="emoji">🏠</span> Dashboard</li>
+        <li onclick="showPage('daily')"><span class="emoji">📋</span> Daily Planner</li>
+        <li onclick="showPage('weekly')"><span class="emoji">📅</span> Weekly Planner</li>
+        <li onclick="showPage('projects')"><span class="emoji">🎯</span> Project Tracker</li>
+        <li onclick="showPage('habits')"><span class="emoji">✅</span> Habit Tracker</li>
+        <li onclick="showPage('meetings')"><span class="emoji">📝</span> Meeting Notes</li>
+        <li onclick="showPage('braindump')"><span class="emoji">🧠</span> Brain Dump</li>
+        <li onclick="showPage('resources')"><span class="emoji">📚</span> Resources</li>
+        <li onclick="showPage('weeklyreview')"><span class="emoji">🔄</span> Weekly Review</li>
+        <li onclick="showPage('monthlyreview')"><span class="emoji">📊</span> Monthly Review</li>
+        <li onclick="showPage('formulas')"><span class="emoji">⚡</span> Formulas</li>
+        <li onclick="showPage('quickstart')"><span class="emoji">🚀</span> Quick Start</li>
+    </ul>
+</nav>
+<main class="main-content">
+
+<!-- HOW TO USE CALLOUT -->
+<div class="callout callout-blue" style="margin-bottom:24px;">
+    <span class="callout-icon">💡</span>
+    <div class="callout-content">
+        <strong>How to Use This in Notion:</strong> Duplicate this template by clicking "Duplicate" in the top-right corner of the shared Notion page. Or recreate each database/page manually using this visual guide. All formulas and property types are documented in the ⚡ Formulas section.
+    </div>
+</div>
+
+<!-- PAGE 1: DASHBOARD -->
+<section class="page-section active" id="page-dashboard">
+    <div class="breadcrumb"><span onclick="showPage('dashboard')">🚀 Hybrid Worker Pro</span> / <span>🏠 Dashboard</span></div>
+    <h1 class="page-title">🏠 Dashboard</h1>
+    <p class="page-subtitle">Your daily command center for hybrid work productivity</p>
+
+    <div class="widget">
+        <div style="display:flex;justify-content:space-between;align-items:center;">
+            <div>
+                <h3 style="margin:0;">Good morning! 👋</h3>
+                <p style="color:var(--notion-text-light);margin:4px 0 0 0;" id="today-date">Monday, January 20, 2025</p>
+            </div>
+            <div style="font-size:32px;">☀️</div>
+        </div>
+    </div>
+
+    <h2>⚡ Quick Links</h2>
+    <div class="grid-3">
+        <div class="quick-link" onclick="showPage('daily')">📋 Daily Planner</div>
+        <div class="quick-link" onclick="showPage('projects')">🎯 Projects</div>
+        <div class="quick-link" onclick="showPage('habits')">✅ Habits</div>
+        <div class="quick-link" onclick="showPage('meetings')">📝 Meetings</div>
+        <div class="quick-link" onclick="showPage('braindump')">🧠 Brain Dump</div>
+        <div class="quick-link" onclick="showPage('weeklyreview')">🔄 Weekly Review</div>
+    </div>
+
+    <h2>🎯 Today's Focus (MITs)</h2>
+    <div class="widget">
+        <div class="checkbox-item"><div class="checkbox"></div> Complete Q1 strategy presentation slides</div>
+        <div class="checkbox-item"><div class="checkbox"></div> Review and merge PR #234 for auth module</div>
+        <div class="checkbox-item"><div class="checkbox"></div> Send partnership proposal to Acme Corp</div>
+    </div>
+
+    <h2>📈 Weekly Progress</h2>
+    <div class="widget">
+        <div style="display:flex;justify-content:space-between;font-size:14px;margin-bottom:4px;">
+            <span>This Week's Goals</span><span style="font-weight:600;">4/6 completed</span>
+        </div>
+        <div class="progress-bar"><div class="progress-fill" style="width:67%;background:var(--notion-green);"></div></div>
+        <div style="display:flex;justify-content:space-between;font-size:12px;color:var(--notion-text-light);margin-top:4px;">
+            <span>Deep Work: 14.5 / 20 hrs</span><span>Meetings: 8 / 12 planned</span>
+        </div>
+    </div>
+
+    <h2>🔥 Habit Streaks</h2>
+    <div class="grid-2">
+        <div class="widget" style="padding:12px 16px;"><div style="display:flex;justify-content:space-between;align-items:center;"><span style="font-size:14px;">🏋️ Exercise</span><span class="tag tag-green">12 days 🔥</span></div></div>
+        <div class="widget" style="padding:12px 16px;"><div style="display:flex;justify-content:space-between;align-items:center;"><span style="font-size:14px;">📖 Read 30min</span><span class="tag tag-green">8 days 🔥</span></div></div>
+        <div class="widget" style="padding:12px 16px;"><div style="display:flex;justify-content:space-between;align-items:center;"><span style="font-size:14px;">🧘 Meditate</span><span class="tag tag-yellow">5 days</span></div></div>
+        <div class="widget" style="padding:12px 16px;"><div style="display:flex;justify-content:space-between;align-items:center;"><span style="font-size:14px;">✍️ Journal</span><span class="tag tag-green">15 days 🔥</span></div></div>
+        <div class="widget" style="padding:12px 16px;"><div style="display:flex;justify-content:space-between;align-items:center;"><span style="font-size:14px;">📵 No Social before 9am</span><span class="tag tag-yellow">3 days</span></div></div>
+        <div class="widget" style="padding:12px 16px;"><div style="display:flex;justify-content:space-between;align-items:center;"><span style="font-size:14px;">😴 8hr Sleep</span><span class="tag tag-green">7 days 🔥</span></div></div>
+        <div class="widget" style="padding:12px 16px;"><div style="display:flex;justify-content:space-between;align-items:center;"><span style="font-size:14px;">🧠 Deep Work 3hr+</span><span class="tag tag-green">10 days 🔥</span></div></div>
+    </div>
+
+    <h2>📅 Upcoming Deadlines (Next 7 Days)</h2>
+    <div class="widget">
+        <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--notion-border);font-size:14px;"><span>Q1 Strategy Deck</span><span class="tag tag-red">Tomorrow</span></div>
+        <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--notion-border);font-size:14px;"><span>Client Proposal — Acme Corp</span><span class="tag tag-yellow">Wed, Jan 22</span></div>
+        <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--notion-border);font-size:14px;"><span>Sprint Review Presentation</span><span class="tag tag-yellow">Thu, Jan 23</span></div>
+        <div style="display:flex;justify-content:space-between;padding:6px 0;font-size:14px;"><span>Monthly Report Submission</span><span class="tag tag-gray">Fri, Jan 24</span></div>
+    </div>
+
+    <div class="callout callout-purple" style="margin-top:24px;">
+        <span class="callout-icon">💭</span>
+        <div class="callout-content">
+            <em>"The key is not to prioritize what's on your schedule, but to schedule your priorities."</em><br>
+            <span style="font-size:12px;color:var(--notion-text-light);">— Stephen Covey</span>
+        </div>
+    </div>
+</section>
+
+<!-- PAGE 2: DAILY PLANNER -->
+<section class="page-section" id="page-daily">
+    <div class="breadcrumb"><span onclick="showPage('dashboard')">🚀 Hybrid Worker Pro</span> / <span>📋 Daily Planner</span></div>
+    <h1 class="page-title">📋 Daily Planner</h1>
+    <p class="page-subtitle">Track your daily productivity, energy, and mood patterns</p>
+
+    <div class="callout callout-green">
+        <span class="callout-icon">📊</span>
+        <div class="callout-content"><strong>Database Properties:</strong> Date (Date) • Day Type (Select) • Energy Level (Select) • Top 3 Tasks (Text) • Deep Work Hours (Number) • Meetings Count (Number) • Mood (Select) • Notes (Text) • Score (Formula)</div>
+    </div>
+
+    <table class="db-table">
+        <thead><tr><th>Date</th><th>Day Type</th><th>Energy</th><th>Top 3 Tasks</th><th>Deep Work</th><th>Meetings</th><th>Mood</th><th>Score</th></tr></thead>
+        <tbody>
+            <tr><td>Mon, Jan 20</td><td><span class="tag tag-blue">WFH</span></td><td>⚡High</td><td>Strategy deck, PR review, Email cleanup</td><td>4.0</td><td>2</td><td>😊 Great</td><td><span class="tag tag-green">🏆 Great Day</span></td></tr>
+            <tr><td>Tue, Jan 21</td><td><span class="tag tag-purple">Office</span></td><td>🔋Medium</td><td>Team sync, Client call, Sprint planning</td><td>2.0</td><td>5</td><td>😐 Okay</td><td><span class="tag tag-yellow">👍 Good Day</span></td></tr>
+            <tr><td>Wed, Jan 22</td><td><span class="tag tag-blue">WFH</span></td><td>⚡High</td><td>Proposal draft, Code review, Blog post</td><td>3.5</td><td>1</td><td>😊 Great</td><td><span class="tag tag-green">🏆 Great Day</span></td></tr>
+            <tr><td>Thu, Jan 23</td><td><span class="tag tag-orange">Flex</span></td><td>🪫Low</td><td>Sprint review, 1-on-1s, Documentation</td><td>1.5</td><td>4</td><td>😫 Rough</td><td><span class="tag tag-red">🔄 Needs Improvement</span></td></tr>
+            <tr><td>Fri, Jan 24</td><td><span class="tag tag-purple">Office</span></td><td>🔋Medium</td><td>Monthly report, Team lunch, Week review</td><td>2.5</td><td>3</td><td>😊 Great</td><td><span class="tag tag-yellow">👍 Good Day</span></td></tr>
+            <tr><td>Sat, Jan 25</td><td><span class="tag tag-gray">Day Off</span></td><td>⚡High</td><td>Side project, Read, Exercise</td><td>2.0</td><td>0</td><td>😊 Great</td><td><span class="tag tag-green">🏆 Great Day</span></td></tr>
+            <tr><td>Sun, Jan 26</td><td><span class="tag tag-gray">Day Off</span></td><td>🔋Medium</td><td>Weekly review, Meal prep, Plan next week</td><td>1.0</td><td>0</td><td>😊 Great</td><td><span class="tag tag-yellow">👍 Good Day</span></td></tr>
+        </tbody>
+    </table>
+
+    <div class="callout callout-yellow">
+        <span class="callout-icon">⚡</span>
+        <div class="callout-content"><strong>Score Formula:</strong><br><code>if(prop("Deep Work Hours") >= 3 and prop("Mood") == "😊Great", "🏆 Great Day", if(prop("Deep Work Hours") >= 2, "👍 Good Day", "🔄 Needs Improvement"))</code></div>
+    </div>
+</section>
+
+<!-- PAGE 3: WEEKLY PLANNER -->
+<section class="page-section" id="page-weekly">
+    <div class="breadcrumb"><span onclick="showPage('dashboard')">🚀 Hybrid Worker Pro</span> / <span>📅 Weekly Planner</span></div>
+    <h1 class="page-title">📅 Weekly Planner</h1>
+    <p class="page-subtitle">Plan your ideal hybrid work week with time blocking</p>
+
+    <div class="widget">
+        <div class="widget-title">📆 Week Of</div>
+        <p style="font-size:18px;font-weight:600;">January 20 – January 26, 2025</p>
+    </div>
+
+    <h2>🎯 Goals This Week (3 max)</h2>
+    <div class="widget">
+        <div class="checkbox-item"><div class="checkbox"></div> Complete Q1 strategy presentation and get approval</div>
+        <div class="checkbox-item"><div class="checkbox"></div> Ship authentication module v2.0</div>
+        <div class="checkbox-item"><div class="checkbox"></div> Finalize Acme Corp partnership proposal</div>
+    </div>
+
+    <h2>📋 Daily Time Blocks</h2>
+    <div class="toggle open">
+        <div class="toggle-header" onclick="this.parentElement.classList.toggle('open')"><span class="toggle-arrow">▶</span> 🟢 Monday (WFH — Deep Work Day)</div>
+        <div class="toggle-content">
+            <div class="time-block"><span class="time-block-time">08:00–10:00</span> Deep Work: Q1 Strategy Deck</div>
+            <div class="time-block" style="border-color:var(--notion-green);"><span class="time-block-time">10:00–10:30</span> ☕ Break + Walk</div>
+            <div class="time-block"><span class="time-block-time">10:30–12:00</span> Deep Work: Auth module code review</div>
+            <div class="time-block" style="border-color:var(--notion-orange);"><span class="time-block-time">12:00–13:00</span> 🍽️ Lunch Break</div>
+            <div class="time-block"><span class="time-block-time">13:00–15:00</span> Deep Work: PR #234 review & merge</div>
+            <div class="time-block" style="border-color:var(--notion-green);"><span class="time-block-time">15:00–15:30</span> ☕ Break</div>
+            <div class="time-block" style="border-color:var(--notion-purple);"><span class="time-block-time">15:30–17:00</span> Admin: Emails, Slack, Planning</div>
+            <div class="time-block" style="border-color:var(--notion-red);"><span class="time-block-time">17:00</span> 🔴 Shutdown Ritual</div>
+        </div>
+    </div>
+    <div class="toggle">
+        <div class="toggle-header" onclick="this.parentElement.classList.toggle('open')"><span class="toggle-arrow">▶</span> 🔵 Tuesday (Office — Collaboration Day)</div>
+        <div class="toggle-content">
+            <div class="time-block"><span class="time-block-time">08:00–10:00</span> Deep Work: Proposal writing</div>
+            <div class="time-block" style="border-color:var(--notion-green);"><span class="time-block-time">10:00–10:30</span> ☕ Break</div>
+            <div class="time-block" style="border-color:var(--notion-purple);"><span class="time-block-time">10:30–12:00</span> Team Sync + Sprint Planning</div>
+            <div class="time-block" style="border-color:var(--notion-orange);"><span class="time-block-time">12:00–13:00</span> 🍽️ Team Lunch</div>
+            <div class="time-block" style="border-color:var(--notion-purple);"><span class="time-block-time">13:00–15:00</span> Client Call + 1-on-1 with Manager</div>
+            <div class="time-block" style="border-color:var(--notion-green);"><span class="time-block-time">15:00–15:30</span> ☕ Break</div>
+            <div class="time-block" style="border-color:var(--notion-purple);"><span class="time-block-time">15:30–17:00</span> Brainstorm Session + Admin</div>
+            <div class="time-block" style="border-color:var(--notion-red);"><span class="time-block-time">17:00</span> 🔴 Shutdown Ritual</div>
+        </div>
+    </div>
+    <div class="toggle">
+        <div class="toggle-header" onclick="this.parentElement.classList.toggle('open')"><span class="toggle-arrow">▶</span> 🟢 Wednesday (WFH — Deep Work Day)</div>
+        <div class="toggle-content">
+            <div class="time-block"><span class="time-block-time">08:00–10:00</span> Deep Work: Auth module final push</div>
+            <div class="time-block" style="border-color:var(--notion-green);"><span class="time-block-time">10:00–10:30</span> ☕ Break + Walk</div>
+            <div class="time-block"><span class="time-block-time">10:30–12:00</span> Deep Work: Blog post draft</div>
+            <div class="time-block" style="border-color:var(--notion-orange);"><span class="time-block-time">12:00–13:00</span> 🍽️ Lunch Break</div>
+            <div class="time-block"><span class="time-block-time">13:00–15:00</span> Deep Work: Proposal finalization</div>
+            <div class="time-block" style="border-color:var(--notion-green);"><span class="time-block-time">15:00–15:30</span> ☕ Break</div>
+            <div class="time-block" style="border-color:var(--notion-purple);"><span class="time-block-time">15:30–17:00</span> Code review + Documentation</div>
+            <div class="time-block" style="border-color:var(--notion-red);"><span class="time-block-time">17:00</span> 🔴 Shutdown Ritual</div>
+        </div>
+    </div>
+    <div class="toggle">
+        <div class="toggle-header" onclick="this.parentElement.classList.toggle('open')"><span class="toggle-arrow">▶</span> 🟡 Thursday (Flex — Mixed Day)</div>
+        <div class="toggle-content">
+            <div class="time-block"><span class="time-block-time">08:00–10:00</span> Deep Work: Sprint review prep</div>
+            <div class="time-block" style="border-color:var(--notion-green);"><span class="time-block-time">10:00–10:30</span> ☕ Break</div>
+            <div class="time-block" style="border-color:var(--notion-purple);"><span class="time-block-time">10:30–12:00</span> Sprint Review Meeting</div>
+            <div class="time-block" style="border-color:var(--notion-orange);"><span class="time-block-time">12:00–13:00</span> 🍽️ Lunch</div>
+            <div class="time-block" style="border-color:var(--notion-purple);"><span class="time-block-time">13:00–15:00</span> 1-on-1s (2 direct reports)</div>
+            <div class="time-block" style="border-color:var(--notion-green);"><span class="time-block-time">15:00–15:30</span> ☕ Break</div>
+            <div class="time-block" style="border-color:var(--notion-purple);"><span class="time-block-time">15:30–17:00</span> Documentation + Handoff notes</div>
+            <div class="time-block" style="border-color:var(--notion-red);"><span class="time-block-time">17:00</span> 🔴 Shutdown Ritual</div>
+        </div>
+    </div>
+    <div class="toggle">
+        <div class="toggle-header" onclick="this.parentElement.classList.toggle('open')"><span class="toggle-arrow">▶</span> 🔵 Friday (Office — Wrap-Up Day)</div>
+        <div class="toggle-content">
+            <div class="time-block"><span class="time-block-time">08:00–10:00</span> Deep Work: Monthly report</div>
+            <div class="time-block" style="border-color:var(--notion-green);"><span class="time-block-time">10:00–10:30</span> ☕ Break</div>
+            <div class="time-block" style="border-color:var(--notion-purple);"><span class="time-block-time">10:30–12:00</span> Team retrospective</div>
+            <div class="time-block" style="border-color:var(--notion-orange);"><span class="time-block-time">12:00–13:00</span> 🍽️ Team Lunch</div>
+            <div class="time-block"><span class="time-block-time">13:00–15:00</span> Deep Work: Loose ends + week review</div>
+            <div class="time-block" style="border-color:var(--notion-green);"><span class="time-block-time">15:00–15:30</span> ☕ Break</div>
+            <div class="time-block" style="border-color:var(--notion-purple);"><span class="time-block-time">15:30–17:00</span> Weekly Review + Next Week Planning</div>
+            <div class="time-block" style="border-color:var(--notion-red);"><span class="time-block-time">17:00</span> 🔴 Shutdown — Happy Weekend!</div>
+        </div>
+    </div>
+
+    <div class="divider"></div>
+    <h2>🔄 Weekly Review Questions</h2>
+    <div class="template-block">
+        <ol style="padding-left:20px;">
+            <li style="margin:8px 0;">What were my 3 biggest wins this week?</li>
+            <li style="margin:8px 0;">Did I hit my deep work target (20 hrs)? If not, why?</li>
+            <li style="margin:8px 0;">Which meetings could have been emails?</li>
+            <li style="margin:8px 0;">What's one habit I need to recommit to?</li>
+            <li style="margin:8px 0;">What's my #1 priority for next week?</li>
+        </ol>
+    </div>
+    <h2>🏆 Wins This Week</h2>
+    <div class="widget"><p>1. _________________________________</p><p>2. _________________________________</p><p>3. _________________________________</p></div>
+    <h2>📝 Lessons Learned</h2>
+    <div class="widget"><p>1. _________________________________</p><p>2. _________________________________</p></div>
+</section>
+
+<!-- PAGE 4: PROJECT TRACKER -->
+<section class="page-section" id="page-projects">
+    <div class="breadcrumb"><span onclick="showPage('dashboard')">🚀 Hybrid Worker Pro</span> / <span>🎯 Project Tracker</span></div>
+    <h1 class="page-title">🎯 Project Tracker</h1>
+    <p class="page-subtitle">Manage all projects with status, priority, and progress tracking</p>
+
+    <div class="callout callout-green">
+        <span class="callout-icon">📊</span>
+        <div class="callout-content"><strong>Database Properties:</strong> Project Name (Title) • Status (Select) • Priority (Select) • Due Date (Date) • Owner (Text) • Progress % (Number) • Tags (Multi-select) • Next Action (Text)</div>
+    </div>
+
+    <h2>📋 Board View</h2>
+    <div class="kanban">
+        <div class="kanban-col">
+            <div class="kanban-col-title" style="color:var(--notion-text-light);">📥 Not Started</div>
+            <div class="kanban-card"><div class="kanban-card-title">Mobile App Redesign</div><span class="tag tag-red">🔴 P1</span> <span class="tag tag-blue">Work</span><div style="font-size:11px;color:var(--notion-text-light);margin-top:6px;">Due: Feb 15</div></div>
+            <div class="kanban-card"><div class="kanban-card-title">Online Course Creation</div><span class="tag tag-yellow">🟡 P2</span> <span class="tag tag-purple">Side Project</span><div style="font-size:11px;color:var(--notion-text-light);margin-top:6px;">Due: Mar 1</div></div>
+        </div>
+        <div class="kanban-col">
+            <div class="kanban-col-title" style="color:var(--notion-blue);">🔄 In Progress</div>
+            <div class="kanban-card"><div class="kanban-card-title">Q1 Strategy Deck</div><span class="tag tag-red">🔴 P1</span> <span class="tag tag-blue">Work</span><div class="progress-bar" style="margin-top:6px;"><div class="progress-fill" style="width:75%;background:var(--notion-blue);"></div></div><div style="font-size:11px;color:var(--notion-text-light);">75%</div></div>
+            <div class="kanban-card"><div class="kanban-card-title">Auth Module v2.0</div><span class="tag tag-red">🔴 P1</span> <span class="tag tag-blue">Work</span><div class="progress-bar" style="margin-top:6px;"><div class="progress-fill" style="width:60%;background:var(--notion-blue);"></div></div><div style="font-size:11px;color:var(--notion-text-light);">60%</div></div>
+            <div class="kanban-card"><div class="kanban-card-title">Read "Deep Work"</div><span class="tag tag-green">🟢 P3</span> <span class="tag tag-orange">Learning</span><div class="progress-bar" style="margin-top:6px;"><div class="progress-fill" style="width:40%;background:var(--notion-green);"></div></div><div style="font-size:11px;color:var(--notion-text-light);">40%</div></div>
+        </div>
+        <div class="kanban-col">
+            <div class="kanban-col-title" style="color:var(--notion-orange);">⏳ Waiting</div>
+            <div class="kanban-card"><div class="kanban-card-title">Acme Corp Partnership</div><span class="tag tag-yellow">🟡 P2</span> <span class="tag tag-blue">Work</span><div style="font-size:11px;color:var(--notion-text-light);margin-top:6px;">Waiting for legal review</div></div>
+        </div>
+        <div class="kanban-col">
+            <div class="kanban-col-title" style="color:var(--notion-green);">✅ Done</div>
+            <div class="kanban-card"><div class="kanban-card-title">Blog Post: Remote Tips</div><span class="tag tag-green">🟢 P3</span> <span class="tag tag-pink">Personal</span><div style="font-size:11px;color:var(--notion-text-light);margin-top:6px;">Completed Jan 18</div></div>
+            <div class="kanban-card"><div class="kanban-card-title">Notion Workspace Setup</div><span class="tag tag-yellow">🟡 P2</span> <span class="tag tag-pink">Personal</span><div style="font-size:11px;color:var(--notion-text-light);margin-top:6px;">Completed Jan 15</div></div>
+        </div>
+    </div>
+
+    <h2>📊 Table View</h2>
+    <table class="db-table">
+        <thead><tr><th>Project</th><th>Status</th><th>Priority</th><th>Due Date</th><th>Owner</th><th>Progress</th><th>Tags</th><th>Next Action</th></tr></thead>
+        <tbody>
+            <tr><td><strong>Q1 Strategy Deck</strong></td><td><span class="tag tag-blue">In Progress</span></td><td>🔴 P1</td><td>Jan 21</td><td>Me</td><td>75%</td><td><span class="tag tag-blue">Work</span></td><td>Add financial projections</td></tr>
+            <tr><td><strong>Auth Module v2.0</strong></td><td><span class="tag tag-blue">In Progress</span></td><td>🔴 P1</td><td>Jan 24</td><td>Me + Dev Team</td><td>60%</td><td><span class="tag tag-blue">Work</span></td><td>Review PR #234, write tests</td></tr>
+            <tr><td><strong>Acme Corp Partnership</strong></td><td><span class="tag tag-orange">Waiting</span></td><td>🟡 P2</td><td>Jan 22</td><td>Me + Legal</td><td>50%</td><td><span class="tag tag-blue">Work</span></td><td>Follow up with legal team</td></tr>
+            <tr><td><strong>Mobile App Redesign</strong></td><td><span class="tag tag-gray">Not Started</span></td><td>🔴 P1</td><td>Feb 15</td><td>Design Team</td><td>0%</td><td><span class="tag tag-blue">Work</span></td><td>Schedule kickoff meeting</td></tr>
+            <tr><td><strong>Online Course</strong></td><td><span class="tag tag-gray">Not Started</span></td><td>🟡 P2</td><td>Mar 1</td><td>Me</td><td>0%</td><td><span class="tag tag-purple">Side Project</span></td><td>Outline curriculum</td></tr>
+            <tr><td><strong>Read "Deep Work"</strong></td><td><span class="tag tag-blue">In Progress</span></td><td>🟢 P3</td><td>—</td><td>Me</td><td>40%</td><td><span class="tag tag-orange">Learning</span></td><td>Read chapters 5-6</td></tr>
+            <tr><td><strong>Blog: Remote Tips</strong></td><td><span class="tag tag-green">Done</span></td><td>🟢 P3</td><td>Jan 18</td><td>Me</td><td>100%</td><td><span class="tag tag-pink">Personal</span></td><td>—</td></tr>
+            <tr><td><strong>Notion Setup</strong></td><td><span class="tag tag-green">Done</span></td><td>🟡 P2</td><td>Jan 15</td><td>Me</td><td>100%</td><td><span class="tag tag-pink">Personal</span></td><td>—</td></tr>
+        </tbody>
+    </table>
+</section>
+
+<!-- PAGE 5: HABIT TRACKER -->
+<section class="page-section" id="page-habits">
+    <div class="breadcrumb"><span onclick="showPage('dashboard')">🚀 Hybrid Worker Pro</span> / <span>✅ Habit Tracker</span></div>
+    <h1 class="page-title">✅ Habit Tracker</h1>
+    <p class="page-subtitle">Track daily habits with streaks and monthly completion rates</p>
+
+    <div class="callout callout-green">
+        <span class="callout-icon">🎯</span>
+        <div class="callout-content"><strong>January 2025</strong> — Track 7 key habits daily. Mark ✓ for completed, ✗ for missed. Watch your streaks grow!</div>
+    </div>
+
+    <div class="habit-grid">
+        <table>
+            <thead><tr><th class="habit-name">Habit</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th>10</th><th>11</th><th>12</th><th>13</th><th>14</th><th>Streak</th><th>%</th></tr></thead>
+            <tbody>
+                <tr><td class="habit-name">🏋️ Exercise</td><td class="habit-check">✓</td><td class="habit-check">✓</td><td class="habit-miss">✗</td><td class="habit-check">✓</td><td class="habit-check">✓</td><td class="habit-check">✓</td><td class="habit-check">✓</td><td class="habit-check">✓</td><td class="habit-check">✓</td><td class="habit-check">✓</td><td class="habit-miss">✗</td><td class="habit-check">✓</td><td class="habit-check">✓</td><td class="habit-check">✓</td><td><span class="tag tag-green">12🔥</span></td><td>86%</td></tr>
+                <tr><td class="habit-name">📖 Read 30min</td><td class="habit-check">✓</td><td class="habit-check">✓</td><td class="habit-check">✓</td><td class="habit-miss">✗</td><td class="habit-check">✓</td><td class="habit-check">✓</td><td class="habit-miss">✗</td><td class="habit-check">✓</td><td class="habit-check">✓</td><td class="habit-check">✓</td><td class="habit-check">✓</td><td class="habit-miss">✗</td><td class="habit-check">✓</td><td class="habit-check">✓</td><td><span class="tag tag-green">8🔥</span></td><td>79%</td></tr>
+                <tr><td class="habit-name">🧘 Meditate</td><td class="habit-check">✓</td><td class="habit-miss">✗</td><td class="habit-check">✓</td><td class="habit-check">✓</td><td class="habit-miss">✗</td><td class="habit-miss">✗</td><td class="habit-check">✓</td><td class="habit-check">✓</td><td class="habit-check">✓</td><td class="habit-miss">✗</td><td class="habit-check">✓</td><td class="habit-check">✓</td><td class="habit-check">✓</td><td class="habit-check">✓</td><td><span class="tag tag-yellow">5</span></td><td>71%</td></tr>
+                <tr><td class="habit-name">✍️ Journal</td><td class="habit-check">✓</td><td class="habit-check">✓</td><td class="habit-check">✓</td><td class="habit-check">✓</td><td class="habit-check">✓</td><td class="habit-check">✓</td><td class="habit-check">✓</td><td class="habit-check">✓</td><td class="habit-check">✓</td><td class="habit-check">✓</td><td class="habit-check">✓</td><td class="habit-check">✓</td><td class="habit-check">✓</td><td class="habit-check">✓</td><td><span class="tag tag-green">14🔥</span></td><td>100%</td></tr>
+                <tr><td class="habit-name">📵 No Social &lt;9am</td><td class="habit-check">✓</td><td class="habit-miss">✗</td><td class="habit-miss">✗</td><td class="habit-check">✓</td><td class="habit-check">✓</td><td class="habit-miss">✗</td><td class="habit-check">✓</td><td class="habit-miss">✗</td><td class="habit-check">✓</td><td class="habit-check">✓</td><td class="habit-miss">✗</td><td class="habit-check">✓</td><td class="habit-miss">✗</td><td class="habit-check">✓</td><td><span class="tag tag-yellow">3</span></td><td>57%</td></tr>
+                <tr><td class="habit-name">😴 8hr Sleep</td><td class="habit-check">✓</td><td class="habit-check">✓</td><td class="habit-check">✓</td><td class="habit-miss">✗</td><td class="habit-check">✓</td><td class="habit-check">✓</td><td class="habit-check">✓</td><td class="habit-check">✓</td><td class="habit-miss">✗</td><td class="habit-check">✓</td><td class="habit-check">✓</td><td class="habit-check">✓</td><td class="habit-check">✓</td><td class="habit-check">✓</td><td><span class="tag tag-green">7🔥</span></td><td>86%</td></tr>
+                <tr><td class="habit-name">🧠 Deep Work 3hr+</td><td class="habit-check">✓</td><td class="habit-check">✓</td><td class="habit-miss">✗</td><td class="habit-check">✓</td><td class="habit-check">✓</td><td class="habit-check">✓</td><td class="habit-check">✓</td><td class="habit-check">✓</td><td class="habit-miss">✗</td><td class="habit-check">✓</td><td class="habit-check">✓</td><td class="habit-check">✓</td><td class="habit-check">✓</td><td class="habit-check">✓</td><td><span class="tag tag-green">10🔥</span></td><td>86%</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="divider"></div>
+    <h2>📈 Summary</h2>
+    <div class="grid-2">
+        <div class="widget"><div class="widget-title">Best Streak</div><p style="font-size:20px;font-weight:700;">✍️ Journal — 14 days 🔥</p></div>
+        <div class="widget"><div class="widget-title">Needs Attention</div><p style="font-size:20px;font-weight:700;">📵 No Social &lt;9am — 57%</p></div>
+    </div>
+    <div class="widget">
+        <div class="widget-title">Overall Compliance</div>
+        <div style="display:flex;justify-content:space-between;font-size:14px;margin-bottom:4px;"><span>Average across all habits</span><span style="font-weight:600;">81%</span></div>
+        <div class="progress-bar"><div class="progress-fill" style="width:81%;background:var(--notion-green);"></div></div>
+    </div>
+</section>
+
+<!-- PAGE 6: MEETING NOTES -->
+<section class="page-section" id="page-meetings">
+    <div class="breadcrumb"><span onclick="showPage('dashboard')">🚀 Hybrid Worker Pro</span> / <span>📝 Meeting Notes</span></div>
+    <h1 class="page-title">📝 Meeting Notes</h1>
+    <p class="page-subtitle">Centralized meeting documentation with action items tracking</p>
+
+    <div class="callout callout-green">
+        <span class="callout-icon">📊</span>
+        <div class="callout-content"><strong>Database Properties:</strong> Meeting Title (Title) • Date (Date) • Type (Select) • Attendees (Text) • Agenda (Text) • Action Items (Text) • Follow Up Date (Date) • Status (Select)</div>
+    </div>
+
+    <table class="db-table">
+        <thead><tr><th>Meeting Title</th><th>Date</th><th>Type</th><th>Attendees</th><th>Action Items</th><th>Status</th></tr></thead>
+        <tbody>
+            <tr><td><strong>Q1 Planning Kickoff</strong></td><td>Jan 15</td><td><span class="tag tag-blue">Team Sync</span></td><td>Full team (8)</td><td>Finalize OKRs, assign owners</td><td><span class="tag tag-green">Done</span></td></tr>
+            <tr><td><strong>1-on-1 with Sarah</strong></td><td>Jan 17</td><td><span class="tag tag-purple">1-on-1</span></td><td>Sarah M.</td><td>Review promo timeline</td><td><span class="tag tag-green">Done</span></td></tr>
+            <tr><td><strong>Acme Corp Discovery</strong></td><td>Jan 20</td><td><span class="tag tag-orange">Client</span></td><td>Acme team (3), Me, PM</td><td>Send proposal by Jan 22</td><td><span class="tag tag-yellow">Pending</span></td></tr>
+            <tr><td><strong>Sprint 14 Review</strong></td><td>Jan 23</td><td><span class="tag tag-blue">Team Sync</span></td><td>Dev team (5)</td><td>Demo auth module, plan S15</td><td><span class="tag tag-yellow">Pending</span></td></tr>
+            <tr><td><strong>Design Workshop</strong></td><td>Jan 24</td><td><span class="tag tag-pink">Workshop</span></td><td>Design + Product (6)</td><td>Mobile app wireframes</td><td><span class="tag tag-yellow">Pending</span></td></tr>
+        </tbody>
+    </table>
+
+    <div class="divider"></div>
+    <h2>📋 Meeting Template</h2>
+    <div class="template-block">
+        <h4>## Pre-Meeting</h4>
+        <ul>
+            <li><strong>Objective:</strong> What do I want to accomplish?</li>
+            <li><strong>What I need from this meeting:</strong> Decision / Information / Alignment</li>
+        </ul>
+        <br>
+        <h4>## Notes</h4>
+        <ul>
+            <li>Key discussion points go here</li>
+            <li>Decisions made</li>
+            <li>Important context shared</li>
+        </ul>
+        <br>
+        <h4>## Action Items</h4>
+        <div class="checkbox-item"><div class="checkbox"></div> Task description — <strong>Owner</strong> — Deadline</div>
+        <div class="checkbox-item"><div class="checkbox"></div> Task description — <strong>Owner</strong> — Deadline</div>
+        <div class="checkbox-item"><div class="checkbox"></div> Task description — <strong>Owner</strong> — Deadline</div>
+        <br>
+        <h4>## Follow Up</h4>
+        <ul>
+            <li><strong>Next meeting:</strong> [Date/Time]</li>
+            <li><strong>Open questions:</strong> Items to resolve async</li>
+        </ul>
+    </div>
+</section>
+
+<!-- PAGE 7: BRAIN DUMP -->
+<section class="page-section" id="page-braindump">
+    <div class="breadcrumb"><span onclick="showPage('dashboard')">🚀 Hybrid Worker Pro</span> / <span>🧠 Brain Dump → Action</span></div>
+    <h1 class="page-title">🧠 Brain Dump → Action</h1>
+    <p class="page-subtitle">Capture thoughts, then process them into actionable next steps using GTD principles</p>
+
+    <h2>📥 Raw Brain Dump</h2>
+    <div class="widget" style="min-height:120px;background:var(--notion-bg-light);">
+        <p style="color:var(--notion-text-light);font-style:italic;">Type anything here... thoughts, ideas, worries, random notes. Don't filter, just dump everything from your mind.</p>
+        <p>- Need to follow up with Acme about contract terms</p>
+        <p>- App idea: habit tracker with AI coaching</p>
+        <p>- Remember to book dentist appointment</p>
+        <p>- Research Rust for next backend project</p>
+        <p>- Team morale seems low - plan something fun</p>
+        <p>- Read that article about async communication</p>
+        <p>- Birthday gift for mom next week</p>
+    </div>
+
+    <h2>🔄 Processing Flowchart</h2>
+    <div class="callout callout-blue">
+        <span class="callout-icon">🧭</span>
+        <div class="callout-content">
+            <strong>GTD Processing Steps:</strong><br>
+            For each item above, ask: <em>"Is this actionable?"</em>
+        </div>
+    </div>
+
+    <div class="grid-2">
+        <div class="widget">
+            <div class="widget-title" style="color:var(--notion-green);">✅ Actionable → Project Tracker</div>
+            <p style="font-size:14px;">• Follow up with Acme (→ add to Projects)</p>
+            <p style="font-size:14px;">• Team morale activity (→ add to Projects)</p>
+            <p style="font-size:14px;">• Book dentist (→ add to Today's Tasks)</p>
+            <p style="font-size:14px;">• Birthday gift for mom (→ add to Calendar)</p>
+        </div>
+        <div class="widget">
+            <div class="widget-title" style="color:var(--notion-blue);">📚 Reference → Resources</div>
+            <p style="font-size:14px;">• Async communication article (→ save to Resources)</p>
+            <p style="font-size:14px;">• Research Rust (→ save to Learning list)</p>
+        </div>
+        <div class="widget">
+            <div class="widget-title" style="color:var(--notion-purple);">💭 Someday/Maybe</div>
+            <p style="font-size:14px;">• Habit tracker app idea (→ Someday list)</p>
+        </div>
+        <div class="widget">
+            <div class="widget-title" style="color:var(--notion-red);">🗑️ Trash</div>
+            <p style="font-size:14px;color:var(--notion-text-light);">Nothing to delete this time!</p>
+        </div>
+    </div>
+
+    <div class="divider"></div>
+    <h2>🔄 GTD Decision Tree</h2>
+    <div class="template-block">
+        <p><strong>1.</strong> What is it? → Define the item clearly</p>
+        <p><strong>2.</strong> Is it actionable? → If NO: Trash / Reference / Someday</p>
+        <p><strong>3.</strong> If YES: What's the next action?</p>
+        <p style="padding-left:20px;">• Takes &lt;2 min? → <strong>Do it NOW</strong></p>
+        <p style="padding-left:20px;">• Am I the best person? → If NO: <strong>Delegate</strong></p>
+        <p style="padding-left:20px;">• Specific time needed? → <strong>Calendar</strong></p>
+        <p style="padding-left:20px;">• Otherwise → <strong>Add to Next Actions list</strong></p>
+        <p><strong>4.</strong> Part of a bigger outcome? → Create/update <strong>Project</strong></p>
+    </div>
+</section>
+
+<!-- PAGE 8: RESOURCES -->
+<section class="page-section" id="page-resources">
+    <div class="breadcrumb"><span onclick="showPage('dashboard')">🚀 Hybrid Worker Pro</span> / <span>📚 Resources & Links</span></div>
+    <h1 class="page-title">📚 Resources & Links</h1>
+    <p class="page-subtitle">Curated collection of tools, articles, books, and resources</p>
+
+    <div class="callout callout-green">
+        <span class="callout-icon">📊</span>
+        <div class="callout-content"><strong>Database Properties:</strong> Title (Title) • Category (Select) • URL (URL) • Tags (Multi-select) • Notes (Text) • Rating (Select) • Date Added (Date)</div>
+    </div>
+
+    <table class="db-table">
+        <thead><tr><th>Title</th><th>Category</th><th>Tags</th><th>Rating</th><th>Notes</th><th>Added</th></tr></thead>
+        <tbody>
+            <tr><td><strong>Notion</strong></td><td><span class="tag tag-blue">Tool</span></td><td><span class="tag tag-gray">Productivity</span> <span class="tag tag-gray">Organization</span></td><td>⭐⭐⭐⭐⭐</td><td>All-in-one workspace</td><td>Jan 1</td></tr>
+            <tr><td><strong>Deep Work — Cal Newport</strong></td><td><span class="tag tag-orange">Book</span></td><td><span class="tag tag-gray">Focus</span> <span class="tag tag-gray">Productivity</span></td><td>⭐⭐⭐⭐⭐</td><td>Essential for knowledge workers</td><td>Jan 3</td></tr>
+            <tr><td><strong>Todoist</strong></td><td><span class="tag tag-blue">Tool</span></td><td><span class="tag tag-gray">Tasks</span> <span class="tag tag-gray">GTD</span></td><td>⭐⭐⭐⭐</td><td>Quick capture for mobile</td><td>Jan 5</td></tr>
+            <tr><td><strong>Atomic Habits — James Clear</strong></td><td><span class="tag tag-orange">Book</span></td><td><span class="tag tag-gray">Habits</span> <span class="tag tag-gray">Behavior</span></td><td>⭐⭐⭐⭐⭐</td><td>Habit stacking framework</td><td>Jan 5</td></tr>
+            <tr><td><strong>The Async-First Playbook</strong></td><td><span class="tag tag-green">Article</span></td><td><span class="tag tag-gray">Remote</span> <span class="tag tag-gray">Communication</span></td><td>⭐⭐⭐⭐</td><td>Great framework for hybrid teams</td><td>Jan 8</td></tr>
+            <tr><td><strong>Loom</strong></td><td><span class="tag tag-blue">Tool</span></td><td><span class="tag tag-gray">Video</span> <span class="tag tag-gray">Async</span></td><td>⭐⭐⭐⭐</td><td>Async video messaging</td><td>Jan 10</td></tr>
+            <tr><td><strong>Building a Second Brain</strong></td><td><span class="tag tag-purple">Course</span></td><td><span class="tag tag-gray">PKM</span> <span class="tag tag-gray">Notes</span></td><td>⭐⭐⭐⭐⭐</td><td>PARA method + progressive summarization</td><td>Jan 12</td></tr>
+            <tr><td><strong>Focusmate</strong></td><td><span class="tag tag-blue">Tool</span></td><td><span class="tag tag-gray">Focus</span> <span class="tag tag-gray">Accountability</span></td><td>⭐⭐⭐⭐</td><td>Virtual coworking sessions</td><td>Jan 14</td></tr>
+            <tr><td><strong>Ali Abdaal — Productivity YT</strong></td><td><span class="tag tag-red">Video</span></td><td><span class="tag tag-gray">Productivity</span> <span class="tag tag-gray">Systems</span></td><td>⭐⭐⭐⭐</td><td>Feel-good productivity concepts</td><td>Jan 16</td></tr>
+            <tr><td><strong>Notion Template Gallery</strong></td><td><span class="tag tag-pink">Template</span></td><td><span class="tag tag-gray">Notion</span> <span class="tag tag-gray">Templates</span></td><td>⭐⭐⭐⭐</td><td>Browse community templates</td><td>Jan 18</td></tr>
+        </tbody>
+    </table>
+</section>
+
+<!-- PAGE 9: WEEKLY REVIEW -->
+<section class="page-section" id="page-weeklyreview">
+    <div class="breadcrumb"><span onclick="showPage('dashboard')">🚀 Hybrid Worker Pro</span> / <span>🔄 Weekly Review</span></div>
+    <h1 class="page-title">🔄 Weekly Review Template</h1>
+    <p class="page-subtitle">Structured reflection to optimize your upcoming week</p>
+
+    <div class="callout callout-purple">
+        <span class="callout-icon">⏰</span>
+        <div class="callout-content"><strong>Best time:</strong> Friday afternoon or Sunday evening. Takes 15-20 minutes. Do this consistently and watch your productivity compound.</div>
+    </div>
+
+    <h2>✅ What Went Well (3 things)</h2>
+    <div class="widget">
+        <p>1. Shipped auth module ahead of schedule — team collaboration was excellent</p>
+        <p>2. Maintained 12-day exercise streak despite busy week</p>
+        <p>3. Got positive feedback on Q1 strategy presentation</p>
+    </div>
+
+    <h2>❌ What Didn't Go Well (3 things)</h2>
+    <div class="widget">
+        <p>1. Too many context switches on Thursday — energy crashed</p>
+        <p>2. Missed meditation 3 times — morning routine got disrupted</p>
+        <p>3. Acme proposal delayed — didn't account for legal review time</p>
+    </div>
+
+    <h2>💡 Biggest Lesson</h2>
+    <div class="widget">
+        <p>Block buffer time between meetings. Back-to-back calls drain energy and kill deep work capacity for the rest of the day.</p>
+    </div>
+
+    <h2>⚡ Energy Pattern This Week</h2>
+    <div class="widget">
+        <p>Mon: ⚡⚡⚡⚡⚡ (WFH, deep work day — peak)</p>
+        <p>Tue: ⚡⚡⚡ (Office, many meetings)</p>
+        <p>Wed: ⚡⚡⚡⚡ (WFH, good flow state)</p>
+        <p>Thu: ⚡⚡ (Flex, too many 1-on-1s)</p>
+        <p>Fri: ⚡⚡⚡ (Office, steady wind-down)</p>
+    </div>
+
+    <h2>🎯 Top 3 Priorities Next Week</h2>
+    <div class="widget">
+        <div class="checkbox-item"><div class="checkbox"></div> Launch auth module v2.0 to production</div>
+        <div class="checkbox-item"><div class="checkbox"></div> Close Acme Corp deal (get contract signed)</div>
+        <div class="checkbox-item"><div class="checkbox"></div> Kickoff mobile app redesign with design team</div>
+    </div>
+
+    <h2>📊 Metrics</h2>
+    <div class="grid-2">
+        <div class="widget" style="text-align:center;"><div class="widget-title">Habit Score</div><p style="font-size:28px;font-weight:700;">81%</p></div>
+        <div class="widget" style="text-align:center;"><div class="widget-title">Meeting Load</div><p style="font-size:28px;font-weight:700;">15 hrs</p><p style="font-size:12px;color:var(--notion-text-light);">Target: &lt;12 hrs</p></div>
+    </div>
+
+    <h2>🛑 One Thing to STOP Doing</h2>
+    <div class="callout callout-red"><span class="callout-icon">🛑</span><div class="callout-content">Checking Slack during deep work blocks. Turn off notifications completely from 8-10am.</div></div>
+
+    <h2>🟢 One Thing to START Doing</h2>
+    <div class="callout callout-green"><span class="callout-icon">🟢</span><div class="callout-content">5-minute meditation between meetings to reset energy. Use the Calm app quick sessions.</div></div>
+
+    <h2>🙏 Gratitude (3 things)</h2>
+    <div class="widget">
+        <p>1. Supportive team that communicates well async</p>
+        <p>2. Flexibility to work from home on deep work days</p>
+        <p>3. Health to exercise consistently this week</p>
+    </div>
+</section>
+
+<!-- PAGE 10: MONTHLY REVIEW -->
+<section class="page-section" id="page-monthlyreview">
+    <div class="breadcrumb"><span onclick="showPage('dashboard')">🚀 Hybrid Worker Pro</span> / <span>📊 Monthly Review</span></div>
+    <h1 class="page-title">📊 Monthly Review</h1>
+    <p class="page-subtitle">Big-picture reflection and strategic planning for the month ahead</p>
+
+    <div class="widget">
+        <div class="widget-title">📆 January 2025 Review</div>
+        <p>A strong start to the year. Focused on setting up systems (this Notion workspace), shipping key projects, and building consistent habits. The hybrid schedule is working well — WFH days for deep work, office days for collaboration. Need to watch meeting creep and protect energy levels on high-meeting days.</p>
+    </div>
+
+    <h2>🎯 Goals Status</h2>
+    <table class="db-table">
+        <thead><tr><th>Goal (Set Jan 1)</th><th>Target</th><th>Result</th><th>Status</th></tr></thead>
+        <tbody>
+            <tr><td>Ship Auth Module v2</td><td>Jan 31</td><td>Jan 24 (early!)</td><td><span class="tag tag-green">✅ Achieved</span></td></tr>
+            <tr><td>80hrs Deep Work</td><td>80 hrs</td><td>72 hrs</td><td><span class="tag tag-yellow">⚠️ Close (90%)</span></td></tr>
+            <tr><td>Read 2 books</td><td>2 books</td><td>1.5 books</td><td><span class="tag tag-yellow">⚠️ In Progress</span></td></tr>
+            <tr><td>Exercise 25 days</td><td>25 days</td><td>26 days</td><td><span class="tag tag-green">✅ Exceeded</span></td></tr>
+            <tr><td>Close 1 partnership</td><td>1 deal</td><td>In progress</td><td><span class="tag tag-red">❌ Delayed</span></td></tr>
+        </tbody>
+    </table>
+
+    <h2>📈 Key Metrics</h2>
+    <div class="grid-2">
+        <div class="widget" style="text-align:center;"><div class="widget-title">Deep Work Hours</div><p style="font-size:32px;font-weight:700;">72 hrs</p><p style="font-size:12px;color:var(--notion-text-light);">Target: 80 hrs</p></div>
+        <div class="widget" style="text-align:center;"><div class="widget-title">Meetings</div><p style="font-size:32px;font-weight:700;">48</p><p style="font-size:12px;color:var(--notion-text-light);">~12/week avg</p></div>
+        <div class="widget" style="text-align:center;"><div class="widget-title">Habit Streak (Best)</div><p style="font-size:32px;font-weight:700;">20 days</p><p style="font-size:12px;color:var(--notion-text-light);">✍️ Journal</p></div>
+        <div class="widget" style="text-align:center;"><div class="widget-title">Projects Completed</div><p style="font-size:32px;font-weight:700;">4</p><p style="font-size:12px;color:var(--notion-text-light);">of 6 planned</p></div>
+    </div>
+
+    <h2>⚡ Energy Trends</h2>
+    <div class="widget">
+        <p><strong>Peak days:</strong> WFH Mondays & Wednesdays (fewest meetings, most deep work)</p>
+        <p><strong>Low days:</strong> Thursdays (too many 1-on-1s back-to-back)</p>
+        <p><strong>Pattern:</strong> Energy drops significantly after 3+ consecutive meetings</p>
+        <p><strong>Insight:</strong> Need 30-min buffer between meetings on office days</p>
+    </div>
+
+    <h2>🏆 Biggest Wins (3)</h2>
+    <div class="widget">
+        <p>1. Auth Module v2.0 shipped a week early with zero production bugs</p>
+        <p>2. Built entire Notion productivity system (this workspace!) in 2 weekends</p>
+        <p>3. Maintained 26-day exercise streak — longest in 2 years</p>
+    </div>
+
+    <h2>😤 Biggest Challenges (3)</h2>
+    <div class="widget">
+        <p>1. Meeting creep — went from 10/week target to 12-15/week</p>
+        <p>2. Acme Corp deal taking longer than expected (legal bottleneck)</p>
+        <p>3. Morning routine consistency — social media temptation before 9am</p>
+    </div>
+
+    <h2>✈️ Carry Forward → February</h2>
+    <div class="callout callout-green"><span class="callout-icon">✈️</span><div class="callout-content">Systems that work: Time blocking, WFH deep work days, evening journal, shutdown ritual. Keep these non-negotiable.</div></div>
+
+    <h2>🗑️ Leave Behind</h2>
+    <div class="callout callout-red"><span class="callout-icon">🗑️</span><div class="callout-content">Saying yes to every meeting invite. Perfectionism on presentations (80% is good enough for drafts). Checking email first thing in the morning.</div></div>
+
+    <h2>🎯 February Theme / Focus</h2>
+    <div class="callout callout-purple"><span class="callout-icon">🎯</span><div class="callout-content"><strong>"Ship & Simplify"</strong> — Focus on launching the mobile app redesign and simplifying daily workflows. Reduce meetings by 25%. Double down on async communication.</div></div>
+</section>
+
+<!-- PAGE 11: FORMULAS -->
+<section class="page-section" id="page-formulas">
+    <div class="breadcrumb"><span onclick="showPage('dashboard')">🚀 Hybrid Worker Pro</span> / <span>⚡ Formulas & Automations</span></div>
+    <h1 class="page-title">⚡ Formulas & Automations</h1>
+    <p class="page-subtitle">Copy-paste these Notion formulas into your databases</p>
+
+    <div class="callout callout-yellow">
+        <span class="callout-icon">⚠️</span>
+        <div class="callout-content"><strong>How to use:</strong> In Notion, create a Formula property in your database, then paste the formula code below. Make sure your property names match exactly.</div>
+    </div>
+
+    <h2>1. 🏆 Productivity Score</h2>
+    <p>Used in: Daily Planner database</p>
+    <div class="formula-block">if(prop("Deep Work Hours") >= 3 and prop("Mood") == "😊Great", "🏆 Great Day", if(prop("Deep Work Hours") >= 2, "👍 Good Day", "🔄 Needs Improvement"))</div>
+
+    <h2>2. 📅 Days Until Due</h2>
+    <p>Used in: Project Tracker database</p>
+    <div class="formula-block">dateBetween(prop("Due Date"), now(), "days")</div>
+    <div class="callout callout-blue"><span class="callout-icon">💡</span><div class="callout-content">Returns negative number if overdue. Combine with conditional formatting to highlight urgent items.</div></div>
+
+    <h2>3. 🔥 Streak Counter Logic</h2>
+    <p>Used in: Habit Tracker (explanation — requires Notion relations)</p>
+    <div class="template-block">
+        <p><strong>How streak counting works in Notion:</strong></p>
+        <p>1. Create a "Habit Log" database with: Date, Habit Name, Completed (checkbox)</p>
+        <p>2. Create a relation from Habit Tracker → Habit Log</p>
+        <p>3. Use a Rollup to count consecutive "Completed = true" entries</p>
+        <p>4. For accurate streak counting, use Notion automations or a formula:</p>
+    </div>
+    <div class="formula-block">if(prop("Today Completed") and prop("Yesterday Completed"), prop("Previous Streak") + 1, if(prop("Today Completed"), 1, 0))</div>
+
+    <h2>4. 📊 Progress Percentage</h2>
+    <p>Used in: Project Tracker (when using sub-tasks)</p>
+    <div class="formula-block">round(prop("Tasks Done") / prop("Total Tasks") * 100)</div>
+
+    <h2>5. 📆 Week Number</h2>
+    <p>Used in: Any database with dates</p>
+    <div class="formula-block">formatDate(prop("Date"), "W")</div>
+
+    <h2>6. 🚦 Auto-Status Based on Progress</h2>
+    <p>Used in: Project Tracker (alternative to manual status)</p>
+    <div class="formula-block">if(prop("Progress") == 100, "✅ Done", if(prop("Progress") > 0, "🔄 In Progress", if(prop("Due Date") < now(), "🚨 Overdue", "📥 Not Started")))</div>
+
+    <h2>7. ⏰ Meeting Load Warning</h2>
+    <p>Used in: Daily Planner</p>
+    <div class="formula-block">if(prop("Meetings Count") >= 5, "🚨 Too Many!", if(prop("Meetings Count") >= 3, "⚠️ Heavy", "✅ Manageable"))</div>
+
+    <h2>8. 📈 Weekly Deep Work Total</h2>
+    <p>Used in: Weekly Planner (rollup from Daily Planner)</p>
+    <div class="formula-block">// Use a Rollup property:
+// Relation → Daily Planner
+// Property → Deep Work Hours  
+// Calculate → Sum</div>
+
+    <div class="divider"></div>
+    <div class="callout callout-purple">
+        <span class="callout-icon">🔮</span>
+        <div class="callout-content"><strong>Pro Tip:</strong> Notion's new formula 2.0 supports if/else, variables, and more complex logic. Check <em>notion.so/help/formulas</em> for the latest syntax reference.</div>
+    </div>
+</section>
+
+<!-- PAGE 12: QUICK START -->
+<section class="page-section" id="page-quickstart">
+    <div class="breadcrumb"><span onclick="showPage('dashboard')">🚀 Hybrid Worker Pro</span> / <span>🚀 Quick Start Guide</span></div>
+    <h1 class="page-title">🚀 Quick Start Guide</h1>
+    <p class="page-subtitle">Get up and running with your Hybrid Worker Pro workspace in 7 days</p>
+
+    <div class="callout callout-green">
+        <span class="callout-icon">⏱️</span>
+        <div class="callout-content"><strong>Total setup time:</strong> ~2 hours spread over 7 days. After that, just 5 minutes each morning and 2 minutes each evening to maintain.</div>
+    </div>
+
+    <h2>📋 How to Duplicate This Template</h2>
+    <div class="template-block">
+        <p><strong>Option A — Direct Duplicate:</strong></p>
+        <ol style="padding-left:20px;">
+            <li>Open the shared Notion page link</li>
+            <li>Click "Duplicate" in the top-right corner</li>
+            <li>The entire workspace copies to your Notion account</li>
+            <li>Customize properties, remove sample data, add your own</li>
+        </ol>
+        <br>
+        <p><strong>Option B — Build from Scratch (using this guide):</strong></p>
+        <ol style="padding-left:20px;">
+            <li>Create a new page in Notion called "Hybrid Worker Pro"</li>
+            <li>Add sub-pages for each section (Dashboard, Daily Planner, etc.)</li>
+            <li>Create databases with the properties listed in each section</li>
+            <li>Add the formulas from the ⚡ Formulas page</li>
+            <li>Set up your views (Table, Board, Calendar)</li>
+        </ol>
+    </div>
+
+    <h2>📅 First 7 Days Setup Plan</h2>
+    <div class="toggle open">
+        <div class="toggle-header" onclick="this.parentElement.classList.toggle('open')"><span class="toggle-arrow">▶</span> Day 1: Foundation (30 min)</div>
+        <div class="toggle-content">
+            <div class="checkbox-item"><div class="checkbox"></div> Duplicate template or create main page structure</div>
+            <div class="checkbox-item"><div class="checkbox"></div> Set up Daily Planner database with all properties</div>
+            <div class="checkbox-item"><div class="checkbox"></div> Fill in today's entry as practice</div>
+        </div>
+    </div>
+    <div class="toggle">
+        <div class="toggle-header" onclick="this.parentElement.classList.toggle('open')"><span class="toggle-arrow">▶</span> Day 2: Planning (20 min)</div>
+        <div class="toggle-content">
+            <div class="checkbox-item"><div class="checkbox"></div> Set up Weekly Planner with your actual schedule</div>
+            <div class="checkbox-item"><div class="checkbox"></div> Define your WFH vs Office days</div>
+            <div class="checkbox-item"><div class="checkbox"></div> Create time block templates for each day type</div>
+        </div>
+    </div>
+    <div class="toggle">
+        <div class="toggle-header" onclick="this.parentElement.classList.toggle('open')"><span class="toggle-arrow">▶</span> Day 3: Projects (20 min)</div>
+        <div class="toggle-content">
+            <div class="checkbox-item"><div class="checkbox"></div> Set up Project Tracker database</div>
+            <div class="checkbox-item"><div class="checkbox"></div> Add all current projects (work + personal)</div>
+            <div class="checkbox-item"><div class="checkbox"></div> Assign priorities and due dates</div>
+        </div>
+    </div>
+    <div class="toggle">
+        <div class="toggle-header" onclick="this.parentElement.classList.toggle('open')"><span class="toggle-arrow">▶</span> Day 4: Habits (15 min)</div>
+        <div class="toggle-content">
+            <div class="checkbox-item"><div class="checkbox"></div> Choose your 7 daily habits (start with 3-5 if new)</div>
+            <div class="checkbox-item"><div class="checkbox"></div> Set up Habit Tracker grid</div>
+            <div class="checkbox-item"><div class="checkbox"></div> Start tracking today</div>
+        </div>
+    </div>
+    <div class="toggle">
+        <div class="toggle-header" onclick="this.parentElement.classList.toggle('open')"><span class="toggle-arrow">▶</span> Day 5: Meetings (15 min)</div>
+        <div class="toggle-content">
+            <div class="checkbox-item"><div class="checkbox"></div> Set up Meeting Notes database</div>
+            <div class="checkbox-item"><div class="checkbox"></div> Create meeting template</div>
+            <div class="checkbox-item"><div class="checkbox"></div> Log your next meeting using the template</div>
+        </div>
+    </div>
+    <div class="toggle">
+        <div class="toggle-header" onclick="this.parentElement.classList.toggle('open')"><span class="toggle-arrow">▶</span> Day 6: Resources (15 min)</div>
+        <div class="toggle-content">
+            <div class="checkbox-item"><div class="checkbox"></div> Set up Resources database</div>
+            <div class="checkbox-item"><div class="checkbox"></div> Add 5-10 tools/articles you already use</div>
+            <div class="checkbox-item"><div class="checkbox"></div> Set up Brain Dump page for quick capture</div>
+        </div>
+    </div>
+    <div class="toggle">
+        <div class="toggle-header" onclick="this.parentElement.classList.toggle('open')"><span class="toggle-arrow">▶</span> Day 7: Review & Customize (20 min)</div>
+        <div class="toggle-content">
+            <div class="checkbox-item"><div class="checkbox"></div> Do your first Weekly Review</div>
+            <div class="checkbox-item"><div class="checkbox"></div> Set up Dashboard with linked databases</div>
+            <div class="checkbox-item"><div class="checkbox"></div> Customize colors, icons, and layout to your preference</div>
+            <div class="checkbox-item"><div class="checkbox"></div> Set reminder: Weekly Review every Friday 4pm</div>
+        </div>
+    </div>
+
+    <h2>⏰ Daily Routine</h2>
+    <div class="grid-2">
+        <div class="widget">
+            <div class="widget-title">🌅 Morning (5 min)</div>
+            <div class="checkbox-item"><div class="checkbox"></div> Open Dashboard — check today's focus</div>
+            <div class="checkbox-item"><div class="checkbox"></div> Review calendar & time blocks</div>
+            <div class="checkbox-item"><div class="checkbox"></div> Set top 3 MITs for the day</div>
+        </div>
+        <div class="widget">
+            <div class="widget-title">🌙 Evening (2 min)</div>
+            <div class="checkbox-item"><div class="checkbox"></div> Log daily entry (mood, deep work hrs)</div>
+            <div class="checkbox-item"><div class="checkbox"></div> Check off completed habits</div>
+            <div class="checkbox-item"><div class="checkbox"></div> Quick brain dump if needed</div>
+        </div>
+    </div>
+
+    <h2>🎨 Common Customizations</h2>
+    <div class="template-block">
+        <p><strong>🎯 Adjust to your style:</strong></p>
+        <ul>
+            <li>Change habit list to match your goals (start with 3-5 habits, not 7)</li>
+            <li>Modify time blocks to match your work schedule</li>
+            <li>Add/remove database properties as needed</li>
+            <li>Create different views: Calendar for deadlines, Board for projects</li>
+            <li>Add relations between databases (Daily Planner ↔ Projects)</li>
+            <li>Set up Notion automations for recurring tasks</li>
+            <li>Create a "Favorites" section in sidebar for most-used pages</li>
+        </ul>
+    </div>
+
+    <div class="callout callout-purple" style="margin-top:24px;">
+        <span class="callout-icon">🎉</span>
+        <div class="callout-content"><strong>You're all set!</strong> Remember: the best productivity system is the one you actually use. Start simple, add complexity as needed, and review weekly to optimize. Good luck with your hybrid work journey!</div>
+    </div>
+</section>
+
+</main>
+</div>
+
+<button class="floating-btn" onclick="window.print()">📄 Download PDF</button>
+
+<script>
+function showPage(page) {
+    document.querySelectorAll('.page-section').forEach(s => s.classList.remove('active'));
+    document.getElementById('page-' + page).classList.add('active');
+    document.querySelectorAll('.sidebar-nav li').forEach(l => l.classList.remove('active'));
+    event.currentTarget ? event.currentTarget.classList.add('active') : 
+        document.querySelector('.sidebar-nav li[onclick*="' + page + '"]').classList.add('active');
+    if (window.innerWidth <= 768) {
+        document.getElementById('sidebar').classList.remove('open');
+    }
+    window.scrollTo(0, 0);
+}
+
+function toggleSidebar() {
+    document.getElementById('sidebar').classList.toggle('open');
+}
+
+// Set today's date
+const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+const today = new Date().toLocaleDateString('en-US', options);
+const dateEl = document.getElementById('today-date');
+if (dateEl) dateEl.textContent = today;
+
+// Toggle functionality
+document.querySelectorAll('.toggle-header').forEach(header => {
+    header.addEventListener('click', function() {
+        this.parentElement.classList.toggle('open');
+    });
+});
+</script>
+</body>
+</html>
