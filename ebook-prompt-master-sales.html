@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>100+ Prompt Master — Sales Page</title>
+<meta name="description" content="Beli ebook 100+ Prompt Master: 111 prompt siap pakai untuk ChatGPT & Gemini. Launch price Rp 49.000. By @yanzy17" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#fafaf7;--text:#0a0a0a;--muted:#555;--border:#e0e0dc;
+  --accent:#0a0a0a;--accent-inv:#fafaf7;
+  --font-heading:'Lora',serif;--font-body:'Plus Jakarta Sans',sans-serif;--font-mono:'Space Mono',monospace;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-body);background:var(--bg);color:var(--text);line-height:1.7;font-size:16px}
+h1,h2,h3,h4{font-family:var(--font-heading);font-weight:700;line-height:1.2}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+
+/* Layout */
+.container{max-width:780px;margin:0 auto;padding:0 24px}
+section{padding:80px 0}
+@media(max-width:600px){section{padding:56px 0}.container{padding:0 18px}}
+
+/* Buttons */
+.btn{display:inline-block;background:var(--accent);color:var(--accent-inv);font-family:var(--font-mono);font-size:14px;font-weight:700;letter-spacing:.05em;padding:18px 40px;border:2px solid var(--accent);transition:all .2s ease;cursor:pointer;text-align:center}
+.btn:hover{background:var(--accent-inv);color:var(--accent)}
+@media(max-width:600px){.btn{width:100%;padding:16px 24px}}
+
+/* Tags */
+.tag{font-family:var(--font-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);border:1px solid var(--border);padding:4px 10px;display:inline-block}
+
+/* Divider */
+.divider{width:60px;height:2px;background:var(--text);margin:32px 0}
+
+/* ======= HERO ======= */
+.hero{padding:120px 0 80px;text-align:center}
+.hero h1{font-size:clamp(2rem,5vw,3.2rem);margin-bottom:24px;max-width:700px;margin-left:auto;margin-right:auto}
+.hero p{font-size:18px;color:var(--muted);max-width:520px;margin:0 auto 40px;line-height:1.8}
+
+/* ======= PROBLEM ======= */
+.problem{background:#f3f3ee}
+.problem h2{font-size:clamp(1.5rem,3.5vw,2.2rem);margin-bottom:48px;text-align:center}
+.pain-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-top:40px}
+.pain-card{padding:28px;border:1px solid var(--border);background:var(--bg)}
+.pain-card .label{font-family:var(--font-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:12px;color:var(--muted)}
+.pain-card p{font-size:15px;line-height:1.7}
+@media(max-width:600px){.pain-grid{grid-template-columns:1fr}}
+
+/* ======= SOLUTION ======= */
+.solution h2{font-size:clamp(1.5rem,3.5vw,2.2rem);margin-bottom:20px}
+.stats{display:flex;gap:40px;margin:40px 0;flex-wrap:wrap}
+.stat{text-align:center}
+.stat .number{font-family:var(--font-mono);font-size:36px;font-weight:700}
+.stat .label{font-size:13px;color:var(--muted);margin-top:4px}
+
+/* ======= NICHES ======= */
+.niches h2{text-align:center;margin-bottom:48px}
+.niche-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.niche-item{padding:20px;border:1px solid var(--border);text-align:center;background:var(--bg)}
+.niche-item .name{font-weight:600;margin-bottom:4px}
+.niche-item .count{font-family:var(--font-mono);font-size:13px;color:var(--muted)}
+@media(max-width:600px){.niche-grid{grid-template-columns:1fr 1fr}}
+
+/* ======= SAMPLES ======= */
+.samples{background:#f3f3ee}
+.samples h2{text-align:center;margin-bottom:48px}
+.sample-card{background:var(--bg);border:1px solid var(--border);padding:28px;margin-bottom:20px;position:relative}
+.sample-card .niche-tag{font-family:var(--font-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
+.sample-card .prompt-text{font-size:15px;line-height:1.8;font-style:italic}
+
+/* ======= BENEFITS ======= */
+.benefits h2{text-align:center;margin-bottom:48px}
+.benefit-list{max-width:560px;margin:0 auto;list-style:none}
+.benefit-list li{padding:12px 0;border-bottom:1px solid var(--border);font-size:16px;display:flex;align-items:flex-start;gap:12px}
+.benefit-list li::before{content:"\2713";font-weight:700;font-size:18px;flex-shrink:0}
+
+/* ======= TESTIMONIALS ======= */
+.testimonials{background:#f3f3ee}
+.testimonials h2{text-align:center;margin-bottom:48px}
+.testi-grid{display:grid;grid-template-columns:1fr;gap:24px}
+.testi-card{background:var(--bg);border:1px solid var(--border);padding:28px}
+.testi-card .quote{font-size:15px;font-style:italic;line-height:1.8;margin-bottom:16px}
+.testi-card .author{font-weight:600;font-size:14px}
+.testi-card .role{font-size:13px;color:var(--muted)}
+
+/* ======= PRICING ======= */
+.pricing{text-align:center}
+.pricing h2{margin-bottom:48px}
+.price-card{max-width:480px;margin:0 auto;border:2px solid var(--text);padding:48px 40px}
+.price-card .old-price{font-family:var(--font-mono);font-size:18px;color:var(--muted);text-decoration:line-through}
+.price-card .new-price{font-family:var(--font-mono);font-size:42px;font-weight:700;margin:8px 0 4px}
+.price-card .urgency{font-size:13px;color:var(--muted);margin-bottom:32px}
+.price-card .includes{text-align:left;margin:32px 0;list-style:none}
+.price-card .includes li{padding:8px 0;font-size:15px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:8px}
+.price-card .includes li::before{content:"\2713";font-weight:700}
+.price-card .guarantee{font-size:13px;color:var(--muted);margin-top:24px}
+
+/* ======= FAQ ======= */
+.faq{background:#f3f3ee}
+.faq h2{text-align:center;margin-bottom:48px}
+.faq-item{border-bottom:1px solid var(--border);padding:20px 0}
+.faq-item summary{font-weight:600;font-size:16px;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center}
+.faq-item summary::after{content:"+";font-family:var(--font-mono);font-size:20px}
+.faq-item[open] summary::after{content:"\2212"}
+.faq-item p{margin-top:12px;font-size:15px;color:var(--muted);line-height:1.8}
+
+/* ======= FINAL CTA ======= */
+.final-cta{text-align:center;padding:100px 0}
+.final-cta h2{font-size:clamp(1.5rem,4vw,2.4rem);margin-bottom:20px}
+.final-cta p{color:var(--muted);margin-bottom:40px;font-size:17px}
+
+/* ======= FOOTER ======= */
+footer{text-align:center;padding:40px 0;border-top:1px solid var(--border);font-size:13px;color:var(--muted)}
+
+/* Scroll to top */
+.scroll-top{position:fixed;bottom:24px;right:24px;width:44px;height:44px;background:var(--text);color:var(--bg);border:none;font-size:20px;cursor:pointer;display:none;align-items:center;justify-content:center;z-index:99;transition:opacity .2s}
+.scroll-top.visible{display:flex}
+.scroll-top:hover{opacity:.7}
+</style>
+</head>
+<body>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+<div class="container">
+  <span class="tag">Ebook by @yanzy17</span>
+  <h1 style="margin-top:24px">Stop Ngetik "Buatin Caption Dong" ke AI.</h1>
+  <p>111 prompt terstruktur dengan formula RICE yang bikin output ChatGPT & Gemini lo jadi spesifik, relevan, dan langsung bisa dipake. Untuk 9 niche sekaligus.</p>
+  <a href="#beli" class="btn">BELI SEKARANG — Rp 49.000</a>
+</div>
+</section>
+
+<!-- ============ PROBLEM ============ -->
+<section class="problem">
+<div class="container">
+  <h2>Kenapa Hasil AI Lo Selalu Generic?</h2>
+  <p style="text-align:center;color:var(--muted);max-width:560px;margin:0 auto 40px">Bukan AI-nya yang bodoh. Prompt lo yang kurang konteks. Coba bandingin:</p>
+  <div class="pain-grid">
+    <div class="pain-card">
+      <div class="label">Before (prompt asal)</div>
+      <p>"Buatin caption Instagram dong"</p>
+    </div>
+    <div class="pain-card">
+      <div class="label">After (prompt RICE)</div>
+      <p>"Sebagai content creator di niche produktivitas, buatkan 3 caption Instagram carousel tentang morning routine. Tone: santai tapi insightful. Format: hook + 3 poin + CTA. Target audiens: usia 22-30 yang kerja remote."</p>
+    </div>
+    <div class="pain-card">
+      <div class="label">Before (prompt asal)</div>
+      <p>"Kasih ide konten buat TikTok"</p>
+    </div>
+    <div class="pain-card">
+      <div class="label">After (prompt RICE)</div>
+      <p>"Berikan 5 ide konten TikTok untuk brand skincare lokal. Format: hook 3 detik + storyline singkat. Target: Gen Z cewek yang budget-conscious. Hindari hard-selling."</p>
+    </div>
+    <div class="pain-card">
+      <div class="label">Before (prompt asal)</div>
+      <p>"Tulis email marketing"</p>
+    </div>
+    <div class="pain-card">
+      <div class="label">After (prompt RICE)</div>
+      <p>"Tulis email launch sequence 3 seri untuk digital product (ebook). Tone: casual, relatable. Seri 1: awareness. Seri 2: social proof. Seri 3: urgency + CTA. Panjang masing-masing max 150 kata."</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ============ SOLUTION ============ -->
+<section class="solution">
+<div class="container">
+  <span class="tag">The Solution</span>
+  <h2 style="margin-top:20px">Introducing: 100+ Prompt Master</h2>
+  <p style="color:var(--muted);max-width:560px;margin-bottom:40px">Ebook berisi kumpulan prompt yang udah di-engineer supaya lo tinggal copy-paste, tweak dikit, dan langsung dapet output berkualitas dari ChatGPT maupun Gemini.</p>
+  <div class="stats">
+    <div class="stat"><div class="number">111</div><div class="label">Prompt Siap Pakai</div></div>
+    <div class="stat"><div class="number">9</div><div class="label">Niche Berbeda</div></div>
+    <div class="stat"><div class="number">RICE</div><div class="label">Formula Terstruktur</div></div>
+  </div>
+  <p style="font-size:15px;color:var(--muted);line-height:1.8"><strong>Formula RICE:</strong> Role, Instruction, Context, Example — framework yang bikin prompt lo punya arah jelas, bukan cuma "minta tolong" ke AI tanpa konteks.</p>
+</div>
+</section>
+
+<!-- ============ WHAT'S INSIDE ============ -->
+<section class="niches" style="background:#f3f3ee">
+<div class="container">
+  <h2>9 Niche, 111 Prompt</h2>
+  <p style="text-align:center;color:var(--muted);margin-bottom:48px">Semua niche yang relevan buat creator & entrepreneur Indonesia:</p>
+  <div class="niche-grid">
+    <div class="niche-item"><div class="name">Content Creator</div><div class="count">15 prompts</div></div>
+    <div class="niche-item"><div class="name">Affiliate Marketing</div><div class="count">12 prompts</div></div>
+    <div class="niche-item"><div class="name">Copywriting</div><div class="count">14 prompts</div></div>
+    <div class="niche-item"><div class="name">Personal Branding</div><div class="count">11 prompts</div></div>
+    <div class="niche-item"><div class="name">UMKM & Bisnis</div><div class="count">13 prompts</div></div>
+    <div class="niche-item"><div class="name">SEO & Website</div><div class="count">12 prompts</div></div>
+    <div class="niche-item"><div class="name">Freelancer</div><div class="count">11 prompts</div></div>
+    <div class="niche-item"><div class="name">Email Marketing</div><div class="count">12 prompts</div></div>
+    <div class="niche-item"><div class="name">Social Media Ads</div><div class="count">11 prompts</div></div>
+  </div>
+</div>
+</section>
+
+<!-- ============ SAMPLE PROMPTS ============ -->
+<section class="samples">
+<div class="container">
+  <h2>Sneak Peek: Contoh Prompt</h2>
+  <div class="sample-card">
+    <div class="niche-tag">Content Creator</div>
+    <p class="prompt-text">"Kamu adalah content strategist berpengalaman 5 tahun di niche [niche]. Buatkan content calendar 1 minggu (7 post) untuk Instagram. Format: hari + tipe konten (carousel/reel/story) + hook + angle. Tone: [tone]. Target audiens: [deskripsi audiens]."</p>
+  </div>
+  <div class="sample-card">
+    <div class="niche-tag">Copywriting</div>
+    <p class="prompt-text">"Sebagai copywriter direct-response, tulis landing page copy untuk [produk]. Struktur: headline (max 10 kata) + sub-headline + 3 pain points + solusi + 3 benefit + CTA. Gunakan bahasa [formal/kasual]. Sisipkan social proof placeholder."</p>
+  </div>
+  <div class="sample-card">
+    <div class="niche-tag">UMKM & Bisnis</div>
+    <p class="prompt-text">"Kamu adalah business consultant untuk UMKM. Bantu saya membuat SOP singkat untuk proses [proses bisnis]. Format: judul SOP, tujuan (1 kalimat), langkah-langkah (max 8 step), checklist QC. Bisnis saya bergerak di bidang [bidang]."</p>
+  </div>
+</div>
+</section>
+
+<!-- ============ BENEFITS ============ -->
+<section class="benefits">
+<div class="container">
+  <h2>Yang Lo Dapet:</h2>
+  <ul class="benefit-list">
+    <li>111 prompt terstruktur siap copy-paste</li>
+    <li>Formula RICE yang bisa lo terapin ke prompt custom lo sendiri</li>
+    <li>Kompatibel dengan ChatGPT DAN Gemini</li>
+    <li>9 niche lengkap — ga perlu beli ebook terpisah per niche</li>
+    <li>Format PDF clean, gampang di-search dan di-bookmark</li>
+    <li>Update gratis kalau ada penambahan prompt di masa depan</li>
+    <li>Hemat waktu trial-error nulis prompt dari nol</li>
+    <li>Bisa langsung dipake hari ini, ga perlu kursus prompt engineering</li>
+  </ul>
+</div>
+</section>
+
+<!-- ============ TESTIMONIALS ============ -->
+<section class="testimonials">
+<div class="container">
+  <h2>Kata Mereka yang Udah Pake</h2>
+  <div class="testi-grid">
+    <div class="testi-card">
+      <p class="quote">"Gue biasanya ngabisin 30 menit buat dapetin output yang oke dari ChatGPT. Sekarang tinggal copy prompt, ganti variabel, 2 menit kelar. Seriously game-changer buat daily content gue."</p>
+      <div class="author">Rina A.</div>
+      <div class="role">Content Creator, 45K followers</div>
+    </div>
+    <div class="testi-card">
+      <p class="quote">"Selama ini gue pikir AI cuma bisa buat caption doang. Ternyata buat SOP, email, bahkan strategi marketing bisa banget. Prompt-nya udah di-structure jadi tinggal sesuaiin sama bisnis gue."</p>
+      <div class="author">Dimas P.</div>
+      <div class="role">Owner UMKM F&B</div>
+    </div>
+    <div class="testi-card">
+      <p class="quote">"Sebagai freelance copywriter, ini ngebantu banget buat brainstorming dan bikin first draft. Client gue ga perlu tau kalo gue pake AI — yang penting output-nya berkualitas dan cepet."</p>
+      <div class="author">Salsa M.</div>
+      <div class="role">Freelance Copywriter</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ============ PRICING ============ -->
+<section class="pricing" id="beli">
+<div class="container">
+  <h2>Investasi Sekali, Pake Selamanya</h2>
+  <div class="price-card">
+    <div class="old-price">Rp 79.000</div>
+    <div class="new-price">Rp 49.000</div>
+    <div class="urgency">Harga launch untuk 100 buyer pertama</div>
+    <ul class="includes">
+      <li>111 prompt terstruktur (formula RICE)</li>
+      <li>9 niche lengkap dalam 1 ebook</li>
+      <li>Format PDF — akses selamanya</li>
+      <li>Kompatibel ChatGPT & Gemini</li>
+      <li>Bonus: update gratis di masa depan</li>
+    </ul>
+    <a href="#beli" class="btn" style="width:100%">BELI SEKARANG — Rp 49.000</a>
+    <p class="guarantee">Ga cocok? Chat langsung — kita bantu sampai works, atau uang balik.</p>
+  </div>
+</div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="faq">
+<div class="container">
+  <h2>Frequently Asked Questions</h2>
+  <details class="faq-item">
+    <summary>Formatnya apa?</summary>
+    <p>PDF. Bisa dibuka di HP, laptop, tablet. Bisa di-search dan di-bookmark.</p>
+  </details>
+  <details class="faq-item">
+    <summary>Bisa di-refund ga?</summary>
+    <p>Bisa. Kalau lo ngerasa ga worth it setelah baca dan coba, chat aja. Kita proses refund tanpa ribet.</p>
+  </details>
+  <details class="faq-item">
+    <summary>Ini works di Gemini juga?</summary>
+    <p>Yes. Semua prompt di-design supaya kompatibel di ChatGPT dan Gemini. Bahkan sebagian besar juga jalan di Claude.</p>
+  </details>
+  <details class="faq-item">
+    <summary>Perlu langganan ChatGPT Plus?</summary>
+    <p>Engga. Prompt-nya works di versi gratis ChatGPT dan Gemini. Tapi kalau lo punya Plus, output-nya bakal lebih panjang dan detail.</p>
+  </details>
+  <details class="faq-item">
+    <summary>Gue pemula banget, bisa pake?</summary>
+    <p>Justru ini dibuat buat lo. Tinggal copy prompt, ganti bagian dalam kurung [ ] sesuai kebutuhan lo, paste ke AI, done.</p>
+  </details>
+  <details class="faq-item">
+    <summary>Bedanya sama prompt gratis di internet?</summary>
+    <p>Prompt di sini pake formula RICE yang terstruktur, bukan prompt random. Udah di-test output-nya dan di-organize per niche biar lo ga perlu nyari-nyari lagi.</p>
+  </details>
+</div>
+</section>
+
+<!-- ============ FINAL CTA ============ -->
+<section class="final-cta">
+<div class="container">
+  <h2>Masih Mau Buang Waktu Trial-Error Prompt?</h2>
+  <p>100 slot launch price. Begitu full, harga balik ke Rp 79.000. Lo yang tentuin.</p>
+  <a href="#beli" class="btn">BELI SEKARANG — Rp 49.000</a>
+</div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+<div class="container">
+  <p style="margin-bottom:8px"><strong>@yanzy17</strong></p>
+  <p>&copy; 2026 yanzy17. All rights reserved.</p>
+</div>
+</footer>
+
+<!-- Scroll to Top Button -->
+<button class="scroll-top" id="scrollTop" aria-label="Scroll to top">&uarr;</button>
+
+<script>
+// Scroll to top button
+const scrollBtn = document.getElementById('scrollTop');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 600) {
+    scrollBtn.classList.add('visible');
+  } else {
+    scrollBtn.classList.remove('visible');
+  }
+});
+scrollBtn.addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+</script>
+</body>
+</html>
