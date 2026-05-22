@@ -47,7 +47,7 @@ I'll tell you about it Wednesday.
 
 For now: do the hourly-rate exercise above. Reply with your number. I read every email.
 
-— Yanzy
+— esenefwork17
 
 ---
 
@@ -103,7 +103,7 @@ Cap on first-day buyers: **500 spots at $47.** After that → permanent $97.
 Friday, you'll get a sneak peek. Monday → reminder. Tuesday → live.
 
 Until then,
-— Yanzy
+— esenefwork17
 
 P.S. — Email me your #1 pain right now. I'll address it on Friday's email.
 
@@ -153,7 +153,7 @@ Tomorrow you get one more email — a sneak peek of the **7 automations** that p
 
 Then Tuesday, the OS goes live.
 
-— Yanzy
+— esenefwork17
 
 ---
 
@@ -212,7 +212,7 @@ Tuesday, 8am UTC, the full OS goes live.
 
 If you want a calendar reminder, hit reply with the word `remind` and I'll send one.
 
-— Yanzy
+— esenefwork17
 
 ---
 
@@ -250,7 +250,7 @@ Even if it only saves you 1 hour total, ever, you're still ahead of the trade.
 
 See you tomorrow.
 
-— Yanzy
+— esenefwork17
 
 P.S. — If you have any last questions, reply now. I'm answering everything tonight.
 
@@ -293,7 +293,7 @@ That's what's inside.
 
 → [BUY IT NOW]
 
-— Yanzy
+— esenefwork17
 
 P.S. — As of 8:30am, 41 spots are gone. When the counter hits 500, the price doubles. Don't wait until tomorrow.
 
@@ -332,7 +332,7 @@ You either ship a system in the next 14 days, or you ship the next book in the n
 
 Pick one.
 
-— Yanzy
+— esenefwork17
 
 P.S. — 30-day guarantee. If it doesn't save you 10+ hours in the first month, full refund. The decision is risk-free. Indecision isn't.
 
