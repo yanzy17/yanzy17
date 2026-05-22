@@ -14,15 +14,23 @@
     <style>
         /* ============================================
            AI SOLOPRENEUR OS — Landing Page Styles
+           Fallback CSS variables (work standalone)
            ============================================ */
+        :root {
+            --bg: #0f172a;
+            --gradient: linear-gradient(135deg, #a78bfa 0%, #ec4899 100%);
+            --gradient-2: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
-            background: var(--bg);
+            background: #0f172a;
             color: #e2e8f0;
             line-height: 1.6;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         }
 
         .os-header {
-            background: var(--bg);
+            background: #0f172a;
             border-bottom: 1px solid rgba(255,255,255,0.06);
             padding: 14px 16px;
             position: sticky;
@@ -63,7 +71,7 @@
         .os-hero {
             text-align: center;
             padding: 80px 20px 60px;
-            background: var(--bg);
+            background: #0f172a;
             position: relative;
             overflow: hidden;
         }
@@ -72,7 +80,7 @@
             position: absolute;
             top: -150px; right: -150px;
             width: 400px; height: 400px;
-            background: var(--gradient);
+            background: linear-gradient(135deg, #a78bfa 0%, #ec4899 100%);
             border-radius: 50%;
             filter: blur(120px);
             opacity: 0.35;
@@ -82,7 +90,7 @@
             position: absolute;
             bottom: -200px; left: -150px;
             width: 400px; height: 400px;
-            background: var(--gradient-2);
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
             border-radius: 50%;
             filter: blur(120px);
             opacity: 0.25;
