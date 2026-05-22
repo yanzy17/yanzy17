@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+<title>Panduan Master Cuan Lynk.id — YanzyStore</title>
+<meta name="description" content="Blueprint lengkap cuan dari Lynk.id untuk pemain digital Indonesia. 138 halaman, 15 bab, 5 bonus paket.">
+<meta name="theme-color" content="#0E5C3F">
+<link rel="icon" href="icon-192.png">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Panduan Master Cuan Lynk.id">
+<meta property="og:description" content="Blueprint lengkap cuan dari Si Ijo: 0 → 8 digit/bulan tanpa nampang muka.">
+<meta property="og:type" content="article">
+<meta property="og:image" content="icon-512.png">
+
+<style>
+:root {
+  --primary: #0E5C3F;
+  --primary-dark: #082f1f;
+  --primary-light: #1a8a5d;
+  --accent: #FFB800;
+  --bg: #fafaf6;
+  --bg-card: #ffffff;
+  --text: #1a1a1a;
+  --text-soft: #555;
+  --border: #e8e8df;
+  --code-bg: #f4f4ee;
+  --shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 16px rgba(0,0,0,0.04);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  font-size: 17px;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+#progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 0%;
+  background: linear-gradient(90deg, var(--primary), var(--accent));
+  z-index: 1001;
+  transition: width 0.1s ease;
+}
+
+.topnav {
+  position: sticky;
+  top: 3px;
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: saturate(180%) blur(12px);
+  -webkit-backdrop-filter: saturate(180%) blur(12px);
+  border-bottom: 1px solid var(--border);
+  z-index: 100;
+}
+
+.topnav-inner {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 12px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.brand {
+  font-weight: 800;
+  color: var(--primary);
+  text-decoration: none;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  letter-spacing: -0.01em;
+}
+
+.topnav-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.btn {
+  border: none;
+  padding: 9px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: inherit;
+  transition: all 0.15s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.btn-ghost { background: transparent; color: var(--text-soft); }
+.btn-ghost:hover { background: var(--code-bg); color: var(--primary); }
+
+.btn-primary { background: var(--primary); color: white; }
+.btn-primary:hover { background: var(--primary-dark); transform: translateY(-1px); }
+
+.cover {
+  min-height: calc(100vh - 50px);
+  background: linear-gradient(135deg, #0E5C3F 0%, #082f1f 100%);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 24px;
+  position: relative;
+  overflow: hidden;
+}
+
+.cover::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 20% 30%, rgba(255, 184, 0, 0.12) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(26, 138, 93, 0.2) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.cover-inner {
+  text-align: center;
+  max-width: 720px;
+  position: relative;
+  z-index: 1;
+}
+
+.cover-tag {
+  display: inline-block;
+  padding: 8px 18px;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 100px;
+  font-size: 12px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 28px;
+  font-weight: 600;
+}
+
+.cover-title {
+  font-size: clamp(36px, 7vw, 68px);
+  font-weight: 900;
+  line-height: 1.05;
+  margin-bottom: 24px;
+  letter-spacing: -0.025em;
+}
+
+.cover-title span {
+  background: linear-gradient(120deg, #FFB800, #FFD96B);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.cover-sub {
+  font-size: clamp(15px, 2.4vw, 21px);
+  opacity: 0.92;
+  margin-bottom: 44px;
+  font-weight: 400;
+  line-height: 1.5;
+  max-width: 560px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cover-meta {
+  display: flex;
+  justify-content: center;
+  gap: clamp(20px, 5vw, 56px);
+  margin-bottom: 44px;
+}
+
+.cover-meta-item { line-height: 1.3; }
+
+.cover-meta-num {
+  display: block;
+  font-size: clamp(28px, 5vw, 42px);
+  font-weight: 800;
+  color: var(--accent);
+  letter-spacing: -0.02em;
+}
+
+.cover-meta-label {
+  display: block;
+  font-size: 13px;
+  opacity: 0.85;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-top: 4px;
+}
+
+.cover-author {
+  margin-bottom: 32px;
+  opacity: 0.92;
+  font-size: 16px;
+}
+
+.cover-author strong {
+  font-weight: 700;
+  color: white;
+  font-size: 18px;
+  letter-spacing: 0.02em;
+}
+
+.scroll-cue {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 28px;
+  background: var(--accent);
+  color: var(--primary-dark);
+  text-decoration: none;
+  border-radius: 100px;
+  font-weight: 700;
+  font-size: 15px;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 6px 20px rgba(255, 184, 0, 0.3);
+}
+
+.scroll-cue:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 26px rgba(255, 184, 0, 0.4);
+}
+
+.reader {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 60px 24px 40px;
+}
+
+.reader h1 {
+  font-size: clamp(26px, 4.5vw, 34px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin: 64px 0 22px;
+  color: var(--primary-dark);
+  border-bottom: 3px solid var(--primary);
+  padding-bottom: 14px;
+  line-height: 1.2;
+}
+
+.reader h1:first-child { margin-top: 0; }
+
+.reader h2 {
+  font-size: clamp(20px, 3vw, 24px);
+  font-weight: 700;
+  margin: 50px 0 16px;
+  color: var(--primary);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+}
+
+.reader h3 {
+  font-size: clamp(17px, 2.4vw, 20px);
+  font-weight: 700;
+  margin: 36px 0 12px;
+  line-height: 1.4;
+  color: var(--text);
+}
+
+.reader h4 {
+  font-size: 16px;
+  font-weight: 700;
+  margin: 24px 0 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-soft);
+}
+
+.reader p { margin: 0 0 20px; }
+
+.reader ul, .reader ol { margin: 0 0 24px 24px; }
+.reader li { margin-bottom: 8px; }
+.reader li > ul, .reader li > ol { margin-top: 8px; margin-bottom: 8px; }
+
+.reader strong { color: var(--primary-dark); font-weight: 700; }
+
+.reader a {
+  color: var(--primary);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  transition: color 0.15s;
+}
+
+.reader a:hover { color: var(--primary-light); }
+
+.reader blockquote {
+  border-left: 4px solid var(--primary);
+  background: linear-gradient(90deg, rgba(14, 92, 63, 0.05), transparent);
+  padding: 18px 22px;
+  margin: 28px 0;
+  border-radius: 0 8px 8px 0;
+}
+
+.reader blockquote p:last-child { margin-bottom: 0; }
+.reader blockquote em { color: var(--text); font-style: italic; }
+
+.reader code {
+  font-family: 'SF Mono', 'JetBrains Mono', Monaco, Menlo, Consolas, monospace;
+  background: var(--code-bg);
+  padding: 2px 7px;
+  border-radius: 4px;
+  font-size: 0.88em;
+  color: var(--primary-dark);
+  border: 1px solid var(--border);
+}
+
+.reader pre {
+  background: var(--code-bg);
+  padding: 18px 22px;
+  border-radius: 10px;
+  overflow-x: auto;
+  margin: 26px 0;
+  font-size: 14px;
+  line-height: 1.6;
+  border: 1px solid var(--border);
+}
+
+.reader pre code {
+  background: transparent;
+  padding: 0;
+  color: var(--text);
+  font-size: 14px;
+  border: none;
+}
+
+.reader table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 28px 0;
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  font-size: 15px;
+  display: block;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+@media (min-width: 720px) {
+  .reader table {
+    display: table;
+    white-space: normal;
+  }
+}
+
+.reader thead { background: var(--primary); }
+.reader th {
+  background: var(--primary);
+  color: white;
+  padding: 12px 16px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.02em;
+}
+
+.reader td {
+  padding: 12px 16px;
+  border-top: 1px solid var(--border);
+  vertical-align: top;
+}
+
+.reader tbody tr:nth-child(even) td { background: rgba(0, 0, 0, 0.018); }
+
+.reader hr {
+  border: none;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border), transparent);
+  margin: 48px 0;
+}
+
+.reader > h3 ~ p:has(+ h3),
+.reader p:has(strong:only-child) { margin-bottom: 12px; }
+
+.toc-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+  z-index: 199;
+}
+
+body.toc-open .toc-overlay {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.toc {
+  position: fixed;
+  top: 0;
+  left: -340px;
+  width: 320px;
+  height: 100vh;
+  background: white;
+  padding: 80px 20px 30px;
+  overflow-y: auto;
+  z-index: 200;
+  box-shadow: 4px 0 30px rgba(0, 0, 0, 0.1);
+  transition: left 0.3s ease;
+  font-size: 14px;
+}
+
+body.toc-open .toc { left: 0; }
+
+.toc h3 {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-soft);
+  margin-bottom: 14px;
+  font-weight: 700;
+  padding: 0 12px;
+}
+
+.toc ul { list-style: none; }
+.toc li { margin: 0; }
+
+.toc a {
+  display: block;
+  padding: 7px 12px;
+  color: var(--text);
+  text-decoration: none;
+  border-radius: 6px;
+  line-height: 1.4;
+  transition: background 0.1s;
+}
+
+.toc a:hover { background: var(--code-bg); color: var(--primary); }
+
+.toc .toc-l1 a {
+  font-weight: 700;
+  color: var(--primary-dark);
+  margin-top: 6px;
+  font-size: 14px;
+}
+
+.toc .toc-l1:not(:first-child) a {
+  border-top: 1px solid var(--border);
+  padding-top: 12px;
+  margin-top: 6px;
+}
+
+.toc .toc-l2 a {
+  padding-left: 24px;
+  font-size: 13px;
+  color: var(--text-soft);
+}
+
+.loading {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--text-soft);
+}
+
+.loading::after {
+  content: "";
+  display: block;
+  width: 24px;
+  height: 24px;
+  border: 3px solid var(--border);
+  border-top-color: var(--primary);
+  border-radius: 50%;
+  margin: 16px auto 0;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.error {
+  background: #fff8f0;
+  border: 1px solid #ffd09a;
+  border-radius: 12px;
+  padding: 24px;
+  margin: 40px 0;
+}
+
+.error h2 {
+  color: #b56500;
+  margin: 0 0 12px;
+  font-size: 18px;
+}
+
+.error code {
+  display: inline-block;
+  margin-top: 6px;
+  padding: 4px 10px;
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  font-size: 13px;
+}
+
+.site-footer {
+  text-align: center;
+  padding: 56px 24px;
+  background: var(--primary-dark);
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 14px;
+  margin-top: 60px;
+}
+
+.site-footer-inner {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.site-footer p { margin-bottom: 8px; }
+.site-footer a { color: var(--accent); text-decoration: none; }
+.site-footer a:hover { text-decoration: underline; }
+
+.site-footer-divider {
+  border: none;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.1);
+  margin: 24px auto;
+  max-width: 200px;
+}
+
+@media (max-width: 640px) {
+  body { font-size: 16px; }
+  .reader { padding: 40px 20px; }
+  .reader h1 { margin: 50px 0 18px; }
+  .reader h2 { margin: 36px 0 14px; }
+  .cover { min-height: 80vh; padding: 60px 22px; }
+  .topnav-inner { padding: 10px 16px; }
+  .btn-ghost { padding: 9px 12px; font-size: 13px; }
+  .toc { width: 86vw; }
+}
+
+@media print {
+  body { background: white; font-size: 11pt; line-height: 1.5; color: black; }
+  #progress, .topnav, .toc, .toc-overlay, .scroll-cue, .site-footer, .btn { display: none !important; }
+  .cover {
+    min-height: auto;
+    padding: 50px 40px;
+    page-break-after: always;
+    background: var(--primary-dark);
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+  .cover-title { font-size: 32pt; }
+  .cover-sub { font-size: 13pt; }
+  .reader { max-width: none; margin: 0; padding: 20px 30px; }
+  .reader h1 { page-break-before: always; page-break-after: avoid; font-size: 22pt; }
+  .reader h1:first-child { page-break-before: avoid; }
+  .reader h2 { page-break-after: avoid; font-size: 16pt; }
+  .reader h3 { page-break-after: avoid; font-size: 13pt; }
+  .reader blockquote, .reader pre, .reader table, .reader ul, .reader ol { page-break-inside: avoid; }
+  .reader pre, .reader code { font-size: 9pt; }
+  .reader table { font-size: 10pt; box-shadow: none; }
+  .reader th { background: var(--primary) !important; color: white !important; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+  .reader a { color: var(--primary-dark); text-decoration: none; }
+  .reader a[href^="http"]::after { content: " (" attr(href) ")"; font-size: 9pt; color: var(--text-soft); }
+}
+</style>
+</head>
+<body>
+
+<div id="progress"></div>
+
+<nav class="topnav" role="navigation">
+  <div class="topnav-inner">
+    <a href="#cover" class="brand">📗 YanzyStore · Master Lynk.id</a>
+    <div class="topnav-actions">
+      <button class="btn btn-ghost" onclick="document.body.classList.toggle('toc-open')" aria-label="Daftar Isi">
+        <span aria-hidden="true">☰</span>
+        <span class="btn-label">Daftar Isi</span>
+      </button>
+      <button class="btn btn-primary" onclick="window.print()" aria-label="Cetak / Simpan PDF">
+        Print / PDF
+      </button>
+    </div>
+  </div>
+</nav>
+
+<div class="toc-overlay" onclick="document.body.classList.remove('toc-open')"></div>
+
+<aside class="toc" id="toc" aria-label="Daftar Isi"></aside>
+
+<header class="cover" id="cover">
+  <div class="cover-inner">
+    <div class="cover-tag">YanzyStore · Edisi 2026 · v1.0</div>
+    <h1 class="cover-title">PANDUAN MASTER<br>CUAN <span>LYNK.ID</span></h1>
+    <p class="cover-sub">Blueprint Lengkap Dari "Si Ijo": 0 → 8 Digit/Bulan Tanpa Nampang Muka</p>
+
+    <div class="cover-meta">
+      <div class="cover-meta-item">
+        <span class="cover-meta-num">138</span>
+        <span class="cover-meta-label">Halaman</span>
+      </div>
+      <div class="cover-meta-item">
+        <span class="cover-meta-num">15</span>
+        <span class="cover-meta-label">Bab Utama</span>
+      </div>
+      <div class="cover-meta-item">
+        <span class="cover-meta-num">5</span>
+        <span class="cover-meta-label">Bonus Paket</span>
+      </div>
+    </div>
+
+    <p class="cover-author">oleh <strong>Yanzy</strong> · YanzyStore</p>
+
+    <a href="#content" class="scroll-cue">↓ Mulai Baca</a>
+  </div>
+</header>
+
+<main class="reader" id="content">
+  <p class="loading">Memuat konten ebook…</p>
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <p>© 2026 <strong>YanzyStore</strong>. All rights reserved.</p>
+    <p>Personal use only · Dilarang resell mentah · Update gratis 12 bulan</p>
+    <hr class="site-footer-divider">
+    <p>📞 <a href="https://wa.me/628xxxxxxxxxx">WA Support</a> · 🛒 <a href="https://lynk.id/yanzystore">lynk.id/yanzystore</a></p>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<script>
+(function() {
+  const contentEl = document.getElementById('content');
+  const tocEl = document.getElementById('toc');
+  const progressEl = document.getElementById('progress');
+
+  function slugify(text) {
+    return (text || '').toString().toLowerCase()
+      .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/^-+|-+$/g, '')
+      .slice(0, 60);
+  }
+
+  function renderEbook(md) {
+    if (typeof marked === 'undefined') {
+      contentEl.innerHTML = '<div class="error"><h2>⚠️ Marked.js gagal dimuat</h2><p>Cek koneksi internet kamu, lalu refresh halaman.</p></div>';
+      return;
+    }
+
+    marked.setOptions({
+      gfm: true,
+      breaks: false,
+      headerIds: false,
+      mangle: false,
+      smartLists: true
+    });
+
+    const html = marked.parse(md);
+    contentEl.innerHTML = html;
+
+    // Tag chapter starts (every h1) and assign IDs
+    const h1s = contentEl.querySelectorAll('h1');
+    const h2s = contentEl.querySelectorAll('h2');
+    const allHeadings = contentEl.querySelectorAll('h1, h2');
+
+    let h1Index = 0;
+    h1s.forEach(h => {
+      if (h1Index > 0) h.classList.add('chapter-start');
+      h1Index++;
+    });
+
+    const slugCount = {};
+    allHeadings.forEach(h => {
+      let id = slugify(h.textContent);
+      if (slugCount[id] != null) {
+        slugCount[id] += 1;
+        id = id + '-' + slugCount[id];
+      } else {
+        slugCount[id] = 0;
+      }
+      h.id = id;
+    });
+
+    // Build TOC
+    const tocHTML = ['<h3>Daftar Isi</h3><ul>'];
+    allHeadings.forEach(h => {
+      // Skip the very first h1 (book title) since cover already shows it
+      if (h.tagName === 'H1' && h === h1s[0]) return;
+      const cls = h.tagName === 'H1' ? 'toc-l1' : 'toc-l2';
+      tocHTML.push(
+        '<li class="' + cls + '"><a href="#' + h.id + '">' +
+        h.textContent.replace(/[<>&]/g, c => ({'<':'&lt;','>':'&gt;','&':'&amp;'}[c])) +
+        '</a></li>'
+      );
+    });
+    tocHTML.push('</ul>');
+    tocEl.innerHTML = tocHTML.join('');
+
+    // Close TOC on link click (mobile)
+    tocEl.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => document.body.classList.remove('toc-open'));
+    });
+  }
+
+  function showError(msg) {
+    contentEl.innerHTML =
+      '<div class="error">' +
+      '<h2>⚠️ Gagal memuat konten ebook</h2>' +
+      '<p>' + msg + '</p>' +
+      '<p>Pastikan halaman ini diakses lewat web (GitHub Pages) — bukan dari file lokal.</p>' +
+      '<p>URL yang benar:<br><code>https://yanzy17.github.io/yanzy17/lynk-id-master-cuan-ebook.html</code></p>' +
+      '</div>';
+  }
+
+  // Fetch markdown source
+  fetch('./assets/ebook/lynk-id-master-cuan-ebook.md')
+    .then(r => {
+      if (!r.ok) throw new Error('HTTP ' + r.status);
+      return r.text();
+    })
+    .then(md => renderEbook(md))
+    .catch(err => {
+      console.error('Failed to load ebook markdown:', err);
+      showError('Error: ' + err.message);
+    });
+
+  // Reading progress bar
+  let ticking = false;
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      requestAnimationFrame(() => {
+        const max = document.documentElement.scrollHeight - window.innerHeight;
+        const pct = max > 0 ? Math.min(100, (window.scrollY / max) * 100) : 0;
+        progressEl.style.width = pct + '%';
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, { passive: true });
+
+  // Close TOC with Escape
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') document.body.classList.remove('toc-open');
+  });
+})();
+</script>
+
+</body>
+</html>
