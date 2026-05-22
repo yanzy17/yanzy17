@@ -344,8 +344,8 @@ COVER_HTML = """
             7 automations · 50 prompts
         </div>
         <div class="cover-author">
-            Yanzy
-            <span>YanzyStore · @yanzy17</span>
+            esenefwork17
+            <span>Digital Products · 2026</span>
         </div>
     </div>
 </div>

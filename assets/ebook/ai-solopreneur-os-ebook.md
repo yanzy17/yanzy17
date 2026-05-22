@@ -6,7 +6,7 @@
 
 ---
 
-**Author:** Yanzy
+**Author:** esenefwork17
 **Edition:** 2026 · v1.0
 **Pages (formatted):** 127
 **License:** Single-user. Sharing prohibited. Commercial use of frameworks permitted.
@@ -1459,7 +1459,7 @@ Stop reading. Start building.
 
 I'll be in your inbox in 7 days, asking what you shipped.
 
-— Yanzy
+— esenefwork17
 
 ---
 
