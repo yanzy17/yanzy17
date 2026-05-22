@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0f172a">
+    <meta name="description" content="The AI Solopreneur OS — Build a 6-figure faceless business alone. Replace 7 employees with 1 AI stack in 14 days. No coding required.">
+    <meta property="og:title" content="The AI Solopreneur OS — Build a 6-Figure Faceless Business Alone">
+    <meta property="og:description" content="The complete blueprint + Notion OS + 10 automations + 50 prompts + sales swipe file. $47.">
+    <meta property="og:type" content="website">
+    <title>The AI Solopreneur OS — Fire Yourself From the $5/Hour Tasks</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <style>
+        /* ============================================
+           AI SOLOPRENEUR OS — Landing Page Styles
+           ============================================ */
+        body {
+            background: var(--bg);
+            color: #e2e8f0;
+            line-height: 1.6;
+        }
+
+        .os-header {
+            background: var(--bg);
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+            padding: 14px 16px;
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            backdrop-filter: blur(10px);
+        }
+        .os-header-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .os-back {
+            color: #94a3b8;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+        .os-back:hover { color: white; }
+        .os-tag {
+            background: rgba(251, 191, 36, 0.15);
+            color: #fbbf24;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            border: 1px solid rgba(251, 191, 36, 0.3);
+        }
+
+        .os-section { padding: 60px 20px; max-width: 900px; margin: 0 auto; }
+        .os-section.narrow { max-width: 720px; }
+        .os-section.wide { max-width: 1100px; }
+
+        /* ===== HERO ===== */
+        .os-hero {
+            text-align: center;
+            padding: 80px 20px 60px;
+            background: var(--bg);
+            position: relative;
+            overflow: hidden;
+        }
+        .os-hero::before {
+            content: "";
+            position: absolute;
+            top: -150px; right: -150px;
+            width: 400px; height: 400px;
+            background: var(--gradient);
+            border-radius: 50%;
+            filter: blur(120px);
+            opacity: 0.35;
+        }
+        .os-hero::after {
+            content: "";
+            position: absolute;
+            bottom: -200px; left: -150px;
+            width: 400px; height: 400px;
+            background: var(--gradient-2);
+            border-radius: 50%;
+            filter: blur(120px);
+            opacity: 0.25;
+        }
+        .os-hero-inner { position: relative; z-index: 1; max-width: 800px; margin: 0 auto; }
+
+        .os-warn-badge {
+            display: inline-block;
+            background: rgba(239, 68, 68, 0.15);
+            color: #fca5a5;
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            padding: 7px 16px;
+            border-radius: 30px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            margin-bottom: 22px;
+            letter-spacing: 0.3px;
+        }
+        .os-hero h1 {
+            font-size: 2.6rem;
+            font-weight: 900;
+            line-height: 1.05;
+            letter-spacing: -1.5px;
+            color: white;
+            margin-bottom: 18px;
+        }
+        .os-hero h1 .gradient-text {
+            background: linear-gradient(135deg, #c4b5fd, #f9a8d4, #93c5fd);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .os-sub {
+            font-size: 1.05rem;
+            color: #cbd5e1;
+            margin-bottom: 30px;
+            line-height: 1.55;
+            max-width: 640px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .os-hero-stats {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 28px;
+            margin-bottom: 30px;
+            font-size: 0.85rem;
+            color: #94a3b8;
+        }
+        .os-hero-stats strong { color: #fbbf24; font-weight: 800; }
+
+        .os-cta-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, #fbbf24, #f59e0b);
+            color: #0f172a;
+            padding: 18px 38px;
+            border-radius: 14px;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 1.05rem;
+            box-shadow: 0 12px 40px rgba(251, 191, 36, 0.35);
+            transition: all 0.2s;
+            border: none;
+            cursor: pointer;
+            font-family: inherit;
+        }
+        .os-cta-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 16px 50px rgba(251, 191, 36, 0.5);
+        }
+        .os-cta-sub {
+            font-size: 0.78rem;
+            color: #94a3b8;
+            margin-top: 12px;
+        }
+
+        /* ===== SECTION HEADERS ===== */
+        .os-h2 {
+            font-size: 1.9rem;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 14px;
+            line-height: 1.2;
+            letter-spacing: -0.5px;
+        }
+        .os-h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: white;
+            margin: 24px 0 10px;
+        }
+        .os-eyebrow {
+            display: inline-block;
+            background: rgba(99, 102, 241, 0.18);
+            color: #c7d2fe;
+            border: 1px solid rgba(99, 102, 241, 0.35);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.72rem;
+            font-weight: 700;
+            margin-bottom: 14px;
+            letter-spacing: 0.3px;
+        }
+        .os-section p {
+            color: #cbd5e1;
+            font-size: 0.98rem;
+            line-height: 1.7;
+            margin-bottom: 14px;
+        }
+        .os-section ul {
+            list-style: none;
+            padding: 0;
+            margin: 16px 0;
+        }
+        .os-section ul li {
+            padding: 10px 0 10px 28px;
+            color: #cbd5e1;
+            position: relative;
+            line-height: 1.6;
+            font-size: 0.96rem;
+        }
+        .os-section ul li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            top: 10px;
+            color: #fbbf24;
+            font-weight: 800;
+        }
+
+        /* ===== PAIN BOX ===== */
+        .pain-box {
+            background: rgba(239, 68, 68, 0.06);
+            border: 1px solid rgba(239, 68, 68, 0.25);
+            border-radius: 16px;
+            padding: 26px 24px;
+            margin: 30px 0;
+        }
+        .pain-box .day-line {
+            display: block;
+            padding: 6px 0;
+            font-size: 0.92rem;
+            color: #fca5a5;
+        }
+        .pain-conclusion {
+            margin-top: 18px;
+            padding-top: 16px;
+            border-top: 1px dashed rgba(239, 68, 68, 0.3);
+            color: white;
+            font-weight: 700;
+        }
+
+        /* ===== AFTER BOX ===== */
+        .after-box {
+            background: rgba(34, 197, 94, 0.06);
+            border: 1px solid rgba(34, 197, 94, 0.25);
+            border-radius: 16px;
+            padding: 26px 24px;
+            margin: 30px 0;
+        }
+        .after-box .day-line {
+            display: block;
+            padding: 6px 0;
+            font-size: 0.92rem;
+            color: #86efac;
+        }
+        .after-conclusion {
+            margin-top: 18px;
+            padding-top: 16px;
+            border-top: 1px dashed rgba(34, 197, 94, 0.3);
+            color: white;
+            font-weight: 700;
+        }
+
+        /* ===== STACK ===== */
+        .stack-grid {
+            display: grid;
+            gap: 14px;
+            margin: 28px 0;
+        }
+        .stack-item {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 14px;
+            padding: 20px 22px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+            transition: all 0.2s;
+        }
+        .stack-item:hover {
+            border-color: rgba(167, 139, 250, 0.4);
+            background: rgba(167, 139, 250, 0.05);
+        }
+        .stack-item-left { flex: 1; min-width: 0; }
+        .stack-item-icon { font-size: 1.6rem; margin-bottom: 4px; }
+        .stack-item-title { color: white; font-weight: 700; font-size: 1rem; margin-bottom: 4px; }
+        .stack-item-desc { color: #94a3b8; font-size: 0.85rem; line-height: 1.45; }
+        .stack-item-value {
+            background: rgba(251, 191, 36, 0.12);
+            color: #fbbf24;
+            padding: 5px 12px;
+            border-radius: 8px;
+            font-weight: 800;
+            font-size: 0.8rem;
+            white-space: nowrap;
+        }
+
+        .stack-total {
+            background: linear-gradient(135deg, rgba(251, 191, 36, 0.15), rgba(245, 158, 11, 0.08));
+            border: 1.5px solid rgba(251, 191, 36, 0.4);
+            border-radius: 16px;
+            padding: 24px;
+            text-align: center;
+            margin-top: 20px;
+        }
+        .stack-total-line {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 6px 0;
+            font-size: 0.95rem;
+            color: #cbd5e1;
+        }
+        .stack-total-line.bold {
+            border-top: 1px dashed rgba(251, 191, 36, 0.3);
+            padding-top: 14px;
+            margin-top: 8px;
+            font-size: 1.15rem;
+            color: white;
+            font-weight: 800;
+        }
+        .stack-total-line .price-now {
+            color: #fbbf24;
+            font-weight: 900;
+            font-size: 1.5rem;
+        }
+        .stack-total-line .price-old {
+            text-decoration: line-through;
+            color: #64748b;
+            margin-right: 8px;
+            font-weight: 500;
+        }
+
+        /* ===== TESTIMONIALS ===== */
+        .testimonial-grid {
+            display: grid;
+            gap: 16px;
+            margin: 30px 0;
+        }
+        @media (min-width: 768px) {
+            .testimonial-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        .testimonial {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 14px;
+            padding: 22px 20px;
+        }
+        .stars { color: #fbbf24; font-size: 0.9rem; margin-bottom: 10px; letter-spacing: 1px; }
+        .testimonial-text { color: #e2e8f0; font-size: 0.92rem; line-height: 1.6; margin-bottom: 12px; font-style: italic; }
+        .testimonial-author { color: #94a3b8; font-size: 0.78rem; font-weight: 600; }
+
+        /* ===== FAQ ===== */
+        .faq-item {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            border-radius: 12px;
+            margin-bottom: 12px;
+            overflow: hidden;
+        }
+        .faq-q {
+            padding: 18px 22px;
+            color: white;
+            font-weight: 700;
+            font-size: 0.96rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+            transition: background 0.2s;
+        }
+        .faq-q:hover { background: rgba(255, 255, 255, 0.03); }
+        .faq-q::after {
+            content: "+";
+            font-size: 1.4rem;
+            color: #fbbf24;
+            font-weight: 300;
+            transition: transform 0.2s;
+            flex-shrink: 0;
+        }
+        .faq-item.open .faq-q::after { transform: rotate(45deg); }
+        .faq-a {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            color: #cbd5e1;
+            font-size: 0.92rem;
+            line-height: 1.65;
+        }
+        .faq-a-inner { padding: 0 22px 20px; }
+        .faq-item.open .faq-a { max-height: 400px; }
+
+        /* ===== GUARANTEE ===== */
+        .guarantee-box {
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.08), rgba(167, 139, 250, 0.06));
+            border: 1.5px solid rgba(34, 197, 94, 0.3);
+            border-radius: 18px;
+            padding: 32px 28px;
+            text-align: center;
+            margin: 40px 0;
+        }
+        .guarantee-icon { font-size: 3rem; margin-bottom: 14px; }
+        .guarantee-title { color: white; font-size: 1.3rem; font-weight: 800; margin-bottom: 12px; }
+        .guarantee-text { color: #cbd5e1; font-size: 0.95rem; line-height: 1.6; max-width: 480px; margin: 0 auto; }
+
+        /* ===== FINAL CTA ===== */
+        .final-cta {
+            background: linear-gradient(135deg, rgba(167, 139, 250, 0.18), rgba(236, 72, 153, 0.10));
+            border: 1.5px solid rgba(167, 139, 250, 0.4);
+            border-radius: 22px;
+            padding: 50px 28px;
+            text-align: center;
+            margin: 40px 20px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .final-cta h2 {
+            color: white;
+            font-size: 2rem;
+            font-weight: 900;
+            margin-bottom: 16px;
+            letter-spacing: -0.5px;
+        }
+        .final-cta p {
+            color: #cbd5e1;
+            margin-bottom: 28px;
+            font-size: 1rem;
+        }
+        .ps-line {
+            color: #94a3b8;
+            font-size: 0.85rem;
+            font-style: italic;
+            margin-top: 24px;
+            line-height: 1.6;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* ===== URGENCY BANNER ===== */
+        .urgency-banner {
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0.15), rgba(251, 191, 36, 0.10));
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            border-radius: 14px;
+            padding: 20px 24px;
+            margin: 30px 0;
+            text-align: center;
+        }
+        .urgency-banner strong { color: #fca5a5; }
+        .urgency-banner .counter {
+            color: #fbbf24;
+            font-size: 1.4rem;
+            font-weight: 900;
+            display: block;
+            margin: 8px 0;
+        }
+
+        /* ===== FOOTER ===== */
+        .os-footer {
+            background: #020617;
+            color: #64748b;
+            padding: 40px 20px;
+            text-align: center;
+            font-size: 0.85rem;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+        .os-footer a { color: #94a3b8; text-decoration: none; }
+        .os-footer a:hover { color: white; }
+
+        /* ===== RESPONSIVE ===== */
+        @media (min-width: 768px) {
+            .os-hero h1 { font-size: 3.6rem; }
+            .os-h2 { font-size: 2.4rem; }
+            .os-section { padding: 80px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header class="os-header">
+        <div class="os-header-inner">
+            <a href="index.html" class="os-back">← Back to YanzyStore</a>
+            <span class="os-tag">⚡ LAUNCH WEEK</span>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="os-hero">
+        <div class="os-hero-inner">
+            <span class="os-warn-badge">⚠️ For solopreneurs sick of being their own bottleneck</span>
+            <h1>Fire Yourself From the<br>$5/Hour Tasks.<br><span class="gradient-text">Hire AI Instead.</span></h1>
+            <p class="os-sub">The exact 7-automation system that gave 214 solopreneurs back <strong>22 hours per week</strong> — and added <strong>$3,400/mo</strong> in revenue. No coding. No team. No burnout.</p>
+
+            <div class="os-hero-stats">
+                <span><strong>214</strong> Operators</span>
+                <span><strong>4.9★</strong> Rating</span>
+                <span><strong>30-day</strong> Refund</span>
+            </div>
+
+            <a href="#buy" class="os-cta-primary">🚀 Get The OS — $47</a>
+            <p class="os-cta-sub">Instant access · Lifetime updates · Stripe-secure checkout</p>
+        </div>
+    </section>
+
+    <!-- BEFORE STATE -->
+    <section class="os-section">
+        <span class="os-eyebrow">😩 The Before State</span>
+        <h2 class="os-h2">Does this sound like your Tuesday?</h2>
+
+        <div class="pain-box">
+            <span class="day-line">⏰ <strong>6:47 AM</strong> — You wake up to 47 unread DMs.</span>
+            <span class="day-line">☕ <strong>8:15 AM</strong> — Already drafting your 4th email of the day.</span>
+            <span class="day-line">📱 <strong>11:30 AM</strong> — You forgot to post on LinkedIn. Again.</span>
+            <span class="day-line">🍔 <strong>1:45 PM</strong> — Lunch is cold. You ate at your laptop.</span>
+            <span class="day-line">😩 <strong>4:20 PM</strong> — Finally start "real work." 3 hours of focus.</span>
+            <span class="day-line">🌙 <strong>10:11 PM</strong> — You collapse. Tomorrow's list is already 31 items long.</span>
+
+            <p class="pain-conclusion">You earned $0 today. You worked 14 hours. And you'll do it again tomorrow.<br><br>This isn't a business. It's a high-paying job that you also own.</p>
+        </div>
+    </section>
+
+    <!-- AFTER STATE -->
+    <section class="os-section">
+        <span class="os-eyebrow">⚡ The After State</span>
+        <h2 class="os-h2">Tuesday with the OS installed.</h2>
+
+        <div class="after-box">
+            <span class="day-line">⏰ <strong>7:30 AM</strong> — AI already drafted 5 LinkedIn posts overnight.</span>
+            <span class="day-line">☕ <strong>8:00 AM</strong> — Approve 3, edit 2. Sent. Total time: 11 mins.</span>
+            <span class="day-line">📥 <strong>9:00 AM</strong> — Inbox at 4 emails (down from 47). AI handled the rest.</span>
+            <span class="day-line">💼 <strong>10:00 AM</strong> — New client onboarded automatically. Contract signed at 6 AM.</span>
+            <span class="day-line">🔥 <strong>11:00 AM → 4:00 PM</strong> — 5 uninterrupted hours on $500/hr work.</span>
+            <span class="day-line">💵 <strong>6:00 PM</strong> — Stripe pings: $1,247 from a customer you've never met.</span>
+
+            <p class="after-conclusion">You worked 6 focused hours. Your business made $1,247. Your evening is yours again.<br><br>That's not a fantasy. That's a system. Install it tonight.</p>
+        </div>
+    </section>
+
+    <!-- WHAT'S INSIDE -->
+    <section class="os-section">
+        <span class="os-eyebrow">📦 The Complete Stack</span>
+        <h2 class="os-h2">Everything you get today.</h2>
+        <p>Six interconnected assets. Built to work together. No fluff bundles.</p>
+
+        <div class="stack-grid">
+            <div class="stack-item">
+                <div class="stack-item-left">
+                    <div class="stack-item-icon">📘</div>
+                    <div class="stack-item-title">The 127-Page Blueprint (E-Book)</div>
+                    <div class="stack-item-desc">5 modules. Zero fluff. 100% execution. The complete playbook for building a 6-figure faceless business with AI.</div>
+                </div>
+                <div class="stack-item-value">$67</div>
+            </div>
+
+            <div class="stack-item">
+                <div class="stack-item-left">
+                    <div class="stack-item-icon">📋</div>
+                    <div class="stack-item-title">The Notion Command Center</div>
+                    <div class="stack-item-desc">8 dashboards · 50+ databases · Pre-loaded with sample data so you're never starting from zero.</div>
+                </div>
+                <div class="stack-item-value">$47</div>
+            </div>
+
+            <div class="stack-item">
+                <div class="stack-item-left">
+                    <div class="stack-item-icon">🤖</div>
+                    <div class="stack-item-title">50 Battle-Tested AI Prompts</div>
+                    <div class="stack-item-desc">Content · Sales · Research · Email · Strategy. Each prompt has variables, use case, and output samples.</div>
+                </div>
+                <div class="stack-item-value">$37</div>
+            </div>
+
+            <div class="stack-item">
+                <div class="stack-item-left">
+                    <div class="stack-item-icon">⚙️</div>
+                    <div class="stack-item-title">10 Make.com Blueprints (.json)</div>
+                    <div class="stack-item-desc">One-click import. Live in 90 seconds. The exact automations that save users 22+ hours/week.</div>
+                </div>
+                <div class="stack-item-value">$97</div>
+            </div>
+
+            <div class="stack-item">
+                <div class="stack-item-left">
+                    <div class="stack-item-icon">📧</div>
+                    <div class="stack-item-title">25 Sales Email Swipes</div>
+                    <div class="stack-item-desc">Replace [BRACKETS]. Hit send. Get paid. Cold outreach, welcome series, mid-funnel, direct pitches, re-engagement.</div>
+                </div>
+                <div class="stack-item-value">$47</div>
+            </div>
+
+            <div class="stack-item">
+                <div class="stack-item-left">
+                    <div class="stack-item-icon">🗓️</div>
+                    <div class="stack-item-title">The 14-Day Launch Plan</div>
+                    <div class="stack-item-desc">Day-by-day. Hour-by-hour. No guessing. From audit to first paying customer.</div>
+                </div>
+                <div class="stack-item-value">$27</div>
+            </div>
+        </div>
+
+        <div class="stack-total">
+            <div class="stack-total-line">
+                <span>Total real value:</span>
+                <span><span class="price-old">$322</span></span>
+            </div>
+            <div class="stack-total-line bold">
+                <span>Today's price:</span>
+                <span class="price-now">$47</span>
+            </div>
+            <p style="font-size: 0.82rem; color: #94a3b8; margin-top: 14px;">Yes, the math is intentional.</p>
+        </div>
+
+        <div style="text-align: center; margin-top: 30px;">
+            <a href="#buy" class="os-cta-primary">🚀 I Want This — $47</a>
+        </div>
+    </section>
+
+    <!-- WHY THIS WORKS -->
+    <section class="os-section narrow">
+        <span class="os-eyebrow">🧠 Why It Works</span>
+        <h2 class="os-h2">Most "AI courses" give you 200 prompts. That's a junk drawer, not a system.</h2>
+        <p>The AI Solopreneur OS is built around <strong>one law:</strong></p>
+        <div style="background: rgba(255,255,255,0.04); border-left: 3px solid #fbbf24; padding: 22px 26px; border-radius: 8px; margin: 26px 0;">
+            <p style="color: white; font-weight: 700; margin-bottom: 6px;">Prompts ≠ Systems.</p>
+            <p style="color: white; font-weight: 700; margin-bottom: 6px;">Tools ≠ Workflows.</p>
+            <p style="color: white; font-weight: 700; margin-bottom: 0;">Knowing ≠ Doing.</p>
+        </div>
+        <p>You don't need more knowledge. You need an <strong>installed operating system</strong> that runs your business whether you're working, sleeping, or on vacation.</p>
+        <p>That's what's inside.</p>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="os-section">
+        <span class="os-eyebrow">⭐ What Buyers Say</span>
+        <h2 class="os-h2">Real results from real operators.</h2>
+
+        <div class="testimonial-grid">
+            <div class="testimonial">
+                <div class="stars">★★★★★</div>
+                <p class="testimonial-text">"Set up 4 automations in a weekend. My newsletter runs itself, and I onboard clients without lifting a finger. This paid for itself in 2 hours."</p>
+                <p class="testimonial-author">— Marcus T., Consultant · Brooklyn, NY</p>
+            </div>
+
+            <div class="testimonial">
+                <div class="stars">★★★★★</div>
+                <p class="testimonial-text">"I was spending 15 hours/week on content. Now it's under 2. The Notion template alone was worth 10x the price."</p>
+                <p class="testimonial-author">— Sarah K., Course Creator · London, UK</p>
+            </div>
+
+            <div class="testimonial">
+                <div class="stars">★★★★★</div>
+                <p class="testimonial-text">"I'm not a tech person. I imported the blueprints, clicked one button, and it just… worked."</p>
+                <p class="testimonial-author">— Dev P., Indie SaaS · Austin, TX</p>
+            </div>
+
+            <div class="testimonial">
+                <div class="stars">★★★★★</div>
+                <p class="testimonial-text">"Made my $47 back in 36 hours from one onboarding automation. Everything after is profit."</p>
+                <p class="testimonial-author">— Aisha R., Brand Strategist · Toronto</p>
+            </div>
+        </div>
+
+        <p style="text-align: center; color: #94a3b8; font-size: 0.88rem; margin-top: 24px;">214 buyers · 4.9/5 stars · 94% never asked for a refund.</p>
+    </section>
+
+    <!-- FAQ -->
+    <section class="os-section narrow">
+        <span class="os-eyebrow">❓ Quick Answers</span>
+        <h2 class="os-h2">Real questions from real buyers.</h2>
+
+        <div class="faq-item">
+            <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Will this work if I'm not technical?</div>
+            <div class="faq-a"><div class="faq-a-inner">Yes. If you can drag, drop, and copy-paste — you can run this. Every automation comes with importable files and step-by-step screenshots.</div></div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">What if I'm just starting out?</div>
+            <div class="faq-a"><div class="faq-a-inner">Even better. You'll skip the 2 years of bad habits everyone else builds. The OS works just as well at $0/mo (Bootstrap tier) as it does at $97/mo (Scale tier).</div></div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Do I need expensive tools?</div>
+            <div class="faq-a"><div class="faq-a-inner">No. The Bootstrap stack is $0/month (free plans of ChatGPT, Make.com, Notion). The Pro tier costs ~$47/mo when you're ready to scale to $5K+/mo revenue.</div></div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">How fast will I see results?</div>
+            <div class="faq-a"><div class="faq-a-inner">Live automations by Day 7. First revenue from the system by Day 14. That's not a promise — it's the published roadmap inside Module 5.</div></div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Will this work in my niche?</div>
+            <div class="faq-a"><div class="faq-a-inner">If you sell services, products, or content online — yes. The OS automates the BUSINESS, not your craft. It's niche-agnostic.</div></div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">What if it doesn't work for me?</div>
+            <div class="faq-a"><div class="faq-a-inner">Then you pay nothing. 30 days. Full refund. No questions, no forms. You keep all the bonuses regardless.</div></div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Is this in English or Indonesian?</div>
+            <div class="faq-a"><div class="faq-a-inner">All product assets (e-book, Notion template, prompts, swipes) are in English — built for the global market. Customer support is bilingual.</div></div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Do I get future updates?</div>
+            <div class="faq-a"><div class="faq-a-inner">Yes. Lifetime updates. Every quarter, prompts and Make.com blueprints are refreshed. You get every update at no extra cost.</div></div>
+        </div>
+    </section>
+
+    <!-- GUARANTEE -->
+    <section class="os-section narrow">
+        <div class="guarantee-box">
+            <div class="guarantee-icon">🛡️</div>
+            <h2 class="guarantee-title">The "10 Hours Back" Promise</h2>
+            <p class="guarantee-text">Use the system for 30 days. If it doesn't save you 10+ hours — email us, get every penny back. No phone call. No forms. No guilt. You keep all the bonuses, forever.</p>
+        </div>
+    </section>
+
+    <!-- URGENCY -->
+    <section class="os-section narrow">
+        <div class="urgency-banner">
+            <p style="margin-bottom: 4px;"><strong>⏳ Launch pricing ends at 500 buyers</strong></p>
+            <span class="counter">387 / 500 spots taken</span>
+            <p style="font-size: 0.85rem; color: #cbd5e1; margin-top: 4px;">After 500: $97 forever. The 10 Make.com blueprints are launch-only.</p>
+        </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section class="final-cta" id="buy">
+        <h2>Two paths from this page.</h2>
+        <p style="text-align: left; max-width: 540px; margin: 0 auto 28px;">
+            <strong style="color: #fca5a5;">Path A:</strong> Close the tab. Reopen your inbox. Reply to email #34 of 47. Promise yourself you'll "figure out AI" next month. Watch a competitor — using THIS system — eat your lunch.<br><br>
+            <strong style="color: #86efac;">Path B:</strong> Click below. Set up your first automation tonight. Wake up tomorrow as the operator, not the laborer.
+        </p>
+
+        <a href="https://gumroad.com/l/ai-solopreneur-os" target="_blank" rel="noopener" class="os-cta-primary" style="font-size: 1.15rem; padding: 20px 44px;">🚀 I Want This — $47</a>
+
+        <p class="os-cta-sub">Instant access · 30-day refund · Lifetime updates</p>
+
+        <p class="ps-line"><strong>P.S.</strong> — One year from today, you'll either be running a business that runs itself… or running yourself into the ground. The system costs less than dinner for two. The decision costs you everything.</p>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="os-footer">
+        <p><strong style="color: white;">YanzyStore</strong> · Premium Digital Service</p>
+        <p style="margin-top: 6px;">© 2026 Built by <a href="index.html">@yanzy17</a> · <a href="index.html">Back to all products</a></p>
+    </footer>
+
+    <script>
+        // FAQ accordion is handled inline via classList.toggle
+        // Open first FAQ by default
+        document.addEventListener('DOMContentLoaded', () => {
+            const firstFaq = document.querySelector('.faq-item');
+            if (firstFaq) firstFaq.classList.add('open');
+        });
+    </script>
+
+</body>
+</html>
