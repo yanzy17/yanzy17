@@ -1,0 +1,142 @@
+<!doctype html><html lang="id"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<title>Hook Caption CTA</title><style>
+:root{
+  --navy:#0E1525; --purple:#6C5CE7; --purple-soft:#efeafe; --mint:#00D1B2;
+  --bg:#F5F7FB; --card:#ffffff; --text:#1A1A2E; --muted:#6B7280; --line:#e6e8ef;
+  --coral:#FF7A59; --warn:#fff4ed; --warn-line:#ffb38a; --ok:#e9fbf6;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--bg); color:var(--text);
+  font-family:'Inter','Work Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+  line-height:1.65; font-size:16px;
+}
+.wrap{max-width:820px; margin:0 auto; padding:28px 22px 80px;}
+h1,h2,h3,h4{font-family:'Poppins','Sora',sans-serif; line-height:1.25; font-weight:600;}
+/* HERO COVER (first h1) */
+.hero{
+  background:linear-gradient(135deg,#0E1525 0%,#241b4d 55%,#6C5CE7 100%);
+  color:#fff; border-radius:24px; padding:48px 32px; margin:6px 0 30px;
+  box-shadow:0 18px 40px rgba(108,92,231,.25); position:relative; overflow:hidden;
+}
+.hero:before{content:"";position:absolute;right:-60px;top:-60px;width:200px;height:200px;
+  background:radial-gradient(circle,rgba(0,209,178,.45),transparent 70%);}
+.hero h1{font-size:2.5rem; margin:0 0 10px; letter-spacing:-.5px;}
+.hero .sub{font-size:1.1rem; opacity:.95; font-family:'Inter',sans-serif; font-weight:500;}
+.hero .pill{display:inline-block; background:rgba(255,255,255,.15); border:1px solid rgba(255,255,255,.3);
+  padding:6px 14px; border-radius:999px; font-size:.8rem; margin-bottom:18px; font-family:'Inter',sans-serif;}
+/* SECTION h2 */
+h2{font-size:1.5rem; margin:42px 0 6px; padding-bottom:8px; position:relative;}
+h2:after{content:"";display:block;width:54px;height:4px;border-radius:4px;
+  background:linear-gradient(90deg,var(--purple),var(--mint)); margin-top:10px;}
+/* CARD (each h3 opens a card) */
+.card{background:var(--card); border:1px solid var(--line); border-radius:16px;
+  padding:18px 20px; margin:16px 0; box-shadow:0 4px 16px rgba(16,21,37,.05);
+  border-left:5px solid var(--purple);}
+.card h3{margin:0 0 8px; font-size:1.15rem; color:var(--navy);}
+.card h3 .num{display:inline-flex;align-items:center;justify-content:center;
+  width:30px;height:30px;border-radius:50%;background:var(--purple-soft);color:var(--purple);
+  font-size:.9rem;margin-right:8px;font-weight:700;}
+p{margin:8px 0;}
+ul,ol{margin:8px 0; padding-left:22px;}
+li{margin:5px 0;}
+strong{color:var(--navy);}
+em{color:var(--muted);}
+a{color:var(--purple);}
+hr{border:none; border-top:1px dashed var(--line); margin:30px 0;}
+/* blockquote -> highlight/callout */
+blockquote{margin:14px 0; padding:14px 18px; background:var(--purple-soft);
+  border-left:4px solid var(--purple); border-radius:0 12px 12px 0; color:var(--navy); font-weight:500;}
+blockquote p{margin:4px 0;}
+/* code block -> sticky note (prompt) */
+pre{background:#0E1525; color:#e8eaff; border-radius:14px; padding:16px 18px; overflow:auto;
+  font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:.85rem; line-height:1.5;
+  border:1px solid #232a44; position:relative;}
+pre:before{content:"PROMPT — tap & copy"; position:absolute; top:8px; right:14px; font-size:.62rem;
+  color:#8b93c7; letter-spacing:1px; font-family:'Inter',sans-serif;}
+code{background:#eef0f7; padding:2px 6px; border-radius:6px; font-size:.88em;}
+pre code{background:none; padding:0;}
+/* tables */
+table{width:100%; border-collapse:collapse; margin:16px 0; font-size:.92rem;
+  background:#fff; border-radius:12px; overflow:hidden; box-shadow:0 4px 14px rgba(16,21,37,.05);}
+th{background:var(--navy); color:#fff; text-align:left; padding:11px 12px; font-family:'Poppins',sans-serif; font-size:.85rem;}
+td{padding:10px 12px; border-top:1px solid var(--line); vertical-align:top;}
+tr:nth-child(even) td{background:#fafbfe;}
+/* checklist */
+.check{list-style:none; padding-left:0;}
+.check li{position:relative; padding:8px 8px 8px 38px; margin:6px 0; background:#fff;
+  border:1px solid var(--line); border-radius:10px;}
+.check li:before{content:""; position:absolute; left:11px; top:50%; transform:translateY(-50%);
+  width:18px;height:18px;border:2px solid var(--mint);border-radius:5px;}
+/* designer note (VISUAL) - hidden when printing */
+.vnote{background:repeating-linear-gradient(45deg,#fffbe6,#fffbe6 10px,#fff6cf 10px,#fff6cf 20px);
+  border:1px dashed #e3c84d; border-radius:12px; padding:12px 16px; margin:14px 0;
+  font-size:.85rem; color:#7a6a16;}
+.vnote b{color:#5c5210;}
+.vtag{display:inline-block;background:#e3c84d;color:#3d3500;font-size:.65rem;font-weight:700;
+  padding:2px 8px;border-radius:6px;margin-right:8px;letter-spacing:.5px;}
+/* footer */
+.foot{margin-top:50px;padding-top:18px;border-top:1px solid var(--line);
+  color:var(--muted);font-size:.8rem;text-align:center;}
+@media (max-width:520px){
+  .hero{padding:34px 22px;} .hero h1{font-size:1.9rem;}
+  .wrap{padding:18px 14px 60px;} body{font-size:15px;}
+}
+@media print{
+  body{background:#fff;}
+  .vnote,.no-print,.printhint{display:none !important;}
+  .hero{box-shadow:none; -webkit-print-color-adjust:exact; print-color-adjust:exact;}
+  .card,table,pre{box-shadow:none; break-inside:avoid;}
+  h2{break-after:avoid;}
+}
+.printhint{background:var(--ok);border:1px solid var(--mint);border-radius:10px;
+  padding:10px 14px;font-size:.82rem;margin:0 0 18px;color:#06715f;}
+@page{margin:14mm;}
+</style></head><body><div class="wrap">
+<div class="printhint no-print">Tips: untuk jadikan PDF → menu browser → <b>Print</b> → <b>Save as PDF</b>. Catatan desain kuning otomatis hilang di PDF.</div>
+<div class="hero"><div class="pill">Starter Kit Pemula</div><h1>20 HOOK + 20 CAPTION + 15 CTA</h1><div class="sub">Bagian dari &quot;MULAI DARI NOL&quot;</div></div>
+<blockquote><p>Tinggal copy, ganti dikit biar sesuai gaya kamu, lalu posting.</p></blockquote>
+<div class="vnote"><span class="vtag">VISUAL</span>Bagi 3 section dengan header besar. Tiap item dalam card kecil bernomor. Hook pakai background bold, caption pakai card teks, CTA pakai badge/button style.</div>
+<hr>
+<h2>A. 20 HOOK (bikin berhenti scroll)</h2>
+<ol><li>Kamu bukan males. Kamu cuma gak tau mulai dari mana.</li><li>Saved kamu penuh konten cuan, tapi belum bikin apa-apa?</li><li>Bingung mau jual apa? Wajar. Ini cara nemuinnya.</li><li>Gak punya laptop? Tetep bisa bikin produk digital dari HP.</li><li>Nunggu jago dulu = nunggu selamanya.</li><li>Produk digital pertamaku biasa aja. Tapi itu awal semuanya.</li><li>Berhenti nyari ide sempurna. Mulai dari yang cukup dulu.</li><li>Modal HP, tapi jangan asal mulai.</li><li>Hal yang paling bikin pemula nyerah: halaman kosong.</li><li>Udah berapa bulan kamu bilang &quot;nanti aja&quot;?</li><li>Kebanyakan nonton, kurang praktek. Relate?</li><li>Ini bukan e-book yang dibaca terus lupa.</li><li>6 bulan nonton tutorial, 0 produk. Sampai aku ubah 1 hal.</li><li>Takut gak laku itu wajar. Tapi ada cara amannya.</li><li>Kamu gak butuh ribuan followers buat jual produk pertama.</li><li>Salah satu ide produk yang gampang dibuat pemula:</li><li>Cara balas komen &quot;mau&quot; tanpa keliatan kaku:</li><li>Tanda kamu sebenernya udah siap mulai (tapi nunda terus).</li><li>Jualan digital itu gak harus pake muka kok.</li><li>Kalau bingungnya soal &quot;mulai dari mana&quot;, ini buat kamu.</li></ol>
+<hr>
+<h2>B. 20 CAPTION SOFT SELLING</h2>
+<ol><li>Dulu aku paling stuck di pertanyaan &quot;mau jual apa&quot;. Akhirnya aku kumpulin semua yang aku pelajarin jadi satu kit. Kalau kamu lagi di fase itu, mungkin ngebantu. Cek bio.</li></ol>
+<ol><li>Banyak yang ngira jualan produk digital itu ribet. Padahal yang ribet cuma di awal: nentuin langkah. Setelah ada peta, sisanya ngalir. Petanya udah aku siapin.</li></ol>
+<ol><li>Gak ada yang minta kamu jago dari hari pertama. Kamu cuma butuh produk pertama yang kelar. Sisanya belajar sambil jalan.</li></ol>
+<ol><li>Hal yang dulu bikin aku nunda: takut salah pilih produk. Makanya aku bikin template validasi ide — biar kamu yakin sebelum cape bikin.</li></ol>
+<ol><li>Kalau kamu sering mikir &quot;kayaknya seru jualan digital&quot; tapi gak pernah mulai, masalahnya bukan niat. Tapi langkah. Dan itu yang bisa dibenerin.</li></ol>
+<ol><li>Aku gak jualan mimpi cepat kaya. Aku cuma bantu kamu keluar dari fase bingung. Sisanya tetap soal kamu mau eksekusi atau enggak.</li></ol>
+<ol><li>Produk pertama gak harus keren. Harus kelar dulu. Yang keren itu nanti, pas kamu udah jalan.</li></ol>
+<ol><li>Yang bikin pemula nyerah biasanya bukan idenya, tapi rasa &quot;aku harus mulai dari nol banget&quot;. Nah, kit ini bikin kamu gak mulai dari nol.</li></ol>
+<ol><li>Pernah ngerasa produktif gara-gara nonton banyak konten, padahal gak ngapa-ngapain? Aku juga dulu gitu. Sampai mulai eksekusi satu hal kecil.</li></ol>
+<ol><li>Jualan tanpa maksa itu mungkin. Caranya: lebih banyak bantu, dikit jualan. Aku jelasin pelan-pelan di panduannya.</li></ol>
+<ol><li>Kalau kamu mau mulai jualan digital tapi takut diketawain, tenang. Banyak yang mulai diam-diam dulu. Yang penting jalan.</li></ol>
+<ol><li>Template caption, script DM, checklist — kedengeran sepele, tapi ini yang bikin kamu gak buntu pas eksekusi.</li></ol>
+<ol><li>Aku sengaja bikin ini ringan dibaca. Soalnya pemula gak butuh teori berat, butuh langkah yang bisa langsung dicoba.</li></ol>
+<ol><li>Satu hal yang aku pelajarin: orang gak beli produk, mereka beli solusi buat masalahnya. Jadi mulai dari masalah, bukan dari &quot;pengen jualan&quot;.</li></ol>
+<ol><li>Buat yang sibuk: produk digital bisa dicicil 30 menit sehari. Gak harus seharian. Yang penting konsisten.</li></ol>
+<ol><li>Dulu aku pikir harus viral dulu baru bisa jual. Salah. Produk pertamaku laku ke orang yang udah kenal aku duluan.</li></ol>
+<ol><li>Kalau kamu udah lama mikir &quot;kapan ya mulai&quot;, mungkin jawabannya: sekarang, pelan-pelan, dari satu langkah kecil.</li></ol>
+<ol><li>Aku taruh semua yang aku harap ada pas aku mulai dulu di kit ini. Biar kamu gak perlu nyari berserakan kayak aku.</li></ol>
+<ol><li>Gak semua orang cocok beli ini. Kalau kamu nyari cara instan, ini bukan buat kamu. Tapi kalau kamu beneran niat mulai, ini bisa bantu.</li></ol>
+<ol><li>Mulai itu nakutin karena terasa gede. Padahal kalau dipecah jadi langkah kecil, jadi jauh lebih ringan. Itu yang kit ini lakuin.</li></ol>
+<hr>
+<h2>C. 15 CTA</h2>
+<p><strong>CTA halus</strong></p>
+<ol><li>Kalau ngerasa relate, mungkin ini cocok buat kamu. Cek bio ya.</li><li>Gak usah buru-buru. Tapi kalau udah siap mulai, link-nya di bio.</li></ol>
+<p><strong>CTA komentar</strong></p>
+<ol><li>Komen &quot;mulai&quot; kalau mau aku kirimin info lengkapnya.</li><li>Tulis &quot;gue banget&quot; di komen kalau ini relate sama kamu.</li><li>Komen &quot;HP&quot; kalau mau panduan bikin produk dari HP.</li></ol>
+<p><strong>CTA DM</strong></p>
+<ol><li>DM aku &quot;cocok gak&quot; — nanti aku jujur jawab cocok atau enggak buat kamu.</li><li>Mau spill isinya? DM &quot;spill&quot;.</li><li>Ada yang mau ditanya? DM aja, santai.</li></ol>
+<p><strong>CTA cek link bio</strong></p>
+<ol><li>Selengkapnya ada di link bio.</li><li>Aku taruh semua detailnya di bio. Cek pelan-pelan.</li></ol>
+<p><strong>CTA scarcity tipis (jujur)</strong></p>
+<ol><li>Harga early bird masih jalan sampai [tanggal]. Setelah itu balik normal.</li><li>Promo launching cuma buat [jumlah] pembeli pertama.</li></ol>
+<p><strong>CTA edukatif</strong></p>
+<ol><li>Save dulu postingan ini, baru praktek pelan-pelan.</li><li>Coba langkah pertamanya hari ini, sebelum lupa.</li><li>Kalau mau versi lengkap + template-nya, semua udah aku rapikan di kit. Cek bio.</li></ol><div class="foot">MULAI DARI NOL — Starter Kit Jualan Produk Digital dari HP</div></div></body></html>

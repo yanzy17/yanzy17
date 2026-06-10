@@ -1,0 +1,139 @@
+<!doctype html><html lang="id"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<title>Kalender Konten 14 Hari</title><style>
+:root{
+  --navy:#0E1525; --purple:#6C5CE7; --purple-soft:#efeafe; --mint:#00D1B2;
+  --bg:#F5F7FB; --card:#ffffff; --text:#1A1A2E; --muted:#6B7280; --line:#e6e8ef;
+  --coral:#FF7A59; --warn:#fff4ed; --warn-line:#ffb38a; --ok:#e9fbf6;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--bg); color:var(--text);
+  font-family:'Inter','Work Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+  line-height:1.65; font-size:16px;
+}
+.wrap{max-width:820px; margin:0 auto; padding:28px 22px 80px;}
+h1,h2,h3,h4{font-family:'Poppins','Sora',sans-serif; line-height:1.25; font-weight:600;}
+/* HERO COVER (first h1) */
+.hero{
+  background:linear-gradient(135deg,#0E1525 0%,#241b4d 55%,#6C5CE7 100%);
+  color:#fff; border-radius:24px; padding:48px 32px; margin:6px 0 30px;
+  box-shadow:0 18px 40px rgba(108,92,231,.25); position:relative; overflow:hidden;
+}
+.hero:before{content:"";position:absolute;right:-60px;top:-60px;width:200px;height:200px;
+  background:radial-gradient(circle,rgba(0,209,178,.45),transparent 70%);}
+.hero h1{font-size:2.5rem; margin:0 0 10px; letter-spacing:-.5px;}
+.hero .sub{font-size:1.1rem; opacity:.95; font-family:'Inter',sans-serif; font-weight:500;}
+.hero .pill{display:inline-block; background:rgba(255,255,255,.15); border:1px solid rgba(255,255,255,.3);
+  padding:6px 14px; border-radius:999px; font-size:.8rem; margin-bottom:18px; font-family:'Inter',sans-serif;}
+/* SECTION h2 */
+h2{font-size:1.5rem; margin:42px 0 6px; padding-bottom:8px; position:relative;}
+h2:after{content:"";display:block;width:54px;height:4px;border-radius:4px;
+  background:linear-gradient(90deg,var(--purple),var(--mint)); margin-top:10px;}
+/* CARD (each h3 opens a card) */
+.card{background:var(--card); border:1px solid var(--line); border-radius:16px;
+  padding:18px 20px; margin:16px 0; box-shadow:0 4px 16px rgba(16,21,37,.05);
+  border-left:5px solid var(--purple);}
+.card h3{margin:0 0 8px; font-size:1.15rem; color:var(--navy);}
+.card h3 .num{display:inline-flex;align-items:center;justify-content:center;
+  width:30px;height:30px;border-radius:50%;background:var(--purple-soft);color:var(--purple);
+  font-size:.9rem;margin-right:8px;font-weight:700;}
+p{margin:8px 0;}
+ul,ol{margin:8px 0; padding-left:22px;}
+li{margin:5px 0;}
+strong{color:var(--navy);}
+em{color:var(--muted);}
+a{color:var(--purple);}
+hr{border:none; border-top:1px dashed var(--line); margin:30px 0;}
+/* blockquote -> highlight/callout */
+blockquote{margin:14px 0; padding:14px 18px; background:var(--purple-soft);
+  border-left:4px solid var(--purple); border-radius:0 12px 12px 0; color:var(--navy); font-weight:500;}
+blockquote p{margin:4px 0;}
+/* code block -> sticky note (prompt) */
+pre{background:#0E1525; color:#e8eaff; border-radius:14px; padding:16px 18px; overflow:auto;
+  font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:.85rem; line-height:1.5;
+  border:1px solid #232a44; position:relative;}
+pre:before{content:"PROMPT — tap & copy"; position:absolute; top:8px; right:14px; font-size:.62rem;
+  color:#8b93c7; letter-spacing:1px; font-family:'Inter',sans-serif;}
+code{background:#eef0f7; padding:2px 6px; border-radius:6px; font-size:.88em;}
+pre code{background:none; padding:0;}
+/* tables */
+table{width:100%; border-collapse:collapse; margin:16px 0; font-size:.92rem;
+  background:#fff; border-radius:12px; overflow:hidden; box-shadow:0 4px 14px rgba(16,21,37,.05);}
+th{background:var(--navy); color:#fff; text-align:left; padding:11px 12px; font-family:'Poppins',sans-serif; font-size:.85rem;}
+td{padding:10px 12px; border-top:1px solid var(--line); vertical-align:top;}
+tr:nth-child(even) td{background:#fafbfe;}
+/* checklist */
+.check{list-style:none; padding-left:0;}
+.check li{position:relative; padding:8px 8px 8px 38px; margin:6px 0; background:#fff;
+  border:1px solid var(--line); border-radius:10px;}
+.check li:before{content:""; position:absolute; left:11px; top:50%; transform:translateY(-50%);
+  width:18px;height:18px;border:2px solid var(--mint);border-radius:5px;}
+/* designer note (VISUAL) - hidden when printing */
+.vnote{background:repeating-linear-gradient(45deg,#fffbe6,#fffbe6 10px,#fff6cf 10px,#fff6cf 20px);
+  border:1px dashed #e3c84d; border-radius:12px; padding:12px 16px; margin:14px 0;
+  font-size:.85rem; color:#7a6a16;}
+.vnote b{color:#5c5210;}
+.vtag{display:inline-block;background:#e3c84d;color:#3d3500;font-size:.65rem;font-weight:700;
+  padding:2px 8px;border-radius:6px;margin-right:8px;letter-spacing:.5px;}
+/* footer */
+.foot{margin-top:50px;padding-top:18px;border-top:1px solid var(--line);
+  color:var(--muted);font-size:.8rem;text-align:center;}
+@media (max-width:520px){
+  .hero{padding:34px 22px;} .hero h1{font-size:1.9rem;}
+  .wrap{padding:18px 14px 60px;} body{font-size:15px;}
+}
+@media print{
+  body{background:#fff;}
+  .vnote,.no-print,.printhint{display:none !important;}
+  .hero{box-shadow:none; -webkit-print-color-adjust:exact; print-color-adjust:exact;}
+  .card,table,pre{box-shadow:none; break-inside:avoid;}
+  h2{break-after:avoid;}
+}
+.printhint{background:var(--ok);border:1px solid var(--mint);border-radius:10px;
+  padding:10px 14px;font-size:.82rem;margin:0 0 18px;color:#06715f;}
+@page{margin:14mm;}
+</style></head><body><div class="wrap">
+<div class="printhint no-print">Tips: untuk jadikan PDF → menu browser → <b>Print</b> → <b>Save as PDF</b>. Catatan desain kuning otomatis hilang di PDF.</div>
+<div class="hero"><div class="pill">Starter Kit Pemula</div><h1>KALENDER KONTEN 14 HARI</h1><div class="sub">Bagian dari &quot;MULAI DARI NOL&quot;</div></div>
+<blockquote><p>Funnel 2 minggu: dari kenalin masalah → bangun trust → kasih solusi → soft selling → closing.</p><p>Tiap hari: Tema · Hook · Isi singkat · CTA · Tujuan · Platform · Intent.</p></blockquote>
+<div class="vnote"><span class="vtag">VISUAL</span>Buat jadi tabel/kartu per hari. Warnain per fase: Hari 1-3 (biru), 4-6 (hijau), 7-9 (kuning), 10-12 (oranye), 13-14 (merah/brand). Tambah label fase di header.</div>
+<hr>
+<h2>FASE 1 — EDUKASI MASALAH (Hari 1-3)</h2>
+<p><strong>Hari 1 — Kenalin masalah</strong></p>
+<ul><li>Tema: Kamu bukan males</li><li>Hook: &quot;Kamu bukan males. Kamu cuma gak tau mulai dari mana.&quot;</li><li>Isi: Bahas kenapa pemula stuck di awal.</li><li>CTA: &quot;Relate? Komen &#x27;gue banget&#x27;.&quot;</li><li>Tujuan: Tarik perhatian + validasi</li><li>Platform: Threads / IG caption</li><li>Intent: 🟡 sedang</li></ul>
+<p><strong>Hari 2 — Cermin diri</strong></p>
+<ul><li>Tema: Nonton doang, eksekusi nol</li><li>Hook: &quot;Saved penuh video cuan, tapi belum bikin apa-apa?&quot;</li><li>Isi: Nonton ≠ progress.</li><li>CTA: &quot;Save &amp; tag temen yang gini juga.&quot;</li><li>Tujuan: Bikin sadar</li><li>Platform: TikTok / Reels</li><li>Intent: 🟢 tinggi</li></ul>
+<p><strong>Hari 3 — Akar masalah</strong></p>
+<ul><li>Tema: Bingung mau jual apa</li><li>Hook: &quot;Alasan #1 orang gak mulai jualan digital: bingung mau jual apa.&quot;</li><li>Isi: Wajar, ada caranya.</li><li>CTA: &quot;Besok aku spill caranya, follow biar gak ketinggalan.&quot;</li><li>Tujuan: Bikin nungguin</li><li>Platform: IG / Threads</li><li>Intent: 🟡 sedang</li></ul>
+<h2>FASE 2 — BANGUN TRUST (Hari 4-6)</h2>
+<p><strong>Hari 4 — Berbagi ilmu</strong></p>
+<ul><li>Tema: Cara milih ide produk</li><li>Hook: &quot;Bingung mau jual apa? Jawab 3 pertanyaan ini.&quot;</li><li>Isi: 3 pertanyaan pemilihan ide (kasih gratis).</li><li>CTA: &quot;Save buat dipraktekin.&quot;</li><li>Tujuan: Buktikan kamu ngebantu</li><li>Platform: IG carousel / TikTok</li><li>Intent: 🟢 tinggi</li></ul>
+<p><strong>Hari 5 — Jujur &amp; realistis</strong></p>
+<ul><li>Tema: Aku gak janji kamu kaya</li><li>Hook: &quot;Aku gak bakal bilang kamu auto cuan.&quot;</li><li>Isi: Ekspektasi realistis = kepercayaan.</li><li>CTA: &quot;Setuju? Komen.&quot;</li><li>Tujuan: Bangun kredibilitas</li><li>Platform: Threads / IG</li><li>Intent: 🟢 tinggi</li></ul>
+<p><strong>Hari 6 — Cerita personal</strong></p>
+<ul><li>Tema: Kenapa aku mulai</li><li>Hook: &quot;Produk digital pertamaku biasa aja. Tapi itu titik baliknya.&quot;</li><li>Isi: Cerita jujur mulai dari kecil.</li><li>CTA: &quot;Mulai kecil itu gpp, setuju?&quot;</li><li>Tujuan: Kedekatan</li><li>Platform: IG caption / Threads</li><li>Intent: 🟡 sedang</li></ul>
+<h2>FASE 3 — KASIH SOLUSI (Hari 7-9)</h2>
+<p><strong>Hari 7 — Demo value</strong></p>
+<ul><li>Tema: Spill 1 dari 50 ide</li><li>Hook: &quot;Salah satu ide produk yang gampang dibuat pemula:&quot;</li><li>Isi: Kasih 1 ide gratis + cara bikin.</li><li>CTA: &quot;Mau 49 lagi? Cek bio.&quot;</li><li>Tujuan: Tunjukin isi produk</li><li>Platform: TikTok / IG</li><li>Intent: 🟢 tinggi</li></ul>
+<p><strong>Hari 8 — Solusi teknis</strong></p>
+<ul><li>Tema: Bikin produk dari HP</li><li>Hook: &quot;Gak punya laptop? Tetep bisa bikin produk digital.&quot;</li><li>Isi: 3 app gratis + alur.</li><li>CTA: &quot;Komen &#x27;HP&#x27; buat panduan lengkap.&quot;</li><li>Tujuan: Hilangin alasan</li><li>Platform: Reels / TikTok</li><li>Intent: 🟢 tinggi</li></ul>
+<p><strong>Hari 9 — Preview produk</strong></p>
+<ul><li>Tema: Intip isi panduan</li><li>Hook: &quot;Intip isi &#x27;Mulai Dari Nol&#x27; (1 halaman).&quot;</li><li>Isi: Screenshot 1 halaman premium.</li><li>CTA: &quot;Suka tampilannya? Lengkapnya di bio.&quot;</li><li>Tujuan: Bukti kualitas</li><li>Platform: IG carousel</li><li>Intent: 🟢 tinggi</li></ul>
+<h2>FASE 4 — SOFT SELLING (Hari 10-12)</h2>
+<p><strong>Hari 10 — Tawaran halus</strong></p>
+<ul><li>Tema: Aku kumpulin yang bikin aku dulu bingung</li><li>Hook: &quot;Dulu aku bingung mulai. Sekarang udah aku rapikan jadi satu.&quot;</li><li>Isi: Cerita + sebut isi kit.</li><li>CTA: &quot;Kalau kamu di posisi itu, cek bio.&quot;</li><li>Tujuan: Soft sell</li><li>Platform: IG caption / Threads</li><li>Intent: 🟢 tinggi</li></ul>
+<p><strong>Hari 11 — Jawab keberatan</strong></p>
+<ul><li>Tema: Ini cuma e-book biasa?</li><li>Hook: &quot;Ini bukan e-book yang dibaca terus lupa.&quot;</li><li>Isi: Jelasin ini alat kerja.</li><li>CTA: &quot;Bandingin sendiri di bio.&quot;</li><li>Tujuan: Hilangin keraguan</li><li>Platform: IG / Threads</li><li>Intent: 🟢 tinggi</li></ul>
+<p><strong>Hari 12 — Bukti &amp; isi lengkap</strong></p>
+<ul><li>Tema: Isi paket lengkap</li><li>Hook: &quot;Ini semua yang kamu dapat di dalam kit:&quot;</li><li>Isi: List isi + bonus.</li><li>CTA: &quot;Mau? DM &#x27;mulai&#x27;.&quot;</li><li>Tujuan: Naikin keinginan</li><li>Platform: IG carousel</li><li>Intent: 🟢 tinggi</li></ul>
+<h2>FASE 5 — DORONG CLOSING (Hari 13-14)</h2>
+<p><strong>Hari 13 — Urgensi jujur</strong></p>
+<ul><li>Tema: Promo early bird</li><li>Hook: &quot;Harga early bird tinggal sampai [tanggal].&quot;</li><li>Isi: Sebut harga promo + apa yang didapat.</li><li>CTA: &quot;Ambil sebelum naik. Link bio.&quot;</li><li>Tujuan: Dorong keputusan</li><li>Platform: IG / Story / Threads</li><li>Intent: 🟢 tinggi</li></ul>
+<p><strong>Hari 14 — Dorongan terakhir</strong></p>
+<ul><li>Tema: Buat yang udah lama nunda</li><li>Hook: &quot;Udah berapa bulan kamu bilang &#x27;nanti aja&#x27;?&quot;</li><li>Isi: Ajak ambil langkah kecil hari ini.</li><li>CTA: &quot;Mulai hari ini. Link bio. DM kalau bingung.&quot;</li><li>Tujuan: Closing</li><li>Platform: Story / Threads / IG</li><li>Intent: 🟢 tinggi</li></ul>
+<hr>
+<div class="vnote"><span class="vtag">VISUAL</span>Penutup: mini timeline horizontal 5 fase + box &quot;Setelah hari 14: ulangi pola ini dengan variasi konten. Jangan berhenti di 1 putaran.&quot;</div><div class="foot">MULAI DARI NOL — Starter Kit Jualan Produk Digital dari HP</div></div></body></html>

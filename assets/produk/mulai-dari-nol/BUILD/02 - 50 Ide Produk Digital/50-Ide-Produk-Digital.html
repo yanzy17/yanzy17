@@ -1,0 +1,270 @@
+<!doctype html><html lang="id"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<title>50 Ide Produk Digital</title><style>
+:root{
+  --navy:#0E1525; --purple:#6C5CE7; --purple-soft:#efeafe; --mint:#00D1B2;
+  --bg:#F5F7FB; --card:#ffffff; --text:#1A1A2E; --muted:#6B7280; --line:#e6e8ef;
+  --coral:#FF7A59; --warn:#fff4ed; --warn-line:#ffb38a; --ok:#e9fbf6;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--bg); color:var(--text);
+  font-family:'Inter','Work Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+  line-height:1.65; font-size:16px;
+}
+.wrap{max-width:820px; margin:0 auto; padding:28px 22px 80px;}
+h1,h2,h3,h4{font-family:'Poppins','Sora',sans-serif; line-height:1.25; font-weight:600;}
+/* HERO COVER (first h1) */
+.hero{
+  background:linear-gradient(135deg,#0E1525 0%,#241b4d 55%,#6C5CE7 100%);
+  color:#fff; border-radius:24px; padding:48px 32px; margin:6px 0 30px;
+  box-shadow:0 18px 40px rgba(108,92,231,.25); position:relative; overflow:hidden;
+}
+.hero:before{content:"";position:absolute;right:-60px;top:-60px;width:200px;height:200px;
+  background:radial-gradient(circle,rgba(0,209,178,.45),transparent 70%);}
+.hero h1{font-size:2.5rem; margin:0 0 10px; letter-spacing:-.5px;}
+.hero .sub{font-size:1.1rem; opacity:.95; font-family:'Inter',sans-serif; font-weight:500;}
+.hero .pill{display:inline-block; background:rgba(255,255,255,.15); border:1px solid rgba(255,255,255,.3);
+  padding:6px 14px; border-radius:999px; font-size:.8rem; margin-bottom:18px; font-family:'Inter',sans-serif;}
+/* SECTION h2 */
+h2{font-size:1.5rem; margin:42px 0 6px; padding-bottom:8px; position:relative;}
+h2:after{content:"";display:block;width:54px;height:4px;border-radius:4px;
+  background:linear-gradient(90deg,var(--purple),var(--mint)); margin-top:10px;}
+/* CARD (each h3 opens a card) */
+.card{background:var(--card); border:1px solid var(--line); border-radius:16px;
+  padding:18px 20px; margin:16px 0; box-shadow:0 4px 16px rgba(16,21,37,.05);
+  border-left:5px solid var(--purple);}
+.card h3{margin:0 0 8px; font-size:1.15rem; color:var(--navy);}
+.card h3 .num{display:inline-flex;align-items:center;justify-content:center;
+  width:30px;height:30px;border-radius:50%;background:var(--purple-soft);color:var(--purple);
+  font-size:.9rem;margin-right:8px;font-weight:700;}
+p{margin:8px 0;}
+ul,ol{margin:8px 0; padding-left:22px;}
+li{margin:5px 0;}
+strong{color:var(--navy);}
+em{color:var(--muted);}
+a{color:var(--purple);}
+hr{border:none; border-top:1px dashed var(--line); margin:30px 0;}
+/* blockquote -> highlight/callout */
+blockquote{margin:14px 0; padding:14px 18px; background:var(--purple-soft);
+  border-left:4px solid var(--purple); border-radius:0 12px 12px 0; color:var(--navy); font-weight:500;}
+blockquote p{margin:4px 0;}
+/* code block -> sticky note (prompt) */
+pre{background:#0E1525; color:#e8eaff; border-radius:14px; padding:16px 18px; overflow:auto;
+  font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:.85rem; line-height:1.5;
+  border:1px solid #232a44; position:relative;}
+pre:before{content:"PROMPT — tap & copy"; position:absolute; top:8px; right:14px; font-size:.62rem;
+  color:#8b93c7; letter-spacing:1px; font-family:'Inter',sans-serif;}
+code{background:#eef0f7; padding:2px 6px; border-radius:6px; font-size:.88em;}
+pre code{background:none; padding:0;}
+/* tables */
+table{width:100%; border-collapse:collapse; margin:16px 0; font-size:.92rem;
+  background:#fff; border-radius:12px; overflow:hidden; box-shadow:0 4px 14px rgba(16,21,37,.05);}
+th{background:var(--navy); color:#fff; text-align:left; padding:11px 12px; font-family:'Poppins',sans-serif; font-size:.85rem;}
+td{padding:10px 12px; border-top:1px solid var(--line); vertical-align:top;}
+tr:nth-child(even) td{background:#fafbfe;}
+/* checklist */
+.check{list-style:none; padding-left:0;}
+.check li{position:relative; padding:8px 8px 8px 38px; margin:6px 0; background:#fff;
+  border:1px solid var(--line); border-radius:10px;}
+.check li:before{content:""; position:absolute; left:11px; top:50%; transform:translateY(-50%);
+  width:18px;height:18px;border:2px solid var(--mint);border-radius:5px;}
+/* designer note (VISUAL) - hidden when printing */
+.vnote{background:repeating-linear-gradient(45deg,#fffbe6,#fffbe6 10px,#fff6cf 10px,#fff6cf 20px);
+  border:1px dashed #e3c84d; border-radius:12px; padding:12px 16px; margin:14px 0;
+  font-size:.85rem; color:#7a6a16;}
+.vnote b{color:#5c5210;}
+.vtag{display:inline-block;background:#e3c84d;color:#3d3500;font-size:.65rem;font-weight:700;
+  padding:2px 8px;border-radius:6px;margin-right:8px;letter-spacing:.5px;}
+/* footer */
+.foot{margin-top:50px;padding-top:18px;border-top:1px solid var(--line);
+  color:var(--muted);font-size:.8rem;text-align:center;}
+@media (max-width:520px){
+  .hero{padding:34px 22px;} .hero h1{font-size:1.9rem;}
+  .wrap{padding:18px 14px 60px;} body{font-size:15px;}
+}
+@media print{
+  body{background:#fff;}
+  .vnote,.no-print,.printhint{display:none !important;}
+  .hero{box-shadow:none; -webkit-print-color-adjust:exact; print-color-adjust:exact;}
+  .card,table,pre{box-shadow:none; break-inside:avoid;}
+  h2{break-after:avoid;}
+}
+.printhint{background:var(--ok);border:1px solid var(--mint);border-radius:10px;
+  padding:10px 14px;font-size:.82rem;margin:0 0 18px;color:#06715f;}
+@page{margin:14mm;}
+</style></head><body><div class="wrap">
+<div class="printhint no-print">Tips: untuk jadikan PDF → menu browser → <b>Print</b> → <b>Save as PDF</b>. Catatan desain kuning otomatis hilang di PDF.</div>
+<div class="hero"><div class="pill">Starter Kit Pemula</div><h1>50 IDE PRODUK DIGITAL + CARA BIKINNYA</h1><div class="sub">Bagian dari &quot;MULAI DARI NOL&quot;</div></div>
+<blockquote><p>Cara pakai: scroll, cari yang paling kamu paham masalahnya, pilih SATU dulu.</p><p>Tiap ide ada format, target, isi, cara bikin dari HP, estimasi harga, tingkat kesulitan, dan alasan berpotensi laku.</p></blockquote>
+<div class="vnote"><span class="vtag">VISUAL</span>Tiap ide dibuat jadi 1 CARD. Header card: nomor + nama produk + badge tingkat kesulitan (warna: hijau=mudah, kuning=sedang, oranye=menengah). Isi card pakai label kecil (Format, Target, dst). Maksimal 2-3 ide per halaman biar napas.</div>
+<p>Legenda kesulitan: 🟢 Mudah · 🟡 Sedang · 🟠 Menengah</p>
+<hr>
+<h2>KATEGORI A — E-BOOK &amp; MINI GUIDE PRAKTIS</h2>
+<div class="card"><h3><span class="num">1</span>Panduan Bikin CV ATS-Friendly</h3>
+<ul><li><strong>Format:</strong> E-book PDF (10-15 hlm) + 2 template CV</li><li><strong>Target:</strong> Fresh graduate, pencari kerja</li><li><strong>Masalah:</strong> CV ke-reject sistem, gak tau format yang benar</li><li><strong>Isi:</strong> Struktur CV, kata kunci ATS, contoh isi, template siap edit</li><li><strong>Cara bikin dari HP:</strong> Tulis di Docs, desain template di Canva</li><li><strong>Estimasi harga:</strong> Rp25k-49k</li><li><strong>Kesulitan:</strong> 🟢</li><li><strong>Kenapa laku:</strong> Masalah nyata + ada hasil instan (template jadi)</li></ul>
+</div>
+<div class="card"><h3><span class="num">2</span>Mini Guide Atur Gaji Bulanan</h3>
+<ul><li><strong>Format:</strong> E-book PDF + spreadsheet budgeting</li><li><strong>Target:</strong> Gaji UMR, anak rantau, fresh worker</li><li><strong>Masalah:</strong> Gaji habis sebelum akhir bulan</li><li><strong>Isi:</strong> Metode 50/30/20, contoh alokasi, tracker pengeluaran</li><li><strong>Cara bikin:</strong> Docs + Google Sheets (template)</li><li><strong>Harga:</strong> Rp29k-49k</li><li><strong>Kesulitan:</strong> 🟢</li><li><strong>Kenapa laku:</strong> Relate banget, solusi langsung kepake</li></ul>
+</div>
+<div class="card"><h3><span class="num">3</span>Panduan Skincare Pemula (Hemat)</h3>
+<ul><li><strong>Format:</strong> E-book PDF</li><li><strong>Target:</strong> Remaja &amp; dewasa muda baru mulai skincare</li><li><strong>Masalah:</strong> Bingung urutan &amp; produk, takut salah beli</li><li><strong>Isi:</strong> Urutan basic, jenis kulit, rekomendasi range harga, kesalahan umum</li><li><strong>Cara bikin:</strong> Docs + Canva</li><li><strong>Harga:</strong> Rp25k-39k</li><li><strong>Kesulitan:</strong> 🟢</li><li><strong>Kenapa laku:</strong> Topik abadi, audiens besar</li></ul>
+</div>
+<div class="card"><h3><span class="num">4</span>Panduan Diet Defisit Kalori buat Pemula</h3>
+<ul><li><strong>Format:</strong> E-book PDF + tabel kalori</li><li><strong>Target:</strong> Yang mau turun berat badan</li><li><strong>Masalah:</strong> Bingung mulai diet, takut ribet</li><li><strong>Isi:</strong> Konsep defisit, contoh menu murah, tracker</li><li><strong>Cara bikin:</strong> Docs + Sheets</li><li><strong>Harga:</strong> Rp29k-49k</li><li><strong>Kesulitan:</strong> 🟡</li><li><strong>Kenapa laku:</strong> Permintaan tinggi sepanjang tahun</li></ul>
+</div>
+<div class="card"><h3><span class="num">5</span>Panduan Belajar Bahasa Inggris Otodidak</h3>
+<ul><li><strong>Format:</strong> E-book PDF + daftar resource</li><li><strong>Target:</strong> Pelajar, pekerja yang mau upgrade</li><li><strong>Masalah:</strong> Gak tau mulai dari mana, kursus mahal</li><li><strong>Isi:</strong> Roadmap 30 hari, app gratis, latihan harian</li><li><strong>Cara bikin:</strong> Docs + Canva</li><li><strong>Harga:</strong> Rp29k-49k</li><li><strong>Kesulitan:</strong> 🟡</li><li><strong>Kenapa laku:</strong> Banyak yang pengen tapi bingung mulai</li></ul>
+</div>
+<div class="card"><h3><span class="num">6</span>Panduan Mulai Investasi buat Pemula (Edukatif)</h3>
+<ul><li><strong>Format:</strong> E-book PDF</li><li><strong>Target:</strong> Anak muda yang baru kerja</li><li><strong>Masalah:</strong> Takut &amp; bingung soal investasi</li><li><strong>Isi:</strong> Istilah dasar, jenis instrumen, langkah pertama (edukasi, bukan rekomendasi)</li><li><strong>Cara bikin:</strong> Docs + Canva</li><li><strong>Harga:</strong> Rp35k-59k</li><li><strong>Kesulitan:</strong> 🟡</li><li><strong>Kenapa laku:</strong> Topik naik daun (catatan: posisikan sebagai edukasi, hindari klaim untung)</li></ul>
+</div>
+<div class="card"><h3><span class="num">7</span>Mini Guide Public Speaking</h3>
+<ul><li><strong>Format:</strong> E-book PDF</li><li><strong>Target:</strong> Mahasiswa, karyawan, content creator</li><li><strong>Masalah:</strong> Gugup ngomong di depan umum</li><li><strong>Isi:</strong> Tips atasi grogi, struktur ngomong, latihan</li><li><strong>Cara bikin:</strong> Docs + Canva</li><li><strong>Harga:</strong> Rp25k-39k</li><li><strong>Kesulitan:</strong> 🟢</li><li><strong>Kenapa laku:</strong> Kebutuhan umum, mudah dijelasin</li></ul>
+</div>
+<div class="card"><h3><span class="num">8</span>Panduan Bikin Konten buat Pemula</h3>
+<ul><li><strong>Format:</strong> E-book PDF + template ide</li><li><strong>Target:</strong> Calon content creator</li><li><strong>Masalah:</strong> Gak tau bikin konten apa &amp; gimana mulai</li><li><strong>Isi:</strong> Ide konten, struktur video, alat gratis</li><li><strong>Cara bikin:</strong> Docs + Canva</li><li><strong>Harga:</strong> Rp35k-59k</li><li><strong>Kesulitan:</strong> 🟡</li><li><strong>Kenapa laku:</strong> Audiens besar &amp; terus tumbuh</li></ul>
+</div>
+<div class="card"><h3><span class="num">9</span>Panduan Jualan di Marketplace buat Pemula</h3>
+<ul><li><strong>Format:</strong> E-book PDF + checklist</li><li><strong>Target:</strong> Yang mau buka toko online</li><li><strong>Masalah:</strong> Bingung optimasi &amp; foto produk</li><li><strong>Isi:</strong> Setup toko, foto produk dari HP, deskripsi, optimasi</li><li><strong>Cara bikin:</strong> Docs + Canva</li><li><strong>Harga:</strong> Rp39k-69k</li><li><strong>Kesulitan:</strong> 🟡</li><li><strong>Kenapa laku:</strong> Banyak UMKM pemula butuh ini</li></ul>
+</div>
+<div class="card"><h3><span class="num">10</span>Mini Guide Manajemen Waktu buat Mahasiswa</h3>
+<ul><li><strong>Format:</strong> E-book PDF + planner</li><li><strong>Target:</strong> Mahasiswa sibuk</li><li><strong>Masalah:</strong> Keteteran tugas &amp; organisasi</li><li><strong>Isi:</strong> Teknik time-blocking, template jadwal, tips fokus</li><li><strong>Cara bikin:</strong> Docs + Canva</li><li><strong>Harga:</strong> Rp25k-39k</li><li><strong>Kesulitan:</strong> 🟢</li><li><strong>Kenapa laku:</strong> Relate &amp; murah, gampang impulse buy</li></ul>
+</div>
+<hr>
+<h2>KATEGORI B — TEMPLATE</h2>
+<div class="card"><h3><span class="num">11</span>Template Caption Jualan (100+ Caption)</h3>
+<ul><li><strong>Format:</strong> PDF / Google Docs</li><li><strong>Target:</strong> Pemilik olshop, reseller</li><li><strong>Masalah:</strong> Bingung nulis caption tiap mau posting</li><li><strong>Isi:</strong> 100+ caption per kategori (promo, soft selling, story)</li><li><strong>Cara bikin:</strong> Tulis di Docs</li><li><strong>Harga:</strong> Rp35k-59k</li><li><strong>Kesulitan:</strong> 🟢</li><li><strong>Kenapa laku:</strong> Hemat waktu, tinggal copy-edit</li></ul>
+</div>
+<div class="card"><h3><span class="num">12</span>Template Feed Instagram (Canva)</h3>
+<ul><li><strong>Format:</strong> Link template Canva</li><li><strong>Target:</strong> Olshop, personal brand</li><li><strong>Masalah:</strong> Feed berantakan, gak estetik</li><li><strong>Isi:</strong> 12-30 desain feed yang bisa diedit</li><li><strong>Cara bikin:</strong> Desain di Canva, share link template</li><li><strong>Harga:</strong> Rp39k-79k</li><li><strong>Kesulitan:</strong> 🟡</li><li><strong>Kenapa laku:</strong> Visual = mudah dijual, kelihatan worth it</li></ul>
+</div>
+<div class="card"><h3><span class="num">13</span>Template Story Promosi (Canva)</h3>
+<ul><li><strong>Format:</strong> Link template Canva</li><li><strong>Target:</strong> Olshop, jasa</li><li><strong>Masalah:</strong> Story jualan gak menarik</li><li><strong>Isi:</strong> 20+ template story (promo, testimoni, CTA)</li><li><strong>Cara bikin:</strong> Canva</li><li><strong>Harga:</strong> Rp29k-59k</li><li><strong>Kesulitan:</strong> 🟡</li><li><strong>Kenapa laku:</strong> Praktis, langsung pakai harian</li></ul>
+</div>
+<div class="card"><h3><span class="num">14</span>Template Undangan Digital</h3>
+<ul><li><strong>Format:</strong> Link template Canva</li><li><strong>Target:</strong> Yang mau bikin acara</li><li><strong>Masalah:</strong> Undangan mahal kalau pesan</li><li><strong>Isi:</strong> Beberapa desain undangan editable</li><li><strong>Cara bikin:</strong> Canva</li><li><strong>Harga:</strong> Rp25k-49k</li><li><strong>Kesulitan:</strong> 🟡</li><li><strong>Kenapa laku:</strong> Kebutuhan musiman tapi stabil</li></ul>
+</div>
+<div class="card"><h3><span class="num">15</span>Template Proposal / Penawaran Bisnis</h3>
+<ul><li><strong>Format:</strong> Google Docs / Canva</li><li><strong>Target:</strong> Freelancer, UMKM</li><li><strong>Masalah:</strong> Bingung bikin proposal profesional</li><li><strong>Isi:</strong> Template proposal + contoh isi</li><li><strong>Cara bikin:</strong> Docs/Canva</li><li><strong>Harga:</strong> Rp39k-69k</li><li><strong>Kesulitan:</strong> 🟢</li><li><strong>Kenapa laku:</strong> Hemat waktu, kesan profesional</li></ul>
+</div>
+<div class="card"><h3><span class="num">16</span>Template Invoice &amp; Nota Digital</h3>
+<ul><li><strong>Format:</strong> Google Sheets / Canva</li><li><strong>Target:</strong> Freelancer, olshop kecil</li><li><strong>Masalah:</strong> Repot bikin nota manual</li><li><strong>Isi:</strong> Template invoice otomatis hitung</li><li><strong>Cara bikin:</strong> Google Sheets</li><li><strong>Harga:</strong> Rp29k-49k</li><li><strong>Kesulitan:</strong> 🟡</li><li><strong>Kenapa laku:</strong> Praktis &amp; berulang dipakai</li></ul>
+</div>
+<div class="card"><h3><span class="num">17</span>Template Portofolio Freelancer</h3>
+<ul><li><strong>Format:</strong> Canva / Notion</li><li><strong>Target:</strong> Desainer, penulis, freelancer</li><li><strong>Masalah:</strong> Gak punya portofolio rapi</li><li><strong>Isi:</strong> Layout portofolio editable</li><li><strong>Cara bikin:</strong> Canva/Notion</li><li><strong>Harga:</strong> Rp35k-59k</li><li><strong>Kesulitan:</strong> 🟡</li><li><strong>Kenapa laku:</strong> Bantu freelancer dapat klien</li></ul>
+</div>
+<div class="card"><h3><span class="num">18</span>Template Linktree Estetik (Canva/Notion)</h3>
+<ul><li><strong>Format:</strong> Template</li><li><strong>Target:</strong> Creator, olshop</li><li><strong>Masalah:</strong> Link bio gak menarik</li><li><strong>Isi:</strong> Desain landing link sederhana</li><li><strong>Cara bikin:</strong> Canva/Notion</li><li><strong>Harga:</strong> Rp19k-39k</li><li><strong>Kesulitan:</strong> 🟢</li><li><strong>Kenapa laku:</strong> Murah, impulse buy</li></ul>
+</div>
+<div class="card"><h3><span class="num">19</span>Template Surat Lamaran Kerja</h3>
+<ul><li><strong>Format:</strong> Google Docs</li><li><strong>Target:</strong> Pencari kerja</li><li><strong>Masalah:</strong> Bingung format surat lamaran</li><li><strong>Isi:</strong> Beberapa template + contoh per posisi</li><li><strong>Cara bikin:</strong> Docs</li><li><strong>Harga:</strong> Rp19k-35k</li><li><strong>Kesulitan:</strong> 🟢</li><li><strong>Kenapa laku:</strong> Kebutuhan praktis &amp; murah</li></ul>
+</div>
+<div class="card"><h3><span class="num">20</span>Template Meal Plan &amp; Belanja Mingguan</h3>
+<ul><li><strong>Format:</strong> Google Sheets / PDF</li><li><strong>Target:</strong> Ibu rumah tangga, anak kost</li><li><strong>Masalah:</strong> Bingung atur menu &amp; belanja</li><li><strong>Isi:</strong> Template menu 7 hari + list belanja</li><li><strong>Cara bikin:</strong> Sheets/Canva</li><li><strong>Harga:</strong> Rp25k-45k</li><li><strong>Kesulitan:</strong> 🟢</li><li><strong>Kenapa laku:</strong> Hemat waktu &amp; uang, relate</li></ul>
+</div>
+<hr>
+<h2>KATEGORI C — CHECKLIST &amp; PLANNER</h2>
+<div class="card"><h3><span class="num">21</span>Checklist Persiapan Nikah</h3>
+<ul><li><strong>Format:</strong> PDF / Notion</li><li><strong>Target:</strong> Calon pengantin</li><li><strong>Masalah:</strong> Bingung urutan persiapan nikah</li><li><strong>Isi:</strong> Checklist H-12 bulan sampai hari H</li><li><strong>Cara bikin:</strong> Docs/Notion</li><li><strong>Harga:</strong> Rp35k-69k</li><li><strong>Kesulitan:</strong> 🟢</li><li><strong>Kenapa laku:</strong> Momen besar, orang rela bayar</li></ul>
+</div>
+<div class="card"><h3><span class="num">22</span>Checklist Persiapan Melahirkan &amp; Newborn</h3>
+<ul><li><strong>Format:</strong> PDF</li><li><strong>Target:</strong> Calon ibu</li><li><strong>Masalah:</strong> Takut ada yang kelupaan</li><li><strong>Isi:</strong> Daftar perlengkapan + persiapan</li><li><strong>Cara bikin:</strong> Docs/Canva</li><li><strong>Harga:</strong> Rp29k-49k</li><li><strong>Kesulitan:</strong> 🟢</li><li><strong>Kenapa laku:</strong> Emosional &amp; praktis</li></ul>
+</div>
+<div class="card"><h3><span class="num">23</span>Daily Planner Digital (GoodNotes/PDF)</h3>
+<ul><li><strong>Format:</strong> PDF hyperlinked</li><li><strong>Target:</strong> Pengguna tablet/iPad, pelajar</li><li><strong>Masalah:</strong> Pengen planner rapi tanpa beli fisik</li><li><strong>Isi:</strong> Daily/weekly/monthly page</li><li><strong>Cara bikin:</strong> Canva (agak teliti)</li><li><strong>Harga:</strong> Rp39k-79k</li><li><strong>Kesulitan:</strong> 🟠</li><li><strong>Kenapa laku:</strong> Tren planner digital naik</li></ul>
+</div>
+<div class="card"><h3><span class="num">24</span>Habit Tracker 30 Hari</h3>
+<ul><li><strong>Format:</strong> PDF / Notion</li><li><strong>Target:</strong> Yang mau bangun kebiasaan</li><li><strong>Masalah:</strong> Susah konsisten</li><li><strong>Isi:</strong> Tracker + panduan singkat</li><li><strong>Cara bikin:</strong> Canva/Notion</li><li><strong>Harga:</strong> Rp19k-39k</li><li><strong>Kesulitan:</strong> 🟢</li><li><strong>Kenapa laku:</strong> Murah, self-improvement laris</li></ul>
+</div>
+<div class="card"><h3><span class="num">25</span>Checklist Liburan / Travel Planner</h3>
+<ul><li><strong>Format:</strong> PDF / Sheets</li><li><strong>Target:</strong> Yang sering jalan-jalan</li><li><strong>Masalah:</strong> Ribet planning trip</li><li><strong>Isi:</strong> Itinerary template, packing list, budget</li><li><strong>Cara bikin:</strong> Sheets/Canva</li><li><strong>Harga:</strong> Rp29k-49k</li><li><strong>Kesulitan:</strong> 🟡</li><li><strong>Kenapa laku:</strong> Fun &amp; praktis</li></ul>
+</div>
+<div class="card"><h3><span class="num">26</span>Wedding Budget Planner</h3>
+<ul><li><strong>Format:</strong> Google Sheets</li><li><strong>Target:</strong> Calon pengantin</li><li><strong>Masalah:</strong> Budget nikah membengkak</li><li><strong>Isi:</strong> Spreadsheet otomatis hitung budget</li><li><strong>Cara bikin:</strong> Sheets</li><li><strong>Harga:</strong> Rp35k-59k</li><li><strong>Kesulitan:</strong> 🟡</li><li><strong>Kenapa laku:</strong> Bantu hemat, value tinggi</li></ul>
+</div>
+<div class="card"><h3><span class="num">27</span>Study Planner Anak Sekolah</h3>
+<ul><li><strong>Format:</strong> PDF / Notion</li><li><strong>Target:</strong> Pelajar &amp; orang tua</li><li><strong>Masalah:</strong> Belajar gak teratur</li><li><strong>Isi:</strong> Jadwal belajar, target, tracker nilai</li><li><strong>Cara bikin:</strong> Canva/Notion</li><li><strong>Harga:</strong> Rp25k-45k</li><li><strong>Kesulitan:</strong> 🟢</li><li><strong>Kenapa laku:</strong> Orang tua rela bayar buat anak</li></ul>
+</div>
+<div class="card"><h3><span class="num">28</span>Self-Care Planner</h3>
+<ul><li><strong>Format:</strong> PDF / Notion</li><li><strong>Target:</strong> Anak muda, profesional</li><li><strong>Masalah:</strong> Burnout, lupa istirahat</li><li><strong>Isi:</strong> Mood tracker, jurnal, rutinitas self-care</li><li><strong>Cara bikin:</strong> Canva</li><li><strong>Harga:</strong> Rp29k-49k</li><li><strong>Kesulitan:</strong> 🟢</li><li><strong>Kenapa laku:</strong> Tren wellness besar</li></ul>
+</div>
+<div class="card"><h3><span class="num">29</span>Checklist Bikin Konten Mingguan</h3>
+<ul><li><strong>Format:</strong> PDF / Notion</li><li><strong>Target:</strong> Content creator pemula</li><li><strong>Masalah:</strong> Gak konsisten posting</li><li><strong>Isi:</strong> Workflow konten + checklist</li><li><strong>Cara bikin:</strong> Notion/Canva</li><li><strong>Harga:</strong> Rp29k-49k</li><li><strong>Kesulitan:</strong> 🟢</li><li><strong>Kenapa laku:</strong> Bantu konsistensi</li></ul>
+</div>
+<div class="card"><h3><span class="num">30</span>Financial Tracker Bulanan</h3>
+<ul><li><strong>Format:</strong> Google Sheets</li><li><strong>Target:</strong> Siapa pun yang mau atur uang</li><li><strong>Masalah:</strong> Gak tau uang habis ke mana</li><li><strong>Isi:</strong> Tracker pemasukan/pengeluaran otomatis + grafik</li><li><strong>Cara bikin:</strong> Sheets</li><li><strong>Harga:</strong> Rp35k-59k</li><li><strong>Kesulitan:</strong> 🟡</li><li><strong>Kenapa laku:</strong> Value jelas, dipakai tiap hari</li></ul>
+</div>
+<hr>
+<h2>KATEGORI D — NOTION TEMPLATE</h2>
+<div class="card"><h3><span class="num">31</span>Notion Life OS Sederhana</h3>
+<ul><li><strong>Format:</strong> Notion template</li><li><strong>Target:</strong> Pengguna Notion pemula</li><li><strong>Masalah:</strong> Notion kosong bingung mau diapain</li><li><strong>Isi:</strong> Dashboard tugas, jurnal, goals, keuangan</li><li><strong>Cara bikin:</strong> Bikin di Notion, share link duplicate</li><li><strong>Harga:</strong> Rp49k-99k</li><li><strong>Kesulitan:</strong> 🟠</li><li><strong>Kenapa laku:</strong> Komunitas Notion bayar mahal</li></ul>
+</div>
+<div class="card"><h3><span class="num">32</span>Notion Content Planner</h3>
+<ul><li><strong>Format:</strong> Notion template</li><li><strong>Target:</strong> Creator</li><li><strong>Masalah:</strong> Ide konten berantakan</li><li><strong>Isi:</strong> Kalender konten, bank ide, status posting</li><li><strong>Cara bikin:</strong> Notion</li><li><strong>Harga:</strong> Rp39k-79k</li><li><strong>Kesulitan:</strong> 🟡</li><li><strong>Kenapa laku:</strong> Spesifik &amp; berguna</li></ul>
+</div>
+<div class="card"><h3><span class="num">33</span>Notion Budget &amp; Keuangan</h3>
+<ul><li><strong>Format:</strong> Notion template</li><li><strong>Target:</strong> Pengguna Notion</li><li><strong>Masalah:</strong> Mau catat keuangan di Notion</li><li><strong>Isi:</strong> Tracker, kategori, ringkasan bulanan</li><li><strong>Cara bikin:</strong> Notion</li><li><strong>Harga:</strong> Rp39k-69k</li><li><strong>Kesulitan:</strong> 🟠</li><li><strong>Kenapa laku:</strong> Kombinasi 2 topik laris</li></ul>
+</div>
+<div class="card"><h3><span class="num">34</span>Notion Student Dashboard</h3>
+<ul><li><strong>Format:</strong> Notion template</li><li><strong>Target:</strong> Mahasiswa/pelajar</li><li><strong>Masalah:</strong> Tugas &amp; jadwal berantakan</li><li><strong>Isi:</strong> Tracker tugas, jadwal kuliah, catatan</li><li><strong>Cara bikin:</strong> Notion</li><li><strong>Harga:</strong> Rp35k-59k</li><li><strong>Kesulitan:</strong> 🟡</li><li><strong>Kenapa laku:</strong> Audiens pelajar besar</li></ul>
+</div>
+<div class="card"><h3><span class="num">35</span>Notion Small Business Tracker</h3>
+<ul><li><strong>Format:</strong> Notion template</li><li><strong>Target:</strong> UMKM, olshop kecil</li><li><strong>Masalah:</strong> Catat order &amp; stok berantakan</li><li><strong>Isi:</strong> Database order, stok, pelanggan</li><li><strong>Cara bikin:</strong> Notion</li><li><strong>Harga:</strong> Rp49k-99k</li><li><strong>Kesulitan:</strong> 🟠</li><li><strong>Kenapa laku:</strong> Value bisnis tinggi</li></ul>
+</div>
+<hr>
+<h2>KATEGORI E — PROMPT PACK &amp; AI</h2>
+<div class="card"><h3><span class="num">36</span>100 Prompt AI buat Content Creator</h3>
+<ul><li><strong>Format:</strong> PDF / Notion</li><li><strong>Target:</strong> Creator, marketer</li><li><strong>Masalah:</strong> Bingung pakai AI buat konten</li><li><strong>Isi:</strong> Prompt caption, ide, script, hook</li><li><strong>Cara bikin:</strong> Tulis di Docs</li><li><strong>Harga:</strong> Rp35k-69k</li><li><strong>Kesulitan:</strong> 🟢</li><li><strong>Kenapa laku:</strong> Tren AI lagi panas</li></ul>
+</div>
+<div class="card"><h3><span class="num">37</span>Prompt Pack AI buat Olshop</h3>
+<ul><li><strong>Format:</strong> PDF</li><li><strong>Target:</strong> Pemilik olshop</li><li><strong>Masalah:</strong> Bingung bikin deskripsi &amp; promosi</li><li><strong>Isi:</strong> Prompt deskripsi produk, caption, balas chat</li><li><strong>Cara bikin:</strong> Docs</li><li><strong>Harga:</strong> Rp29k-59k</li><li><strong>Kesulitan:</strong> 🟢</li><li><strong>Kenapa laku:</strong> Spesifik &amp; praktis</li></ul>
+</div>
+<div class="card"><h3><span class="num">38</span>Prompt Pack AI buat Pelajar/Skripsi</h3>
+<ul><li><strong>Format:</strong> PDF</li><li><strong>Target:</strong> Mahasiswa</li><li><strong>Masalah:</strong> Bingung manfaatin AI buat belajar</li><li><strong>Isi:</strong> Prompt ringkas materi, bikin outline, latihan soal</li><li><strong>Cara bikin:</strong> Docs</li><li><strong>Harga:</strong> Rp29k-49k</li><li><strong>Kesulitan:</strong> 🟢</li><li><strong>Kenapa laku:</strong> Audiens besar &amp; butuh</li></ul>
+</div>
+<div class="card"><h3><span class="num">39</span>Prompt Pack AI buat Bikin Produk Digital</h3>
+<ul><li><strong>Format:</strong> PDF</li><li><strong>Target:</strong> Calon penjual produk digital</li><li><strong>Masalah:</strong> Bingung mulai bikin produk</li><li><strong>Isi:</strong> Prompt ide, validasi, isi, promosi</li><li><strong>Cara bikin:</strong> Docs</li><li><strong>Harga:</strong> Rp35k-59k</li><li><strong>Kesulitan:</strong> 🟢</li><li><strong>Kenapa laku:</strong> Niche-mu sendiri, nyambung</li></ul>
+</div>
+<div class="card"><h3><span class="num">40</span>Prompt Pack AI buat Caption &amp; Hook Sosmed</h3>
+<ul><li><strong>Format:</strong> PDF</li><li><strong>Target:</strong> Creator, admin sosmed</li><li><strong>Masalah:</strong> Mentok ide caption</li><li><strong>Isi:</strong> Prompt hook, caption, CTA per niche</li><li><strong>Cara bikin:</strong> Docs</li><li><strong>Harga:</strong> Rp29k-49k</li><li><strong>Kesulitan:</strong> 🟢</li><li><strong>Kenapa laku:</strong> Hemat waktu harian</li></ul>
+</div>
+<hr>
+<h2>KATEGORI F — CONTENT KIT &amp; SCRIPT PACK</h2>
+<div class="card"><h3><span class="num">41</span>30 Hari Ide Konten (Content Calendar Kit)</h3>
+<ul><li><strong>Format:</strong> PDF / Notion</li><li><strong>Target:</strong> Creator &amp; olshop</li><li><strong>Masalah:</strong> Gak ada ide harian</li><li><strong>Isi:</strong> 30 ide konten + hook + format</li><li><strong>Cara bikin:</strong> Docs/Notion</li><li><strong>Harga:</strong> Rp35k-59k</li><li><strong>Kesulitan:</strong> 🟢</li><li><strong>Kenapa laku:</strong> Solusi &quot;bingung posting apa&quot;</li></ul>
+</div>
+<div class="card"><h3><span class="num">42</span>Script Pack Jualan (DM &amp; Closing)</h3>
+<ul><li><strong>Format:</strong> PDF</li><li><strong>Target:</strong> Olshop, reseller, jasa</li><li><strong>Masalah:</strong> Bingung balas chat &amp; closing</li><li><strong>Isi:</strong> Script DM, jawab keberatan, follow up</li><li><strong>Cara bikin:</strong> Docs</li><li><strong>Harga:</strong> Rp35k-59k</li><li><strong>Kesulitan:</strong> 🟢</li><li><strong>Kenapa laku:</strong> Langsung naikin konversi</li></ul>
+</div>
+<div class="card"><h3><span class="num">43</span>Script Video Pendek (Reels/TikTok) Pack</h3>
+<ul><li><strong>Format:</strong> PDF</li><li><strong>Target:</strong> Creator pemula</li><li><strong>Masalah:</strong> Bingung naskah video</li><li><strong>Isi:</strong> 30+ script siap pakai per niche</li><li><strong>Cara bikin:</strong> Docs</li><li><strong>Harga:</strong> Rp35k-69k</li><li><strong>Kesulitan:</strong> 🟢</li><li><strong>Kenapa laku:</strong> Video lagi rajanya konten</li></ul>
+</div>
+<div class="card"><h3><span class="num">44</span>Caption Pack buat Jasa (Freelancer)</h3>
+<ul><li><strong>Format:</strong> PDF / Docs</li><li><strong>Target:</strong> Freelancer (desain, MUA, fotografer)</li><li><strong>Masalah:</strong> Bingung promosi jasa</li><li><strong>Isi:</strong> Caption promosi jasa per kategori</li><li><strong>Cara bikin:</strong> Docs</li><li><strong>Harga:</strong> Rp29k-49k</li><li><strong>Kesulitan:</strong> 🟢</li><li><strong>Kenapa laku:</strong> Niche tapi loyal</li></ul>
+</div>
+<div class="card"><h3><span class="num">45</span>Bio &amp; Highlight Kit Instagram</h3>
+<ul><li><strong>Format:</strong> PDF + template Canva</li><li><strong>Target:</strong> Olshop, personal brand</li><li><strong>Masalah:</strong> Bio &amp; highlight gak menarik</li><li><strong>Isi:</strong> Contoh bio, cover highlight, template</li><li><strong>Cara bikin:</strong> Docs + Canva</li><li><strong>Harga:</strong> Rp25k-45k</li><li><strong>Kesulitan:</strong> 🟢</li><li><strong>Kenapa laku:</strong> Cepat kelihatan hasilnya</li></ul>
+</div>
+<hr>
+<h2>KATEGORI G — TOOLKIT &amp; BUNDLE</h2>
+<div class="card"><h3><span class="num">46</span>Toolkit Mulai Olshop dari Nol</h3>
+<ul><li><strong>Format:</strong> Bundle (PDF + template + checklist)</li><li><strong>Target:</strong> Calon pemilik olshop</li><li><strong>Masalah:</strong> Bingung mulai jualan online</li><li><strong>Isi:</strong> Panduan + template caption + checklist + script</li><li><strong>Cara bikin:</strong> Docs + Canva</li><li><strong>Harga:</strong> Rp59k-99k</li><li><strong>Kesulitan:</strong> 🟡</li><li><strong>Kenapa laku:</strong> Bundle = value terasa besar</li></ul>
+</div>
+<div class="card"><h3><span class="num">47</span>Toolkit Content Creator Pemula</h3>
+<ul><li><strong>Format:</strong> Bundle</li><li><strong>Target:</strong> Calon creator</li><li><strong>Masalah:</strong> Gak tau mulai bikin konten</li><li><strong>Isi:</strong> Panduan + 30 ide + script + template thumbnail</li><li><strong>Cara bikin:</strong> Docs + Canva</li><li><strong>Harga:</strong> Rp59k-99k</li><li><strong>Kesulitan:</strong> 🟡</li><li><strong>Kenapa laku:</strong> Lengkap, sekali beli beres</li></ul>
+</div>
+<div class="card"><h3><span class="num">48</span>Toolkit Freelancer Pemula</h3>
+<ul><li><strong>Format:</strong> Bundle</li><li><strong>Target:</strong> Yang mau jadi freelancer</li><li><strong>Masalah:</strong> Bingung cari &amp; handle klien</li><li><strong>Isi:</strong> Template portofolio + proposal + invoice + script nego</li><li><strong>Cara bikin:</strong> Docs + Canva + Sheets</li><li><strong>Harga:</strong> Rp59k-99k</li><li><strong>Kesulitan:</strong> 🟡</li><li><strong>Kenapa laku:</strong> Menyelesaikan banyak masalah sekaligus</li></ul>
+</div>
+<div class="card"><h3><span class="num">49</span>Toolkit Atur Keuangan Keluarga</h3>
+<ul><li><strong>Format:</strong> Bundle (PDF + Sheets + planner)</li><li><strong>Target:</strong> Ibu rumah tangga, pasangan muda</li><li><strong>Masalah:</strong> Keuangan keluarga berantakan</li><li><strong>Isi:</strong> Panduan + tracker + meal plan + budget</li><li><strong>Cara bikin:</strong> Docs + Sheets + Canva</li><li><strong>Harga:</strong> Rp49k-89k</li><li><strong>Kesulitan:</strong> 🟡</li><li><strong>Kenapa laku:</strong> Bundle praktis untuk masalah harian</li></ul>
+</div>
+<div class="card"><h3><span class="num">50</span>Toolkit Personal Branding Sosmed</h3>
+<ul><li><strong>Format:</strong> Bundle</li><li><strong>Target:</strong> Yang mau bangun personal brand</li><li><strong>Masalah:</strong> Bingung tampil konsisten di sosmed</li><li><strong>Isi:</strong> Panduan + template feed + caption + bio kit</li><li><strong>Cara bikin:</strong> Docs + Canva</li><li><strong>Harga:</strong> Rp59k-99k</li><li><strong>Kesulitan:</strong> 🟡</li><li><strong>Kenapa laku:</strong> Tren personal branding terus naik</li></ul>
+</div>
+<hr>
+<div class="vnote"><span class="vtag">VISUAL</span>Halaman penutup: card &quot;Udah pilih ide? Lanjut ke folder 05 - Template Eksekusi buat validasi idemu.&quot; + 1 highlight quote: &quot;Jangan pilih 10. Pilih 1, lalu jalan.&quot;</div><div class="foot">MULAI DARI NOL — Starter Kit Jualan Produk Digital dari HP</div></div></body></html>

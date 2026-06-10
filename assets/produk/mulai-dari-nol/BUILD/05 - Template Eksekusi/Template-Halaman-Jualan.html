@@ -1,0 +1,147 @@
+<!doctype html><html lang="id"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<title>Template Halaman Jualan</title><style>
+:root{
+  --navy:#0E1525; --purple:#6C5CE7; --purple-soft:#efeafe; --mint:#00D1B2;
+  --bg:#F5F7FB; --card:#ffffff; --text:#1A1A2E; --muted:#6B7280; --line:#e6e8ef;
+  --coral:#FF7A59; --warn:#fff4ed; --warn-line:#ffb38a; --ok:#e9fbf6;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--bg); color:var(--text);
+  font-family:'Inter','Work Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+  line-height:1.65; font-size:16px;
+}
+.wrap{max-width:820px; margin:0 auto; padding:28px 22px 80px;}
+h1,h2,h3,h4{font-family:'Poppins','Sora',sans-serif; line-height:1.25; font-weight:600;}
+/* HERO COVER (first h1) */
+.hero{
+  background:linear-gradient(135deg,#0E1525 0%,#241b4d 55%,#6C5CE7 100%);
+  color:#fff; border-radius:24px; padding:48px 32px; margin:6px 0 30px;
+  box-shadow:0 18px 40px rgba(108,92,231,.25); position:relative; overflow:hidden;
+}
+.hero:before{content:"";position:absolute;right:-60px;top:-60px;width:200px;height:200px;
+  background:radial-gradient(circle,rgba(0,209,178,.45),transparent 70%);}
+.hero h1{font-size:2.5rem; margin:0 0 10px; letter-spacing:-.5px;}
+.hero .sub{font-size:1.1rem; opacity:.95; font-family:'Inter',sans-serif; font-weight:500;}
+.hero .pill{display:inline-block; background:rgba(255,255,255,.15); border:1px solid rgba(255,255,255,.3);
+  padding:6px 14px; border-radius:999px; font-size:.8rem; margin-bottom:18px; font-family:'Inter',sans-serif;}
+/* SECTION h2 */
+h2{font-size:1.5rem; margin:42px 0 6px; padding-bottom:8px; position:relative;}
+h2:after{content:"";display:block;width:54px;height:4px;border-radius:4px;
+  background:linear-gradient(90deg,var(--purple),var(--mint)); margin-top:10px;}
+/* CARD (each h3 opens a card) */
+.card{background:var(--card); border:1px solid var(--line); border-radius:16px;
+  padding:18px 20px; margin:16px 0; box-shadow:0 4px 16px rgba(16,21,37,.05);
+  border-left:5px solid var(--purple);}
+.card h3{margin:0 0 8px; font-size:1.15rem; color:var(--navy);}
+.card h3 .num{display:inline-flex;align-items:center;justify-content:center;
+  width:30px;height:30px;border-radius:50%;background:var(--purple-soft);color:var(--purple);
+  font-size:.9rem;margin-right:8px;font-weight:700;}
+p{margin:8px 0;}
+ul,ol{margin:8px 0; padding-left:22px;}
+li{margin:5px 0;}
+strong{color:var(--navy);}
+em{color:var(--muted);}
+a{color:var(--purple);}
+hr{border:none; border-top:1px dashed var(--line); margin:30px 0;}
+/* blockquote -> highlight/callout */
+blockquote{margin:14px 0; padding:14px 18px; background:var(--purple-soft);
+  border-left:4px solid var(--purple); border-radius:0 12px 12px 0; color:var(--navy); font-weight:500;}
+blockquote p{margin:4px 0;}
+/* code block -> sticky note (prompt) */
+pre{background:#0E1525; color:#e8eaff; border-radius:14px; padding:16px 18px; overflow:auto;
+  font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:.85rem; line-height:1.5;
+  border:1px solid #232a44; position:relative;}
+pre:before{content:"PROMPT — tap & copy"; position:absolute; top:8px; right:14px; font-size:.62rem;
+  color:#8b93c7; letter-spacing:1px; font-family:'Inter',sans-serif;}
+code{background:#eef0f7; padding:2px 6px; border-radius:6px; font-size:.88em;}
+pre code{background:none; padding:0;}
+/* tables */
+table{width:100%; border-collapse:collapse; margin:16px 0; font-size:.92rem;
+  background:#fff; border-radius:12px; overflow:hidden; box-shadow:0 4px 14px rgba(16,21,37,.05);}
+th{background:var(--navy); color:#fff; text-align:left; padding:11px 12px; font-family:'Poppins',sans-serif; font-size:.85rem;}
+td{padding:10px 12px; border-top:1px solid var(--line); vertical-align:top;}
+tr:nth-child(even) td{background:#fafbfe;}
+/* checklist */
+.check{list-style:none; padding-left:0;}
+.check li{position:relative; padding:8px 8px 8px 38px; margin:6px 0; background:#fff;
+  border:1px solid var(--line); border-radius:10px;}
+.check li:before{content:""; position:absolute; left:11px; top:50%; transform:translateY(-50%);
+  width:18px;height:18px;border:2px solid var(--mint);border-radius:5px;}
+/* designer note (VISUAL) - hidden when printing */
+.vnote{background:repeating-linear-gradient(45deg,#fffbe6,#fffbe6 10px,#fff6cf 10px,#fff6cf 20px);
+  border:1px dashed #e3c84d; border-radius:12px; padding:12px 16px; margin:14px 0;
+  font-size:.85rem; color:#7a6a16;}
+.vnote b{color:#5c5210;}
+.vtag{display:inline-block;background:#e3c84d;color:#3d3500;font-size:.65rem;font-weight:700;
+  padding:2px 8px;border-radius:6px;margin-right:8px;letter-spacing:.5px;}
+/* footer */
+.foot{margin-top:50px;padding-top:18px;border-top:1px solid var(--line);
+  color:var(--muted);font-size:.8rem;text-align:center;}
+@media (max-width:520px){
+  .hero{padding:34px 22px;} .hero h1{font-size:1.9rem;}
+  .wrap{padding:18px 14px 60px;} body{font-size:15px;}
+}
+@media print{
+  body{background:#fff;}
+  .vnote,.no-print,.printhint{display:none !important;}
+  .hero{box-shadow:none; -webkit-print-color-adjust:exact; print-color-adjust:exact;}
+  .card,table,pre{box-shadow:none; break-inside:avoid;}
+  h2{break-after:avoid;}
+}
+.printhint{background:var(--ok);border:1px solid var(--mint);border-radius:10px;
+  padding:10px 14px;font-size:.82rem;margin:0 0 18px;color:#06715f;}
+@page{margin:14mm;}
+</style></head><body><div class="wrap">
+<div class="printhint no-print">Tips: untuk jadikan PDF → menu browser → <b>Print</b> → <b>Save as PDF</b>. Catatan desain kuning otomatis hilang di PDF.</div>
+<div class="hero"><div class="pill">Starter Kit Pemula</div><h1>TEMPLATE HALAMAN JUALAN (Lynk ID / Gumroad)</h1><div class="sub">Bagian dari &quot;MULAI DARI NOL&quot;</div></div>
+<blockquote><p>Ini contoh copy buat produk &quot;Mulai Dari Nol&quot; sendiri — sekaligus template yang bisa pembeli pakai buat produk mereka. Tinggal ganti bagian dalam [kurung].</p></blockquote>
+<div class="vnote"><span class="vtag">VISUAL</span>Tampilkan sebagai mockup halaman jualan: headline besar di atas, lalu section-section ber-card. Sertakan contoh tombol CTA berwarna brand.</div>
+<hr>
+<h2>1. HEADLINE</h2>
+<p><strong>Mulai Dari Nol: Punya Produk Digital Pertamamu Tanpa Bingung Lagi</strong></p>
+<h2>2. SUBHEADLINE</h2>
+<p>Starter kit buat pemula yang pengen jualan produk digital dari HP — tapi masih mentok di &quot;mau mulai dari mana&quot;.</p>
+<h2>3. DESKRIPSI PRODUK</h2>
+<p>Ini bukan e-book teori yang dibaca terus lupa. Ini paket alat kerja: panduan langkah-langkah + 50 ide produk + template konten + script DM + checklist launching. Semua disusun pelan-pelan, kayak temen yang nuntun kamu dari nol sampai produk pertama siap dijual. Dikerjain dari HP, gak perlu skill desain, gak perlu jago dulu.</p>
+<h2>4. MASALAH TARGET PEMBELI</h2>
+<p>Kamu mungkin lagi ngerasa kayak gini:</p>
+<ul><li>Pengen mulai jualan digital, tapi bingung mau jual apa</li><li>Udah nonton banyak konten &quot;cuan&quot;, tapi belum eksekusi satu pun</li><li>Takut produknya gak laku atau diketawain</li><li>Bingung teknisnya: cara bikin, upload, sampai balas DM</li><li>Ngerasa &quot;belum jago&quot;, jadi nunda terus</li></ul>
+<h2>5. SOLUSI YANG DITAWARKAN</h2>
+<p>Kit ini ngubah kebingungan jadi langkah yang jelas:</p>
+<ul><li>Bukan disuruh nyari ide sendiri → dikasih 50 ide + cara validasinya</li><li>Bukan disuruh nulis dari nol → dikasih template &amp; script siap pakai</li><li>Bukan cuma teori → ada checklist yang tinggal dicentang</li><li>Bukan dijanjiin kaya → diajarin mulai realistis, langkah demi langkah</li></ul>
+<h2>6. ISI PAKET</h2>
+<ul><li>📘 <strong>Panduan Utama</strong> (PDF) — dari milih ide sampai closing</li><li>📌 <strong>50 Ide Produk Digital</strong> + cara bikin dari HP</li><li>✍️ <strong>Template Konten</strong> — 30 ide konten, 20 hook, 20 caption, 15 CTA</li><li>💬 <strong>Script DM, Komentar &amp; Closing</strong> siap pakai</li><li>✅ <strong>Template Eksekusi</strong> — validasi ide, deskripsi produk, halaman jualan, checklist launching</li><li>📄 <strong>Panduan Cara Pakai</strong> semua file</li></ul>
+<h2>7. BONUS</h2>
+<ul><li>🎁 <strong>Bonus 1:</strong> Pack Prompt AI (10+ prompt siap salin)</li><li>🎁 <strong>Bonus 2:</strong> Kalender Konten 14 Hari (anti bingung posting)</li><li>🎁 <strong>Bonus 3:</strong> Arahan Desain Canva (biar produkmu keliatan premium)</li></ul>
+<h2>8. BENEFIT UTAMA</h2>
+<ul><li>Gak bingung lagi soal &quot;mau jual apa&quot; &amp; &quot;mulai dari mana&quot;</li><li>Hemat berminggu-minggu trial-error</li><li>Punya bahan konten siap pakai buat 2 minggu ke depan</li><li>Lebih pede karena tau persis langkahnya</li><li>Semua bisa dikerjain dari HP</li></ul>
+<h2>9. UNTUK SIAPA</h2>
+<ul><li>Pemula yang belum punya produk sendiri</li><li>Yang sering nonton konten cuan tapi belum mulai</li><li>Pelajar, ibu rumah tangga, freelancer pemula, pekerja, kreator kecil</li><li>Yang beneran niat mulai, bukan cuma penasaran</li></ul>
+<h2>10. BUKAN UNTUK SIAPA</h2>
+<ul><li>Yang nyari cara cepat kaya / penghasilan instan</li><li>Yang udah punya produk &amp; sistem jualan yang jalan</li><li>Yang nyari trik affiliate / dropship</li><li>Yang cuma mau nambah koleksi e-book tanpa praktek</li></ul>
+<h2>11. KENAPA HARUS (PERTIMBANGKAN) SEKARANG</h2>
+<p>Tiap hari nunda, kamu balik lagi ke titik bingung yang sama. Harga sekarang lagi promo launching — [harga promo] (normal [harga normal]). Sekali bayar, filenya kamu pegang selamanya, plus update gratis kalau ada penambahan. Gak ada salahnya mulai pelan-pelan hari ini.</p>
+<h2>12. FAQ</h2>
+<p><strong>Q: Ini cocok buat yang bener-bener pemula?</strong></p>
+<p>A: Iya, justru dibuat buat yang belum pernah jualan sama sekali.</p>
+<p><strong>Q: Bisa dikerjain dari HP aja?</strong></p>
+<p>A: Bisa 100% dari HP. Aku jelasin app gratis yang dipake.</p>
+<p><strong>Q: Ini jaminan langsung laku/kaya?</strong></p>
+<p>A: Enggak, dan aku gak mau bohong. Ini bikin langkahnya jelas &amp; gampang. Hasil tetap tergantung eksekusi kamu.</p>
+<p><strong>Q: Formatnya apa?</strong></p>
+<p>A: PDF (buat dibaca) + beberapa template Google Docs (buat diisi). Tinggal buka dari HP.</p>
+<p><strong>Q: Setelah bayar dapatnya gimana?</strong></p>
+<p>A: Langsung dapat akses download file/ZIP-nya. Kalau ada kendala, tinggal DM.</p>
+<p><strong>Q: Ada update?</strong></p>
+<p>A: Ada. Kalau ada penambahan materi, kamu dapat gratis.</p>
+<h2>13. CTA TOMBOL</h2>
+<ul><li>Tombol utama: <strong>&quot;Mulai Dari Nol Sekarang →&quot;</strong></li><li>Alternatif: &quot;Ambil Harga Promo&quot; · &quot;Aku Mau Mulai&quot; · &quot;Download Sekarang&quot;</li></ul>
+<h2>14. DESKRIPSI SINGKAT (versi katalog)</h2>
+<blockquote><p>Starter kit buat pemula yang mau jualan produk digital dari HP tapi bingung mulai dari mana. Isi: panduan langkah-langkah, 50 ide produk, template konten, script DM, &amp; checklist launching. Bukan teori — langsung praktek. 🙌</p></blockquote>
+<hr>
+<div class="vnote"><span class="vtag">VISUAL</span>Di bawah CTA, tambahkan baris reassurance kecil: &quot;Sekali bayar · File selamanya · Update gratis · Bisa dari HP&quot; dengan icon mini.</div><div class="foot">MULAI DARI NOL — Starter Kit Jualan Produk Digital dari HP</div></div></body></html>
